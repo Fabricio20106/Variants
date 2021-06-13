@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ddd",
+        " s ",
+        " s "
+    ],
+    "key": {
+        "s": {
+            "item": "minecraft:stick"
+        },
+        "d": {
+            "item": "minecraft:diorite"
+        }
+    },
+    "result": {
+        "item": "variants:diorite_pickaxe"
+    }
+}

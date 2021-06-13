@@ -1,0 +1,41 @@
+package com.fabricio.variants;
+
+import com.fabricio.variants.init.BlockInit;
+import com.fabricio.variants.init.StuffInit;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.lang.String;
+
+@Mod(Variants.mod_id)
+public class Variants {
+    public static final Logger logger = LogManager.getLogger();
+
+    public static final String mod_id = "variants";
+
+    public Variants() {
+        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+
+        MinecraftForge.EVENT_BUS.register(this);
+
+        StuffInit.items.register(modEventBus);
+        StuffInit.tools.register(modEventBus);
+        BlockInit.blocks.register(modEventBus);
+    }
+
+    public void setup(final FMLCommonSetupEvent event) {}
+
+    public void doClientStuff(final FMLClientSetupEvent event) {}
+
+    @SubscribeEvent
+    public void onServerStarting(FMLServerStartingEvent event) {}
+}

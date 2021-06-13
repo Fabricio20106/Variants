@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "d",
+        "s",
+        "s"
+    ],
+    "key": {
+        "d": {
+            "item": "minecraft:diorite"
+        },
+        "s": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "variants:diorite_shovel"
+    }
+}
