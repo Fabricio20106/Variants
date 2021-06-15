@@ -49,5 +49,8 @@
   "item.variants.debug_bow.empty": "%s has no properties",
   "item.variants.debug_bow.update": "\"%s\" to %s",
   "item.variants.debug_bow.select": "selected \"%s\" (%s)",
-  "item.variants.spawner_minecart": "Minecart with Spawner"
+  "item.variants.spawner_minecart": "Minecart with Spawner",
+  "item.variants.honey_ball": "Honey Ball",
+  "item.variants.splash_glass_bottle": "Splash Glass Bottle",
+  "item.variants.lingering_glass_bottle": "Lingering Glass Bottle"
 }
