@@ -2,6 +2,7 @@ package com.fabricio.variants;
 
 import com.fabricio.variants.init.BlockInit;
 import com.fabricio.variants.init.StuffInit;
+import com.fabricio.variants.init.WeaponryInit;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -28,7 +29,7 @@ public class Variants {
         MinecraftForge.EVENT_BUS.register(this);
 
         StuffInit.items.register(modEventBus);
-        StuffInit.tools.register(modEventBus);
+        WeaponryInit.tools.register(modEventBus);
         BlockInit.blocks.register(modEventBus);
     }
 

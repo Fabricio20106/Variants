@@ -93,10 +93,6 @@ repositories {
     maven {
         url 'https://maven.blamejared.com'
     }
-    maven {
-        name = "PhoenixIdeas"
-        url = "https://github.com/Fabricio20106/phnixideas"
-    }
 }
 
 dependencies {

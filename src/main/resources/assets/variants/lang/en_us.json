@@ -1,5 +1,6 @@
 {
   "itemGroup.variants": "Variants",
+  "itemGroup.weaponryTab": "Variated Weapons",
 
   "block.variants.potted_sugar_cane": "Potted Sugar Cane",
 
@@ -21,7 +22,7 @@
   "item.variants.splash_experience_bottle": "Splash Experience Bottle",
   "item.variants.lingering_experience_bottle": "Lingering Experience Bottle",
   "item.variants.enchanted_knowledge_book": "Enchanted Knowledge Book",
-  "item.variants.splash_dragon_breath": "Splash Dragon' Breath",
+  "item.variants.splash_dragon_breath": "Splash Dragon's Breath",
   "item.variants.lingering_dragon_breath": "Lingering Dragon's Breath",
   "item.variants.empty_armor_slot_helmet": "Empty Armor Slot Helmet",
   "item.variants.empty_armor_slot_chestplate": "Empty Armor Slot Chestplate",

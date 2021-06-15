@@ -14,35 +14,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class StuffInit {
     public static final DeferredRegister<Item> items = DeferredRegister.create(ForgeRegistries.ITEMS, Variants.mod_id);
-    public static final DeferredRegister<Item> tools = DeferredRegister.create(ForgeRegistries.ITEMS, Variants.mod_id);
 
-    public static final RegistryObject<Item> diorite_sword = tools.register("diorite_sword", () -> new SwordItem(VariantTools.DIORITE, 3, -2.4F, new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> diorite_pickaxe = tools.register("diorite_pickaxe", () -> new PickaxeItem(VariantTools.DIORITE, 1, -2.8F, new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> diorite_shovel = tools.register("diorite_shovel", () -> new ShovelItem(VariantTools.DIORITE, 1.5F, -3.0F, new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> diorite_axe = tools.register("diorite_axe", () -> new AxeItem(VariantTools.DIORITE, 7.0F, -3.2F, new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> diorite_hoe = tools.register("diorite_hoe", () -> new HoeItem(VariantTools.DIORITE, -2, -2.0F, new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> granite_sword = tools.register("granite_sword", () -> new SwordItem(VariantTools.GRANITE, 3, -2.4F, new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> granite_pickaxe = tools.register("granite_pickaxe", () -> new PickaxeItem(VariantTools.GRANITE, 1, -2.8F, new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> granite_shovel = tools.register("granite_shovel", () -> new ShovelItem(VariantTools.GRANITE, 1.5F, -3.0F, new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> granite_axe = tools.register("granite_axe", () -> new AxeItem(VariantTools.GRANITE, 7.0F, -3.2F, new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> granite_hoe = tools.register("granite_hoe", () -> new HoeItem(VariantTools.GRANITE, -2, -2.0F, new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> andesite_sword = tools.register("andesite_sword", () -> new SwordItem(VariantTools.ANDESITE, 3, -2.4F, new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> andesite_pickaxe = tools.register("andesite_pickaxe", () -> new PickaxeItem(VariantTools.ANDESITE, 1, -2.8F, new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> andesite_shovel = tools.register("andesite_shovel", () -> new ShovelItem(VariantTools.ANDESITE, 1.5F, -3.0F, new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> andesite_axe = tools.register("andesite_axe", () -> new AxeItem(VariantTools.ANDESITE, 7.0F, -3.2F, new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> andesite_hoe = tools.register("andesite_hoe", () -> new HoeItem(VariantTools.ANDESITE, -2, -2.0F, new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> amethyst_sword = tools.register("amethyst_sword", () -> new AxeItem(VariantTools.AMETHYST, 3.0F, -2.4F, new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> copper_sword = tools.register("copper_sword", () -> new AxeItem(VariantTools.COPPER, 3.0F, -2.4F, new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> debug_bow = tools.register("debug_bow", () -> new DebugBowItem(new Item.Properties().durability(384).tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> redstone_shears = items.register("redstone_shears", () -> new ShearsItem(new Item.Properties().durability(1871).tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> coal_shears = items.register("coal_shears", () -> new ShearsItem(new Item.Properties().durability(1871).tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> diamond_shears = items.register("diamond_shears", () -> new ShearsItem(new Item.Properties().durability(1561).tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> golden_shears = items.register("golden_shears", () -> new ShearsItem(new Item.Properties().durability(32).tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> netherite_shears = items.register("netherite_shears", () -> new ShearsItem(new Item.Properties().durability(2031).tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> lapis_lazuli_shears = items.register("lapis_lazuli_shears", () -> new ShearsItem(new Item.Properties().durability(1871).tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> emerald_shears = items.register("emerald_shears", () -> new ShearsItem(new Item.Properties().durability(1871).tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> quartz_shears = items.register("quartz_shears", () -> new ShearsItem(new Item.Properties().durability(1871).tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> ruby_shears = items.register("ruby_shears", () -> new ShearsItem(new Item.Properties().durability(1871).tab(VariantsTab.variant)));
     public static final RegistryObject<Item> cyan_shulker_shell = items.register("cyan_shulker_shell", () -> new Item(new Item.Properties().tab(VariantsTab.variant)));
     public static final RegistryObject<Item> spawner_minecart = items.register("spawner_minecart", () -> new MinecartItem(AbstractMinecartEntity.Type.SPAWNER, new Item.Properties().tab(VariantsTab.variant)));
     public static final RegistryObject<Item> fungi_stew = items.register("fungi_stew", () -> new SoupItem(new Item.Properties().tab(VariantsTab.variant).food(Foods.MUSHROOM_STEW)));
@@ -51,12 +23,6 @@ public class StuffInit {
     public static final RegistryObject<Item> enchanted_knowledge_book = items.register("enchanted_knowledge_book", () -> new KnowledgeBookItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> splash_dragon_breath = items.register("splash_dragon_breath", () -> new Item(new Item.Properties().craftRemainder(Items.SPLASH_POTION).rarity(Rarity.UNCOMMON).tab(VariantsTab.variant)));
     public static final RegistryObject<Item> lingering_dragon_breath = items.register("lingering_dragon_breath", () -> new Item(new Item.Properties().craftRemainder(Items.LINGERING_POTION).rarity(Rarity.UNCOMMON).tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> empty_armor_slot_helmet = items.register("empty_armor_slot_helmet", () -> new ArmorItem(VariantArmors.EQUIPMENT_SLOT_TYPE, EquipmentSlotType.HEAD ,new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> empty_armor_slot_chestplate = items.register("empty_armor_slot_chestplate", () -> new ArmorItem(VariantArmors.EQUIPMENT_SLOT_TYPE, EquipmentSlotType.CHEST ,new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> empty_armor_slot_leggings = items.register("empty_armor_slot_leggings", () -> new ArmorItem(VariantArmors.EQUIPMENT_SLOT_TYPE, EquipmentSlotType.LEGS ,new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> empty_armor_slot_boots = items.register("empty_armor_slot_boots", () -> new ArmorItem(VariantArmors.EQUIPMENT_SLOT_TYPE, EquipmentSlotType.FEET ,new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> empty_armor_slot_shield = items.register("empty_armor_slot_shield", () -> new ShieldItem(new Item.Properties().stacksTo(1).stacksTo(496).tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> phantom_membrane_sweatchest = items.register("phantom_membrane_sweatchest", () -> new ArmorItem(VariantArmors.PHANTOM, EquipmentSlotType.CHEST ,new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> rabbit_hide_sweatchest = items.register("rabbit_hide_sweatchest", () -> new ArmorItem(VariantArmors.RABBIT, EquipmentSlotType.CHEST ,new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> wool_sweatchest = items.register("wool_sweatchest", () -> new DyeableArmorItem(VariantArmors.WOOL, EquipmentSlotType.CHEST ,new Item.Properties().tab(VariantsTab.variant)));
+    public static final RegistryObject<Item> honey_ball = items.register("honey_ball", () -> new Item(new Item.Properties().craftRemainder(Items.LINGERING_POTION).rarity(Rarity.UNCOMMON).tab(VariantsTab.variant)));
+
 }
