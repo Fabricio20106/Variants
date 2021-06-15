@@ -2,6 +2,7 @@ package com.fabricio.variants.init;
 
 import com.fabricio.variants.Variants;
 import com.fabricio.variants.items.DebugBowItem;
+import com.fabricio.variants.items.HoneyBallItem;
 import com.fabricio.variants.util.VariantTools;
 import com.fabricio.variants.util.VariantArmors;
 import mcp.MethodsReturnNonnullByDefault;
@@ -21,10 +22,10 @@ public class StuffInit {
     public static final RegistryObject<Item> splash_experience_bottle = items.register("splash_experience_bottle", () -> new ExperienceBottleItem(new Item.Properties().rarity(Rarity.UNCOMMON).tab(VariantsTab.variant)));
     public static final RegistryObject<Item> lingering_experience_bottle = items.register("lingering_experience_bottle", () -> new ExperienceBottleItem(new Item.Properties().rarity(Rarity.UNCOMMON).tab(VariantsTab.variant)));
     public static final RegistryObject<Item> enchanted_knowledge_book = items.register("enchanted_knowledge_book", () -> new KnowledgeBookItem(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> splash_dragon_breath = items.register("splash_dragon_breath", () -> new Item(new Item.Properties().craftRemainder(StuffInit.splash_glass_bottle.get()).rarity(Rarity.UNCOMMON).tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> lingering_dragon_breath = items.register("lingering_dragon_breath", () -> new Item(new Item.Properties().craftRemainder(StuffInit.lingering_glass_bottle.get()).rarity(Rarity.UNCOMMON).tab(VariantsTab.variant)));
+    public static final RegistryObject<Item> splash_dragon_breath = items.register("splash_dragon_breath", () -> new Item(new Item.Properties().craftRemainder(Items.SPLASH_POTION).rarity(Rarity.UNCOMMON).tab(VariantsTab.variant)));
+    public static final RegistryObject<Item> lingering_dragon_breath = items.register("lingering_dragon_breath", () -> new Item(new Item.Properties().craftRemainder(Items.LINGERING_POTION).rarity(Rarity.UNCOMMON).tab(VariantsTab.variant)));
     public static final RegistryObject<Item> splash_glass_bottle = items.register("splash_glass_bottle", () -> new Item(new Item.Properties().tab(VariantsTab.variant)));
     public static final RegistryObject<Item> lingering_glass_bottle = items.register("lingering_glass_bottle", () -> new Item(new Item.Properties().tab(VariantsTab.variant)));
-    public static final RegistryObject<Item> honey_ball = items.register("honey_ball", () -> new Item(new Item.Properties().food(Foods.HONEY_BOTTLE).tab(VariantsTab.variant)));
+    public static final RegistryObject<Item> honey_ball = items.register("honey_ball", () -> new HoneyBallItem(new Item.Properties().food(Foods.HONEY_BOTTLE).tab(VariantsTab.variant)));
 
 }
