@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "variants:soul_rod"
+    }
+  ],
+  "result": {
+    "item": "variants:soul_powder",
+    "count": 2
+  }
+}

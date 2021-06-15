@@ -3,6 +3,9 @@
   "itemGroup.weaponryTab": "Variated Weapons",
 
   "block.variants.potted_sugar_cane": "Potted Sugar Cane",
+  "block.variants.golden_carrots": "Golden Carrots",
+  "block.variants.gold_cauldron": "Gold Cauldron",
+  "block.variants.gold_beacon": "Gold Beacon",
 
   "item.variants.diorite_sword": "Diorite Sword",
   "item.variants.diorite_pickaxe": "Diorite Pickaxe",
@@ -52,5 +55,19 @@
   "item.variants.spawner_minecart": "Minecart with Spawner",
   "item.variants.honey_ball": "Honey Ball",
   "item.variants.splash_glass_bottle": "Splash Glass Bottle",
-  "item.variants.lingering_glass_bottle": "Lingering Glass Bottle"
+  "item.variants.lingering_glass_bottle": "Lingering Glass Bottle",
+  "item.variants.oak_stick": "Oak Stick",
+  "item.variants.spruce_stick": "Spruce Stick",
+  "item.variants.birch_stick": "Birch Stick",
+  "item.variants.jungle_stick": "Jungle Stick",
+  "item.variants.acacia_stick": "Acacia Stick",
+  "item.variants.dark_oak_stick": "Dark Oak Stick",
+  "item.variants.crimson_stick": "Crimson Stick",
+  "item.variants.warped_stick": "Warped Stick",
+  "item.variants.soul_charge": "Soul o'Charge",
+  "item.variants.soul_rod": "Soul Rod",
+  "item.variants.soul_powder": "Soul Powder",
+  "item.variants.exposed_copper_ingot": "Exposed Copper Ingot",
+  "item.variants.weathered_copper_ingot": "Weathered Copper Ingot",
+  "item.variants.oxidized_copper_ingot": "Oxidized Copper Ingot"
 }

@@ -21,22 +21,7 @@ public class BlockInit {
 
     public static final RegistryObject<Block> potted_sugar_cane = blocks.register("potted_sugar_cane", () -> new FlowerPotBlock(Blocks.SUGAR_CANE, AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
     public static final RegistryObject<Block> golden_carrots = blocks.register("golden_carrots", () -> new GoldenCarrotBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
+    public static final RegistryObject<Block> gold_cauldron = blocks.register("gold_cauldron", () -> new CauldronBlock(AbstractBlock.Properties.copy(Blocks.GOLD_BLOCK)));
+    public static final RegistryObject<Block> gold_beacon = blocks.register("gold_beacon", () -> new BeaconBlock(AbstractBlock.Properties.copy(Blocks.BEACON)));
 
-    @SubscribeEvent
-    public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
-        final IForgeRegistry<Item> iForgeRegistry = event.getRegistry();
-
-        // for each block we registered above...
-        blocks.getEntries().stream().map(RegistryObject::get).forEach( (block) -> {
-            // make an item properties object that puts it in your creative tab
-            final Item.Properties properties = new Item.Properties().tab(VariantsTab.variant);
-
-            // make a block item that places the block
-            final BlockItem blockItem = new BlockItem(block, properties);
-
-            // register the block item with the same name as the block
-            blockItem.setRegistryName(block.getRegistryName());
-            iForgeRegistry.register(blockItem);
-        });
-    }
 }
