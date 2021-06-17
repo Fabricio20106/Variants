@@ -1,6 +1,3 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "variants:block/golden_carrots_stage0"
-  }
+  "parent": "variants:block/golden_carrots_stage0"
 }
