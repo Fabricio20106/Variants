@@ -18,33 +18,33 @@ public class HoneyBallItem extends Item {
         super(properties);
     }
 
-    public ItemStack finishUsingItem(ItemStack itemStack, World world, LivingEntity livingEntity) {
-        super.finishUsingItem(itemStack, world, livingEntity);
-        if (livingEntity instanceof ServerPlayerEntity) {
-            ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)livingEntity;
-            CriteriaTriggers.CONSUME_ITEM.trigger(serverplayerentity, itemStack);
-            serverplayerentity.awardStat(Stats.ITEM_USED.get(this));
+    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
+        super.onItemUseFinish(stack, worldIn, entityLiving);
+        if (entityLiving instanceof ServerPlayerEntity) {
+            ServerPlayerEntity serverplayerentity = (ServerPlayerEntity) entityLiving;
+            CriteriaTriggers.CONSUME_ITEM.trigger(serverplayerentity, stack);
+            serverplayerentity.addStat(Stats.ITEM_USED.get(this));
         }
 
-        if (!world.isClientSide) {
-            livingEntity.removeEffect(Effects.POISON);
+        if (!worldIn.isRemote) {
+            entityLiving.removePotionEffect(Effects.POISON);
         }
-        return itemStack;
+        return stack;
     }
 
-    public int getUseDuration(ItemStack itemStack) {
+    public int getUseDuration(ItemStack stack) {
         return 40;
     }
 
-    public UseAction getUseAnimation(ItemStack itemStack) {
+    public UseAction getUseAction(ItemStack stack) {
         return UseAction.EAT;
     }
 
-    public SoundEvent getEatingSound() {
-        return SoundEvents.HONEY_DRINK;
+    public SoundEvent getEatSound() {
+        return SoundEvents.ITEM_HONEY_BOTTLE_DRINK;
     }
 
-    public ActionResult<ItemStack> use(World world, PlayerEntity playerEntity, Hand hand) {
-        return DrinkHelper.useDrink(world, playerEntity, hand);
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+        return DrinkHelper.startDrinking(worldIn, playerIn, handIn);
     }
 }

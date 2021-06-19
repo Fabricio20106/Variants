@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/crop",
+  "parent": "variants:block/block_item_crop",
   "textures": {
     "crop": "variants:block/golden_carrots_stage3"
   }

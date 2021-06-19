@@ -21,7 +21,7 @@ archivesBaseName = 'variants'
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'official', version: '1.16.5'
+    mappings channel: 'snapshot', version: '20201028-1.16.3'
 
     runs {
         client {
@@ -96,8 +96,11 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.5-36.1.4'
+    minecraft 'net.minecraftforge:forge:1.16.4-35.1.37'
     compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
+
+    //compileOnly fg.deobf("com.github.Fabricio20106:Edits:138ef1c:api")
+    //runtimeOnly fg.deobf("com.github.Fabricio20106:Edits:138ef1c")
 
     if (project.hasProperty('jei_version')) {
         // compile against the JEI API but do not include it at runtime

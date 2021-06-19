@@ -5,64 +5,65 @@ import net.minecraft.item.IItemTier;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.LazyValue;
+import net.minecraftforge.common.data.ForgeItemTagsProvider;
 
 import java.util.function.Supplier;
 
 public enum VariantTools implements IItemTier {
     ANDESITE(1, 131, 4.0F, 1.0F, 5, () -> {
-        return Ingredient.of(Blocks.ANDESITE);
+        return Ingredient.fromItems(Blocks.ANDESITE);
     }),
     DIORITE(1, 131, 4.0F, 1.0F, 5, () -> {
-        return Ingredient.of(Blocks.DIORITE);
+        return Ingredient.fromItems(Blocks.DIORITE);
     }),
     GRANITE(1, 131, 4.0F, 1.0F, 5, () -> {
-        return Ingredient.of(Blocks.GRANITE);
+        return Ingredient.fromItems(Blocks.GRANITE);
     }),
     EMERALD(3, 2031, 5.0F, 3.0F, 15, () -> {
-        return Ingredient.of(Items.EMERALD);
+        return Ingredient.fromItems(Items.EMERALD);
     }),
     AMETHYST(2, 250, 6.0F, 2.0F, 14, () ->
             Ingredient.EMPTY),
     COPPER(2, 250, 6.0F, 2.0F, 14, () ->
-            Ingredient.EMPTY);
+        Ingredient.EMPTY);
 
-    public final int level;
-    public final int uses;
-    public final float speed;
-    public final float damage;
-    public final int enchantmentValue;
-    public final LazyValue<Ingredient> repairIngredient;
+    private final int harvestLevel;
+    private final int maxUses;
+    private final float efficiency;
+    private final float attackDamage;
+    private final int enchantability;
+    private final LazyValue<Ingredient> repairMaterial;
 
-    VariantTools(int p_i48458_3_, int p_i48458_4_, float p_i48458_5_, float p_i48458_6_, int p_i48458_7_, Supplier<Ingredient> p_i48458_8_) {
-        this.level = p_i48458_3_;
-        this.uses = p_i48458_4_;
-        this.speed = p_i48458_5_;
-        this.damage = p_i48458_6_;
-        this.enchantmentValue = p_i48458_7_;
-        this.repairIngredient = new LazyValue<>(p_i48458_8_);
+    VariantTools(int harvestLevelIn, int maxUsesIn, float efficiencyIn, float attackDamageIn, int enchantabilityIn, Supplier<Ingredient> repairMaterialIn) {
+        this.harvestLevel = harvestLevelIn;
+        this.maxUses = maxUsesIn;
+        this.efficiency = efficiencyIn;
+        this.attackDamage = attackDamageIn;
+        this.enchantability = enchantabilityIn;
+        this.repairMaterial = new LazyValue<>(repairMaterialIn);
     }
 
-    public int getUses() {
-        return this.uses;
+    public int getMaxUses() {
+        return this.maxUses;
     }
 
-    public float getSpeed() {
-        return this.speed;
+    public float getEfficiency() {
+        return this.efficiency;
     }
 
-    public float getAttackDamageBonus() {
-        return this.damage;
+    public float getAttackDamage() {
+        return this.attackDamage;
     }
 
-    public int getLevel() {
-        return this.level;
+    public int getHarvestLevel() {
+        return this.harvestLevel;
     }
 
-    public int getEnchantmentValue() {
-        return this.enchantmentValue;
+    public int getEnchantability() {
+        return this.enchantability;
     }
 
-    public Ingredient getRepairIngredient() {
-        return this.repairIngredient.get();
+    public Ingredient getRepairMaterial() {
+        return this.repairMaterial.getValue();
     }
 }
