@@ -1,6 +1,7 @@
 {
   "itemGroup.variants": "Variants",
   "itemGroup.weaponryTab": "Variated Weapons",
+  "itemGroup.f10ModsCompat": "Variants (F10's Mods Compat)",
 
   "block.variants.potted_sugar_cane": "Potted Sugar Cane",
   "block.variants.golden_carrots": "Golden Carrots",
@@ -8,6 +9,8 @@
   "block.variants.gold_beacon": "Gold Beacon",
   "block.variants.quartz_ore": "Quartz Ore",
   "block.variants.raw_debris_block": "Block of Raw Debris",
+
+  "item.variants.splash_soph_potion": "Splash Soph Potion",
 
   "item.variants.diorite_sword": "Diorite Sword",
   "item.variants.diorite_pickaxe": "Diorite Pickaxe",

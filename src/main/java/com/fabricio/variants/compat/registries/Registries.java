@@ -1,41 +1,32 @@
-package com.fabricio.variants;
+package com.fabricio.variants.compat.registries;
 
-import com.fabricio.variants.compat.registries.Registries;
+import com.fabricio.variants.Variants;
 import com.fabricio.variants.compat.registries.edits.EditsStuffInit;
-import com.fabricio.variants.init.BlockInit;
-import com.fabricio.variants.init.StuffInit;
-import com.fabricio.variants.init.WeaponryInit;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import java.lang.String;
 
-@Mod(Variants.mod_id)
-public class Variants {
-    public static final Logger logger = LogManager.getLogger();
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
-    public static final String mod_id = "variants";
+public class Registries {
+    public static final Logger logger = LogManager.getLogManager().getLogger(Variants.mod_id);
 
-    public Variants() {
-        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public Registries() {
+        final IEventBus iEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-
         MinecraftForge.EVENT_BUS.register(this);
+        register();
 
-        StuffInit.items.register(modEventBus);
-        WeaponryInit.tools.register(modEventBus);
-        BlockInit.blocks.register(modEventBus);
-        Registries.register();
-
+        EditsStuffInit.items.register(iEventBus);
     }
+
+    public static void register() {}
 
     public void setup(final FMLCommonSetupEvent event) {}
 
