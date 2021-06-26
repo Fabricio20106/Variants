@@ -7,6 +7,7 @@
   "block.variants.gold_cauldron": "Gold Cauldron",
   "block.variants.gold_beacon": "Gold Beacon",
   "block.variants.quartz_ore": "Quartz Ore",
+  "block.variants.raw_debris_block": "Block of Raw Debris",
 
   "item.variants.diorite_sword": "Diorite Sword",
   "item.variants.diorite_pickaxe": "Diorite Pickaxe",
@@ -76,6 +77,9 @@
   "item.variants.lava_glass_bottle": "Lava Glass Bottle",
   "item.variants.iron_spyglass": "Iron Spyglass",
   "item.variants.diamond_spyglass": "Diamond Spyglass",
-  "item.variants.netherite_spyglass": "Netherite Spyglass"
+  "item.variants.netherite_spyglass": "Netherite Spyglass",
+  "item.variants.raw_debris": "Raw Debris",
+  "item.variants.elder_prismarine_shard": "Elder Prismarine Shard",
+  "item.variants.elder_prismarine_crystals": "Elder Prismarine Crystals"
 
 }

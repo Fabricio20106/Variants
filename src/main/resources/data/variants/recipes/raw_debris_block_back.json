@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "variants:raw_debris_block"
+    }
+  ],
+  "result": {
+    "item": "variants:raw_debris",
+    "count": 9
+  }
+}

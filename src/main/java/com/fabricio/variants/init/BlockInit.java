@@ -25,4 +25,6 @@ public class BlockInit {
     public static final RegistryObject<Block> gold_cauldron = blocks.register("gold_cauldron", () -> new CauldronBlock(AbstractBlock.Properties.from(Blocks.GOLD_BLOCK)));
     public static final RegistryObject<Block> gold_beacon = blocks.register("gold_beacon", () -> new BeaconBlock(AbstractBlock.Properties.from(Blocks.BEACON)));
     public static final RegistryObject<Block> quartz_ore = blocks.register("quartz_ore", () -> new OreBlock(AbstractBlock.Properties.create(Material.ROCK, MaterialColor.STONE).setRequiresTool().hardnessAndResistance(3.0F, 3.0F)));
+    public static final RegistryObject<Block> raw_debris_block = blocks.register("raw_debris_block", () -> new Block(AbstractBlock.Properties.create(Material.IRON, MaterialColor.BLACK).setRequiresTool().hardnessAndResistance(30.0F, 1200.0F).sound(SoundType.ANCIENT_DEBRIS)));
+
 }

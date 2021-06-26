@@ -14,6 +14,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class StuffInit {
     public static final DeferredRegister<Item> items = DeferredRegister.create(ForgeRegistries.ITEMS, Variants.mod_id);
 
+    public static final RegistryObject<Item> raw_debris_block = items.register("raw_debris_block", () -> new BlockItem(BlockInit.raw_debris_block.get(), new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> quartz_ore = items.register("quartz_ore", () -> new BlockItem(BlockInit.quartz_ore.get(), new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> gold_cauldron = items.register("gold_cauldron", () -> new BlockItem(BlockInit.gold_cauldron.get(), new Item.Properties().rarity(Rarity.UNCOMMON).group(VariantsTab.variant)));
     public static final RegistryObject<Item> gold_beacon = items.register("gold_beacon", () -> new BlockItem(BlockInit.gold_beacon.get(), new Item.Properties().rarity(Rarity.UNCOMMON).group(VariantsTab.variant)));
@@ -48,6 +49,8 @@ public class StuffInit {
     public static final RegistryObject<Item> milk_glass_bottle = items.register("milk_glass_bottle", () -> new MilkBottleItem(new Item.Properties().maxStackSize(8).group(VariantsTab.variant)));
     public static final RegistryObject<Item> lava_glass_bottle = items.register("lava_glass_bottle", () -> new LavaBottleItem(new Item.Properties().maxStackSize(8).group(VariantsTab.variant)));
     public static final RegistryObject<Item> glow_black_dye = items.register("glow_black_dye", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
+    public static final RegistryObject<Item> elder_prismarine_shard = items.register("elder_prismarine_shard", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
+    public static final RegistryObject<Item> elder_prismarine_crystals = items.register("elder_prismarine_crystals", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
 
     public static final RegistryObject<Item> nether_portal = items.register("nether_portal", () -> new BlockItem(Blocks.NETHER_PORTAL, new Item.Properties().group(VariantsTab.variant)));
 }
