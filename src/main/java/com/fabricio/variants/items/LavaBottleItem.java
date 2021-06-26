@@ -4,7 +4,10 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.item.UseAction;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.stats.Stats;
@@ -13,18 +16,14 @@ import net.minecraft.util.DrinkHelper;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 
-public class CustomGlassBottle extends Item {
-    public CustomGlassBottle(boolean typeIn, Properties properties) {
+public class LavaBottleItem extends Item {
+    public LavaBottleItem(Properties properties) {
         super(properties);
     }
 
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-        if (!worldIn.isRemote && BottleType.isMilk) entityLiving.curePotionEffects(stack); // FORGE - move up so stack.shrink does not turn stack into air
-
-        if (!worldIn.isRemote && BottleType.isLava) {
-            entityLiving.setFire(15);
-            entityLiving.addPotionEffect(new EffectInstance(Effects.INSTANT_DAMAGE, 5, 1));
-        }
+        if (!worldIn.isRemote) entityLiving.addPotionEffect(new EffectInstance(Effects.INSTANT_DAMAGE, 100, 1)); // FORGE - move up so stack.shrink does not turn stack into air
+        if (!worldIn.isRemote) entityLiving.setFire(100);
 
         if (entityLiving instanceof ServerPlayerEntity) {
             ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)entityLiving;

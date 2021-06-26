@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "cavesandcliffs:glow_ink_sac"
+    }
+  ],
+  "result": {
+    "item": "variants:glow_black_dye"
+  }
+}

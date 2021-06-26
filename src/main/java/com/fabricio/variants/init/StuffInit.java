@@ -1,9 +1,9 @@
 package com.fabricio.variants.init;
 
 import com.fabricio.variants.Variants;
-import com.fabricio.variants.items.BottleType;
-import com.fabricio.variants.items.CustomGlassBottle;
 import com.fabricio.variants.items.HoneyBallItem;
+import com.fabricio.variants.items.LavaBottleItem;
+import com.fabricio.variants.items.MilkBottleItem;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.minecart.AbstractMinecartEntity;
 import net.minecraft.item.*;
@@ -30,6 +30,7 @@ public class StuffInit {
     public static final RegistryObject<Item> splash_glass_bottle = items.register("splash_glass_bottle", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> lingering_glass_bottle = items.register("lingering_glass_bottle", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> honey_ball = items.register("honey_ball", () -> new HoneyBallItem(new Item.Properties().food(Foods.HONEY).group(VariantsTab.variant)));
+    public static final RegistryObject<Item> raw_debris = items.register("raw_debris", () -> new Item(new Item.Properties().isImmuneToFire().group(VariantsTab.variant)));
     public static final RegistryObject<Item> oak_stick = items.register("oak_stick", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> spruce_stick = items.register("spruce_stick", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> birch_stick = items.register("birch_stick", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
@@ -44,8 +45,9 @@ public class StuffInit {
     public static final RegistryObject<Item> exposed_copper_ingot = items.register("exposed_copper_ingot", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> weathered_copper_ingot = items.register("weathered_copper_ingot", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> oxidized_copper_ingot = items.register("oxidized_copper_ingot", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
-    public static final RegistryObject<Item> milk_glass_bottle = items.register("milk_glass_bottle", () -> new CustomGlassBottle(BottleType.isMilk, new Item.Properties().group(VariantsTab.variant)));
-    public static final RegistryObject<Item> lava_glass_bottle = items.register("lava_glass_bottle", () -> new CustomGlassBottle(BottleType.isLava, new Item.Properties().group(VariantsTab.variant)));
+    public static final RegistryObject<Item> milk_glass_bottle = items.register("milk_glass_bottle", () -> new MilkBottleItem(new Item.Properties().maxStackSize(8).group(VariantsTab.variant)));
+    public static final RegistryObject<Item> lava_glass_bottle = items.register("lava_glass_bottle", () -> new LavaBottleItem(new Item.Properties().maxStackSize(8).group(VariantsTab.variant)));
+    public static final RegistryObject<Item> glow_black_dye = items.register("glow_black_dye", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
 
     public static final RegistryObject<Item> nether_portal = items.register("nether_portal", () -> new BlockItem(Blocks.NETHER_PORTAL, new Item.Properties().group(VariantsTab.variant)));
 }

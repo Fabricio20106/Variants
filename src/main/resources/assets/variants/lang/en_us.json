@@ -70,5 +70,12 @@
   "item.variants.soul_powder": "Soul Powder",
   "item.variants.exposed_copper_ingot": "Exposed Copper Ingot",
   "item.variants.weathered_copper_ingot": "Weathered Copper Ingot",
-  "item.variants.oxidized_copper_ingot": "Oxidized Copper Ingot"
+  "item.variants.oxidized_copper_ingot": "Oxidized Copper Ingot",
+  "item.variants.glow_black_dye": "Glow Black Dye",
+  "item.variants.milk_glass_bottle": "Milk Glass Bottle",
+  "item.variants.lava_glass_bottle": "Lava Glass Bottle",
+  "item.variants.iron_spyglass": "Iron Spyglass",
+  "item.variants.diamond_spyglass": "Diamond Spyglass",
+  "item.variants.netherite_spyglass": "Netherite Spyglass"
+
 }

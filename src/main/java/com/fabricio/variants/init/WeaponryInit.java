@@ -48,5 +48,8 @@ public class WeaponryInit {
     public static final RegistryObject<Item> phantom_membrane_sweatchest = tools.register("phantom_membrane_sweatchest", () -> new ArmorItem(VariantArmors.PHANTOM, EquipmentSlotType.CHEST ,new Item.Properties().group(WeaponryTab.weaponryTab)));
     public static final RegistryObject<Item> rabbit_hide_sweatchest = tools.register("rabbit_hide_sweatchest", () -> new ArmorItem(VariantArmors.RABBIT, EquipmentSlotType.CHEST ,new Item.Properties().group(WeaponryTab.weaponryTab)));
     public static final RegistryObject<Item> wool_sweatchest = tools.register("wool_sweatchest", () -> new DyeableArmorItem(VariantArmors.WOOL, EquipmentSlotType.CHEST ,new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> iron_spyglass = tools.register("iron_spyglass", () -> new Item(new Item.Properties().maxStackSize(1).group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> diamond_spyglass = tools.register("diamond_spyglass", () -> new Item(new Item.Properties().maxStackSize(1).group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> netherite_spyglass = tools.register("netherite_spyglass", () -> new Item(new Item.Properties().maxStackSize(1).isImmuneToFire().group(WeaponryTab.weaponryTab)));
 
 }
