@@ -14,12 +14,13 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class StuffInit {
     public static final DeferredRegister<Item> items = DeferredRegister.create(ForgeRegistries.ITEMS, Variants.mod_id);
 
-    public static final RegistryObject<Item> raw_debris_block = items.register("raw_debris_block", () -> new BlockItem(BlockInit.raw_debris_block.get(), new Item.Properties().group(VariantsTab.variant)));
+    public static final RegistryObject<Item> raw_debris_block = items.register("raw_debris_block", () -> new BlockItem(BlockInit.raw_debris_block.get(), new Item.Properties().isImmuneToFire().group(VariantsTab.variant)));
     public static final RegistryObject<Item> quartz_ore = items.register("quartz_ore", () -> new BlockItem(BlockInit.quartz_ore.get(), new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> gold_cauldron = items.register("gold_cauldron", () -> new BlockItem(BlockInit.gold_cauldron.get(), new Item.Properties().rarity(Rarity.UNCOMMON).group(VariantsTab.variant)));
     public static final RegistryObject<Item> gold_beacon = items.register("gold_beacon", () -> new BlockItem(BlockInit.gold_beacon.get(), new Item.Properties().rarity(Rarity.UNCOMMON).group(VariantsTab.variant)));
     public static final RegistryObject<Item> golden_carrots = items.register("golden_carrots", () -> new BlockItem(BlockInit.golden_carrots.get(), new Item.Properties().rarity(Rarity.UNCOMMON).group(VariantsTab.variant)));
     public static final RegistryObject<Item> potted_sugar_cane = items.register("potted_sugar_cane", () -> new BlockItem(BlockInit.potted_sugar_cane.get(), new Item.Properties().rarity(Rarity.UNCOMMON).group(VariantsTab.variant)));
+    public static final RegistryObject<Item> glow_black_tulip = items.register("glow_black_tulip", () -> new BlockItem(BlockInit.glow_black_tulip.get(), new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> cyan_shulker_shell = items.register("cyan_shulker_shell", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> spawner_minecart = items.register("spawner_minecart", () -> new MinecartItem(AbstractMinecartEntity.Type.SPAWNER, new Item.Properties().rarity(Rarity.UNCOMMON).maxStackSize(1).group(VariantsTab.variant)));
     public static final RegistryObject<Item> fungi_stew = items.register("fungi_stew", () -> new SoupItem(new Item.Properties().group(VariantsTab.variant).food(Foods.MUSHROOM_STEW)));

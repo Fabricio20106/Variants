@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "variants:glow_black_tulip"
+    }
+  ],
+  "result": {
+    "item": "variants:glow_black_dye"
+  }
+}

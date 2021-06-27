@@ -11,5 +11,5 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class EditsStuffInit {
     public static final DeferredRegister<Item> items = DeferredRegister.create(ForgeRegistries.ITEMS, Variants.mod_id);
 
-    public static final RegistryObject<Item> splath_soph_potion = items.register("splath_soph_potion", () -> new Item(new Item.Properties().group(VariantsCompatTab.f10Compat).food(F10ModsFoods.soph_potion)));
+    public static final RegistryObject<Item> splash_soph_potion = items.register("splash_soph_potion", () -> new Item(new Item.Properties().group(VariantsCompatTab.f10Compat).food(F10ModsFoods.soph_potion)));
 }

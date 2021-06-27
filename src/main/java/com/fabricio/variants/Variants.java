@@ -34,7 +34,7 @@ public class Variants {
         WeaponryInit.tools.register(modEventBus);
         BlockInit.blocks.register(modEventBus);
         Registries.register();
-
+        //EditsStuffInit.items.register(modEventBus);
     }
 
     public void setup(final FMLCommonSetupEvent event) {}

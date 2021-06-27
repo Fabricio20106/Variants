@@ -3,7 +3,6 @@ package com.fabricio.variants.compat.registries;
 import com.fabricio.variants.compat.CompatItem;
 import com.fabricio.variants.compat.Edits;
 import com.fabricio.variants.compat.registries.edits.EditsStuffInit;
-import com.fabricio.variants.init.StuffInit;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -20,12 +19,12 @@ public class VariantsCompatTab extends ItemGroup {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(EditsStuffInit.splath_soph_potion.get());
+        return new ItemStack(EditsStuffInit.splash_soph_potion.get());
     }
 
     @Override
     public void fill(NonNullList<ItemStack> items) {
-        StuffInit.items.getEntries().stream().filter(object -> {
+        EditsStuffInit.items.getEntries().stream().filter(object -> {
             Item item = object.get();
             return !(item instanceof CompatItem) || (ModList.get().isLoaded("edits") && item instanceof Edits);
         }).forEach(entry -> entry.get().fillItemGroup(this, items));

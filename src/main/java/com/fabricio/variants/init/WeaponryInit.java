@@ -35,7 +35,7 @@ public class WeaponryInit {
     public static final RegistryObject<Item> coal_shears = tools.register("coal_shears", () -> new ShearsItem(new Item.Properties().maxDamage(1871).group(WeaponryTab.weaponryTab)));
     public static final RegistryObject<Item> diamond_shears = tools.register("diamond_shears", () -> new ShearsItem(new Item.Properties().maxDamage(1561).group(WeaponryTab.weaponryTab)));
     public static final RegistryObject<Item> golden_shears = tools.register("golden_shears", () -> new ShearsItem(new Item.Properties().maxDamage(32).group(WeaponryTab.weaponryTab)));
-    public static final RegistryObject<Item> netherite_shears = tools.register("netherite_shears", () -> new ShearsItem(new Item.Properties().maxDamage(2031).group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> netherite_shears = tools.register("netherite_shears", () -> new ShearsItem(new Item.Properties().maxDamage(2031).isImmuneToFire().group(WeaponryTab.weaponryTab)));
     public static final RegistryObject<Item> lapis_lazuli_shears = tools.register("lapis_lazuli_shears", () -> new ShearsItem(new Item.Properties().maxDamage(1871).group(WeaponryTab.weaponryTab)));
     public static final RegistryObject<Item> emerald_shears = tools.register("emerald_shears", () -> new ShearsItem(new Item.Properties().maxDamage(1871).group(WeaponryTab.weaponryTab)));
     public static final RegistryObject<Item> quartz_shears = tools.register("quartz_shears", () -> new ShearsItem(new Item.Properties().maxDamage(1871).group(WeaponryTab.weaponryTab)));
