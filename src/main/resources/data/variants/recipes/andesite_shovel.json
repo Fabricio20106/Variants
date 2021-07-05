@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "d",
+    "s",
+    "s"
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:andesite"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "variants:andesite_shovel"
+  }
+}

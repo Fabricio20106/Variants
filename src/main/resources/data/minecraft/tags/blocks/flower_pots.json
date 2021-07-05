@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "variants:potted_sugar_cane"
+    "variants:potted_sugar_cane",
+    "variants:potted_glow_black_tulip"
   ]
 }

@@ -38,7 +38,7 @@
                   "function": "minecraft:explosion_decay"
                 }
               ],
-              "name": "variant:raw_debris"
+              "name": "variants:raw_debris"
             }
           ]
         }

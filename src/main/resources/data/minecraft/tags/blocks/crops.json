@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "variants:golden_carrots"
+    "variants:golden_carrots",
+    "variants:warped_wart"
   ]
 }

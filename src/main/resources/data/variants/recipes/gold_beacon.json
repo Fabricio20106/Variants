@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GSG",
+    "GUG",
+    "OOO"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:nether_star"
+    },
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "U": {
+      "item": "minecraft:gold_block"
+    }
+  },
+  "result": {
+    "item": "variants:gold_beacon"
+  }
+}

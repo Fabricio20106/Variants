@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:flower_pot"
+    },
+    "C": {
+      "item": "variants:glow_black_tulip"
+    }
+  },
+  "result": {
+    "item": "variants:potted_glow_black_tulip"
+  }
+}

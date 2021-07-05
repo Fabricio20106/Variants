@@ -1,13 +1,13 @@
 package com.fabricio.variants;
 
-import com.fabricio.variants.compat.registries.Registries;
-import com.fabricio.variants.compat.registries.edits.EditsStuffInit;
+import com.fabricio.variants.compat.EditsStuffInit;
 import com.fabricio.variants.init.BlockInit;
 import com.fabricio.variants.init.StuffInit;
 import com.fabricio.variants.init.WeaponryInit;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -27,15 +27,20 @@ public class Variants {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-
         MinecraftForge.EVENT_BUS.register(this);
+
+        if (ModList.get().isLoaded("edits")) {
+            EditsStuffInit.items.register(modEventBus);
+        }
 
         StuffInit.items.register(modEventBus);
         WeaponryInit.tools.register(modEventBus);
         BlockInit.blocks.register(modEventBus);
-        Registries.register();
-        //EditsStuffInit.items.register(modEventBus);
     }
+
+    /**public static boolean isInstalled() {
+        return ModList.get() != null && ModList.get().getModContainerById("phnixideas").isPresent();
+    }*/
 
     public void setup(final FMLCommonSetupEvent event) {}
 

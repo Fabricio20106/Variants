@@ -19,7 +19,8 @@ public class StuffInit {
     public static final RegistryObject<Item> gold_cauldron = items.register("gold_cauldron", () -> new BlockItem(BlockInit.gold_cauldron.get(), new Item.Properties().rarity(Rarity.UNCOMMON).group(VariantsTab.variant)));
     public static final RegistryObject<Item> gold_beacon = items.register("gold_beacon", () -> new BlockItem(BlockInit.gold_beacon.get(), new Item.Properties().rarity(Rarity.UNCOMMON).group(VariantsTab.variant)));
     public static final RegistryObject<Item> golden_carrots = items.register("golden_carrots", () -> new BlockItem(BlockInit.golden_carrots.get(), new Item.Properties().rarity(Rarity.UNCOMMON).group(VariantsTab.variant)));
-    public static final RegistryObject<Item> potted_sugar_cane = items.register("potted_sugar_cane", () -> new BlockItem(BlockInit.potted_sugar_cane.get(), new Item.Properties().rarity(Rarity.UNCOMMON).group(VariantsTab.variant)));
+    public static final RegistryObject<Item> potted_sugar_cane = items.register("potted_sugar_cane", () -> new BlockItem(BlockInit.potted_sugar_cane.get(), new Item.Properties().group(VariantsTab.variant)));
+    public static final RegistryObject<Item> potted_glow_black_tulip = items.register("potted_glow_black_tulip", () -> new BlockItem(BlockInit.potted_glow_black_tulip.get(), new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> glow_black_tulip = items.register("glow_black_tulip", () -> new BlockItem(BlockInit.glow_black_tulip.get(), new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> cyan_shulker_shell = items.register("cyan_shulker_shell", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> spawner_minecart = items.register("spawner_minecart", () -> new MinecartItem(AbstractMinecartEntity.Type.SPAWNER, new Item.Properties().rarity(Rarity.UNCOMMON).maxStackSize(1).group(VariantsTab.variant)));
@@ -41,6 +42,7 @@ public class StuffInit {
     public static final RegistryObject<Item> dark_oak_stick = items.register("dark_oak_stick", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> crimson_stick = items.register("crimson_stick", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> warped_stick = items.register("warped_stick", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
+    public static final RegistryObject<Item> netherite_rod = items.register("netherite_rod", () -> new Item(new Item.Properties().group(VariantsTab.variant).isImmuneToFire()));
     public static final RegistryObject<Item> soul_charge = items.register("soul_charge", () -> new FireChargeItem(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> soul_rod = items.register("soul_rod", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> soul_powder = items.register("soul_powder", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
@@ -49,9 +51,11 @@ public class StuffInit {
     public static final RegistryObject<Item> oxidized_copper_ingot = items.register("oxidized_copper_ingot", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> milk_glass_bottle = items.register("milk_glass_bottle", () -> new MilkBottleItem(new Item.Properties().maxStackSize(8).group(VariantsTab.variant)));
     public static final RegistryObject<Item> lava_glass_bottle = items.register("lava_glass_bottle", () -> new LavaBottleItem(new Item.Properties().maxStackSize(8).group(VariantsTab.variant)));
+    public static final RegistryObject<Item> powder_snow_bottle = items.register("powder_snow_bottle", () -> new Item(new Item.Properties().maxStackSize(8).group(VariantsTab.variant)));
     public static final RegistryObject<Item> glow_black_dye = items.register("glow_black_dye", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> elder_prismarine_shard = items.register("elder_prismarine_shard", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> elder_prismarine_crystals = items.register("elder_prismarine_crystals", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
+    public static final RegistryObject<Item> warped_wart = items.register("warped_wart", () -> new BlockNamedItem(BlockInit.warped_wart.get(), new Item.Properties().group(VariantsTab.variant)));
 
     public static final RegistryObject<Item> nether_portal = items.register("nether_portal", () -> new BlockItem(Blocks.NETHER_PORTAL, new Item.Properties().group(VariantsTab.variant)));
 }

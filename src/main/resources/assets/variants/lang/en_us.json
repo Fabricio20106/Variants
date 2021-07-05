@@ -10,8 +10,13 @@
   "block.variants.quartz_ore": "Quartz Ore",
   "block.variants.raw_debris_block": "Block of Raw Debris",
   "block.variants.glow_black_tulip": "Glow Black Tulip",
+  "block.variants.warped_wart": "Warped Wart",
+  "block.variants.potted_glow_black_tulip": "Potted Glow Black Tulip",
 
-  "item.variants.splash_soph_potion": "Splash Soph Potion",
+  "item.variants.splash_soph_potion": "Splash Sophie Potion",
+  "item.variants.purple_nugget": "Purple Nugget",
+
+  "item.variants.sus_gold_cauldron": "Sus Gold Cauldron",
 
   "item.variants.diorite_sword": "Diorite Sword",
   "item.variants.diorite_pickaxe": "Diorite Pickaxe",
@@ -48,7 +53,7 @@
   "item.variants.andesite_shovel": "Andesite Shovel",
   "item.variants.andesite_axe": "Andesite Axe",
   "item.variants.andesite_hoe": "Andesite Hoe",
-  "item.variants.quartz_shears": "Quartz Shears",
+  "item.variants.quartz_shears": "Nether Quartz Shears",
   "item.variants.lapis_lazuli_shears": "Lapis-Lazuli Shears",
   "item.variants.redstone_shears": "Redstone Shears",
   "item.variants.ruby_shears": "Ruby Shears",
@@ -77,13 +82,16 @@
   "item.variants.weathered_copper_ingot": "Weathered Copper Ingot",
   "item.variants.oxidized_copper_ingot": "Oxidized Copper Ingot",
   "item.variants.glow_black_dye": "Glow Black Dye",
-  "item.variants.milk_glass_bottle": "Milk Glass Bottle",
-  "item.variants.lava_glass_bottle": "Lava Glass Bottle",
+  "item.variants.milk_glass_bottle": "Milk Bottle",
+  "item.variants.lava_glass_bottle": "Lava Bottle",
   "item.variants.iron_spyglass": "Iron Spyglass",
   "item.variants.diamond_spyglass": "Diamond Spyglass",
   "item.variants.netherite_spyglass": "Netherite Spyglass",
   "item.variants.raw_debris": "Raw Debris",
   "item.variants.elder_prismarine_shard": "Elder Prismarine Shard",
-  "item.variants.elder_prismarine_crystals": "Elder Prismarine Crystals"
+  "item.variants.elder_prismarine_crystals": "Elder Prismarine Crystals",
+  "item.variants.warped_wart": "Warped Wart",
+  "item.variants.netherite_rod": "Netherite Rod",
+  "item.variants.powder_snow_bottle": "Powder Snow Bottle"
 
 }
