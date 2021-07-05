@@ -11,7 +11,6 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-@SuppressWarnings("deprecation")
 public class BlockInit {
     public static final DeferredRegister<Block> blocks = DeferredRegister.create(ForgeRegistries.BLOCKS, Variants.mod_id);
 
@@ -24,5 +23,9 @@ public class BlockInit {
     public static final RegistryObject<Block> glow_black_tulip = blocks.register("glow_black_tulip", () -> new FlowerBlock(Effects.GLOWING, 7, AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.CROP)));
     public static final RegistryObject<Block> warped_wart = blocks.register("warped_wart", () -> new WarpedWartBlock(AbstractBlock.Properties.create(Material.PLANTS, MaterialColor.WARPED_WART).doesNotBlockMovement().tickRandomly().sound(SoundType.FUNGUS)));
     public static final RegistryObject<Block> potted_glow_black_tulip = blocks.register("potted_glow_black_tulip", () -> new FlowerPotBlock(BlockInit.glow_black_tulip.get(), AbstractBlock.Properties.create(Material.MISCELLANEOUS).zeroHardnessAndResistance().notSolid()));
+    public static final RegistryObject<Block> painting_planks = blocks.register("painting_planks", () -> new Block(AbstractBlock.Properties.from(Blocks.OAK_PLANKS)));
+    public static final RegistryObject<Block> painting_slab = blocks.register("painting_slab", () -> new SlabBlock(AbstractBlock.Properties.from(painting_planks.get())));
+    public static final RegistryObject<Block> painting_stairs = blocks.register("painting_stairs", () -> new StairsBlock(painting_planks.get().getDefaultState(), AbstractBlock.Properties.from(painting_planks.get())));
+    public static final RegistryObject<Block> glow_berry_bush = blocks.register("glow_berry_bush", () -> new SweetBerryBushBlock(AbstractBlock.Properties.from(Blocks.SWEET_BERRY_BUSH)));
 
 }

@@ -1,13 +1,12 @@
 package com.fabricio.variants;
 
-import com.fabricio.variants.compat.EditsStuffInit;
+import com.fabricio.variants.compat.Compats;
 import com.fabricio.variants.init.BlockInit;
 import com.fabricio.variants.init.StuffInit;
 import com.fabricio.variants.init.WeaponryInit;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -29,13 +28,10 @@ public class Variants {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
         MinecraftForge.EVENT_BUS.register(this);
 
-        if (ModList.get().isLoaded("edits")) {
-            EditsStuffInit.items.register(modEventBus);
-        }
-
         StuffInit.items.register(modEventBus);
         WeaponryInit.tools.register(modEventBus);
         BlockInit.blocks.register(modEventBus);
+        Compats.registerCompats();
     }
 
     /**public static boolean isInstalled() {

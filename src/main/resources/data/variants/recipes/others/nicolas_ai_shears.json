@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " #",
+    "C "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:redstone"
+    },
+    "C": {
+      "item": "others:coal_powder"
+    }
+  },
+  "result": {
+    "item": "variants:nicolas_ai_shears"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "variants:block/glow_berry_bush_stage2"
+  }
+}

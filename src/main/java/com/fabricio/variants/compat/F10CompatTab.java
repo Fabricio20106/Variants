@@ -12,6 +12,6 @@ public class F10CompatTab extends ItemGroup {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(EditsStuffInit.splash_soph_potion.get());
+        return new ItemStack(CompatInit.splash_soph_potion.get());
     }
 }

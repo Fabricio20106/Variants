@@ -12,11 +12,13 @@
   "block.variants.glow_black_tulip": "Glow Black Tulip",
   "block.variants.warped_wart": "Warped Wart",
   "block.variants.potted_glow_black_tulip": "Potted Glow Black Tulip",
+  "block.variants.painting_planks": "Painting Planks",
+  "block.variants.glow_berry_bush": "Glow Berry Bush",
+  "block.variants.painting_slab": "Painting Slab",
+  "block.variants.painting_stairs": "Painting Stairs",
 
   "item.variants.splash_soph_potion": "Splash Sophie Potion",
   "item.variants.purple_nugget": "Purple Nugget",
-
-  "item.variants.sus_gold_cauldron": "Sus Gold Cauldron",
 
   "item.variants.diorite_sword": "Diorite Sword",
   "item.variants.diorite_pickaxe": "Diorite Pickaxe",
@@ -92,6 +94,14 @@
   "item.variants.elder_prismarine_crystals": "Elder Prismarine Crystals",
   "item.variants.warped_wart": "Warped Wart",
   "item.variants.netherite_rod": "Netherite Rod",
-  "item.variants.powder_snow_bottle": "Powder Snow Bottle"
+  "item.variants.powder_snow_bottle": "Powder Snow Bottle",
+  "item.variants.diaemerald_shears": "Diaemerald Shears",
+  "item.variants.crystal_shears": "Crystal Shears",
+  "item.variants.plasteel_shears": "Plasteel Shears",
+  "item.variants.alan_ai_shears": "Alan AI Shears",
+  "item.variants.alice_ai_shears": "Alice AI Shears",
+  "item.variants.inno_ai_shears": "Innovator AI Shears",
+  "item.variants.nicolas_ai_shears": "Nicolas AI Shears",
+  "item.variants.light_magenta_shears": "Light Magenta Shears"
 
 }

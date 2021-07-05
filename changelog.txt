@@ -8,7 +8,15 @@ Build: 1.16.4-1.4.4, 05/07/2021
    changed potted sugar cane
    added netherite rod
      doesn't burn in lava
+   added painting planks, stairs and slabs
+     including craftings and tags
+   added glow berry bushes
+     don't spawn naturally
+     gives you sweet berries (placeholder only)
 
    added compat with "Edits"
      added purple nugget
      added splash sophie potion
+
+   added compat with "My Other Stuff"
+     added a lot of new shears (with craftings)
