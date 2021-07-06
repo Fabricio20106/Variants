@@ -9,14 +9,19 @@ Build: 1.16.4-1.4.4, 05/07/2021, 22:12
    added netherite rod
      doesn't burn in lava
    added painting planks, stairs, slabs and fences
-     including craftings and tags
+     including crafting and tags
    added glow berry bushes
      don't spawn naturally
      gives you sweet berries (placeholder only)
 
-   added compat with "Edits"
+   added compat with f10 mod "Edits"
      added purple nugget
      added splash sophie potion
 
-   added compat with "My Other Stuff"
+   added compat with f10 mod "My Other Stuff"
      added a lot of new shears (with craftings)
+Build: 1.16.4-1.4.5
+  added painting fence gate, door, trapdoor, door, pressure plate and button
+    also including crafting and tags
+  added wanderer door
+    made to look like the "Wanderer" painting

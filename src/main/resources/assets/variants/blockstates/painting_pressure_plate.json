@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "variants:block/painting_pressure_plate"
+    },
+    "powered=true": {
+      "model": "variants:block/painting_pressure_plate_down"
+    }
+  }
+}

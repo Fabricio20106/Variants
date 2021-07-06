@@ -17,9 +17,12 @@
   "block.variants.painting_slab": "Painting Slab",
   "block.variants.painting_stairs": "Painting Stairs",
   "block.variants.painting_fence": "Painting Fence",
-
-  "item.variants.splash_soph_potion": "Splash Sophie Potion",
-  "item.variants.purple_nugget": "Purple Nugget",
+  "block.variants.painting_fence_gate": "Painting Fence Gate",
+  "block.variants.painting_pressure_plate": "Painting Pressure Plate",
+  "block.variants.painting_button": "Painting Button",
+  "block.variants.painting_trapdoor": "Painting Trapdoor",
+  "block.variants.painting_door": "Painting Door",
+  "block.variants.wanderer_door": "Wanderer Door",
 
   "item.variants.diorite_sword": "Diorite Sword",
   "item.variants.diorite_pickaxe": "Diorite Pickaxe",
@@ -103,6 +106,8 @@
   "item.variants.alice_ai_shears": "Alice AI Shears",
   "item.variants.inno_ai_shears": "Innovator AI Shears",
   "item.variants.nicolas_ai_shears": "Nicolas AI Shears",
-  "item.variants.light_magenta_shears": "Light Magenta Shears"
+  "item.variants.light_magenta_shears": "Light Magenta Shears",
+  "item.variants.splash_soph_potion": "Splash Sophie Potion",
+  "item.variants.purple_nugget": "Purple Nugget"
 
 }
