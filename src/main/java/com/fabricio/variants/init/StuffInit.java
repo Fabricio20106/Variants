@@ -18,6 +18,7 @@ public class StuffInit {
     public static final RegistryObject<Item> painting_planks = items.register("painting_planks", () -> new BlockItem(BlockInit.painting_planks.get(), new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> painting_stairs = items.register("painting_stairs", () -> new BlockItem(BlockInit.painting_stairs.get(), new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> painting_slab = items.register("painting_slab", () -> new BlockItem(BlockInit.painting_slab.get(), new Item.Properties().group(VariantsTab.variant)));
+    public static final RegistryObject<Item> painting_fence = items.register("painting_fence", () -> new BlockItem(BlockInit.painting_fence.get(), new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> quartz_ore = items.register("quartz_ore", () -> new BlockItem(BlockInit.quartz_ore.get(), new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> gold_cauldron = items.register("gold_cauldron", () -> new BlockItem(BlockInit.gold_cauldron.get(), new Item.Properties().rarity(Rarity.UNCOMMON).group(VariantsTab.variant)));
     public static final RegistryObject<Item> gold_beacon = items.register("gold_beacon", () -> new BlockItem(BlockInit.gold_beacon.get(), new Item.Properties().rarity(Rarity.UNCOMMON).group(VariantsTab.variant)));
