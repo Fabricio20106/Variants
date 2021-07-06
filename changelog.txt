@@ -8,7 +8,7 @@ Build: 1.16.4-1.4.4, 05/07/2021
    changed potted sugar cane
    added netherite rod
      doesn't burn in lava
-   added painting planks, stairs and slabs
+   added painting planks, stairs, slabs and fences
      including craftings and tags
    added glow berry bushes
      don't spawn naturally

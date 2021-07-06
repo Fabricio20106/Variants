@@ -26,6 +26,7 @@ public class BlockInit {
     public static final RegistryObject<Block> painting_planks = blocks.register("painting_planks", () -> new Block(AbstractBlock.Properties.from(Blocks.OAK_PLANKS)));
     public static final RegistryObject<Block> painting_slab = blocks.register("painting_slab", () -> new SlabBlock(AbstractBlock.Properties.from(painting_planks.get())));
     public static final RegistryObject<Block> painting_stairs = blocks.register("painting_stairs", () -> new StairsBlock(painting_planks.get().getDefaultState(), AbstractBlock.Properties.from(painting_planks.get())));
+    public static final RegistryObject<Block> painting_fence = blocks.register("painting_fence", () -> new FenceBlock(AbstractBlock.Properties.from(painting_planks.get())));
     public static final RegistryObject<Block> glow_berry_bush = blocks.register("glow_berry_bush", () -> new SweetBerryBushBlock(AbstractBlock.Properties.from(Blocks.SWEET_BERRY_BUSH)));
 
 }
