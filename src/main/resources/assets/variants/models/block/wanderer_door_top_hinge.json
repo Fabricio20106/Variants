@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_rh",
+  "textures": {
+    "top": "variants:block/wanderer_door_top",
+    "bottom": "variants:block/wanderer_door_bottom"
+  }
+}

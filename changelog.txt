@@ -25,3 +25,11 @@ Build: 1.16.4-1.4.5
     also including crafting and tags
   added wanderer door
     made to look like the "Wanderer" painting
+  added jei in my dev environment
+  compat with others:
+    added alan, alice, innovator and nicolas ai shears
+    added shears from minerals: diaemerald, crystal, plasteel and light magenta ingot
+Build: 1.16.4-1.4.6
+  added new ore generation
+  added end quartz ore (generates in the end)
+  added a texture for the plasteel shears
