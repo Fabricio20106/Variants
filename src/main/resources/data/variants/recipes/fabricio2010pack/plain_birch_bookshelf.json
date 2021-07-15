@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "XXX",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "fabricio2010pack:plain_birch_planks"
+    },
+    "X": {
+      "item": "fabricio2010pack:school_book"
+    }
+  },
+  "result": {
+    "item": "variants:plain_birch_bookshelf"
+  }
+}

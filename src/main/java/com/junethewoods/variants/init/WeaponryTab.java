@@ -1,4 +1,4 @@
-package com.junethewoods.variants.common.register;
+package com.junethewoods.variants.init;
 
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "fabricio2010pack:block/plain_birch_planks",
+    "bottom": "fabricio2010pack:block/plain_birch_planks",
+    "side": "variants:block/plain_birch_bookshelf"
+  }
+}

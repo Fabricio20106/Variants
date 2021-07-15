@@ -1,6 +1,6 @@
 package com.junethewoods.variants.blocks;
 
-import com.junethewoods.variants.common.register.BlockInit;
+import com.junethewoods.variants.init.BlockInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.OreBlock;
 import net.minecraft.item.ItemStack;

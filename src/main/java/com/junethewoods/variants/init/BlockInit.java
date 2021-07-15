@@ -1,4 +1,4 @@
-package com.junethewoods.variants.common.register;
+package com.junethewoods.variants.init;
 
 import com.junethewoods.variants.common.Variants;
 import com.junethewoods.variants.blocks.GoldenCarrotBlock;
@@ -36,5 +36,6 @@ public class BlockInit {
     public static final RegistryObject<Block> painting_trapdoor = blocks.register("painting_trapdoor", () -> new TrapDoorBlock(AbstractBlock.Properties.from(painting_planks.get())));
     public static final RegistryObject<Block> painting_door = blocks.register("painting_door", () -> new DoorBlock(AbstractBlock.Properties.from(painting_planks.get())));
     public static final RegistryObject<Block> wanderer_door = blocks.register("wanderer_door", () -> new DoorBlock(AbstractBlock.Properties.from(painting_planks.get())));
+    public static final RegistryObject<Block> graham_door = blocks.register("graham_door", () -> new DoorBlock(AbstractBlock.Properties.from(wanderer_door.get())));
 
 }

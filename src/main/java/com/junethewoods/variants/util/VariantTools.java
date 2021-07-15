@@ -10,21 +10,21 @@ import net.minecraftforge.common.data.ForgeItemTagsProvider;
 import java.util.function.Supplier;
 
 public enum VariantTools implements IItemTier {
-    ANDESITE(1, 131, 4.0F, 1.0F, 5, () -> {
+    andesite(1, 131, 4.0F, 1.0F, 5, () -> {
         return Ingredient.fromItems(Blocks.ANDESITE);
     }),
-    DIORITE(1, 131, 4.0F, 1.0F, 5, () -> {
+    diorite(1, 131, 4.0F, 1.0F, 5, () -> {
         return Ingredient.fromItems(Blocks.DIORITE);
     }),
-    GRANITE(1, 131, 4.0F, 1.0F, 5, () -> {
+    granite(1, 131, 4.0F, 1.0F, 5, () -> {
         return Ingredient.fromItems(Blocks.GRANITE);
     }),
-    EMERALD(3, 2031, 5.0F, 3.0F, 15, () -> {
+    emerald(3, 2031, 5.0F, 3.0F, 15, () -> {
         return Ingredient.fromItems(Items.EMERALD);
     }),
-    AMETHYST(2, 250, 6.0F, 2.0F, 14, () ->
+    amethyst(2, 250, 6.0F, 2.0F, 14, () ->
             Ingredient.EMPTY),
-    COPPER(2, 250, 6.0F, 2.0F, 14, () ->
+    copper(2, 250, 6.0F, 2.0F, 14, () ->
         Ingredient.EMPTY);
 
     private final int harvestLevel;

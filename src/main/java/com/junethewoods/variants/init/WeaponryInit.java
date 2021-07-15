@@ -1,4 +1,4 @@
-package com.junethewoods.variants.common.register;
+package com.junethewoods.variants.init;
 
 import com.junethewoods.variants.common.Variants;
 import com.junethewoods.variants.items.DebugBowItem;
@@ -13,23 +13,23 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class WeaponryInit {
     public static final DeferredRegister<Item> tools = DeferredRegister.create(ForgeRegistries.ITEMS, Variants.mod_id);
 
-    public static final RegistryObject<Item> diorite_sword = tools.register("diorite_sword", () -> new SwordItem(VariantTools.DIORITE, 3, -2.4F, new Item.Properties().group(WeaponryTab.weaponryTab)));
-    public static final RegistryObject<Item> diorite_pickaxe = tools.register("diorite_pickaxe", () -> new PickaxeItem(VariantTools.DIORITE, 1, -2.8F, new Item.Properties().group(WeaponryTab.weaponryTab)));
-    public static final RegistryObject<Item> diorite_shovel = tools.register("diorite_shovel", () -> new ShovelItem(VariantTools.DIORITE, 1.5F, -3.0F, new Item.Properties().group(WeaponryTab.weaponryTab)));
-    public static final RegistryObject<Item> diorite_axe = tools.register("diorite_axe", () -> new AxeItem(VariantTools.DIORITE, 7.0F, -3.2F, new Item.Properties().group(WeaponryTab.weaponryTab)));
-    public static final RegistryObject<Item> diorite_hoe = tools.register("diorite_hoe", () -> new HoeItem(VariantTools.DIORITE, -2, -2.0F, new Item.Properties().group(WeaponryTab.weaponryTab)));
-    public static final RegistryObject<Item> granite_sword = tools.register("granite_sword", () -> new SwordItem(VariantTools.GRANITE, 3, -2.4F, new Item.Properties().group(WeaponryTab.weaponryTab)));
-    public static final RegistryObject<Item> granite_pickaxe = tools.register("granite_pickaxe", () -> new PickaxeItem(VariantTools.GRANITE, 1, -2.8F, new Item.Properties().group(WeaponryTab.weaponryTab)));
-    public static final RegistryObject<Item> granite_shovel = tools.register("granite_shovel", () -> new ShovelItem(VariantTools.GRANITE, 1.5F, -3.0F, new Item.Properties().group(WeaponryTab.weaponryTab)));
-    public static final RegistryObject<Item> granite_axe = tools.register("granite_axe", () -> new AxeItem(VariantTools.GRANITE, 7.0F, -3.2F, new Item.Properties().group(WeaponryTab.weaponryTab)));
-    public static final RegistryObject<Item> granite_hoe = tools.register("granite_hoe", () -> new HoeItem(VariantTools.GRANITE, -2, -2.0F, new Item.Properties().group(WeaponryTab.weaponryTab)));
-    public static final RegistryObject<Item> andesite_sword = tools.register("andesite_sword", () -> new SwordItem(VariantTools.ANDESITE, 3, -2.4F, new Item.Properties().group(WeaponryTab.weaponryTab)));
-    public static final RegistryObject<Item> andesite_pickaxe = tools.register("andesite_pickaxe", () -> new PickaxeItem(VariantTools.ANDESITE, 1, -2.8F, new Item.Properties().group(WeaponryTab.weaponryTab)));
-    public static final RegistryObject<Item> andesite_shovel = tools.register("andesite_shovel", () -> new ShovelItem(VariantTools.ANDESITE, 1.5F, -3.0F, new Item.Properties().group(WeaponryTab.weaponryTab)));
-    public static final RegistryObject<Item> andesite_axe = tools.register("andesite_axe", () -> new AxeItem(VariantTools.ANDESITE, 7.0F, -3.2F, new Item.Properties().group(WeaponryTab.weaponryTab)));
-    public static final RegistryObject<Item> andesite_hoe = tools.register("andesite_hoe", () -> new HoeItem(VariantTools.ANDESITE, -2, -2.0F, new Item.Properties().group(WeaponryTab.weaponryTab)));
-    public static final RegistryObject<Item> amethyst_sword = tools.register("amethyst_sword", () -> new AxeItem(VariantTools.AMETHYST, 3.0F, -2.4F, new Item.Properties().group(WeaponryTab.weaponryTab)));
-    public static final RegistryObject<Item> copper_sword = tools.register("copper_sword", () -> new AxeItem(VariantTools.COPPER, 3.0F, -2.4F, new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> diorite_sword = tools.register("diorite_sword", () -> new SwordItem(VariantTools.diorite, 3, -2.4F, new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> diorite_pickaxe = tools.register("diorite_pickaxe", () -> new PickaxeItem(VariantTools.diorite, 1, -2.8F, new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> diorite_shovel = tools.register("diorite_shovel", () -> new ShovelItem(VariantTools.diorite, 1.5F, -3.0F, new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> diorite_axe = tools.register("diorite_axe", () -> new AxeItem(VariantTools.diorite, 7.0F, -3.2F, new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> diorite_hoe = tools.register("diorite_hoe", () -> new HoeItem(VariantTools.diorite, -2, -2.0F, new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> granite_sword = tools.register("granite_sword", () -> new SwordItem(VariantTools.granite, 3, -2.4F, new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> granite_pickaxe = tools.register("granite_pickaxe", () -> new PickaxeItem(VariantTools.granite, 1, -2.8F, new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> granite_shovel = tools.register("granite_shovel", () -> new ShovelItem(VariantTools.granite, 1.5F, -3.0F, new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> granite_axe = tools.register("granite_axe", () -> new AxeItem(VariantTools.granite, 7.0F, -3.2F, new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> granite_hoe = tools.register("granite_hoe", () -> new HoeItem(VariantTools.granite, -2, -2.0F, new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> andesite_sword = tools.register("andesite_sword", () -> new SwordItem(VariantTools.andesite, 3, -2.4F, new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> andesite_pickaxe = tools.register("andesite_pickaxe", () -> new PickaxeItem(VariantTools.andesite, 1, -2.8F, new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> andesite_shovel = tools.register("andesite_shovel", () -> new ShovelItem(VariantTools.andesite, 1.5F, -3.0F, new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> andesite_axe = tools.register("andesite_axe", () -> new AxeItem(VariantTools.andesite, 7.0F, -3.2F, new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> andesite_hoe = tools.register("andesite_hoe", () -> new HoeItem(VariantTools.andesite, -2, -2.0F, new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> amethyst_sword = tools.register("amethyst_sword", () -> new AxeItem(VariantTools.amethyst, 3.0F, -2.4F, new Item.Properties().group(WeaponryTab.weaponryTab)));
+    public static final RegistryObject<Item> copper_sword = tools.register("copper_sword", () -> new AxeItem(VariantTools.copper, 3.0F, -2.4F, new Item.Properties().group(WeaponryTab.weaponryTab)));
     public static final RegistryObject<Item> debug_bow = tools.register("debug_bow", () -> new DebugBowItem(new Item.Properties().maxDamage(384).group(WeaponryTab.weaponryTab)));
     public static final RegistryObject<Item> redstone_shears = tools.register("redstone_shears", () -> new ShearsItem(new Item.Properties().maxDamage(1871).group(WeaponryTab.weaponryTab)));
     public static final RegistryObject<Item> coal_shears = tools.register("coal_shears", () -> new ShearsItem(new Item.Properties().maxDamage(1871).group(WeaponryTab.weaponryTab)));

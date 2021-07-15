@@ -33,3 +33,6 @@ Build: 1.16.4-1.4.6
   added new ore generation
   added end quartz ore (generates in the end)
   added a texture for the plasteel shears
+  added painting stick
+  added graham and first door
+    "first" painting from Fabricio2010Pack

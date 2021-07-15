@@ -1,6 +1,6 @@
 package com.junethewoods.variants.blocks;
 
-import com.junethewoods.variants.common.register.StuffInit;
+import com.junethewoods.variants.init.StuffInit;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;

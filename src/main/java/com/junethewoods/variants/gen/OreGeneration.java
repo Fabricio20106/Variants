@@ -1,6 +1,6 @@
 package com.junethewoods.variants.gen;
 
-import com.junethewoods.variants.common.register.BlockInit;
+import com.junethewoods.variants.init.BlockInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
@@ -19,7 +19,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 public class OreGeneration {
     public static final RuleTest end_stone_filler = new BlockMatchRuleTest(Blocks.END_STONE);
 
-    // overworld ores
+    // "overworld" ores
     public static void generateQuartzOre(final BiomeLoadingEvent event) {
         if (!(event.getCategory().equals(Biome.Category.NETHER) || event.getCategory().equals(Biome.Category.THEEND))) {
             generateOre(event.getGeneration(), OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, BlockInit.quartz_ore.get().getDefaultState(), 6, 10, 117, 4);

@@ -2,9 +2,10 @@ package com.junethewoods.variants.common;
 
 import com.junethewoods.variants.compat.Compats;
 import com.junethewoods.variants.gen.OreGeneration;
-import com.junethewoods.variants.common.register.BlockInit;
-import com.junethewoods.variants.common.register.StuffInit;
-import com.junethewoods.variants.common.register.WeaponryInit;
+import com.junethewoods.variants.init.BlockInit;
+import com.junethewoods.variants.init.StuffInit;
+import com.junethewoods.variants.init.WeaponryInit;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -21,6 +22,7 @@ import java.lang.String;
 @Mod(Variants.mod_id)
 public class Variants {
     public static final Logger logger = LogManager.getLogger();
+
     public static Variants instance;
 
     public static final String mod_id = "variants";
@@ -51,4 +53,6 @@ public class Variants {
 
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {}
+
+    public static void main(String[] args) {}
 }
