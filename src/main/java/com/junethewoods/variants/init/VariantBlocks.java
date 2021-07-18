@@ -12,6 +12,6 @@ public class VariantBlocks extends ItemGroup {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(StuffInit.raw_debris_block.get());
+        return new ItemStack(StuffInit.wanderer_door.get());
     }
 }

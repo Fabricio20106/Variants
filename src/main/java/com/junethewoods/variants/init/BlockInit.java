@@ -1,9 +1,7 @@
 package com.junethewoods.variants.init;
 
+import com.junethewoods.variants.blocks.*;
 import com.junethewoods.variants.common.Variants;
-import com.junethewoods.variants.blocks.GoldenCarrotBlock;
-import com.junethewoods.variants.blocks.VariantOreBlock;
-import com.junethewoods.variants.blocks.WarpedWartBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -26,6 +24,11 @@ public class BlockInit {
     public static final RegistryObject<Block> warped_wart = blocks.register("warped_wart", () -> new WarpedWartBlock(AbstractBlock.Properties.create(Material.PLANTS, MaterialColor.WARPED_WART).doesNotBlockMovement().tickRandomly().sound(SoundType.FUNGUS)));
     public static final RegistryObject<Block> potted_glow_black_tulip = blocks.register("potted_glow_black_tulip", () -> new FlowerPotBlock(glow_black_tulip.get(), AbstractBlock.Properties.create(Material.MISCELLANEOUS).zeroHardnessAndResistance().notSolid()));
     public static final RegistryObject<Block> glow_berry_bush = blocks.register("glow_berry_bush", () -> new SweetBerryBushBlock(AbstractBlock.Properties.from(Blocks.SWEET_BERRY_BUSH)));
+    public static final RegistryObject<Block> painting_log = blocks.register("painting_log", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.OAK_PLANKS)));
+    public static final RegistryObject<Block> painting_wood = blocks.register("painting_wood", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.OAK_PLANKS)));
+    public static final RegistryObject<Block> stripped_painting_log = blocks.register("stripped_painting_log", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.OAK_PLANKS)));
+    public static final RegistryObject<Block> stripped_painting_wood = blocks.register("stripped_painting_wood", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.OAK_PLANKS)));
+    public static final RegistryObject<Block> painting_leaves = blocks.register("painting_leaves", () -> new LeavesBlock(AbstractBlock.Properties.from(Blocks.OAK_LEAVES)));
     public static final RegistryObject<Block> painting_planks = blocks.register("painting_planks", () -> new Block(AbstractBlock.Properties.from(Blocks.OAK_PLANKS)));
     public static final RegistryObject<Block> painting_slab = blocks.register("painting_slab", () -> new SlabBlock(AbstractBlock.Properties.from(painting_planks.get())));
     public static final RegistryObject<Block> painting_stairs = blocks.register("painting_stairs", () -> new StairsBlock(painting_planks.get().getDefaultState(), AbstractBlock.Properties.from(painting_planks.get())));
@@ -37,5 +40,8 @@ public class BlockInit {
     public static final RegistryObject<Block> painting_door = blocks.register("painting_door", () -> new DoorBlock(AbstractBlock.Properties.from(painting_planks.get())));
     public static final RegistryObject<Block> wanderer_door = blocks.register("wanderer_door", () -> new DoorBlock(AbstractBlock.Properties.from(painting_planks.get())));
     public static final RegistryObject<Block> graham_door = blocks.register("graham_door", () -> new DoorBlock(AbstractBlock.Properties.from(wanderer_door.get())));
+    public static final RegistryObject<Block> glow_black_wool = blocks.register("glow_black_wool", () -> new Block(AbstractBlock.Properties.from(Blocks.WHITE_WOOL)));
+    public static final RegistryObject<Block> glow_black_carpet = blocks.register("glow_black_carpet", () -> new ModCarpetBlock(ModDyeColor.glow_black, AbstractBlock.Properties.from(Blocks.WHITE_CARPET)));
+    public static final RegistryObject<Block> diamond_bell = blocks.register("diamond_bell", () -> new BellBlock(AbstractBlock.Properties.create(Material.IRON, MaterialColor.DIAMOND).setRequiresTool().hardnessAndResistance(5.0F, 6.0F).sound(SoundType.ANVIL)));
 
 }

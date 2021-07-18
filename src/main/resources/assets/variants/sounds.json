@@ -1,0 +1,12 @@
+{
+  "music_disc.dog": {
+    "category": "record",
+    "subtitle": "music_disc.dog",
+    "sounds": [
+      {
+        "name": "variants:music_disc/dog",
+        "stream": true
+      }
+    ]
+  }
+}

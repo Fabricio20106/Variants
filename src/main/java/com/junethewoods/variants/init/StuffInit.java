@@ -1,10 +1,11 @@
 package com.junethewoods.variants.init;
 
 import com.junethewoods.variants.common.Variants;
-import com.junethewoods.variants.compat.F10CompatBlocks;
 import com.junethewoods.variants.items.HoneyBallItem;
 import com.junethewoods.variants.items.LavaBottleItem;
 import com.junethewoods.variants.items.MilkBottleItem;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.minecart.AbstractMinecartEntity;
 import net.minecraft.item.*;
@@ -16,7 +17,14 @@ public class StuffInit {
     public static final DeferredRegister<Item> items = DeferredRegister.create(ForgeRegistries.ITEMS, Variants.mod_id);
 
     public static final RegistryObject<Item> raw_debris_block = items.register("raw_debris_block", () -> new BlockItem(BlockInit.raw_debris_block.get(), new Item.Properties().isImmuneToFire().group(VariantBlocks.blocks)));
+    public static final RegistryObject<Item> glow_black_wool = items.register("glow_black_wool", () -> new BlockItem(BlockInit.glow_black_wool.get(), new Item.Properties().group(VariantBlocks.blocks)));
+    public static final RegistryObject<Item> glow_black_carpet = items.register("glow_black_carpet", () -> new BlockItem(BlockInit.glow_black_carpet.get(), new Item.Properties().group(VariantBlocks.blocks)));
     public static final RegistryObject<Item> painting_planks = items.register("painting_planks", () -> new BlockItem(BlockInit.painting_planks.get(), new Item.Properties().group(VariantBlocks.blocks)));
+    public static final RegistryObject<Item> painting_log = items.register("painting_log", () -> new BlockItem(BlockInit.painting_log.get(), new Item.Properties().group(VariantBlocks.blocks)));
+    public static final RegistryObject<Item> painting_wood = items.register("painting_wood", () -> new BlockItem(BlockInit.painting_wood.get(), new Item.Properties().group(VariantBlocks.blocks)));
+    public static final RegistryObject<Item> stripped_painting_log = items.register("stripped_painting_log", () -> new BlockItem(BlockInit.stripped_painting_log.get(), new Item.Properties().group(VariantBlocks.blocks)));
+    public static final RegistryObject<Item> stripped_painting_wood = items.register("stripped_painting_wood", () -> new BlockItem(BlockInit.stripped_painting_wood.get(), new Item.Properties().group(VariantBlocks.blocks)));
+    public static final RegistryObject<Item> painting_leaves = items.register("painting_leaves", () -> new BlockItem(BlockInit.painting_leaves.get(), new Item.Properties().group(VariantBlocks.blocks)));
     public static final RegistryObject<Item> painting_stairs = items.register("painting_stairs", () -> new BlockItem(BlockInit.painting_stairs.get(), new Item.Properties().group(VariantBlocks.blocks)));
     public static final RegistryObject<Item> painting_slab = items.register("painting_slab", () -> new BlockItem(BlockInit.painting_slab.get(), new Item.Properties().group(VariantBlocks.blocks)));
     public static final RegistryObject<Item> painting_fence = items.register("painting_fence", () -> new BlockItem(BlockInit.painting_fence.get(), new Item.Properties().group(VariantBlocks.blocks)));
@@ -36,6 +44,7 @@ public class StuffInit {
     public static final RegistryObject<Item> potted_glow_black_tulip = items.register("potted_glow_black_tulip", () -> new BlockItem(BlockInit.potted_glow_black_tulip.get(), new Item.Properties().group(VariantBlocks.blocks)));
     public static final RegistryObject<Item> glow_black_tulip = items.register("glow_black_tulip", () -> new BlockItem(BlockInit.glow_black_tulip.get(), new Item.Properties().group(VariantBlocks.blocks)));
     public static final RegistryObject<Item> glow_berry_bush = items.register("glow_berry_bush", () -> new BlockItem(BlockInit.glow_berry_bush.get(), new Item.Properties().group(VariantBlocks.blocks)));
+    public static final RegistryObject<Item> diamond_bell = items.register("diamond_bell", () -> new BlockItem(BlockInit.diamond_bell.get(), new Item.Properties().rarity(Rarity.RARE).group(VariantBlocks.blocks)));
     public static final RegistryObject<Item> white_shulker_shell = items.register("white_shulker_shell", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> orange_shulker_shell = items.register("orange_shulker_shell", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> magenta_shulker_shell = items.register("magenta_shulker_shell", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
@@ -52,11 +61,13 @@ public class StuffInit {
     public static final RegistryObject<Item> green_shulker_shell = items.register("green_shulker_shell", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> red_shulker_shell = items.register("red_shulker_shell", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> black_shulker_shell = items.register("black_shulker_shell", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
+    public static final RegistryObject<Item> glow_black_shulker_shell = items.register("glow_black_shulker_shell", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
+    public static final RegistryObject<Item> music_disc_dog = items.register("music_disc_dog", () -> new MusicDiscItem(5, () -> Sounds.dog, new Item.Properties().maxStackSize(1).rarity(Rarity.RARE).group(VariantsTab.variant)));
     public static final RegistryObject<Item> spawner_minecart = items.register("spawner_minecart", () -> new MinecartItem(AbstractMinecartEntity.Type.SPAWNER, new Item.Properties().maxStackSize(1).group(VariantsTab.variant)));
     public static final RegistryObject<Item> fungi_stew = items.register("fungi_stew", () -> new SoupItem(new Item.Properties().group(VariantsTab.variant).food(Foods.MUSHROOM_STEW)));
+    public static final RegistryObject<Item> enchanted_knowledge_book = items.register("enchanted_knowledge_book", () -> new KnowledgeBookItem(new Item.Properties().maxStackSize(1)));
     public static final RegistryObject<Item> splash_experience_bottle = items.register("splash_experience_bottle", () -> new ExperienceBottleItem(new Item.Properties().rarity(Rarity.UNCOMMON).group(VariantsTab.variant)));
     public static final RegistryObject<Item> lingering_experience_bottle = items.register("lingering_experience_bottle", () -> new ExperienceBottleItem(new Item.Properties().rarity(Rarity.UNCOMMON).group(VariantsTab.variant)));
-    public static final RegistryObject<Item> enchanted_knowledge_book = items.register("enchanted_knowledge_book", () -> new KnowledgeBookItem(new Item.Properties().maxStackSize(1)));
     public static final RegistryObject<Item> splash_dragon_breath = items.register("splash_dragon_breath", () -> new Item(new Item.Properties().containerItem(Items.SPLASH_POTION).rarity(Rarity.UNCOMMON).group(VariantsTab.variant)));
     public static final RegistryObject<Item> lingering_dragon_breath = items.register("lingering_dragon_breath", () -> new Item(new Item.Properties().containerItem(Items.LINGERING_POTION).rarity(Rarity.UNCOMMON).group(VariantsTab.variant)));
     public static final RegistryObject<Item> splash_glass_bottle = items.register("splash_glass_bottle", () -> new Item(new Item.Properties().group(VariantsTab.variant)));

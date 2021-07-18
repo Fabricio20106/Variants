@@ -1,11 +1,11 @@
 package com.junethewoods.variants.common;
 
-import com.junethewoods.variants.compat.Compats;
+import com.junethewoods.variants.compat.CompatRegistry;
 import com.junethewoods.variants.gen.OreGeneration;
 import com.junethewoods.variants.init.BlockInit;
+import com.junethewoods.variants.init.Sounds;
 import com.junethewoods.variants.init.StuffInit;
 import com.junethewoods.variants.init.WeaponryInit;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -30,16 +30,20 @@ public class Variants {
     public Variants() {
         instance = this;
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+        modEventBus.addListener(this::setup);
+        modEventBus.addListener(this::doClientStuff);
         MinecraftForge.EVENT_BUS.register(this);
 
         StuffInit.items.register(modEventBus);
         WeaponryInit.tools.register(modEventBus);
         BlockInit.blocks.register(modEventBus);
-        Compats.registerF10Compats();
-        Compats.registerCompats();
+        Sounds.registerSounds();
+        CompatRegistry.registerF10Compats();
+        CompatRegistry.registerCompats();
+        registerMethods();
     }
+
+    public static void registerMethods() {}
 
     /**public static boolean isInstalled() {
         return ModList.get() != null && ModList.get().getModContainerById("phnixideas").isPresent();

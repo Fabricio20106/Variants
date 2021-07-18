@@ -17,6 +17,7 @@
     "variants:green_shulker_shell",
     "variants:brown_shulker_shell",
     "variants:light_gray_shulker_shell",
-    "variants:black_shulker_shell"
+    "variants:black_shulker_shell",
+    "variants:glow_black_shulker_shell"
   ]
 }

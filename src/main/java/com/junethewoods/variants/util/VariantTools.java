@@ -16,8 +16,11 @@ public enum VariantTools implements IItemTier {
     diorite(1, 131, 4.0F, 1.0F, 5, () -> {
         return Ingredient.fromItems(Blocks.DIORITE);
     }),
-    granite(1, 131, 4.0F, 1.0F, 5, () -> {
+    granite(2, 425, 4.0F, 1.0F, 5, () -> {
         return Ingredient.fromItems(Blocks.GRANITE);
+    }),
+    magma(1, 131, 4.0F, 1.0F, 5, () -> {
+        return Ingredient.fromItems(Blocks.MAGMA_BLOCK);
     }),
     emerald(3, 2031, 5.0F, 3.0F, 15, () -> {
         return Ingredient.fromItems(Items.EMERALD);

@@ -3,6 +3,8 @@
   "itemGroup.weaponryTab": "Variated Weapons",
   "itemGroup.blocks": "Variant Blocks",
 
+  "music_disc.dog": "C418's dog Plays",
+
   "block.variants.potted_sugar_cane": "Potted Sugar Cane",
   "block.variants.golden_carrots": "Golden Carrots",
   "block.variants.gold_cauldron": "Gold Cauldron",
@@ -27,6 +29,14 @@
   "block.variants.first_door": "Painting Door (First)",
   "block.variants.end_quartz_ore": "End Quartz Ore",
   "block.variants.plain_birch_bookshelf": "Plain Birch Bookshelf",
+  "block.variants.painting_log": "Painting Log",
+  "block.variants.painting_wood": "Painting Wood",
+  "block.variants.stripped_painting_log": "Stripped Painting Log",
+  "block.variants.stripped_painting_wood": "Stripped Painting Wood",
+  "block.variants.painting_leaves": "Painting Leaves",
+  "block.variants.glow_black_wool": "Glow Black Wool",
+  "block.variants.glow_black_carpet": "Glow Black Carpet",
+  "block.variants.diamond_bell": "Diamond Bell",
 
   "item.variants.diorite_sword": "Diorite Sword",
   "item.variants.diorite_pickaxe": "Diorite Pickaxe",
@@ -104,7 +114,6 @@
   "item.variants.powder_snow_bottle": "Powder Snow Bottle",
   "item.variants.diaemerald_shears": "Diaemerald Shears",
   "item.variants.crystal_shears": "Crystal Shears",
-  "item.variants.plasteel_shears": "Plasteel Shears",
   "item.variants.alan_ai_shears": "Alan AI Shears",
   "item.variants.alice_ai_shears": "Alice AI Shears",
   "item.variants.inno_ai_shears": "Innovator AI Shears",
@@ -129,6 +138,11 @@
   "item.variants.green_shulker_shell": "Green Shulker Shell",
   "item.variants.red_shulker_shell": "Red Shulker Shell",
   "item.variants.black_shulker_shell": "Black Shulker Shell",
-  "item.variants.inno_shulker_shell": "Inno Shulker Shell"
+  "item.variants.inno_shulker_shell": "Inno Shulker Shell",
+  "item.variants.glow_black_shulker_shell": "Glow Black Shulker Shell",
+  "item.variants.music_disc_dog": "Music Disc",
+  "item.variants.music_disc_dog.desc": "C418 - dog",
+  "item.variants.hilary_bottle": "Hilary Bottle",
+  "item.variants.magma_sword": "Magma Sword"
 
 }

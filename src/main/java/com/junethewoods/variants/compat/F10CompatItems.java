@@ -4,6 +4,7 @@ import com.junethewoods.variants.common.Variants;
 import com.junethewoods.variants.init.VariantBlocks;
 import com.junethewoods.variants.init.VariantsTab;
 import com.junethewoods.variants.init.WeaponryTab;
+import com.junethewoods.variants.items.HilaryBottleItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
@@ -20,8 +21,7 @@ public class F10CompatItems {
     public static final DeferredRegister<Item> fabricio2010packCompat = DeferredRegister.create(ForgeRegistries.ITEMS, Variants.mod_id);
 
     // Edits
-    public static final RegistryObject<Item> splash_soph_potion = editsCompat.register("splash_soph_potion",
-            () -> new Item(new Item.Properties().food(new Food.Builder().hunger(6).saturation(3).build()).group(VariantsTab.variant)));
+    public static final RegistryObject<Item> splash_soph_potion = editsCompat.register("splash_soph_potion", () -> new Item(new Item.Properties().food(F10CompatFoods.splash_soph).group(VariantsTab.variant)));
     public static final RegistryObject<Item> purple_nugget = editsCompat.register("purple_nugget", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
 
     // My Other Stuff
@@ -38,5 +38,6 @@ public class F10CompatItems {
     public static final RegistryObject<Item> plain_birch_bookshelf = fabricio2010packCompat.register("plain_birch_bookshelf", () -> new BlockItem(F10CompatBlocks.plain_birch_bookshelf.get(), new Item.Properties().group(VariantBlocks.blocks)));
     public static final RegistryObject<Item> inno_shulker_shell = fabricio2010packCompat.register("inno_shulker_shell", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
 
-    // futurely, Back Math
+    // Back Math
+    public static final RegistryObject<Item> hilary_bottle = backMathCompat.register("hilary_bottle", () -> new HilaryBottleItem(new Item.Properties().group(VariantsTab.variant).maxStackSize(8)));
 }
