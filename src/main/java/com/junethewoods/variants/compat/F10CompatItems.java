@@ -19,6 +19,7 @@ public class F10CompatItems {
     public static final DeferredRegister<Item> othersCompat = DeferredRegister.create(ForgeRegistries.ITEMS, Variants.mod_id);
     public static final DeferredRegister<Item> backMathCompat = DeferredRegister.create(ForgeRegistries.ITEMS, Variants.mod_id);
     public static final DeferredRegister<Item> fabricio2010packCompat = DeferredRegister.create(ForgeRegistries.ITEMS, Variants.mod_id);
+    public static final DeferredRegister<Item> creeperEditsCompat = DeferredRegister.create(ForgeRegistries.ITEMS, Variants.mod_id);
 
     // Edits
     public static final RegistryObject<Item> splash_soph_potion = editsCompat.register("splash_soph_potion", () -> new Item(new Item.Properties().food(F10CompatFoods.splash_soph).group(VariantsTab.variant)));
@@ -37,7 +38,11 @@ public class F10CompatItems {
     public static final RegistryObject<Item> first_door = fabricio2010packCompat.register("first_door", () -> new BlockItem(F10CompatBlocks.first_door.get(), new Item.Properties().group(VariantBlocks.blocks)));
     public static final RegistryObject<Item> plain_birch_bookshelf = fabricio2010packCompat.register("plain_birch_bookshelf", () -> new BlockItem(F10CompatBlocks.plain_birch_bookshelf.get(), new Item.Properties().group(VariantBlocks.blocks)));
     public static final RegistryObject<Item> inno_shulker_shell = fabricio2010packCompat.register("inno_shulker_shell", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
+    public static final RegistryObject<Item> bluestone_pot = fabricio2010packCompat.register("bluestone_pot", () -> new Item(new Item.Properties().maxStackSize(1).group(VariantsTab.variant)));
 
     // Back Math
     public static final RegistryObject<Item> hilary_bottle = backMathCompat.register("hilary_bottle", () -> new HilaryBottleItem(new Item.Properties().group(VariantsTab.variant).maxStackSize(8)));
+
+    // CreeperEdits
+    public static final RegistryObject<Item> creeper_powder_pot = creeperEditsCompat.register("creeper_powder_pot", () -> new Item(new Item.Properties().maxStackSize(1).group(VariantsTab.variant)));
 }
