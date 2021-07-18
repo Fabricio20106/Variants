@@ -4,6 +4,8 @@ import com.junethewoods.variants.common.Variants;
 import com.junethewoods.variants.items.HoneyBallItem;
 import com.junethewoods.variants.items.LavaBottleItem;
 import com.junethewoods.variants.items.MilkBottleItem;
+import net.minecraft.effect.EffectInstance;
+import net.minecraft.effect.Effects;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -74,6 +76,9 @@ public class StuffInit {
     public static final RegistryObject<Item> lingering_glass_bottle = items.register("lingering_glass_bottle", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> honey_ball = items.register("honey_ball", () -> new HoneyBallItem(new Item.Properties().food(Foods.HONEY).group(VariantsTab.variant)));
     public static final RegistryObject<Item> raw_debris = items.register("raw_debris", () -> new Item(new Item.Properties().isImmuneToFire().group(VariantsTab.variant)));
+    public static final RegistryObject<Item> redstone_pot = items.register("redstone_pot", () -> new Item(new Item.Properties().maxStackSize(1).group(VariantsTab.variant)));
+    public static final RegistryObject<Item> glowstone_pot = items.register("glowstone_pot", () -> new Item(new Item.Properties().maxStackSize(1).food(new Food.Builder().hunger(1).saturation(1).effect(new EffectInstance(Effects.GLOWING, 200, 0), 1.0F)).group(VariantsTab.variant)));
+    public static final RegistryObject<Item> gunpowder_pot = items.register("gunpowder_pot", () -> new Item(new Item.Properties().maxStackSize(1).group(VariantsTab.variant)));
     public static final RegistryObject<Item> oak_stick = items.register("oak_stick", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> spruce_stick = items.register("spruce_stick", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
     public static final RegistryObject<Item> birch_stick = items.register("birch_stick", () -> new Item(new Item.Properties().group(VariantsTab.variant)));
