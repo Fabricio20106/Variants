@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "d",
+    "s",
+    "s"
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:end_stone"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "variants:end_stone_shovel"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "creeperedits:creeper_powder"
+    },
+    {
+      "item": "variants:stylised_pot"
+    }
+  ],
+  "result": {
+    "item": "variants:creeper_powder_pot"
+  }
+}

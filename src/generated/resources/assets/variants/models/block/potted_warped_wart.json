@@ -1,0 +1,6 @@
+{
+  "parent": "variants:block/potted_crop",
+  "textures": {
+    "crop": "variants:block/potted_crops/warped_wart"
+  }
+}

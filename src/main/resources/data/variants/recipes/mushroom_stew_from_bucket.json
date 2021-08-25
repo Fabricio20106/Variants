@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "variants:mushroom_stew_bucket"
+    }
+  ],
+  "result": {
+    "item": "minecraft:mushroom_stew",
+    "count": 2
+  }
+}

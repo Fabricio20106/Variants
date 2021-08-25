@@ -1,6 +1,14 @@
 {
   "replace": false,
   "values": [
-    "variants:painting_trapdoor"
+    "variants:painting_trapdoor",
+    "variants:alban_trapdoor",
+    "variants:aztec_trapdoor",
+    "variants:aztec2_trapdoor",
+    "variants:bomb_trapdoor",
+    "variants:kebab_trapdoor",
+    "variants:plant_trapdoor",
+    "variants:wasteland_trapdoor",
+    "variants:ender_trapdoor"
   ]
 }

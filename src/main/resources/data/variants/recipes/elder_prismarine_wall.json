@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "variants:elder_prismarine"
+    }
+  },
+  "result": {
+    "item": "variants:elder_prismarine_wall",
+    "count": 6
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bark",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "variants:ender_stem"
+    }
+  },
+  "result": {
+    "item": "variants:ender_hyphae",
+    "count": 3
+  }
+}

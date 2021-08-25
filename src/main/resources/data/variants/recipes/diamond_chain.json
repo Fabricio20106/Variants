@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "N",
+    "I",
+    "N"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:diamond"
+    },
+    "N": {
+      "item": "variants:diamond_nugget"
+    }
+  },
+  "result": {
+    "item": "variants:diamond_chain"
+  }
+}

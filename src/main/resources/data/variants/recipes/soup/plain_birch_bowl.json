@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "fabricio2010pack:plain_birch_planks"
+    }
+  },
+  "result": {
+    "item": "variants:plain_birch_bowl",
+    "count": 4
+  }
+}

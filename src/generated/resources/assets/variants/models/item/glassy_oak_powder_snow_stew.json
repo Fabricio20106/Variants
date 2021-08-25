@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "variants:item/glassy_oak_bowl",
+    "layer1": "variants:item/powder_snow"
+  }
+}

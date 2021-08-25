@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "variants:block/mossy_nether_brick_slab_top"
+    },
+    "type=bottom": {
+      "model": "variants:block/mossy_nether_brick_slab"
+    },
+    "type=double": {
+      "model": "variants:block/mossy_nether_bricks"
+    }
+  }
+}

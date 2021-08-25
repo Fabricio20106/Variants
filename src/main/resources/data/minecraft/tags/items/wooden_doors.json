@@ -3,6 +3,7 @@
   "values": [
     "variants:painting_door",
     "variants:wanderer_door",
-    "variants:graham_door"
+    "variants:graham_door",
+    "variants:ender_door"
   ]
 }

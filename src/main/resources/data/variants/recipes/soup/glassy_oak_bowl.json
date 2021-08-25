@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "fabricio2010pack:glassy_oak_planks"
+    }
+  },
+  "result": {
+    "item": "variants:glassy_oak_bowl",
+    "count": 4
+  }
+}

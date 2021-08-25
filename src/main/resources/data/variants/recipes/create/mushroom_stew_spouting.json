@@ -1,0 +1,17 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "fluid": "variants:mushroom_stew",
+      "amount": 500
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:mushroom_stew"
+    }
+  ]
+}

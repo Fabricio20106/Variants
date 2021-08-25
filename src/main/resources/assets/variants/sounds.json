@@ -8,5 +8,14 @@
         "stream": true
       }
     ]
+  },
+  "moog_city": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "variants:moog_city",
+        "stream": true
+      }
+    ]
   }
 }

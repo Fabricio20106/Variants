@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "variants:stylised_pot"
+    }
+  ],
+  "result": {
+    "item": "variants:sugar_pot"
+  }
+}

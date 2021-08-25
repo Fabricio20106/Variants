@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "variants:block/quartz_chain",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "variants:block/quartz_chain"
+    },
+    "axis=z": {
+      "model": "variants:block/quartz_chain",
+      "x": 90
+    }
+  }
+}

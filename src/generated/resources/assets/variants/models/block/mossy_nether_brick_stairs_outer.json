@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "side": "variants:block/mossy_nether_bricks",
+    "bottom": "variants:block/mossy_nether_bricks",
+    "top": "variants:block/mossy_nether_bricks"
+  }
+}

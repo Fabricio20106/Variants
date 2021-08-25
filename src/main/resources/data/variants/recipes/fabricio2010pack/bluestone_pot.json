@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "fabricio2010pack:bluestone_dust"
+    },
+    {
+      "item": "variants:stylised_pot"
+    }
+  ],
+  "result": {
+    "item": "variants:bluestone_pot"
+  }
+}

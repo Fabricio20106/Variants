@@ -1,6 +1,12 @@
 {
   "replace": false,
   "values": [
-    "variants:painting_slab"
+    "variants:elder_prismarine_slab",
+    "variants:elder_prismarine_brick_slab",
+    "variants:dark_elder_prismarine_slab",
+    "variants:mossy_end_stone_brick_slab",
+    "variants:mossy_nether_brick_slab",
+    "variants:mossy_purpur_slab",
+    "variants:smooth_purpur_slab"
   ]
 }

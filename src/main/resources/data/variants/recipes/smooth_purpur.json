@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:purpur_block"
+  },
+  "result": "variants:smooth_purpur",
+  "experience": 0.35,
+  "cookingtime": 200
+}

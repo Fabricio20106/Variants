@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#RG",
+    "#RG",
+    "#RG"
+  ],
+  "key": {
+    "#": {
+      "item": "variants:iron_tie"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "item": "variants:powered_tie",
+    "count": 6
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "XXX",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "variants:ender_planks"
+    },
+    "X": {
+      "tag": "variants:books"
+    }
+  },
+  "result": {
+    "item": "variants:ender_bookshelf"
+  }
+}

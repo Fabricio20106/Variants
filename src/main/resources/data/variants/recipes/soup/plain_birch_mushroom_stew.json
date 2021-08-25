@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "item": "minecraft:red_mushroom"
+    },
+    {
+      "item": "variants:plain_birch_bowl"
+    }
+  ],
+  "result": {
+    "item": "variants:plain_birch_mushroom_stew"
+  }
+}

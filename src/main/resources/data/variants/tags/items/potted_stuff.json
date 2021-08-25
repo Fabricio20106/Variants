@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#variants:potted_plants",
+    "variants:potted_torch",
+    "variants:potted_soul_torch"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "f10blocks:wax_block"
+    }
+  ],
+  "result": {
+    "item": "variants:crystallized_honey",
+    "count": 9
+  }
+}

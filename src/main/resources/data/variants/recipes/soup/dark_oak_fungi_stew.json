@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:crimson_fungus"
+    },
+    {
+      "item": "minecraft:warped_fungus"
+    },
+    {
+      "item": "variants:dark_oak_bowl"
+    }
+  ],
+  "result": {
+    "item": "variants:dark_oak_fungi_stew"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#W#",
+    " D "
+  ],
+  "key": {
+    "#": {
+      "item": "variants:iron_tie"
+    },
+    "W": {
+      "item": "variants:wooden_railbed"
+    },
+    "D": {
+      "item": "variants:detector_plate"
+    }
+  },
+  "result": {
+    "item": "minecraft:detector_rail",
+    "count": 6
+  }
+}

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "variants:glow_black_tulip"
+    "variants:glow_black_tulip",
+    "variants:sunny_flower"
   ]
 }

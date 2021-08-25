@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "f10blocks:wooden_planks"
+    }
+  },
+  "result": {
+    "item": "variants:wooden_bowl",
+    "count": 4
+  }
+}

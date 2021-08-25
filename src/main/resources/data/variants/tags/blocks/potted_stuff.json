@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:flower_pots",
+    "variants:potted_torch",
+    "variants:potted_soul_torch"
+  ]
+}

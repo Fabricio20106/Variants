@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:redstone"
+    },
+    {
+      "item": "variants:stylised_pot"
+    }
+  ],
+  "result": {
+    "item": "variants:redstone_pot"
+  }
+}

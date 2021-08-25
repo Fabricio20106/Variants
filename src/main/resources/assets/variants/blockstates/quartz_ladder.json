@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "variants:block/quartz_ladder",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "variants:block/quartz_ladder"
+    },
+    "facing=south": {
+      "model": "variants:block/quartz_ladder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "variants:block/quartz_ladder",
+      "y": 270
+    }
+  }
+}

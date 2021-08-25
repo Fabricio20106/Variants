@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SCS",
+    "CCC",
+    "SCS"
+  ],
+  "key": {
+    "S": {
+      "item": "variants:elder_prismarine_shard"
+    },
+    "C": {
+      "item": "variants:elder_prismarine_crystals"
+    }
+  },
+  "result": {
+    "item": "variants:elder_sea_lantern"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "variants:block/ender_planks",
+    "side": "variants:block/ender_bookshelf"
+  }
+}

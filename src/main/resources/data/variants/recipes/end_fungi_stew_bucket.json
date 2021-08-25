@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "variants:ender_fungus"
+    },
+    {
+      "item": "variants:ender_fungus"
+    },
+    {
+      "item": "minecraft:bucket"
+    }
+  ],
+  "result": {
+    "item": "variants:end_fungi_stew_bucket"
+  }
+}

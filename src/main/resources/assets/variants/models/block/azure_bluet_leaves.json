@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "variants:block/azure_bluet_leaves"
+  }
+}

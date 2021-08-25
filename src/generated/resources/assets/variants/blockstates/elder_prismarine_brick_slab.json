@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "variants:block/elder_prismarine_brick_slab_top"
+    },
+    "type=bottom": {
+      "model": "variants:block/elder_prismarine_brick_slab"
+    },
+    "type=double": {
+      "model": "variants:block/elder_prismarine_bricks"
+    }
+  }
+}
