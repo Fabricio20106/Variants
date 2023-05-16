@@ -13,7 +13,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'idea'
 
-version = '1.18.2-2.0.0'
+version = '1.18.2-2.0.1'
 group = 'com.junethewoods.variants' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'Variants'
 

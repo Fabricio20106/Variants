@@ -59,3 +59,6 @@ Build: 1.18.2-2.0.0
 
   added helmets, leggings and boots for armor sets: phantom membrane, rabbit hide, wool and copper
   adding sweet berry vines (sweet berry cave vines)
+
+16/05/2023:
+  added oak, spruce, birch, jungle, acacia, dark oak, mangrove, bamoo (kinda), cherry, crimson, warped and ender wood tool sets
