@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "H",
+    "H",
+    "S"
+  ],
+  "key": {
+    "H": {
+      "item": "minecraft:crying_obsidian"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "variants:crying_obsidian_sword"
+  }
+}

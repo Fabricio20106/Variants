@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "X",
+    "X"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:purpur_slab"
+    }
+  },
+  "result": {
+    "item": "variants:chiseled_purpur_block"
+  }
+}

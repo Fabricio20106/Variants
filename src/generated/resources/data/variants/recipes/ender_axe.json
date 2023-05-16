@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "HH",
+    "HS",
+    " S"
+  ],
+  "key": {
+    "H": {
+      "item": "variants:ender_planks"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "variants:ender_axe"
+  }
+}

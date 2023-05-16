@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "HH",
+    " S",
+    " S"
+  ],
+  "key": {
+    "H": {
+      "item": "minecraft:deepslate"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "variants:deepslate_hoe"
+  }
+}

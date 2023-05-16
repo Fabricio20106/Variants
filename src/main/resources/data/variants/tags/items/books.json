@@ -4,8 +4,8 @@
     "minecraft:book",
     "minecraft:enchanted_book",
     "minecraft:knowledge_book",
-    "variants:knowledge_enchanted_book",
+    "minecraft:writable_book",
     "minecraft:written_book",
-    "minecraft:writable_book"
+    "variants:enchanted_knowledge_book"
   ]
 }

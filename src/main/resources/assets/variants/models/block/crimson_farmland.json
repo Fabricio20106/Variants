@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_farmland",
+  "textures": {
+    "dirt": "minecraft:block/crimson_nylium_side",
+    "top": "variants:block/crimson_farmland"
+  }
+}

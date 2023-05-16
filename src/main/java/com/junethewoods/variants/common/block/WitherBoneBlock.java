@@ -1,14 +1,15 @@
 package com.junethewoods.variants.common.block;
 
-import net.minecraft.block.RotatedPillarBlock;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.World;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class WitherBoneBlock extends RotatedPillarBlock {
     public WitherBoneBlock(Properties properties) {
@@ -16,15 +17,14 @@ public class WitherBoneBlock extends RotatedPillarBlock {
     }
 
     @Override
-    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
-        if (!worldIn.isRemote && worldIn.getDifficulty() != Difficulty.PEACEFUL) {
-            if (entityIn instanceof LivingEntity) {
-                LivingEntity livingEntity = (LivingEntity) entityIn;
+    public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {
+        if (!world.isClientSide && world.getDifficulty() != Difficulty.PEACEFUL) {
+            if (entity instanceof LivingEntity) {
+                LivingEntity livingEntity = (LivingEntity) entity;
                 if (!livingEntity.isInvulnerableTo(DamageSource.WITHER)) {
-                    livingEntity.addPotionEffect(new EffectInstance(Effects.WITHER, 40));
+                    livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 40));
                 }
             }
         }
-        super.onEntityWalk(worldIn, pos, entityIn);
     }
 }

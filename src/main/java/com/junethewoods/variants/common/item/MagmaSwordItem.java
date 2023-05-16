@@ -1,20 +1,22 @@
 package com.junethewoods.variants.common.item;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.SwordItem;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tier;
 
 public class MagmaSwordItem extends SwordItem {
-    public MagmaSwordItem(IItemTier tier, int attackDamage, float attackSpeed, Properties builder) {
-        super(tier, attackDamage, attackSpeed, builder);
+    public MagmaSwordItem(Tier tier, int attackDamage, float attackSpeed, Properties properties) {
+        super(tier, attackDamage, attackSpeed, properties);
     }
 
     @Override
-    public boolean onLeftClickEntity(ItemStack stack, PlayerEntity player, Entity entity) {
-        entity.setFire(10);
-
+    public boolean onLeftClickEntity(ItemStack stack, Player player, Entity entity) {
+        if (entity instanceof LivingEntity livingEntity) {
+            livingEntity.setSecondsOnFire(10);
+        }
         return super.onLeftClickEntity(stack, player, entity);
     }
 }

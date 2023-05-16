@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "HH",
+    "HS",
+    " S"
+  ],
+  "key": {
+    "H": {
+      "item": "minecraft:crimson_planks"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "variants:crimson_axe"
+  }
+}

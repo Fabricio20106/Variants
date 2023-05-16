@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "moisture=0": {
+      "model": "variants:block/ender_farmland"
+    },
+    "moisture=1": {
+      "model": "variants:block/ender_farmland"
+    },
+    "moisture=2": {
+      "model": "variants:block/ender_farmland"
+    },
+    "moisture=3": {
+      "model": "variants:block/ender_farmland"
+    },
+    "moisture=4": {
+      "model": "variants:block/ender_farmland"
+    },
+    "moisture=5": {
+      "model": "variants:block/ender_farmland"
+    },
+    "moisture=6": {
+      "model": "variants:block/ender_farmland"
+    },
+    "moisture=7": {
+      "model": "variants:block/ender_farmland_moist"
+    }
+  }
+}

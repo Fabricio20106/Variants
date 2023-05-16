@@ -1,0 +1,6 @@
+{
+  "parent": "variants:block/template_potted_torch",
+  "textures": {
+    "torch": "block/redstone_torch_off"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "variants:warped_potato"
+  },
+  "result": "variants:baked_warped_potato",
+  "experience": 0.35,
+  "cookingtime": 200
+}

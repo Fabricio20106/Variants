@@ -1,0 +1,6 @@
+{
+  "parent": "variants:block/template_potted_crop",
+  "textures": {
+    "crop": "variants:block/grass_pot"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "berries=false": {
+      "model": "variants:block/sweet_berry_vines_plant"
+    },
+    "berries=true": {
+      "model": "variants:block/sweet_berry_vines_plant_lit"
+    }
+  }
+}

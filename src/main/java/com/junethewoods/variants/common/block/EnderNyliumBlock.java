@@ -1,58 +1,59 @@
 package com.junethewoods.variants.common.block;
 
-import com.junethewoods.variants.core.gen.VariantFeatures;
-import com.junethewoods.variants.core.init.BlockInit;
-import net.minecraft.block.*;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.NetherVegetationFeature;
-import net.minecraft.world.lighting.LightEngine;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.data.worldgen.features.NetherFeatures;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.lighting.LayerLightEngine;
 
 import java.util.Random;
 
-public class EnderNyliumBlock extends Block implements IGrowable {
-    public EnderNyliumBlock(AbstractBlock.Properties properties) {
+public class EnderNyliumBlock extends Block implements BonemealableBlock {
+    public EnderNyliumBlock(Properties properties) {
         super(properties);
     }
 
-    private static boolean isDarkEnough(BlockState state, IWorldReader reader, BlockPos pos) {
-        BlockPos blockpos = pos.up();
-        BlockState blockstate = reader.getBlockState(blockpos);
-        int i = LightEngine.func_215613_a(reader, state, pos, blockstate, blockpos, Direction.UP, blockstate.getOpacity(reader, blockpos));
+    private static boolean canBeNylium(BlockState state, LevelReader reader, BlockPos pos) {
+        BlockPos abovePos = pos.above();
+        BlockState state1 = reader.getBlockState(abovePos);
+        int i = LayerLightEngine.getLightBlockInto(reader, state, pos, state1, abovePos, Direction.UP, state1.getLightBlock(reader, abovePos));
         return i < reader.getMaxLightLevel();
     }
 
-    /**
-     * Performs a random tick on a block.
-     */
-    public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-        if (!isDarkEnough(state, worldIn, pos)) {
-            worldIn.setBlockState(pos, Blocks.END_STONE.getDefaultState());
+    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random rand) {
+        if (!canBeNylium(state, world, pos)) {
+            world.setBlockAndUpdate(pos, Blocks.END_STONE.defaultBlockState());
         }
-
     }
 
-    /**
-     * Whether this IGrowable can grow
-     */
-    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
-        return worldIn.getBlockState(pos.up()).isAir();
+    public boolean isValidBonemealTarget(BlockGetter getter, BlockPos pos, BlockState state, boolean p_176473_4_) {
+        return getter.getBlockState(pos.above()).isAir();
     }
 
-    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level world, Random rand, BlockPos pos, BlockState state) {
         return true;
     }
 
-    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
-        BlockState blockstate = worldIn.getBlockState(pos);
-        BlockPos blockpos = pos.up();
-        if (blockstate.isIn(BlockInit.ender_nylium.get())) {
-            NetherVegetationFeature.func_236325_a_(worldIn, rand, blockpos, VariantFeatures.ender_forest_vegetation_config, 3, 1);
-            NetherVegetationFeature.func_236325_a_(worldIn, rand, blockpos, VariantFeatures.ender_sprouts_config, 3, 1);
+    public void performBonemeal(ServerLevel world, Random rand, BlockPos pos, BlockState state) {
+        BlockState state1 = world.getBlockState(pos);
+        BlockPos abovePos = pos.above();
+        ChunkGenerator chunkGenerator = world.getChunkSource().getGenerator();
+        if (state1.is(Blocks.CRIMSON_NYLIUM)) {
+            NetherFeatures.CRIMSON_FOREST_VEGETATION_BONEMEAL.value().place(world, chunkGenerator, rand, abovePos);
+        } else if (state1.is(Blocks.WARPED_NYLIUM)) {
+            NetherFeatures.WARPED_FOREST_VEGETATION_BONEMEAL.value().place(world, chunkGenerator, rand, abovePos);
+            NetherFeatures.NETHER_SPROUTS_BONEMEAL.value().place(world, chunkGenerator, rand, abovePos);
+            if (rand.nextInt(8) == 0) {
+                NetherFeatures.TWISTING_VINES_BONEMEAL.value().place(world, chunkGenerator, rand, abovePos);
+            }
         }
     }
 }

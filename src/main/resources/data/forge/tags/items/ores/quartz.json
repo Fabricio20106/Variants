@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "variants:quartz_ore",
+    "variants:end_quartz_ore"
+  ]
+}

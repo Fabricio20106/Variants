@@ -1,13 +1,7 @@
 {
   "replace": false,
   "values": [
-    "variants:painting_log",
-    "variants:painting_wood",
-    "variants:stripped_painting_log",
-    "variants:stripped_painting_wood",
-    "variants:ender_stem",
-    "variants:ender_hyphae",
-    "variants:stripped_ender_stem",
-    "variants:stripped_ender_hyphae"
+    "#variants:painting_logs",
+    "#variants:ender_logs"
   ]
 }

@@ -1,6 +1,7 @@
 {
   "ambient.cave": {
     "sounds": [
+      "moog_city",
       "ambient/cave/cave1",
       "ambient/cave/cave2",
       "ambient/cave/cave3",

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:ingots/exposed_copper",
+    "#forge:ingots/weathered_copper",
+    "#forge:ingots/oxidized_copper",
+    "#forge:ingots/red_nether"
+  ]
+}

@@ -1,0 +1,24 @@
+
+    /**
+     * Determines a value on {@link CropBlock} "AGE" {@link IntegerProperty} field for data generation.
+     *
+     * @param age A link to {@link CropBlock} on the "AGE" {@link IntegerProperty} field.
+     * If the parameter "age" returns 7, then in returns 7,
+     * if the parameter "age" returns 6, then in returns 6,
+     * if the parameter "age" returns 5, then in returns 5,
+     * and so on till it returns 0.
+     */
+
+    /**
+     * Determines a value on {@link PotatoBlock}/{@link CarrotBlock} "AGE" {@link IntegerProperty} field for data generation.
+     *
+     * @param age A link to {@link PotatoBlock}/{@link CarrotBlock} on the "AGE" {@link IntegerProperty} field.
+     * If the parameter "age" returns 6, then in returns 3,
+     * if the parameter "age" returns 3, then in returns 2,
+     * if the parameter "age" returns 1, then in returns 1,
+     * else it returns 0.
+     */
+
+         /**
+          * Gets the percentage of knockback resistance provided by armor of the material.
+          */

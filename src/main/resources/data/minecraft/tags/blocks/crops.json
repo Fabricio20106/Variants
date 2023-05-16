@@ -2,6 +2,9 @@
   "replace": false,
   "values": [
     "variants:golden_carrots",
-    "variants:warped_wart"
+    "variants:warped_wart",
+    "variants:crimson_wheat",
+    "variants:warped_potatoes",
+    "variants:soul_carrots"
   ]
 }

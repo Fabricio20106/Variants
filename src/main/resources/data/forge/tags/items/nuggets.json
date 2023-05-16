@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:nuggets/emerald",
+    "#forge:nuggets/diamond",
+    "#forge:nuggets/quartz"
+  ]
+}

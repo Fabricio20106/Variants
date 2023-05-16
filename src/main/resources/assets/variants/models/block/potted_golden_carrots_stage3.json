@@ -1,5 +1,5 @@
 {
-  "parent": "variants:block/potted_crop",
+  "parent": "variants:block/template_potted_crop",
   "textures": {
     "crop": "variants:block/potted_crops/golden_carrots_stage3"
   }

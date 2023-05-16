@@ -1,7 +1,7 @@
 {
   "name": "Stuff",
   "icon": "variants:honey_ball",
-  "category": "variantsguide:standard_items",
+  "category": "variants:standard_items",
   "pages": [
     {
       "type": "patchouli:spotlight",

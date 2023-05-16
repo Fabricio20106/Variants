@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "H H",
+    "HHH",
+    "HHH"
+  ],
+  "key": {
+    "H": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "result": {
+    "item": "variants:copper_chestplate"
+  }
+}

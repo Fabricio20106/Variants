@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "HH",
+    " S",
+    " S"
+  ],
+  "key": {
+    "H": {
+      "item": "variants:painting_planks"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "variants:painting_hoe"
+  }
+}

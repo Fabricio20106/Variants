@@ -1,12 +1,12 @@
 package com.junethewoods.variants.common.item;
 
-import com.junethewoods.variants.core.init.F10CompatItems;
-import com.junethewoods.variants.core.init.StuffInit;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import com.junethewoods.variants.core.init.VSItems;
+import com.junethewoods.variants.core.init.compat.F10CompatItems;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 
 public class CustomSoupItem {
     public static class OakBowl extends Item {
@@ -14,9 +14,9 @@ public class CustomSoupItem {
             super(properties);
         }
 
-        public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-            ItemStack itemstack = super.onItemUseFinish(stack, worldIn, entityLiving);
-            return entityLiving instanceof PlayerEntity && ((PlayerEntity)entityLiving).abilities.isCreativeMode ? itemstack : new ItemStack(StuffInit.oak_bowl.get());
+        public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
+            ItemStack itemstack = super.finishUsingItem(stack, world, livingEntity);
+            return livingEntity instanceof Player && ((Player)livingEntity).getAbilities().instabuild ? itemstack : new ItemStack(VSItems.OAK_BOWL.get());
         }
     }
     public static class BirchBowl extends Item {
@@ -24,9 +24,9 @@ public class CustomSoupItem {
             super(properties);
         }
 
-        public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-            ItemStack itemstack = super.onItemUseFinish(stack, worldIn, entityLiving);
-            return entityLiving instanceof PlayerEntity && ((PlayerEntity)entityLiving).abilities.isCreativeMode ? itemstack : new ItemStack(StuffInit.birch_bowl.get());
+        public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
+            ItemStack itemstack = super.finishUsingItem(stack, world, livingEntity);
+            return livingEntity instanceof Player && ((Player)livingEntity).getAbilities().instabuild ? itemstack : new ItemStack(VSItems.BIRCH_BOWL.get());
         }
     }
     public static class SpruceBowl extends Item {
@@ -34,9 +34,9 @@ public class CustomSoupItem {
             super(properties);
         }
 
-        public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-            ItemStack itemstack = super.onItemUseFinish(stack, worldIn, entityLiving);
-            return entityLiving instanceof PlayerEntity && ((PlayerEntity)entityLiving).abilities.isCreativeMode ? itemstack : new ItemStack(StuffInit.spruce_bowl.get());
+        public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
+            ItemStack itemstack = super.finishUsingItem(stack, world, livingEntity);
+            return livingEntity instanceof Player && ((Player)livingEntity).getAbilities().instabuild ? itemstack : new ItemStack(VSItems.SPRUCE_BOWL.get());
         }
     }
     public static class JungleBowl extends Item {
@@ -44,9 +44,9 @@ public class CustomSoupItem {
             super(properties);
         }
 
-        public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-            ItemStack itemstack = super.onItemUseFinish(stack, worldIn, entityLiving);
-            return entityLiving instanceof PlayerEntity && ((PlayerEntity)entityLiving).abilities.isCreativeMode ? itemstack : new ItemStack(StuffInit.jungle_bowl.get());
+        public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
+            ItemStack itemstack = super.finishUsingItem(stack, world, livingEntity);
+            return livingEntity instanceof Player && ((Player)livingEntity).getAbilities().instabuild ? itemstack : new ItemStack(VSItems.JUNGLE_BOWL.get());
         }
     }
     public static class AcaciaBowl extends Item {
@@ -54,9 +54,9 @@ public class CustomSoupItem {
             super(properties);
         }
 
-        public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-            ItemStack itemstack = super.onItemUseFinish(stack, worldIn, entityLiving);
-            return entityLiving instanceof PlayerEntity && ((PlayerEntity)entityLiving).abilities.isCreativeMode ? itemstack : new ItemStack(StuffInit.acacia_bowl.get());
+        public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
+            ItemStack itemstack = super.finishUsingItem(stack, world, livingEntity);
+            return livingEntity instanceof Player && ((Player)livingEntity).getAbilities().instabuild ? itemstack : new ItemStack(VSItems.ACACIA_BOWL.get());
         }
     }
     public static class DarkOakBowl extends Item {
@@ -64,9 +64,9 @@ public class CustomSoupItem {
             super(properties);
         }
 
-        public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-            ItemStack itemstack = super.onItemUseFinish(stack, worldIn, entityLiving);
-            return entityLiving instanceof PlayerEntity && ((PlayerEntity)entityLiving).abilities.isCreativeMode ? itemstack : new ItemStack(StuffInit.dark_oak_bowl.get());
+        public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
+            ItemStack itemstack = super.finishUsingItem(stack, world, livingEntity);
+            return livingEntity instanceof Player && ((Player)livingEntity).getAbilities().instabuild ? itemstack : new ItemStack(VSItems.DARK_OAK_BOWL.get());
         }
     }
     public static class CrimsonBowl extends Item {
@@ -74,9 +74,9 @@ public class CustomSoupItem {
             super(properties);
         }
 
-        public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-            ItemStack itemstack = super.onItemUseFinish(stack, worldIn, entityLiving);
-            return entityLiving instanceof PlayerEntity && ((PlayerEntity)entityLiving).abilities.isCreativeMode ? itemstack : new ItemStack(StuffInit.crimson_bowl.get());
+        public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
+            ItemStack itemstack = super.finishUsingItem(stack, world, livingEntity);
+            return livingEntity instanceof Player && ((Player)livingEntity).getAbilities().instabuild ? itemstack : new ItemStack(VSItems.CRIMSON_BOWL.get());
         }
     }
     public static class WarpedBowl extends Item {
@@ -84,9 +84,9 @@ public class CustomSoupItem {
             super(properties);
         }
 
-        public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-            ItemStack itemstack = super.onItemUseFinish(stack, worldIn, entityLiving);
-            return entityLiving instanceof PlayerEntity && ((PlayerEntity)entityLiving).abilities.isCreativeMode ? itemstack : new ItemStack(StuffInit.warped_bowl.get());
+        public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
+            ItemStack itemstack = super.finishUsingItem(stack, world, livingEntity);
+            return livingEntity instanceof Player && ((Player)livingEntity).getAbilities().instabuild ? itemstack : new ItemStack(VSItems.WARPED_BOWL.get());
         }
     }
     public static class PaintingBowl extends Item {
@@ -94,9 +94,9 @@ public class CustomSoupItem {
             super(properties);
         }
 
-        public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-            ItemStack itemstack = super.onItemUseFinish(stack, worldIn, entityLiving);
-            return entityLiving instanceof PlayerEntity && ((PlayerEntity)entityLiving).abilities.isCreativeMode ? itemstack : new ItemStack(StuffInit.painting_bowl.get());
+        public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
+            ItemStack itemstack = super.finishUsingItem(stack, world, livingEntity);
+            return livingEntity instanceof Player && ((Player)livingEntity).getAbilities().instabuild ? itemstack : new ItemStack(VSItems.PAINTING_BOWL.get());
         }
     }
     public static class GlassyOakBowl extends Item {
@@ -104,9 +104,9 @@ public class CustomSoupItem {
             super(properties);
         }
 
-        public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-            ItemStack itemstack = super.onItemUseFinish(stack, worldIn, entityLiving);
-            return entityLiving instanceof PlayerEntity && ((PlayerEntity)entityLiving).abilities.isCreativeMode ? itemstack : new ItemStack(F10CompatItems.glassy_oak_bowl.get());
+        public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
+            ItemStack itemstack = super.finishUsingItem(stack, world, livingEntity);
+            return livingEntity instanceof Player && ((Player)livingEntity).getAbilities().instabuild ? itemstack : new ItemStack(F10CompatItems.GLASSY_OAK_BOWL.get());
         }
     }
     public static class PlainBirchBowl extends Item {
@@ -114,9 +114,9 @@ public class CustomSoupItem {
             super(properties);
         }
 
-        public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-            ItemStack itemstack = super.onItemUseFinish(stack, worldIn, entityLiving);
-            return entityLiving instanceof PlayerEntity && ((PlayerEntity)entityLiving).abilities.isCreativeMode ? itemstack : new ItemStack(F10CompatItems.plain_birch_bowl.get());
+        public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
+            ItemStack itemstack = super.finishUsingItem(stack, world, livingEntity);
+            return livingEntity instanceof Player && ((Player)livingEntity).getAbilities().instabuild ? itemstack : new ItemStack(F10CompatItems.PLAIN_BIRCH_BOWL.get());
         }
     }
     public static class WoodenBowl extends Item {
@@ -124,9 +124,9 @@ public class CustomSoupItem {
             super(properties);
         }
 
-        public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-            ItemStack itemstack = super.onItemUseFinish(stack, worldIn, entityLiving);
-            return entityLiving instanceof PlayerEntity && ((PlayerEntity)entityLiving).abilities.isCreativeMode ? itemstack : new ItemStack(F10CompatItems.wooden_bowl.get());
+        public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
+            ItemStack itemstack = super.finishUsingItem(stack, world, livingEntity);
+            return livingEntity instanceof Player && ((Player)livingEntity).getAbilities().instabuild ? itemstack : new ItemStack(F10CompatItems.WOODEN_BOWL.get());
         }
     }
     public static class EnderBowl extends Item {
@@ -134,9 +134,9 @@ public class CustomSoupItem {
             super(properties);
         }
 
-        public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-            ItemStack itemstack = super.onItemUseFinish(stack, worldIn, entityLiving);
-            return entityLiving instanceof PlayerEntity && ((PlayerEntity)entityLiving).abilities.isCreativeMode ? itemstack : new ItemStack(StuffInit.ender_bowl.get());
+        public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
+            ItemStack itemstack = super.finishUsingItem(stack, world, livingEntity);
+            return livingEntity instanceof Player && ((Player)livingEntity).getAbilities().instabuild ? itemstack : new ItemStack(VSItems.ENDER_BOWL.get());
         }
     }
 }

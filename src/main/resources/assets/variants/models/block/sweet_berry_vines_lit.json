@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "variants:block/sweet_berry_vines_lit"
+  }
+}

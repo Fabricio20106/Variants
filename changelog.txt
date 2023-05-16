@@ -28,7 +28,7 @@ Build: 1.16.4-1.4.5
   added jei in my dev environment
   compat with others:
     added alan, alice, innovator and nicolas ai shears
-    added shears from minerals: diaemerald, crystal, plasteel and light magenta ingot
+    added shears for minerals: diaemerald, crystal, plasteel and light magenta ingot
 Build: 1.16.4-1.4.6
   added new ore generation
   added end quartz ore (generates in the end)
@@ -36,3 +36,26 @@ Build: 1.16.4-1.4.6
   added painting stick
   added graham and first door
     "first" painting from Fabricio2010Pack
+Build: 1.18-1.6.0
+  updated to 1.18
+  new crystallized and gelatinous magma cream
+    nether's equivalent of the slime
+Build: 1.18.2-2.0.0
+  updated to 1.18.2
+  working on variants again after some time (its actually a lot)
+  since I haven't been doing stuff on this mod for a long time, its now version 2.0.0 to reflect that things are going to change quite a bit
+
+  glow berry bushes now give glow berries
+  added tools for: deepslate, sandstone, red sandstone, tuff, calcite, basalt, blackstone, netherrack, magma block, obsidian, crying obsidian and bedrock
+
+13/05/2023:
+  finished adding new stone tools
+  fixed sandstone, red sandstone, calcite, netherrack and magma hoes having negative or zero damage
+  fixed the model of potted crops, potted sugar cane, potted torches and potted sunny flowers
+  added model and block state for potted grass
+  all pots mentioned above are now truly pot-able
+  potted sugar cane and potted grass are now tinted according to the biome
+  added inventory icon for warping vines
+
+  added helmets, leggings and boots for armor sets: phantom membrane, rabbit hide, wool and copper
+  adding sweet berry vines (sweet berry cave vines)

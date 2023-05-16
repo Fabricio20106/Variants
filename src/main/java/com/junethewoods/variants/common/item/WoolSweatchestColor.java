@@ -1,11 +1,11 @@
 package com.junethewoods.variants.common.item;
 
-import net.minecraft.client.renderer.color.IItemColor;
-import net.minecraft.item.ItemStack;
+import net.minecraft.client.color.item.ItemColor;
+import net.minecraft.world.item.ItemStack;
 
-public class WoolSweatchestColor implements IItemColor {
+public class WoolSweatchestColor implements ItemColor {
     @Override
-    public int getColor(ItemStack p_getColor_1_, int p_getColor_2_) {
+    public int getColor(ItemStack stack, int i) {
         return 0xf0f0f0;
     }
 }
