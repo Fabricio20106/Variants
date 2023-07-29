@@ -12,7 +12,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import static com.junethewoods.variants.core.VSLocations.*;
+import static com.junethewoods.variants.core.util.VSLocations.*;
 
 public class VSFluids {
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, Variants.MOD_ID);
@@ -23,10 +23,10 @@ public class VSFluids {
     public static final RegistryObject<FlowingFluid> FLOWING_MUSHROOM_STEW = FLUIDS.register("mushroom_stew_flowing", () -> new ForgeFlowingFluid.Flowing(VSFluids.MUSHROOM_STEW_PROPERTIES));
 
     public static final ForgeFlowingFluid.Properties SOUL_LAVA_PROPERTIES = new ForgeFlowingFluid.Properties(SOUL_LAVA, FLOWING_SOUL_LAVA,
-            FluidAttributes.builder(SOUL_LAVA_STILL, SOUL_LAVA_FLOWING).rarity(Rarity.RARE).sound(SoundEvents.BUCKET_EMPTY).overlay(SOUL_LAVA_OVERLAY)
-    ).block(() -> (LiquidBlock) VSBlocks.soul_lava.get()).bucket(VSItems.soul_lava_bucket);
+            FluidAttributes.builder(SOUL_LAVA_STILL, SOUL_LAVA_FLOWING).rarity(Rarity.RARE).sound(SoundEvents.BUCKET_EMPTY_LAVA).overlay(SOUL_LAVA_OVERLAY)
+    ).block(() -> (LiquidBlock) VSBlocks.SOUL_LAVA.get()).bucket(VSItems.SOUL_LAVA_BUCKET);
 
     public static final ForgeFlowingFluid.Properties MUSHROOM_STEW_PROPERTIES = new ForgeFlowingFluid.Properties(MUSHROOM_STEW, FLOWING_MUSHROOM_STEW,
             FluidAttributes.builder(MUSHROOM_STEW_STILL, MUSHROOM_STILL_FLOWING).sound(SoundEvents.BUCKET_EMPTY).overlay(MUSHROOM_STEW_OVERLAY)
-    ).block(() -> (LiquidBlock) VSBlocks.mushroom_stew.get()).bucket(VSItems.mushroom_stew_bucket);
+    ).block(() -> (LiquidBlock) VSBlocks.MUSHROOM_STEW.get()).bucket(VSItems.MUSHROOM_STEW_BUCKET);
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "variants:item/elder_prismarine_crystal_hoe"
+  }
+}

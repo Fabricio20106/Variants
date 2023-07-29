@@ -60,11 +60,11 @@ public class F10CompatItems {
 
     // Creeper Edits
     public static final RegistryObject<Item> CREEPER_POWDER_POT = ITEMS_CREEPER_EDITS.register("creeper_powder_pot", () -> new Item(new Item.Properties().stacksTo(1).tab(VSTab.TAB)));
-    public static final RegistryObject<Item> MUSHROOM_STEW_CREEPER_BUCKET = ITEMS_CREEPER_EDITS.register("mushroom_stew_creeper_bucket", () -> new StewBucketItemOld(new Item.Properties().stacksTo(1).food(Foods.MUSHROOM_STEW).tab(VSTab.TAB)));
-    public static final RegistryObject<Item> BEETROOT_SOUP_CREEPER_BUCKET = ITEMS_CREEPER_EDITS.register("beetroot_soup_creeper_bucket", () -> new StewBucketItemOld(new Item.Properties().stacksTo(1).food(Foods.BEETROOT_SOUP).tab(VSTab.TAB)));
-    public static final RegistryObject<Item> RABBIT_STEW_CREEPER_BUCKET = ITEMS_CREEPER_EDITS.register("rabbit_stew_creeper_bucket", () -> new StewBucketItemOld(new Item.Properties().stacksTo(1).food(Foods.RABBIT_STEW).tab(VSTab.TAB)));
-    public static final RegistryObject<Item> FUNGI_STEW_CREEPER_BUCKET = ITEMS_CREEPER_EDITS.register("fungi_stew_creeper_bucket", () -> new StewBucketItemOld(new Item.Properties().stacksTo(1).food(Foods.MUSHROOM_STEW).tab(VSTab.TAB)));
-    public static final RegistryObject<Item> END_FUNGI_STEW_CREEPER_BUCKET = ITEMS_CREEPER_EDITS.register("end_fungi_stew_creeper_bucket", () -> new StewBucketItemOld(new Item.Properties().stacksTo(1).food(Foods.MUSHROOM_STEW).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> MUSHROOM_STEW_CREEPER_BUCKET = ITEMS_CREEPER_EDITS.register("mushroom_stew_creeper_bucket", () -> new OldStewBucketItem(new Item.Properties().stacksTo(1).food(Foods.MUSHROOM_STEW).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> BEETROOT_SOUP_CREEPER_BUCKET = ITEMS_CREEPER_EDITS.register("beetroot_soup_creeper_bucket", () -> new OldStewBucketItem(new Item.Properties().stacksTo(1).food(Foods.BEETROOT_SOUP).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> RABBIT_STEW_CREEPER_BUCKET = ITEMS_CREEPER_EDITS.register("rabbit_stew_creeper_bucket", () -> new OldStewBucketItem(new Item.Properties().stacksTo(1).food(Foods.RABBIT_STEW).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> FUNGI_STEW_CREEPER_BUCKET = ITEMS_CREEPER_EDITS.register("fungi_stew_creeper_bucket", () -> new OldStewBucketItem(new Item.Properties().stacksTo(1).food(Foods.MUSHROOM_STEW).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> END_FUNGI_STEW_CREEPER_BUCKET = ITEMS_CREEPER_EDITS.register("end_fungi_stew_creeper_bucket", () -> new OldStewBucketItem(new Item.Properties().stacksTo(1).food(Foods.MUSHROOM_STEW).tab(VSTab.TAB)));
     public static final RegistryObject<Item> CREEPER_SOUL_LAVA_BUCKET = ITEMS_CREEPER_EDITS.register("creeper_soul_lava_bucket", () -> new BucketItem(VSFluids.SOUL_LAVA, new Item.Properties().tab(VSTab.TAB)));
 
     // Decorativelary (formerly known as F10Blocks)

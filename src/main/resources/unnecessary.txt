@@ -22,3 +22,31 @@
          /**
           * Gets the percentage of knockback resistance provided by armor of the material.
           */
+
+    // variants:pornhey
+
+    /**
+     * Makes a {@link ResourceLocation} with mod id "variants"
+     *
+     * @param name     The name for the thing in the {@link ResourceLocation}
+     * @return A {@link ResourceLocation} with mod id "variants" plus the name
+     */
+
+    @SubscribeEvent
+    public void registerBlockColors(ColorHandlerEvent.Block event) {
+        event.getBlockColors().register(new PaintingLeavesBlockColor(), VSBlocks.PAINTING_LEAVES.get());
+        event.getBlockColors().register(new CauldronBlockColor(), VSBlocks.GOLD_CAULDRON.get(), VSBlocks.QUARTZ_CAULDRON.get());
+    }
+
+    @SubscribeEvent
+    public void registerItemColors(ColorHandlerEvent.Item event) {
+        event.getItemColors().register(new LeavesItemColor(), VSBlocks.PAINTING_LEAVES.get());
+        event.getItemColors().register(new WoolSweatchestColor(), VSWeaponry.WOOL_SWEATCHEST.get());
+    }
+
+    /**
+     * Creates a sound event using {@link ForgeRegistries}.
+     *
+     * @param name     A {@link ResourceLocation} with the path to the sound
+     * @return A {@link ForgeRegistry} with mod id "variants" and a path to the sound
+     */

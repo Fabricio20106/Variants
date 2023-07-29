@@ -5,10 +5,10 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
 public class VSWeaponryTab extends CreativeModeTab {
-    public static final VSWeaponryTab TAB = new VSWeaponryTab(CreativeModeTab.TABS.length, "variants_weaponry");
+    public static final VSWeaponryTab TAB = new VSWeaponryTab("variants_weaponry");
 
-    public VSWeaponryTab(int index, String label) {
-        super(index, label);
+    public VSWeaponryTab(String label) {
+        super(label);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.junethewoods.variants.common.util;
 
 import com.junethewoods.variants.core.Variants;
+import com.junethewoods.variants.core.init.VSTags;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
@@ -16,8 +17,8 @@ import net.minecraftforge.common.Tags;
 import java.util.function.Supplier;
 
 public enum VSArmors implements ArmorMaterial {
-    EQUIPMENT_SLOT_TYPE(Variants.MOD_ID + ":empty_armor_slot", 15, new int[]{2, 5, 6, 2}, 9, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.of(Tags.Items.INGOTS_IRON)),
-    COPPER(Variants.MOD_ID + ":copper", 15, new int[]{1, 4, 5, 2}, 12, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(Tags.Items.INGOTS_IRON)),
+    EQUIPMENT_SLOT_TYPE(Variants.MOD_ID + ":empty_armor_slot", 15, new int[]{2, 5, 6, 2}, 9, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.of(VSTags.Items.INGOTS_EMPTY_SLOT)),
+    COPPER(Variants.MOD_ID + ":copper", 15, new int[]{1, 4, 5, 2}, 12, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(Tags.Items.INGOTS_COPPER)),
     PHANTOM(Variants.MOD_ID + ":phantom", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.of(Items.PHANTOM_MEMBRANE)),
     RABBIT(Variants.MOD_ID + ":rabbit", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.of(Items.RABBIT_HIDE)),
     WOOL(Variants.MOD_ID + ":wool", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.of(ItemTags.WOOL)),

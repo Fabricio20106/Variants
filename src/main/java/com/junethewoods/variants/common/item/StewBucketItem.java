@@ -45,7 +45,7 @@ public class StewBucketItem extends BucketItem {
     }
 
     public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.EAT;
+        return UseAnim.DRINK;
     }
 
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {

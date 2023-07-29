@@ -20,6 +20,7 @@ public class VSRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
+        // Stone tools
         buildDoubleToolRecipe("deepslate", "deepslate", consumer, "_using_deepslate");
         buildToolRecipe("cobbled_deepslate", "deepslate", consumer);
         buildToolRecipe("sandstone", "sandstone", consumer);
@@ -37,6 +38,7 @@ public class VSRecipeProvider extends RecipeProvider {
         buildToolRecipe("blackstone", "blackstone", consumer);
         buildToolRecipe("magma_block", "magma", consumer);
 
+        // Wooden tools
         buildToolRecipe("oak_planks", "oak", consumer);
         buildToolRecipe("spruce_planks", "spruce", consumer);
         buildToolRecipe("birch_planks", "birch", consumer);
@@ -53,10 +55,20 @@ public class VSRecipeProvider extends RecipeProvider {
         buildToolRecipe("warped_planks", "warped", consumer);
         buildToolRecipe("variants:ender_planks", "ender", consumer);
 
+        // Mineral tools
+        buildToolRecipe("amethyst_shard", "amethyst", consumer);
+        buildToolRecipe("copper_ingot", "copper", consumer);
+        buildToolRecipe("prismarine_crystals", "prismarine_crystal", consumer);
+        buildToolRecipe("variants:elder_prismarine_crystals", "elder_prismarine_crystal", consumer);
+        buildToolRecipe("redstone", "redstone", consumer);
+        buildToolRecipe("coal", "coal", consumer);
+//        buildToolRecipe("variants:empty_slot_ingot", "empty_slot", consumer);
+
         buildArmorRecipe("copper_ingot", "copper", false, consumer);
         buildArmorRecipe("phantom_membrane", "phantom_membrane", true, consumer);
         buildArmorRecipe("rabbit_hide", "rabbit_hide", true, consumer);
         buildArmorRecipe("white_wool", "wool", true, consumer);
+//        buildArmorRecipe("variants:empty_slot_ingot", "empty_armor_slot", false, consumer);
     }
 
     protected static void buildToolRecipe(String materialName, String toolName, Consumer<FinishedRecipe> consumer) {

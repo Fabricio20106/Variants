@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "variants:item/creeper_soul_lava_bucket"
-  }
-}

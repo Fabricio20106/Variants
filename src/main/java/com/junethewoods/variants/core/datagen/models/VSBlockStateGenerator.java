@@ -10,7 +10,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nonnull;
 
-import static com.junethewoods.variants.core.VSLocations.*;
+import static com.junethewoods.variants.core.util.VSLocations.*;
 
 public class VSBlockStateGenerator extends BlockStateProvider {
     public VSBlockStateGenerator(DataGenerator generator, ExistingFileHelper fileHelper) {
@@ -25,20 +25,20 @@ public class VSBlockStateGenerator extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        simpleBlock(VSBlocks.glow_black_wool.get());
-        simpleBlock(VSBlocks.dark_elder_prismarine.get());
-        simpleBlock(VSBlocks.elder_prismarine.get());
-        simpleBlock(VSBlocks.elder_prismarine_bricks.get());
-        simpleBlock(VSBlocks.elder_sea_lantern.get());
-        simpleBlock(VSBlocks.smooth_purpur.get());
-        simpleBlock(VSBlocks.chiseled_end_stone_bricks.get());
-        simpleBlock(VSBlocks.chiseled_purpur_block.get());
-        simpleBlock(VSBlocks.mossy_purpur_block.get());
-        simpleBlock(VSBlocks.mossy_end_stone_bricks.get());
-        simpleBlock(VSBlocks.mossy_nether_bricks.get());
-        simpleBlock(VSBlocks.ender_wart_block.get());
-        simpleBlock(VSBlocks.ender_planks.get());
-        simpleBlock(VSBlocks.nether_coal_ore.get());
+        simpleBlock(VSBlocks.GLOW_BLACK_WOOL.get());
+        simpleBlock(VSBlocks.DARK_ELDER_PRISMARINE.get());
+        simpleBlock(VSBlocks.ELDER_PRISMARINE.get());
+        simpleBlock(VSBlocks.ELDER_PRISMARINE_BRICKS.get());
+        simpleBlock(VSBlocks.ELDER_SEA_LANTERN.get());
+        simpleBlock(VSBlocks.SMOOTH_PURPUR.get());
+        simpleBlock(VSBlocks.CHISELED_END_STONE_BRICKS.get());
+        simpleBlock(VSBlocks.CHISELED_PURPUR_BLOCK.get());
+        simpleBlock(VSBlocks.MOSSY_PURPUR_BLOCK.get());
+        simpleBlock(VSBlocks.MOSSY_END_STONE_BRICKS.get());
+        simpleBlock(VSBlocks.MOSSY_NETHER_BRICKS.get());
+        simpleBlock(VSBlocks.ENDER_WART_BLOCK.get());
+        simpleBlock(VSBlocks.ENDER_PLANKS.get());
+        simpleBlock(VSBlocks.NETHER_COAL_ORE.get());
         simpleBlock(VSBlocks.ENDER_ROOTS.get(), models().cross("ender_roots", modLoc("block/ender_roots")));
         simpleBlock(VSBlocks.ENDER_FUNGUS.get(), models().cross("ender_fungus", modLoc("block/ender_fungus")));
         simpleBlock(VSBlocks.ENDER_SPROUTS.get(), models().cross("ender_sprouts", modLoc("block/ender_sprouts")));
@@ -55,29 +55,29 @@ public class VSBlockStateGenerator extends BlockStateProvider {
                 "variants:block/template_potted_crop").texture("crop", "variants:block/potted_crops/warped_wart"));
         simpleBlock(VSBlocks.QUARTZ_GLASS.get());
 
-        slabBlock((SlabBlock) VSBlocks.elder_prismarine_slab.get(), ELDER_PRISMARINE, ELDER_PRISMARINE);
-        slabBlock((SlabBlock) VSBlocks.dark_elder_prismarine_slab.get(), DARK_ELDER_PRISMARINE, DARK_ELDER_PRISMARINE);
-        slabBlock((SlabBlock) VSBlocks.elder_prismarine_brick_slab.get(), ELDER_PRISMARINE_BRICKS, ELDER_PRISMARINE_BRICKS);
-        slabBlock((SlabBlock) VSBlocks.mossy_end_stone_brick_slab.get(), modLoc("block/mossy_end_stone_bricks"), modLoc("block/mossy_end_stone_bricks"));
-        slabBlock((SlabBlock) VSBlocks.mossy_purpur_slab.get(), modLoc("block/mossy_purpur_block"), modLoc("block/mossy_purpur_block"));
-        slabBlock((SlabBlock) VSBlocks.mossy_nether_brick_slab.get(), modLoc("block/mossy_nether_bricks"), modLoc("block/mossy_nether_bricks"));
-        slabBlock((SlabBlock) VSBlocks.ender_slab.get(), ENDER_PLANK, ENDER_PLANK);
+        slabBlock((SlabBlock) VSBlocks.ELDER_PRISMARINE_SLAB.get(), ELDER_PRISMARINE, ELDER_PRISMARINE);
+        slabBlock((SlabBlock) VSBlocks.DARK_ELDER_PRISMARINE_SLAB.get(), DARK_ELDER_PRISMARINE, DARK_ELDER_PRISMARINE);
+        slabBlock((SlabBlock) VSBlocks.ELDER_PRISMARINE_BRICK_SLAB.get(), ELDER_PRISMARINE_BRICKS, ELDER_PRISMARINE_BRICKS);
+        slabBlock((SlabBlock) VSBlocks.MOSSY_END_STONE_BRICK_SLAB.get(), modLoc("block/mossy_end_stone_bricks"), modLoc("block/mossy_end_stone_bricks"));
+        slabBlock((SlabBlock) VSBlocks.MOSSY_PURPUR_SLAB.get(), modLoc("block/mossy_purpur_block"), modLoc("block/mossy_purpur_block"));
+        slabBlock((SlabBlock) VSBlocks.MOSSY_NETHER_BRICK_SLAB.get(), modLoc("block/mossy_nether_bricks"), modLoc("block/mossy_nether_bricks"));
+        slabBlock((SlabBlock) VSBlocks.ENDER_SLAB.get(), ENDER_PLANKS, ENDER_PLANKS);
 
-        stairsBlock((StairBlock) VSBlocks.elder_prismarine_brick_stairs.get(), ELDER_PRISMARINE_BRICKS);
-        stairsBlock((StairBlock) VSBlocks.dark_elder_prismarine_stairs.get(), DARK_ELDER_PRISMARINE);
-        stairsBlock((StairBlock) VSBlocks.elder_prismarine_stairs.get(), ELDER_PRISMARINE);
-        stairsBlock((StairBlock) VSBlocks.mossy_end_stone_brick_stairs.get(), modLoc("block/mossy_end_stone_bricks"));
-        stairsBlock((StairBlock) VSBlocks.mossy_nether_brick_stairs.get(), modLoc("block/mossy_nether_bricks"));
-        stairsBlock((StairBlock) VSBlocks.mossy_purpur_stairs.get(), modLoc("block/mossy_purpur_block"));
-        stairsBlock((StairBlock) VSBlocks.ender_stairs.get(), ENDER_PLANK);
+        stairsBlock((StairBlock) VSBlocks.ELDER_PRISMARINE_BRICK_STAIRS.get(), ELDER_PRISMARINE_BRICKS);
+        stairsBlock((StairBlock) VSBlocks.DARK_ELDER_PRISMARINE_STAIRS.get(), DARK_ELDER_PRISMARINE);
+        stairsBlock((StairBlock) VSBlocks.ELDER_PRISMARINE_STAIRS.get(), ELDER_PRISMARINE);
+        stairsBlock((StairBlock) VSBlocks.MOSSY_END_STONE_BRICK_STAIRS.get(), modLoc("block/mossy_end_stone_bricks"));
+        stairsBlock((StairBlock) VSBlocks.MOSSY_NETHER_BRICK_STAIRS.get(), modLoc("block/mossy_nether_bricks"));
+        stairsBlock((StairBlock) VSBlocks.MOSSY_PURPUR_STAIRS.get(), modLoc("block/mossy_purpur_block"));
+        stairsBlock((StairBlock) VSBlocks.ENDER_STAIRS.get(), ENDER_PLANKS);
 
-        trapdoorBlock((TrapDoorBlock) VSBlocks.alban_trapdoor.get(), modLoc("block/alban_trapdoor"), true);
-        trapdoorBlock((TrapDoorBlock) VSBlocks.aztec_trapdoor.get(), modLoc("block/aztec_trapdoor"), true);
-        trapdoorBlock((TrapDoorBlock) VSBlocks.aztec2_trapdoor.get(), modLoc("block/aztec2_trapdoor"), true);
-        trapdoorBlock((TrapDoorBlock) VSBlocks.bomb_trapdoor.get(), modLoc("block/bomb_trapdoor"), true);
-        trapdoorBlock((TrapDoorBlock) VSBlocks.kebab_trapdoor.get(), modLoc("block/kebab_trapdoor"), true);
-        trapdoorBlock((TrapDoorBlock) VSBlocks.plant_trapdoor.get(), modLoc("block/plant_trapdoor"), true);
-        trapdoorBlock((TrapDoorBlock) VSBlocks.wasteland_trapdoor.get(), modLoc("block/wasteland_trapdoor"), true);
+        trapdoorBlock((TrapDoorBlock) VSBlocks.ALBAN_TRAPDOOR.get(), modLoc("block/alban_trapdoor"), true);
+        trapdoorBlock((TrapDoorBlock) VSBlocks.AZTEC_TRAPDOOR.get(), modLoc("block/aztec_trapdoor"), true);
+        trapdoorBlock((TrapDoorBlock) VSBlocks.AZTEC2_TRAPDOOR.get(), modLoc("block/aztec2_trapdoor"), true);
+        trapdoorBlock((TrapDoorBlock) VSBlocks.BOMB_TRAPDOOR.get(), modLoc("block/bomb_trapdoor"), true);
+        trapdoorBlock((TrapDoorBlock) VSBlocks.KEBAB_TRAPDOOR.get(), modLoc("block/kebab_trapdoor"), true);
+        trapdoorBlock((TrapDoorBlock) VSBlocks.PLANT_TRAPDOOR.get(), modLoc("block/plant_trapdoor"), true);
+        trapdoorBlock((TrapDoorBlock) VSBlocks.WASTELAND_TRAPDOOR.get(), modLoc("block/wasteland_trapdoor"), true);
         trapdoorBlock((TrapDoorBlock) VSBlocks.PAINTING_TRAPDOOR.get(), modLoc("block/painting_trapdoor"), true);
         trapdoorBlock((TrapDoorBlock) VSBlocks.ENDER_TRAPDOOR.get(), modLoc("block/ender_trapdoor"), true);
 
@@ -87,26 +87,26 @@ public class VSBlockStateGenerator extends BlockStateProvider {
         doorBlock((DoorBlock) VSBlocks.DARK_OAK_TRAPDOOR_DOOR.get(), modLoc("block/dark_oak_trapdoor_door_bottom"), modLoc("block/dark_oak_trapdoor_door_top"));
         doorBlock((DoorBlock) VSBlocks.OAK_TRAPDOOR_DOOR.get(), modLoc("block/oak_trapdoor_door_bottom"), modLoc("block/oak_trapdoor_door_top"));
 
-        axisBlock((RotatedPillarBlock) VSBlocks.wither_bone_block.get(), modLoc("block/wither_bone_block_side"), modLoc("block/wither_bone_block_top"));
-        axisBlock((RotatedPillarBlock) VSBlocks.painting_log.get(), modLoc("block/painting_log"), modLoc("block/painting_log_top"));
-        axisBlock((RotatedPillarBlock) VSBlocks.painting_wood.get(), modLoc("block/painting_log"), modLoc("block/painting_log"));
-        axisBlock((RotatedPillarBlock) VSBlocks.stripped_painting_log.get(), modLoc("block/stripped_painting_log"), modLoc("block/stripped_painting_log_top"));
-        axisBlock((RotatedPillarBlock) VSBlocks.stripped_painting_wood.get(), modLoc("block/stripped_painting_log"), modLoc("block/stripped_painting_log"));
-        axisBlock((RotatedPillarBlock) VSBlocks.end_stone_pillar.get(), modLoc("block/end_stone_pillar"), modLoc("block/end_stone_pillar_top"));
-        axisBlock((RotatedPillarBlock) VSBlocks.nether_brick_pillar.get(), modLoc("block/nether_brick_pillar"), modLoc("block/nether_brick_pillar_top"));
-        axisBlock((RotatedPillarBlock) VSBlocks.ender_stem.get(), modLoc("block/ender_stem"), modLoc("block/ender_stem_top"));
-        axisBlock((RotatedPillarBlock) VSBlocks.stripped_ender_stem.get(), modLoc("block/stripped_ender_stem"), modLoc("block/stripped_ender_stem_top"));
-        axisBlock((RotatedPillarBlock) VSBlocks.ender_hyphae.get(), modLoc("block/ender_stem"), modLoc("block/ender_stem"));
-        axisBlock((RotatedPillarBlock) VSBlocks.stripped_ender_hyphae.get(), modLoc("block/stripped_ender_stem"), modLoc("block/stripped_ender_stem"));
+        axisBlock((RotatedPillarBlock) VSBlocks.WITHER_BONE_BLOCK.get(), modLoc("block/wither_bone_block_side"), modLoc("block/wither_bone_block_top"));
+        axisBlock((RotatedPillarBlock) VSBlocks.PAINTING_LOG.get(), modLoc("block/painting_log"), modLoc("block/painting_log_top"));
+        axisBlock((RotatedPillarBlock) VSBlocks.PAINTING_WOOD.get(), modLoc("block/painting_log"), modLoc("block/painting_log"));
+        axisBlock((RotatedPillarBlock) VSBlocks.STRIPPED_PAINTING_LOG.get(), modLoc("block/stripped_painting_log"), modLoc("block/stripped_painting_log_top"));
+        axisBlock((RotatedPillarBlock) VSBlocks.STRIPPED_PAINTING_WOOD.get(), modLoc("block/stripped_painting_log"), modLoc("block/stripped_painting_log"));
+        axisBlock((RotatedPillarBlock) VSBlocks.END_STONE_PILLAR.get(), modLoc("block/end_stone_pillar"), modLoc("block/end_stone_pillar_top"));
+        axisBlock((RotatedPillarBlock) VSBlocks.NETHER_BRICK_PILLAR.get(), modLoc("block/nether_brick_pillar"), modLoc("block/nether_brick_pillar_top"));
+        axisBlock((RotatedPillarBlock) VSBlocks.ENDER_STEM.get(), modLoc("block/ender_stem"), modLoc("block/ender_stem_top"));
+        axisBlock((RotatedPillarBlock) VSBlocks.STRIPPED_ENDER_STEM.get(), modLoc("block/stripped_ender_stem"), modLoc("block/stripped_ender_stem_top"));
+        axisBlock((RotatedPillarBlock) VSBlocks.ENDER_HYPHAE.get(), modLoc("block/ender_stem"), modLoc("block/ender_stem"));
+        axisBlock((RotatedPillarBlock) VSBlocks.STRIPPED_ENDER_HYPHAE.get(), modLoc("block/stripped_ender_stem"), modLoc("block/stripped_ender_stem"));
 
-        fenceGateBlock((FenceGateBlock) VSBlocks.ender_fence_gate.get(), ENDER_PLANK);
-        fenceBlock((FenceBlock) VSBlocks.red_nether_brick_fence.get(), mcLoc("block/red_nether_bricks"));
-        fenceBlock((FenceBlock) VSBlocks.ender_fence.get(), ENDER_PLANK);
+        fenceGateBlock((FenceGateBlock) VSBlocks.ENDER_FENCE_GATE.get(), ENDER_PLANKS);
+        fenceBlock((FenceBlock) VSBlocks.RED_NETHER_BRICK_FENCE.get(), mcLoc("block/red_nether_bricks"));
+        fenceBlock((FenceBlock) VSBlocks.ENDER_FENCE.get(), ENDER_PLANKS);
 
         paneBlock((IronBarsBlock) VSBlocks.QUARTZ_GLASS_PANE.get(), modLoc("block/quartz_glass"), modLoc("block/quartz_glass_pane_top"));
         paneBlock((IronBarsBlock) VSBlocks.QUARTZ_BARS.get(), modLoc("block/quartz_bars"), modLoc("block/quartz_bars"));
 
-        wallBlock((WallBlock) VSBlocks.elder_prismarine_wall.get(), ELDER_PRISMARINE);
+        wallBlock((WallBlock) VSBlocks.ELDER_PRISMARINE_WALL.get(), ELDER_PRISMARINE);
 
         // 2.0.0
         doorBlock((DoorBlock) VSBlocks.PAINTING_DOOR.get(), modLoc("block/painting_door_bottom"), modLoc("block/painting_door_top"));

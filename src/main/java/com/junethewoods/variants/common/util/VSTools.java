@@ -1,6 +1,8 @@
 package com.junethewoods.variants.common.util;
 
 import com.junethewoods.variants.core.init.VSItems;
+import com.junethewoods.variants.core.init.VSTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
@@ -17,7 +19,7 @@ public enum VSTools implements Tier {
     GRANITE(2, 425, 4.0F, 1.0F, 5, () -> Ingredient.of(Blocks.GRANITE)),
     MAGMA(1, 131, 4.0F, 1.0F, 5, () -> Ingredient.of(Blocks.MAGMA_BLOCK)),
     EMERALD(3, 2031, 5.0F, 3.0F, 15, () -> Ingredient.of(Tags.Items.GEMS_EMERALD)),
-    AMETHYST(2, 250, 6.0F, 2.0F, 14, () -> Ingredient.of(Tags.Items.GEMS_AMETHYST)),
+    AMETHYST(2, 250, 6.0F, 2.0F, 17, () -> Ingredient.of(Tags.Items.GEMS_AMETHYST)),
     COPPER(2, 250, 6.0F, 2.0F, 14, () -> Ingredient.of(Tags.Items.INGOTS_COPPER)),
     QUARTZ(2, 350, 6.0F, 2.0F, 14, () -> Ingredient.of(Tags.Items.GEMS_QUARTZ)),
 
@@ -43,11 +45,18 @@ public enum VSTools implements Tier {
     CALCITE(1, 121, 4, 0.75f, 3, () -> Ingredient.of(Items.CALCITE)),
     TUFF(1, 121, 4, 1.5f, 6, () -> Ingredient.of(Items.TUFF)),
     BEDROCK(32, 16384, 4, 200000, 16384, () -> Ingredient.of(Items.BEDROCK)),
-    OBSIDIAN(3, 2031, 3, 2.25f, 3, () -> Ingredient.of(Items.OBSIDIAN)),
-    CRYING_OBSIDIAN(3, 2031, 3, 2.25f, 6, () -> Ingredient.of(Items.CRYING_OBSIDIAN)),
+    OBSIDIAN(3, 2031, 3, 4, 3, () -> Ingredient.of(Items.OBSIDIAN)),
+    CRYING_OBSIDIAN(3, 2031, 3, 4, 6, () -> Ingredient.of(Items.CRYING_OBSIDIAN)),
     NETHERRACK(0, 91, 2, 0, 2, () -> Ingredient.of(Items.NETHERRACK)),
     BASALT(1, 141, 4.25f, 1.25f, 3, () -> Ingredient.of(Items.BASALT)),
-    BLACKSTONE(1, 151, 4f, 1.25f, 4, () -> Ingredient.of(Items.BLACKSTONE));
+    BLACKSTONE(1, 151, 4f, 1.25f, 4, () -> Ingredient.of(Items.BLACKSTONE)),
+
+    // Mineral tools
+    REDSTONE(2, 350, 10, 0.5f, 8, () -> Ingredient.of(Tags.Items.DUSTS_REDSTONE)),
+    PRISMARINE_CRYSTALS(3, 850, 3.5f, 2, 12, () -> Ingredient.of(Tags.Items.GEMS_PRISMARINE)),
+    ELDER_PRISMARINE_CRYSTALS(3, 850, 3.5f, 2, 12, () -> Ingredient.of(VSItems.ELDER_PRISMARINE_CRYSTALS.get())),
+    COAL(1, 200, 3, 1.5f, 6, () -> Ingredient.of(ItemTags.COALS)),
+    EMPTY_SLOT(2, 450, 7, 3, 9, () -> Ingredient.of(VSTags.Items.INGOTS_EMPTY_SLOT));
 
     private final int harvestLevel;
     private final int durability;

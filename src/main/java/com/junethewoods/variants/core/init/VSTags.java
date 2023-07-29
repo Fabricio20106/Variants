@@ -18,6 +18,8 @@ public final class VSTags {
         public static final TagKey<Item> PAINTING_LOGS = mod("painting_logs");
         public static final TagKey<Item> ENDER_LOGS = mod("ender_logs");
 
+        public static final TagKey<Item> INGOTS_EMPTY_SLOT = forge("ingots/empty_slot");
+
         private static TagKey<Item> forge(String path) {
             return ItemTags.create(new ResourceLocation("forge", path));
         }

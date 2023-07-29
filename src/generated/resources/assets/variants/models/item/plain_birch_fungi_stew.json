@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "variants:item/plain_birch_bowl",
-    "layer1": "variants:item/fungi"
-  }
-}

@@ -1,9 +1,5 @@
 package com.junethewoods.variants.core;
 
-import com.junethewoods.variants.common.block.blockcolor.CauldronBlockColor;
-import com.junethewoods.variants.common.block.blockcolor.PaintingLeavesBlockColor;
-import com.junethewoods.variants.common.item.LeavesItemColor;
-import com.junethewoods.variants.common.item.WoolSweatchestColor;
 import com.junethewoods.variants.core.biome.VSBiomes;
 import com.junethewoods.variants.core.init.*;
 import com.junethewoods.variants.core.sound.VSSounds;
@@ -13,10 +9,8 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -28,23 +22,24 @@ import org.apache.logging.log4j.Logger;
 public class Variants {
     public static final Logger LOGGER = LogManager.getLogger(Variants.MOD_ID);
     public static final String MOD_ID = "variants";
-    public static boolean debugLogs = false;
-    // variants:pornhey
+    public static final CreativeModeTab VARIANT_FOODSTUFFS = new CreativeModeTab("variant.food") {
+        @Override public ItemStack makeIcon() {
+            return new ItemStack(VSItems.FUNGI_STEW.get());
+        }
+    };
 
     public Variants() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(this::clientSetup);
-        modEventBus.addListener(this::registerBlockColors);
-        modEventBus.addListener(this::registerItemColors);
+        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        eventBus.addListener(this::commonSetup);
+        eventBus.addListener(this::clientSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
-        VSEntities.ENTITIES.register(modEventBus);
-        VSBlocks.BLOCKS.register(modEventBus);
-        VSFluids.FLUIDS.register(modEventBus);
-        VSItems.ITEMS.register(modEventBus);
-        VSWeaponry.ITEMS.register(modEventBus);
-        VSBiomes.BIOMES.register(modEventBus);
+        VSItems.ITEMS.register(eventBus);
+        VSWeaponry.ITEMS.register(eventBus);
+        VSBlocks.BLOCKS.register(eventBus);
+        VSFluids.FLUIDS.register(eventBus);
+        VSEntities.ENTITIES.register(eventBus);
+        VSBiomes.BIOMES.register(eventBus);
         VSSounds.registerSounds();
     }
 
@@ -59,12 +54,6 @@ public class Variants {
         //GlobalEntityTypeAttributes.put(EntityInit.pornhey.get(), PornheyEntity.createAttributes().build());
     }
 
-    /**
-     * Makes a {@link ResourceLocation} with mod id "variants"
-     *
-     * @param name     The name for the thing in the {@link ResourceLocation}
-     * @return A {@link ResourceLocation} with mod id "variants" plus the name
-     */
     public static ResourceLocation resourceLoc(String name) {
         return new ResourceLocation(Variants.MOD_ID, name);
     }
@@ -122,7 +111,6 @@ public class Variants {
         ItemBlockRenderTypes.setRenderLayer(VSBlocks.WARPING_VINES_PLANT.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(VSFluids.SOUL_LAVA.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(VSFluids.FLOWING_SOUL_LAVA.get(), RenderType.translucent());
-        VSBlockColors.initiateModColoring();
 
         //RenderingRegistry.registerEntityRenderingHandler(EntityInit.old_cod.get(), OldCodRenderer::new);
         //RenderingRegistry.registerEntityRenderingHandler(EntityInit.pornhey.get(), PornheyRenderer::new);
@@ -136,65 +124,5 @@ public class Variants {
         });
         ItemProperties.register(VSWeaponry.DEBUG_BOW.get(), new ResourceLocation("pulling"), (stack, world, livingEntity, idk) ->
                 livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == stack ? 1.0F : 0.0F);
-    }
-
-    @SubscribeEvent
-    public void registerBlockColors(ColorHandlerEvent.Block event) {
-        event.getBlockColors().register(new PaintingLeavesBlockColor(), VSBlocks.PAINTING_LEAVES.get());
-        event.getBlockColors().register(new CauldronBlockColor(), VSBlocks.GOLD_CAULDRON.get(), VSBlocks.QUARTZ_CAULDRON.get());
-    }
-
-    @SubscribeEvent
-    public void registerItemColors(ColorHandlerEvent.Item event) {
-        event.getItemColors().register(new LeavesItemColor(), VSBlocks.PAINTING_LEAVES.get());
-        event.getItemColors().register(new WoolSweatchestColor(), VSWeaponry.WOOL_SWEATCHEST.get());
-    }
-
-    public static class CreativeTabs {
-        public static final CreativeModeTab variant_building_blocks = new CreativeModeTab("variant.building_blocks") {
-            @Override public ItemStack makeIcon() {
-                return new ItemStack(VSItems.ELDER_PRISMARINE_BRICKS.get());
-            }
-        };
-        public static final CreativeModeTab variant_decorations = new CreativeModeTab("variant.decorations") {
-            @Override public ItemStack makeIcon() {
-                return new ItemStack(VSItems.sunny_flower.get());
-            }
-        };
-        public static final CreativeModeTab variant_redstone = new CreativeModeTab("variant.redstone") {
-            @Override public ItemStack makeIcon() {
-                return new ItemStack(VSItems.ELDER_PRISMARINE_BRICKS.get());
-            }
-        };
-        public static final CreativeModeTab variant_transportation = new CreativeModeTab("variant.transportation") {
-            @Override public ItemStack makeIcon() {
-                return new ItemStack(VSItems.powered_railbed.get());
-            }
-        };
-        public static final CreativeModeTab variant_misc = new CreativeModeTab("variant.misc") {
-            @Override public ItemStack makeIcon() {
-                return new ItemStack(VSItems.soul_lava_bucket.get());
-            }
-        };
-        public static final CreativeModeTab variant_food = new CreativeModeTab("variant.food") {
-            @Override public ItemStack makeIcon() {
-                return new ItemStack(VSItems.fungi_stew.get());
-            }
-        };
-        public static final CreativeModeTab variant_tools = new CreativeModeTab("variant.tools") {
-            @Override public ItemStack makeIcon() {
-                return new ItemStack(VSWeaponry.diorite_axe.get());
-            }
-        };
-        public static final CreativeModeTab variant_combat = new CreativeModeTab("variant.combat") {
-            @Override public ItemStack makeIcon() {
-                return new ItemStack(VSWeaponry.end_stone_sword.get());
-            }
-        };
-        public static final CreativeModeTab variant_brewing = new CreativeModeTab("variant.brewing") {
-            @Override public ItemStack makeIcon() {
-                return new ItemStack(VSItems.gold_cauldron.get());
-            }
-        };
     }
 }

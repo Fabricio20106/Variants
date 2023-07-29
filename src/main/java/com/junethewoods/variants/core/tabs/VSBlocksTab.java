@@ -5,10 +5,10 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
 public class VSBlocksTab extends CreativeModeTab {
-    public static final VSBlocksTab TAB = new VSBlocksTab(CreativeModeTab.TABS.length, "variants_blocks");
+    public static final VSBlocksTab TAB = new VSBlocksTab("variants_blocks");
 
-    public VSBlocksTab(int index, String label) {
-        super(index, label);
+    public VSBlocksTab(String label) {
+        super(label);
     }
 
     @Override

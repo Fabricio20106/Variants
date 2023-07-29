@@ -91,13 +91,13 @@ public class VSItemModelGenerator extends ItemModelProvider {
 
         standard(generated, "music_disc_dog");
         standard(generated, "glow_black_shulker_shell");
-        standard(generated, "hilary_bottle");
+//        standard(generated, "hilary_bottle");
         standard(handheld, "magma_sword");
         standard(generated, "redstone_pot");
         standard(generated, "glowstone_pot");
         standard(generated, "gunpowder_pot");
-        standard(generated, "bluestone_pot");
-        standard(generated, "creeper_powder_pot");
+//        standard(generated, "bluestone_pot");
+//        standard(generated, "creeper_powder_pot");
         standard(generated, "stylised_pot");
         standard(generated, "sweet_berry_pot");
         standard(generated, "glow_berry_pot");
@@ -137,9 +137,9 @@ public class VSItemModelGenerator extends ItemModelProvider {
         standard(generated, "crimson_bowl");
         standard(generated, "warped_bowl");
         standard(generated, "painting_bowl");
-        standard(generated, "glassy_oak_bowl");
-        standard(generated, "plain_birch_bowl");
-        standard(generated, "wooden_bowl");
+//        standard(generated, "glassy_oak_bowl");
+//        standard(generated, "plain_birch_bowl");
+//        standard(generated, "wooden_bowl");
         standard(generated, "ender_door");
         standard(generated, "ender_sprouts");
         block(generated, "ender_roots");
@@ -185,17 +185,18 @@ public class VSItemModelGenerator extends ItemModelProvider {
         standard(generated, "crimson_wheat");
         standard(generated, "crimson_wheat_seeds");
         standard(generated, "crimson_bread");
-        standard(generated, "golden_bucket");
-        standard(generated, "golden_lava_bucket");
-        standard(generated, "golden_soul_lava_bucket");
-        standard(generated, "mushroom_stew_creeper_bucket");
-        standard(generated, "beetroot_soup_creeper_bucket");
-        standard(generated, "rabbit_stew_creeper_bucket");
-        standard(generated, "fungi_stew_creeper_bucket");
-        standard(generated, "end_fungi_stew_creeper_bucket");
-        standard(generated, "creeper_soul_lava_bucket");
+//        standard(generated, "golden_bucket");
+//        standard(generated, "golden_lava_bucket");
+//        standard(generated, "golden_soul_lava_bucket");
+//        standard(generated, "mushroom_stew_creeper_bucket");
+//        standard(generated, "beetroot_soup_creeper_bucket");
+//        standard(generated, "rabbit_stew_creeper_bucket");
+//        standard(generated, "fungi_stew_creeper_bucket");
+//        standard(generated, "end_fungi_stew_creeper_bucket");
+//        standard(generated, "creeper_soul_lava_bucket");
         standard(generated, "soul_carrot");
         standard(handheldRod, "soul_carrot_on_a_stick");
+
         // 1.18.2-2.0.0
         getBuilder("warping_vines").parent(generated).texture("layer0", "block/warping_vines_plant");
         standard(generated, "copper_helmet");
@@ -210,6 +211,7 @@ public class VSItemModelGenerator extends ItemModelProvider {
         standard(generated, "wool_helmet");
         standard(generated, "wool_leggings");
         standard(generated, "wool_boots");
+        standard(generated, "empty_slot_ingot");
 
         // Tools
         standard(handheld, "deepslate_sword");
@@ -271,6 +273,13 @@ public class VSItemModelGenerator extends ItemModelProvider {
         standard(handheld, "crying_obsidian_shovel");
         standard(handheld, "crying_obsidian_axe");
         standard(handheld, "crying_obsidian_hoe");
+        toolSet("redstone");
+        toolSet("prismarine_crystal");
+        toolSet("coal");
+        toolSet("copper");
+        toolSet("amethyst");
+        toolSet("elder_prismarine_crystal");
+        toolSet("empty_slot");
 
         // Wood Tools
         toolSet("oak");

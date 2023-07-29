@@ -1,0 +1,5 @@
+Things to do in Variants:
+1. Make world generation work again.
+  a. Ore Generation;
+  b. Painting Tree;
+  c. Paintingwood Forest.

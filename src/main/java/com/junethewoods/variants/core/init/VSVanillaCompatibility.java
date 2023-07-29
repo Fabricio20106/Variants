@@ -8,26 +8,26 @@ import net.minecraft.world.level.block.FireBlock;
 
 public class VSVanillaCompatibility {
     public static void register() {
-        registerStrippables(VSBlocks.painting_log.get(), VSBlocks.stripped_painting_log.get());
-        registerStrippables(VSBlocks.painting_wood.get(), VSBlocks.stripped_painting_wood.get());
-        registerStrippables(VSBlocks.ender_stem.get(), VSBlocks.stripped_ender_stem.get());
-        registerStrippables(VSBlocks.ender_hyphae.get(), VSBlocks.stripped_ender_hyphae.get());
+        registerStrippables(VSBlocks.PAINTING_LOG.get(), VSBlocks.STRIPPED_PAINTING_LOG.get());
+        registerStrippables(VSBlocks.PAINTING_WOOD.get(), VSBlocks.STRIPPED_PAINTING_WOOD.get());
+        registerStrippables(VSBlocks.ENDER_STEM.get(), VSBlocks.STRIPPED_ENDER_STEM.get());
+        registerStrippables(VSBlocks.ENDER_HYPHAE.get(), VSBlocks.STRIPPED_ENDER_HYPHAE.get());
         /*registerHoeables(Blocks.CRIMSON_NYLIUM, VSBlocks.CRIMSON_FARMLAND.get().defaultBlockState());
         registerHoeables(Blocks.WARPED_NYLIUM, VSBlocks.WARPED_FARMLAND.get().defaultBlockState());
         registerHoeables(VSBlocks.ender_nylium.get(), VSBlocks.ENDER_FARMLAND.get().defaultBlockState());*/
 
-        registerFlammable(VSBlocks.painting_log.get(), 5, 5);
-        registerFlammable(VSBlocks.painting_wood.get(), 5, 5);
-        registerFlammable(VSBlocks.stripped_painting_log.get(), 5, 5);
-        registerFlammable(VSBlocks.stripped_painting_wood.get(), 5, 5);
-        registerFlammable(VSBlocks.painting_stairs.get(), 5, 20);
-        registerFlammable(VSBlocks.painting_slab.get(), 5, 20);
-        registerFlammable(VSBlocks.painting_fence_gate.get(), 5, 20);
-        registerFlammable(VSBlocks.painting_fence.get(), 5, 20);
+        registerFlammable(VSBlocks.PAINTING_LOG.get(), 5, 5);
+        registerFlammable(VSBlocks.PAINTING_WOOD.get(), 5, 5);
+        registerFlammable(VSBlocks.STRIPPED_PAINTING_LOG.get(), 5, 5);
+        registerFlammable(VSBlocks.STRIPPED_PAINTING_WOOD.get(), 5, 5);
+        registerFlammable(VSBlocks.PAINTING_STAIRS.get(), 5, 20);
+        registerFlammable(VSBlocks.PAINTING_SLAB.get(), 5, 20);
+        registerFlammable(VSBlocks.PAINTING_FENCE_GATE.get(), 5, 20);
+        registerFlammable(VSBlocks.PAINTING_FENCE.get(), 5, 20);
         registerFlammable(VSBlocks.PAINTING_PLANKS.get(), 5, 20);
         registerFlammable(VSBlocks.PAINTING_LEAVES.get(), 30, 60);
-        registerFlammable(VSBlocks.glow_black_wool.get(), 30, 60);
-        registerFlammable(VSBlocks.glow_black_carpet.get(), 60, 20);
+        registerFlammable(VSBlocks.GLOW_BLACK_WOOL.get(), 30, 60);
+        registerFlammable(VSBlocks.GLOW_BLACK_CARPET.get(), 60, 20);
         registerFlammable(VSBlocks.SUNNY_FLOWER.get(), 60, 100);
         registerFlammable(VSBlocks.GLOW_BLACK_TULIP.get(), 60, 100);
         registerFlammable(VSBlocks.GLOW_BERRY_BUSH.get(), 60, 100);

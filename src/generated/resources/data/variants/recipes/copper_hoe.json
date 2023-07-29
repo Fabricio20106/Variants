@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "HH",
+    " S",
+    " S"
+  ],
+  "key": {
+    "H": {
+      "item": "minecraft:copper_ingot"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "variants:copper_hoe"
+  }
+}

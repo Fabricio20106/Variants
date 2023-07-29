@@ -13,6 +13,6 @@ import net.minecraftforge.registries.RegistryObject;
 public class F10CompatBlocks {
     public static final DeferredRegister<Block> F10PACK_ITEMS = DeferredRegister.create(ForgeRegistries.BLOCKS, Variants.MOD_ID);
 
-    public static final RegistryObject<Block> FIRST_DOOR = F10PACK_ITEMS.register("first_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(VSBlocks.wanderer_door.get())));
+    public static final RegistryObject<Block> FIRST_DOOR = F10PACK_ITEMS.register("first_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(VSBlocks.WANDERER_DOOR.get())));
     public static final RegistryObject<Block> PLAIN_BIRCH_BOOKSHELF = F10PACK_ITEMS.register("plain_birch_bookshelf", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BOOKSHELF)));
 }
