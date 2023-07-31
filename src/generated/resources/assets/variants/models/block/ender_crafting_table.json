@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "variants:block/ender_crafting_table_front",
+    "south": "variants:block/ender_crafting_table_front",
+    "east": "variants:block/ender_crafting_table_side",
+    "west": "variants:block/ender_crafting_table_side",
+    "up": "variants:block/ender_crafting_table_top",
+    "bottom": "variants:block/ender_planks",
+    "particle": "variants:block/ender_crafting_table_front"
+  }
+}

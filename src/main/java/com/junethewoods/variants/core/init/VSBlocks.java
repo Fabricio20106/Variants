@@ -6,12 +6,12 @@ import com.junethewoods.variants.common.block.plant.*;
 import com.junethewoods.variants.common.block.plant.theend.*;
 import com.junethewoods.variants.core.Variants;
 import com.junethewoods.variants.core.sound.VSSoundTypes;
+import com.junethewoods.variants.core.worldgen.vegetation.tree.PaintingTreeGrower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.grower.OakTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
@@ -41,7 +41,7 @@ public class VSBlocks {
     public static final RegistryObject<Block> SUNNY_FLOWER = BLOCKS.register("sunny_flower", () -> new FlowerBlock(MobEffects.GLOWING, 7, BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.CROP)));
     public static final RegistryObject<Block> POTTED_SUNNY_FLOWER = BLOCKS.register("potted_sunny_flower", () -> new FlowerPotBlock(VSBlocks.SUNNY_FLOWER.get(), BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
     public static final RegistryObject<Block> GLOW_BERRY_BUSH = BLOCKS.register("glow_berry_bush", () -> new GlowBerryBushBlock(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH)));
-    public static final RegistryObject<Block> PAINTING_SAPLING = BLOCKS.register("painting_sapling", () -> new SaplingBlock(new OakTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
+    public static final RegistryObject<Block> PAINTING_SAPLING = BLOCKS.register("painting_sapling", () -> new SaplingBlock(new PaintingTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
     public static final RegistryObject<Block> PAINTING_LOG = BLOCKS.register("painting_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistryObject<Block> PAINTING_WOOD = BLOCKS.register("painting_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistryObject<Block> STRIPPED_PAINTING_LOG = BLOCKS.register("stripped_painting_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
@@ -150,6 +150,15 @@ public class VSBlocks {
     //public static final RegistryObject<Block> LONG_TIMED_BUTTON = blocks.register("long_timed_button", () -> new LongTimedButtonBlock(BlockBehaviour.Properties.copy(Blocks.HEAVY_WEIGHTED_PRESSURE_PLATE)));
     public static final RegistryObject<Block> CRYSTALLIZED_MAGMA_CREAM_ORE = BLOCKS.register("crystallized_magma_cream_ore", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)));
     public static final RegistryObject<Block> MIXER = BLOCKS.register("mixer", () -> new MixerMachineBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> SPRUCE_CRAFTING_TABLE = BLOCKS.register("spruce_crafting_table", () -> new VSCraftingTableBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)));
+    public static final RegistryObject<Block> BIRCH_CRAFTING_TABLE = BLOCKS.register("birch_crafting_table", () -> new VSCraftingTableBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)));
+    public static final RegistryObject<Block> JUNGLE_CRAFTING_TABLE = BLOCKS.register("jungle_crafting_table", () -> new VSCraftingTableBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)));
+    public static final RegistryObject<Block> ACACIA_CRAFTING_TABLE = BLOCKS.register("acacia_crafting_table", () -> new VSCraftingTableBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)));
+    public static final RegistryObject<Block> DARK_OAK_CRAFTING_TABLE = BLOCKS.register("dark_oak_crafting_table", () -> new VSCraftingTableBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)));
+    public static final RegistryObject<Block> PAINTING_CRAFTING_TABLE = BLOCKS.register("painting_crafting_table", () -> new VSCraftingTableBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)));
+    public static final RegistryObject<Block> CRIMSON_CRAFTING_TABLE = BLOCKS.register("crimson_crafting_table", () -> new VSCraftingTableBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)));
+    public static final RegistryObject<Block> WARPED_CRAFTING_TABLE = BLOCKS.register("warped_crafting_table", () -> new VSCraftingTableBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)));
+    public static final RegistryObject<Block> ENDER_CRAFTING_TABLE = BLOCKS.register("ender_crafting_table", () -> new VSCraftingTableBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)));
 
     private static boolean needsPostProcessing(BlockState state, BlockGetter reader, BlockPos pos) {
         return false;

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "variants:block/painting_crafting_table_front",
+    "south": "variants:block/painting_crafting_table_front",
+    "east": "variants:block/painting_crafting_table_side",
+    "west": "variants:block/painting_crafting_table_side",
+    "up": "variants:block/painting_crafting_table_top",
+    "bottom": "variants:block/painting_planks",
+    "particle": "variants:block/painting_crafting_table_front"
+  }
+}

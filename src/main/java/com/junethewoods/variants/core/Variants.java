@@ -3,6 +3,8 @@ package com.junethewoods.variants.core;
 import com.junethewoods.variants.core.biome.VSBiomes;
 import com.junethewoods.variants.core.init.*;
 import com.junethewoods.variants.core.sound.VSSounds;
+import com.junethewoods.variants.core.worldgen.ore.VSOrePlacements;
+import com.junethewoods.variants.core.worldgen.vegetation.VSVegetationPlacements;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -10,6 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -44,6 +47,7 @@ public class Variants {
     }
 
     public void commonSetup(final FMLCommonSetupEvent event) {
+        loadPlacementClasses();
         //VariantFeatures.actuallyGenerateStuff();
         //VanillaCompat.register();
         //RegistryKey<Biome> paintingWoodenForestKey = RegistryKey.create(ForgeRegistries.Keys.BIOMES, BiomeInit.painting_wooded_forest.getId());
@@ -56,6 +60,11 @@ public class Variants {
 
     public static ResourceLocation resourceLoc(String name) {
         return new ResourceLocation(Variants.MOD_ID, name);
+    }
+
+    public static void loadPlacementClasses() {
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, VSVegetationPlacements::onBiomeLoad);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, VSOrePlacements::onBiomeLoad);
     }
 
     public void clientSetup(final FMLClientSetupEvent event) {

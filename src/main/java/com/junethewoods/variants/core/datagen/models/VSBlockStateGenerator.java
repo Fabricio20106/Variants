@@ -1,8 +1,10 @@
 package com.junethewoods.variants.core.datagen.models;
 
+import com.junethewoods.variants.common.block.VSCraftingTableBlock;
 import com.junethewoods.variants.core.Variants;
 import com.junethewoods.variants.core.init.VSBlocks;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -110,6 +112,15 @@ public class VSBlockStateGenerator extends BlockStateProvider {
 
         // 2.0.0
         doorBlock((DoorBlock) VSBlocks.PAINTING_DOOR.get(), modLoc("block/painting_door_bottom"), modLoc("block/painting_door_top"));
+        craftingTableBlock((VSCraftingTableBlock) VSBlocks.SPRUCE_CRAFTING_TABLE.get(), "spruce");
+        craftingTableBlock((VSCraftingTableBlock) VSBlocks.BIRCH_CRAFTING_TABLE.get(), "birch");
+        craftingTableBlock((VSCraftingTableBlock) VSBlocks.JUNGLE_CRAFTING_TABLE.get(), "jungle");
+        craftingTableBlock((VSCraftingTableBlock) VSBlocks.ACACIA_CRAFTING_TABLE.get(), "acacia");
+        craftingTableBlock((VSCraftingTableBlock) VSBlocks.DARK_OAK_CRAFTING_TABLE.get(), "dark_oak");
+        craftingTableBlock((VSCraftingTableBlock) VSBlocks.PAINTING_CRAFTING_TABLE.get(), "painting", Variants.MOD_ID);
+        craftingTableBlock((VSCraftingTableBlock) VSBlocks.CRIMSON_CRAFTING_TABLE.get(), "crimson");
+        craftingTableBlock((VSCraftingTableBlock) VSBlocks.WARPED_CRAFTING_TABLE.get(), "warped");
+        craftingTableBlock((VSCraftingTableBlock) VSBlocks.ENDER_CRAFTING_TABLE.get(), "ender", Variants.MOD_ID);
 
         getVariantBuilder(VSBlocks.WARPED_POTATOES.get()).forAllStates(state -> {
             int i = cropAgeToIndexPotato(state.getValue(CropBlock.AGE));
@@ -123,6 +134,28 @@ public class VSBlockStateGenerator extends BlockStateProvider {
             int i = cropAgeToIndexWheat(state.getValue(CropBlock.AGE));
             return ConfiguredModel.builder().modelFile(models().crop("crimson_wheat_stage" + i, modLoc("block/crimson_wheat_stage" + i))).build();
         });
+    }
+
+    public void craftingTableBlock(VSCraftingTableBlock block, String woodType) {
+        simpleBlock(block, models().withExistingParent(woodType + "_crafting_table", "block/cube")
+                .texture("north", modLoc("block/" + woodType + "_crafting_table_front"))
+                .texture("south", modLoc("block/" + woodType + "_crafting_table_front"))
+                .texture("east", modLoc("block/" + woodType + "_crafting_table_side"))
+                .texture("west", modLoc("block/" + woodType + "_crafting_table_side"))
+                .texture("up", modLoc("block/" + woodType + "_crafting_table_top"))
+                .texture("bottom", mcLoc("block/" + woodType + "_planks"))
+                .texture("particle", modLoc("block/" + woodType + "_crafting_table_front")));
+    }
+
+    public void craftingTableBlock(VSCraftingTableBlock block, String woodType, String modId) {
+        simpleBlock(block, models().withExistingParent(woodType + "_crafting_table", mcLoc("block/cube"))
+                .texture("north", modLoc("block/" + woodType + "_crafting_table_front"))
+                .texture("south", modLoc("block/" + woodType + "_crafting_table_front"))
+                .texture("east", modLoc("block/" + woodType + "_crafting_table_side"))
+                .texture("west", modLoc("block/" + woodType + "_crafting_table_side"))
+                .texture("up", modLoc("block/" + woodType + "_crafting_table_top"))
+                .texture("bottom", modId + ":block/" + woodType + "_planks")
+                .texture("particle", modLoc("block/" + woodType + "_crafting_table_front")));
     }
 
     public static int cropAgeToIndexPotato(int age) {

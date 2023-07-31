@@ -33,6 +33,7 @@ public final class VSTags {
         public static final TagKey<Block> POTTED_STUFF = mod("potted_stuff");
         public static final TagKey<Block> PAINTING_LOGS = mod("painting_logs");
         public static final TagKey<Block> ENDER_LOGS = mod("ender_logs");
+        public static final TagKey<Block> CRAFTING_TABLES = mod("crafting_tables");
 
         private static TagKey<Block> mod(String path) {
             return BlockTags.create(Variants.resourceLoc(path));

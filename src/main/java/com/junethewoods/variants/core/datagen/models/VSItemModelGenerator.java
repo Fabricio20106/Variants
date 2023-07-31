@@ -84,6 +84,15 @@ public class VSItemModelGenerator extends ItemModelProvider {
         withExistingParent("warped_farmland", modLoc("block/warped_farmland"));
         withExistingParent("ender_farmland", modLoc("block/ender_farmland"));
         withExistingParent("nether_coal_ore", modLoc("block/nether_coal_ore"));
+        withExistingParent("spruce_crafting_table", modLoc("block/spruce_crafting_table"));
+        withExistingParent("birch_crafting_table", modLoc("block/birch_crafting_table"));
+        withExistingParent("jungle_crafting_table", modLoc("block/jungle_crafting_table"));
+        withExistingParent("acacia_crafting_table", modLoc("block/acacia_crafting_table"));
+        withExistingParent("dark_oak_crafting_table", modLoc("block/dark_oak_crafting_table"));
+        withExistingParent("painting_crafting_table", modLoc("block/painting_crafting_table"));
+        withExistingParent("crimson_crafting_table", modLoc("block/crimson_crafting_table"));
+        withExistingParent("warped_crafting_table", modLoc("block/warped_crafting_table"));
+        withExistingParent("ender_crafting_table", modLoc("block/ender_crafting_table"));
 
         ModelFile generated = getExistingFile(mcLoc("item/generated"));
         ModelFile handheld = getExistingFile(mcLoc("item/handheld"));
