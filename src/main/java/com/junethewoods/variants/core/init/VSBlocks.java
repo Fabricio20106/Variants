@@ -8,6 +8,7 @@ import com.junethewoods.variants.core.Variants;
 import com.junethewoods.variants.core.sound.VSSoundTypes;
 import com.junethewoods.variants.core.worldgen.vegetation.tree.PaintingTreeGrower;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.BlockGetter;
@@ -82,8 +83,8 @@ public class VSBlocks {
     public static final RegistryObject<Block> GLOW_BLACK_WOOL = BLOCKS.register("glow_black_wool", () -> new Block(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
     public static final RegistryObject<Block> GLOW_BLACK_CARPET = BLOCKS.register("glow_black_carpet", () -> new CarpetBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CARPET)));
     public static final RegistryObject<Block> DIAMOND_BELL = BLOCKS.register("diamond_bell", () -> new BellBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.DIAMOND).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.ANVIL)));
-    public static final RegistryObject<Block> POTTED_TORCH = BLOCKS.register("potted_torch", () -> new FlowerPotBlock(Blocks.TORCH, BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noOcclusion().lightLevel((state) -> 15)));
-    public static final RegistryObject<Block> POTTED_SOUL_TORCH = BLOCKS.register("potted_soul_torch", () -> new FlowerPotBlock(Blocks.SOUL_TORCH, BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noOcclusion().lightLevel((state) -> 10)));
+    public static final RegistryObject<Block> POTTED_TORCH = BLOCKS.register("potted_torch", () -> new PottedTorchBlock(Blocks.TORCH, BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noOcclusion().lightLevel((state) -> 15), ParticleTypes.FLAME));
+    public static final RegistryObject<Block> POTTED_SOUL_TORCH = BLOCKS.register("potted_soul_torch", () -> new PottedTorchBlock(Blocks.SOUL_TORCH, BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noOcclusion().lightLevel((state) -> 10), ParticleTypes.SOUL_FIRE_FLAME));
     public static final RegistryObject<Block> ELDER_PRISMARINE = BLOCKS.register("elder_prismarine", () -> new Block(BlockBehaviour.Properties.copy(Blocks.PRISMARINE)));
     public static final RegistryObject<Block> ELDER_PRISMARINE_STAIRS = BLOCKS.register("elder_prismarine_stairs", () -> new StairBlock(() -> ELDER_PRISMARINE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.PRISMARINE)));
     public static final RegistryObject<Block> ELDER_PRISMARINE_SLAB = BLOCKS.register("elder_prismarine_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.PRISMARINE)));

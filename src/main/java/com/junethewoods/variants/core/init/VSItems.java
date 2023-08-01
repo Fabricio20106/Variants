@@ -155,9 +155,10 @@ public class VSItems {
     public static final RegistryObject<Item> POTTED_WARPED_WART = ITEMS.register("potted_warped_wart", () -> new BlockItem(VSBlocks.POTTED_WARPED_WART.get(), new Item.Properties().tab(VSBlocksTab.TAB)));
     public static final RegistryObject<Item> POTTED_GLOW_BLACK_TULIP = ITEMS.register("potted_glow_black_tulip", () -> new BlockItem(VSBlocks.POTTED_GLOW_BLACK_TULIP.get(), new Item.Properties().tab(VSBlocksTab.TAB)));
     public static final RegistryObject<Item> POTTED_SUNNY_FLOWER = ITEMS.register("potted_sunny_flower", () -> new BlockItem(VSBlocks.POTTED_SUNNY_FLOWER.get(), new Item.Properties().tab(VSBlocksTab.TAB)));
+    public static final RegistryObject<Item> POTTED_GRASS = ITEMS.register("potted_grass", () -> new BlockItem(VSBlocks.POTTED_GRASS.get(), new Item.Properties().tab(VSBlocksTab.TAB)));
     public static final RegistryObject<Item> POTTED_SUGAR_CANE = ITEMS.register("potted_sugar_cane", () -> new BlockItem(VSBlocks.POTTED_SUGAR_CANE.get(), new Item.Properties().tab(VSBlocksTab.TAB)));
-    // public static final RegistryObject<Item> POTTED_ENDER_ROOTS = ITEMS.register("potted_ender_roots", () -> new BlockItem(VSBlocks.POTTED_ENDER_ROOTS.get(), new Item.Properties().tab(VSBlocksTab.TAB)));
-    // public static final RegistryObject<Item> POTTED_ENDER_FUNGUS = ITEMS.register("potted_ender_fungus", () -> new BlockItem(VSBlocks.POTTED_ENDER_FUNGUS.get(), new Item.Properties().tab(VSBlocksTab.TAB)));
+    public static final RegistryObject<Item> POTTED_ENDER_ROOTS = ITEMS.register("potted_ender_roots", () -> new BlockItem(VSBlocks.POTTED_ENDER_ROOTS.get(), new Item.Properties().tab(VSBlocksTab.TAB)));
+    public static final RegistryObject<Item> POTTED_ENDER_FUNGUS = ITEMS.register("potted_ender_fungus", () -> new BlockItem(VSBlocks.POTTED_ENDER_FUNGUS.get(), new Item.Properties().tab(VSBlocksTab.TAB)));
     public static final RegistryObject<Item> POTTED_TORCH = ITEMS.register("potted_torch", () -> new BlockItem(VSBlocks.POTTED_TORCH.get(), new Item.Properties().tab(VSBlocksTab.TAB)));
     public static final RegistryObject<Item> POTTED_SOUL_TORCH = ITEMS.register("potted_soul_torch", () -> new BlockItem(VSBlocks.POTTED_SOUL_TORCH.get(), new Item.Properties().tab(VSBlocksTab.TAB)));
 

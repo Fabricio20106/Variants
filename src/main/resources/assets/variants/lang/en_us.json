@@ -7,7 +7,7 @@
 
   "biome.variants.azure_fields": "Azure Fields",
   "biome.variants.ender_forest": "Ender Forest",
-  "biome.variants.painting_wooded_forest": "Painting-Wooded Forest",
+  "biome.variants.painting_wooded_forest": "Paintingwood Forest",
 
   "block.variants.potted_sugar_cane": "Potted Sugar Cane",
   "block.variants.golden_carrots": "Golden Carrots",
@@ -144,7 +144,8 @@
   "block.variants.birch_crafting_table": "Birch Crafting Table",
   "block.variants.jungle_crafting_table": "Jungle Crafting Table",
   "block.variants.acacia_crafting_table": "Acacia Crafting Table",
-  "block.variants.painting_crafting_table": "Dark Oak Crafting Table",
+  "block.variants.dark_oak_crafting_table": "Dark Oak Crafting Table",
+  "block.variants.painting_crafting_table": "Painting Crafting Table",
   "block.variants.crimson_crafting_table": "Crimson Crafting Table",
   "block.variants.warped_crafting_table": "Warped Crafting Table",
   "block.variants.ender_crafting_table": "Ender Crafting Table",
@@ -154,7 +155,7 @@
   "fluid.variants.mushroom_stew": "Mushroom Stew",
   "fluid.variants.mushroom_stew_flowing": "Flowing Mushroom Stew",
 
-  "entity.variants.old_cod": "Old Cod",
+  "entity.variants.old_cod": "Fish",
   "entity.variants.pornhey": "Pornhey",
 
   "item.variants.diorite_sword": "Diorite Sword",
@@ -297,8 +298,8 @@
   "item.variants.painting_boat": "Painting Boat",
   "item.variants.crimson_boat": "Crimson Boat",
   "item.variants.warped_boat": "Warped Boat",
-  "item.variants.old_cod_bucket": "Bucket of Old Cod",
-  "item.variants.old_cod_spawn_egg": "Old Cod Spawn Egg",
+  "item.variants.old_cod_bucket": "Bucket of Fish",
+  "item.variants.old_cod_spawn_egg": "Fish Spawn Egg",
   "item.variants.oak_beetroot_soup": "Oak Beetroot Soup",
   "item.variants.spruce_beetroot_soup": "Spruce Beetroot Soup",
   "item.variants.birch_beetroot_soup": "Birch Beetroot Soup",

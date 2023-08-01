@@ -16,7 +16,7 @@ loaderVersion="[40,)" #mandatory This is typically bumped every Minecraft versio
 # The modid of the mod
 modId="variants" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="1.18.2-2.0.3" #mandatory
+version="1.18.2-2.0.4" #mandatory
  # A display name for the mod
 displayName="Variants" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
@@ -26,11 +26,11 @@ displayName="Variants" #mandatory
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="variants.png" #optional
 # A text field displayed in the mod UI
-credits="Other mods." #optional
+credits="Other Mods" #optional
 # A text field displayed in the mod UI
 authors="JuneTheWoods" #optional
 # The description text for the mod (multi line!) (#mandatory)
-description='''I have nothing to say here as of now.'''
+description='''Variants adds various variants of vanilla items or blocks, ranging from Copper armor and tools to potted sugar cane.'''
 
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.variants]] #optional

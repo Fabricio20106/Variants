@@ -118,8 +118,12 @@ public class Variants {
         ItemBlockRenderTypes.setRenderLayer(VSBlocks.SOUL_CARROTS.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(VSBlocks.WARPING_VINES.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(VSBlocks.WARPING_VINES_PLANT.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(VSBlocks.POTTED_ENDER_ROOTS.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(VSBlocks.POTTED_ENDER_FUNGUS.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(VSFluids.SOUL_LAVA.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(VSFluids.FLOWING_SOUL_LAVA.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(VSFluids.MUSHROOM_STEW.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(VSFluids.FLOWING_MUSHROOM_STEW.get(), RenderType.translucent());
 
         //RenderingRegistry.registerEntityRenderingHandler(EntityInit.old_cod.get(), OldCodRenderer::new);
         //RenderingRegistry.registerEntityRenderingHandler(EntityInit.pornhey.get(), PornheyRenderer::new);

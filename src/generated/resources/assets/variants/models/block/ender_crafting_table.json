@@ -6,7 +6,7 @@
     "east": "variants:block/ender_crafting_table_side",
     "west": "variants:block/ender_crafting_table_side",
     "up": "variants:block/ender_crafting_table_top",
-    "bottom": "variants:block/ender_planks",
+    "down": "variants:block/ender_planks",
     "particle": "variants:block/ender_crafting_table_front"
   }
 }

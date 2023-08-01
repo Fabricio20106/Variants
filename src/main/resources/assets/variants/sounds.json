@@ -1,10 +1,9 @@
 {
   "music_disc.dog": {
     "category": "record",
-    "subtitle": "music_disc.dog",
     "sounds": [
       {
-        "name": "variants:music_disc/dog",
+        "name": "variants:music/disc/dog",
         "stream": true
       }
     ]
@@ -13,7 +12,7 @@
     "category": "music",
     "sounds": [
       {
-        "name": "variants:moog_city",
+        "name": "variants:music/menu/moog_city",
         "stream": true
       }
     ]

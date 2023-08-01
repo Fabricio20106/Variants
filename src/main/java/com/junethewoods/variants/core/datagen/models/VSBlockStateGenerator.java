@@ -50,9 +50,9 @@ public class VSBlockStateGenerator extends BlockStateProvider {
         simpleBlock(VSBlocks.WILD_CRIMSON_WHEAT.get(), models().crop("wild_crimson_wheat", modLoc("block/crimson_wheat_stage7")));
         simpleBlock(VSBlocks.WILD_SOUL_CARROTS.get(), models().crop("wild_soul_carrots", modLoc("block/soul_carrots_stage3")));
         simpleBlock(VSBlocks.POTTED_ENDER_FUNGUS.get(), models().withExistingParent("potted_ender_fungus",
-                "block/flower_pot_cross").texture("plant", "block/ender_fungus"));
+                "variants:block/flower_pot_cross_alt").texture("plant", "block/ender_fungus"));
         simpleBlock(VSBlocks.POTTED_ENDER_ROOTS.get(), models().withExistingParent("potted_ender_roots",
-                "block/flower_pot_cross").texture("plant", "block/ender_roots_pot"));
+                "variants:block/flower_pot_cross_alt").texture("plant", "block/ender_roots_pot"));
         simpleBlock(VSBlocks.POTTED_WARPED_WART.get(), models().withExistingParent("potted_warped_wart",
                 "variants:block/template_potted_crop").texture("crop", "variants:block/potted_crops/warped_wart"));
         simpleBlock(VSBlocks.QUARTZ_GLASS.get());
@@ -122,6 +122,9 @@ public class VSBlockStateGenerator extends BlockStateProvider {
         craftingTableBlock((VSCraftingTableBlock) VSBlocks.WARPED_CRAFTING_TABLE.get(), "warped");
         craftingTableBlock((VSCraftingTableBlock) VSBlocks.ENDER_CRAFTING_TABLE.get(), "ender", Variants.MOD_ID);
 
+        simpleBlock(VSBlocks.POTTED_GRASS.get(), models().withExistingParent("potted_grass",
+                "variants:block/template_potted_crop").texture("crop", "block/grass_pot"));
+
         getVariantBuilder(VSBlocks.WARPED_POTATOES.get()).forAllStates(state -> {
             int i = cropAgeToIndexPotato(state.getValue(CropBlock.AGE));
             return ConfiguredModel.builder().modelFile(models().crop("warped_potatoes_stage" + i, modLoc("block/warped_potatoes_stage" + i))).build();
@@ -143,7 +146,7 @@ public class VSBlockStateGenerator extends BlockStateProvider {
                 .texture("east", modLoc("block/" + woodType + "_crafting_table_side"))
                 .texture("west", modLoc("block/" + woodType + "_crafting_table_side"))
                 .texture("up", modLoc("block/" + woodType + "_crafting_table_top"))
-                .texture("bottom", mcLoc("block/" + woodType + "_planks"))
+                .texture("down", mcLoc("block/" + woodType + "_planks"))
                 .texture("particle", modLoc("block/" + woodType + "_crafting_table_front")));
     }
 
@@ -154,7 +157,7 @@ public class VSBlockStateGenerator extends BlockStateProvider {
                 .texture("east", modLoc("block/" + woodType + "_crafting_table_side"))
                 .texture("west", modLoc("block/" + woodType + "_crafting_table_side"))
                 .texture("up", modLoc("block/" + woodType + "_crafting_table_top"))
-                .texture("bottom", modId + ":block/" + woodType + "_planks")
+                .texture("down", modId + ":block/" + woodType + "_planks")
                 .texture("particle", modLoc("block/" + woodType + "_crafting_table_front")));
     }
 

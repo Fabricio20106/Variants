@@ -1,5 +1,5 @@
 Things to do in Variants:
-1. Make world generation work again.
-  a. Ore Generation;
-  b. Painting Tree;
-  c. Paintingwood Forest.
+1. Make world generation work again. [mostly done]
+  a. Ore Generation; [done]
+  b. Painting Tree; [done]
+  c. Paintingwood Forest. [biome done, not the world generation part]

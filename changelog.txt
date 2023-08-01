@@ -87,3 +87,36 @@ Features:
 
 16/06/2023:
   Changed this file for better readability.
+
+Build: 1.18.2-2.0.3 (29 and 30/07/2023):
+Blocks:
+  Added crafting tables for all wood types other than oak.
+    These work like their vanilla counterpart, and were pretty simple to code.
+
+World Generation:
+  Glow Black Tulips and Sunny Flowers now generate around the world.
+    Sunny Flower were supposed to generate only in Sunflower Plains, but the code didn't work, so I made it spawn everywhere.
+
+  Painting Saplings now spawn Painting Trees instead of oak trees.
+
+  Re-added the Painting-Wooded Forest, now renamed to Paintingwood Forest.
+    This biome doesn't spawn naturally yet. because I don't know how the "data/minecraft/dimension/overworld.json" file works.
+
+  Quartz Ore, End Quartz Ore and Nether Coal Ore now spawn naturally.
+    Distributions:
+      Quartz Ore: Spawns between Y 0-50, 16 times per chunk, and the vein size is 6 blocks.
+      End Quartz Ore: Spawns between Y 10-245 (?), 16 times per chunk, and the vein size is 14 blocks.
+      Nether Coal Ore: Spawns between Y 0-192, 30 times per chunk, and the vein size is 17 blocks.
+
+Build: 1.18.2-2.0.4 (31/07/2023):
+Features:
+  Added items for Potted Ender Fungus and Roots, and Potted Grass.
+  Potted Sugar Cane and Potted Grass items are now tinted.
+  Potted Torch and Soul Torch now emit particles.
+  Changed the flower pot item holding animation.
+
+Miscellaneous:
+  Refactored "build.gradle", "changelog.txt" (this file), "mods.toml" and "up_next.txt".
+
+Bug Fixes:
+  Fixed dog music disc not playing.

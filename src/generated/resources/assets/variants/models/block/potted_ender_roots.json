@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/flower_pot_cross",
+  "parent": "variants:block/flower_pot_cross_alt",
   "textures": {
     "plant": "variants:block/ender_roots_pot"
   }

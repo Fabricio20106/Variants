@@ -6,7 +6,7 @@
     "east": "variants:block/acacia_crafting_table_side",
     "west": "variants:block/acacia_crafting_table_side",
     "up": "variants:block/acacia_crafting_table_top",
-    "bottom": "minecraft:block/acacia_planks",
+    "down": "minecraft:block/acacia_planks",
     "particle": "variants:block/acacia_crafting_table_front"
   }
 }

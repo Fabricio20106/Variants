@@ -6,7 +6,7 @@
     "east": "variants:block/painting_crafting_table_side",
     "west": "variants:block/painting_crafting_table_side",
     "up": "variants:block/painting_crafting_table_top",
-    "bottom": "variants:block/painting_planks",
+    "down": "variants:block/painting_planks",
     "particle": "variants:block/painting_crafting_table_front"
   }
 }

@@ -28,6 +28,7 @@ public class VSColorManager {
         event.getItemColors().register((stack, color) -> color > 0 ? -1 : ((DyeableLeatherItem) stack.getItem()).getColor(stack),
                 VSWeaponry.WOOL_HELMET.get(), VSWeaponry.WOOL_SWEATCHEST.get(), VSWeaponry.WOOL_LEGGINGS.get(), VSWeaponry.WOOL_BOOTS.get());
 
-        event.getItemColors().register((stack, color) -> GrassColor.get(0.5d, 1.0d), VSItems.PAINTING_LEAVES.get());
+        event.getItemColors().register((stack, color) -> GrassColor.get(0.5d, 1.0d), VSItems.PAINTING_LEAVES.get(), VSItems.POTTED_GRASS.get(),
+                VSItems.POTTED_SUGAR_CANE.get());
     }
 }

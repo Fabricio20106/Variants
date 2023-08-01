@@ -6,7 +6,7 @@
     "east": "variants:block/crimson_crafting_table_side",
     "west": "variants:block/crimson_crafting_table_side",
     "up": "variants:block/crimson_crafting_table_top",
-    "bottom": "minecraft:block/crimson_planks",
+    "down": "minecraft:block/crimson_planks",
     "particle": "variants:block/crimson_crafting_table_front"
   }
 }

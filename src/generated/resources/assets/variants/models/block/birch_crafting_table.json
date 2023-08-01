@@ -6,7 +6,7 @@
     "east": "variants:block/birch_crafting_table_side",
     "west": "variants:block/birch_crafting_table_side",
     "up": "variants:block/birch_crafting_table_top",
-    "bottom": "minecraft:block/birch_planks",
+    "down": "minecraft:block/birch_planks",
     "particle": "variants:block/birch_crafting_table_front"
   }
 }
