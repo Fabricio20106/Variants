@@ -1,5 +1,5 @@
 # Changelogs for Variants Builds
-**Build Version: 1.18.2, Release 2.0.4**:
+### **Build Version: 1.18.2, Release 2.0.4**:
 
 This release includes builds 2.0.2, .3 and .4. This changelog will only describe the features from 2.0.4.
 - Variants' flower pots now have a new holding "animation".
@@ -14,7 +14,7 @@ This release includes builds 2.0.2, .3 and .4. This changelog will only describe
 - Slightly changed the Painting Log side texture.
 - Mushroom Stew fluid is now transparent (I think).
 
-**Build Version: 1.18.2, Release 2.0.3**:
+### **Build Version: 1.18.2, Release 2.0.3**:
 
 - Added crafting table variants for all wood types, with working menus.
 - Re-Added the Painting-Wooded Forest.
@@ -30,7 +30,7 @@ This release includes builds 2.0.2, .3 and .4. This changelog will only describe
 - Painting Leaves are now affected by biome-tinting.
 - Glow Berry Bushes were supposed to generate in Lush Caves, but it runs into the same issues as the Sunny Flowers in Sunflower Plains.
 
-**Build Version: 1.18.2, Release 2.0.1 (Beta)**:
+### **Build Version: 1.18.2, Release 2.0.1 (Beta)**:
 
 No bug testing has been done in this version, so there might be many bugs (although Variants was already buggy before).
 
