@@ -1,0 +1,7 @@
+{
+  "parent": "variants:block/tintable_cross_with_overlay",
+  "textures": {
+    "tinted": "variants:block/berry_bush4",
+    "non_tinted": "variants:block/berry_bush_berries4"
+  }
+}

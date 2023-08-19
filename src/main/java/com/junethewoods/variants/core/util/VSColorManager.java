@@ -6,7 +6,9 @@ import com.junethewoods.variants.core.init.VSItems;
 import com.junethewoods.variants.core.init.VSWeaponry;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.world.item.DyeableLeatherItem;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GrassColor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ColorHandlerEvent;
@@ -18,8 +20,12 @@ public class VSColorManager {
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public static void registerBlockColorHandlers(final ColorHandlerEvent.Block event) {
-        event.getBlockColors().register((x, reader, pos, u) -> reader != null && pos != null ? BiomeColors.getAverageGrassColor(reader, pos) : GrassColor.get(0.5d, 1.0d),
+        event.getBlockColors().register((x, reader, pos, u) -> reader != null && pos != null ? BiomeColors.getAverageGrassColor(reader, pos) : GrassColor.get(0.5d, 1),
                 VSBlocks.POTTED_SUGAR_CANE.get(), VSBlocks.POTTED_GRASS.get(), VSBlocks.PAINTING_LEAVES.get());
+
+        // Biome Tinted Vanilla Blocks
+        event.getBlockColors().register((x, reader, pos, u) -> reader != null && pos != null ? BiomeColors.getAverageGrassColor(reader, pos) : GrassColor.get(0.5d, 1),
+                Blocks.SWEET_BERRY_BUSH, Blocks.POPPY, Blocks.OAK_SAPLING);
     }
 
     @OnlyIn(Dist.CLIENT)

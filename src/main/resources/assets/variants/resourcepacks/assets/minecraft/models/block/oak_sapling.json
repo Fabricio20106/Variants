@@ -1,0 +1,7 @@
+{
+  "parent": "variants:block/tintable_cross_with_overlay",
+  "textures": {
+    "tinted": "variants:block/oak_sapling_leaves",
+    "non_tinted": "variants:block/oak_sapling_stump"
+  }
+}

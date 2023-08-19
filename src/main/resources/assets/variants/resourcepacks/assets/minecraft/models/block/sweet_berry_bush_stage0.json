@@ -1,0 +1,6 @@
+{
+  "parent": "variants:block/tintable_cross",
+  "textures": {
+    "tinted": "variants:block/berry_bush1"
+  }
+}

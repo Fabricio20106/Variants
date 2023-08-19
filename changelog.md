@@ -1,4 +1,8 @@
 # Changelogs for Variants Builds
+### **Build Version: 1.18.2, Release 2.0.5**:
+This release includes tint-able sweet berry bushes and poppies.
+- Added tint-able Sweet Berry Bushes, Poppies and Oak Sapling through a custom resource pack.
+
 ### **Build Version: 1.18.2, Release 2.0.4**:
 
 This release includes builds 2.0.2, .3 and .4. This changelog will only describe the features from 2.0.4.
