@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M M",
+    "MMM",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:rabbit_hide"
+    }
+  },
+  "result": {
+    "item": "variants:rabbit_hide_sweatchest"
+  }
+}

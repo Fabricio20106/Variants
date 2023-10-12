@@ -4,7 +4,7 @@
     "item": "variants:diamond_spyglass"
   },
   "addition": {
-    "item": "minecraft:netherite_ingot"
+    "tag": "forge:ingots/netherite"
   },
   "result": {
     "item": "variants:netherite_spyglass"

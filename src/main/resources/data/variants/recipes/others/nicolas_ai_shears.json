@@ -6,10 +6,10 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:redstone"
+      "tag": "forge:dusts/redstone"
     },
     "C": {
-      "item": "others:coal_powder"
+      "tag": "forge:dusts/coal"
     }
   },
   "result": {

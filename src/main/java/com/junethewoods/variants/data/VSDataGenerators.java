@@ -3,6 +3,8 @@ package com.junethewoods.variants.data;
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.data.models.VSBlockStateProvider;
 import com.junethewoods.variants.data.models.VSItemModelProvider;
+import com.junethewoods.variants.data.tags.VSBlockTagsProvider;
+import com.junethewoods.variants.data.tags.VSItemTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -18,5 +20,9 @@ public class VSDataGenerators {
 
         generator.addProvider(new VSBlockStateProvider(generator, fileHelper));
         generator.addProvider(new VSItemModelProvider(generator, fileHelper));
+
+        VSBlockTagsProvider vsBlockStateProvider = new VSBlockTagsProvider(generator, fileHelper);
+        generator.addProvider(vsBlockStateProvider);
+        generator.addProvider(new VSItemTagsProvider(generator, vsBlockStateProvider, fileHelper));
     }
 }

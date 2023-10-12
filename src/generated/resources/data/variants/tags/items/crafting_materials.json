@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#variants:crafting_materials/diorite",
+    "#variants:crafting_materials/granite",
+    "#variants:crafting_materials/andesite"
+  ]
+}

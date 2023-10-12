@@ -5,9 +5,14 @@
     "# "
   ],
   "key": {
-    "#": {
-      "item": "others:plasteel"
-    }
+    "#": [
+      {
+        "item": "others:plasteel"
+      },
+      {
+        "item": "rimcraft:plasteel"
+      }
+    ]
   },
   "result": {
     "item": "variants:plasteel_shears"

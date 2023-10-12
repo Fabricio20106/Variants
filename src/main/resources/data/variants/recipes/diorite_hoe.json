@@ -1,19 +1,19 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "dd",
-        "s ",
-        "s "
-    ],
-    "key": {
-        "s": {
-            "item": "minecraft:stick"
-        },
-        "d": {
-            "item": "minecraft:diorite"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "dd",
+    "s ",
+    "s "
+  ],
+  "key": {
+    "s": {
+      "tag": "forge:rods/wooden"
     },
-    "result": {
-        "item": "variants:diorite_hoe"
+    "d": {
+      "tag": "variants:crafting_materials/diorite"
     }
+  },
+  "result": {
+    "item": "variants:diorite_hoe"
+  }
 }

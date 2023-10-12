@@ -9,9 +9,17 @@ import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
+import javax.annotation.Nonnull;
+
 public class VSBlockStateProvider extends BlockStateProvider {
     public VSBlockStateProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
         super(generator, Variants.MOD_ID, fileHelper);
+    }
+
+    @Nonnull
+    @Override
+    public String getName() {
+        return "Variants - Block States and Models";
     }
 
     @Override
@@ -33,7 +41,6 @@ public class VSBlockStateProvider extends BlockStateProvider {
 
         getVariantBuilder(VSBlocks.GOLDEN_CARROTS.get()).forAllStates(state -> {
             int cropAgeIndex = cropAgeToIndexPotato(state.getValue(CropsBlock.AGE));
-            // return ConfiguredModel.builder().modelFile(models().crop("golden_carrots_stage" + cropAgeIndex, modLoc("block/golden_carrots_stage" + cropAgeIndex))).build();
             return ConfiguredModel.builder().modelFile(models().withExistingParent("golden_carrots_stage" + cropAgeIndex, modLoc("block/block_item_crop")).texture("crop",
                     "block/golden_carrots_stage" + cropAgeIndex)).build();
         });

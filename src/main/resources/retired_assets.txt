@@ -1,3 +1,3 @@
-    // public static boolean isInstalled() {
-    //     return ModList.get() != null && ModList.get().getModContainerById("phnixideas").isPresent();
-    // }
+public static boolean isInstalled() {
+    return ModList.get() != null && ModList.get().getModContainerById("phnixideas").isPresent();
+}

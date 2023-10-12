@@ -7,10 +7,10 @@
   ],
   "key": {
     "s": {
-      "item": "minecraft:stick"
+      "tag": "forge:rods/wooden"
     },
     "d": {
-      "tags": "forge:ingots/copper"
+      "tag": "forge:ingots/copper"
     }
   },
   "result": {

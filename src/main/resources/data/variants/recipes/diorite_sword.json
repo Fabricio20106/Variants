@@ -1,19 +1,19 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "d",
-        "d",
-        "s"
-    ],
-    "key": {
-        "d": {
-            "item": "minecraft:diorite"
-        },
-        "s": {
-            "item": "minecraft:stick"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "d",
+    "d",
+    "s"
+  ],
+  "key": {
+    "s": {
+      "tag": "forge:rods/wooden"
     },
-    "result": {
-        "item": "variants:diorite_sword"
+    "d": {
+      "tag": "variants:crafting_materials/diorite"
     }
+  },
+  "result": {
+    "item": "variants:diorite_sword"
+  }
 }

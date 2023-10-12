@@ -7,14 +7,9 @@
     {
       "item": "variants:soul_powder"
     },
-    [
-      {
-        "item": "minecraft:coal"
-      },
-      {
-        "item": "minecraft:charcoal"
-      }
-    ]
+    {
+      "tag": "minecraft:coals"
+    }
   ],
   "result": {
     "item": "variants:soul_charge",

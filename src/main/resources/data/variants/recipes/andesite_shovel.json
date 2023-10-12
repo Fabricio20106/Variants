@@ -6,11 +6,11 @@
     "s"
   ],
   "key": {
-    "d": {
-      "item": "minecraft:andesite"
-    },
     "s": {
-      "item": "minecraft:stick"
+      "tag": "forge:rods/wooden"
+    },
+    "d": {
+      "tag": "variants:crafting_materials/andesite"
     }
   },
   "result": {

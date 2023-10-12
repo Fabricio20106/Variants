@@ -6,10 +6,10 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:gold_ingot"
+      "tag": "forge:ingots/gold"
     },
     "C": {
-      "item": "others:coal_powder"
+      "tag": "forge:dusts/coal"
     }
   },
   "result": {

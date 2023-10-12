@@ -7,10 +7,10 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:debug_stick"
+      "tag": "forge:rods/debug_wooden"
     },
     "X": {
-      "item": "minecraft:string"
+      "tag": "forge:string"
     }
   },
   "result": {

@@ -51,6 +51,18 @@ Fixes:
 Build: 1.16.5-1.6.0:
   Updated to 1.16.5.
   This update will bring various bug fixes and miscellaneous changes to the 1.16 version of this mod.
+  Moved most models and tags to the Data Generators.
+  Tag-ified most recipes, and renamed a few.
+  The Variants Patchouli guide book is now called "Variated Guidebook".
+  Updated various textures to the newest introduced in the 1.18 builds.
+  Added Glow Black Tulip generation.
+  Rebalanced end quartz ore generation to match vanilla
+    Overworld quartz ore parameters are halved so not nullify a reason to go to the Nether.
+  Moved classes around and renamed almost all of them.
+  Re-added the texture for the Plasteel Shears.
+  Many other changes not listed here (I don't remember them all).
+  Amethyst and Copper Swords are now actually sword (they worked like axes before).
+  Granite, Diorite and Andesite Hoes no longer deal 0 damage.
 
 DIVERGENCE POINT TO 1.18
 

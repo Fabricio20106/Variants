@@ -7,9 +7,17 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
+import javax.annotation.Nonnull;
+
 public class VSItemModelProvider extends ItemModelProvider {
     public VSItemModelProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
         super(generator, Variants.MOD_ID, fileHelper);
+    }
+
+    @Nonnull
+    @Override
+    public String getName() {
+        return "Variants - Item Models";
     }
 
     @Override

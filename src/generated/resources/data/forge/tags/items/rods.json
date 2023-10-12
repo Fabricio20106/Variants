@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:rods/debug_wooden",
+    "#forge:rods/netherite"
+  ]
+}

@@ -6,6 +6,7 @@ import net.minecraft.block.OreBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.IWorldReader;
 import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
@@ -29,7 +30,7 @@ public class VSOreBlock extends OreBlock {
     }
 
     @Override
-    public int getExpDrop(BlockState state, net.minecraft.world.IWorldReader reader, BlockPos pos, int fortune, int silkTouch) {
+    public int getExpDrop(BlockState state, IWorldReader reader, BlockPos pos, int fortune, int silkTouch) {
         return silkTouch == 0 ? this.xpOnDrop(RANDOM) : 0;
     }
 }

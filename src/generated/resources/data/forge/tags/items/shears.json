@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "variants:coal_shears",
+    "variants:golden_shears",
+    "variants:diamond_shears",
+    "variants:netherite_shears",
+    "variants:redstone_shears",
+    "variants:lapis_lazuli_shears",
+    "variants:emerald_shears",
+    "variants:quartz_shears",
+    "variants:ruby_shears",
+    "variants:diaemerald_shears",
+    "variants:crystal_shears",
+    "variants:plasteel_shears",
+    "variants:light_magenta_shears",
+    "variants:alan_ai_shears",
+    "variants:alice_ai_shears",
+    "variants:inno_ai_shears",
+    "variants:nicolas_ai_shears"
+  ]
+}
