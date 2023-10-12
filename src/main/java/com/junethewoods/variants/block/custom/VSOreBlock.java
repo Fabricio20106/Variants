@@ -1,6 +1,6 @@
 package com.junethewoods.variants.block.custom;
 
-import com.junethewoods.variants.common.register.BlockInit;
+import com.junethewoods.variants.block.VSBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.OreBlock;
 import net.minecraft.item.ItemStack;
@@ -17,19 +17,19 @@ public class VSOreBlock extends OreBlock {
 
     @Override
     protected int xpOnDrop(Random rand) {
-        if (this == BlockInit.quartz_ore.get()) {
+        if (this == VSBlocks.QUARTZ_ORE.get()) {
             return MathHelper.nextInt(rand, 2, 5);
         } else {
-            return this == BlockInit.end_quartz_ore.get() ? MathHelper.nextInt(rand, 2, 5) : 0;
+            return this == VSBlocks.END_QUARTZ_ORE.get() ? MathHelper.nextInt(rand, 2, 5) : 0;
         }
     }
 
-    public void spawnAfterBreak(BlockState state, ServerWorld worldIn, BlockPos pos, ItemStack stack) {
-        super.spawnAfterBreak(state, worldIn, pos, stack);
+    public void spawnAfterBreak(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack) {
+        super.spawnAfterBreak(state, world, pos, stack);
     }
 
     @Override
-    public int getExpDrop(BlockState state, net.minecraft.world.IWorldReader reader, BlockPos pos, int fortune, int silktouch) {
-        return silktouch == 0 ? this.xpOnDrop(RANDOM) : 0;
+    public int getExpDrop(BlockState state, net.minecraft.world.IWorldReader reader, BlockPos pos, int fortune, int silkTouch) {
+        return silkTouch == 0 ? this.xpOnDrop(RANDOM) : 0;
     }
 }

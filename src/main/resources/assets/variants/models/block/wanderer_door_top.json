@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/door_top",
-  "textures": {
-    "top": "variants:block/wanderer_door_top",
-    "bottom": "variants:block/wanderer_door_bottom"
-  }
-}

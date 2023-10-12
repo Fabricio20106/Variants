@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/pressure_plate_up",
   "textures": {
-    "texture": "minecraft:painting/back"
+    "texture": "variants:block/painting_planks"
   }
 }

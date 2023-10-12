@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "variants:block/end_quartz_ore"
-  }
-}

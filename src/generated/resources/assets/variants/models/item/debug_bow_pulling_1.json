@@ -1,0 +1,6 @@
+{
+  "parent": "variants:item/debug_bow",
+  "textures": {
+    "layer0": "variants:item/debug_bow_pulling_1"
+  }
+}

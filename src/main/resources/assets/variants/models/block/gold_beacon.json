@@ -3,12 +3,26 @@
   "ambientocclusion": false,
   "textures": {
     "particle": "block/glass",
+    "glass": "block/glass",
     "obsidian": "block/obsidian",
     "beacon": "variants:block/gold_beacon"
   },
   "elements": [
     {
-      "__comment": "Obsidian base",
+      "__comment": "Glass Shell",
+      "from": [ 0, 0, 0 ],
+      "to": [ 16, 16, 16 ],
+      "faces": {
+        "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#glass" },
+        "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#glass" },
+        "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#glass" },
+        "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#glass" },
+        "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#glass" },
+        "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#glass" }
+      }
+    },
+    {
+      "__comment": "Obsidian Base",
       "from": [ 2, 0.1, 2 ],
       "to": [ 14, 3, 14 ],
       "faces": {
@@ -21,7 +35,7 @@
       }
     },
     {
-      "__comment": "Inner beacon texture",
+      "__comment": "Inner Beacon Texture",
       "from": [ 3, 3, 3 ],
       "to": [ 13, 14, 13 ],
       "faces": {

@@ -1,0 +1,6 @@
+{
+  "parent": "variants:block/block_item_crop",
+  "textures": {
+    "crop": "variants:block/golden_carrots_stage1"
+  }
+}

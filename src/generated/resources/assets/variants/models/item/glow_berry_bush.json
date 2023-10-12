@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "variants:block/glow_berry_bush_stage3"
+  }
+}

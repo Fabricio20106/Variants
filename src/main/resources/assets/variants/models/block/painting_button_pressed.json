@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/button_pressed",
   "textures": {
-    "texture": "minecraft:painting/back"
+    "texture": "variants:block/painting_planks"
   }
 }

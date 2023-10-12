@@ -1,6 +1,0 @@
-{
-  "parent": "variants:block/block_item_crop",
-  "textures": {
-    "crop": "variants:block/warped_wart_stage0"
-  }
-}
