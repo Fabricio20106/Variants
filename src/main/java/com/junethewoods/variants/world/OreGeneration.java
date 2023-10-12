@@ -1,4 +1,4 @@
-package com.junethewoods.variants.gen;
+package com.junethewoods.variants.world;
 
 import com.junethewoods.variants.common.register.BlockInit;
 import net.minecraft.block.BlockState;
@@ -22,25 +22,26 @@ public class OreGeneration {
     // overworld ores
     public static void generateQuartzOre(final BiomeLoadingEvent event) {
         if (!(event.getCategory().equals(Biome.Category.NETHER) || event.getCategory().equals(Biome.Category.THEEND))) {
-            generateOre(event.getGeneration(), OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, BlockInit.quartz_ore.get().getDefaultState(), 6, 10, 117, 4);
+            generateOre(event.getGeneration(), OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockInit.quartz_ore.get().defaultBlockState(), 6, 10, 117, 4);
         }
     }
     // "the end" ores
     public static void generateEndQuartzOre(final BiomeLoadingEvent event) {
         if (event.getCategory().equals(Biome.Category.THEEND)) {
-            generateOre(event.getGeneration(), end_stone_filler, BlockInit.end_quartz_ore.get().getDefaultState(), 6, 10, 117, 4);
+            generateOre(event.getGeneration(), end_stone_filler, BlockInit.end_quartz_ore.get().defaultBlockState(), 6, 10, 117, 4);
         }
     }
     public static void generateTestFeature(final BiomeLoadingEvent event) {
         if (event.getCategory().equals(Biome.Category.THEEND)) {
-            generateOre(event.getGeneration(), end_stone_filler, Blocks.ACACIA_PLANKS.getDefaultState(), 6, 10, 117, 4);
+            generateOre(event.getGeneration(), end_stone_filler, Blocks.ACACIA_PLANKS.defaultBlockState(), 6, 10, 117, 4);
         }
     }
     // base for ore generation
     public static void generateOre(BiomeGenerationSettingsBuilder settings, RuleTest fillerType, BlockState state, int veinSize, int minHeight, int maxHeight, int amount) {
-        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(fillerType,
-                state, veinSize)).withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(minHeight, 0, maxHeight))).square().func_242731_b(amount));
+        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.configured(new OreFeatureConfig(fillerType,
+                state, veinSize)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(minHeight, 0, maxHeight))).squared().count(amount));
     }
+
     // to actually generate the ores (and gets called from the main class)
     public static void actuallyGenerateOre() {
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, OreGeneration::generateQuartzOre);

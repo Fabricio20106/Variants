@@ -1,7 +1,7 @@
 package com.junethewoods.variants.util;
 
 import java.util.function.Supplier;
-import com.junethewoods.variants.common.Variants;
+import com.junethewoods.variants.Variants;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.Items;
@@ -14,20 +14,20 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public enum VariantArmors implements IArmorMaterial {
-    EQUIPMENT_SLOT_TYPE(Variants.mod_id + ":empty_armor_slot", 15, new int[]{2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
-        return Ingredient.fromItems(Items.IRON_INGOT);
+    EQUIPMENT_SLOT_TYPE(Variants.mod_id + ":empty_armor_slot", 15, new int[]{2, 5, 6, 2}, 9, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
+        return Ingredient.of(Items.IRON_INGOT);
     }),
-    PHANTOM(Variants.mod_id + ":phantom", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> {
-        return Ingredient.fromItems(Items.PHANTOM_MEMBRANE);
+    PHANTOM(Variants.mod_id + ":phantom", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> {
+        return Ingredient.of(Items.PHANTOM_MEMBRANE);
     }),
-    RABBIT(Variants.mod_id + ":rabbit", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> {
-        return Ingredient.fromItems(Items.RABBIT_HIDE);
+    RABBIT(Variants.mod_id + ":rabbit", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> {
+        return Ingredient.of(Items.RABBIT_HIDE);
     }),
-    WOOL(Variants.mod_id + ":wool", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> {
-        return Ingredient.fromTag(ItemTags.WOOL);
+    WOOL(Variants.mod_id + ":wool", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> {
+        return Ingredient.of(ItemTags.WOOL);
     }),
-    EMERALD(Variants.mod_id + ":emerald", 33, new int[]{3, 6, 8, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F, 0.0F, () -> {
-        return Ingredient.fromItems(Items.EMERALD);
+    EMERALD(Variants.mod_id + ":emerald", 33, new int[]{3, 6, 8, 3}, 10, SoundEvents.ARMOR_EQUIP_DIAMOND, 2.0F, 0.0F, () -> {
+        return Ingredient.of(Items.EMERALD);
     });
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
@@ -51,24 +51,24 @@ public enum VariantArmors implements IArmorMaterial {
         this.repairMaterial = new LazyValue<>(repairMaterial);
     }
 
-    public int getDurability(EquipmentSlotType slotIn) {
+    public int getDurabilityForSlot(EquipmentSlotType slotIn) {
         return MAX_DAMAGE_ARRAY[slotIn.getIndex()] * this.maxDamageFactor;
     }
 
-    public int getDamageReductionAmount(EquipmentSlotType slotIn) {
+    public int getDefenseForSlot(EquipmentSlotType slotIn) {
         return this.damageReductionAmountArray[slotIn.getIndex()];
     }
 
-    public int getEnchantability() {
+    public int getEnchantmentValue() {
         return this.enchantability;
     }
 
-    public SoundEvent getSoundEvent() {
+    public SoundEvent getEquipSound() {
         return this.soundEvent;
     }
 
-    public Ingredient getRepairMaterial() {
-        return this.repairMaterial.getValue();
+    public Ingredient getRepairIngredient() {
+        return this.repairMaterial.get();
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -80,9 +80,7 @@ public enum VariantArmors implements IArmorMaterial {
         return this.toughness;
     }
 
-    /**
-     * Gets the percentage of knockback resistance provided by armor of the material.
-     */
+    // Gets the percentage of knockback resistance provided by armor of the material.
     public float getKnockbackResistance() {
         return this.knockbackResistance;
     }

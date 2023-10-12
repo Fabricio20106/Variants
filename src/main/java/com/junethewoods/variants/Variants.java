@@ -1,7 +1,7 @@
-package com.junethewoods.variants.common;
+package com.junethewoods.variants;
 
 import com.junethewoods.variants.compat.Compats;
-import com.junethewoods.variants.gen.OreGeneration;
+import com.junethewoods.variants.world.OreGeneration;
 import com.junethewoods.variants.common.register.BlockInit;
 import com.junethewoods.variants.common.register.StuffInit;
 import com.junethewoods.variants.common.register.WeaponryInit;

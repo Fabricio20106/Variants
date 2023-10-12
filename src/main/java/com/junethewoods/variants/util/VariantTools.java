@@ -11,16 +11,16 @@ import java.util.function.Supplier;
 
 public enum VariantTools implements IItemTier {
     ANDESITE(1, 131, 4.0F, 1.0F, 5, () -> {
-        return Ingredient.fromItems(Blocks.ANDESITE);
+        return Ingredient.of(Blocks.ANDESITE);
     }),
     DIORITE(1, 131, 4.0F, 1.0F, 5, () -> {
-        return Ingredient.fromItems(Blocks.DIORITE);
+        return Ingredient.of(Blocks.DIORITE);
     }),
     GRANITE(1, 131, 4.0F, 1.0F, 5, () -> {
-        return Ingredient.fromItems(Blocks.GRANITE);
+        return Ingredient.of(Blocks.GRANITE);
     }),
     EMERALD(3, 2031, 5.0F, 3.0F, 15, () -> {
-        return Ingredient.fromItems(Items.EMERALD);
+        return Ingredient.of(Items.EMERALD);
     }),
     AMETHYST(2, 250, 6.0F, 2.0F, 14, () ->
             Ingredient.EMPTY),
@@ -43,27 +43,27 @@ public enum VariantTools implements IItemTier {
         this.repairMaterial = new LazyValue<>(repairMaterialIn);
     }
 
-    public int getMaxUses() {
+    public int getUses() {
         return this.maxUses;
     }
 
-    public float getEfficiency() {
+    public float getSpeed() {
         return this.efficiency;
     }
 
-    public float getAttackDamage() {
+    public float getAttackDamageBonus() {
         return this.attackDamage;
     }
 
-    public int getHarvestLevel() {
+    public int getLevel() {
         return this.harvestLevel;
     }
 
-    public int getEnchantability() {
+    public int getEnchantmentValue() {
         return this.enchantability;
     }
 
-    public Ingredient getRepairMaterial() {
-        return this.repairMaterial.getValue();
+    public Ingredient getRepairIngredient() {
+        return this.repairMaterial.get();
     }
 }

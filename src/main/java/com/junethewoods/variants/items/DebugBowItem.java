@@ -29,38 +29,38 @@ public class DebugBowItem extends BowItem {
         super(builder);
     }
 
-    public boolean hasEffect(ItemStack stack) {
+    public boolean isFoil(ItemStack stack) {
         return true;
     }
 
-    public boolean canPlayerBreakBlockWhileHolding(BlockState state, World worldIn, BlockPos pos, PlayerEntity player) {
-        if (!worldIn.isRemote) {
-            this.handleClick(player, state, worldIn, pos, false, player.getHeldItem(Hand.MAIN_HAND));
+    public boolean canAttackBlock(BlockState state, World worldIn, BlockPos pos, PlayerEntity player) {
+        if (!worldIn.isClientSide) {
+            this.handleInteraction(player, state, worldIn, pos, false, player.getItemInHand(Hand.MAIN_HAND));
         }
         return false;
     }
 
-    public ActionResultType onItemUse(ItemUseContext context) {
+    public ActionResultType useOn(ItemUseContext context) {
         PlayerEntity playerentity = context.getPlayer();
-        World world = context.getWorld();
-        if (!world.isRemote && playerentity != null) {
-            BlockPos blockpos = context.getPos();
-            this.handleClick(playerentity, world.getBlockState(blockpos), world, blockpos, true, context.getItem());
+        World world = context.getLevel();
+        if (!world.isClientSide && playerentity != null) {
+            BlockPos blockpos = context.getClickedPos();
+            this.handleInteraction(playerentity, world.getBlockState(blockpos), world, blockpos, true, context.getItemInHand());
         }
 
-        return ActionResultType.func_233537_a_(world.isRemote);
+        return ActionResultType.sidedSuccess(world.isClientSide);
     }
 
-    private void handleClick(PlayerEntity player, BlockState state, IWorld worldIn, BlockPos pos, boolean rightClick, ItemStack stack) {
-        if (player.canUseCommandBlock()) {
+    private void handleInteraction(PlayerEntity player, BlockState state, IWorld worldIn, BlockPos pos, boolean rightClick, ItemStack stack) {
+        if (player.canUseGameMasterBlocks()) {
             Block block = state.getBlock();
-            StateContainer<Block, BlockState> statecontainer = block.getStateContainer();
+            StateContainer<Block, BlockState> statecontainer = block.getStateDefinition();
             Collection<Property<?>> collection = statecontainer.getProperties();
             String s = Registry.BLOCK.getKey(block).toString();
             if (collection.isEmpty()) {
-                sendMessage(player, new TranslationTextComponent(this.getTranslationKey() + ".empty", s));
+                sendMessage(player, new TranslationTextComponent(this.getDescriptionId() + ".empty", s));
             } else {
-                CompoundNBT compoundnbt = stack.getOrCreateChildTag("DebugProperty");
+                CompoundNBT compoundnbt = stack.getOrCreateTagElement("DebugProperty");
                 String s1 = compoundnbt.getString(s);
                 Property<?> property = statecontainer.getProperty(s1);
                 if (rightClick) {
@@ -68,32 +68,32 @@ public class DebugBowItem extends BowItem {
                         property = collection.iterator().next();
                     }
 
-                    BlockState blockstate = cycleProperty(state, property, player.isSecondaryUseActive());
-                    worldIn.setBlockState(pos, blockstate, 18);
-                    sendMessage(player, new TranslationTextComponent(this.getTranslationKey() + ".update", property.getName(), func_195957_a(blockstate, property)));
+                    BlockState blockstate = cycleState(state, property, player.isSecondaryUseActive());
+                    worldIn.setBlock(pos, blockstate, 18);
+                    sendMessage(player, new TranslationTextComponent(this.getDescriptionId() + ".update", property.getName(), getNameHelper(blockstate, property)));
                 } else {
-                    property = getAdjacentValue(collection, property, player.isSecondaryUseActive());
+                    property = getRelative(collection, property, player.isSecondaryUseActive());
                     String s2 = property.getName();
                     compoundnbt.putString(s, s2);
-                    sendMessage(player, new TranslationTextComponent(this.getTranslationKey() + ".select", s2, func_195957_a(state, property)));
+                    sendMessage(player, new TranslationTextComponent(this.getDescriptionId() + ".select", s2, getNameHelper(state, property)));
                 }
             }
         }
     }
 
-    private static <T extends Comparable<T>> BlockState cycleProperty(BlockState state, Property<T> propertyIn, boolean backwards) {
-        return state.with(propertyIn, getAdjacentValue(propertyIn.getAllowedValues(), state.get(propertyIn), backwards));
+    private static <T extends Comparable<T>> BlockState cycleState(BlockState state, Property<T> propertyIn, boolean backwards) {
+        return state.setValue(propertyIn, getRelative(propertyIn.getPossibleValues(), state.getValue(propertyIn), backwards));
     }
 
-    private static <T> T getAdjacentValue(Iterable<T> allowedValues, @Nullable T currentValue, boolean backwards) {
-        return (T)(backwards ? Util.getElementBefore(allowedValues, currentValue) : Util.getElementAfter(allowedValues, currentValue));
+    private static <T> T getRelative(Iterable<T> allowedValues, @Nullable T currentValue, boolean backwards) {
+        return (T)(backwards ? Util.findPreviousInIterable(allowedValues, currentValue) : Util.findNextInIterable(allowedValues, currentValue));
     }
 
     private static void sendMessage(PlayerEntity player, ITextComponent text) {
-        ((ServerPlayerEntity)player).func_241151_a_(text, ChatType.GAME_INFO, Util.DUMMY_UUID);
+        ((ServerPlayerEntity)player).sendMessage(text, ChatType.GAME_INFO, Util.NIL_UUID);
     }
 
-    private static <T extends Comparable<T>> String func_195957_a(BlockState state, Property<T> propertyIn) {
-        return propertyIn.getName(state.get(propertyIn));
+    private static <T extends Comparable<T>> String getNameHelper(BlockState state, Property<T> propertyIn) {
+        return propertyIn.getName(state.getValue(propertyIn));
     }
 }

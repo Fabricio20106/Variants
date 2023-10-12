@@ -6,7 +6,7 @@
 # The name of the mod loader type to load - for regular FML @Mod mods it should be javafml
 modLoader="javafml" #mandatory
 
-license="All Rights Reserved"
+license="MIT License"
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
 loaderVersion="[35,36,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
 # A URL to refer people to when problems occur with this mod
@@ -16,7 +16,7 @@ loaderVersion="[35,36,)" #mandatory This is typically bumped every Minecraft ver
 # The modid of the mod
 modId="variants" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="1.4.6" #mandatory
+version="1.16.5-1.6.0" #mandatory
  # A display name for the mod
 displayName="Variants" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
@@ -24,13 +24,13 @@ displayName="Variants" #mandatory
 # A URL for the "homepage" for this mod, displayed in the mod UI
 #displayURL="http://example.com/" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile="variants.png" #optional
+#logoFile="variants.png" #optional
 # A text field displayed in the mod UI
-credits="Another Mods" #optional
+credits="Other Mods" #optional
 # A text field displayed in the mod UI
-authors="Fabricio20106" #optional
+authors="JuneTheWoods" #optional
 # The description text for the mod (multi line!) (#mandatory)
-description='''i have no word to say here'''
+description='''Variants adds various variants of vanilla items or blocks, ranging from Copper armor and tools to potted sugar cane.'''
 
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.variants]] #optional

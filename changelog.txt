@@ -1,35 +1,128 @@
-Build: 1.16.4-1.4.4, 05/07/2021, 22:12
-   added powder snow bottle
-   renamed "Milk Glass Bottle" and "Lava Glass Bottle" to "Milk Bottle" and "Lava Bottle"
-   added new crafting recipes
-   added potted glow black tulip
-   added warped wart
-     can also be planted on soul soil
-   changed potted sugar cane
-   added netherite rod
-     doesn't burn in lava
-   added painting planks, stairs, slabs and fences
-     including crafting and tags
-   added glow berry bushes
-     don't spawn naturally
-     gives you sweet berries (placeholder only)
+Build: 1.16.4-1.4.4, (05/07/2021):
+Features:
+   Added powder snow bottles.
+   Added new crafting recipes.
+   Added warped wart.
+     Can also be planted on soul soil.
+   Added netherite rod.
+     Like other netherite items, it doesn't burn in lava.
+   Added painting stairs, slabs and fences (includes crafting recipes and tags).
+   Added glow berry bushes.
+     They don't spawn naturally.
+     Gives you sweet berries, because we are not in 1.17 yet.
 
-   added compat with f10 mod "Edits"
-     added purple nugget
-     added splash sophie potion
+Mod Compatibility:
+   "Edits":
+     Added purple nugget.
+     Added splash Sophie potion.
 
-   added compat with f10 mod "My Other Stuff"
-     added a lot of new shears (with craftings)
-Build: 1.16.4-1.4.5
-  added painting fence gate, door, trapdoor, door, pressure plate and button
-    also including crafting and tags
-  added wanderer door
-    made to look like the "Wanderer" painting
-  added jei in my dev environment
-  compat with others:
-    added alan, alice, innovator and nicolas ai shears
-    added shears from minerals: diaemerald, crystal, plasteel and light magenta ingot
-Build: 1.16.4-1.4.6
-  added new ore generation
-  added end quartz ore (generates in the end)
-  added a texture for the plasteel shears
+   "My Other Stuff (Others)":
+     Many new shears (includes crafting recipes).
+
+Changes:
+   Renamed "Milk Glass Bottle" and "Lava Glass Bottle" to "Milk Bottle" and "Lava Bottle"
+   Changed potted sugar cane (changed what? Texture? Looks? I don't know).
+
+Build: 1.16.4-1.4.5:
+Features:
+  Added painting fence gate, door, trapdoor, door, pressure plate and button (includes crafting recipes and tags).
+  Added "Wanderer" painting door.
+  Added JEI in the development environment.
+
+Mod Compatibility:
+  "Others":
+    Added Alan, Alice, Innovator and Nicolas AI shears.
+    Added diaemerald, crystal, plasteel and light magenta shears.
+
+Build: 1.16.4-1.4.6:
+Features:
+  Added new ore generation.
+  Added end quartz ore (generates in the End dimension).
+  Added painting stick.
+  Added "Graham" door.
+
+Mod Compatibility:
+  "Fabricio2010's Pack":
+    Added "First" painting door.
+
+Fixes:
+  Added a texture for the plasteel shears.
+
+Build: 1.16.5-1.6.0:
+  Updated to 1.16.5.
+  This update will bring various bug fixes and miscellaneous changes to the 1.16 version of this mod.
+
+DIVERGENCE POINT TO 1.18
+
+Build: 1.18-1.6.0:
+  Updated to 1.18.
+
+Features:
+  New crystallized and gelatinous magma cream.
+    Nether equivalent of the slime.
+
+Build: 1.18.2-2.0.0:
+  Updated to 1.18.2.
+  Working on Variants again after some time (it's actually a lot).
+  Since I haven't been adding things on this mod for a long time, it's now version 2.0.0 to reflect that things are going to change quite a bit.
+
+Bug Fixes:
+  Glow berry bushes now give glow berries instead of sweet berries (they were a placeholder item).
+
+Features:
+  Added stone tools for: deepslate, sandstone, red sandstone, tuff, calcite, basalt, blackstone, netherrack, magma block, obsidian, crying obsidian and bedrock
+
+Build: 1.18.2-2.0.1 (13/05/2023):
+  Finished adding the stone tools.
+
+Bug Fixes:
+  Fixed sandstone, red sandstone, calcite, netherrack and magma hoes having negative or zero damage.
+  Fixed the model of potted crops, potted sugar cane, potted torches and potted sunny flowers.
+  Added model and block state for potted grass.
+  All pots mentioned above are now truly pot-able.
+  Potted sugar cane and potted grass are now tinted according to the biome.
+  Added inventory icon for warping vines.
+
+Features:
+  Added helmets, leggings and boots for phantom membrane, rabbit hide, wool and copper armor sets.
+  Adding sweet berry vines (sweet berry cave vines).
+
+Build: 1.18.2-2.0.2 (16/05/2023):
+Features:
+  Added oak, spruce, birch, jungle, acacia, dark oak, mangrove, bamboo (kinda), cherry, crimson, warped and ender wood tool sets.
+
+16/06/2023:
+  Changed this file for better readability.
+
+Build: 1.18.2-2.0.3 (29 and 30/07/2023):
+Blocks:
+  Added crafting tables for all wood types other than oak.
+    These work like their vanilla counterpart, and were pretty simple to code.
+
+World Generation:
+  Glow Black Tulips and Sunny Flowers now generate around the world.
+    Sunny Flower were supposed to generate only in Sunflower Plains, but the code didn't work, so I made it spawn everywhere.
+
+  Painting Saplings now spawn Painting Trees instead of oak trees.
+
+  Re-added the Painting-Wooded Forest, now renamed to Paintingwood Forest.
+    This biome doesn't spawn naturally yet. because I don't know how the "data/minecraft/dimension/overworld.json" file works.
+
+  Quartz Ore, End Quartz Ore and Nether Coal Ore now spawn naturally.
+    Distributions:
+      Quartz Ore: Spawns between Y 0-50, 16 times per chunk, and the vein size is 6 blocks.
+      End Quartz Ore: Spawns between Y 10-245 (?), 16 times per chunk, and the vein size is 14 blocks.
+      Nether Coal Ore: Spawns between Y 0-192, 30 times per chunk, and the vein size is 17 blocks.
+
+Build: 1.18.2-2.0.4 (31/07/2023):
+Features:
+  Added items for Potted Ender Fungus and Roots, and Potted Grass.
+  Potted Sugar Cane and Potted Grass items are now tinted.
+  Potted Torch and Soul Torch now emit particles.
+  Changed the flower pot item holding animation.
+
+Miscellaneous:
+  Refactored "build.gradle", "changelog.txt" (this file), "mods.toml" and "up_next.txt".
+
+Bug Fixes:
+  Fixed dog music disc not playing.

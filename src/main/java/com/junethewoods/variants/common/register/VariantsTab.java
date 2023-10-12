@@ -4,14 +4,14 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
 public class VariantsTab extends ItemGroup {
-    public static final VariantsTab variant = new VariantsTab(ItemGroup.GROUPS.length, "variants");
+    public static final VariantsTab variant = new VariantsTab(ItemGroup.TABS.length, "variants");
 
     public VariantsTab(int index, String label) {
         super(index, label);
     }
 
     @Override
-    public ItemStack createIcon() {
+    public ItemStack makeIcon() {
         return new ItemStack(StuffInit.cyan_shulker_shell.get());
     }
 }

@@ -1,4 +1,4 @@
-package com.junethewoods.variants.blocks;
+package com.junethewoods.variants.block.custom;
 
 import com.junethewoods.variants.common.register.BlockInit;
 import net.minecraft.block.BlockState;
@@ -10,13 +10,13 @@ import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
-public class VariantOreBlock extends OreBlock {
-    public VariantOreBlock(Properties properties) {
+public class VSOreBlock extends OreBlock {
+    public VSOreBlock(Properties properties) {
         super(properties);
     }
 
     @Override
-    protected int getExperience(Random rand) {
+    protected int xpOnDrop(Random rand) {
         if (this == BlockInit.quartz_ore.get()) {
             return MathHelper.nextInt(rand, 2, 5);
         } else {
@@ -24,12 +24,12 @@ public class VariantOreBlock extends OreBlock {
         }
     }
 
-    public void spawnAdditionalDrops(BlockState state, ServerWorld worldIn, BlockPos pos, ItemStack stack) {
-        super.spawnAdditionalDrops(state, worldIn, pos, stack);
+    public void spawnAfterBreak(BlockState state, ServerWorld worldIn, BlockPos pos, ItemStack stack) {
+        super.spawnAfterBreak(state, worldIn, pos, stack);
     }
 
     @Override
     public int getExpDrop(BlockState state, net.minecraft.world.IWorldReader reader, BlockPos pos, int fortune, int silktouch) {
-        return silktouch == 0 ? this.getExperience(RANDOM) : 0;
+        return silktouch == 0 ? this.xpOnDrop(RANDOM) : 0;
     }
 }
