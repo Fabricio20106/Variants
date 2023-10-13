@@ -5,8 +5,8 @@
     "N N"
   ],
   "key": {
-    "W": {
-      "tag": "forge:ingots/netherite",
+    "N": {
+      "tag": "forge:ingots/netherite"
     }
   },
   "result": {

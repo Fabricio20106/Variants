@@ -2,6 +2,7 @@ package com.junethewoods.variants.item;
 
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.block.VSBlocks;
+import com.junethewoods.variants.util.tab.VSCompatsTab;
 import com.junethewoods.variants.util.tab.VSTab;
 import com.junethewoods.variants.item.custom.HoneyBallItem;
 import com.junethewoods.variants.item.custom.LavaBottleItem;
@@ -73,4 +74,6 @@ public class VSItems {
     public static final RegistryObject<Item> ELDER_PRISMARINE_SHARD = ITEMS.register("elder_prismarine_shard", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> ELDER_PRISMARINE_CRYSTALS = ITEMS.register("elder_prismarine_crystals", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> WARPED_WART = ITEMS.register("warped_wart", () -> new BlockNamedItem(VSBlocks.WARPED_WART.get(), new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> SPLASH_SOPHIE_POTION = ITEMS.register("splash_soph_potion", () -> new Item(new Item.Properties().food(new Food.Builder().nutrition(6).saturationMod(3).build()).tab(VSCompatsTab.TAB)));
+    public static final RegistryObject<Item> PURPLE_IRON_NUGGET = ITEMS.register("purple_nugget", () -> new Item(new Item.Properties().tab(VSCompatsTab.TAB)));
 }

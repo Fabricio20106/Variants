@@ -1,6 +1,6 @@
 package com.junethewoods.variants.util.tab;
 
-import com.junethewoods.variants.item.VSCompatItems;
+import com.junethewoods.variants.item.VSItems;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
@@ -13,6 +13,6 @@ public class VSCompatsTab extends ItemGroup {
 
     @Override
     public ItemStack makeIcon() {
-        return new ItemStack(VSCompatItems.SPLASH_SOPHIE_POTION.get());
+        return new ItemStack(VSItems.SPLASH_SOPHIE_POTION.get());
     }
 }

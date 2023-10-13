@@ -9,8 +9,8 @@
     "F": {
       "tag": "forge:rods/netherite"
     },
-    "W": {
-      "tag": "forge:ingots/netherite",
+    "N": {
+      "tag": "forge:ingots/netherite"
     }
   },
   "result": {

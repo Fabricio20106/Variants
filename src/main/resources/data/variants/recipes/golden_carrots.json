@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ddd"
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:golden_carrot"
+    }
+  },
+  "result": {
+    "item": "variants:golden_carrots"
+  }
+}

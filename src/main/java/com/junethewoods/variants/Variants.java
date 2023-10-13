@@ -1,7 +1,6 @@
 package com.junethewoods.variants;
 
-import com.junethewoods.variants.util.VSCompatibilities;
-import com.junethewoods.variants.world.feature.VSOreGeneration;
+import com.junethewoods.variants.util.VSItemModelProperties;
 import com.junethewoods.variants.block.VSBlocks;
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.VSWeaponry;
@@ -36,8 +35,6 @@ public class Variants {
         VSItems.ITEMS.register(eventBus);
         VSWeaponry.ITEMS.register(eventBus);
         VSBlocks.BLOCKS.register(eventBus);
-
-        VSCompatibilities.registerCompatibilities();
     }
 
     public static ResourceLocation resourceLoc(String name) {
@@ -58,6 +55,8 @@ public class Variants {
         RenderTypeLookup.setRenderLayer(VSBlocks.PAINTING_TRAPDOOR.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.PAINTING_DOOR.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.WANDERER_DOOR.get(), RenderType.cutout());
+
+        VSItemModelProperties.makeBow(VSWeaponry.DEBUG_BOW.get());
     }
 
     @SubscribeEvent

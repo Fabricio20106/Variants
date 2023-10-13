@@ -1,7 +1,6 @@
 package com.junethewoods.variants.data.tags;
 
 import com.junethewoods.variants.Variants;
-import com.junethewoods.variants.item.VSCompatItems;
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.VSWeaponry;
 import com.junethewoods.variants.util.VSTags;
@@ -35,7 +34,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.INGOTS_OXIDIZED_COPPER).add(VSItems.OXIDIZED_COPPER_INGOT.get());
         this.tag(Tags.Items.INGOTS).addTag(VSTags.Items.INGOTS_EXPOSED_COPPER).addTag(VSTags.Items.INGOTS_WEATHERED_COPPER).addTag(VSTags.Items.INGOTS_OXIDIZED_COPPER);
 
-        this.tag(VSTags.Items.NUGGETS_PURPLE_IRON).add(VSCompatItems.PURPLE_IRON_NUGGET.get());
+        this.tag(VSTags.Items.NUGGETS_PURPLE_IRON).add(VSItems.PURPLE_IRON_NUGGET.get());
         this.tag(Tags.Items.NUGGETS).addTag(VSTags.Items.NUGGETS_PURPLE_IRON);
 
         this.tag(VSTags.Items.RAW_MATERIALS_RAW_DEBRIS).add(VSItems.RAW_DEBRIS.get());
@@ -53,9 +52,9 @@ public class VSItemTagsProvider extends ItemTagsProvider {
 
         this.tag(Tags.Items.SHEARS).add(VSWeaponry.COAL_SHEARS.get()).add(VSWeaponry.GOLDEN_SHEARS.get()).add(VSWeaponry.DIAMOND_SHEARS.get()).add(VSWeaponry.NETHERITE_SHEARS.get())
                 .add(VSWeaponry.REDSTONE_SHEARS.get()).add(VSWeaponry.LAPIS_LAZULI_SHEARS.get()).add(VSWeaponry.EMERALD_SHEARS.get()).add(VSWeaponry.QUARTZ_SHEARS.get())
-                .add(VSWeaponry.RUBY_SHEARS.get()).add(VSCompatItems.DIAEMERALD_SHEARS.get()).add(VSCompatItems.CRYSTAL_SHEARS.get()).add(VSCompatItems.PLASTEEL_SHEARS.get())
-                .add(VSCompatItems.LIGHT_MAGENTA_SHEARS.get()).add(VSCompatItems.ALAN_AI_SHEARS.get()).add(VSCompatItems.ALICE_AI_SHEARS.get()).add(VSCompatItems.INNO_AI_SHEARS.get())
-                .add(VSCompatItems.NICOLAS_AI_SHEARS.get());
+                .add(VSWeaponry.RUBY_SHEARS.get()).add(VSWeaponry.DIAEMERALD_SHEARS.get()).add(VSWeaponry.CRYSTAL_SHEARS.get()).add(VSWeaponry.PLASTEEL_SHEARS.get())
+                .add(VSWeaponry.LIGHT_MAGENTA_SHEARS.get()).add(VSWeaponry.ALAN_AI_SHEARS.get()).add(VSWeaponry.ALICE_AI_SHEARS.get()).add(VSWeaponry.INNO_AI_SHEARS.get())
+                .add(VSWeaponry.NICOLAS_AI_SHEARS.get());
 
         // Variants' Tags
         this.tag(VSTags.Items.CM_DIORITE).add(Items.DIORITE);
@@ -64,6 +63,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.CRAFTING_MATERIALS).addTag(VSTags.Items.CM_DIORITE).addTag(VSTags.Items.CM_GRANITE).addTag(VSTags.Items.CM_ANDESITE);
 
         this.tag(VSTags.Items.PAINTING_DOORS).add(VSItems.WANDERER_DOOR.get());
+        this.tag(VSTags.Items.SHULKER_SHELLS).add(Items.SHULKER_SHELL).add(VSItems.CYAN_SHULKER_SHELL.get());
 
         // Minecraft Tags
         this.tag(ItemTags.PLANKS).add(VSItems.PAINTING_PLANKS.get());

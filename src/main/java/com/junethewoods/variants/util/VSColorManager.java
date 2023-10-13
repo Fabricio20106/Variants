@@ -4,6 +4,7 @@ import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.block.VSBlocks;
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.VSWeaponry;
+import com.junethewoods.variants.item.custom.IDyeableWoolArmorItem;
 import net.minecraft.item.IDyeableArmorItem;
 import net.minecraft.world.GrassColors;
 import net.minecraft.world.biome.BiomeColors;
@@ -30,6 +31,6 @@ public class VSColorManager {
     public static void registerItemColorHandlers(final ColorHandlerEvent.Item event) {
         event.getItemColors().register((stack, color) -> GrassColors.get(0.5d, 1), VSItems.POTTED_SUGAR_CANE.get());
 
-        event.getItemColors().register((stack, color) -> color > 0 ? -1 : ((IDyeableArmorItem) stack.getItem()).getColor(stack), VSWeaponry.WOOL_SWEATER.get());
+        event.getItemColors().register((stack, color) -> color > 0 ? -1 : ((IDyeableWoolArmorItem) stack.getItem()).getColor(stack), VSWeaponry.WOOL_SWEATER.get());
     }
 }

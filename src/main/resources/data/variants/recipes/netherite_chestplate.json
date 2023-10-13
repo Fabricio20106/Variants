@@ -1,19 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
+    "N N",
     "NNN",
-    " F ",
-    " F "
+    "NNN"
   ],
   "key": {
-    "F": {
-      "tag": "forge:rods/netherite"
-    },
     "N": {
       "tag": "forge:ingots/netherite"
     }
   },
   "result": {
-    "item": "minecraft:netherite_pickaxe"
+    "item": "minecraft:netherite_chestplate"
   }
 }

@@ -32,6 +32,7 @@ public class VSTags {
         public static final ITag.INamedTag<Item> CM_ANDESITE = mod("crafting_materials/andesite");
 
         public static final ITag.INamedTag<Item> PAINTING_DOORS = mod("painting_doors");
+        public static final ITag.INamedTag<Item> SHULKER_SHELLS = mod("shulker_shells");
 
         public static ITag.INamedTag<Item> forge(String name) {
             return ItemTags.bind(new ResourceLocation("forge", name).toString());
