@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "variants:gold_cauldron",
+    "variants:gold_beacon",
+    "variants:golden_carrots"
+  ]
+}

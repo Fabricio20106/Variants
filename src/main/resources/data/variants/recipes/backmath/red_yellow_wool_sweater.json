@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M M",
+    "MMM",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "backmath:devil_wool"
+    }
+  },
+  "result": {
+    "item": "variants:wool_sweatchest",
+    "nbt": {
+      "display": {
+        "color": 15731456
+      },
+      "color_name": "color.backmath.red_yellow"
+    }
+  }
+}

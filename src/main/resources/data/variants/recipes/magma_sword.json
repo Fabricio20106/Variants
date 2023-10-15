@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "d",
+    "d",
+    "s"
+  ],
+  "key": {
+    "s": {
+      "tag": "forge:rods/wooden"
+    },
+    "d": {
+      "tag": "variants:crafting_materials/magma_block"
+    }
+  },
+  "result": {
+    "item": "variants:magma_sword"
+  }
+}

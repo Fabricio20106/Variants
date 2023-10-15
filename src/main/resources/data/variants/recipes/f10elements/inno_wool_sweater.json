@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M M",
+    "MMM",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "f10elements:inno_wool"
+    }
+  },
+  "result": {
+    "item": "variants:wool_sweatchest",
+    "nbt": {
+      "display": {
+        "color": 16773874
+      },
+      "color_name": "color.f10elements.inno"
+    }
+  }
+}

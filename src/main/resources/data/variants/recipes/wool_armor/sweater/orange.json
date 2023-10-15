@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M M",
+    "MMM",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:orange_wool"
+    }
+  },
+  "result": {
+    "item": "variants:wool_sweatchest",
+    "nbt": {
+      "display": {
+        "color": 16351261
+      },
+      "color_name": "color.minecraft.orange"
+    }
+  }
+}

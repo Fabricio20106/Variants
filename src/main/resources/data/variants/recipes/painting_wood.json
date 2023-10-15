@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bark",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "variants:painting_log"
+    }
+  },
+  "result": {
+    "item": "variants:painting_wood",
+    "count": 3
+  }
+}

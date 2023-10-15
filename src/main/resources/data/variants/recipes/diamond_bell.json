@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "#B#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stone"
+    },
+    "$": {
+      "item": "variants:painting_stick"
+    },
+    "B": {
+      "tag": "forge:storage_blocks/diamond"
+    }
+  },
+  "result": {
+    "item": "variants:diamond_bell"
+  }
+}

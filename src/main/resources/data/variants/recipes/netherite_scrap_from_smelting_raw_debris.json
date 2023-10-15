@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "tag": "forge:raw_materials/debris"
+    "tag": "forge:raw_materials/netherite_scrap"
   },
   "result": "minecraft:netherite_scrap",
   "experience": 2.0,

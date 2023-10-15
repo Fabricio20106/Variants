@@ -58,23 +58,32 @@ public class VSItemTagsProvider extends ItemTagsProvider {
 
         this.tag(Tags.Items.BOOKSHELVES).add(VSItems.PLAIN_BIRCH_BOOKSHELF.get());
 
+        this.tag(VSTags.Items.DYES_GLOW_BLACK).add(VSItems.GLOW_BLACK_DYE.get());
+        this.tag(Tags.Items.DYES).addTag(VSTags.Items.DYES_GLOW_BLACK);
+
         // Variants' Tags
         this.tag(VSTags.Items.CM_DIORITE).add(Items.DIORITE);
         this.tag(VSTags.Items.CM_GRANITE).add(Items.GRANITE);
         this.tag(VSTags.Items.CM_ANDESITE).add(Items.ANDESITE);
-        this.tag(VSTags.Items.CRAFTING_MATERIALS).addTag(VSTags.Items.CM_DIORITE).addTag(VSTags.Items.CM_GRANITE).addTag(VSTags.Items.CM_ANDESITE);
+        this.tag(VSTags.Items.CM_MAGMA_BLOCK).add(Items.MAGMA_BLOCK);
+        this.tag(VSTags.Items.CRAFTING_MATERIALS).addTag(VSTags.Items.CM_DIORITE).addTag(VSTags.Items.CM_GRANITE).addTag(VSTags.Items.CM_ANDESITE).addTag(VSTags.Items.CM_MAGMA_BLOCK);
 
         this.tag(VSTags.Items.BOOKS).add(Items.BOOK).add(Items.WRITABLE_BOOK).add(Items.WRITTEN_BOOK).add(Items.ENCHANTED_BOOK).add(Items.KNOWLEDGE_BOOK);
         this.tag(VSTags.Items.BOOKSHELVES).add(Items.BOOKSHELF).add(VSItems.PLAIN_BIRCH_BOOKSHELF.get());
         this.tag(VSTags.Items.PAINTING_DOORS).add(VSItems.WANDERER_DOOR.get()).add(VSItems.GRAHAM_DOOR.get()).add(VSItems.FIRST_DOOR.get());
         this.tag(VSTags.Items.SHULKER_SHELLS).add(Items.SHULKER_SHELL).add(VSItems.WHITE_SHULKER_SHELL.get()).add(VSItems.INNO_SHULKER_SHELL.get())
-                .add(VSItems.ORANGE_SHULKER_SHELL.get()).add(VSItems.MAGENTA_SHULKER_SHELL.get()).add(VSItems.LIGHT_BLUE_SHULKER_SHELL.get())
+                .add(VSItems.ORANGE_SHULKER_SHELL.get()).add(VSItems.MAGENTA_SHULKER_SHELL.get()).add(VSItems.LIGHT_BLUE_SHULKER_SHELL.get()).add(VSItems.GLOW_BLACK_SHULKER_SHELL.get())
                 .add(VSItems.YELLOW_SHULKER_SHELL.get()).add(VSItems.LIME_SHULKER_SHELL.get()).add(VSItems.PINK_SHULKER_SHELL.get())
                 .add(VSItems.GRAY_SHULKER_SHELL.get()).add(VSItems.LIGHT_GRAY_SHULKER_SHELL.get()).add(VSItems.CYAN_SHULKER_SHELL.get())
                 .add(VSItems.PURPLE_SHULKER_SHELL.get()).add(VSItems.BLUE_SHULKER_SHELL.get()).add(VSItems.BROWN_SHULKER_SHELL.get())
                 .add(VSItems.GREEN_SHULKER_SHELL.get()).add(VSItems.RED_SHULKER_SHELL.get()).add(VSItems.BLACK_SHULKER_SHELL.get());
 
+        this.tag(VSTags.Items.PAINTING_LOGS).add(VSItems.PAINTING_LOG.get()).add(VSItems.PAINTING_WOOD.get()).add(VSItems.STRIPPED_PAINTING_LOG.get())
+                .add(VSItems.STRIPPED_PAINTING_WOOD.get());
+
         // Minecraft Tags
+        this.tag(ItemTags.LOGS_THAT_BURN).addTag(VSTags.Items.PAINTING_LOGS);
+        this.tag(ItemTags.LEAVES).add(VSItems.PAINTING_LEAVES.get());
         this.tag(ItemTags.PLANKS).add(VSItems.PAINTING_PLANKS.get());
         this.tag(ItemTags.WOODEN_STAIRS).add(VSItems.PAINTING_STAIRS.get());
         this.tag(ItemTags.WOODEN_SLABS).add(VSItems.PAINTING_SLAB.get());
@@ -85,5 +94,9 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(ItemTags.WOODEN_TRAPDOORS).add(VSItems.PAINTING_TRAPDOOR.get());
 
         this.tag(ItemTags.SMALL_FLOWERS).add(VSItems.GLOW_BLACK_TULIP.get());
+        this.tag(ItemTags.WOOL).add(VSItems.GLOW_BLACK_WOOL.get());
+        this.tag(ItemTags.CARPETS).add(VSItems.GLOW_BLACK_CARPET.get());
+        this.tag(ItemTags.CREEPER_DROP_MUSIC_DISCS).add(VSItems.MUSIC_DISC_DOG.get());
+        this.tag(ItemTags.PIGLIN_LOVED).add(VSItems.GOLDEN_CAULDRON.get()).add(VSItems.GOLDEN_BEACON.get()).add(VSItems.GOLDEN_CARROTS.get()).add(VSWeaponry.GOLDEN_SHEARS.get());
     }
 }

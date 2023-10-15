@@ -2,6 +2,7 @@ package com.junethewoods.variants.item;
 
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.item.custom.DescriptiveCompatShearsItem;
+import com.junethewoods.variants.item.custom.MagmaSwordItem;
 import com.junethewoods.variants.item.custom.WoolArmorItem;
 import com.junethewoods.variants.util.tab.VSWeaponryTab;
 import com.junethewoods.variants.item.custom.DebugBowItem;
@@ -31,6 +32,7 @@ public class VSWeaponry {
     public static final RegistryObject<Item> ANDESITE_SHOVEL = ITEMS.register("andesite_shovel", () -> new ShovelItem(VSTools.ANDESITE, 1.5F, -3f, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> ANDESITE_AXE = ITEMS.register("andesite_axe", () -> new AxeItem(VSTools.ANDESITE, 7f, -3.2F, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> ANDESITE_HOE = ITEMS.register("andesite_hoe", () -> new HoeItem(VSTools.ANDESITE, -1, -2f, new Item.Properties().tab(VSWeaponryTab.TAB)));
+    public static final RegistryObject<Item> MAGMA_SWORD = ITEMS.register("magma_sword", () -> new MagmaSwordItem(VSTools.MAGMA, 3, -2.4F, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> AMETHYST_SWORD = ITEMS.register("amethyst_sword", () -> new SwordItem(VSTools.AMETHYST, 3, -2.4F, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> COPPER_SWORD = ITEMS.register("copper_sword", () -> new SwordItem(VSTools.COPPER, 3, -2.4F, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> DEBUG_BOW = ITEMS.register("debug_bow", () -> new DebugBowItem(new Item.Properties().durability(384).tab(VSWeaponryTab.TAB)));

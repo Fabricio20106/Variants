@@ -32,7 +32,14 @@ public class VSItemModelProvider extends ItemModelProvider {
         withExistingParent("quartz_ore");
         withExistingParent("end_quartz_ore");
         withExistingParent("raw_debris_block");
+        withExistingParent("glow_black_wool");
+        withExistingParent("glow_black_carpet");
         withExistingParent("plain_birch_bookshelf");
+        withExistingParent("painting_log");
+        withExistingParent("painting_wood");
+        withExistingParent("stripped_painting_log");
+        withExistingParent("stripped_painting_wood");
+        withExistingParent("painting_leaves");
         withExistingParent("painting_planks");
         withExistingParent("painting_stairs");
         withExistingParent("painting_slab");
@@ -49,6 +56,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "orange_shulker_shell");
         standard(generated, "magenta_shulker_shell");
         standard(generated, "light_blue_shulker_shell");
+        standard(generated, "glow_black_shulker_shell");
         standard(generated, "yellow_shulker_shell");
         standard(generated, "lime_shulker_shell");
         standard(generated, "pink_shulker_shell");
@@ -61,6 +69,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "green_shulker_shell");
         standard(generated, "red_shulker_shell");
         standard(generated, "black_shulker_shell");
+        standard(generated, "music_disc_dog");
         standard(generated, "spawner_minecart");
         standard(generated, "fungi_stew");
         standard(generated, "enchanted_knowledge_book");
@@ -99,11 +108,13 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "wanderer_door");
         standard(generated, "graham_door");
         standard(generated, "first_door");
+        standard(generated, "diamond_bell");
         standard(generated, "splash_soph_potion");
         standard(generated, "purple_nugget");
         getBuilder("glow_berry_bush").parent(generated).texture("layer0", "block/glow_berry_bush_stage3");
         getBuilder("glow_black_tulip").parent(generated).texture("layer0", "block/glow_black_tulip");
 
+        standard(handheld, "magma_sword");
         standard(handheld, "amethyst_sword");
         standard(handheld, "copper_sword");
         standard(handheld, "magma_sword");

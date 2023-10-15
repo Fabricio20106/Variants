@@ -41,7 +41,15 @@ public class VSBlockStateProvider extends BlockStateProvider {
         doorBlock((DoorBlock) VSBlocks.FIRST_DOOR.get(), modLoc("block/first_door_bottom"), modLoc("block/first_door_top"));
         trapdoorBlock((TrapDoorBlock) VSBlocks.PAINTING_TRAPDOOR.get(), modLoc("block/painting_trapdoor"), true);
         simpleBlock(VSBlocks.PLAIN_BIRCH_BOOKSHELF.get(), models().cubeTop("plain_birch_bookshelf", modLoc("block/plain_birch_bookshelf"),
-                mcLoc("block/birch_planks")));
+                modLoc("block/plain_birch_planks")));
+        logBlock((RotatedPillarBlock) VSBlocks.PAINTING_LOG.get());
+        axisBlock((RotatedPillarBlock) VSBlocks.PAINTING_WOOD.get(), modLoc("block/painting_log"), modLoc("block/painting_log"));
+        logBlock((RotatedPillarBlock) VSBlocks.STRIPPED_PAINTING_LOG.get());
+        axisBlock((RotatedPillarBlock) VSBlocks.STRIPPED_PAINTING_WOOD.get(), modLoc("block/stripped_painting_log"), modLoc("block/stripped_painting_log"));
+        simpleBlock(VSBlocks.PAINTING_LEAVES.get(), models().withExistingParent("painting_leaves", mcLoc("block/leaves")).texture("all",
+                modLoc("block/painting_leaves")));
+        simpleBlock(VSBlocks.GLOW_BLACK_WOOL.get());
+        simpleBlock(VSBlocks.GLOW_BLACK_CARPET.get(), models().carpet("glow_black_carpet", modLoc("block/glow_black_wool")));
 
         getVariantBuilder(VSBlocks.GOLDEN_CARROTS.get()).forAllStates(state -> {
             int cropAgeIndex = cropAgeToIndexPotato(state.getValue(BlockStateProperties.AGE_7));

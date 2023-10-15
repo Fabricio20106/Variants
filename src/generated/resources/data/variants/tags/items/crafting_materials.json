@@ -3,6 +3,7 @@
   "values": [
     "#variants:crafting_materials/diorite",
     "#variants:crafting_materials/granite",
-    "#variants:crafting_materials/andesite"
+    "#variants:crafting_materials/andesite",
+    "#variants:crafting_materials/magma_block"
   ]
 }

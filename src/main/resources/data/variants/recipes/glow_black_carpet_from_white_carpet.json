@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "carpet",
+  "pattern": [
+    "###",
+    "#$#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:white_carpet"
+    },
+    "$": {
+      "tag": "forge:dyes/glow_black"
+    }
+  },
+  "result": {
+    "item": "variants:glow_black_carpet",
+    "count": 8
+  }
+}

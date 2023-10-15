@@ -1,5 +1,6 @@
 package com.junethewoods.variants.item.tool;
 
+import com.junethewoods.variants.util.VSTags;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.Items;
@@ -10,10 +11,11 @@ import net.minecraftforge.common.Tags;
 import java.util.function.Supplier;
 
 public enum VSTools implements IItemTier {
-    ANDESITE(1, 131, 4f, 1f, 5, () -> Ingredient.of(Blocks.ANDESITE)),
-    DIORITE(1, 131, 4f, 1f, 5, () -> Ingredient.of(Blocks.DIORITE)),
-    GRANITE(1, 131, 4f, 1f, 5, () -> Ingredient.of(Blocks.GRANITE)),
-    EMERALD(3, 2031, 5f, 3f, 15, () -> Ingredient.of(Tags.Items.GEMS_EMERALD)),
+    ANDESITE(1, 131, 4f, 1f, 5, () -> Ingredient.of(VSTags.Items.CM_ANDESITE)),
+    DIORITE(1, 131, 4f, 1f, 5, () -> Ingredient.of(VSTags.Items.CM_DIORITE)),
+    GRANITE(1, 131, 4f, 1f, 5, () -> Ingredient.of(VSTags.Items.CM_GRANITE)),
+    EMERALD(3, 1561, 5f, 3f, 15, () -> Ingredient.of(Tags.Items.GEMS_EMERALD)),
+    MAGMA(1, 250, 4f, 1f, 5, () -> Ingredient.of(VSTags.Items.CM_MAGMA_BLOCK)),
     AMETHYST(2, 250, 6f, 2f, 14, () -> Ingredient.EMPTY),
     COPPER(2, 250, 6f, 2f, 14, () -> Ingredient.EMPTY);
 
