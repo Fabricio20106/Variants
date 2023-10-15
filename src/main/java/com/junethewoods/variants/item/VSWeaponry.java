@@ -1,8 +1,8 @@
 package com.junethewoods.variants.item;
 
 import com.junethewoods.variants.Variants;
+import com.junethewoods.variants.item.custom.DescriptiveCompatShearsItem;
 import com.junethewoods.variants.item.custom.WoolArmorItem;
-import com.junethewoods.variants.util.tab.VSCompatsTab;
 import com.junethewoods.variants.util.tab.VSWeaponryTab;
 import com.junethewoods.variants.item.custom.DebugBowItem;
 import com.junethewoods.variants.item.tool.VSArmors;
@@ -43,14 +43,14 @@ public class VSWeaponry {
     public static final RegistryObject<Item> EMERALD_SHEARS = ITEMS.register("emerald_shears", () -> new ShearsItem(new Item.Properties().durability(1871).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> QUARTZ_SHEARS = ITEMS.register("quartz_shears", () -> new ShearsItem(new Item.Properties().durability(1871).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> RUBY_SHEARS = ITEMS.register("ruby_shears", () -> new ShearsItem(new Item.Properties().durability(1871).tab(VSWeaponryTab.TAB)));
-    public static final RegistryObject<Item> DIAEMERALD_SHEARS = ITEMS.register("diaemerald_shears", () -> new ShearsItem(new Item.Properties().durability(725).tab(VSCompatsTab.TAB)));
-    public static final RegistryObject<Item> CRYSTAL_SHEARS = ITEMS.register("crystal_shears", () -> new ShearsItem(new Item.Properties().durability(500).tab(VSCompatsTab.TAB)));
-    public static final RegistryObject<Item> PLASTEEL_SHEARS = ITEMS.register("plasteel_shears", () -> new ShearsItem(new Item.Properties().durability(450).tab(VSCompatsTab.TAB)));
-    public static final RegistryObject<Item> LIGHT_MAGENTA_SHEARS = ITEMS.register("light_magenta_shears", () -> new ShearsItem(new Item.Properties().durability(500).tab(VSCompatsTab.TAB)));
-    public static final RegistryObject<Item> ALAN_AI_SHEARS = ITEMS.register("alan_ai_shears", () -> new ShearsItem(new Item.Properties().durability(600).tab(VSCompatsTab.TAB)));
-    public static final RegistryObject<Item> ALICE_AI_SHEARS = ITEMS.register("alice_ai_shears", () -> new ShearsItem(new Item.Properties().durability(600).tab(VSCompatsTab.TAB)));
-    public static final RegistryObject<Item> INNO_AI_SHEARS = ITEMS.register("inno_ai_shears", () -> new ShearsItem(new Item.Properties().durability(600).tab(VSCompatsTab.TAB)));
-    public static final RegistryObject<Item> NICOLAS_AI_SHEARS = ITEMS.register("nicolas_ai_shears", () -> new ShearsItem(new Item.Properties().durability(600).tab(VSCompatsTab.TAB)));
+    public static final RegistryObject<Item> DIAEMERALD_SHEARS = ITEMS.register("diaemerald_shears", () -> new DescriptiveCompatShearsItem(new Item.Properties().durability(725).tab(VSWeaponryTab.TAB), "My Other Stuff (Others)"));
+    public static final RegistryObject<Item> CRYSTAL_SHEARS = ITEMS.register("crystal_shears", () -> new DescriptiveCompatShearsItem(new Item.Properties().durability(500).tab(VSWeaponryTab.TAB), "My Other Stuff (Others)"));
+    public static final RegistryObject<Item> PLASTEEL_SHEARS = ITEMS.register("plasteel_shears", () -> new DescriptiveCompatShearsItem(new Item.Properties().durability(450).tab(VSWeaponryTab.TAB), "Rimcraft"));
+    public static final RegistryObject<Item> LIGHT_MAGENTA_SHEARS = ITEMS.register("light_magenta_shears", () -> new DescriptiveCompatShearsItem(new Item.Properties().durability(500).tab(VSWeaponryTab.TAB), "My Other Stuff (Others)"));
+    public static final RegistryObject<Item> ALAN_AI_SHEARS = ITEMS.register("alan_ai_shears", () -> new DescriptiveCompatShearsItem(new Item.Properties().durability(600).tab(VSWeaponryTab.TAB), "My Other Stuff (Others)"));
+    public static final RegistryObject<Item> ALICE_AI_SHEARS = ITEMS.register("alice_ai_shears", () -> new DescriptiveCompatShearsItem(new Item.Properties().durability(600).tab(VSWeaponryTab.TAB), "My Other Stuff (Others)"));
+    public static final RegistryObject<Item> INNO_AI_SHEARS = ITEMS.register("inno_ai_shears", () -> new DescriptiveCompatShearsItem(new Item.Properties().durability(600).tab(VSWeaponryTab.TAB), "My Other Stuff (Others)"));
+    public static final RegistryObject<Item> NICOLAS_AI_SHEARS = ITEMS.register("nicolas_ai_shears", () -> new DescriptiveCompatShearsItem(new Item.Properties().durability(600).tab(VSWeaponryTab.TAB), "My Other Stuff (Others)"));
     public static final RegistryObject<Item> EMPTY_ARMOR_SLOT_HELMET = ITEMS.register("empty_armor_slot_helmet", () -> new ArmorItem(VSArmors.EQUIPMENT_SLOT_TYPE, EquipmentSlotType.HEAD ,new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> EMPTY_ARMOR_SLOT_CHESTPLATE = ITEMS.register("empty_armor_slot_chestplate", () -> new ArmorItem(VSArmors.EQUIPMENT_SLOT_TYPE, EquipmentSlotType.CHEST ,new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> EMPTY_ARMOR_SLOT_LEGGINGS = ITEMS.register("empty_armor_slot_leggings", () -> new ArmorItem(VSArmors.EQUIPMENT_SLOT_TYPE, EquipmentSlotType.LEGS ,new Item.Properties().tab(VSWeaponryTab.TAB)));

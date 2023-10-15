@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "shulker_boxes_from_shells",
+  "pattern": [
+    "-",
+    "#",
+    "-"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:chests/wooden"
+    },
+    "-": {
+      "item": "variants:green_shulker_shell"
+    }
+  },
+  "result": {
+    "item": "minecraft:green_shulker_box"
+  }
+}

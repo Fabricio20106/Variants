@@ -3,6 +3,7 @@ package com.junethewoods.variants.data.tags;
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.block.VSBlocks;
 import com.junethewoods.variants.util.VSTags;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.tags.BlockTags;
@@ -23,12 +24,16 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags() {
-        this.tag(VSTags.Blocks.STORAGE_BLOCKS_RAW_DEBRIS).add(VSBlocks.RAW_DEBRIS_BLOCK.get());
-        this.tag(Tags.Blocks.STORAGE_BLOCKS).addTag(VSTags.Blocks.STORAGE_BLOCKS_RAW_DEBRIS);
+        this.tag(VSTags.Blocks.STORAGE_BLOCKS_NETHERITE_SCRAP).add(VSBlocks.RAW_DEBRIS_BLOCK.get());
+        this.tag(Tags.Blocks.STORAGE_BLOCKS).addTag(VSTags.Blocks.STORAGE_BLOCKS_NETHERITE_SCRAP);
 
         this.tag(Tags.Blocks.ORES_QUARTZ).add(VSBlocks.QUARTZ_ORE.get()).add(VSBlocks.END_QUARTZ_ORE.get());
 
         this.tag(Tags.Blocks.FENCE_GATES_WOODEN).add(VSBlocks.PAINTING_FENCE_GATE.get());
+
+        // Variants' Tags
+        this.tag(VSTags.Blocks.PAINTING_DOORS).add(VSBlocks.WANDERER_DOOR.get()).add(VSBlocks.GRAHAM_DOOR.get()).add(VSBlocks.FIRST_DOOR.get());
+        this.tag(VSTags.Blocks.BOOKSHELVES).add(Blocks.BOOKSHELF).add(VSBlocks.PLAIN_BIRCH_BOOKSHELF.get());
 
         // Minecraft Tags
         this.tag(BlockTags.PLANKS).add(VSBlocks.PAINTING_PLANKS.get());

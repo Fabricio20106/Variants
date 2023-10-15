@@ -37,10 +37,14 @@ public class VSBlockStateProvider extends BlockStateProvider {
         fenceGateBlock((FenceGateBlock) VSBlocks.PAINTING_FENCE_GATE.get(), modLoc("block/painting_planks"));
         doorBlock((DoorBlock) VSBlocks.PAINTING_DOOR.get(), modLoc("block/painting_door_bottom"), modLoc("block/painting_door_top"));
         doorBlock((DoorBlock) VSBlocks.WANDERER_DOOR.get(), modLoc("block/wanderer_door_bottom"), modLoc("block/wanderer_door_top"));
+        doorBlock((DoorBlock) VSBlocks.GRAHAM_DOOR.get(), modLoc("block/graham_door_bottom"), modLoc("block/graham_door_top"));
+        doorBlock((DoorBlock) VSBlocks.FIRST_DOOR.get(), modLoc("block/first_door_bottom"), modLoc("block/first_door_top"));
         trapdoorBlock((TrapDoorBlock) VSBlocks.PAINTING_TRAPDOOR.get(), modLoc("block/painting_trapdoor"), true);
+        simpleBlock(VSBlocks.PLAIN_BIRCH_BOOKSHELF.get(), models().cubeTop("plain_birch_bookshelf", modLoc("block/plain_birch_bookshelf"),
+                mcLoc("block/birch_planks")));
 
         getVariantBuilder(VSBlocks.GOLDEN_CARROTS.get()).forAllStates(state -> {
-            int cropAgeIndex = cropAgeToIndexPotato(state.getValue(CropsBlock.AGE));
+            int cropAgeIndex = cropAgeToIndexPotato(state.getValue(BlockStateProperties.AGE_7));
             return ConfiguredModel.builder().modelFile(models().withExistingParent("golden_carrots_stage" + cropAgeIndex, modLoc("block/block_item_crop")).texture("crop",
                     "block/golden_carrots_stage" + cropAgeIndex)).build();
         });

@@ -5,11 +5,16 @@
     "C "
   ],
   "key": {
-    "#": {
-      "item": "others:inno_core"
-    },
+    "#": [
+      {
+        "item": "others:inno_core"
+      },
+      {
+        "item": "f10elements:inno_core"
+      }
+    ],
     "C": {
-      "item": "others:coal_powder"
+      "tag": "forge:dusts/coal"
     }
   },
   "result": {

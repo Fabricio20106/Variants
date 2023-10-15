@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "group": "shulker_boxes_from_shells",
   "pattern": [
     "-",
     "#",

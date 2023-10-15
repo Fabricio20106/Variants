@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 public class VSTags {
     public static class Items {
         // Forge Tags
-        public static final ITag.INamedTag<Item> STORAGE_BLOCKS_RAW_DEBRIS = forge("storage_blocks/raw_debris");
+        public static final ITag.INamedTag<Item> STORAGE_BLOCKS_NETHERITE_SCRAP = forge("storage_blocks/netherite_scrap");
 
         public static final ITag.INamedTag<Item> INGOTS_EXPOSED_COPPER = forge("ingots/exposed_copper");
         public static final ITag.INamedTag<Item> INGOTS_WEATHERED_COPPER = forge("ingots/weathered_copper");
@@ -20,7 +20,7 @@ public class VSTags {
         public static final ITag.INamedTag<Item> NUGGETS_PURPLE_IRON = forge("nuggets/purple_iron");
 
         public static final ITag.INamedTag<Item> RAW_MATERIALS = forge("raw_materials");
-        public static final ITag.INamedTag<Item> RAW_MATERIALS_RAW_DEBRIS = forge("raw_materials/debris");
+        public static final ITag.INamedTag<Item> RAW_MATERIALS_NETHERITE_SCRAP = forge("raw_materials/netherite_scrap");
 
         public static final ITag.INamedTag<Item> RODS_DEBUG_WOODEN = forge("rods/debug_wooden");
         public static final ITag.INamedTag<Item> RODS_NETHERITE = forge("rods/netherite");
@@ -33,6 +33,8 @@ public class VSTags {
 
         public static final ITag.INamedTag<Item> PAINTING_DOORS = mod("painting_doors");
         public static final ITag.INamedTag<Item> SHULKER_SHELLS = mod("shulker_shells");
+        public static final ITag.INamedTag<Item> BOOKS = mod("books");
+        public static final ITag.INamedTag<Item> BOOKSHELVES = mod("bookshelves");
 
         public static ITag.INamedTag<Item> forge(String name) {
             return ItemTags.bind(new ResourceLocation("forge", name).toString());
@@ -44,10 +46,19 @@ public class VSTags {
     }
 
     public static class Blocks {
-        public static final ITag.INamedTag<Block> STORAGE_BLOCKS_RAW_DEBRIS = forge("storage_blocks/raw_debris");
+        // Forge Tags
+        public static final ITag.INamedTag<Block> STORAGE_BLOCKS_NETHERITE_SCRAP = forge("storage_blocks/netherite_scrap");
+
+        // Variants' Tags
+        public static final ITag.INamedTag<Block> PAINTING_DOORS = mod("painting_doors");
+        public static final ITag.INamedTag<Block> BOOKSHELVES = mod("bookshelves");
 
         public static ITag.INamedTag<Block> forge(String name) {
             return BlockTags.bind(new ResourceLocation("forge", name).toString());
+        }
+
+        public static ITag.INamedTag<Block> mod(String name) {
+            return BlockTags.bind(Variants.resourceLoc(name).toString());
         }
     }
 }

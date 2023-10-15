@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "variants:wanderer_door"
+      "tag": "variants:painting_doors"
     }
   ],
   "result": {

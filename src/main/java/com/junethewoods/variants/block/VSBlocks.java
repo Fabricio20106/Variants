@@ -2,6 +2,7 @@ package com.junethewoods.variants.block;
 
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.block.custom.GoldenCarrotsBlock;
+import com.junethewoods.variants.block.custom.VSBookshelfBlock;
 import com.junethewoods.variants.block.custom.VSOreBlock;
 import com.junethewoods.variants.block.custom.WarpedWartBlock;
 import net.minecraft.block.*;
@@ -26,6 +27,7 @@ public class VSBlocks {
     public static final RegistryObject<Block> WARPED_WART = BLOCKS.register("warped_wart", () -> new WarpedWartBlock(AbstractBlock.Properties.of(Material.PLANT, MaterialColor.WARPED_WART_BLOCK).noCollission().randomTicks().sound(SoundType.FUNGUS)));
     public static final RegistryObject<Block> POTTED_GLOW_BLACK_TULIP = BLOCKS.register("potted_glow_black_tulip", () -> new FlowerPotBlock(VSBlocks.GLOW_BLACK_TULIP.get(), AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
     public static final RegistryObject<Block> GLOW_BERRY_BUSH = BLOCKS.register("glow_berry_bush", () -> new SweetBerryBushBlock(AbstractBlock.Properties.copy(Blocks.SWEET_BERRY_BUSH)));
+    public static final RegistryObject<Block> PLAIN_BIRCH_BOOKSHELF = BLOCKS.register("plain_birch_bookshelf", () -> new VSBookshelfBlock(AbstractBlock.Properties.copy(Blocks.BOOKSHELF)));
     public static final RegistryObject<Block> PAINTING_PLANKS = BLOCKS.register("painting_planks", () -> new Block(AbstractBlock.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistryObject<Block> PAINTING_STAIRS = BLOCKS.register("painting_stairs", () -> new StairsBlock(VSBlocks.PAINTING_PLANKS.get().defaultBlockState(), AbstractBlock.Properties.copy(Blocks.OAK_STAIRS)));
     public static final RegistryObject<Block> PAINTING_SLAB = BLOCKS.register("painting_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(Blocks.OAK_SLAB)));
@@ -36,4 +38,6 @@ public class VSBlocks {
     public static final RegistryObject<Block> PAINTING_TRAPDOOR = BLOCKS.register("painting_trapdoor", () -> new TrapDoorBlock(AbstractBlock.Properties.copy(Blocks.OAK_TRAPDOOR)));
     public static final RegistryObject<Block> PAINTING_DOOR = BLOCKS.register("painting_door", () -> new DoorBlock(AbstractBlock.Properties.copy(Blocks.OAK_DOOR)));
     public static final RegistryObject<Block> WANDERER_DOOR = BLOCKS.register("wanderer_door", () -> new DoorBlock(AbstractBlock.Properties.copy(Blocks.OAK_DOOR)));
+    public static final RegistryObject<Block> GRAHAM_DOOR = BLOCKS.register("graham_door", () -> new DoorBlock(AbstractBlock.Properties.copy(Blocks.OAK_DOOR)));
+    public static final RegistryObject<Block> FIRST_DOOR = BLOCKS.register("first_door", () -> new DoorBlock(AbstractBlock.Properties.copy(Blocks.OAK_DOOR)));
 }

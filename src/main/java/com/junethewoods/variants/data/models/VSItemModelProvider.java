@@ -32,6 +32,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         withExistingParent("quartz_ore");
         withExistingParent("end_quartz_ore");
         withExistingParent("raw_debris_block");
+        withExistingParent("plain_birch_bookshelf");
         withExistingParent("painting_planks");
         withExistingParent("painting_stairs");
         withExistingParent("painting_slab");
@@ -43,7 +44,23 @@ public class VSItemModelProvider extends ItemModelProvider {
         withExistingParent("potted_glow_black_tulip");
         withExistingParent("potted_sugar_cane");
 
+        standard(generated, "white_shulker_shell");
+        standard(generated, "inno_shulker_shell");
+        standard(generated, "orange_shulker_shell");
+        standard(generated, "magenta_shulker_shell");
+        standard(generated, "light_blue_shulker_shell");
+        standard(generated, "yellow_shulker_shell");
+        standard(generated, "lime_shulker_shell");
+        standard(generated, "pink_shulker_shell");
+        standard(generated, "gray_shulker_shell");
+        standard(generated, "light_gray_shulker_shell");
         standard(generated, "cyan_shulker_shell");
+        standard(generated, "purple_shulker_shell");
+        standard(generated, "blue_shulker_shell");
+        standard(generated, "brown_shulker_shell");
+        standard(generated, "green_shulker_shell");
+        standard(generated, "red_shulker_shell");
+        standard(generated, "black_shulker_shell");
         standard(generated, "spawner_minecart");
         standard(generated, "fungi_stew");
         standard(generated, "enchanted_knowledge_book");
@@ -61,6 +78,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(handheld, "jungle_stick");
         standard(handheld, "acacia_stick");
         standard(handheld, "dark_oak_stick");
+        standard(handheld, "painting_stick");
         standard(handheld, "crimson_stick");
         standard(handheld, "warped_stick");
         standard(handheld, "netherite_rod");
@@ -79,6 +97,8 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "warped_wart");
         standard(generated, "painting_door");
         standard(generated, "wanderer_door");
+        standard(generated, "graham_door");
+        standard(generated, "first_door");
         standard(generated, "splash_soph_potion");
         standard(generated, "purple_nugget");
         getBuilder("glow_berry_bush").parent(generated).texture("layer0", "block/glow_berry_bush_stage3");

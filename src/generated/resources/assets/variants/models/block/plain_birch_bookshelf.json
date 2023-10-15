@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_top",
+  "textures": {
+    "side": "variants:block/plain_birch_bookshelf",
+    "top": "minecraft:block/birch_planks"
+  }
+}
