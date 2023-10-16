@@ -267,6 +267,7 @@ adf3cba00fc9510b5c16eb101541f765db514413 data/minecraft/tags/items/wooden_doors.
 796d1e31133c3a66175bbb643f9e86adb9cd9226 data/minecraft/tags/items/wooden_stairs.json
 d30b1e3b054ecabf0028eb3f060f55bb661ea0ca data/minecraft/tags/items/wooden_trapdoors.json
 3e77e4d6f65c6bbaee4e1b25812fbcbc39c29fec data/minecraft/tags/items/wool.json
+6ebd4cc1d89baa672698040b5759610f4868fa26 data/variants/tags/blocks/beacons.json
 511038518cd837f6f709647e22f0d61ad5e68dc7 data/variants/tags/blocks/bookshelves.json
 d49ddc370b30c9b9f0d41c90a69601574a941def data/variants/tags/blocks/painting_doors.json
 59f537833a6d2b59ab763a6e112bbd5a99a1b7aa data/variants/tags/blocks/painting_logs.json

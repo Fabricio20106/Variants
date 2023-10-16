@@ -1,11 +1,8 @@
-package com.junethewoods.variants.item.custom;
+package com.junethewoods.variants.item.custom.tool;
 
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.UseAction;
-import net.minecraft.util.*;
+import net.minecraft.item.ShearsItem;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -14,28 +11,12 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class SophiePotionItem extends Item {
+public class DescriptiveCompatShearsItem extends ShearsItem {
     private final String compatMod;
 
-    public SophiePotionItem(Properties properties, String compatMod) {
+    public DescriptiveCompatShearsItem(Properties properties, String compatMod) {
         super(properties);
         this.compatMod = compatMod;
-    }
-
-    public UseAction getUseAnimation(ItemStack stack) {
-        return UseAction.DRINK;
-    }
-
-    public SoundEvent getDrinkingSound() {
-        return SoundEvents.GENERIC_DRINK;
-    }
-
-    public SoundEvent getEatingSound() {
-        return SoundEvents.GENERIC_DRINK;
-    }
-
-    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
-        return DrinkHelper.useDrink(world, player, hand);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.junethewoods.variants.item.custom;
+package com.junethewoods.variants.item.custom.armor;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;

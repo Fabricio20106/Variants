@@ -1,11 +1,11 @@
 package com.junethewoods.variants.item;
 
 import com.junethewoods.variants.Variants;
-import com.junethewoods.variants.item.custom.DescriptiveCompatShearsItem;
-import com.junethewoods.variants.item.custom.MagmaSwordItem;
-import com.junethewoods.variants.item.custom.WoolArmorItem;
+import com.junethewoods.variants.item.custom.tool.DescriptiveCompatShearsItem;
+import com.junethewoods.variants.item.custom.tool.MagmaSwordItem;
+import com.junethewoods.variants.item.custom.armor.WoolArmorItem;
 import com.junethewoods.variants.util.tab.VSWeaponryTab;
-import com.junethewoods.variants.item.custom.DebugBowItem;
+import com.junethewoods.variants.item.custom.tool.DebugBowItem;
 import com.junethewoods.variants.item.tool.VSArmors;
 import com.junethewoods.variants.item.tool.VSTools;
 import net.minecraft.inventory.EquipmentSlotType;

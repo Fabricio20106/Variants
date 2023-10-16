@@ -1,4 +1,4 @@
-package com.junethewoods.variants.item.custom;
+package com.junethewoods.variants.item.custom.food;
 
 import net.minecraft.item.Food;
 

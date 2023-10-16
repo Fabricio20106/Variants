@@ -1,4 +1,4 @@
-package com.junethewoods.variants.item.custom;
+package com.junethewoods.variants.item.custom.tool;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;

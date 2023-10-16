@@ -1,4 +1,4 @@
-package com.junethewoods.variants.item.custom;
+package com.junethewoods.variants.item.custom.armor;
 
 import net.minecraft.item.IDyeableArmorItem;
 import net.minecraft.item.ItemStack;
