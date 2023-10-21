@@ -90,9 +90,11 @@ dc8e9e05f81bec8ea8b38f08afc4e129cb35252b assets/variants/models/item/andesite_sh
 ac6f331b7b74eb232acf52ddeb0c512499a6adc9 assets/variants/models/item/birch_stick.json
 4dd9f9ceda391f1a27c6d68d29c5662c9db93dbd assets/variants/models/item/black_shulker_shell.json
 6963591b241f9ab1fbd203784a3ed3f35fc7b5d9 assets/variants/models/item/blue_shulker_shell.json
+dce9a8592e0ceb73a3cdbbdd96e8d6f4d58bcda6 assets/variants/models/item/bluestone_pot.json
 7be00bda7cad22e12a30d133805283939f43dd2f assets/variants/models/item/brown_shulker_shell.json
 b0b174b19e7a1618254daf807653c7a7294dc090 assets/variants/models/item/coal_shears.json
 2f57bbb350bb87454e9c73b8c27fce622a447b15 assets/variants/models/item/copper_sword.json
+ab5d0a07c0e60c4bdb4929b00ad5c161d19092f1 assets/variants/models/item/creeper_powder_pot.json
 b9aba862759234f8021923f707a0e33bf144f5ce assets/variants/models/item/crimson_stick.json
 6df455e770a1b9db11fcd60c785557cd0beca646 assets/variants/models/item/crystal_shears.json
 89b5c497c649ae8669c034666a171740f44124f4 assets/variants/models/item/cyan_shulker_shell.json
@@ -122,11 +124,13 @@ eb07839fb44c096c232732ec787d39f18011831c assets/variants/models/item/end_quartz_
 1a0c0a63afe760f7fee9a7981f5c531f2397eca7 assets/variants/models/item/first_door.json
 9ea978615384baaafc5f8076bdeaae42d7f800f6 assets/variants/models/item/fungi_stew.json
 56e5271af4824fd57b32bb0970319874326bdb69 assets/variants/models/item/glow_berry_bush.json
+65073f28255e6154d6f021363c53f3b939fc79c6 assets/variants/models/item/glow_berry_pot.json
 25267fd962c9b22aa4d0c6630248395fa7378228 assets/variants/models/item/glow_black_carpet.json
 04cea657983f5ccdfc5dd75937a88377c8665fb7 assets/variants/models/item/glow_black_dye.json
 1e0712d213c995ed3bc72da325825c73a3a3ffc2 assets/variants/models/item/glow_black_shulker_shell.json
 bc6254147f4b6e0eccc2a67b4516c240b4f4fa1e assets/variants/models/item/glow_black_tulip.json
 bd02b2f8c0678d9819cf4e36b878cfef9d23888f assets/variants/models/item/glow_black_wool.json
+e7e481fdf6f3759a46e6faca17509792888bfa1e assets/variants/models/item/glowstone_pot.json
 0cc85e40e8b46a5ac84186ba0c5599233e5cfa62 assets/variants/models/item/gold_beacon.json
 de104cd35a0d16030ea76185d745385ae345e4c5 assets/variants/models/item/gold_cauldron.json
 f23920c0b64ad48b2127d7a2bfe063a1703f2401 assets/variants/models/item/golden_carrots.json
@@ -139,6 +143,7 @@ e6ccf8110f237c9e2bc80a1be6aea2d3232b041e assets/variants/models/item/granite_pic
 c0dffa2ca33423d5db911b8510564f028ba56624 assets/variants/models/item/granite_sword.json
 b77a00d1e4be7ff6e71a3a01b0bd4e43369d2623 assets/variants/models/item/gray_shulker_shell.json
 0a67324ae843b7fd5dad3edc4da330ffd2de1d11 assets/variants/models/item/green_shulker_shell.json
+3e55c877bf21e1d304e5520e9ceb72a9a0d1d4ec assets/variants/models/item/gunpowder_pot.json
 bd8bc05ec33f91f37e33c7b79f567b42dcfe5eff assets/variants/models/item/honey_ball.json
 fb7474eed92ce4912055a0721c7a30bed197e160 assets/variants/models/item/inno_ai_shears.json
 b3c8e420fb3d5f7eae2e334ffdeb2b4fe5b867ca assets/variants/models/item/inno_shulker_shell.json
@@ -190,6 +195,7 @@ cf441556448a53ee30bf16e34b80d859947a056c assets/variants/models/item/potted_suga
 4ac37dd2e8cd4edff80f7c64bad83663d5985bf7 assets/variants/models/item/raw_debris.json
 03d06daa3632c0b3e76a94aaa6fafe3b47b551d8 assets/variants/models/item/raw_debris_block.json
 9c7b23d77100b47db0a0615bd3b17fa9be199175 assets/variants/models/item/red_shulker_shell.json
+58d1bc6ce695c42e5ee711e73ed0450ad5df2adb assets/variants/models/item/redstone_pot.json
 04a8209f41f7f7b196dfb35fc15445546ff9bb4b assets/variants/models/item/redstone_shears.json
 330804c99faa9331ea768259a56b6fb481d4df68 assets/variants/models/item/ruby_shears.json
 45d86e3018ae357dee3a8032270acaa14b2ab69c assets/variants/models/item/soul_charge.json
@@ -203,6 +209,9 @@ dbc3da922e193a5b0bbdf1389f1230e975cb3121 assets/variants/models/item/splash_soph
 0e732fc04c9725c43b6462065ba623489875ccd2 assets/variants/models/item/spruce_stick.json
 fca034c8a3ecaf234a7713c05ecfeb7fae545e69 assets/variants/models/item/stripped_painting_log.json
 7a61ad60a9f151698d74e88919c921a87f8bfe52 assets/variants/models/item/stripped_painting_wood.json
+dd44fb8b4176f3e823de6957e5aa000923323411 assets/variants/models/item/stylised_pot.json
+82c35938b318b2e8ef0a715db4f10d33a40ea614 assets/variants/models/item/sugar_pot.json
+e6f0a6f9b460c77c5617776c77c210a46aa02cf4 assets/variants/models/item/sweet_berry_pot.json
 269b03009e736a1396e3168aace68a51ff991b2f assets/variants/models/item/wanderer_door.json
 7b366266f435fe03f3a12a4bce1f5a558c667402 assets/variants/models/item/warped_stick.json
 b374078ad46988ecd689b208b493151364099c33 assets/variants/models/item/warped_wart.json
@@ -215,6 +224,9 @@ d72f21682d9b0fbab2b8a48b90edd11ef91bbc83 assets/variants/models/item/yellow_shul
 e27be6569bb078d85fc734584d00dc455e573b85 data/forge/tags/blocks/storage_blocks.json
 af7d5c33dcce6190f5b4c0172a88c603192243e0 data/forge/tags/blocks/storage_blocks/netherite_scrap.json
 78a1b05e2cff4260c4223bd733992e484cfad515 data/forge/tags/items/bookshelves.json
+0be1ade7a53e150376980c69655107a682e07ab6 data/forge/tags/items/dusts.json
+52bf2d9f9cc7533117079c7f1f8c5f4ae22b0e0e data/forge/tags/items/dusts/gunpowder.json
+d9e7fdae290b5783994452dbae8ccd569f521240 data/forge/tags/items/dusts/sugar.json
 a1d5da40239742ee8de7ccce495de18df6974b91 data/forge/tags/items/dyes.json
 6fd66ea00f4e6e8e0ebc1705c8567a3f1c9e5700 data/forge/tags/items/dyes/glow_black.json
 1321875712bc199226b2d6c12583e3a07c65691a data/forge/tags/items/fence_gates/wooden.json
@@ -280,4 +292,5 @@ da7533655265f8cb04cb244d1ad5fc07a16d894f data/variants/tags/items/books.json
 d479449e102666b62401e14276bacbb9a2ea7ea3 data/variants/tags/items/crafting_materials/magma_block.json
 d49ddc370b30c9b9f0d41c90a69601574a941def data/variants/tags/items/painting_doors.json
 59f537833a6d2b59ab763a6e112bbd5a99a1b7aa data/variants/tags/items/painting_logs.json
+108be6dfa3e0509a86efbe25e51ad82672c8c4ed data/variants/tags/items/pots.json
 18ba72c9d84fd36008205066647f3f54c49cfe2c data/variants/tags/items/shulker_shells.json

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "variants:stylised_pot"
+    },
+    {
+      "tag": "forge:dusts/sugar"
+    }
+  ],
+  "result": {
+    "item": "variants:sugar_pot"
+  }
+}

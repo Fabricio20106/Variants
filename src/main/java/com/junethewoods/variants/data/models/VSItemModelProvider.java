@@ -79,6 +79,15 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "lingering_dragon_breath");
         standard(generated, "splash_glass_bottle");
         standard(generated, "lingering_glass_bottle");
+        standard(generated, "stylised_pot");
+        standard(generated, "redstone_pot");
+        standard(generated, "bluestone_pot");
+        standard(generated, "glowstone_pot");
+        standard(generated, "gunpowder_pot");
+        standard(generated, "creeper_powder_pot");
+        standard(generated, "sugar_pot");
+        standard(generated, "sweet_berry_pot");
+        standard(generated, "glow_berry_pot");
         standard(generated, "honey_ball");
         standard(generated, "raw_debris");
         standard(handheld, "oak_stick");

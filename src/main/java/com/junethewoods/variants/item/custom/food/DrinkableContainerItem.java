@@ -56,5 +56,10 @@ public abstract class DrinkableContainerItem extends Item {
         return DrinkHelper.useDrink(world, player, hand);
     }
 
+    @Override
+    public ItemStack getContainerItem(ItemStack itemStack) {
+        return containerItem;
+    }
+
     public abstract void bottleFunctionality(ItemStack containerStack, ItemStack stack, World world, LivingEntity livEntity);
 }

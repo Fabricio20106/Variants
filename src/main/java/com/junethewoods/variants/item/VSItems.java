@@ -2,7 +2,10 @@ package com.junethewoods.variants.item;
 
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.block.VSBlocks;
-import com.junethewoods.variants.item.custom.*;
+import com.junethewoods.variants.item.custom.DescriptiveCompatBlockItem;
+import com.junethewoods.variants.item.custom.DescriptiveCompatItem;
+import com.junethewoods.variants.item.custom.EnchantedKnowledgeBookItem;
+import com.junethewoods.variants.item.custom.PoisoningTypes;
 import com.junethewoods.variants.item.custom.food.*;
 import com.junethewoods.variants.sound.VSSounds;
 import com.junethewoods.variants.util.tab.VSBlockTab;
@@ -82,6 +85,15 @@ public class VSItems {
     public static final RegistryObject<Item> MILK_BOTTLE = ITEMS.register("milk_glass_bottle", () -> new MilkBottleItem(new Item.Properties().stacksTo(8).craftRemainder(Items.GLASS_BOTTLE).tab(VSTab.TAB)));
     public static final RegistryObject<Item> POWDER_SNOW_BOTTLE = ITEMS.register("powder_snow_bottle", () -> new PowderSnowBottleItem(new Item.Properties().stacksTo(8).craftRemainder(Items.GLASS_BOTTLE).tab(VSTab.TAB)));
     public static final RegistryObject<Item> SPLASH_SOPHIE_POTION = ITEMS.register("splash_soph_potion", () -> new SophiePotionItem(new Item.Properties().food(VSFoods.SOPHIE_POTION).tab(VSTab.TAB), "Edits"));
+    public static final RegistryObject<Item> STYLISED_POT = ITEMS.register("stylised_pot", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> REDSTONE_POT = ITEMS.register("redstone_pot", () -> new StylisedPotItem(new Item.Properties().stacksTo(16).tab(VSTab.TAB), PoisoningTypes.REDSTONE, 10));
+    public static final RegistryObject<Item> BLUESTONE_POT = ITEMS.register("bluestone_pot", () -> new StylisedPotItem(new Item.Properties().stacksTo(16).tab(VSTab.TAB), "Fabricio2010's Pack", PoisoningTypes.BLUESTONE, 10));
+    public static final RegistryObject<Item> GLOWSTONE_POT = ITEMS.register("glowstone_pot", () -> new StylisedPotItem(new Item.Properties().stacksTo(16).tab(VSTab.TAB), PoisoningTypes.GLOWSTONE, 10));
+    public static final RegistryObject<Item> GUNPOWDER_POT = ITEMS.register("gunpowder_pot", () -> new StylisedPotItem(new Item.Properties().stacksTo(16).tab(VSTab.TAB), PoisoningTypes.GUNPOWDER, 10));
+    public static final RegistryObject<Item> CREEPER_POWDER_POT = ITEMS.register("creeper_powder_pot", () -> new StylisedPotItem(new Item.Properties().stacksTo(16).tab(VSTab.TAB), "Creeper Edits", PoisoningTypes.CREEPER_POWDER, 10));
+    public static final RegistryObject<Item> SUGAR_POT = ITEMS.register("sugar_pot", () -> new SugarPotItem(new Item.Properties().stacksTo(16).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> SWEET_BERRY_POT = ITEMS.register("sweet_berry_pot", () -> new Item(new Item.Properties().stacksTo(16).food(VSFoods.BERRY_POTS).craftRemainder(VSItems.STYLISED_POT.get()).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> GLOW_BERRY_POT = ITEMS.register("glow_berry_pot", () -> new Item(new Item.Properties().stacksTo(16).food(VSFoods.BERRY_POTS).craftRemainder(VSItems.STYLISED_POT.get()).tab(VSTab.TAB)));
     public static final RegistryObject<Item> HONEY_BALL = ITEMS.register("honey_ball", () -> new HoneyBallItem(new Item.Properties().food(Foods.HONEY_BOTTLE).tab(VSTab.TAB)));
     public static final RegistryObject<Item> RAW_DEBRIS = ITEMS.register("raw_debris", () -> new Item(new Item.Properties().fireResistant().tab(VSTab.TAB)));
     public static final RegistryObject<Item> OAK_STICK = ITEMS.register("oak_stick", () -> new Item(new Item.Properties().tab(VSTab.TAB)));

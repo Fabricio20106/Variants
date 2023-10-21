@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "variants:stylised_pot",
+    "variants:redstone_pot",
+    "variants:bluestone_pot",
+    "variants:glowstone_pot",
+    "variants:gunpowder_pot",
+    "variants:creeper_powder_pot",
+    "variants:sugar_pot",
+    "variants:sweet_berry_pot",
+    "variants:glow_berry_pot"
+  ]
+}

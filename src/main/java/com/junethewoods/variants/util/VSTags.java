@@ -27,6 +27,9 @@ public class VSTags {
 
         public static final ITag.INamedTag<Item> DYES_GLOW_BLACK = forge("dyes/glow_black");
 
+        public static final ITag.INamedTag<Item> DUSTS_GUNPOWDER = forge("dusts/gunpowder");
+        public static final ITag.INamedTag<Item> DUSTS_SUGAR = forge("dusts/sugar");
+
         // Variants' Tags
         public static final ITag.INamedTag<Item> CRAFTING_MATERIALS = mod("crafting_materials");
         public static final ITag.INamedTag<Item> CM_DIORITE = mod("crafting_materials/diorite");
@@ -39,6 +42,7 @@ public class VSTags {
         public static final ITag.INamedTag<Item> SHULKER_SHELLS = mod("shulker_shells");
         public static final ITag.INamedTag<Item> BOOKS = mod("books");
         public static final ITag.INamedTag<Item> BOOKSHELVES = mod("bookshelves");
+        public static final ITag.INamedTag<Item> POTS = mod("pots");
 
         public static ITag.INamedTag<Item> forge(String name) {
             return ItemTags.bind(new ResourceLocation("forge", name).toString());

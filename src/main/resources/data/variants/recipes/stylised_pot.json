@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " T ",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:glass/colorless"
+    },
+    "T": {
+      "item": "minecraft:terracotta"
+    }
+  },
+  "result": {
+    "item": "variants:stylised_pot",
+    "count": 3
+  }
+}

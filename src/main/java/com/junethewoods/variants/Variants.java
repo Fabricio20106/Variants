@@ -3,6 +3,7 @@ package com.junethewoods.variants;
 import com.google.common.collect.ImmutableMap;
 import com.junethewoods.variants.blockentity.VSBlockEntities;
 import com.junethewoods.variants.blockentity.renderer.VSBellBlockEntityRenderer;
+import com.junethewoods.variants.effect.VSEffects;
 import com.junethewoods.variants.sound.VSSounds;
 import com.junethewoods.variants.util.VSItemModelProperties;
 import com.junethewoods.variants.block.VSBlocks;
@@ -40,6 +41,7 @@ public class Variants {
 
         MinecraftForge.EVENT_BUS.register(this);
 
+        VSEffects.EFFECTS.register(eventBus);
         VSItems.ITEMS.register(eventBus);
         VSWeaponry.ITEMS.register(eventBus);
         VSBlocks.BLOCKS.register(eventBus);

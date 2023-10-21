@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "variants:stylised_pot"
+    },
+    {
+      "tag": "forge:dusts/gunpowder"
+    }
+  ],
+  "result": {
+    "item": "variants:gunpowder_pot"
+  }
+}
