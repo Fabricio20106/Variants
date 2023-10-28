@@ -22,7 +22,7 @@ public abstract class DrinkableContainerItem extends Item {
     }
 
     public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity livEntity) {
-        bottleFunctionality(stack, containerItem, world, livEntity);
+        bottleFunctionality(containerItem, stack, world, livEntity);
 
         if (livEntity instanceof ServerPlayerEntity) {
             ServerPlayerEntity serverPlayer = (ServerPlayerEntity) livEntity;

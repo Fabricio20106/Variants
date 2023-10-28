@@ -47,7 +47,7 @@ public class StylisedPotItem extends DrinkableContainerItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
         if (compatMod != null) {
-            tooltip.add(new TranslationTextComponent("messages.variants.compat_item_from", compatMod).withStyle(TextFormatting.GRAY).withStyle(TextFormatting.ITALIC));
+            tooltip.add(new TranslationTextComponent("tooltip.variants.compat_item_from", compatMod).withStyle(TextFormatting.GRAY).withStyle(TextFormatting.ITALIC));
         }
         super.appendHoverText(stack, world, tooltip, flag);
     }

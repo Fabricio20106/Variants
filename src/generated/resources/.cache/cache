@@ -93,6 +93,7 @@ ac6f331b7b74eb232acf52ddeb0c512499a6adc9 assets/variants/models/item/birch_stick
 dce9a8592e0ceb73a3cdbbdd96e8d6f4d58bcda6 assets/variants/models/item/bluestone_pot.json
 7be00bda7cad22e12a30d133805283939f43dd2f assets/variants/models/item/brown_shulker_shell.json
 b0b174b19e7a1618254daf807653c7a7294dc090 assets/variants/models/item/coal_shears.json
+87ee1595addcd8af21f26dd92e15a0b3e87ef263 assets/variants/models/item/copper_shears.json
 2f57bbb350bb87454e9c73b8c27fce622a447b15 assets/variants/models/item/copper_sword.json
 ab5d0a07c0e60c4bdb4929b00ad5c161d19092f1 assets/variants/models/item/creeper_powder_pot.json
 b9aba862759234f8021923f707a0e33bf144f5ce assets/variants/models/item/crimson_stick.json
@@ -243,7 +244,7 @@ c12e6adfc6f3eb3e5600b65115bb56045e3147d6 data/forge/tags/items/raw_materials.jso
 8e72f09fad47e0ed6c642b1badf0c5633d29b71e data/forge/tags/items/rods/debug_wooden.json
 e085851eb249e22e061ce33a7f4591a7a9d70f98 data/forge/tags/items/rods/netherite.json
 f67df971e1be1d4715e4c07bc97acea68bce538d data/forge/tags/items/rods/wooden.json
-10107d32f25293bd5a6a85991a8a747f997de7c0 data/forge/tags/items/shears.json
+1fff7d77c14f1ca8e15b819fbe550ee079fe40af data/forge/tags/items/shears.json
 e27be6569bb078d85fc734584d00dc455e573b85 data/forge/tags/items/storage_blocks.json
 af7d5c33dcce6190f5b4c0172a88c603192243e0 data/forge/tags/items/storage_blocks/netherite_scrap.json
 4d15a81e498c9bdedc9ad234f8706ee9e69acec3 data/minecraft/tags/blocks/bee_growables.json

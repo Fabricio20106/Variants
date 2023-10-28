@@ -15,8 +15,9 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
     @Override
     public ITextComponent getName(ItemStack stack) {
         if (stack.hasTag() && !stack.getTag().getString("color_name").isEmpty()) {
-            return new TranslationTextComponent(this.getDescriptionId(), new TranslationTextComponent(stack.getTag().getString("color_name")));
+            return new TranslationTextComponent(this.getDescriptionId() + ".colored", new TranslationTextComponent(stack.getTag().getString("color_name")));
+        } else {
+            return new TranslationTextComponent(this.getDescriptionId());
         }
-        return super.getName(stack);
     }
 }

@@ -2,9 +2,14 @@ package com.junethewoods.variants.item.custom;
 
 import com.google.common.collect.Lists;
 import com.junethewoods.variants.Variants;
+import com.junethewoods.variants.item.VSItems;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.EnchantedBookItem;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.nbt.CompoundNBT;
@@ -12,7 +17,9 @@ import net.minecraft.nbt.ListNBT;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -56,5 +63,31 @@ public class EnchantedKnowledgeBookItem extends EnchantedBookItem {
             Variants.LOGGER.error("Variants: Enchanted Knowledge Book tag not valid: {}", handStackTag);
             return ActionResult.fail(handStack);
         }
+    }
+
+    public static ItemStack createForEnchantment(EnchantmentData enchData) {
+        ItemStack bookStack = new ItemStack(VSItems.ENCHANTED_KNOWLEDGE_BOOK.get());
+        addEnchantment(bookStack, enchData);
+        return bookStack;
+    }
+
+    @Override
+    public void fillItemCategory(ItemGroup itemTab, NonNullList<ItemStack> stackList) {
+        if (itemTab == ItemGroup.TAB_SEARCH) {
+            for(Enchantment enchantment : Registry.ENCHANTMENT) {
+                if (enchantment.category != null) {
+                    for(int i = enchantment.getMinLevel(); i <= enchantment.getMaxLevel(); ++i) {
+                        stackList.add(createForEnchantment(new EnchantmentData(enchantment, i)));
+                    }
+                }
+            }
+        } else if (itemTab.getEnchantmentCategories().length != 0) {
+            for(Enchantment enchantment1 : Registry.ENCHANTMENT) {
+                if (itemTab.hasEnchantmentCategory(enchantment1.category)) {
+                    stackList.add(createForEnchantment(new EnchantmentData(enchantment1, enchantment1.getMaxLevel())));
+                }
+            }
+        }
+
     }
 }

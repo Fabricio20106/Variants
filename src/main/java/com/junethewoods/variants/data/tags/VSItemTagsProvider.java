@@ -50,11 +50,11 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(Tags.Items.RODS_WOODEN).add(VSItems.OAK_STICK.get()).add(VSItems.SPRUCE_STICK.get()).add(VSItems.BIRCH_STICK.get()).add(VSItems.JUNGLE_STICK.get())
                 .add(VSItems.ACACIA_STICK.get()).add(VSItems.DARK_OAK_STICK.get()).add(VSItems.PAINTING_STICK.get()).add(VSItems.CRIMSON_STICK.get()).add(VSItems.WARPED_STICK.get());
 
-        this.tag(Tags.Items.SHEARS).add(VSWeaponry.COAL_SHEARS.get()).add(VSWeaponry.GOLDEN_SHEARS.get()).add(VSWeaponry.DIAMOND_SHEARS.get()).add(VSWeaponry.NETHERITE_SHEARS.get())
-                .add(VSWeaponry.REDSTONE_SHEARS.get()).add(VSWeaponry.LAPIS_LAZULI_SHEARS.get()).add(VSWeaponry.EMERALD_SHEARS.get()).add(VSWeaponry.QUARTZ_SHEARS.get())
-                .add(VSWeaponry.RUBY_SHEARS.get()).add(VSWeaponry.DIAEMERALD_SHEARS.get()).add(VSWeaponry.CRYSTAL_SHEARS.get()).add(VSWeaponry.PLASTEEL_SHEARS.get())
-                .add(VSWeaponry.LIGHT_MAGENTA_SHEARS.get()).add(VSWeaponry.ALAN_AI_SHEARS.get()).add(VSWeaponry.ALICE_AI_SHEARS.get()).add(VSWeaponry.INNO_AI_SHEARS.get())
-                .add(VSWeaponry.NICOLAS_AI_SHEARS.get());
+        this.tag(Tags.Items.SHEARS).add(VSWeaponry.COAL_SHEARS.get()).add(VSWeaponry.GOLDEN_SHEARS.get()).add(VSWeaponry.COPPER_SHEARS.get()).add(VSWeaponry.DIAMOND_SHEARS.get())
+                .add(VSWeaponry.NETHERITE_SHEARS.get()).add(VSWeaponry.REDSTONE_SHEARS.get()).add(VSWeaponry.LAPIS_LAZULI_SHEARS.get()).add(VSWeaponry.EMERALD_SHEARS.get())
+                .add(VSWeaponry.QUARTZ_SHEARS.get()).add(VSWeaponry.RUBY_SHEARS.get()).add(VSWeaponry.DIAEMERALD_SHEARS.get()).add(VSWeaponry.CRYSTAL_SHEARS.get())
+                .add(VSWeaponry.PLASTEEL_SHEARS.get()).add(VSWeaponry.LIGHT_MAGENTA_SHEARS.get()).add(VSWeaponry.ALAN_AI_SHEARS.get()).add(VSWeaponry.ALICE_AI_SHEARS.get())
+                .add(VSWeaponry.INNO_AI_SHEARS.get()).add(VSWeaponry.NICOLAS_AI_SHEARS.get());
 
         this.tag(Tags.Items.BOOKSHELVES).add(VSItems.PLAIN_BIRCH_BOOKSHELF.get());
 

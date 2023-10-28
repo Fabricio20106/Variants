@@ -6,10 +6,10 @@
   ],
   "key": {
     "#": {
-      "tag": "forge:ingots/magentic"
+      "tag": "forge:ingots/copper"
     }
   },
   "result": {
-    "item": "variants:light_magenta_shears"
+    "item": "variants:copper_shears"
   }
 }

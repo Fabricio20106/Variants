@@ -142,6 +142,7 @@ public class VSItemModelProvider extends ItemModelProvider {
 
         // Shears
         standard(generated, "coal_shears");
+        standard(generated, "copper_shears");
         standard(generated, "golden_shears");
         standard(generated, "diamond_shears");
         standard(generated, "netherite_shears");

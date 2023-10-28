@@ -5,14 +5,9 @@
     "C "
   ],
   "key": {
-    "#": [
-      {
-        "item": "others:inno_core"
-      },
-      {
-        "item": "f10elements:inno_core"
-      }
-    ],
+    "#": {
+      "tag": "forge:cores/inno"
+    },
     "C": {
       "tag": "forge:dusts/coal"
     }

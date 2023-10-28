@@ -7,10 +7,12 @@
   "key": {
     "#": [
       {
-        "item": "others:plasteel"
+        "item": "others:plasteel",
+        "required": false
       },
       {
-        "item": "rimcraft:plasteel"
+        "item": "rimcraft:plasteel",
+        "required": false
       }
     ]
   },
