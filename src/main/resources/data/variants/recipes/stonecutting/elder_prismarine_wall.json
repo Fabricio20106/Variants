@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "variants:elder_prismarine"
+  },
+  "result": "variants:elder_prismarine_wall",
+  "count": 1
+}

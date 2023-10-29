@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "variants:elder_prismarine_slab",
+    "variants:elder_prismarine_brick_slab",
+    "variants:dark_elder_prismarine_slab"
+  ]
+}

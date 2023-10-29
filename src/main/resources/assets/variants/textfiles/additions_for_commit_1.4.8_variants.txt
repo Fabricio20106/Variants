@@ -10,7 +10,7 @@ New Features:
 New Blocks:
 - Painting Trapdoors
 - Chiseled End Stone Bricks & Purpur Blocks
-- Elder Prismarine (Raw, Bricks, Dark & Lantern)
+- Elder Prismarine (Raw, Bricks, Dark & Lantern) [done]
 - Nether Brick & End Stone Pillars
 - Ender Wood Set
 - Ender Vegetation (Fungus, Sprouts, Roots & Vines)
@@ -29,7 +29,7 @@ New Blocks:
 - Ender Nylium
 - Sunny Flowers
 - Potted Torches
-- Painting Sapling
+- Painting Sapling [done]
 - Infested Chiseled End Stone & Purpur Blocks
 - Infested Mossy End Stone Bricks, Nether Bricks & Purpur Block
 - Ender Bookshelves
@@ -48,8 +48,8 @@ New Items:
 - End Fungi Stew
 - End Stone Tool Set
 - Ender Stick
-- Sweet Berry & Glow Berry Pots
-- Sugar Pot
+- Sweet Berry & Glow Berry Pots [done]
+- Sugar Pot [done]
 - Raw Fish, Cooked Fish & Bucket of Fish (Old Cod)
 - Quartz Tool Set
 - Quartz Armor Set + Horse Armor

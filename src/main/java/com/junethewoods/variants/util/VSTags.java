@@ -65,6 +65,9 @@ public class VSTags {
         public static final ITag.INamedTag<Block> PAINTING_LOGS = mod("painting_logs");
         public static final ITag.INamedTag<Block> BOOKSHELVES = mod("bookshelves");
         public static final ITag.INamedTag<Block> BEACONS = mod("beacons");
+        public static final ITag.INamedTag<Block> CONDUIT_FRAME_BLOCKS = mod("conduit_frame_blocks");
+        public static final ITag.INamedTag<Block> WARPED_WART_PLANTABLE_ON = mod("warped_wart_plantable_on");
+        public static final ITag.INamedTag<Block> GOLDEN_CARROTS_PLANTABLE_ON = mod("golden_carrots_plantable_on");
 
         public static ITag.INamedTag<Block> forge(String name) {
             return BlockTags.bind(new ResourceLocation("forge", name).toString());

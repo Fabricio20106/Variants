@@ -104,6 +104,10 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(ItemTags.WOODEN_DOORS).addTag(VSTags.Items.PAINTING_DOORS);
         this.tag(ItemTags.WOODEN_TRAPDOORS).add(VSItems.PAINTING_TRAPDOOR.get());
 
+        this.tag(ItemTags.STAIRS).add(VSItems.ELDER_PRISMARINE_STAIRS.get()).add(VSItems.ELDER_PRISMARINE_BRICK_STAIRS.get()).add(VSItems.DARK_ELDER_PRISMARINE_STAIRS.get());
+        this.tag(ItemTags.SLABS).add(VSItems.ELDER_PRISMARINE_SLAB.get()).add(VSItems.ELDER_PRISMARINE_BRICK_SLAB.get()).add(VSItems.DARK_ELDER_PRISMARINE_SLAB.get());
+        this.tag(ItemTags.WALLS).add(VSItems.ELDER_PRISMARINE_WALL.get());
+
         this.tag(ItemTags.SMALL_FLOWERS).add(VSItems.GLOW_BLACK_TULIP.get());
         this.tag(ItemTags.WOOL).add(VSItems.GLOW_BLACK_WOOL.get());
         this.tag(ItemTags.CARPETS).add(VSItems.GLOW_BLACK_CARPET.get());

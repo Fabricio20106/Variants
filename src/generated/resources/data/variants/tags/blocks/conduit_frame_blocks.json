@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:prismarine",
+    "minecraft:prismarine_bricks",
+    "minecraft:dark_prismarine",
+    "minecraft:sea_lantern",
+    "variants:elder_prismarine",
+    "variants:elder_prismarine_bricks",
+    "variants:dark_elder_prismarine",
+    "variants:elder_sea_lantern"
+  ]
+}

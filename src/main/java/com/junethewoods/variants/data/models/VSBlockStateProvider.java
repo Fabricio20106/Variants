@@ -54,6 +54,19 @@ public class VSBlockStateProvider extends BlockStateProvider {
         simpleBlock(VSBlocks.GLOW_BLACK_WOOL.get());
         simpleBlock(VSBlocks.GLOW_BLACK_CARPET.get(), models().carpet("glow_black_carpet", modLoc("block/glow_black_wool")));
 
+        // Additions of the biggest commit yet:
+        simpleBlock(VSBlocks.ELDER_SEA_LANTERN.get());
+        simpleBlock(VSBlocks.ELDER_PRISMARINE.get());
+        stairsBlock((StairsBlock) VSBlocks.ELDER_PRISMARINE_STAIRS.get(), modLoc("block/elder_prismarine"));
+        slabBlock((SlabBlock) VSBlocks.ELDER_PRISMARINE_SLAB.get(), modLoc("block/elder_prismarine"), modLoc("block/elder_prismarine"));
+        wallBlock((WallBlock) VSBlocks.ELDER_PRISMARINE_WALL.get(), modLoc("block/elder_prismarine"));
+        simpleBlock(VSBlocks.ELDER_PRISMARINE_BRICKS.get());
+        stairsBlock((StairsBlock) VSBlocks.ELDER_PRISMARINE_BRICK_STAIRS.get(), modLoc("block/elder_prismarine_bricks"));
+        slabBlock((SlabBlock) VSBlocks.ELDER_PRISMARINE_BRICK_SLAB.get(), modLoc("block/elder_prismarine_bricks"), modLoc("block/elder_prismarine_bricks"));
+        simpleBlock(VSBlocks.DARK_ELDER_PRISMARINE.get());
+        stairsBlock((StairsBlock) VSBlocks.DARK_ELDER_PRISMARINE_STAIRS.get(), modLoc("block/dark_elder_prismarine"));
+        slabBlock((SlabBlock) VSBlocks.DARK_ELDER_PRISMARINE_SLAB.get(), modLoc("block/dark_elder_prismarine"), modLoc("block/dark_elder_prismarine"));
+
         getVariantBuilder(VSBlocks.GOLDEN_CARROTS.get()).forAllStates(state -> {
             int cropAgeIndex = cropAgeToIndexPotato(state.getValue(BlockStateProperties.AGE_7));
             return ConfiguredModel.builder().modelFile(models().withExistingParent("golden_carrots_stage" + cropAgeIndex, modLoc("block/block_item_crop")).texture("crop",

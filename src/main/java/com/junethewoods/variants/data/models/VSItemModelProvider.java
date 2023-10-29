@@ -51,6 +51,17 @@ public class VSItemModelProvider extends ItemModelProvider {
         withExistingParent("potted_glow_black_tulip");
         withExistingParent("potted_sugar_cane");
         withExistingParent("potted_painting_sapling");
+        withExistingParent("elder_sea_lantern");
+        withExistingParent("elder_prismarine");
+        withExistingParent("elder_prismarine_stairs");
+        withExistingParent("elder_prismarine_slab");
+        withExistingParent("elder_prismarine_wall", modLoc("block/elder_prismarine_wall_inventory"));
+        withExistingParent("elder_prismarine_bricks");
+        withExistingParent("elder_prismarine_brick_stairs");
+        withExistingParent("elder_prismarine_brick_slab");
+        withExistingParent("dark_elder_prismarine");
+        withExistingParent("dark_elder_prismarine_stairs");
+        withExistingParent("dark_elder_prismarine_slab");
 
         standard(generated, "white_shulker_shell");
         standard(generated, "inno_shulker_shell");

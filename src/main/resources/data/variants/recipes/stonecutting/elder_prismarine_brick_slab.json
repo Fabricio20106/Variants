@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "variants:elder_prismarine_bricks"
+  },
+  "result": "variants:elder_prismarine_brick_slab",
+  "count": 2
+}

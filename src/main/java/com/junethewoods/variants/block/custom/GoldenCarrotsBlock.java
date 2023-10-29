@@ -1,5 +1,6 @@
 package com.junethewoods.variants.block.custom;
 
+import com.junethewoods.variants.util.VSTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
@@ -23,6 +24,11 @@ public class GoldenCarrotsBlock extends CropsBlock {
 
     public GoldenCarrotsBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
+        return state.is(VSTags.Blocks.GOLDEN_CARROTS_PLANTABLE_ON);
     }
 
     protected IItemProvider getBaseSeedId() {

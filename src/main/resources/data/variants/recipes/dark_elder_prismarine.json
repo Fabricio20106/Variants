@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SIS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "variants:elder_prismarine_shard"
+    },
+    "I": {
+      "tag": "forge:dyes/black"
+    }
+  },
+  "result": {
+    "item": "variants:dark_elder_prismarine"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "variants:elder_prismarine_stairs",
+    "variants:elder_prismarine_brick_stairs",
+    "variants:dark_elder_prismarine_stairs"
+  ]
+}

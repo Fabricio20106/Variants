@@ -1,6 +1,7 @@
 package com.junethewoods.variants.block.custom;
 
 import com.junethewoods.variants.item.VSItems;
+import com.junethewoods.variants.util.VSTags;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
@@ -33,7 +34,7 @@ public class WarpedWartBlock extends BushBlock {
     }
 
     protected boolean mayPlaceOn(BlockState state, IBlockReader reader, BlockPos pos) {
-        return state.is(Blocks.SOUL_SAND) || state.is(Blocks.SOUL_SOIL) || super.mayPlaceOn(state, reader, pos);
+        return state.is(VSTags.Blocks.WARPED_WART_PLANTABLE_ON);
     }
 
     public boolean isRandomlyTicking(BlockState state) {
