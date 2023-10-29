@@ -48,6 +48,9 @@ public class VSBlockStateProvider extends BlockStateProvider {
         axisBlock((RotatedPillarBlock) VSBlocks.STRIPPED_PAINTING_WOOD.get(), modLoc("block/stripped_painting_log"), modLoc("block/stripped_painting_log"));
         simpleBlock(VSBlocks.PAINTING_LEAVES.get(), models().withExistingParent("painting_leaves", mcLoc("block/leaves")).texture("all",
                 modLoc("block/painting_leaves")));
+        simpleBlock(VSBlocks.PAINTING_SAPLING.get(), models().cross("painting_sapling", modLoc("block/painting_sapling")));
+        simpleBlock(VSBlocks.POTTED_PAINTING_SAPLING.get(), models().withExistingParent("potted_painting_sapling", modLoc("block/flower_pot_cross_alt")).texture("plant",
+                "block/painting_sapling"));
         simpleBlock(VSBlocks.GLOW_BLACK_WOOL.get());
         simpleBlock(VSBlocks.GLOW_BLACK_CARPET.get(), models().carpet("glow_black_carpet", modLoc("block/glow_black_wool")));
 

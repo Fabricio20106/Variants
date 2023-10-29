@@ -46,7 +46,8 @@ public class VSItemTagsProvider extends ItemTagsProvider {
 
         this.tag(VSTags.Items.RODS_DEBUG_WOODEN).add(Items.DEBUG_STICK);
         this.tag(VSTags.Items.RODS_NETHERITE).add(VSItems.NETHERITE_ROD.get());
-        this.tag(Tags.Items.RODS).addTag(VSTags.Items.RODS_DEBUG_WOODEN).addTag(VSTags.Items.RODS_NETHERITE);
+        this.tag(VSTags.Items.RODS_SOUL_BLAZE).add(VSItems.SOUL_BLAZE_ROD.get());
+        this.tag(Tags.Items.RODS).addTag(VSTags.Items.RODS_DEBUG_WOODEN).addTag(VSTags.Items.RODS_NETHERITE).addTag(VSTags.Items.RODS_SOUL_BLAZE);
         this.tag(Tags.Items.RODS_WOODEN).add(VSItems.OAK_STICK.get()).add(VSItems.SPRUCE_STICK.get()).add(VSItems.BIRCH_STICK.get()).add(VSItems.JUNGLE_STICK.get())
                 .add(VSItems.ACACIA_STICK.get()).add(VSItems.DARK_OAK_STICK.get()).add(VSItems.PAINTING_STICK.get()).add(VSItems.CRIMSON_STICK.get()).add(VSItems.WARPED_STICK.get());
 
@@ -64,6 +65,9 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.DUSTS_GUNPOWDER).add(Items.GUNPOWDER);
         this.tag(VSTags.Items.DUSTS_SUGAR).add(Items.SUGAR);
         this.tag(Tags.Items.DUSTS).addTag(VSTags.Items.DUSTS_SUGAR).addTag(VSTags.Items.DUSTS_GUNPOWDER);
+
+        this.tag(VSTags.Items.GEMS_ELDER_PRISMARINE).add(VSItems.ELDER_PRISMARINE_CRYSTALS.get());
+        this.tag(Tags.Items.GEMS).addTag(VSTags.Items.GEMS_ELDER_PRISMARINE);
 
         // Variants' Tags
         this.tag(VSTags.Items.CM_DIORITE).add(Items.DIORITE);
@@ -90,6 +94,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         // Minecraft Tags
         this.tag(ItemTags.LOGS_THAT_BURN).addTag(VSTags.Items.PAINTING_LOGS);
         this.tag(ItemTags.LEAVES).add(VSItems.PAINTING_LEAVES.get());
+        this.tag(ItemTags.SAPLINGS).add(VSItems.PAINTING_SAPLING.get());
         this.tag(ItemTags.PLANKS).add(VSItems.PAINTING_PLANKS.get());
         this.tag(ItemTags.WOODEN_STAIRS).add(VSItems.PAINTING_STAIRS.get());
         this.tag(ItemTags.WOODEN_SLABS).add(VSItems.PAINTING_SLAB.get());

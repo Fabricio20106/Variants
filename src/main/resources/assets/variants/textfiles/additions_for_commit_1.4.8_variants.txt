@@ -1,11 +1,11 @@
-Additions for Commit "Build: 1.16.4-1.4.8, Literally 1,102 and 27 Universioned Ones":
+Additions for Commit "Build: 1.16.4-1.4.8, Literally 1,102 Files and 27 Universioned Ones":
 
 New Features:
-- Variants cauldrons are now waterloggable
-- Painting Trees
+- Variants cauldrons are now water-loggable [done]
+- Painting Trees [done]
 - Soul Lava fluid
 - Mushroom Stew fluid
-- Brazilian Portuguese translation
+- Brazilian Portuguese translation [done]
 
 New Blocks:
 - Painting Trapdoors

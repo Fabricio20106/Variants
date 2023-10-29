@@ -3,7 +3,8 @@
   "ambientocclusion": false,
   "textures": {
     "particle": "block/flower_pot",
-    "flowerpot": "block/flower_pot"
+    "flowerpot": "block/flower_pot",
+    "dirt": "block/dirt"
   },
   "elements": [
     {
@@ -54,7 +55,7 @@
       "from": [6, 0, 6],
       "to": [10, 4, 10],
       "faces": {
-        "up": {"uv": [6, 6, 10, 10], "texture": "#flowerpot"},
+        "up": {"uv": [6, 6, 10, 10], "texture": "#dirt"},
         "down": {"uv": [6, 12, 10, 16], "texture": "#flowerpot", "cullface": "down"}
       }
     },

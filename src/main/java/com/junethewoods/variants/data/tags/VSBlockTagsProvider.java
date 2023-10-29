@@ -41,6 +41,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         // Minecraft Tags
         this.tag(BlockTags.LOGS_THAT_BURN).addTag(VSTags.Blocks.PAINTING_LOGS);
         this.tag(BlockTags.LEAVES).add(VSBlocks.PAINTING_LEAVES.get());
+        this.tag(BlockTags.SAPLINGS).add(VSBlocks.PAINTING_SAPLING.get());
         this.tag(BlockTags.PLANKS).add(VSBlocks.PAINTING_PLANKS.get());
         this.tag(BlockTags.WOODEN_STAIRS).add(VSBlocks.PAINTING_STAIRS.get());
         this.tag(BlockTags.WOODEN_SLABS).add(VSBlocks.PAINTING_SLAB.get());
@@ -54,7 +55,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.CROPS).add(VSBlocks.GOLDEN_CARROTS.get()).add(VSBlocks.WARPED_WART.get());
         this.tag(BlockTags.BEE_GROWABLES).add(VSBlocks.GLOW_BERRY_BUSH.get());
         this.tag(BlockTags.SMALL_FLOWERS).add(VSBlocks.GLOW_BLACK_TULIP.get());
-        this.tag(BlockTags.FLOWER_POTS).add(VSBlocks.POTTED_GLOW_BLACK_TULIP.get()).add(VSBlocks.POTTED_SUGAR_CANE.get());
+        this.tag(BlockTags.FLOWER_POTS).add(VSBlocks.POTTED_GLOW_BLACK_TULIP.get()).add(VSBlocks.POTTED_SUGAR_CANE.get()).add(VSBlocks.POTTED_PAINTING_SAPLING.get());
         this.tag(BlockTags.WOOL).add(VSBlocks.GLOW_BLACK_WOOL.get());
         this.tag(BlockTags.CARPETS).add(VSBlocks.GLOW_BLACK_CARPET.get());
         this.tag(BlockTags.GUARDED_BY_PIGLINS).add(VSBlocks.GOLDEN_CAULDRON.get()).add(VSBlocks.GOLDEN_BEACON.get()).add(VSBlocks.GOLDEN_CARROTS.get());

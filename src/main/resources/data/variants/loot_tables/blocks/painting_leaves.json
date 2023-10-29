@@ -54,7 +54,7 @@
                   ]
                 }
               ],
-              "name": "minecraft:oak_sapling"
+              "name": "variants:painting_sapling"
             }
           ]
         }
@@ -145,7 +145,7 @@
               ]
             }
           ],
-          "name": "minecraft:apple"
+          "name": "variants:honey_ball"
         }
       ],
       "conditions": [

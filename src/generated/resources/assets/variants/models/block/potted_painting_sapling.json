@@ -1,0 +1,6 @@
+{
+  "parent": "variants:block/flower_pot_cross_alt",
+  "textures": {
+    "plant": "variants:block/painting_sapling"
+  }
+}

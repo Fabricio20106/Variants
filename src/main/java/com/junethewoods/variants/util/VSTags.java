@@ -24,11 +24,14 @@ public class VSTags {
 
         public static final ITag.INamedTag<Item> RODS_DEBUG_WOODEN = forge("rods/debug_wooden");
         public static final ITag.INamedTag<Item> RODS_NETHERITE = forge("rods/netherite");
+        public static final ITag.INamedTag<Item> RODS_SOUL_BLAZE = forge("rods/soul_blaze");
 
         public static final ITag.INamedTag<Item> DYES_GLOW_BLACK = forge("dyes/glow_black");
 
         public static final ITag.INamedTag<Item> DUSTS_GUNPOWDER = forge("dusts/gunpowder");
         public static final ITag.INamedTag<Item> DUSTS_SUGAR = forge("dusts/sugar");
+
+        public static final ITag.INamedTag<Item> GEMS_ELDER_PRISMARINE = forge("gems/elder_prismarine");
 
         // Variants' Tags
         public static final ITag.INamedTag<Item> CRAFTING_MATERIALS = mod("crafting_materials");

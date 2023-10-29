@@ -50,6 +50,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         withExistingParent("painting_trapdoor", modLoc("block/painting_trapdoor_bottom"));
         withExistingParent("potted_glow_black_tulip");
         withExistingParent("potted_sugar_cane");
+        withExistingParent("potted_painting_sapling");
 
         standard(generated, "white_shulker_shell");
         standard(generated, "inno_shulker_shell");
@@ -122,6 +123,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "purple_nugget");
         getBuilder("glow_berry_bush").parent(generated).texture("layer0", "block/glow_berry_bush_stage3");
         getBuilder("glow_black_tulip").parent(generated).texture("layer0", "block/glow_black_tulip");
+        getBuilder("painting_sapling").parent(generated).texture("layer0", "block/painting_sapling");
 
         standard(handheld, "magma_sword");
         standard(handheld, "amethyst_sword");

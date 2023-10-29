@@ -38,8 +38,8 @@ public class VSWeaponry {
     public static final RegistryObject<Item> DEBUG_BOW = ITEMS.register("debug_bow", () -> new DebugBowItem(new Item.Properties().durability(3840).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> REDSTONE_SHEARS = ITEMS.register("redstone_shears", () -> new ShearsItem(new Item.Properties().durability(250).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> COAL_SHEARS = ITEMS.register("coal_shears", () -> new ShearsItem(new Item.Properties().durability(131).tab(VSWeaponryTab.TAB)));
-    public static final RegistryObject<Item> DIAMOND_SHEARS = ITEMS.register("diamond_shears", () -> new ShearsItem(new Item.Properties().durability(1561).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> COPPER_SHEARS = ITEMS.register("copper_shears", () -> new ShearsItem(new Item.Properties().durability(32).tab(VSWeaponryTab.TAB)));
+    public static final RegistryObject<Item> DIAMOND_SHEARS = ITEMS.register("diamond_shears", () -> new ShearsItem(new Item.Properties().durability(1561).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> GOLDEN_SHEARS = ITEMS.register("golden_shears", () -> new ShearsItem(new Item.Properties().durability(250).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> NETHERITE_SHEARS = ITEMS.register("netherite_shears", () -> new ShearsItem(new Item.Properties().durability(2031).fireResistant().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> LAPIS_LAZULI_SHEARS = ITEMS.register("lapis_lazuli_shears", () -> new ShearsItem(new Item.Properties().durability(1671).tab(VSWeaponryTab.TAB)));
