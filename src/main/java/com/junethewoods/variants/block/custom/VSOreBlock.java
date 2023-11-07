@@ -30,7 +30,7 @@ public class VSOreBlock extends OreBlock {
     }
 
     @Override
-    public int getExpDrop(BlockState state, IWorldReader reader, BlockPos pos, int fortune, int silkTouch) {
+    public int getExpDrop(BlockState state, IWorldReader world, BlockPos pos, int fortune, int silkTouch) {
         return silkTouch == 0 ? this.xpOnDrop(RANDOM) : 0;
     }
 }

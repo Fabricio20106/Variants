@@ -12,4 +12,5 @@ Currently, this branch includes features not available in the main project, for 
 
 - Wool Sweaters with good coloring & appearance in the creative menu;
 - Poisoning effects from pots;
+- Various texture changes;
 - And various polishing touches from the way I program today.

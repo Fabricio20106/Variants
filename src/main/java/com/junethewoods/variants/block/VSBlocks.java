@@ -22,7 +22,7 @@ public class VSBlocks {
     public static final RegistryObject<Block> PAINTING_LEAVES = BLOCKS.register("painting_leaves", () -> new LeavesBlock(AbstractBlock.Properties.copy(Blocks.OAK_LEAVES)));
     public static final RegistryObject<Block> PAINTING_SAPLING = BLOCKS.register("painting_sapling", () -> new SaplingBlock(new PaintingTree(), AbstractBlock.Properties.copy(Blocks.OAK_SAPLING)));
     public static final RegistryObject<Block> PAINTING_PLANKS = BLOCKS.register("painting_planks", () -> new Block(AbstractBlock.Properties.copy(Blocks.OAK_PLANKS)));
-    public static final RegistryObject<Block> PAINTING_STAIRS = BLOCKS.register("painting_stairs", () -> new StairsBlock(VSBlocks.PAINTING_PLANKS.get().defaultBlockState(), AbstractBlock.Properties.copy(Blocks.OAK_STAIRS)));
+    public static final RegistryObject<Block> PAINTING_STAIRS = BLOCKS.register("painting_stairs", () -> new StairsBlock(() -> VSBlocks.PAINTING_PLANKS.get().defaultBlockState(), AbstractBlock.Properties.copy(Blocks.OAK_STAIRS)));
     public static final RegistryObject<Block> PAINTING_SLAB = BLOCKS.register("painting_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(Blocks.OAK_SLAB)));
     public static final RegistryObject<Block> PAINTING_FENCE = BLOCKS.register("painting_fence", () -> new FenceBlock(AbstractBlock.Properties.copy(Blocks.OAK_FENCE)));
     public static final RegistryObject<Block> PAINTING_FENCE_GATE = BLOCKS.register("painting_fence_gate", () -> new FenceGateBlock(AbstractBlock.Properties.copy(Blocks.OAK_FENCE_GATE)));

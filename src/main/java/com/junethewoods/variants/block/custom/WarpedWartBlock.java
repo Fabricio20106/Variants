@@ -29,11 +29,11 @@ public class WarpedWartBlock extends BushBlock {
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
     }
 
-    public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
         return SHAPES[state.getValue(AGE)];
     }
 
-    protected boolean mayPlaceOn(BlockState state, IBlockReader reader, BlockPos pos) {
+    protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
         return state.is(VSTags.Blocks.WARPED_WART_PLANTABLE_ON);
     }
 
@@ -41,16 +41,16 @@ public class WarpedWartBlock extends BushBlock {
         return state.getValue(AGE) < 3;
     }
 
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random rand) {
         int age = state.getValue(AGE);
-        if (age < 3 && ForgeHooks.onCropsGrowPre(world, pos, state, random.nextInt(10) == 0)) {
+        if (age < 3 && ForgeHooks.onCropsGrowPre(world, pos, state, rand.nextInt(10) == 0)) {
             state = state.setValue(AGE, age + 1);
             world.setBlock(pos, state, 2);
             ForgeHooks.onCropsGrowPost(world, pos, state);
         }
     }
 
-    public ItemStack getCloneItemStack(IBlockReader reader, BlockPos pos, BlockState state) {
+    public ItemStack getCloneItemStack(IBlockReader world, BlockPos pos, BlockState state) {
         return new ItemStack(VSItems.WARPED_WART.get());
     }
 

@@ -35,7 +35,7 @@ public class GoldenCarrotsBlock extends CropsBlock {
         return Items.GOLDEN_CARROT;
     }
 
-    public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
         return SHAPES[state.getValue(this.getAgeProperty())];
     }
 }

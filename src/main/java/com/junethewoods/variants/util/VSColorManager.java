@@ -21,7 +21,7 @@ public class VSColorManager {
         event.getBlockColors().register((x, reader, pos, u) -> reader != null && pos != null ? BiomeColors.getAverageWaterColor(reader, pos) : -1,
                 VSBlocks.GOLDEN_CAULDRON.get());
 
-        event.getBlockColors().register((x, reader, pos, u) -> reader != null && pos != null ? BiomeColors.getAverageGrassColor(reader, pos) : GrassColors.get(0.5d, 1),
+        event.getBlockColors().register((x, reader, pos, u) -> reader != null && pos != null ? BiomeColors.getAverageFoliageColor(reader, pos) : GrassColors.get(0.5d, 1),
                 VSBlocks.POTTED_SUGAR_CANE.get(), VSBlocks.PAINTING_LEAVES.get());
     }
 

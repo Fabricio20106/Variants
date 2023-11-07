@@ -67,5 +67,6 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.WOOL).add(VSBlocks.GLOW_BLACK_WOOL.get());
         this.tag(BlockTags.CARPETS).add(VSBlocks.GLOW_BLACK_CARPET.get());
         this.tag(BlockTags.GUARDED_BY_PIGLINS).add(VSBlocks.GOLDEN_CAULDRON.get()).add(VSBlocks.GOLDEN_BEACON.get()).add(VSBlocks.GOLDEN_CARROTS.get());
+        this.tag(BlockTags.DRAGON_IMMUNE).add(VSBlocks.END_QUARTZ_ORE.get());
     }
 }

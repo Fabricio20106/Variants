@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C",
+    "#",
+    "#"
+  ],
+  "key": {
+    "C": {
+      "tag": "forge:gems/amethyst"
+    },
+    "#": {
+      "tag": "forge:gems/diamond"
+    }
+  },
+  "result": {
+    "item": "variants:diamond_spyglass"
+  }
+}
