@@ -15,9 +15,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.Tags;
 
 public enum VSArmors implements IArmorMaterial {
-    EQUIPMENT_SLOT_TYPE(Variants.MOD_ID + ":empty_armor_slot", 15, new int[] {2, 5, 6, 2}, 9, SoundEvents.ARMOR_EQUIP_IRON, 0f, 0f, () -> Ingredient.of(Tags.Items.INGOTS_IRON)),
-    PHANTOM(Variants.MOD_ID + ":phantom", 5, new int[] {1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0f, 0f, () -> Ingredient.of(Items.PHANTOM_MEMBRANE)),
-    RABBIT(Variants.MOD_ID + ":rabbit", 5, new int[] {1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0f, 0f, () -> Ingredient.of(Items.RABBIT_HIDE)),
+    EMPTY_SLOT(Variants.MOD_ID + ":empty_armor_slot", 15, new int[] {2, 5, 6, 2}, 9, SoundEvents.ARMOR_EQUIP_IRON, 0f, 0f, () -> Ingredient.of(Tags.Items.INGOTS_IRON)),
+    PHANTOM_MEMBRANE(Variants.MOD_ID + ":phantom", 5, new int[] {1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0f, 0f, () -> Ingredient.of(Items.PHANTOM_MEMBRANE)),
+    RABBIT_HIDE(Variants.MOD_ID + ":rabbit", 5, new int[] {1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0f, 0f, () -> Ingredient.of(Items.RABBIT_HIDE)),
     WOOL(Variants.MOD_ID + ":wool", 5, new int[] {1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0f, 0f, () -> Ingredient.of(ItemTags.WOOL)),
     EMERALD(Variants.MOD_ID + ":emerald", 33, new int[] {3, 6, 8, 3}, 10, SoundEvents.ARMOR_EQUIP_DIAMOND, 2f, 0f, () -> Ingredient.of(Tags.Items.GEMS_EMERALD));
 

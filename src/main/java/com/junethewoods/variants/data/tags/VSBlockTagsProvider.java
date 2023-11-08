@@ -27,9 +27,16 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSTags.Blocks.STORAGE_BLOCKS_NETHERITE_SCRAP).add(VSBlocks.RAW_DEBRIS_BLOCK.get());
         this.tag(Tags.Blocks.STORAGE_BLOCKS).addTag(VSTags.Blocks.STORAGE_BLOCKS_NETHERITE_SCRAP);
 
-        this.tag(Tags.Blocks.ORES_QUARTZ).add(VSBlocks.QUARTZ_ORE.get()).add(VSBlocks.END_QUARTZ_ORE.get());
+        this.tag(Tags.Blocks.ORES_QUARTZ).add(VSBlocks.QUARTZ_ORE.get()).add(VSBlocks.DEEPSLATE_QUARTZ_ORE.get()).add(VSBlocks.END_QUARTZ_ORE.get());
 
         this.tag(Tags.Blocks.FENCE_GATES_WOODEN).add(VSBlocks.PAINTING_FENCE_GATE.get());
+
+        this.tag(VSTags.Blocks.DEEPSLATE_REPLACEABLES);
+
+        this.tag(Tags.Blocks.STAINED_GLASS).add(VSBlocks.GLOW_BLACK_STAINED_GLASS.get());
+        this.tag(Tags.Blocks.STAINED_GLASS_PANES).add(VSBlocks.GLOW_BLACK_STAINED_GLASS_PANE.get());
+        this.tag(VSTags.Blocks.GLASS_GLOW_BLACK).add(VSBlocks.GLOW_BLACK_STAINED_GLASS.get());
+        this.tag(VSTags.Blocks.GLASS_PANES_GLOW_BLACK).add(VSBlocks.GLOW_BLACK_STAINED_GLASS_PANE.get());
 
         // Variants' Tags
         this.tag(VSTags.Blocks.PAINTING_DOORS).add(VSBlocks.WANDERER_DOOR.get()).add(VSBlocks.GRAHAM_DOOR.get()).add(VSBlocks.FIRST_DOOR.get());
@@ -68,5 +75,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.CARPETS).add(VSBlocks.GLOW_BLACK_CARPET.get());
         this.tag(BlockTags.GUARDED_BY_PIGLINS).add(VSBlocks.GOLDEN_CAULDRON.get()).add(VSBlocks.GOLDEN_BEACON.get()).add(VSBlocks.GOLDEN_CARROTS.get());
         this.tag(BlockTags.DRAGON_IMMUNE).add(VSBlocks.END_QUARTZ_ORE.get());
+        this.tag(BlockTags.IMPERMEABLE).add(VSBlocks.GLOW_BLACK_STAINED_GLASS.get());
+        this.tag(BlockTags.BEDS).add(VSBlocks.GLOW_BLACK_BED.get());
     }
 }

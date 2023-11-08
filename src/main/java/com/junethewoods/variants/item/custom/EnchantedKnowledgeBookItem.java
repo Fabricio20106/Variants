@@ -3,6 +3,7 @@ package com.junethewoods.variants.item.custom;
 import com.google.common.collect.Lists;
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.item.VSItems;
+import com.junethewoods.variants.util.tab.VSTab;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.entity.player.PlayerEntity;
@@ -74,20 +75,17 @@ public class EnchantedKnowledgeBookItem extends EnchantedBookItem {
     @Override
     public void fillItemCategory(ItemGroup itemTab, NonNullList<ItemStack> stackList) {
         if (itemTab == ItemGroup.TAB_SEARCH) {
-            for(Enchantment enchantment : Registry.ENCHANTMENT) {
-                if (enchantment.category != null) {
-                    for(int i = enchantment.getMinLevel(); i <= enchantment.getMaxLevel(); ++i) {
-                        stackList.add(createForEnchantment(new EnchantmentData(enchantment, i)));
+            for(Enchantment enchantments : Registry.ENCHANTMENT) {
+                if (enchantments.category != null) {
+                    for(int i = enchantments.getMinLevel(); i <= enchantments.getMaxLevel(); ++i) {
+                        stackList.add(createForEnchantment(new EnchantmentData(enchantments, i)));
                     }
                 }
             }
-        } else if (itemTab.getEnchantmentCategories().length != 0) {
-            for(Enchantment enchantment1 : Registry.ENCHANTMENT) {
-                if (itemTab.hasEnchantmentCategory(enchantment1.category)) {
-                    stackList.add(createForEnchantment(new EnchantmentData(enchantment1, enchantment1.getMaxLevel())));
-                }
+        } else if (itemTab == VSTab.TAB) {
+            for(Enchantment enchantments : Registry.ENCHANTMENT) {
+                stackList.add(createForEnchantment(new EnchantmentData(enchantments, enchantments.getMaxLevel())));
             }
         }
-
     }
 }

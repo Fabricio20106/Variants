@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " #",
+    "# "
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:ingots/weathered_copper"
+    }
+  },
+  "result": {
+    "item": "variants:weathered_copper_shears"
+  }
+}

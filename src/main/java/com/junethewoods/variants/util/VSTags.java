@@ -13,6 +13,9 @@ public class VSTags {
         // Forge Tags
         public static final ITag.INamedTag<Item> STORAGE_BLOCKS_NETHERITE_SCRAP = forge("storage_blocks/netherite_scrap");
 
+        public static final ITag.INamedTag<Item> GLASS_GLOW_BLACK = forge("glass/glow_black");
+        public static final ITag.INamedTag<Item> GLASS_PANES_GLOW_BLACK = forge("glass_panes/glow_black");
+
         public static final ITag.INamedTag<Item> INGOTS_EXPOSED_COPPER = forge("ingots/exposed_copper");
         public static final ITag.INamedTag<Item> INGOTS_WEATHERED_COPPER = forge("ingots/weathered_copper");
         public static final ITag.INamedTag<Item> INGOTS_OXIDIZED_COPPER = forge("ingots/oxidized_copper");
@@ -59,6 +62,11 @@ public class VSTags {
     public static class Blocks {
         // Forge Tags
         public static final ITag.INamedTag<Block> STORAGE_BLOCKS_NETHERITE_SCRAP = forge("storage_blocks/netherite_scrap");
+
+        public static final ITag.INamedTag<Block> GLASS_GLOW_BLACK = forge("glass/glow_black");
+        public static final ITag.INamedTag<Block> GLASS_PANES_GLOW_BLACK = forge("glass_panes/glow_black");
+
+        public static final ITag.INamedTag<Block> DEEPSLATE_REPLACEABLES = forge("deepslate_replaceables");
 
         // Variants' Tags
         public static final ITag.INamedTag<Block> PAINTING_DOORS = mod("painting_doors");

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stained_glass_pane",
+  "pattern": [
+    "###",
+    "#$#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:glass_panes/colorless"
+    },
+    "$": {
+      "tag": "forge:dyes/glow_black"
+    }
+  },
+  "result": {
+    "item": "variants:glow_black_stained_glass_pane",
+    "count": 8
+  }
+}

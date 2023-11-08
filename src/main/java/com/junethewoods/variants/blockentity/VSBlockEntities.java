@@ -3,6 +3,7 @@ package com.junethewoods.variants.blockentity;
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.block.VSBlocks;
 import com.junethewoods.variants.blockentity.custom.VSBeaconBlockEntity;
+import com.junethewoods.variants.blockentity.custom.VSBedBlockEntity;
 import com.junethewoods.variants.blockentity.custom.VSBellBlockEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
@@ -17,4 +18,7 @@ public class VSBlockEntities {
 
     public static final RegistryObject<TileEntityType<VSBeaconBlockEntity>> VS_BEACON = BLOCK_ENTITIES.register("vs_beacon", () -> TileEntityType.Builder.of(VSBeaconBlockEntity::new,
             VSBlocks.GOLDEN_BEACON.get()).build(null));
+
+    public static final RegistryObject<TileEntityType<VSBedBlockEntity>> VS_BED = BLOCK_ENTITIES.register("vs_bed", () -> TileEntityType.Builder.of(VSBedBlockEntity::new,
+            VSBlocks.GLOW_BLACK_BED.get()).build(null));
 }

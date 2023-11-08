@@ -30,10 +30,12 @@ public class VSItemModelProvider extends ItemModelProvider {
         withExistingParent("gold_cauldron");
         withExistingParent("gold_beacon");
         withExistingParent("quartz_ore");
+        withExistingParent("deepslate_quartz_ore");
         withExistingParent("end_quartz_ore");
         withExistingParent("raw_debris_block");
         withExistingParent("glow_black_wool");
         withExistingParent("glow_black_carpet");
+        withExistingParent("glow_black_stained_glass");
         withExistingParent("plain_birch_bookshelf");
         withExistingParent("painting_log");
         withExistingParent("painting_wood");
@@ -135,6 +137,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         getBuilder("glow_berry_bush").parent(generated).texture("layer0", "block/glow_berry_bush_stage3");
         getBuilder("glow_black_tulip").parent(generated).texture("layer0", "block/glow_black_tulip");
         getBuilder("painting_sapling").parent(generated).texture("layer0", "block/painting_sapling");
+        getBuilder("glow_black_stained_glass_pane").parent(generated).texture("layer0", "block/glow_black_stained_glass");
 
         standard(handheld, "magma_sword");
         standard(handheld, "amethyst_sword");
@@ -156,6 +159,10 @@ public class VSItemModelProvider extends ItemModelProvider {
         // Shears
         standard(generated, "coal_shears");
         standard(generated, "copper_shears");
+        standard(generated, "exposed_copper_shears");
+        standard(generated, "weathered_copper_shears");
+        standard(generated, "oxidized_copper_shears");
+        standard(generated, "amethyst_shears");
         standard(generated, "golden_shears");
         standard(generated, "diamond_shears");
         standard(generated, "netherite_shears");

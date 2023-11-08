@@ -2,6 +2,7 @@ package com.junethewoods.variants;
 
 import com.google.common.collect.ImmutableMap;
 import com.junethewoods.variants.blockentity.VSBlockEntities;
+import com.junethewoods.variants.blockentity.renderer.GlowBlackBedBlockEntityRenderer;
 import com.junethewoods.variants.blockentity.renderer.VSBellBlockEntityRenderer;
 import com.junethewoods.variants.effect.VSEffects;
 import com.junethewoods.variants.sound.VSSounds;
@@ -65,6 +66,7 @@ public class Variants {
 
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_BELL.get(), VSBellBlockEntityRenderer::new);
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_BEACON.get(), BeaconTileEntityRenderer::new);
+        ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_BED.get(), GlowBlackBedBlockEntityRenderer::new);
     }
 
     @SubscribeEvent

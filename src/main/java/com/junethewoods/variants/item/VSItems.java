@@ -51,12 +51,16 @@ public class VSItems {
     public static final RegistryObject<Item> DARK_ELDER_PRISMARINE_SLAB = ITEMS.register("dark_elder_prismarine_slab", () -> new BlockItem(VSBlocks.DARK_ELDER_PRISMARINE_SLAB.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> RAW_DEBRIS_BLOCK = ITEMS.register("raw_debris_block", () -> new BlockItem(VSBlocks.RAW_DEBRIS_BLOCK.get(), new Item.Properties().fireResistant().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> QUARTZ_ORE = ITEMS.register("quartz_ore", () -> new BlockItem(VSBlocks.QUARTZ_ORE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> DEEPSLATE_QUARTZ_ORE = ITEMS.register("deepslate_quartz_ore", () -> new BlockItem(VSBlocks.DEEPSLATE_QUARTZ_ORE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> END_QUARTZ_ORE = ITEMS.register("end_quartz_ore", () -> new BlockItem(VSBlocks.END_QUARTZ_ORE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> GOLDEN_CAULDRON = ITEMS.register("gold_cauldron", () -> new BlockItem(VSBlocks.GOLDEN_CAULDRON.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> GOLDEN_BEACON = ITEMS.register("gold_beacon", () -> new BlockItem(VSBlocks.GOLDEN_BEACON.get(), new Item.Properties().rarity(Rarity.RARE).tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> DIAMOND_BELL = ITEMS.register("diamond_bell", () -> new BlockItem(VSBlocks.DIAMOND_BELL.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> GLOW_BLACK_WOOL = ITEMS.register("glow_black_wool", () -> new BlockItem(VSBlocks.GLOW_BLACK_WOOL.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> GLOW_BLACK_CARPET = ITEMS.register("glow_black_carpet", () -> new BlockItem(VSBlocks.GLOW_BLACK_CARPET.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> GLOW_BLACK_STAINED_GLASS = ITEMS.register("glow_black_stained_glass", () -> new BlockItem(VSBlocks.GLOW_BLACK_STAINED_GLASS.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> GLOW_BLACK_STAINED_GLASS_PANE = ITEMS.register("glow_black_stained_glass_pane", () -> new BlockItem(VSBlocks.GLOW_BLACK_STAINED_GLASS_PANE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> GLOW_BLACK_BED = ITEMS.register("glow_black_bed", () -> new BedItem(VSBlocks.GLOW_BLACK_BED.get(), new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> POTTED_SUGAR_CANE = ITEMS.register("potted_sugar_cane", () -> new BlockItem(VSBlocks.POTTED_SUGAR_CANE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> POTTED_GLOW_BLACK_TULIP = ITEMS.register("potted_glow_black_tulip", () -> new BlockItem(VSBlocks.POTTED_GLOW_BLACK_TULIP.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> POTTED_PAINTING_SAPLING = ITEMS.register("potted_painting_sapling", () -> new BlockItem(VSBlocks.POTTED_PAINTING_SAPLING.get(), new Item.Properties().tab(VSBlockTab.TAB)));

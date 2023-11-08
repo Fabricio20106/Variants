@@ -1,6 +1,7 @@
 package com.junethewoods.variants.world.feature;
 
 import com.junethewoods.variants.block.VSBlocks;
+import com.junethewoods.variants.util.VSTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
@@ -9,6 +10,7 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.feature.template.BlockMatchRuleTest;
 import net.minecraft.world.gen.feature.template.RuleTest;
+import net.minecraft.world.gen.feature.template.TagMatchRuleTest;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
 import net.minecraftforge.common.MinecraftForge;
@@ -18,11 +20,13 @@ import net.minecraftforge.eventbus.api.EventPriority;
 
 public class VSOreGeneration {
     public static final RuleTest BASE_STONE_END = new BlockMatchRuleTest(Blocks.END_STONE);
+    public static final RuleTest DEEPSLATE_REPLACEABLES = new TagMatchRuleTest(VSTags.Blocks.DEEPSLATE_REPLACEABLES);
 
     // Overworld Ores
     public static void generateQuartzOre(final BiomeLoadingEvent event) {
         if (!(event.getCategory().equals(Biome.Category.NETHER) || event.getCategory().equals(Biome.Category.THEEND))) {
-            generateOre(event.getGeneration(), OreFeatureConfig.FillerBlockType.NATURAL_STONE, VSBlocks.QUARTZ_ORE.get().defaultBlockState(), 7, 10, 108, 6);
+            generateOre(event.getGeneration(), OreFeatureConfig.FillerBlockType.NATURAL_STONE, VSBlocks.QUARTZ_ORE.get().defaultBlockState(), 7, 15, 40, 6);
+            generateOre(event.getGeneration(), DEEPSLATE_REPLACEABLES, VSBlocks.DEEPSLATE_QUARTZ_ORE.get().defaultBlockState(), 7, 15, 40, 6);
         }
     }
 

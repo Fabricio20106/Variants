@@ -60,3 +60,20 @@
 "layer0": "block/"
 }
 }
+
+  "color.minecraft.white": "White",
+  "color.minecraft.light_gray": "Light Gray",
+  "color.minecraft.gray": "Gray",
+  "color.minecraft.black": "Black",
+  "color.minecraft.brown": "Brown",
+  "color.minecraft.red": "Red",
+  "color.minecraft.orange": "Orange",
+  "color.minecraft.yellow": "Yellow",
+  "color.minecraft.lime": "Lime",
+  "color.minecraft.green": "Green",
+  "color.minecraft.cyan": "Cyan",
+  "color.minecraft.light_blue": "Light Blue",
+  "color.minecraft.blue": "Blue",
+  "color.minecraft.purple": "Purple",
+  "color.minecraft.magenta": "Magenta",
+  "color.minecraft.pink": "Pink",

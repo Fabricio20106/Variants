@@ -25,6 +25,7 @@ public class VSBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         simpleBlock(VSBlocks.QUARTZ_ORE.get());
+        simpleBlock(VSBlocks.DEEPSLATE_QUARTZ_ORE.get());
         simpleBlock(VSBlocks.END_QUARTZ_ORE.get());
         simpleBlock(VSBlocks.RAW_DEBRIS_BLOCK.get());
         simpleBlock(VSBlocks.GLOW_BLACK_TULIP.get(), models().cross("glow_black_tulip", modLoc("block/glow_black_tulip")));
@@ -53,6 +54,8 @@ public class VSBlockStateProvider extends BlockStateProvider {
                 "block/painting_sapling"));
         simpleBlock(VSBlocks.GLOW_BLACK_WOOL.get());
         simpleBlock(VSBlocks.GLOW_BLACK_CARPET.get(), models().carpet("glow_black_carpet", modLoc("block/glow_black_wool")));
+        simpleBlock(VSBlocks.GLOW_BLACK_STAINED_GLASS.get());
+        paneBlock(((PaneBlock) VSBlocks.GLOW_BLACK_STAINED_GLASS_PANE.get()), modLoc("block/glow_black_stained_glass"), modLoc("block/glow_black_stained_glass_pane_top"));
 
         // Additions of the biggest commit yet:
         simpleBlock(VSBlocks.ELDER_SEA_LANTERN.get());
