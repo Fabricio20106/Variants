@@ -7,13 +7,16 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockReader;
 
 public class VSBeaconBlock extends BeaconBlock {
-    public VSBeaconBlock(Properties properties) {
+    private final DyeColor beaconBeamColor;
+
+    public VSBeaconBlock(DyeColor beaconBeamColor, Properties properties) {
         super(properties);
+        this.beaconBeamColor = beaconBeamColor;
     }
 
     @Override
     public DyeColor getColor() {
-        return DyeColor.YELLOW;
+        return this.beaconBeamColor;
     }
 
     @Override

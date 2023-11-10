@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X#X",
+    "#X#",
+    "X#X"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:glass_panes/colorless"
+    },
+    "X": {
+      "tag": "forge:nuggets/quartz"
+    }
+  },
+  "result": {
+    "item": "variants:quartz_glass_pane",
+    "count": 4
+  }
+}

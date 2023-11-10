@@ -8,6 +8,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.Tags;
 
 import java.util.Random;
 
@@ -18,11 +19,10 @@ public class VSOreBlock extends OreBlock {
 
     @Override
     protected int xpOnDrop(Random rand) {
-        if (this == VSBlocks.QUARTZ_ORE.get()) {
+        if (this == VSBlocks.QUARTZ_ORE.get() || this == VSBlocks.DEEPSLATE_QUARTZ_ORE.get() || this == VSBlocks.END_QUARTZ_ORE.get()) {
             return MathHelper.nextInt(rand, 2, 5);
-        } else {
-            return this == VSBlocks.END_QUARTZ_ORE.get() ? MathHelper.nextInt(rand, 2, 5) : 0;
         }
+        return 0;
     }
 
     public void spawnAfterBreak(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack) {

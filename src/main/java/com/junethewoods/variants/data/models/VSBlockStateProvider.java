@@ -69,6 +69,10 @@ public class VSBlockStateProvider extends BlockStateProvider {
         simpleBlock(VSBlocks.DARK_ELDER_PRISMARINE.get());
         stairsBlock((StairsBlock) VSBlocks.DARK_ELDER_PRISMARINE_STAIRS.get(), modLoc("block/dark_elder_prismarine"));
         slabBlock((SlabBlock) VSBlocks.DARK_ELDER_PRISMARINE_SLAB.get(), modLoc("block/dark_elder_prismarine"), modLoc("block/dark_elder_prismarine"));
+        simpleBlock(VSBlocks.CHISELED_END_STONE_BRICKS.get());
+        simpleBlock(VSBlocks.CHISELED_PURPUR_BLOCK.get());
+        simpleBlock(VSBlocks.QUARTZ_GLASS.get());
+        paneBlock(((PaneBlock) VSBlocks.QUARTZ_GLASS_PANE.get()), modLoc("block/quartz_glass"), modLoc("block/quartz_glass_pane_top"));
 
         getVariantBuilder(VSBlocks.GOLDEN_CARROTS.get()).forAllStates(state -> {
             int cropAgeIndex = cropAgeToIndexPotato(state.getValue(BlockStateProperties.AGE_7));

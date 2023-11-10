@@ -20,6 +20,7 @@ public class VSTags {
         public static final ITag.INamedTag<Item> INGOTS_WEATHERED_COPPER = forge("ingots/weathered_copper");
         public static final ITag.INamedTag<Item> INGOTS_OXIDIZED_COPPER = forge("ingots/oxidized_copper");
 
+        public static final ITag.INamedTag<Item> NUGGETS_QUARTZ = forge("nuggets/quartz");
         public static final ITag.INamedTag<Item> NUGGETS_PURPLE_IRON = forge("nuggets/purple_iron");
 
         public static final ITag.INamedTag<Item> RAW_MATERIALS = forge("raw_materials");

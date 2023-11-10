@@ -27,6 +27,8 @@ public class VSClientHelpers {
         RenderTypeLookup.setRenderLayer(VSBlocks.WANDERER_DOOR.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.GRAHAM_DOOR.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.FIRST_DOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.QUARTZ_GLASS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.QUARTZ_GLASS_PANE.get(), RenderType.cutout());
 
         RenderTypeLookup.setRenderLayer(VSBlocks.GLOW_BLACK_STAINED_GLASS.get(), RenderType.translucent());
         RenderTypeLookup.setRenderLayer(VSBlocks.GLOW_BLACK_STAINED_GLASS_PANE.get(), RenderType.translucent());

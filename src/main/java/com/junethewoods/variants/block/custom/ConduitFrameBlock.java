@@ -6,8 +6,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldReader;
 
-public class ElderPrismarineBlock extends Block {
-    public ElderPrismarineBlock(Properties properties) {
+public class ConduitFrameBlock extends Block {
+    public ConduitFrameBlock(Properties properties) {
         super(properties);
     }
 

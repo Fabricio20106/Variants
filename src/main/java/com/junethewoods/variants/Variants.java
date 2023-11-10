@@ -1,18 +1,16 @@
 package com.junethewoods.variants;
 
 import com.google.common.collect.ImmutableMap;
+import com.junethewoods.variants.block.VSBlocks;
 import com.junethewoods.variants.blockentity.VSBlockEntities;
 import com.junethewoods.variants.blockentity.renderer.GlowBlackBedBlockEntityRenderer;
 import com.junethewoods.variants.blockentity.renderer.VSBellBlockEntityRenderer;
 import com.junethewoods.variants.effect.VSEffects;
-import com.junethewoods.variants.sound.VSSounds;
-import com.junethewoods.variants.util.VSClientHelpers;
-import com.junethewoods.variants.block.VSBlocks;
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.VSWeaponry;
+import com.junethewoods.variants.sound.VSSounds;
+import com.junethewoods.variants.util.VSClientHelpers;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.tileentity.BeaconTileEntityRenderer;
 import net.minecraft.item.AxeItem;
 import net.minecraft.util.ResourceLocation;
@@ -27,8 +25,6 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.lang.String;
 
 @Mod(Variants.MOD_ID)
 public class Variants {

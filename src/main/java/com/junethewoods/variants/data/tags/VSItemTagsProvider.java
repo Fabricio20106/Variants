@@ -35,7 +35,8 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(Tags.Items.INGOTS).addTag(VSTags.Items.INGOTS_EXPOSED_COPPER).addTag(VSTags.Items.INGOTS_WEATHERED_COPPER).addTag(VSTags.Items.INGOTS_OXIDIZED_COPPER);
 
         this.tag(VSTags.Items.NUGGETS_PURPLE_IRON).add(VSItems.PURPLE_IRON_NUGGET.get());
-        this.tag(Tags.Items.NUGGETS).addTag(VSTags.Items.NUGGETS_PURPLE_IRON);
+        this.tag(VSTags.Items.NUGGETS_QUARTZ).add(VSItems.QUARTZ_SHARD.get());
+        this.tag(Tags.Items.NUGGETS).addTag(VSTags.Items.NUGGETS_QUARTZ).addTag(VSTags.Items.NUGGETS_PURPLE_IRON);
 
         this.tag(VSTags.Items.RAW_MATERIALS_NETHERITE_SCRAP).add(VSItems.RAW_DEBRIS.get());
         this.tag(VSTags.Items.RAW_MATERIALS).addTag(VSTags.Items.RAW_MATERIALS_NETHERITE_SCRAP);
@@ -48,6 +49,9 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(Tags.Items.STAINED_GLASS_PANES).add(VSItems.GLOW_BLACK_STAINED_GLASS_PANE.get());
         this.tag(VSTags.Items.GLASS_GLOW_BLACK).add(VSItems.GLOW_BLACK_STAINED_GLASS.get());
         this.tag(VSTags.Items.GLASS_PANES_GLOW_BLACK).add(VSItems.GLOW_BLACK_STAINED_GLASS_PANE.get());
+
+        this.tag(Tags.Items.GLASS_COLORLESS).add(VSItems.QUARTZ_GLASS.get());
+        this.tag(Tags.Items.GLASS_PANES_COLORLESS).add(VSItems.QUARTZ_GLASS_PANE.get());
 
         this.tag(VSTags.Items.RODS_DEBUG_WOODEN).add(Items.DEBUG_STICK);
         this.tag(VSTags.Items.RODS_NETHERITE).add(VSItems.NETHERITE_ROD.get());

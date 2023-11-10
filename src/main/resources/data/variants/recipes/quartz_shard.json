@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:gems/quartz"
+    }
+  ],
+  "result": {
+    "item": "variants:quartz_nugget",
+    "count": 9
+  }
+}

@@ -36,6 +36,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         withExistingParent("glow_black_wool");
         withExistingParent("glow_black_carpet");
         withExistingParent("glow_black_stained_glass");
+        withExistingParent("quartz_glass");
         withExistingParent("plain_birch_bookshelf");
         withExistingParent("painting_log");
         withExistingParent("painting_wood");
@@ -64,6 +65,8 @@ public class VSItemModelProvider extends ItemModelProvider {
         withExistingParent("dark_elder_prismarine");
         withExistingParent("dark_elder_prismarine_stairs");
         withExistingParent("dark_elder_prismarine_slab");
+        withExistingParent("chiseled_end_stone_bricks");
+        withExistingParent("chiseled_purpur_block");
 
         standard(generated, "white_shulker_shell");
         standard(generated, "inno_shulker_shell");
@@ -133,11 +136,13 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "first_door");
         standard(generated, "diamond_bell");
         standard(generated, "splash_soph_potion");
+        standard(generated, "quartz_nugget");
         standard(generated, "purple_nugget");
         getBuilder("glow_berry_bush").parent(generated).texture("layer0", "block/glow_berry_bush_stage3");
         getBuilder("glow_black_tulip").parent(generated).texture("layer0", "block/glow_black_tulip");
         getBuilder("painting_sapling").parent(generated).texture("layer0", "block/painting_sapling");
         getBuilder("glow_black_stained_glass_pane").parent(generated).texture("layer0", "block/glow_black_stained_glass");
+        getBuilder("quartz_glass_pane").parent(generated).texture("layer0", "block/quartz_glass");
 
         standard(handheld, "magma_sword");
         standard(handheld, "amethyst_sword");

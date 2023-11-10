@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "variants:quartz_glass"
+    }
+  },
+  "result": {
+    "item": "variants:quartz_glass_pane",
+    "count": 16
+  }
+}
