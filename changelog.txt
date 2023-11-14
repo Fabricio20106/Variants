@@ -64,6 +64,11 @@ Build: 1.16.5-1.6.0:
   Amethyst and Copper Swords are now actually sword (they worked like axes before).
   Granite, Diorite and Andesite Hoes no longer deal 0 damage.
 
+Build: 1.16.5-1.6.6 (14/11/2023):
+  Changed description of Firework Rockets & Stars.
+  Added armor points description to Horse Armors.
+  Shears, Shields & Flint and Steels are now enchantable.
+
 DIVERGENCE POINT TO 1.18
 
 Build: 1.18-1.6.0:

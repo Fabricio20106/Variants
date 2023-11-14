@@ -1,0 +1,20 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.junethewoods.variants.mixin",
+  "refmap": "variants.mixins.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "FireworkRocketItemMixin",
+    "FireworkStarItemMixin",
+    "HorseArmorItemMixin",
+    "enchantability.ShearsItemMixin",
+    "enchantability.FlintAndSteelItemMixin",
+    "enchantability.ShieldItemMixin"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

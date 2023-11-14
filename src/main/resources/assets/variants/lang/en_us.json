@@ -203,5 +203,44 @@
   "color.variants.glow_black": "Glow Black",
 
   "tooltip.variants.compat_item_from": "Item compatibility between: %s.",
-  "tooltip.variants.compat_block_from": "Block compatibility between: %s."
+  "tooltip.variants.compat_block_from": "Block compatibility between: %s.",
+
+  "tooltip.variants.horse_armor.when_on_horse": "When on Horse:",
+  "tooltip.variants.horse_armor.armor_stats": "+%s Armor",
+
+  "tooltip.variants.firework_rocket.flight_duration": "§7Flight Duration: %s",
+  "tooltip.variants.firework_rocket.flight_duration.unknown": "Unknown",
+  "tooltip.variants.firework_rocket.explosions": "- Firework Star Effects -",
+
+  "tooltip.variants.firework_star.shape": "Shape: %s",
+  "tooltip.variants.firework_star.shape.small_ball": "§fSmall Ball §7(Default)",
+  "tooltip.variants.firework_star.shape.large_ball": "§6Large Ball §c(Fire Charge)",
+  "tooltip.variants.firework_star.shape.star": "§eStar §6(Gold Nugget)",
+  "tooltip.variants.firework_star.shape.creeper": "§aCreeper Face §2(Any Mob Head)",
+  "tooltip.variants.firework_star.shape.burst": "§fBurst §7(Feather)",
+
+  "tooltip.variants.firework_star.effect.trail": "-> Trail §3(Diamond)",
+  "tooltip.variants.firework_star.effect.twinkle": "-> Twinkle §6(Glowstone Dust)",
+
+  "tooltip.variants.firework_star.color_separator": ", ",
+  "tooltip.variants.firework_star.main_colors": "Main Colors: ",
+  "tooltip.variants.firework_star.fade_colors": "Fade Colors: ",
+  "tooltip.variants.firework_star.custom_color": "Custom: %s",
+
+  "tooltip.variants.firework_star.color.white": "§fWhite",
+  "tooltip.variants.firework_star.color.orange": "§6Orange",
+  "tooltip.variants.firework_star.color.magenta": "§dMagenta",
+  "tooltip.variants.firework_star.color.light_blue": "§bLight Blue",
+  "tooltip.variants.firework_star.color.yellow": "§eYellow",
+  "tooltip.variants.firework_star.color.lime": "§aLime",
+  "tooltip.variants.firework_star.color.pink": "§dPink",
+  "tooltip.variants.firework_star.color.gray": "§8Gray",
+  "tooltip.variants.firework_star.color.light_gray": "§7Light Gray",
+  "tooltip.variants.firework_star.color.cyan": "§9Cyan",
+  "tooltip.variants.firework_star.color.purple": "§5Purple",
+  "tooltip.variants.firework_star.color.blue": "§1Blue",
+  "tooltip.variants.firework_star.color.brown": "§4Brown",
+  "tooltip.variants.firework_star.color.green": "§2Green",
+  "tooltip.variants.firework_star.color.red": "§cRed",
+  "tooltip.variants.firework_star.color.black": "§0Black"
 }

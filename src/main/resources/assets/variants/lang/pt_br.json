@@ -203,5 +203,44 @@
   "color.variants.glow_black": "preta brilhante",
 
   "tooltip.variants.compat_item_from": "Compatibilidade de item entre: %s.",
-  "tooltip.variants.compat_block_from": "Compatibilidade de bloco entre: %s."
+  "tooltip.variants.compat_block_from": "Compatibilidade de bloco entre: %s.",
+
+  "tooltip.variants.horse_armor.when_on_horse": "No cavalo:",
+  "tooltip.variants.horse_armor.armor_stats": "Pontos de armadura: +%s",
+
+  "tooltip.variants.firework_rocket.flight_duration": "§7Duração de voo: %s",
+  "tooltip.variants.firework_rocket.flight_duration.unknown": "Desconhecido",
+  "tooltip.variants.firework_rocket.explosions": "- Efeitos da Estrela de Fogo de Artifício -",
+
+  "tooltip.variants.firework_star.shape": "Forma: %s",
+  "tooltip.variants.firework_star.shape.small_ball": "§fBola Pequena §7(Padrão)",
+  "tooltip.variants.firework_star.shape.large_ball": "§6Bola Grande §c(Bola de fogo)",
+  "tooltip.variants.firework_star.shape.star": "§eEstrela §6(Pepita de ouro)",
+  "tooltip.variants.firework_star.shape.creeper": "§aRosto de Creeper §2(Qualquer cabeça de mob)",
+  "tooltip.variants.firework_star.shape.burst": "§fEstouro §7(Pena)",
+
+  "tooltip.variants.firework_star.effect.trail": "-> Trilha §3(Diamante)",
+  "tooltip.variants.firework_star.effect.twinkle": "-> Cintilação §6(Pó de pedra luminosa)",
+
+  "tooltip.variants.firework_star.color_separator": ", ",
+  "tooltip.variants.firework_star.main_colors": "Cores principais: ",
+  "tooltip.variants.firework_star.fade_colors": "Muda para: ",
+  "tooltip.variants.firework_star.custom_color": "Customizado: %s",
+
+  "tooltip.variants.firework_star.color.white": "§fBranco",
+  "tooltip.variants.firework_star.color.orange": "§6Laranja",
+  "tooltip.variants.firework_star.color.magenta": "§dMagenta",
+  "tooltip.variants.firework_star.color.light_blue": "§bAzul-claro",
+  "tooltip.variants.firework_star.color.yellow": "§eAmarelo",
+  "tooltip.variants.firework_star.color.lime": "§aVerde-limão",
+  "tooltip.variants.firework_star.color.pink": "§dRosa",
+  "tooltip.variants.firework_star.color.gray": "§8Cinza",
+  "tooltip.variants.firework_star.color.light_gray": "§7Cinza-claro",
+  "tooltip.variants.firework_star.color.cyan": "§9Ciano",
+  "tooltip.variants.firework_star.color.purple": "§5Roxo",
+  "tooltip.variants.firework_star.color.blue": "§1Azul",
+  "tooltip.variants.firework_star.color.brown": "§4Marrom",
+  "tooltip.variants.firework_star.color.green": "§2Verde",
+  "tooltip.variants.firework_star.color.red": "§cVermelho",
+  "tooltip.variants.firework_star.color.black": "§0Preto"
 }

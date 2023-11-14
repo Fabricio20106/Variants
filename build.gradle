@@ -3,20 +3,24 @@ buildscript {
         maven {
             url = 'https://files.minecraftforge.net/maven'
         }
-        jcenter()
+        maven {
+            url = 'https://repo.spongepowered.org/maven'
+        }
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'idea'
 
-version = '1.16.5-1.6.5-' + new Date().format("dd-MM-yyyy")
+version = '1.16.5-1.6.6-' + new Date().format("dd-MM-yyyy")
 group = 'com.junethewoods.variants' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'Variants'
 
@@ -38,6 +42,8 @@ minecraft {
     // These can be tweaked, removed, or duplicated as needed.
     runs {
         client {
+            property 'mixin.env.disableRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             workingDirectory project.file('run')
 
             // Recommended logging data for a userdev environment
@@ -70,6 +76,7 @@ minecraft {
         }
 
         data {
+            property 'mixin.env.disableRefMap', 'true'
             workingDirectory project.file('run')
 
             // Recommended logging data for a userdev environment
@@ -106,6 +113,9 @@ dependencies {
     // at runtime, use the full JEI jar
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 
+    // Annotation Processors
+    annotationProcessor 'org.spongepowered:mixin:0.8:processor'
+
     // You may put jars on which you depend on in ./libs or you may define them like so..
     // compile "some.group:artifact:version:classifier"
     // compile "some.group:artifact:version"
@@ -123,7 +133,6 @@ dependencies {
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
 }
 
 repositories {
@@ -144,7 +153,8 @@ jar {
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
             "Implementation-Vendor" :"JuneTheWoods",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+            "MixinConfigs": "variants.mixins.json"
         ])
     }
 }
