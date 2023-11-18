@@ -1,8 +1,8 @@
 package com.junethewoods.variants.mixin;
 
-import net.minecraft.item.DyeColor;
-import net.minecraft.item.FireworkRocketItem;
-import net.minecraft.item.FireworkStarItem;
+import com.junethewoods.variants.Variants;
+import com.junethewoods.variants.config.VSConfigs;
+import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.text.*;
 import net.minecraftforge.api.distmarker.Dist;
@@ -15,36 +15,43 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 @Mixin(FireworkStarItem.class)
-public class FireworkStarItemMixin {
+public class FireworkStarItemMixin extends Item {
+    public FireworkStarItemMixin(Properties properties) {
+        super(properties);
+    }
+
     @Inject(method = "appendHoverText(Lnet/minecraft/nbt/CompoundNBT;Ljava/util/List;)V", at = @At("HEAD"), cancellable = true)
     private static void appendHoverText(CompoundNBT nbt, List<ITextComponent> tooltip, CallbackInfo ci) {
-        ci.cancel();
-        // Firework Star Shape
-        FireworkRocketItem.Shape fireworkShapes = FireworkRocketItem.Shape.byId(nbt.getByte("Type"));
-        TranslationTextComponent shapeTranslation = new TranslationTextComponent("tooltip.variants.firework_star.shape." + fireworkShapes.getName());
+        if (VSConfigs.COMMON_CONFIGS.customFireworkDescriptions.get()) {
+            ci.cancel();
 
-        tooltip.add(new TranslationTextComponent("tooltip.variants.firework_star.shape", shapeTranslation).withStyle(TextFormatting.GRAY));
+            // Firework Star Shape
+            FireworkRocketItem.Shape fireworkShapes = FireworkRocketItem.Shape.byId(nbt.getByte("Type"));
+            TranslationTextComponent shapeTranslation = new TranslationTextComponent("tooltip.variants.firework_star.shape." + fireworkShapes.getName());
 
-        // Main Color(s)
-        int[] mainColors = nbt.getIntArray("Colors");
-        if (mainColors.length > 0) {
-            tooltip.add(appendColors(new TranslationTextComponent("tooltip.variants.firework_star.main_colors").withStyle(TextFormatting.GRAY), mainColors));
-        }
+            tooltip.add(new TranslationTextComponent("tooltip.variants.firework_star.shape", shapeTranslation).withStyle(TextFormatting.GRAY));
 
-        // Fade Color(s)
-        int[] fadeColors = nbt.getIntArray("FadeColors");
-        if (fadeColors.length > 0) {
-            tooltip.add(appendColors(new TranslationTextComponent("tooltip.variants.firework_star.fade_colors").withStyle(TextFormatting.GRAY), fadeColors));
-        }
+            // Main Color(s)
+            int[] mainColors = nbt.getIntArray("Colors");
+            if (mainColors.length > 0) {
+                tooltip.add(appendColors(new TranslationTextComponent("tooltip.variants.firework_star.main_colors").withStyle(TextFormatting.GRAY), mainColors));
+            }
 
-        // Has Trail (Diamond)
-        if (nbt.getBoolean("Trail")) {
-            tooltip.add(new TranslationTextComponent("tooltip.variants.firework_star.effect.trail").withStyle(Style.EMPTY.withColor(Color.fromRgb(0x4aedd9))));
-        }
+            // Fade Color(s)
+            int[] fadeColors = nbt.getIntArray("FadeColors");
+            if (fadeColors.length > 0) {
+                tooltip.add(appendColors(new TranslationTextComponent("tooltip.variants.firework_star.fade_colors").withStyle(TextFormatting.GRAY), fadeColors));
+            }
 
-        // Has Twinkle (Glowstone Dust)
-        if (nbt.getBoolean("Flicker")) {
-            tooltip.add(new TranslationTextComponent("tooltip.variants.firework_star.effect.twinkle").withStyle(Style.EMPTY.withColor(Color.fromRgb(0xffbc5e))));
+            // Has Trail (Diamond)
+            if (nbt.getBoolean("Trail")) {
+                tooltip.add(new TranslationTextComponent("tooltip.variants.firework_star.effect.trail").withStyle(Style.EMPTY.withColor(Color.fromRgb(0x4aedd9))));
+            }
+
+            // Has Twinkle (Glowstone Dust)
+            if (nbt.getBoolean("Flicker")) {
+                tooltip.add(new TranslationTextComponent("tooltip.variants.firework_star.effect.twinkle").withStyle(Style.EMPTY.withColor(Color.fromRgb(0xffbc5e))));
+            }
         }
     }
 
@@ -65,5 +72,10 @@ public class FireworkStarItemMixin {
         DyeColor dyeColor = DyeColor.byFireworkColor(color);
         return dyeColor == null ? new TranslationTextComponent("tooltip.variants.firework_star.custom_color", color).withStyle(TextFormatting.DARK_AQUA)
                 .withStyle(TextFormatting.UNDERLINE) : new TranslationTextComponent("tooltip.variants.firework_star.color." + dyeColor.getName());
+    }
+
+    @Override
+    public String getCreatorModId(ItemStack stack) {
+        return VSConfigs.COMMON_CONFIGS.customFireworkDescriptions.get() ? Variants.MOD_ID : super.getCreatorModId(stack);
     }
 }

@@ -5,6 +5,7 @@ import com.junethewoods.variants.block.VSBlocks;
 import com.junethewoods.variants.blockentity.VSBlockEntities;
 import com.junethewoods.variants.blockentity.renderer.GlowBlackBedBlockEntityRenderer;
 import com.junethewoods.variants.blockentity.renderer.VSBellBlockEntityRenderer;
+import com.junethewoods.variants.config.VSConfigs;
 import com.junethewoods.variants.effect.VSEffects;
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.VSWeaponry;
@@ -17,8 +18,10 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
@@ -44,6 +47,8 @@ public class Variants {
         VSBlocks.BLOCKS.register(eventBus);
         VSBlockEntities.BLOCK_ENTITIES.register(eventBus);
         VSSounds.SOUNDS.register(eventBus);
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, VSConfigs.COMMON_SPEC, "jtw-mods/variants-common.toml");
     }
 
     public static ResourceLocation resourceLoc(String name) {

@@ -14,12 +14,12 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.Tags;
 
-public enum VSArmors implements IArmorMaterial {
-    EMPTY_SLOT(Variants.MOD_ID + ":empty_armor_slot", 15, new int[] {2, 5, 6, 2}, 9, SoundEvents.ARMOR_EQUIP_IRON, 0f, 0f, () -> Ingredient.of(Tags.Items.INGOTS_IRON)),
-    PHANTOM_MEMBRANE(Variants.MOD_ID + ":phantom", 5, new int[] {1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0f, 0f, () -> Ingredient.of(Items.PHANTOM_MEMBRANE)),
-    RABBIT_HIDE(Variants.MOD_ID + ":rabbit", 5, new int[] {1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0f, 0f, () -> Ingredient.of(Items.RABBIT_HIDE)),
-    WOOL(Variants.MOD_ID + ":wool", 5, new int[] {1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0f, 0f, () -> Ingredient.of(ItemTags.WOOL)),
-    EMERALD(Variants.MOD_ID + ":emerald", 33, new int[] {3, 6, 8, 3}, 10, SoundEvents.ARMOR_EQUIP_DIAMOND, 2f, 0f, () -> Ingredient.of(Tags.Items.GEMS_EMERALD));
+public class VSArmors implements IArmorMaterial {
+    public static final VSArmors EMPTY_SLOT = new VSArmors(Variants.MOD_ID + ":empty_armor_slot", 15, new int[] {2, 5, 6, 2}, 9, SoundEvents.ARMOR_EQUIP_IRON, 0f, 0f, () -> Ingredient.of(Tags.Items.INGOTS_IRON));
+    public static final VSArmors PHANTOM_MEMBRANE = new VSArmors(Variants.MOD_ID + ":phantom", 5, new int[] {1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0f, 0f, () -> Ingredient.of(Items.PHANTOM_MEMBRANE));
+    public static final VSArmors RABBIT_HIDE = new VSArmors(Variants.MOD_ID + ":rabbit", 5, new int[] {1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0f, 0f, () -> Ingredient.of(Items.RABBIT_HIDE));
+    public static final VSArmors WOOL = new VSArmors(Variants.MOD_ID + ":wool", 5, new int[] {1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0f, 0f, () -> Ingredient.of(ItemTags.WOOL));
+    public static final VSArmors EMERALD = new VSArmors(Variants.MOD_ID + ":emerald", 33, new int[] {3, 6, 8, 3}, 10, SoundEvents.ARMOR_EQUIP_DIAMOND, 2f, 0f, () -> Ingredient.of(Tags.Items.GEMS_EMERALD));
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[] {13, 15, 16, 11};
     private final String name;
@@ -31,7 +31,7 @@ public enum VSArmors implements IArmorMaterial {
     private final float knockbackRes;
     private final LazyValue<Ingredient> repairIngredient;
 
-    VSArmors(String name, int durabilityMultiplier, int[] slotProtections, int enchValue, SoundEvent equipSound, float toughness, float knockbackRes, Supplier<Ingredient> repairIngredient) {
+    public VSArmors(String name, int durabilityMultiplier, int[] slotProtections, int enchValue, SoundEvent equipSound, float toughness, float knockbackRes, Supplier<Ingredient> repairIngredient) {
         this.name = name;
         this.durabilityMultiplier = durabilityMultiplier;
         this.slotProtections = slotProtections;

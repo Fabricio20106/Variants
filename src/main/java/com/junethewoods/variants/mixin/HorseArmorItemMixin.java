@@ -1,5 +1,6 @@
 package com.junethewoods.variants.mixin;
 
+import com.junethewoods.variants.config.VSConfigs;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.HorseArmorItem;
 import net.minecraft.item.ItemStack;
@@ -18,10 +19,12 @@ import java.util.List;
 public class HorseArmorItemMixin {
     @Unique
     public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        HorseArmorItem horseArmor = ((HorseArmorItem) stack.getItem());
+        if (VSConfigs.COMMON_CONFIGS.horseArmorArmorPointsOnTooltip.get()) {
+            HorseArmorItem horseArmor = ((HorseArmorItem) stack.getItem());
 
-        tooltip.add(new StringTextComponent(""));
-        tooltip.add(new TranslationTextComponent("tooltip.variants.horse_armor.when_on_horse").withStyle(TextFormatting.GRAY));
-        tooltip.add(new TranslationTextComponent("tooltip.variants.horse_armor.armor_stats", horseArmor.getProtection()).withStyle(TextFormatting.BLUE));
+            tooltip.add(new StringTextComponent(""));
+            tooltip.add(new TranslationTextComponent("tooltip.variants.horse_armor.when_on_horse").withStyle(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip.variants.horse_armor.armor_stats", horseArmor.getProtection()).withStyle(TextFormatting.BLUE));
+        }
     }
 }

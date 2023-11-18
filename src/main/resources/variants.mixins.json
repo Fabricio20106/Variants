@@ -8,6 +8,7 @@
     "FireworkRocketItemMixin",
     "FireworkStarItemMixin",
     "HorseArmorItemMixin",
+    "QuickChargeEnchantmentMixin",
     "enchantability.ShearsItemMixin",
     "enchantability.FlintAndSteelItemMixin",
     "enchantability.ShieldItemMixin"

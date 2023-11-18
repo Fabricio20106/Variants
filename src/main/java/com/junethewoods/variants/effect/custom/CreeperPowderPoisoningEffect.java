@@ -3,9 +3,7 @@ package com.junethewoods.variants.effect.custom;
 import com.junethewoods.variants.effect.VSDamageSources;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.EffectType;
-import net.minecraft.potion.Effects;
 
 public class CreeperPowderPoisoningEffect extends Effect {
     public CreeperPowderPoisoningEffect() {

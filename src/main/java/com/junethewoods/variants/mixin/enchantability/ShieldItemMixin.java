@@ -1,6 +1,7 @@
 package com.junethewoods.variants.mixin.enchantability;
 
 import com.junethewoods.variants.Variants;
+import com.junethewoods.variants.config.VSConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
@@ -16,16 +17,17 @@ public class ShieldItemMixin extends Item {
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchamentment) {
-        return super.canApplyAtEnchantingTable(stack, enchamentment) || enchamentment == Enchantments.UNBREAKING;
+        return VSConfigs.COMMON_CONFIGS.enchantableShields.get() ? super.canApplyAtEnchantingTable(stack, enchamentment) || enchamentment == Enchantments.UNBREAKING :
+                super.canApplyAtEnchantingTable(stack, enchamentment);
     }
 
     @Override
     public int getEnchantmentValue() {
-        return 15;
+        return VSConfigs.COMMON_CONFIGS.enchantableShields.get() ? 15 : 0;
     }
 
     @Override
-    public String getCreatorModId(ItemStack itemStack) {
-        return Variants.MOD_ID;
+    public String getCreatorModId(ItemStack stack) {
+        return VSConfigs.COMMON_CONFIGS.enchantableShields.get() ? Variants.MOD_ID : super.getCreatorModId(stack);
     }
 }

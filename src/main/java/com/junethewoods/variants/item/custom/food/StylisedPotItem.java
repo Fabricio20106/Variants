@@ -2,7 +2,6 @@ package com.junethewoods.variants.item.custom.food;
 
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.custom.IPoisoningType;
-import com.junethewoods.variants.item.custom.PoisoningTypes;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;

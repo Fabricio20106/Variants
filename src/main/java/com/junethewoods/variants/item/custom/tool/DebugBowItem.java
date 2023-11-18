@@ -60,7 +60,7 @@ public class DebugBowItem extends BowItem {
             if (collection.isEmpty()) {
                 sendMessage(player, new TranslationTextComponent(this.getDescriptionId() + ".empty", blockRegistryKey));
             } else {
-                CompoundNBT debugProperty = stack.getOrCreateTagElement("DebugProperty");
+                CompoundNBT debugProperty = stack.getOrCreateTagElement("debug_property");
                 String s1 = debugProperty.getString(blockRegistryKey);
                 Property<?> property = stateDefinition.getProperty(s1);
                 if (rightClick) {
