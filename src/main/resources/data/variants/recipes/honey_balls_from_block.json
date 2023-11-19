@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "honey_ball",
+  "ingredients": [
+    {
+      "item": "minecraft:honey_block"
+    }
+  ],
+  "result": {
+    "item": "variants:honey_ball",
+    "count": 4
+  }
+}

@@ -1,8 +1,9 @@
-package com.junethewoods.variants.mixin;
+package com.junethewoods.variants.mixin.item;
 
 import com.google.common.collect.Lists;
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.config.VSConfigs;
+import com.junethewoods.variants.util.VSStyles;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.FireworkRocketItem;
 import net.minecraft.item.FireworkStarItem;
@@ -48,7 +49,7 @@ public class FireworkRocketItemMixin extends Item {
                     ListNBT explosionsNBTList = fireworksTag.getList("Explosions", 10);
                     if (!explosionsNBTList.isEmpty()) {
                         tooltip.add(new StringTextComponent(""));
-                        tooltip.add(new TranslationTextComponent("tooltip.variants.firework_rocket.explosions").withStyle(TextFormatting.DARK_AQUA).withStyle(TextFormatting.BOLD));
+                        tooltip.add(new TranslationTextComponent("tooltip.variants.firework_rocket.explosions").withStyle(VSStyles.FIRWORK_TITLES));
 
                         for (int i = 0; i < explosionsNBTList.size(); ++i) {
                             CompoundNBT nbt = explosionsNBTList.getCompound(i);

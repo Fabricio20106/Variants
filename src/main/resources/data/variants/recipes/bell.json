@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#$#",
+    "#B#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stone"
+    },
+    "$": {
+      "item": "variants:dark_oak_stick"
+    },
+    "B": {
+      "tag": "forge:storage_blocks/gold"
+    }
+  },
+  "result": {
+    "item": "minecraft:bell"
+  }
+}

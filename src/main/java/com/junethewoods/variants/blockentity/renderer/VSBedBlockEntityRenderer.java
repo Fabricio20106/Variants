@@ -1,7 +1,6 @@
 package com.junethewoods.variants.blockentity.renderer;
 
 import com.junethewoods.variants.Variants;
-import com.junethewoods.variants.blockentity.VSBlockEntities;
 import com.junethewoods.variants.blockentity.custom.VSBedBlockEntity;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
@@ -17,7 +16,9 @@ import net.minecraft.client.renderer.tileentity.DualBrightnessCallback;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.state.properties.BedPart;
+import net.minecraft.tileentity.BedTileEntity;
 import net.minecraft.tileentity.TileEntityMerger;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.world.World;
@@ -26,16 +27,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import static net.minecraft.client.renderer.Atlases.BED_SHEET;
 
-@OnlyIn(Dist.CLIENT)
-public class GlowBlackBedBlockEntityRenderer extends TileEntityRenderer<VSBedBlockEntity> {
+public class VSBedBlockEntityRenderer extends TileEntityRenderer<VSBedBlockEntity> {
     private final ModelRenderer headPiece = new ModelRenderer(64, 64, 0, 0);
-    private final ModelRenderer footPiece;
+    private final ModelRenderer footPiece = new ModelRenderer(64, 64, 0, 22);
     private final ModelRenderer[] legs = new ModelRenderer[4];
 
-    public GlowBlackBedBlockEntityRenderer(TileEntityRendererDispatcher dispatcher) {
+    public VSBedBlockEntityRenderer(TileEntityRendererDispatcher dispatcher) {
         super(dispatcher);
         this.headPiece.addBox(0, 0, 0, 16, 16, 6, 0);
-        this.footPiece = new ModelRenderer(64, 64, 0, 22);
         this.footPiece.addBox(0, 0, 0, 16, 16, 6, 0);
         this.legs[0] = new ModelRenderer(64, 64, 50, 0);
         this.legs[1] = new ModelRenderer(64, 64, 50, 6);
@@ -55,29 +54,29 @@ public class GlowBlackBedBlockEntityRenderer extends TileEntityRenderer<VSBedBlo
         this.legs[3].zRot = 3.1415927F;
     }
 
-    public void render(VSBedBlockEntity bed, float flo, MatrixStack matrixStack, IRenderTypeBuffer renderBuffer, int i1, int i2) {
+    public void render(VSBedBlockEntity bed, float partialTicks, MatrixStack matrixStack, IRenderTypeBuffer buffer, int combinedLight, int combinedOverlay) {
         RenderMaterial glowBlackBedMaterial = new RenderMaterial(BED_SHEET, Variants.resourceLoc("entity/bed/glow_black"));
         World world = bed.getLevel();
         if (world != null) {
             BlockState bedState = bed.getBlockState();
-            TileEntityMerger.ICallbackWrapper<VSBedBlockEntity> bedCallbackWrapper = TileEntityMerger.combineWithNeigbour(VSBlockEntities.VS_BED.get(), BedBlock::getBlockType, BedBlock::getConnectedDirection, ChestBlock.FACING, bedState, world, bed.getBlockPos(), (iWorld, pos) -> false);
-            int lvt_11_1_ = ((Int2IntFunction) bedCallbackWrapper.apply(new DualBrightnessCallback())).get(i1);
-            this.renderPiece(matrixStack, renderBuffer, bedState.getValue(BedBlock.PART) == BedPart.HEAD, bedState.getValue(BedBlock.FACING), glowBlackBedMaterial, lvt_11_1_, i2, false);
+            TileEntityMerger.ICallbackWrapper<? extends BedTileEntity> bedCallbackWrapper = TileEntityMerger.combineWithNeigbour(TileEntityType.BED, BedBlock::getBlockType, BedBlock::getConnectedDirection, ChestBlock.FACING, bedState, world, bed.getBlockPos(), (iWorld, pos) -> false);
+            int i = ((Int2IntFunction) bedCallbackWrapper.apply(new DualBrightnessCallback())).get(combinedLight);
+            this.renderPiece(matrixStack, buffer, bedState.getValue(BedBlock.PART) == BedPart.HEAD, bedState.getValue(BedBlock.FACING), glowBlackBedMaterial, i, combinedOverlay, false);
         } else {
-            this.renderPiece(matrixStack, renderBuffer, true, Direction.SOUTH, glowBlackBedMaterial, i1, i2, false);
-            this.renderPiece(matrixStack, renderBuffer, false, Direction.SOUTH, glowBlackBedMaterial, i1, i2, true);
+            this.renderPiece(matrixStack, buffer, true, Direction.SOUTH, glowBlackBedMaterial, combinedLight, combinedOverlay, false);
+            this.renderPiece(matrixStack, buffer, false, Direction.SOUTH, glowBlackBedMaterial, combinedLight, combinedOverlay, true);
         }
     }
 
-    private void renderPiece(MatrixStack matrixStack, IRenderTypeBuffer renderBuffer, boolean bool, Direction direction, RenderMaterial material, int i1, int i2, boolean bool1) {
-        this.headPiece.visible = bool;
-        this.footPiece.visible = !bool;
-        this.legs[0].visible = !bool;
-        this.legs[1].visible = bool;
-        this.legs[2].visible = !bool;
-        this.legs[3].visible = bool;
+    private void renderPiece(MatrixStack matrixStack, IRenderTypeBuffer renderBuffer, boolean isBedHead, Direction direction, RenderMaterial material, int i1, int i2, boolean bool) {
+        this.headPiece.visible = isBedHead;
+        this.footPiece.visible = !isBedHead;
+        this.legs[0].visible = !isBedHead;
+        this.legs[1].visible = isBedHead;
+        this.legs[2].visible = !isBedHead;
+        this.legs[3].visible = isBedHead;
         matrixStack.pushPose();
-        matrixStack.translate(0, 0.5625, bool1 ? -1 : 0);
+        matrixStack.translate(0, 0.5625, bool ? -1 : 0);
         matrixStack.mulPose(Vector3f.XP.rotationDegrees(90));
         matrixStack.translate(0.5, 0.5, 0.5);
         matrixStack.mulPose(Vector3f.ZP.rotationDegrees(180 + direction.toYRot()));

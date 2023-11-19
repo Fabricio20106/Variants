@@ -1,4 +1,4 @@
-package com.junethewoods.variants.mixin.enchantability;
+package com.junethewoods.variants.mixin.item;
 
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.config.VSConfigs;

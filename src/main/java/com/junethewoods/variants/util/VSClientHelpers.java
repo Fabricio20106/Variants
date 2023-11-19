@@ -6,6 +6,7 @@ import com.junethewoods.variants.item.custom.armor.WoolArmorItem;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 
 import static net.minecraft.item.ItemModelsProperties.register;
@@ -49,5 +50,9 @@ public class VSClientHelpers {
             }
         });
         register(bow, new ResourceLocation("pulling"), (stack, world, livingEntity) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == stack ? 1 : 0);
+    }
+
+    public static void makeShield(Item shield) {
+        register(shield, new ResourceLocation("blocking"), (stack, world, livEntity) -> livEntity != null && livEntity.isUsingItem() && livEntity.getUseItem() == stack ? 1 : 0);
     }
 }

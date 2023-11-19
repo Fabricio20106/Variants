@@ -50,6 +50,7 @@ public class VSTags {
         public static final ITag.INamedTag<Item> BOOKS = mod("books");
         public static final ITag.INamedTag<Item> BOOKSHELVES = mod("bookshelves");
         public static final ITag.INamedTag<Item> POTS = mod("pots");
+        public static final ITag.INamedTag<Item> SHIELDS = mod("shields");
 
         public static ITag.INamedTag<Item> forge(String name) {
             return ItemTags.bind(new ResourceLocation("forge", name).toString());

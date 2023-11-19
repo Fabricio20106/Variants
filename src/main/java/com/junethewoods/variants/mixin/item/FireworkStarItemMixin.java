@@ -1,7 +1,8 @@
-package com.junethewoods.variants.mixin;
+package com.junethewoods.variants.mixin.item;
 
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.config.VSConfigs;
+import com.junethewoods.variants.util.VSStyles;
 import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.text.*;
@@ -45,12 +46,12 @@ public class FireworkStarItemMixin extends Item {
 
             // Has Trail (Diamond)
             if (nbt.getBoolean("Trail")) {
-                tooltip.add(new TranslationTextComponent("tooltip.variants.firework_star.effect.trail").withStyle(Style.EMPTY.withColor(Color.fromRgb(0x4aedd9))));
+                tooltip.add(new TranslationTextComponent("tooltip.variants.firework_star.effect.trail").withStyle(VSStyles.DIAMOND));
             }
 
             // Has Twinkle (Glowstone Dust)
             if (nbt.getBoolean("Flicker")) {
-                tooltip.add(new TranslationTextComponent("tooltip.variants.firework_star.effect.twinkle").withStyle(Style.EMPTY.withColor(Color.fromRgb(0xffbc5e))));
+                tooltip.add(new TranslationTextComponent("tooltip.variants.firework_star.effect.twinkle").withStyle(VSStyles.GLOWSTONE_DUST));
             }
         }
     }

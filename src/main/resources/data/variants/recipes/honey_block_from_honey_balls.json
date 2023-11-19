@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "honey_block",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "variants:honey_ball"
+    }
+  },
+  "result": {
+    "item": "minecraft:honey_block"
+  }
+}

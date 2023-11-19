@@ -5,13 +5,14 @@
   "refmap": "variants.mixins.refmap.json",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "FireworkRocketItemMixin",
-    "FireworkStarItemMixin",
-    "HorseArmorItemMixin",
-    "QuickChargeEnchantmentMixin",
-    "enchantability.ShearsItemMixin",
-    "enchantability.FlintAndSteelItemMixin",
-    "enchantability.ShieldItemMixin"
+    "block.CauldronBlockMixin",
+    "item.FireworkRocketItemMixin",
+    "item.FireworkStarItemMixin",
+    "item.HorseArmorItemMixin",
+    "item.ShearsItemMixin",
+    "item.FlintAndSteelItemMixin",
+    "item.ShieldItemMixin",
+    "enchantment.QuickChargeEnchantmentMixin"
   ],
   "client": [],
   "server": [],

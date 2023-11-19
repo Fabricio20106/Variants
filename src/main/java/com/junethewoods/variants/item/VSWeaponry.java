@@ -1,11 +1,9 @@
 package com.junethewoods.variants.item;
 
 import com.junethewoods.variants.Variants;
-import com.junethewoods.variants.item.custom.tool.CompatShearsItem;
-import com.junethewoods.variants.item.custom.tool.MagmaSwordItem;
+import com.junethewoods.variants.item.custom.tool.*;
 import com.junethewoods.variants.item.custom.armor.WoolArmorItem;
 import com.junethewoods.variants.util.tab.VSWeaponryTab;
-import com.junethewoods.variants.item.custom.tool.DebugBowItem;
 import com.junethewoods.variants.item.tool.VSArmors;
 import com.junethewoods.variants.item.tool.VSTools;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -37,7 +35,7 @@ public class VSWeaponry {
     public static final RegistryObject<Item> COPPER_SWORD = ITEMS.register("copper_sword", () -> new SwordItem(VSTools.COPPER, 3, -2.4F, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> DEBUG_BOW = ITEMS.register("debug_bow", () -> new DebugBowItem(new Item.Properties().durability(3840).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> REDSTONE_SHEARS = ITEMS.register("redstone_shears", () -> new ShearsItem(new Item.Properties().durability(250).tab(VSWeaponryTab.TAB)));
-    public static final RegistryObject<Item> COAL_SHEARS = ITEMS.register("coal_shears", () -> new ShearsItem(new Item.Properties().durability(32).tab(VSWeaponryTab.TAB)));
+    public static final RegistryObject<Item> COAL_SHEARS = ITEMS.register("coal_shears", () -> new CoalShearsItem(new Item.Properties().durability(32).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> COPPER_SHEARS = ITEMS.register("copper_shears", () -> new ShearsItem(new Item.Properties().durability(131).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> EXPOSED_COPPER_SHEARS = ITEMS.register("exposed_copper_shears", () -> new ShearsItem(new Item.Properties().durability(131).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> WEATHERED_COPPER_SHEARS = ITEMS.register("weathered_copper_shears", () -> new ShearsItem(new Item.Properties().durability(131).tab(VSWeaponryTab.TAB)));
@@ -50,9 +48,9 @@ public class VSWeaponry {
     public static final RegistryObject<Item> EMERALD_SHEARS = ITEMS.register("emerald_shears", () -> new ShearsItem(new Item.Properties().durability(1561).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> QUARTZ_SHEARS = ITEMS.register("quartz_shears", () -> new ShearsItem(new Item.Properties().durability(500).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> RUBY_SHEARS = ITEMS.register("ruby_shears", () -> new ShearsItem(new Item.Properties().durability(1871).tab(VSWeaponryTab.TAB)));
+    public static final RegistryObject<Item> PLASTEEL_SHEARS = ITEMS.register("plasteel_shears", () -> new CompatShearsItem(new Item.Properties().durability(450).tab(VSWeaponryTab.TAB), "Rimcraft"));
     public static final RegistryObject<Item> DIAEMERALD_SHEARS = ITEMS.register("diaemerald_shears", () -> new CompatShearsItem(new Item.Properties().durability(725).tab(VSWeaponryTab.TAB), "My Other Stuff (Others)"));
     public static final RegistryObject<Item> CRYSTAL_SHEARS = ITEMS.register("crystal_shears", () -> new CompatShearsItem(new Item.Properties().durability(861).tab(VSWeaponryTab.TAB), "My Other Stuff (Others)"));
-    public static final RegistryObject<Item> PLASTEEL_SHEARS = ITEMS.register("plasteel_shears", () -> new CompatShearsItem(new Item.Properties().durability(450).tab(VSWeaponryTab.TAB), "Rimcraft"));
     public static final RegistryObject<Item> LIGHT_MAGENTA_SHEARS = ITEMS.register("light_magenta_shears", () -> new CompatShearsItem(new Item.Properties().durability(861).tab(VSWeaponryTab.TAB), "My Other Stuff (Others)"));
     public static final RegistryObject<Item> ALAN_AI_SHEARS = ITEMS.register("alan_ai_shears", () -> new CompatShearsItem(new Item.Properties().durability(600).tab(VSWeaponryTab.TAB), "My Other Stuff (Others)"));
     public static final RegistryObject<Item> ALICE_AI_SHEARS = ITEMS.register("alice_ai_shears", () -> new CompatShearsItem(new Item.Properties().durability(600).tab(VSWeaponryTab.TAB), "My Other Stuff (Others)"));
@@ -62,7 +60,7 @@ public class VSWeaponry {
     public static final RegistryObject<Item> EMPTY_ARMOR_SLOT_CHESTPLATE = ITEMS.register("empty_armor_slot_chestplate", () -> new ArmorItem(VSArmors.EMPTY_SLOT, EquipmentSlotType.CHEST, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> EMPTY_ARMOR_SLOT_LEGGINGS = ITEMS.register("empty_armor_slot_leggings", () -> new ArmorItem(VSArmors.EMPTY_SLOT, EquipmentSlotType.LEGS, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> EMPTY_ARMOR_SLOT_BOOTS = ITEMS.register("empty_armor_slot_boots", () -> new ArmorItem(VSArmors.EMPTY_SLOT, EquipmentSlotType.FEET, new Item.Properties().tab(VSWeaponryTab.TAB)));
-    public static final RegistryObject<Item> EMPTY_ARMOR_SLOT_SHIELD = ITEMS.register("empty_armor_slot_shield", () -> new ShieldItem(new Item.Properties().stacksTo(1).durability(496).tab(VSWeaponryTab.TAB)));
+    public static final RegistryObject<Item> EMPTY_ARMOR_SLOT_SHIELD = ITEMS.register("empty_armor_slot_shield", () -> new VSShieldItem(new Item.Properties().durability(496).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> PHANTOM_MEMBRANE_TUNIC = ITEMS.register("phantom_membrane_sweatchest", () -> new ArmorItem(VSArmors.PHANTOM_MEMBRANE, EquipmentSlotType.CHEST, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> RABBIT_HIDE_TUNIC = ITEMS.register("rabbit_hide_sweatchest", () -> new ArmorItem(VSArmors.RABBIT_HIDE, EquipmentSlotType.CHEST, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> WOOL_SWEATER = ITEMS.register("wool_sweatchest", () -> new WoolArmorItem(VSArmors.WOOL, EquipmentSlotType.CHEST, new Item.Properties().tab(VSWeaponryTab.TAB)));

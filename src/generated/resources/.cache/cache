@@ -378,7 +378,7 @@ c9e762314d21e3cd6eaaf4b8e94f666a11c5a371 data/minecraft/tags/items/carpets.json
 bf5aa6d2f7ee6b4735f199508ff8577eb06e90cd data/minecraft/tags/items/creeper_drop_music_discs.json
 55012d0dbc11403e4a47590ffecb0dcb9d136b1f data/minecraft/tags/items/leaves.json
 bcdf990ed9de3ee8106455a3f9d8fcb9b10c36ea data/minecraft/tags/items/logs_that_burn.json
-0ac2df0ed4a18881906c5ae434dfc03a0eaab669 data/minecraft/tags/items/piglin_loved.json
+cec82d7823793a42edf31850b0c8655bc06932db data/minecraft/tags/items/piglin_loved.json
 cb9d0aec7ee6813d991b190206ba524186f68ae0 data/minecraft/tags/items/planks.json
 1508344ef52aacaa702da831c9becb7ef6f23fef data/minecraft/tags/items/saplings.json
 da5820c33adfb670e3a2a7312e2fe3066433fd2c data/minecraft/tags/items/slabs.json
@@ -400,7 +400,7 @@ d74fcf7718ee7b3f37af36ad5743507d623bf9d2 data/variants/tags/blocks/conduit_frame
 d49ddc370b30c9b9f0d41c90a69601574a941def data/variants/tags/blocks/painting_doors.json
 59f537833a6d2b59ab763a6e112bbd5a99a1b7aa data/variants/tags/blocks/painting_logs.json
 abe677791f6d916b3b307bd1270f4d6687516251 data/variants/tags/blocks/warped_wart_plantable_on.json
-da7533655265f8cb04cb244d1ad5fc07a16d894f data/variants/tags/items/books.json
+b5bc1ca7b58264402db9fe46df7a85efa35a17a4 data/variants/tags/items/books.json
 511038518cd837f6f709647e22f0d61ad5e68dc7 data/variants/tags/items/bookshelves.json
 2b3bfab26c8ef908ab25f7445a08ccac30cc3280 data/variants/tags/items/crafting_materials.json
 1f70ed4ddc878bada5e43d3c44a34157806beda8 data/variants/tags/items/crafting_materials/andesite.json
@@ -410,4 +410,5 @@ d479449e102666b62401e14276bacbb9a2ea7ea3 data/variants/tags/items/crafting_mater
 d49ddc370b30c9b9f0d41c90a69601574a941def data/variants/tags/items/painting_doors.json
 59f537833a6d2b59ab763a6e112bbd5a99a1b7aa data/variants/tags/items/painting_logs.json
 108be6dfa3e0509a86efbe25e51ad82672c8c4ed data/variants/tags/items/pots.json
+1bb304b4c09b3e4badf87387b389584047ea63b2 data/variants/tags/items/shields.json
 18ba72c9d84fd36008205066647f3f54c49cfe2c data/variants/tags/items/shulker_shells.json

@@ -1,4 +1,4 @@
-package com.junethewoods.variants.mixin;
+package com.junethewoods.variants.mixin.item;
 
 import com.junethewoods.variants.config.VSConfigs;
 import net.minecraft.client.util.ITooltipFlag;

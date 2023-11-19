@@ -20,14 +20,15 @@ apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'idea'
 
-version = '1.16.5-1.6.7-' + new Date().format("dd-MM-yyyy")
+version = '1.16.5-1.6.8-' + new Date().format("dd-MM-yyyy")
 // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 group = 'com.junethewoods.variants'
 archivesBaseName = 'Variants'
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+// Need this here so eclipse task generates correctly.
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
+println('Java: ' + System.getProperty('java.version') + ' Java Virtual Machine (JVM): ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
     // The mappings can be changed at any time, and must be in the following format:
     // snapshot_YYYYMMDD   Snapshot are built nightly.

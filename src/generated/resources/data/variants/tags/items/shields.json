@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:shield",
+    "variants:empty_armor_slot_shield"
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/fence_inventory",
   "textures": {
-    "texture": "minecraft:painting/back"
+    "texture": "variants:block/painting_planks"
   }
 }

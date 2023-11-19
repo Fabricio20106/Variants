@@ -2,6 +2,7 @@ package com.junethewoods.variants.item;
 
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.block.VSBlocks;
+import com.junethewoods.variants.blockentity.renderer.VSItemStackBlockEntityRenderer;
 import com.junethewoods.variants.item.custom.CompatBlockItem;
 import com.junethewoods.variants.item.custom.CompatItem;
 import com.junethewoods.variants.item.custom.EnchantedKnowledgeBookItem;
@@ -10,11 +11,14 @@ import com.junethewoods.variants.item.custom.food.*;
 import com.junethewoods.variants.sound.VSSounds;
 import com.junethewoods.variants.util.tab.VSBlockTab;
 import com.junethewoods.variants.util.tab.VSTab;
+import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
 import net.minecraft.entity.item.minecart.AbstractMinecartEntity;
 import net.minecraft.item.*;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.concurrent.Callable;
 
 public class VSItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Variants.MOD_ID);
@@ -64,7 +68,7 @@ public class VSItems {
     public static final RegistryObject<Item> GLOW_BLACK_STAINED_GLASS_PANE = ITEMS.register("glow_black_stained_glass_pane", () -> new BlockItem(VSBlocks.GLOW_BLACK_STAINED_GLASS_PANE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> QUARTZ_GLASS = ITEMS.register("quartz_glass", () -> new BlockItem(VSBlocks.QUARTZ_GLASS.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> QUARTZ_GLASS_PANE = ITEMS.register("quartz_glass_pane", () -> new BlockItem(VSBlocks.QUARTZ_GLASS_PANE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
-    public static final RegistryObject<Item> GLOW_BLACK_BED = ITEMS.register("glow_black_bed", () -> new BedItem(VSBlocks.GLOW_BLACK_BED.get(), new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> GLOW_BLACK_BED = ITEMS.register("glow_black_bed", () -> new BedItem(VSBlocks.GLOW_BLACK_BED.get(), new Item.Properties().stacksTo(1).setISTER(VSItems::variantsISBERProvider).tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> POTTED_SUGAR_CANE = ITEMS.register("potted_sugar_cane", () -> new BlockItem(VSBlocks.POTTED_SUGAR_CANE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> POTTED_GLOW_BLACK_TULIP = ITEMS.register("potted_glow_black_tulip", () -> new BlockItem(VSBlocks.POTTED_GLOW_BLACK_TULIP.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> POTTED_PAINTING_SAPLING = ITEMS.register("potted_painting_sapling", () -> new BlockItem(VSBlocks.POTTED_PAINTING_SAPLING.get(), new Item.Properties().tab(VSBlockTab.TAB)));
@@ -139,4 +143,8 @@ public class VSItems {
     public static final RegistryObject<Item> ELDER_PRISMARINE_SHARD = ITEMS.register("elder_prismarine_shard", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> ELDER_PRISMARINE_CRYSTALS = ITEMS.register("elder_prismarine_crystals", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> ENCHANTED_KNOWLEDGE_BOOK = ITEMS.register("enchanted_knowledge_book", () -> new EnchantedKnowledgeBookItem(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1)));
+
+    public static Callable<ItemStackTileEntityRenderer> variantsISBERProvider() {
+        return VSItemStackBlockEntityRenderer::new;
+    }
 }
