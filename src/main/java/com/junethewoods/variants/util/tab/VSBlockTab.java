@@ -13,6 +13,6 @@ public class VSBlockTab extends ItemGroup {
 
     @Override
     public ItemStack makeIcon() {
-        return new ItemStack(VSItems.WANDERER_DOOR.get());
+        return new ItemStack(VSItems.PAINTING_DOOR_WANDERER.get());
     }
 }

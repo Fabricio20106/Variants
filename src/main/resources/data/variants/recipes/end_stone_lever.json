@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "$"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:rods/wooden"
+    },
+    "$": {
+      "item": "minecraft:end_stone"
+    }
+  },
+  "result": {
+    "item": "variants:end_stone_lever"
+  }
+}

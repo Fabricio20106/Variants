@@ -21,4 +21,4 @@
 - Firework Rocket and Firework Stars now have their item stack set to "Variants".
 
 ## Technical Changes
-- Renamed property ```DebugProperty``` in Debug Bows to ```debug_property```.
+- Renamed tag ```DebugProperty``` in Debug Bows to ```debug_property```.

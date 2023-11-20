@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#-#",
+    "#-#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:red_nether_bricks"
+    },
+    "-": {
+      "tag": "forge:ingots/red_nether_brick"
+    }
+  },
+  "result": {
+    "item": "variants:red_nether_brick_fence",
+    "count": 6
+  }
+}

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#variants:painting_doors"
+    "#variants:painting_doors",
+    "variants:painting_door"
   ]
 }

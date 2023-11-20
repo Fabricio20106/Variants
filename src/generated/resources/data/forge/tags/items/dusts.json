@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "#forge:dusts/sugar",
-    "#forge:dusts/gunpowder"
+    "#forge:dusts/gunpowder",
+    "#forge:dusts/blaze",
+    "#forge:dusts/soul_blaze"
   ]
 }

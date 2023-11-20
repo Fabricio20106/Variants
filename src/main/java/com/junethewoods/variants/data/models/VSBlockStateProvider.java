@@ -5,9 +5,11 @@ import com.junethewoods.variants.block.VSBlocks;
 import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.fml.RegistryObject;
 
 import javax.annotation.Nonnull;
 
@@ -37,9 +39,9 @@ public class VSBlockStateProvider extends BlockStateProvider {
         fenceBlock((FenceBlock) VSBlocks.PAINTING_FENCE.get(), modLoc("block/painting_planks"));
         fenceGateBlock((FenceGateBlock) VSBlocks.PAINTING_FENCE_GATE.get(), modLoc("block/painting_planks"));
         doorBlock((DoorBlock) VSBlocks.PAINTING_DOOR.get(), modLoc("block/painting_door_bottom"), modLoc("block/painting_door_top"));
-        doorBlock((DoorBlock) VSBlocks.WANDERER_DOOR.get(), modLoc("block/wanderer_door_bottom"), modLoc("block/wanderer_door_top"));
-        doorBlock((DoorBlock) VSBlocks.GRAHAM_DOOR.get(), modLoc("block/graham_door_bottom"), modLoc("block/graham_door_top"));
-        doorBlock((DoorBlock) VSBlocks.FIRST_DOOR.get(), modLoc("block/first_door_bottom"), modLoc("block/first_door_top"));
+        doorBlock((DoorBlock) VSBlocks.PAINTING_DOOR_WANDERER.get(), modLoc("block/wanderer_door_bottom"), modLoc("block/wanderer_door_top"));
+        doorBlock((DoorBlock) VSBlocks.PAINTING_DOOR_GRAHAM.get(), modLoc("block/graham_door_bottom"), modLoc("block/graham_door_top"));
+        doorBlock((DoorBlock) VSBlocks.PAINTING_DOOR_FIRST.get(), modLoc("block/first_door_bottom"), modLoc("block/first_door_top"));
         trapdoorBlock((TrapDoorBlock) VSBlocks.PAINTING_TRAPDOOR.get(), modLoc("block/painting_trapdoor"), true);
         simpleBlock(VSBlocks.PLAIN_BIRCH_BOOKSHELF.get(), models().cubeTop("plain_birch_bookshelf", modLoc("block/plain_birch_bookshelf"),
                 modLoc("block/plain_birch_planks")));
@@ -70,9 +72,19 @@ public class VSBlockStateProvider extends BlockStateProvider {
         stairsBlock((StairsBlock) VSBlocks.DARK_ELDER_PRISMARINE_STAIRS.get(), modLoc("block/dark_elder_prismarine"));
         slabBlock((SlabBlock) VSBlocks.DARK_ELDER_PRISMARINE_SLAB.get(), modLoc("block/dark_elder_prismarine"), modLoc("block/dark_elder_prismarine"));
         simpleBlock(VSBlocks.CHISELED_END_STONE_BRICKS.get());
+        simpleBlock(VSBlocks.INFESTED_CHISELED_END_STONE_BRICKS.get(), models().cubeAll("infested_chiseled_end_stone_bricks", modLoc("block/chiseled_end_stone_bricks")));
         simpleBlock(VSBlocks.CHISELED_PURPUR_BLOCK.get());
+        simpleBlock(VSBlocks.INFESTED_CHISELED_PURPUR_BLOCK.get(), models().cubeAll("infested_chiseled_purpur_block", modLoc("block/chiseled_purpur_block")));
         simpleBlock(VSBlocks.QUARTZ_GLASS.get());
         paneBlock(((PaneBlock) VSBlocks.QUARTZ_GLASS_PANE.get()), modLoc("block/quartz_glass"), modLoc("block/quartz_glass_pane_top"));
+        fenceBlock((FenceBlock) VSBlocks.RED_NETHER_BRICK_FENCE.get(), mcLoc("block/red_nether_bricks"));
+        paintingTrapdoor(VSBlocks.PAINTING_TRAPDOOR_ALBAN, mcLoc("painting/alban"));
+        paintingTrapdoor(VSBlocks.PAINTING_TRAPDOOR_AZTEC, mcLoc("painting/aztec"));
+        paintingTrapdoor(VSBlocks.PAINTING_TRAPDOOR_AZTEC2, mcLoc("painting/aztec2"));
+        paintingTrapdoor(VSBlocks.PAINTING_TRAPDOOR_BOMB, mcLoc("painting/bomb"));
+        paintingTrapdoor(VSBlocks.PAINTING_TRAPDOOR_KEBAB, mcLoc("painting/kebab"));
+        paintingTrapdoor(VSBlocks.PAINTING_TRAPDOOR_PLANT, mcLoc("painting/plant"));
+        paintingTrapdoor(VSBlocks.PAINTING_TRAPDOOR_WASTELAND, mcLoc("painting/wasteland"));
 
         getVariantBuilder(VSBlocks.GOLDEN_CARROTS.get()).forAllStates(state -> {
             int cropAgeIndex = cropAgeToIndexPotato(state.getValue(BlockStateProperties.AGE_7));
@@ -83,6 +95,10 @@ public class VSBlockStateProvider extends BlockStateProvider {
             int cropAgeIndex = cropAgeToIndexWart(state.getValue(BlockStateProperties.AGE_3));
             return ConfiguredModel.builder().modelFile(models().crop("warped_wart_stage" + cropAgeIndex, modLoc("block/warped_wart_stage" + cropAgeIndex))).build();
         });
+    }
+
+    public void paintingTrapdoor(RegistryObject<Block> block, ResourceLocation painting) {
+        trapdoorBlock((TrapDoorBlock) block.get(), painting, true);
     }
 
     public static int cropAgeToIndexPotato(int age) {

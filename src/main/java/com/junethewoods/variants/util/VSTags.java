@@ -19,6 +19,7 @@ public class VSTags {
         public static final ITag.INamedTag<Item> INGOTS_EXPOSED_COPPER = forge("ingots/exposed_copper");
         public static final ITag.INamedTag<Item> INGOTS_WEATHERED_COPPER = forge("ingots/weathered_copper");
         public static final ITag.INamedTag<Item> INGOTS_OXIDIZED_COPPER = forge("ingots/oxidized_copper");
+        public static final ITag.INamedTag<Item> INGOTS_RED_NETHER_BRICK = forge("ingots/red_nether_brick");
 
         public static final ITag.INamedTag<Item> NUGGETS_QUARTZ = forge("nuggets/quartz");
         public static final ITag.INamedTag<Item> NUGGETS_PURPLE_IRON = forge("nuggets/purple_iron");
@@ -34,6 +35,8 @@ public class VSTags {
 
         public static final ITag.INamedTag<Item> DUSTS_GUNPOWDER = forge("dusts/gunpowder");
         public static final ITag.INamedTag<Item> DUSTS_SUGAR = forge("dusts/sugar");
+        public static final ITag.INamedTag<Item> DUSTS_BLAZE = forge("dusts/blaze");
+        public static final ITag.INamedTag<Item> DUSTS_SOUL_BLAZE = forge("dusts/soul_blaze");
 
         public static final ITag.INamedTag<Item> GEMS_ELDER_PRISMARINE = forge("gems/elder_prismarine");
 
@@ -47,6 +50,7 @@ public class VSTags {
         public static final ITag.INamedTag<Item> CM_MAGMA_BLOCK = mod("crafting_materials/magma_block");
 
         public static final ITag.INamedTag<Item> PAINTING_DOORS = mod("painting_doors");
+        public static final ITag.INamedTag<Item> PAINTING_TRAPDOORS = mod("painting_trapdoors");
         public static final ITag.INamedTag<Item> PAINTING_LOGS = mod("painting_logs");
         public static final ITag.INamedTag<Item> CAULDRONS = mod("cauldrons");
         public static final ITag.INamedTag<Item> BEACONS = mod("beacons");
@@ -77,6 +81,7 @@ public class VSTags {
 
         // Variants' Tags
         public static final ITag.INamedTag<Block> PAINTING_DOORS = mod("painting_doors");
+        public static final ITag.INamedTag<Block> PAINTING_TRAPDOORS = mod("painting_trapdoors");
         public static final ITag.INamedTag<Block> PAINTING_LOGS = mod("painting_logs");
         public static final ITag.INamedTag<Block> BOOKSHELVES = mod("bookshelves");
         public static final ITag.INamedTag<Block> CAULDRONS = mod("cauldrons");

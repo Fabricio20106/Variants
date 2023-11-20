@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "$"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:rods/wooden"
+    },
+    "$": {
+      "item": "minecraft:netherrack"
+    }
+  },
+  "result": {
+    "item": "variants:netherrack_lever"
+  }
+}

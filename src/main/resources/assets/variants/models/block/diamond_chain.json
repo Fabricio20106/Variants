@@ -1,0 +1,6 @@
+{
+  "parent": "variants:block/template_chain",
+  "textures": {
+    "chain": "variants:block/diamond_chain"
+  }
+}

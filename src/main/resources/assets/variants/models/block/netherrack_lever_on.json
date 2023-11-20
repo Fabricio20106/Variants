@@ -1,0 +1,7 @@
+{
+  "parent": "variants:block/template_lever_on",
+  "textures": {
+    "base": "minecraft:block/netherrack",
+    "lever": "variants:block/netherrack_lever"
+  }
+}

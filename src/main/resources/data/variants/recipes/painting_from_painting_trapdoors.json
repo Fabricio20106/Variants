@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "variants:painting_trapdoors"
+    }
+  ],
+  "result": {
+    "item": "minecraft:painting"
+  }
+}

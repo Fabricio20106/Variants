@@ -41,8 +41,12 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(Tags.Blocks.GLASS_COLORLESS).add(VSBlocks.QUARTZ_GLASS.get());
         this.tag(Tags.Blocks.GLASS_PANES_COLORLESS).add(VSBlocks.QUARTZ_GLASS_PANE.get());
 
+        this.tag(Tags.Blocks.FENCES_NETHER_BRICK).add(VSBlocks.RED_NETHER_BRICK_FENCE.get());
+
         // Variants' Tags
-        this.tag(VSTags.Blocks.PAINTING_DOORS).add(VSBlocks.WANDERER_DOOR.get()).add(VSBlocks.GRAHAM_DOOR.get()).add(VSBlocks.FIRST_DOOR.get());
+        this.tag(VSTags.Blocks.PAINTING_DOORS).add(VSBlocks.PAINTING_DOOR_WANDERER.get()).add(VSBlocks.PAINTING_DOOR_GRAHAM.get()).add(VSBlocks.PAINTING_DOOR_FIRST.get());
+        this.tag(VSTags.Blocks.PAINTING_TRAPDOORS).add(VSBlocks.PAINTING_TRAPDOOR_ALBAN.get()).add(VSBlocks.PAINTING_TRAPDOOR_AZTEC.get()).add(VSBlocks.PAINTING_TRAPDOOR_AZTEC2.get())
+                .add(VSBlocks.PAINTING_TRAPDOOR_BOMB.get()).add(VSBlocks.PAINTING_TRAPDOOR_KEBAB.get()).add(VSBlocks.PAINTING_TRAPDOOR_PLANT.get()).add(VSBlocks.PAINTING_TRAPDOOR_WASTELAND.get());;
         this.tag(VSTags.Blocks.BOOKSHELVES).add(Blocks.BOOKSHELF).add(VSBlocks.PLAIN_BIRCH_BOOKSHELF.get());
         this.tag(VSTags.Blocks.PAINTING_LOGS).add(VSBlocks.PAINTING_LOG.get()).add(VSBlocks.PAINTING_WOOD.get()).add(VSBlocks.STRIPPED_PAINTING_LOG.get())
                 .add(VSBlocks.STRIPPED_PAINTING_WOOD.get());
@@ -64,12 +68,13 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.FENCE_GATES).add(VSBlocks.PAINTING_FENCE_GATE.get());
         this.tag(BlockTags.WOODEN_PRESSURE_PLATES).add(VSBlocks.PAINTING_PRESSURE_PLATE.get());
         this.tag(BlockTags.WOODEN_BUTTONS).add(VSBlocks.PAINTING_BUTTON.get());
-        this.tag(BlockTags.WOODEN_DOORS).add(VSBlocks.PAINTING_DOOR.get()).add(VSBlocks.WANDERER_DOOR.get());
-        this.tag(BlockTags.WOODEN_TRAPDOORS).add(VSBlocks.PAINTING_TRAPDOOR.get());
+        this.tag(BlockTags.WOODEN_DOORS).addTag(VSTags.Blocks.PAINTING_DOORS).add(VSBlocks.PAINTING_DOOR.get());
+        this.tag(BlockTags.WOODEN_TRAPDOORS).addTag(VSTags.Blocks.PAINTING_TRAPDOORS).add(VSBlocks.PAINTING_TRAPDOOR.get());
 
         this.tag(BlockTags.STAIRS).add(VSBlocks.ELDER_PRISMARINE_STAIRS.get()).add(VSBlocks.ELDER_PRISMARINE_BRICK_STAIRS.get()).add(VSBlocks.DARK_ELDER_PRISMARINE_STAIRS.get());
         this.tag(BlockTags.SLABS).add(VSBlocks.ELDER_PRISMARINE_SLAB.get()).add(VSBlocks.ELDER_PRISMARINE_BRICK_SLAB.get()).add(VSBlocks.DARK_ELDER_PRISMARINE_SLAB.get());
         this.tag(BlockTags.WALLS).add(VSBlocks.ELDER_PRISMARINE_WALL.get());
+        this.tag(BlockTags.FENCES).add(VSBlocks.RED_NETHER_BRICK_FENCE.get());
 
         this.tag(BlockTags.CROPS).add(VSBlocks.GOLDEN_CARROTS.get()).add(VSBlocks.WARPED_WART.get());
         this.tag(BlockTags.BEE_GROWABLES).add(VSBlocks.GLOW_BERRY_BUSH.get());
@@ -77,8 +82,8 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.FLOWER_POTS).add(VSBlocks.POTTED_GLOW_BLACK_TULIP.get()).add(VSBlocks.POTTED_SUGAR_CANE.get()).add(VSBlocks.POTTED_PAINTING_SAPLING.get());
         this.tag(BlockTags.WOOL).add(VSBlocks.GLOW_BLACK_WOOL.get());
         this.tag(BlockTags.CARPETS).add(VSBlocks.GLOW_BLACK_CARPET.get());
-        this.tag(BlockTags.GUARDED_BY_PIGLINS).add(VSBlocks.GOLDEN_CAULDRON.get()).add(VSBlocks.GOLDEN_BEACON.get()).add(VSBlocks.GOLDEN_CARROTS.get());
-        this.tag(BlockTags.DRAGON_IMMUNE).add(VSBlocks.END_QUARTZ_ORE.get());
+        this.tag(BlockTags.GUARDED_BY_PIGLINS).add(VSBlocks.GOLDEN_CAULDRON.get()).add(VSBlocks.GOLDEN_BEACON.get()).add(VSBlocks.GOLDEN_CARROTS.get()).add(VSBlocks.GOLDEN_CHAIN.get());
+        this.tag(BlockTags.DRAGON_IMMUNE).add(VSBlocks.END_QUARTZ_ORE.get()).add(VSBlocks.QUARTZ_BARS.get());
         this.tag(BlockTags.IMPERMEABLE).add(VSBlocks.QUARTZ_GLASS.get()).add(VSBlocks.GLOW_BLACK_STAINED_GLASS.get());
         this.tag(BlockTags.BEDS).add(VSBlocks.GLOW_BLACK_BED.get());
     }

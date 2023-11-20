@@ -18,7 +18,7 @@
 ## Changes
 - Plasteel Shears now appear before the Diaemerald Shears in the creative menu.
 - Cauldrons can now be waterlogged.
-- Enchanted Knowledge Books are now crafted at Smithing Tables (to keep enchantments).
+- Enchanted Knowledge Books are now crafted at Smithing Tables (to keep the enchantments).
 - Glow Black Beds now appear in the creative menu.
 - Re-added recipe for Glow Black Beds.
 - Added ```variants:alice_ai_shears``` to the ```#minecraft:piglin_loved``` item tag.

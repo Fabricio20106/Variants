@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "variants:painting_trapdoor"
+    },
+    {
+      "item": "minecraft:painting"
+    }
+  ],
+  "result": {
+    "item": "variants:bomb_trapdoor"
+  }
+}

@@ -26,7 +26,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         ModelFile handheld = getExistingFile(mcLoc("item/handheld"));
         ModelFile debugBow = getExistingFile(modLoc("item/debug_bow"));
 
-        withExistingParent("golden_carrots", modLoc("block/golden_carrots_stage3"));
+        withExistingParent("golden_carrots", "_stage3");
         withExistingParent("gold_cauldron");
         withExistingParent("gold_beacon");
         withExistingParent("quartz_ore");
@@ -46,11 +46,18 @@ public class VSItemModelProvider extends ItemModelProvider {
         withExistingParent("painting_planks");
         withExistingParent("painting_stairs");
         withExistingParent("painting_slab");
-        withExistingParent("painting_fence", modLoc("block/painting_fence_inventory"));
+        withExistingParent("painting_fence", "_inventory");
         withExistingParent("painting_fence_gate");
         withExistingParent("painting_pressure_plate");
-        withExistingParent("painting_button", modLoc("block/painting_button_inventory"));
-        withExistingParent("painting_trapdoor", modLoc("block/painting_trapdoor_bottom"));
+        withExistingParent("painting_button", "_inventory");
+        withExistingParent("painting_trapdoor", "_bottom");
+        withExistingParent("alban_trapdoor", "_bottom");
+        withExistingParent("aztec_trapdoor", "_bottom");
+        withExistingParent("aztec2_trapdoor", "_bottom");
+        withExistingParent("bomb_trapdoor", "_bottom");
+        withExistingParent("kebab_trapdoor", "_bottom");
+        withExistingParent("plant_trapdoor", "_bottom");
+        withExistingParent("wasteland_trapdoor", "_bottom");
         withExistingParent("potted_glow_black_tulip");
         withExistingParent("potted_sugar_cane");
         withExistingParent("potted_painting_sapling");
@@ -58,7 +65,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         withExistingParent("elder_prismarine");
         withExistingParent("elder_prismarine_stairs");
         withExistingParent("elder_prismarine_slab");
-        withExistingParent("elder_prismarine_wall", modLoc("block/elder_prismarine_wall_inventory"));
+        withExistingParent("elder_prismarine_wall", "_inventory");
         withExistingParent("elder_prismarine_bricks");
         withExistingParent("elder_prismarine_brick_stairs");
         withExistingParent("elder_prismarine_brick_slab");
@@ -66,7 +73,10 @@ public class VSItemModelProvider extends ItemModelProvider {
         withExistingParent("dark_elder_prismarine_stairs");
         withExistingParent("dark_elder_prismarine_slab");
         withExistingParent("chiseled_end_stone_bricks");
+        withExistingParent("infested_chiseled_end_stone_bricks");
         withExistingParent("chiseled_purpur_block");
+        withExistingParent("infested_chiseled_purpur_block");
+        withExistingParent("red_nether_brick_fence", "_inventory");
 
         standard(generated, "white_shulker_shell");
         standard(generated, "inno_shulker_shell");
@@ -120,9 +130,11 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(handheld, "soul_rod");
         standard(generated, "soul_powder");
         standard(generated, "soul_charge");
+        standard(generated, "red_nether_brick");
         standard(generated, "exposed_copper_ingot");
         standard(generated, "weathered_copper_ingot");
         standard(generated, "oxidized_copper_ingot");
+        standard(generated, "soul_lava_bucket");
         standard(generated, "milk_glass_bottle");
         standard(generated, "lava_glass_bottle");
         standard(generated, "powder_snow_bottle");
@@ -138,11 +150,19 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "splash_soph_potion");
         standard(generated, "quartz_nugget");
         standard(generated, "purple_nugget");
-        getBuilder("glow_berry_bush").parent(generated).texture("layer0", "block/glow_berry_bush_stage3");
-        getBuilder("glow_black_tulip").parent(generated).texture("layer0", "block/glow_black_tulip");
-        getBuilder("painting_sapling").parent(generated).texture("layer0", "block/painting_sapling");
-        getBuilder("glow_black_stained_glass_pane").parent(generated).texture("layer0", "block/glow_black_stained_glass");
-        getBuilder("quartz_glass_pane").parent(generated).texture("layer0", "block/quartz_glass");
+        standard(generated, "quartz_chain");
+        standard(generated, "golden_chain");
+        standard(generated, "diamond_chain");
+        standard(generated, "emerald_chain");
+
+        blockItem("glow_berry_bush", "_stage3");
+        blockItem("glow_black_tulip");
+        blockItem("painting_sapling");
+        blockItem("netherrack_lever");
+        blockItem("end_stone_lever");
+        blockItem("quartz_bars");
+        glassPane("glow_black_stained_glass");
+        glassPane("quartz_glass");
 
         standard(handheld, "magma_sword");
         standard(handheld, "amethyst_sword");
@@ -204,5 +224,21 @@ public class VSItemModelProvider extends ItemModelProvider {
 
     public ItemModelBuilder withExistingParent(String name) {
         return withExistingParent(name, modLoc("block/" + name));
+    }
+
+    public ItemModelBuilder withExistingParent(String name, String extras) {
+        return withExistingParent(name, modLoc("block/" + name + extras));
+    }
+
+    public ItemModelBuilder blockItem(String name) {
+        return getBuilder(name).parent(getExistingFile(mcLoc("item/generated"))).texture("layer0", "block/" + name);
+    }
+
+    public ItemModelBuilder blockItem(String name, String extras) {
+        return getBuilder(name).parent(getExistingFile(mcLoc("item/generated"))).texture("layer0", "block/" + name + extras);
+    }
+
+    public ItemModelBuilder glassPane(String name) {
+        return getBuilder(name + "_pane").parent(getExistingFile(mcLoc("item/generated"))).texture("layer0", "block/" + name);
     }
 }

@@ -53,6 +53,8 @@ public class VSEvents {
                     12, 5, 0.2f));
 
             // Level 3 "Journeyman"
+            trades.get(3).add((trader, rand) -> new MerchantOffer(new ItemStack(VSItems.SOUL_LAVA_BUCKET.get(), 1), new ItemStack(Items.EMERALD, 1),
+                    12, 20, 0.05f));
             trades.get(3).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(VSWeaponry.EMPTY_ARMOR_SLOT_HELMET.get(), 1),
                     12, 10, 0.2f));
             trades.get(3).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 4), new ItemStack(VSWeaponry.EMPTY_ARMOR_SLOT_CHESTPLATE.get(), 1),
@@ -148,11 +150,11 @@ public class VSEvents {
                     10, 5, 0.25f));
 
             // Level 5 "Master"
-            trades.get(5).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 2), new ItemStack(VSItems.WANDERER_DOOR.get(), 2),
+            trades.get(5).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 2), new ItemStack(VSItems.PAINTING_DOOR_WANDERER.get(), 2),
                     10, 30, 0.05f));
-            trades.get(5).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 2), new ItemStack(VSItems.GRAHAM_DOOR.get(), 2),
+            trades.get(5).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 2), new ItemStack(VSItems.PAINTING_DOOR_GRAHAM.get(), 2),
                     10, 30, 0.05f));
-            trades.get(5).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 2), new ItemStack(VSItems.FIRST_DOOR.get(), 2),
+            trades.get(5).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 2), new ItemStack(VSItems.PAINTING_DOOR_FIRST.get(), 2),
                     10, 30, 0.05f));
         }
 
