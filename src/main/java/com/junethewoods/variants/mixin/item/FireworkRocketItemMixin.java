@@ -49,7 +49,7 @@ public class FireworkRocketItemMixin extends Item {
                     ListNBT explosionsNBTList = fireworksTag.getList("Explosions", 10);
                     if (!explosionsNBTList.isEmpty()) {
                         tooltip.add(new StringTextComponent(""));
-                        tooltip.add(new TranslationTextComponent("tooltip.variants.firework_rocket.explosions").withStyle(VSStyles.FIRWORK_TITLES));
+                        tooltip.add(new TranslationTextComponent("tooltip.variants.firework_rocket.explosions").withStyle(VSStyles.FIREWORK_TITLES));
 
                         for (int i = 0; i < explosionsNBTList.size(); ++i) {
                             CompoundNBT nbt = explosionsNBTList.getCompound(i);

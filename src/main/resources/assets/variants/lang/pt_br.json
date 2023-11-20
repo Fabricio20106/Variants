@@ -197,10 +197,19 @@
   "item.variants.nicolas_ai_shears": "Tesoura com IA do Nicolas",
   "item.variants.light_magenta_shears": "Tesoura magêntica",
   "item.variants.splash_soph_potion": "Poção da Sophie arremessável",
+  "item.minecraft.egg": "Ovo de galinha",
+  "item.minecraft.string": "Linha de aranha",
+
+  "subtitles.variants.spyglass.use": "Luneta amplia-se",
+  "subtitles.variants.spyglass.stop_using": "Luneta se retrai",
 
   "color.f10elements.inno": "inno",
+  "color.backmath.aljan_light_blue": "azul-aljan",
+  "color.backmath.insomnian": "insômnian",
+  "color.backmath.poison_brown": "marrom-venenoso",
   "color.backmath.red_yellow": "vermelha-amarela",
   "color.variants.glow_black": "preta brilhante",
+  "null": "núla",
 
   "tooltip.variants.compat_item_from": "Compatibilidade de item entre: %s.",
   "tooltip.variants.compat_block_from": "Compatibilidade de bloco entre: %s.",

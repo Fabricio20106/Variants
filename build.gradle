@@ -20,7 +20,9 @@ apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'idea'
 
-version = '1.16.5-1.6.8.1-' + new Date().format("dd-MM-yyyy")
+Calendar calendar = Calendar.getInstance()
+String year = String.valueOf(calendar.getWeekYear()).replace("20", "")
+version = '1.16.5-v1.6.9-' + year + 'd' + calendar.get(Calendar.DAY_OF_YEAR) + 'a'
 // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 group = 'com.junethewoods.variants'
 archivesBaseName = 'Variants'
@@ -157,7 +159,7 @@ jar {
             "Specification-Version": "1",
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"JuneTheWoods",
+            "Implementation-Vendor" : "JuneTheWoods",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
             "MixinConfigs": "variants.mixins.json"
         ])

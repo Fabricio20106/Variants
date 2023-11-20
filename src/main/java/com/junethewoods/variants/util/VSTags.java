@@ -37,6 +37,8 @@ public class VSTags {
 
         public static final ITag.INamedTag<Item> GEMS_ELDER_PRISMARINE = forge("gems/elder_prismarine");
 
+        public static final ITag.INamedTag<Item> ARMORS_BOOTS = forge("armors/boots");
+
         // Variants' Tags
         public static final ITag.INamedTag<Item> CRAFTING_MATERIALS = mod("crafting_materials");
         public static final ITag.INamedTag<Item> CM_DIORITE = mod("crafting_materials/diorite");
@@ -46,11 +48,14 @@ public class VSTags {
 
         public static final ITag.INamedTag<Item> PAINTING_DOORS = mod("painting_doors");
         public static final ITag.INamedTag<Item> PAINTING_LOGS = mod("painting_logs");
+        public static final ITag.INamedTag<Item> CAULDRONS = mod("cauldrons");
+        public static final ITag.INamedTag<Item> BEACONS = mod("beacons");
         public static final ITag.INamedTag<Item> SHULKER_SHELLS = mod("shulker_shells");
         public static final ITag.INamedTag<Item> BOOKS = mod("books");
         public static final ITag.INamedTag<Item> BOOKSHELVES = mod("bookshelves");
         public static final ITag.INamedTag<Item> POTS = mod("pots");
         public static final ITag.INamedTag<Item> SHIELDS = mod("shields");
+        public static final ITag.INamedTag<Item> SPYGLASSES = mod("spyglasses");
 
         public static ITag.INamedTag<Item> forge(String name) {
             return ItemTags.bind(new ResourceLocation("forge", name).toString());
@@ -74,6 +79,7 @@ public class VSTags {
         public static final ITag.INamedTag<Block> PAINTING_DOORS = mod("painting_doors");
         public static final ITag.INamedTag<Block> PAINTING_LOGS = mod("painting_logs");
         public static final ITag.INamedTag<Block> BOOKSHELVES = mod("bookshelves");
+        public static final ITag.INamedTag<Block> CAULDRONS = mod("cauldrons");
         public static final ITag.INamedTag<Block> BEACONS = mod("beacons");
         public static final ITag.INamedTag<Block> CONDUIT_FRAME_BLOCKS = mod("conduit_frame_blocks");
         public static final ITag.INamedTag<Block> WARPED_WART_PLANTABLE_ON = mod("warped_wart_plantable_on");

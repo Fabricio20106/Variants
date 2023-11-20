@@ -1,0 +1,33 @@
+Additions for Variants Compatibilities (vscompats) (19/11/2023):
+
+Items for Compatibility:
+- (General -> Ore Processing) Blocks, Nuggets, Dusts & Crushed Ores
+- (Back Math) Mortar & Pestles
+- (Back Math) Knives
+- (Back Math) Aljanstone & Sleepingstone Ores
+- (Back Math) Milked Swords
+- (Back Math) Grape Vine Posts
+- (Back Math) Crown
+- (Back Math) Karate Band (would probably be made dyeable instead)
+- (Back Math) Charjan Torches
+- (Variants) Tool Set & Armor Set (if (material != MaterialTypes.WOOD))
+- (Variants) Shears
+- (Variants) Pots
+- (Variants) Cauldron, Beacon & Bell
+
+Back Math:
+- Hillaried Stone tool set
+- Tabu tool set
+- Splash and Lingering Hillary, Milkllary & Chocolate Milk Bottles
+- Splash and Lingering Juices
+- Red Yellow Bed
+- Aljanwood, Aljancap, Insomnian, Avondalic Willow, Crystalline Birch, Guava, Jabuticaba & Cork Oak Bookshelves & Bowls
+- Make the Crystallizer accept tags instead of items (for compatibility’s sake)
+
+Project Alcook:
+- Dead and Singewood Mortar & Pestle
+- Dead and Singewood Sign, Bookshelf, Boat & Sign
+- Mid-Term Juds Lantern
+
+F10 Elements:
+- Queen Lucy (Pet) Relic made of Inno (it's the equivalent of gold)

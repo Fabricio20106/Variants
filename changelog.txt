@@ -69,6 +69,84 @@ Build: 1.16.5-1.6.6 (14/11/2023):
   Added armor points description to Horse Armors.
   Shears, Shields & Flint and Steels are now enchantable.
 
+Build: 1.16.5-1.6.7 (18/11/2023):
+  Quick Charge enchantment can now go up to 5.
+  Firework Rocket, Firework Stars, Shears, Flint and Steel & Shields now have their item stack set to "Variants".
+
+-> Variants Configs:
+  (Mixin): Display the custom Firework Rocket and Star descriptions.
+  (Mixin): Display how many armor points does Horse Armor give.
+  (Mixin): If any Shears can be enchanted at an Enchantment Table.
+  (Mixin): If any Flint and Steel can be enchanted at an Enchantment Table.
+  (Mixin): If any Shield can be enchanted at an Enchantment Table.
+  (Mixin): If Quick Charge can go up to 5.
+  (World Gen.): Generate Glow Black Tulip flower patches.
+  (World Gen.): Generate Quartz Ore in the Overworld.
+  (World Gen.): Generate End Quartz Ore in the End.
+  (Items): If the game should add all default colors of Wool Sweater to the Variants creative tab.
+
+-> Internal Changes:
+  Renamed "DebugProperty" in Debug Bows to "debug_property".
+  VSArmors and VSTools are now classes (before they were enums).
+
+Build: 1.16.5-1.6.9 (19/11/2023):
+  Changed textures for: Painting Log/Wood & Stripped Painting Log/Wood, Glow Black Wool, Sticks and Raw Debris
+  Added "variants:beacons" item tag.
+  Added "variants:cauldrons" block and item tags.
+  Added "forge:armors/boots" item tag for Back Math's boot pack.
+  Dog music disc file is now smaller.
+  Spyglasses are now "usable" -- they don't zoom in or change the player's hand to truly "hold" it.
+  Various items from Variants have been added to villager and wandering trader trading tables (see below).
+
+-> Internal Changes:
+  "FIRWORK_TITLES" has been renamed to "FIREWORK_TITLES" in VSStyles.
+  Builds now output snapshot-like versions instead of a date.
+  Added translation for "null".
+  Added "pickRandomColor" method on WoolArmorItem for the Shepherd trade.
+
+-> New Villager Trading Tables:
+  Armorer:
+    (Level 2) Apprentice: 36 Emeralds for 1 Diamond Bell.
+    (Level 2) Apprentice: 1 Emerald for 1 Empty Armor Slot Boots.
+    (Level 2) Apprentice: 3 Emeralds for 1 Empty Armor Slot Leggings.
+    (Level 3) Journeyman: 1 Emerald for 1 Empty Armor Slot Helmet.
+    (Level 3) Journeyman: 4 Emeralds for 1 Empty Armor Slot Chestplate.
+    (Level 3) Journeyman: 5 Emeralds for 1 Empty Armor Slot Shield.
+  Cartographer:
+    (Level 2) Apprentice: 11 Quartz Glass Panes for 1 Emerald.
+  Cleric:
+    (Level 5) Master: 22 Warped Wart for 1 Emerald.
+  Fletcher:
+    (Level 1) Novice: 32 Oak/Spruce/Birch/Jungle/Acacia/Dark Oak/Painting/Crimson/Warped Sticks for 1 Emerald.
+    (Level 5) Master: 48 Emeralds for 1 randomly enchanted Debug Bow.
+  Librarian:
+    (Level 1) Novice: 9 Emeralds for 1 Plain Birch Bookshelf.
+    (Level 3) Journeyman: 1 Emerald for 4 Quartz Glass.
+  Shepherd:
+    (Level 2) Apprentice: 12 Glow Black Dye for 1 Emerald.
+    (Level 2) Apprentice: 1 Emerald for 1 Glow Black Wool.
+    (Level 2) Apprentice: 1 Emerald for 4 Glow Black Carpet.
+    (Level 3) Journeyman: 3 Emeralds for 1 Glow Black Bed.
+    (Level 3) Journeyman: 2 Emeralds for 1 randomly colored Wool Sweater (picks from a list of colors, not random like leather armor).
+    (Level 3) Journeyman: 4 Emeralds for 1 Rabbit Hide Tunic.
+    (Level 3) Journeyman: 3 Emeralds for 1 Phantom Membrane Tunic.
+    (Level 5) Master: 2 Emeralds for 2 Painting Doors (Wanderer/Graham/First).
+  Toolsmith:
+    (Level 1) Novice: 1 Emerald for 1 Diorite/Granite/Andesite Axe.
+    (Level 1) Novice: 1 Emerald for 1 Diorite/Granite/Andesite Shovel.
+    (Level 1) Novice: 1 Emerald for 1 Diorite/Granite/Andesite Pickaxe.
+    (Level 1) Novice: 1 Emerald for 1 Diorite/Granite/Andesite Hoe.
+    (Level 2) Apprentice: 36 Emeralds for 1 Diamond Bell.
+    (Level 2) Apprentice: 3 Emeralds for 1 Magma Sword.
+  Weaponsmith:
+    (Level 2) Apprentice: 36 Emeralds for 1 Diamond Bell.
+    (Level 3) Journeyman: 12 Emeralds for 1 Iron Spyglass.
+  Wandering Trader:
+    5 Emeralds for 1 Painting Sapling.
+    1 Emerald for 1 Glow Black Tulip.
+    1 Emerald for 3 Glow Black Dyes.
+    5 Emeralds for 1 Glow Berry Bush.
+
 DIVERGENCE POINT TO 1.18
 
 Build: 1.18-1.6.0:

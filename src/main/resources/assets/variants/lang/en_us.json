@@ -197,10 +197,19 @@
   "item.variants.nicolas_ai_shears": "Nicolas' AI Shears",
   "item.variants.light_magenta_shears": "Magentic Shears",
   "item.variants.splash_soph_potion": "Splash Soph Potion",
+  "item.minecraft.egg": "Chicken Egg",
+  "item.minecraft.string": "Spider String",
+
+  "subtitles.variants.spyglass.use": "Spyglass expands",
+  "subtitles.variants.spyglass.stop_using": "Spyglass retracts",
 
   "color.f10elements.inno": "Inno",
+  "color.backmath.aljan_light_blue": "Aljan Light Blue",
+  "color.backmath.insomnian": "Insomnian",
+  "color.backmath.poison_brown": "Poison Brown",
   "color.backmath.red_yellow": "Red Yellow",
   "color.variants.glow_black": "Glow Black",
+  "null": "Null",
 
   "tooltip.variants.compat_item_from": "Item compatibility between: %s.",
   "tooltip.variants.compat_block_from": "Block compatibility between: %s.",

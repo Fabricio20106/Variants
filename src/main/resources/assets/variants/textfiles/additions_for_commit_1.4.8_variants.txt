@@ -9,14 +9,14 @@ New Features:
 
 New Blocks:
 - Painting Trapdoors
-- Chiseled End Stone Bricks & Purpur Blocks
+- Chiseled End Stone Bricks & Purpur Blocks [done]
 - Elder Prismarine (Raw, Bricks, Dark & Lantern) [done]
 - Nether Brick & End Stone Pillars
 - Ender Wood Set
 - Ender Vegetation (Fungus, Sprouts, Roots & Vines)
 - Mossy Nether Brick, End Stone Brick & Purpur Block
 - Potted Golden Carrots, Warped Wart & Grass
-- Quartz Glass, Pane & Bars
+- Quartz Glass, Pane [done] & Bars
 - Red Nether Brick Fence
 - Smooth Purpur + Slab
 - Wither Bone Block
@@ -43,7 +43,7 @@ New Items:
 - (Corner) Iron Tie, Powered Tie, Detector Plate, Powered Railbed & Wooden Railbed
 - Painting, Crimson & Warped Boats
 - Crystallized Honey
-- Diamond, Emerald & Quartz Nuggets
+- Diamond, Emerald & Quartz Nuggets [done]
 - Emerald Armor Set
 - End Fungi Stew
 - End Stone Tool Set

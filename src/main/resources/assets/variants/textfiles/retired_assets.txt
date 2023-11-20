@@ -1,3 +1,4 @@
 public static boolean isInstalled() {
     return ModList.get() != null && ModList.get().getModContainerById("phnixideas").isPresent();
 }
+ + new Date().format("dd-MM-yyyy")

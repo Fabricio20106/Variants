@@ -315,6 +315,7 @@ af9aba1e18b7af7f3b15e3c4b547e863944414db data/forge/tags/blocks/stained_glass.js
 0c4a5e039968bd980e4c5956d3bca72300150798 data/forge/tags/blocks/stained_glass_panes.json
 e27be6569bb078d85fc734584d00dc455e573b85 data/forge/tags/blocks/storage_blocks.json
 af7d5c33dcce6190f5b4c0172a88c603192243e0 data/forge/tags/blocks/storage_blocks/netherite_scrap.json
+0fffdf040c65ac44cce1045cd797c067dc13ca4d data/forge/tags/items/armors/boots.json
 78a1b05e2cff4260c4223bd733992e484cfad515 data/forge/tags/items/bookshelves.json
 0be1ade7a53e150376980c69655107a682e07ab6 data/forge/tags/items/dusts.json
 52bf2d9f9cc7533117079c7f1f8c5f4ae22b0e0e data/forge/tags/items/dusts/gunpowder.json
@@ -395,13 +396,16 @@ d30b1e3b054ecabf0028eb3f060f55bb661ea0ca data/minecraft/tags/items/wooden_trapdo
 3e77e4d6f65c6bbaee4e1b25812fbcbc39c29fec data/minecraft/tags/items/wool.json
 6ebd4cc1d89baa672698040b5759610f4868fa26 data/variants/tags/blocks/beacons.json
 511038518cd837f6f709647e22f0d61ad5e68dc7 data/variants/tags/blocks/bookshelves.json
+8459b8738727a0ee656535abf26353c5e6faec51 data/variants/tags/blocks/cauldrons.json
 d74fcf7718ee7b3f37af36ad5743507d623bf9d2 data/variants/tags/blocks/conduit_frame_blocks.json
 07815c6ceebf47b312c6feac60952106c0b7e905 data/variants/tags/blocks/golden_carrots_plantable_on.json
 d49ddc370b30c9b9f0d41c90a69601574a941def data/variants/tags/blocks/painting_doors.json
 59f537833a6d2b59ab763a6e112bbd5a99a1b7aa data/variants/tags/blocks/painting_logs.json
 abe677791f6d916b3b307bd1270f4d6687516251 data/variants/tags/blocks/warped_wart_plantable_on.json
+6ebd4cc1d89baa672698040b5759610f4868fa26 data/variants/tags/items/beacons.json
 b5bc1ca7b58264402db9fe46df7a85efa35a17a4 data/variants/tags/items/books.json
 511038518cd837f6f709647e22f0d61ad5e68dc7 data/variants/tags/items/bookshelves.json
+8459b8738727a0ee656535abf26353c5e6faec51 data/variants/tags/items/cauldrons.json
 2b3bfab26c8ef908ab25f7445a08ccac30cc3280 data/variants/tags/items/crafting_materials.json
 1f70ed4ddc878bada5e43d3c44a34157806beda8 data/variants/tags/items/crafting_materials/andesite.json
 2c648bca262caaa826ddbbde796d35bb2ee5f03a data/variants/tags/items/crafting_materials/diorite.json
@@ -412,3 +416,4 @@ d49ddc370b30c9b9f0d41c90a69601574a941def data/variants/tags/items/painting_doors
 108be6dfa3e0509a86efbe25e51ad82672c8c4ed data/variants/tags/items/pots.json
 1bb304b4c09b3e4badf87387b389584047ea63b2 data/variants/tags/items/shields.json
 18ba72c9d84fd36008205066647f3f54c49cfe2c data/variants/tags/items/shulker_shells.json
+292d737f893c01ef51fe4fdb3b0433bc74b7ee9b data/variants/tags/items/spyglasses.json

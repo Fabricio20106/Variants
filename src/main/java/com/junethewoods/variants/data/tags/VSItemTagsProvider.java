@@ -79,6 +79,8 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.GEMS_ELDER_PRISMARINE).add(VSItems.ELDER_PRISMARINE_CRYSTALS.get());
         this.tag(Tags.Items.GEMS).addTag(VSTags.Items.GEMS_ELDER_PRISMARINE);
 
+        this.tag(VSTags.Items.ARMORS_BOOTS).add(VSWeaponry.EMPTY_ARMOR_SLOT_BOOTS.get());
+
         // Variants' Tags
         this.tag(VSTags.Items.CM_DIORITE).add(Items.DIORITE);
         this.tag(VSTags.Items.CM_GRANITE).add(Items.GRANITE);
@@ -89,9 +91,12 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.BOOKS).add(Items.BOOK).add(Items.WRITABLE_BOOK).add(Items.WRITTEN_BOOK).add(Items.ENCHANTED_BOOK).add(Items.KNOWLEDGE_BOOK).add(VSItems.ENCHANTED_KNOWLEDGE_BOOK.get());
         this.tag(VSTags.Items.BOOKSHELVES).add(Items.BOOKSHELF).add(VSItems.PLAIN_BIRCH_BOOKSHELF.get());
         this.tag(VSTags.Items.PAINTING_DOORS).add(VSItems.WANDERER_DOOR.get()).add(VSItems.GRAHAM_DOOR.get()).add(VSItems.FIRST_DOOR.get());
+        this.tag(VSTags.Items.CAULDRONS).add(Items.CAULDRON).add(VSItems.GOLDEN_CAULDRON.get());
+        this.tag(VSTags.Items.BEACONS).add(Items.BEACON).add(VSItems.GOLDEN_BEACON.get());
         this.tag(VSTags.Items.POTS).add(VSItems.STYLISED_POT.get()).add(VSItems.REDSTONE_POT.get()).add(VSItems.BLUESTONE_POT.get()).add(VSItems.GLOWSTONE_POT.get())
                 .add(VSItems.GUNPOWDER_POT.get()).add(VSItems.CREEPER_POWDER_POT.get()).add(VSItems.SUGAR_POT.get()).add(VSItems.SWEET_BERRY_POT.get()).add(VSItems.GLOW_BERRY_POT.get());
         this.tag(VSTags.Items.SHIELDS).add(Items.SHIELD).add(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
+        this.tag(VSTags.Items.SPYGLASSES).add(VSWeaponry.IRON_SPYGLASS.get()).add(VSWeaponry.DIAMOND_SPYGLASS.get()).add(VSWeaponry.NETHERITE_SPYGLASS.get());
         this.tag(VSTags.Items.SHULKER_SHELLS).add(Items.SHULKER_SHELL).add(VSItems.WHITE_SHULKER_SHELL.get()).add(VSItems.INNO_SHULKER_SHELL.get())
                 .add(VSItems.ORANGE_SHULKER_SHELL.get()).add(VSItems.MAGENTA_SHULKER_SHELL.get()).add(VSItems.LIGHT_BLUE_SHULKER_SHELL.get()).add(VSItems.GLOW_BLACK_SHULKER_SHELL.get())
                 .add(VSItems.YELLOW_SHULKER_SHELL.get()).add(VSItems.LIME_SHULKER_SHELL.get()).add(VSItems.PINK_SHULKER_SHELL.get())

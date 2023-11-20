@@ -46,6 +46,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSTags.Blocks.BOOKSHELVES).add(Blocks.BOOKSHELF).add(VSBlocks.PLAIN_BIRCH_BOOKSHELF.get());
         this.tag(VSTags.Blocks.PAINTING_LOGS).add(VSBlocks.PAINTING_LOG.get()).add(VSBlocks.PAINTING_WOOD.get()).add(VSBlocks.STRIPPED_PAINTING_LOG.get())
                 .add(VSBlocks.STRIPPED_PAINTING_WOOD.get());
+        this.tag(VSTags.Blocks.CAULDRONS).add(Blocks.CAULDRON).add(VSBlocks.GOLDEN_CAULDRON.get());
         this.tag(VSTags.Blocks.BEACONS).add(Blocks.BEACON).add(VSBlocks.GOLDEN_BEACON.get());
         this.tag(VSTags.Blocks.WARPED_WART_PLANTABLE_ON).add(Blocks.SOUL_SAND).add(Blocks.SOUL_SOIL);
         this.tag(VSTags.Blocks.GOLDEN_CARROTS_PLANTABLE_ON).add(Blocks.FARMLAND);

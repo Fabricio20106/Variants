@@ -64,7 +64,7 @@ public class VSWeaponry {
     public static final RegistryObject<Item> PHANTOM_MEMBRANE_TUNIC = ITEMS.register("phantom_membrane_sweatchest", () -> new ArmorItem(VSArmors.PHANTOM_MEMBRANE, EquipmentSlotType.CHEST, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> RABBIT_HIDE_TUNIC = ITEMS.register("rabbit_hide_sweatchest", () -> new ArmorItem(VSArmors.RABBIT_HIDE, EquipmentSlotType.CHEST, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> WOOL_SWEATER = ITEMS.register("wool_sweatchest", () -> new WoolArmorItem(VSArmors.WOOL, EquipmentSlotType.CHEST, new Item.Properties().tab(VSWeaponryTab.TAB)));
-    public static final RegistryObject<Item> IRON_SPYGLASS = ITEMS.register("iron_spyglass", () -> new Item(new Item.Properties().stacksTo(1).tab(VSWeaponryTab.TAB)));
-    public static final RegistryObject<Item> DIAMOND_SPYGLASS = ITEMS.register("diamond_spyglass", () -> new Item(new Item.Properties().stacksTo(1).tab(VSWeaponryTab.TAB)));
-    public static final RegistryObject<Item> NETHERITE_SPYGLASS = ITEMS.register("netherite_spyglass", () -> new Item(new Item.Properties().stacksTo(1).fireResistant().tab(VSWeaponryTab.TAB)));
+    public static final RegistryObject<Item> IRON_SPYGLASS = ITEMS.register("iron_spyglass", () -> new SpyglassItem(new Item.Properties().stacksTo(1).tab(VSWeaponryTab.TAB)));
+    public static final RegistryObject<Item> DIAMOND_SPYGLASS = ITEMS.register("diamond_spyglass", () -> new SpyglassItem(new Item.Properties().stacksTo(1).tab(VSWeaponryTab.TAB)));
+    public static final RegistryObject<Item> NETHERITE_SPYGLASS = ITEMS.register("netherite_spyglass", () -> new SpyglassItem(new Item.Properties().stacksTo(1).fireResistant().tab(VSWeaponryTab.TAB)));
 }

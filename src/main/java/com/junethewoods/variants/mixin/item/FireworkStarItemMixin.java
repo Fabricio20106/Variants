@@ -35,13 +35,13 @@ public class FireworkStarItemMixin extends Item {
             // Main Color(s)
             int[] mainColors = nbt.getIntArray("Colors");
             if (mainColors.length > 0) {
-                tooltip.add(appendColors(new TranslationTextComponent("tooltip.variants.firework_star.main_colors").withStyle(TextFormatting.GRAY), mainColors));
+                tooltip.add(appendColorsVS(new TranslationTextComponent("tooltip.variants.firework_star.main_colors").withStyle(TextFormatting.GRAY), mainColors));
             }
 
             // Fade Color(s)
             int[] fadeColors = nbt.getIntArray("FadeColors");
             if (fadeColors.length > 0) {
-                tooltip.add(appendColors(new TranslationTextComponent("tooltip.variants.firework_star.fade_colors").withStyle(TextFormatting.GRAY), fadeColors));
+                tooltip.add(appendColorsVS(new TranslationTextComponent("tooltip.variants.firework_star.fade_colors").withStyle(TextFormatting.GRAY), fadeColors));
             }
 
             // Has Trail (Diamond)
@@ -57,19 +57,19 @@ public class FireworkStarItemMixin extends Item {
     }
 
     @OnlyIn(Dist.CLIENT)
-    private static ITextComponent appendColors(IFormattableTextComponent textComponent, int[] colors) {
+    private static ITextComponent appendColorsVS(IFormattableTextComponent textComponent, int[] colors) {
         for(int i = 0; i < colors.length; ++i) {
             if (i > 0) {
                 textComponent.append(new TranslationTextComponent("tooltip.variants.firework_star.color_separator")).withStyle(TextFormatting.GRAY);
             }
-            textComponent.append(getColorName(colors[i]));
+            textComponent.append(getColorNameVS(colors[i]));
         }
 
         return textComponent;
     }
 
     @OnlyIn(Dist.CLIENT)
-    private static ITextComponent getColorName(int color) {
+    private static ITextComponent getColorNameVS(int color) {
         DyeColor dyeColor = DyeColor.byFireworkColor(color);
         return dyeColor == null ? new TranslationTextComponent("tooltip.variants.firework_star.custom_color", color).withStyle(TextFormatting.DARK_AQUA)
                 .withStyle(TextFormatting.UNDERLINE) : new TranslationTextComponent("tooltip.variants.firework_star.color." + dyeColor.getName());
