@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#variants:painting_logs"
+    "#variants:painting_logs",
+    "#variants:enderwood_stems"
   ]
 }

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "variants:block/ender_pressure_plate"
+    },
+    "powered=true": {
+      "model": "variants:block/ender_pressure_plate_down"
+    }
+  }
+}

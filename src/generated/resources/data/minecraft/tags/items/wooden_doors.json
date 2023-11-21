@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "#variants:painting_doors",
-    "variants:painting_door"
+    "variants:painting_door",
+    "variants:ender_door"
   ]
 }

@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "#variants:painting_trapdoors",
-    "variants:painting_trapdoor"
+    "variants:painting_trapdoor",
+    "variants:ender_trapdoor"
   ]
 }

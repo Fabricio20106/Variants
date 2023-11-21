@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "variants:ender_stems"
+    }
+  ],
+  "result": {
+    "item": "variants:ender_planks",
+    "count": 4
+  }
+}

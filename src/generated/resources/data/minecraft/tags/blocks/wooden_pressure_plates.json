@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "variants:painting_pressure_plate"
+    "variants:painting_pressure_plate",
+    "variants:ender_pressure_plate"
   ]
 }

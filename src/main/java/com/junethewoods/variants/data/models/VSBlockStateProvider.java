@@ -85,6 +85,18 @@ public class VSBlockStateProvider extends BlockStateProvider {
         paintingTrapdoor(VSBlocks.PAINTING_TRAPDOOR_KEBAB, mcLoc("painting/kebab"));
         paintingTrapdoor(VSBlocks.PAINTING_TRAPDOOR_PLANT, mcLoc("painting/plant"));
         paintingTrapdoor(VSBlocks.PAINTING_TRAPDOOR_WASTELAND, mcLoc("painting/wasteland"));
+        axisBlock((RotatedPillarBlock) VSBlocks.ENDERWOOD_STEM.get(), modLoc("block/ender_stem"), modLoc("block/ender_stem_top"));
+        axisBlock((RotatedPillarBlock) VSBlocks.ENDERWOOD_HYPHAE.get(), modLoc("block/ender_stem"), modLoc("block/ender_stem"));
+        axisBlock((RotatedPillarBlock) VSBlocks.STRIPPED_ENDERWOOD_STEM.get(), modLoc("block/stripped_ender_stem"), modLoc("block/stripped_ender_stem_top"));
+        axisBlock((RotatedPillarBlock) VSBlocks.STRIPPED_ENDERWOOD_HYPHAE.get(), modLoc("block/stripped_ender_stem"), modLoc("block/stripped_ender_stem"));
+        simpleBlock(VSBlocks.ENDER_WART_BLOCK.get());
+        simpleBlock(VSBlocks.ENDERWOOD_PLANKS.get(), models().cubeAll("ender_planks", modLoc("block/ender_planks")));
+        stairsBlock((StairsBlock) VSBlocks.ENDERWOOD_STAIRS.get(), modLoc("block/ender_planks"));
+        slabBlock((SlabBlock) VSBlocks.ENDERWOOD_SLAB.get(), modLoc("block/ender_planks"), modLoc("block/ender_planks"));
+        fenceBlock((FenceBlock) VSBlocks.ENDERWOOD_FENCE.get(), modLoc("block/ender_planks"));
+        fenceGateBlock((FenceGateBlock) VSBlocks.ENDERWOOD_FENCE_GATE.get(), modLoc("block/ender_planks"));
+        doorBlock((DoorBlock) VSBlocks.ENDERWOOD_DOOR.get(), modLoc("block/ender_door_bottom"), modLoc("block/ender_door_top"));
+        trapdoorBlock((TrapDoorBlock) VSBlocks.ENDERWOOD_TRAPDOOR.get(), modLoc("block/ender_trapdoor"), true);
 
         getVariantBuilder(VSBlocks.GOLDEN_CARROTS.get()).forAllStates(state -> {
             int cropAgeIndex = cropAgeToIndexPotato(state.getValue(BlockStateProperties.AGE_7));

@@ -58,6 +58,19 @@ public class VSItemModelProvider extends ItemModelProvider {
         withExistingParent("kebab_trapdoor", "_bottom");
         withExistingParent("plant_trapdoor", "_bottom");
         withExistingParent("wasteland_trapdoor", "_bottom");
+        withExistingParent("ender_stem");
+        withExistingParent("ender_hyphae");
+        withExistingParent("stripped_ender_stem");
+        withExistingParent("stripped_ender_hyphae");
+        withExistingParent("ender_wart_block");
+        withExistingParent("ender_planks");
+        withExistingParent("ender_stairs");
+        withExistingParent("ender_slab");
+        withExistingParent("ender_fence", "_inventory");
+        withExistingParent("ender_fence_gate");
+        withExistingParent("ender_pressure_plate");
+        withExistingParent("ender_button", "_inventory");
+        withExistingParent("ender_trapdoor", "_bottom");
         withExistingParent("potted_glow_black_tulip");
         withExistingParent("potted_sugar_cane");
         withExistingParent("potted_painting_sapling");
@@ -146,6 +159,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "wanderer_door");
         standard(generated, "graham_door");
         standard(generated, "first_door");
+        standard(generated, "ender_door");
         standard(generated, "diamond_bell");
         standard(generated, "splash_soph_potion");
         standard(generated, "quartz_nugget");

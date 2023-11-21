@@ -52,6 +52,7 @@ public class VSTags {
         public static final ITag.INamedTag<Item> PAINTING_DOORS = mod("painting_doors");
         public static final ITag.INamedTag<Item> PAINTING_TRAPDOORS = mod("painting_trapdoors");
         public static final ITag.INamedTag<Item> PAINTING_LOGS = mod("painting_logs");
+        public static final ITag.INamedTag<Item> ENDERWOOD_STEMS = mod("enderwood_stems");
         public static final ITag.INamedTag<Item> CAULDRONS = mod("cauldrons");
         public static final ITag.INamedTag<Item> BEACONS = mod("beacons");
         public static final ITag.INamedTag<Item> SHULKER_SHELLS = mod("shulker_shells");
@@ -83,6 +84,7 @@ public class VSTags {
         public static final ITag.INamedTag<Block> PAINTING_DOORS = mod("painting_doors");
         public static final ITag.INamedTag<Block> PAINTING_TRAPDOORS = mod("painting_trapdoors");
         public static final ITag.INamedTag<Block> PAINTING_LOGS = mod("painting_logs");
+        public static final ITag.INamedTag<Block> ENDERWOOD_STEMS = mod("enderwood_stems");
         public static final ITag.INamedTag<Block> BOOKSHELVES = mod("bookshelves");
         public static final ITag.INamedTag<Block> CAULDRONS = mod("cauldrons");
         public static final ITag.INamedTag<Block> BEACONS = mod("beacons");

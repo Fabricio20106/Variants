@@ -113,19 +113,21 @@ public class VSItemTagsProvider extends ItemTagsProvider {
 
         this.tag(VSTags.Items.PAINTING_LOGS).add(VSItems.PAINTING_LOG.get()).add(VSItems.PAINTING_WOOD.get()).add(VSItems.STRIPPED_PAINTING_LOG.get())
                 .add(VSItems.STRIPPED_PAINTING_WOOD.get());
+        this.tag(VSTags.Items.ENDERWOOD_STEMS).add(VSItems.ENDERWOOD_STEM.get()).add(VSItems.ENDERWOOD_HYPHAE.get()).add(VSItems.STRIPPED_ENDERWOOD_STEM.get())
+                .add(VSItems.STRIPPED_ENDERWOOD_HYPHAE.get());
 
         // Minecraft Tags
-        this.tag(ItemTags.LOGS_THAT_BURN).addTag(VSTags.Items.PAINTING_LOGS);
+        this.tag(ItemTags.LOGS_THAT_BURN).addTag(VSTags.Items.PAINTING_LOGS).addTag(VSTags.Items.ENDERWOOD_STEMS);
         this.tag(ItemTags.LEAVES).add(VSItems.PAINTING_LEAVES.get());
         this.tag(ItemTags.SAPLINGS).add(VSItems.PAINTING_SAPLING.get());
-        this.tag(ItemTags.PLANKS).add(VSItems.PAINTING_PLANKS.get());
-        this.tag(ItemTags.WOODEN_STAIRS).add(VSItems.PAINTING_STAIRS.get());
-        this.tag(ItemTags.WOODEN_SLABS).add(VSItems.PAINTING_SLAB.get());
-        this.tag(ItemTags.WOODEN_FENCES).add(VSItems.PAINTING_FENCE.get());
-        this.tag(ItemTags.WOODEN_PRESSURE_PLATES).add(VSItems.PAINTING_PRESSURE_PLATE.get());
-        this.tag(ItemTags.WOODEN_BUTTONS).add(VSItems.PAINTING_BUTTON.get());
-        this.tag(ItemTags.WOODEN_DOORS).addTag(VSTags.Items.PAINTING_DOORS).add(VSItems.PAINTING_DOOR.get());
-        this.tag(ItemTags.WOODEN_TRAPDOORS).addTag(VSTags.Items.PAINTING_TRAPDOORS).add(VSItems.PAINTING_TRAPDOOR.get());
+        this.tag(ItemTags.PLANKS).add(VSItems.PAINTING_PLANKS.get()).add(VSItems.ENDERWOOD_PLANKS.get());
+        this.tag(ItemTags.WOODEN_STAIRS).add(VSItems.PAINTING_STAIRS.get()).add(VSItems.ENDERWOOD_STAIRS.get());
+        this.tag(ItemTags.WOODEN_SLABS).add(VSItems.PAINTING_SLAB.get()).add(VSItems.ENDERWOOD_SLAB.get());
+        this.tag(ItemTags.WOODEN_FENCES).add(VSItems.PAINTING_FENCE.get()).add(VSItems.ENDERWOOD_FENCE.get());
+        this.tag(ItemTags.WOODEN_PRESSURE_PLATES).add(VSItems.PAINTING_PRESSURE_PLATE.get()).add(VSItems.ENDERWOOD_PRESSURE_PLATE.get());
+        this.tag(ItemTags.WOODEN_BUTTONS).add(VSItems.PAINTING_BUTTON.get()).add(VSItems.ENDERWOOD_BUTTON.get());
+        this.tag(ItemTags.WOODEN_DOORS).addTag(VSTags.Items.PAINTING_DOORS).add(VSItems.PAINTING_DOOR.get()).add(VSItems.ENDERWOOD_DOOR.get());
+        this.tag(ItemTags.WOODEN_TRAPDOORS).addTag(VSTags.Items.PAINTING_TRAPDOORS).add(VSItems.PAINTING_TRAPDOOR.get()).add(VSItems.ENDERWOOD_TRAPDOOR.get());
 
         this.tag(ItemTags.STAIRS).add(VSItems.ELDER_PRISMARINE_STAIRS.get()).add(VSItems.ELDER_PRISMARINE_BRICK_STAIRS.get()).add(VSItems.DARK_ELDER_PRISMARINE_STAIRS.get());
         this.tag(ItemTags.SLABS).add(VSItems.ELDER_PRISMARINE_SLAB.get()).add(VSItems.ELDER_PRISMARINE_BRICK_SLAB.get()).add(VSItems.DARK_ELDER_PRISMARINE_SLAB.get());

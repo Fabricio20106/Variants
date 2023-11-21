@@ -50,6 +50,8 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSTags.Blocks.BOOKSHELVES).add(Blocks.BOOKSHELF).add(VSBlocks.PLAIN_BIRCH_BOOKSHELF.get());
         this.tag(VSTags.Blocks.PAINTING_LOGS).add(VSBlocks.PAINTING_LOG.get()).add(VSBlocks.PAINTING_WOOD.get()).add(VSBlocks.STRIPPED_PAINTING_LOG.get())
                 .add(VSBlocks.STRIPPED_PAINTING_WOOD.get());
+        this.tag(VSTags.Blocks.ENDERWOOD_STEMS).add(VSBlocks.ENDERWOOD_STEM.get()).add(VSBlocks.ENDERWOOD_HYPHAE.get()).add(VSBlocks.STRIPPED_ENDERWOOD_STEM.get())
+                .add(VSBlocks.STRIPPED_ENDERWOOD_HYPHAE.get());
         this.tag(VSTags.Blocks.CAULDRONS).add(Blocks.CAULDRON).add(VSBlocks.GOLDEN_CAULDRON.get());
         this.tag(VSTags.Blocks.BEACONS).add(Blocks.BEACON).add(VSBlocks.GOLDEN_BEACON.get());
         this.tag(VSTags.Blocks.WARPED_WART_PLANTABLE_ON).add(Blocks.SOUL_SAND).add(Blocks.SOUL_SOIL);
@@ -58,18 +60,19 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
                 .add(VSBlocks.ELDER_PRISMARINE.get()).add(VSBlocks.ELDER_PRISMARINE_BRICKS.get()).add(VSBlocks.DARK_ELDER_PRISMARINE.get()).add(VSBlocks.ELDER_SEA_LANTERN.get());
 
         // Minecraft Tags
-        this.tag(BlockTags.LOGS_THAT_BURN).addTag(VSTags.Blocks.PAINTING_LOGS);
+        this.tag(BlockTags.LOGS_THAT_BURN).addTag(VSTags.Blocks.PAINTING_LOGS).addTag(VSTags.Blocks.ENDERWOOD_STEMS);
         this.tag(BlockTags.LEAVES).add(VSBlocks.PAINTING_LEAVES.get());
+        this.tag(BlockTags.WART_BLOCKS).add(VSBlocks.ENDER_WART_BLOCK.get());
         this.tag(BlockTags.SAPLINGS).add(VSBlocks.PAINTING_SAPLING.get());
-        this.tag(BlockTags.PLANKS).add(VSBlocks.PAINTING_PLANKS.get());
-        this.tag(BlockTags.WOODEN_STAIRS).add(VSBlocks.PAINTING_STAIRS.get());
-        this.tag(BlockTags.WOODEN_SLABS).add(VSBlocks.PAINTING_SLAB.get());
-        this.tag(BlockTags.WOODEN_FENCES).add(VSBlocks.PAINTING_FENCE.get());
-        this.tag(BlockTags.FENCE_GATES).add(VSBlocks.PAINTING_FENCE_GATE.get());
-        this.tag(BlockTags.WOODEN_PRESSURE_PLATES).add(VSBlocks.PAINTING_PRESSURE_PLATE.get());
-        this.tag(BlockTags.WOODEN_BUTTONS).add(VSBlocks.PAINTING_BUTTON.get());
-        this.tag(BlockTags.WOODEN_DOORS).addTag(VSTags.Blocks.PAINTING_DOORS).add(VSBlocks.PAINTING_DOOR.get());
-        this.tag(BlockTags.WOODEN_TRAPDOORS).addTag(VSTags.Blocks.PAINTING_TRAPDOORS).add(VSBlocks.PAINTING_TRAPDOOR.get());
+        this.tag(BlockTags.PLANKS).add(VSBlocks.PAINTING_PLANKS.get()).add(VSBlocks.ENDERWOOD_PLANKS.get());
+        this.tag(BlockTags.WOODEN_STAIRS).add(VSBlocks.PAINTING_STAIRS.get()).add(VSBlocks.ENDERWOOD_STAIRS.get());
+        this.tag(BlockTags.WOODEN_SLABS).add(VSBlocks.PAINTING_SLAB.get()).add(VSBlocks.ENDERWOOD_SLAB.get());
+        this.tag(BlockTags.WOODEN_FENCES).add(VSBlocks.PAINTING_FENCE.get()).add(VSBlocks.ENDERWOOD_FENCE.get());
+        this.tag(BlockTags.FENCE_GATES).add(VSBlocks.PAINTING_FENCE_GATE.get()).add(VSBlocks.ENDERWOOD_FENCE_GATE.get());
+        this.tag(BlockTags.WOODEN_PRESSURE_PLATES).add(VSBlocks.PAINTING_PRESSURE_PLATE.get()).add(VSBlocks.ENDERWOOD_PRESSURE_PLATE.get());
+        this.tag(BlockTags.WOODEN_BUTTONS).add(VSBlocks.PAINTING_BUTTON.get()).add(VSBlocks.ENDERWOOD_BUTTON.get());
+        this.tag(BlockTags.WOODEN_DOORS).addTag(VSTags.Blocks.PAINTING_DOORS).add(VSBlocks.PAINTING_DOOR.get()).add(VSBlocks.ENDERWOOD_DOOR.get());
+        this.tag(BlockTags.WOODEN_TRAPDOORS).addTag(VSTags.Blocks.PAINTING_TRAPDOORS).add(VSBlocks.PAINTING_TRAPDOOR.get()).add(VSBlocks.ENDERWOOD_TRAPDOOR.get());
 
         this.tag(BlockTags.STAIRS).add(VSBlocks.ELDER_PRISMARINE_STAIRS.get()).add(VSBlocks.ELDER_PRISMARINE_BRICK_STAIRS.get()).add(VSBlocks.DARK_ELDER_PRISMARINE_STAIRS.get());
         this.tag(BlockTags.SLABS).add(VSBlocks.ELDER_PRISMARINE_SLAB.get()).add(VSBlocks.ELDER_PRISMARINE_BRICK_SLAB.get()).add(VSBlocks.DARK_ELDER_PRISMARINE_SLAB.get());
