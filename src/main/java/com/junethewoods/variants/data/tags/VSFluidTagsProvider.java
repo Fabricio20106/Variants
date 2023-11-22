@@ -1,7 +1,7 @@
 package com.junethewoods.variants.data.tags;
 
 import com.junethewoods.variants.Variants;
-import com.junethewoods.variants.block.VSFluids;
+import com.junethewoods.variants.fluid.VSFluids;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.FluidTagsProvider;
 import net.minecraft.tags.FluidTags;

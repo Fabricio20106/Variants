@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:ingots/red_nether_brick"
+    }
+  },
+  "result": {
+    "item": "minecraft:red_nether_bricks"
+  }
+}

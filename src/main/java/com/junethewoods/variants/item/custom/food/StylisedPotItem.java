@@ -36,11 +36,14 @@ public class StylisedPotItem extends DrinkableContainerItem {
 
     @Override
     public void bottleFunctionality(ItemStack containerStack, ItemStack stack, World world, LivingEntity livEntity) {
-        this.containerItem = new ItemStack(VSItems.STYLISED_POT.get());
-
         if (poisoningEffect != null) {
             if (!world.isClientSide) livEntity.addEffect(new EffectInstance(poisoningEffect.getPoisoningEffect().get(), this.poisoningDuration));
         }
+    }
+
+    @Override
+    public ItemStack setContainerItem(ItemStack stack) {
+        return new ItemStack(VSItems.STYLISED_POT.get());
     }
 
     @Override

@@ -31,8 +31,7 @@ public class VSBlockStateProvider extends BlockStateProvider {
         simpleBlock(VSBlocks.END_QUARTZ_ORE.get());
         simpleBlock(VSBlocks.RAW_DEBRIS_BLOCK.get());
         simpleBlock(VSBlocks.GLOW_BLACK_TULIP.get(), models().cross("glow_black_tulip", modLoc("block/glow_black_tulip")));
-        simpleBlock(VSBlocks.POTTED_GLOW_BLACK_TULIP.get(), models().withExistingParent("potted_glow_black_tulip", modLoc("block/inventory_potted_plant")).texture("plant",
-                "block/glow_black_tulip"));
+        simpleBlock(VSBlocks.POTTED_GLOW_BLACK_TULIP.get(), models().withExistingParent("potted_glow_black_tulip", modLoc("block/inventory_potted_plant")).texture("plant", "block/glow_black_tulip"));
         simpleBlock(VSBlocks.PAINTING_PLANKS.get());
         stairsBlock((StairsBlock) VSBlocks.PAINTING_STAIRS.get(), modLoc("block/painting_planks"));
         slabBlock((SlabBlock) VSBlocks.PAINTING_SLAB.get(), modLoc("block/painting_planks"), modLoc("block/painting_planks"));
@@ -43,17 +42,14 @@ public class VSBlockStateProvider extends BlockStateProvider {
         doorBlock((DoorBlock) VSBlocks.PAINTING_DOOR_GRAHAM.get(), modLoc("block/graham_door_bottom"), modLoc("block/graham_door_top"));
         doorBlock((DoorBlock) VSBlocks.PAINTING_DOOR_FIRST.get(), modLoc("block/first_door_bottom"), modLoc("block/first_door_top"));
         trapdoorBlock((TrapDoorBlock) VSBlocks.PAINTING_TRAPDOOR.get(), modLoc("block/painting_trapdoor"), true);
-        simpleBlock(VSBlocks.PLAIN_BIRCH_BOOKSHELF.get(), models().cubeTop("plain_birch_bookshelf", modLoc("block/plain_birch_bookshelf"),
-                modLoc("block/plain_birch_planks")));
+        simpleBlock(VSBlocks.PLAIN_BIRCH_BOOKSHELF.get(), models().cubeTop("plain_birch_bookshelf", modLoc("block/plain_birch_bookshelf"), modLoc("block/plain_birch_planks")));
         logBlock((RotatedPillarBlock) VSBlocks.PAINTING_LOG.get());
         axisBlock((RotatedPillarBlock) VSBlocks.PAINTING_WOOD.get(), modLoc("block/painting_log"), modLoc("block/painting_log"));
         logBlock((RotatedPillarBlock) VSBlocks.STRIPPED_PAINTING_LOG.get());
         axisBlock((RotatedPillarBlock) VSBlocks.STRIPPED_PAINTING_WOOD.get(), modLoc("block/stripped_painting_log"), modLoc("block/stripped_painting_log"));
-        simpleBlock(VSBlocks.PAINTING_LEAVES.get(), models().withExistingParent("painting_leaves", mcLoc("block/leaves")).texture("all",
-                modLoc("block/painting_leaves")));
+        simpleBlock(VSBlocks.PAINTING_LEAVES.get(), models().withExistingParent("painting_leaves", mcLoc("block/leaves")).texture("all", modLoc("block/painting_leaves")));
         simpleBlock(VSBlocks.PAINTING_SAPLING.get(), models().cross("painting_sapling", modLoc("block/painting_sapling")));
-        simpleBlock(VSBlocks.POTTED_PAINTING_SAPLING.get(), models().withExistingParent("potted_painting_sapling", modLoc("block/inventory_potted_plant")).texture("plant",
-                "block/painting_sapling"));
+        simpleBlock(VSBlocks.POTTED_PAINTING_SAPLING.get(), models().withExistingParent("potted_painting_sapling", modLoc("block/inventory_potted_plant")).texture("plant", "block/painting_sapling"));
         simpleBlock(VSBlocks.GLOW_BLACK_WOOL.get());
         simpleBlock(VSBlocks.GLOW_BLACK_CARPET.get(), models().carpet("glow_black_carpet", modLoc("block/glow_black_wool")));
         simpleBlock(VSBlocks.GLOW_BLACK_STAINED_GLASS.get());
@@ -91,12 +87,21 @@ public class VSBlockStateProvider extends BlockStateProvider {
         axisBlock((RotatedPillarBlock) VSBlocks.STRIPPED_ENDERWOOD_HYPHAE.get(), modLoc("block/stripped_ender_stem"), modLoc("block/stripped_ender_stem"));
         simpleBlock(VSBlocks.ENDER_WART_BLOCK.get());
         simpleBlock(VSBlocks.ENDERWOOD_PLANKS.get(), models().cubeAll("ender_planks", modLoc("block/ender_planks")));
+        simpleBlock(VSBlocks.ENDERWOOD_BOOKSHELF.get(), models().cubeTop("ender_bookshelf", modLoc("block/ender_bookshelf"), modLoc("block/ender_planks")));
         stairsBlock((StairsBlock) VSBlocks.ENDERWOOD_STAIRS.get(), modLoc("block/ender_planks"));
         slabBlock((SlabBlock) VSBlocks.ENDERWOOD_SLAB.get(), modLoc("block/ender_planks"), modLoc("block/ender_planks"));
         fenceBlock((FenceBlock) VSBlocks.ENDERWOOD_FENCE.get(), modLoc("block/ender_planks"));
         fenceGateBlock((FenceGateBlock) VSBlocks.ENDERWOOD_FENCE_GATE.get(), modLoc("block/ender_planks"));
         doorBlock((DoorBlock) VSBlocks.ENDERWOOD_DOOR.get(), modLoc("block/ender_door_bottom"), modLoc("block/ender_door_top"));
         trapdoorBlock((TrapDoorBlock) VSBlocks.ENDERWOOD_TRAPDOOR.get(), modLoc("block/ender_trapdoor"), true);
+        simpleBlock(VSBlocks.ENDER_NYLIUM.get(), models().cubeBottomTop("ender_nylium", modLoc("block/ender_nylium_side"), mcLoc("block/end_stone"), modLoc("block/ender_nylium")));
+        simpleBlock(VSBlocks.ENDER_ROOTS.get(), models().cross("ender_roots", modLoc("block/ender_roots")));
+        simpleBlock(VSBlocks.POTTED_ENDER_ROOTS.get(), models().withExistingParent("potted_ender_roots", modLoc("block/inventory_potted_plant")).texture("plant",  "block/ender_roots_pot"));
+        simpleBlock(VSBlocks.END_SPROUTS.get(), models().cross("ender_sprouts", modLoc("block/ender_sprouts")));
+        simpleBlock(VSBlocks.ENDER_FUNGUS.get(), models().cross("ender_fungus", modLoc("block/ender_fungus")));
+        simpleBlock(VSBlocks.POTTED_ENDER_FUNGUS.get(), models().withExistingParent("potted_ender_fungus", modLoc("block/inventory_potted_plant")).texture("plant",  "block/ender_fungus"));
+        simpleBlock(VSBlocks.WARPING_VINES.get(), models().cross("warping_vines", modLoc("block/warping_vines")));
+        simpleBlock(VSBlocks.WARPING_VINES_PLANT.get(), models().cross("warping_vines_plant", modLoc("block/warping_vines_plant")));
 
         getVariantBuilder(VSBlocks.GOLDEN_CARROTS.get()).forAllStates(state -> {
             int cropAgeIndex = cropAgeToIndexPotato(state.getValue(BlockStateProperties.AGE_7));
@@ -106,6 +111,10 @@ public class VSBlockStateProvider extends BlockStateProvider {
         getVariantBuilder(VSBlocks.WARPED_WART.get()).forAllStates(state -> {
             int cropAgeIndex = cropAgeToIndexWart(state.getValue(BlockStateProperties.AGE_3));
             return ConfiguredModel.builder().modelFile(models().crop("warped_wart_stage" + cropAgeIndex, modLoc("block/warped_wart_stage" + cropAgeIndex))).build();
+        });
+        getVariantBuilder(VSBlocks.ENDER_WART.get()).forAllStates(state -> {
+            int cropAgeIndex = cropAgeToIndexWart(state.getValue(BlockStateProperties.AGE_3));
+            return ConfiguredModel.builder().modelFile(models().crop("ender_wart_stage" + cropAgeIndex, modLoc("block/ender_wart_stage" + cropAgeIndex))).build();
         });
     }
 

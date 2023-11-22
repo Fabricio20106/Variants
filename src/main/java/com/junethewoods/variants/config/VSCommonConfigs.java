@@ -15,6 +15,7 @@ public class VSCommonConfigs {
     public final ForgeConfigSpec.BooleanValue generateFlowerPatches;
     public final ForgeConfigSpec.BooleanValue generateQuartzOre;
     public final ForgeConfigSpec.BooleanValue generateEndQuartzOre;
+    public final ForgeConfigSpec.BooleanValue generateSoulLavaSprings;
 
     // Items
     public final ForgeConfigSpec.BooleanValue populateWoolArmorColorInTabs;
@@ -35,6 +36,7 @@ public class VSCommonConfigs {
         this.generateFlowerPatches = builder.comment("Allow Variants' flower patches to generate? (Currently only Glow Black Tulips)").define("generateFlowerPatches", true);
         this.generateQuartzOre = builder.comment("Allow overworld quartz ore to generate?").define("generateOverworldQuartzOre", true);
         this.generateEndQuartzOre = builder.comment("Allow end quartz ore to generate?").define("generateEndQuartzOre", true);
+        this.generateSoulLavaSprings = builder.comment("Allow soul lava springs ore to generate in the Nether?").define("generateSoulLavaSprings", true);
         builder.pop();
 
         builder.push("items");

@@ -21,6 +21,10 @@ public class VSWorldGeneration {
         if (event.getCategory() == Biome.Category.PLAINS || event.getCategory() == Biome.Category.FOREST && VSConfigs.COMMON_CONFIGS.generateFlowerPatches.get()) {
             settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSFeatures.VARIANTS_FLOWER_PATCH);
         }
+        if (event.getCategory() == Biome.Category.NETHER && VSConfigs.COMMON_CONFIGS.generateSoulLavaSprings.get()) {
+            settings.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, VSFeatures.CLOSED_SOUL_LAVA_SPRING);
+            settings.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, VSFeatures.OPEN_SOUL_LAVA_SPRING);
+        }
 
         if (VSConfigs.COMMON_CONFIGS.generateQuartzOre.get()) VSOreGeneration.generateQuartzOre(event);
         if (VSConfigs.COMMON_CONFIGS.generateEndQuartzOre.get()) VSOreGeneration.generateEndQuartzOre(event);

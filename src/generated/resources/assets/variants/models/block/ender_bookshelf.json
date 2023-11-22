@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_top",
+  "textures": {
+    "side": "variants:block/ender_bookshelf",
+    "top": "variants:block/ender_planks"
+  }
+}

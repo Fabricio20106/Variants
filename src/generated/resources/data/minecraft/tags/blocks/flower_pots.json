@@ -3,6 +3,8 @@
   "values": [
     "variants:potted_glow_black_tulip",
     "variants:potted_sugar_cane",
-    "variants:potted_painting_sapling"
+    "variants:potted_painting_sapling",
+    "variants:potted_ender_roots",
+    "variants:potted_ender_fungus"
   ]
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "variants:block/ender_wart_stage2"
+  }
+}

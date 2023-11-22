@@ -1,4 +1,4 @@
-package com.junethewoods.variants.data;
+package com.junethewoods.variants.event;
 
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.data.models.VSBlockStateProvider;
@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 
 @Mod.EventBusSubscriber(modid = Variants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class VSDataGenerators {
+public class VSEventBusEvents {
     @SubscribeEvent
     public static void gatherData(final GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();

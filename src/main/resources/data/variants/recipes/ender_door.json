@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_door",
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "variants:ender_planks"
+    }
+  },
+  "result": {
+    "item": "variants:ender_door",
+    "count": 3
+  }
+}

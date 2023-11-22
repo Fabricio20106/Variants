@@ -104,6 +104,8 @@ public class VSEvents {
                     16, 2, 0.05f));
             trades.get(1).add((trader, rand) -> new MerchantOffer(new ItemStack(VSItems.WARPED_STICK.get(), 32), new ItemStack(Items.EMERALD, 1),
                     16, 2, 0.05f));
+            trades.get(1).add((trader, rand) -> new MerchantOffer(new ItemStack(VSItems.ENDER_STICK.get(), 32), new ItemStack(Items.EMERALD, 1),
+                    16, 2, 0.05f));
 
             // Level 5 "Master"
             Random rand = new Random();

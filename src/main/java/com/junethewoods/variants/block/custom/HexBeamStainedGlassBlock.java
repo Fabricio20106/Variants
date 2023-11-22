@@ -21,7 +21,7 @@ public class HexBeamStainedGlassBlock extends AbstractGlassBlock implements IBea
     public float[] getBeaconColorMultiplier(BlockState state, IWorldReader world, BlockPos pos, BlockPos beaconPos) {
         int i = (beaconBeamColor & 16711680) >> 16;
         int j = (beaconBeamColor & '\uff00') >> 8;
-        int k = (beaconBeamColor & 255) >> 0;
+        int k = (beaconBeamColor & 255);
 
         float[] textureDiffuseColors = new float[] {(float) i / 255f, (float) j / 255f, (float) k / 255f};
 

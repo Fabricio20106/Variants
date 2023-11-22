@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "minecraft:farmland"
+    "#variants:farmland"
   ]
 }

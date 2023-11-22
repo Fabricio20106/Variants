@@ -2,7 +2,7 @@ package com.junethewoods.variants;
 
 import com.google.common.collect.ImmutableMap;
 import com.junethewoods.variants.block.VSBlocks;
-import com.junethewoods.variants.block.VSFluids;
+import com.junethewoods.variants.fluid.VSFluids;
 import com.junethewoods.variants.blockentity.VSBlockEntities;
 import com.junethewoods.variants.blockentity.renderer.VSBedBlockEntityRenderer;
 import com.junethewoods.variants.blockentity.renderer.VSBellBlockEntityRenderer;
@@ -65,15 +65,23 @@ public class Variants {
     public void commonSetup(final FMLCommonSetupEvent event) {
         AxeItem.STRIPABLES = new ImmutableMap.Builder<Block, Block>().putAll(AxeItem.STRIPABLES)
                 .put(VSBlocks.PAINTING_LOG.get(), VSBlocks.STRIPPED_PAINTING_LOG.get())
-                .put(VSBlocks.PAINTING_WOOD.get(), VSBlocks.STRIPPED_PAINTING_WOOD.get()).build();
+                .put(VSBlocks.PAINTING_WOOD.get(), VSBlocks.STRIPPED_PAINTING_WOOD.get())
+                .put(VSBlocks.ENDERWOOD_STEM.get(), VSBlocks.STRIPPED_ENDERWOOD_STEM.get())
+                .put(VSBlocks.ENDERWOOD_HYPHAE.get(), VSBlocks.STRIPPED_ENDERWOOD_HYPHAE.get()).build();
 
         compostable(0.3f, VSItems.PAINTING_SAPLING.get());
         compostable(0.3f, VSItems.PAINTING_LEAVES.get());
         compostable(0.3f, VSItems.GLOW_BERRY_BUSH.get());
+        compostable(0.5f, VSItems.END_SPROUTS.get());
+        compostable(0.5f, VSItems.WARPING_VINES.get());
         compostable(0.65f, VSItems.WARPED_WART.get());
+        compostable(0.65f, VSItems.ENDER_WART.get());
         compostable(0.65f, VSItems.GLOW_BLACK_TULIP.get());
         compostable(0.65f, VSItems.GOLDEN_CARROTS.get());
+        compostable(0.65f, VSItems.ENDER_ROOTS.get());
+        compostable(0.65f, VSItems.ENDER_FUNGUS.get());
         compostable(0.65f, Items.GOLDEN_CARROT);
+        compostable(0.85f, VSItems.ENDER_WART_BLOCK.get());
     }
 
     public void clientSetup(final FMLClientSetupEvent event) {
@@ -114,6 +122,14 @@ public class Variants {
         RenderTypeLookup.setRenderLayer(VSBlocks.QUARTZ_BARS.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.ENDERWOOD_TRAPDOOR.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.ENDERWOOD_DOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.ENDER_ROOTS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_ENDER_ROOTS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.END_SPROUTS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.ENDER_FUNGUS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_ENDER_FUNGUS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.WARPING_VINES.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.WARPING_VINES_PLANT.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.ENDER_WART.get(), RenderType.cutout());
 
         RenderTypeLookup.setRenderLayer(VSBlocks.GLOW_BLACK_STAINED_GLASS.get(), RenderType.translucent());
         RenderTypeLookup.setRenderLayer(VSBlocks.GLOW_BLACK_STAINED_GLASS_PANE.get(), RenderType.translucent());

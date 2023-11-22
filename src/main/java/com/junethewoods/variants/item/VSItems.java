@@ -51,7 +51,10 @@ public class VSItems {
     public static final RegistryObject<Item> STRIPPED_ENDERWOOD_STEM = ITEMS.register("stripped_ender_stem", () -> new BlockItem(VSBlocks.STRIPPED_ENDERWOOD_STEM.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> STRIPPED_ENDERWOOD_HYPHAE = ITEMS.register("stripped_ender_hyphae", () -> new BlockItem(VSBlocks.STRIPPED_ENDERWOOD_HYPHAE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> ENDER_WART_BLOCK = ITEMS.register("ender_wart_block", () -> new BlockItem(VSBlocks.ENDER_WART_BLOCK.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> ENDER_NYLIUM = ITEMS.register("ender_nylium", () -> new BlockItem(VSBlocks.ENDER_NYLIUM.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> ENDER_FARMLAND = ITEMS.register("ender_farmland", () -> new BlockItem(VSBlocks.ENDER_FARMLAND.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> ENDERWOOD_PLANKS = ITEMS.register("ender_planks", () -> new BlockItem(VSBlocks.ENDERWOOD_PLANKS.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> ENDERWOOD_BOOKSHELF = ITEMS.register("ender_bookshelf", () -> new BlockItem(VSBlocks.ENDERWOOD_BOOKSHELF.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> ENDERWOOD_STAIRS = ITEMS.register("ender_stairs", () -> new BlockItem(VSBlocks.ENDERWOOD_STAIRS.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> ENDERWOOD_SLAB = ITEMS.register("ender_slab", () -> new BlockItem(VSBlocks.ENDERWOOD_SLAB.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> ENDERWOOD_FENCE = ITEMS.register("ender_fence", () -> new BlockItem(VSBlocks.ENDERWOOD_FENCE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
@@ -104,7 +107,12 @@ public class VSItems {
     public static final RegistryObject<Item> GLOW_BLACK_TULIP = ITEMS.register("glow_black_tulip", () -> new BlockItem(VSBlocks.GLOW_BLACK_TULIP.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> GLOW_BERRY_BUSH = ITEMS.register("glow_berry_bush", () -> new BlockItem(VSBlocks.GLOW_BERRY_BUSH.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> PAINTING_SAPLING = ITEMS.register("painting_sapling", () -> new BlockItem(VSBlocks.PAINTING_SAPLING.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> ENDER_ROOTS = ITEMS.register("ender_roots", () -> new BlockItem(VSBlocks.ENDER_ROOTS.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> END_SPROUTS = ITEMS.register("ender_sprouts", () -> new BlockItem(VSBlocks.END_SPROUTS.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> ENDER_FUNGUS = ITEMS.register("ender_fungus", () -> new BlockItem(VSBlocks.ENDER_FUNGUS.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> WARPING_VINES = ITEMS.register("warping_vines", () -> new BlockItem(VSBlocks.WARPING_VINES.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> WARPED_WART = ITEMS.register("warped_wart", () -> new BlockNamedItem(VSBlocks.WARPED_WART.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> ENDER_WART = ITEMS.register("ender_wart", () -> new BlockNamedItem(VSBlocks.ENDER_WART.get(), new Item.Properties().tab(VSBlockTab.TAB)));
 
     // Items
     public static final RegistryObject<Item> WHITE_SHULKER_SHELL = ITEMS.register("white_shulker_shell", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
@@ -136,6 +144,7 @@ public class VSItems {
     public static final RegistryObject<Item> SPLASH_GLASS_BOTTLE = ITEMS.register("splash_glass_bottle", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> LINGERING_GLASS_BOTTLE = ITEMS.register("lingering_glass_bottle", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> LAVA_BOTTLE = ITEMS.register("lava_glass_bottle", () -> new LavaBottleItem(new Item.Properties().stacksTo(8).craftRemainder(Items.GLASS_BOTTLE).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> SOUL_LAVA_BOTTLE = ITEMS.register("soul_lava_bottle", () -> new LavaBottleItem(new Item.Properties().stacksTo(8).craftRemainder(Items.GLASS_BOTTLE).tab(VSTab.TAB)));
     public static final RegistryObject<Item> MILK_BOTTLE = ITEMS.register("milk_glass_bottle", () -> new MilkBottleItem(new Item.Properties().stacksTo(8).craftRemainder(Items.GLASS_BOTTLE).tab(VSTab.TAB)));
     public static final RegistryObject<Item> POWDER_SNOW_BOTTLE = ITEMS.register("powder_snow_bottle", () -> new PowderSnowBottleItem(new Item.Properties().stacksTo(8).craftRemainder(Items.GLASS_BOTTLE).tab(VSTab.TAB)));
     public static final RegistryObject<Item> SPLASH_SOPHIE_POTION = ITEMS.register("splash_soph_potion", () -> new SophiePotionItem(new Item.Properties().food(VSFoods.SOPHIE_POTION).tab(VSTab.TAB), "Edits"));
@@ -159,6 +168,7 @@ public class VSItems {
     public static final RegistryObject<Item> PAINTING_STICK = ITEMS.register("painting_stick", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> CRIMSON_STICK = ITEMS.register("crimson_stick", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> WARPED_STICK = ITEMS.register("warped_stick", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> ENDER_STICK = ITEMS.register("ender_stick", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> NETHERITE_ROD = ITEMS.register("netherite_rod", () -> new Item(new Item.Properties().tab(VSTab.TAB).fireResistant()));
     public static final RegistryObject<Item> SOUL_BLAZE_ROD = ITEMS.register("soul_rod", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> SOUL_BLAZE_POWDER = ITEMS.register("soul_powder", () -> new Item(new Item.Properties().tab(VSTab.TAB)));

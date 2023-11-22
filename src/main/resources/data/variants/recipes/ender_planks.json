@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "tag": "variants:ender_stems"
+      "tag": "variants:enderwood_stems"
     }
   ],
   "result": {

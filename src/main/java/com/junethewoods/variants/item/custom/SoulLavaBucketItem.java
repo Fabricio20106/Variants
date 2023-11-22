@@ -1,6 +1,6 @@
 package com.junethewoods.variants.item.custom;
 
-import com.junethewoods.variants.block.VSFluids;
+import com.junethewoods.variants.fluid.VSFluids;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeType;

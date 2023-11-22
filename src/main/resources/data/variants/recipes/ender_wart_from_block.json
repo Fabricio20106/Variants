@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "variants:ender_wart_block"
+    }
+  ],
+  "result": {
+    "item": "variants:ender_wart",
+    "count": 9
+  }
+}

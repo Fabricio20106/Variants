@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "minecraft:bookshelf",
+    "variants:ender_bookshelf",
     "variants:plain_birch_bookshelf"
   ]
 }

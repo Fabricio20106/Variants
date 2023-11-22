@@ -26,71 +26,79 @@ public class VSItemModelProvider extends ItemModelProvider {
         ModelFile handheld = getExistingFile(mcLoc("item/handheld"));
         ModelFile debugBow = getExistingFile(modLoc("item/debug_bow"));
 
-        withExistingParent("golden_carrots", "_stage3");
-        withExistingParent("gold_cauldron");
-        withExistingParent("gold_beacon");
-        withExistingParent("quartz_ore");
-        withExistingParent("deepslate_quartz_ore");
-        withExistingParent("end_quartz_ore");
-        withExistingParent("raw_debris_block");
-        withExistingParent("glow_black_wool");
-        withExistingParent("glow_black_carpet");
-        withExistingParent("glow_black_stained_glass");
-        withExistingParent("quartz_glass");
-        withExistingParent("plain_birch_bookshelf");
-        withExistingParent("painting_log");
-        withExistingParent("painting_wood");
-        withExistingParent("stripped_painting_log");
-        withExistingParent("stripped_painting_wood");
-        withExistingParent("painting_leaves");
-        withExistingParent("painting_planks");
-        withExistingParent("painting_stairs");
-        withExistingParent("painting_slab");
-        withExistingParent("painting_fence", "_inventory");
-        withExistingParent("painting_fence_gate");
-        withExistingParent("painting_pressure_plate");
-        withExistingParent("painting_button", "_inventory");
-        withExistingParent("painting_trapdoor", "_bottom");
-        withExistingParent("alban_trapdoor", "_bottom");
-        withExistingParent("aztec_trapdoor", "_bottom");
-        withExistingParent("aztec2_trapdoor", "_bottom");
-        withExistingParent("bomb_trapdoor", "_bottom");
-        withExistingParent("kebab_trapdoor", "_bottom");
-        withExistingParent("plant_trapdoor", "_bottom");
-        withExistingParent("wasteland_trapdoor", "_bottom");
-        withExistingParent("ender_stem");
-        withExistingParent("ender_hyphae");
-        withExistingParent("stripped_ender_stem");
-        withExistingParent("stripped_ender_hyphae");
-        withExistingParent("ender_wart_block");
-        withExistingParent("ender_planks");
-        withExistingParent("ender_stairs");
-        withExistingParent("ender_slab");
-        withExistingParent("ender_fence", "_inventory");
-        withExistingParent("ender_fence_gate");
-        withExistingParent("ender_pressure_plate");
-        withExistingParent("ender_button", "_inventory");
-        withExistingParent("ender_trapdoor", "_bottom");
-        withExistingParent("potted_glow_black_tulip");
-        withExistingParent("potted_sugar_cane");
-        withExistingParent("potted_painting_sapling");
-        withExistingParent("elder_sea_lantern");
-        withExistingParent("elder_prismarine");
-        withExistingParent("elder_prismarine_stairs");
-        withExistingParent("elder_prismarine_slab");
-        withExistingParent("elder_prismarine_wall", "_inventory");
-        withExistingParent("elder_prismarine_bricks");
-        withExistingParent("elder_prismarine_brick_stairs");
-        withExistingParent("elder_prismarine_brick_slab");
-        withExistingParent("dark_elder_prismarine");
-        withExistingParent("dark_elder_prismarine_stairs");
-        withExistingParent("dark_elder_prismarine_slab");
-        withExistingParent("chiseled_end_stone_bricks");
-        withExistingParent("infested_chiseled_end_stone_bricks");
-        withExistingParent("chiseled_purpur_block");
-        withExistingParent("infested_chiseled_purpur_block");
-        withExistingParent("red_nether_brick_fence", "_inventory");
+        block("golden_carrots", "_stage3");
+        block("gold_cauldron");
+        block("gold_beacon");
+        block("quartz_ore");
+        block("deepslate_quartz_ore");
+        block("end_quartz_ore");
+        block("raw_debris_block");
+        block("glow_black_wool");
+        block("glow_black_carpet");
+        block("glow_black_stained_glass");
+        block("quartz_glass");
+        block("plain_birch_bookshelf");
+        block("painting_log");
+        block("painting_wood");
+        block("stripped_painting_log");
+        block("stripped_painting_wood");
+        block("painting_leaves");
+        block("painting_planks");
+        block("painting_stairs");
+        block("painting_slab");
+        block("painting_fence", "_inventory");
+        block("painting_fence_gate");
+        block("painting_pressure_plate");
+        block("painting_button", "_inventory");
+        block("painting_trapdoor", "_bottom");
+        block("alban_trapdoor", "_bottom");
+        block("aztec_trapdoor", "_bottom");
+        block("aztec2_trapdoor", "_bottom");
+        block("bomb_trapdoor", "_bottom");
+        block("kebab_trapdoor", "_bottom");
+        block("plant_trapdoor", "_bottom");
+        block("wasteland_trapdoor", "_bottom");
+        block("ender_stem");
+        block("ender_hyphae");
+        block("stripped_ender_stem");
+        block("stripped_ender_hyphae");
+        block("ender_wart_block");
+        block("ender_nylium");
+        block("ender_farmland");
+        block("ender_planks");
+        block("ender_bookshelf");
+        block("ender_stairs");
+        block("ender_slab");
+        block("ender_fence", "_inventory");
+        block("ender_fence_gate");
+        block("ender_pressure_plate");
+        block("ender_button", "_inventory");
+        block("ender_trapdoor", "_bottom");
+        block("potted_glow_black_tulip");
+        block("potted_sugar_cane");
+        block("potted_painting_sapling");
+        block("elder_sea_lantern");
+        block("elder_prismarine");
+        block("elder_prismarine_stairs");
+        block("elder_prismarine_slab");
+        block("elder_prismarine_wall", "_inventory");
+        block("elder_prismarine_bricks");
+        block("elder_prismarine_brick_stairs");
+        block("elder_prismarine_brick_slab");
+        block("dark_elder_prismarine");
+        block("dark_elder_prismarine_stairs");
+        block("dark_elder_prismarine_slab");
+        block("chiseled_end_stone_bricks");
+        block("infested_chiseled_end_stone_bricks");
+        block("chiseled_purpur_block");
+        block("infested_chiseled_purpur_block");
+        block("red_nether_brick_fence", "_inventory");
 
+        standard(generated, "quartz_chain");
+        standard(generated, "golden_chain");
+        standard(generated, "diamond_chain");
+        standard(generated, "emerald_chain");
+        standard(generated, "ender_sprouts");
         standard(generated, "white_shulker_shell");
         standard(generated, "inno_shulker_shell");
         standard(generated, "orange_shulker_shell");
@@ -139,6 +147,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(handheld, "painting_stick");
         standard(handheld, "crimson_stick");
         standard(handheld, "warped_stick");
+        standard(handheld, "ender_stick");
         standard(handheld, "netherite_rod");
         standard(handheld, "soul_rod");
         standard(generated, "soul_powder");
@@ -150,11 +159,13 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "soul_lava_bucket");
         standard(generated, "milk_glass_bottle");
         standard(generated, "lava_glass_bottle");
+        standard(generated, "soul_lava_bottle");
         standard(generated, "powder_snow_bottle");
         standard(generated, "glow_black_dye");
         standard(generated, "elder_prismarine_shard");
         standard(generated, "elder_prismarine_crystals");
         standard(generated, "warped_wart");
+        standard(generated, "ender_wart");
         standard(generated, "painting_door");
         standard(generated, "wanderer_door");
         standard(generated, "graham_door");
@@ -164,10 +175,6 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "splash_soph_potion");
         standard(generated, "quartz_nugget");
         standard(generated, "purple_nugget");
-        standard(generated, "quartz_chain");
-        standard(generated, "golden_chain");
-        standard(generated, "diamond_chain");
-        standard(generated, "emerald_chain");
 
         blockItem("glow_berry_bush", "_stage3");
         blockItem("glow_black_tulip");
@@ -175,6 +182,9 @@ public class VSItemModelProvider extends ItemModelProvider {
         blockItem("netherrack_lever");
         blockItem("end_stone_lever");
         blockItem("quartz_bars");
+        blockItem("ender_roots");
+        blockItem("ender_fungus");
+        blockItem("warping_vines", "_plant");
         glassPane("glow_black_stained_glass");
         glassPane("quartz_glass");
 
@@ -224,35 +234,35 @@ public class VSItemModelProvider extends ItemModelProvider {
         toolSet(handheld, "diorite");
     }
 
-    public ItemModelBuilder standard(ModelFile parent, String name) {
-        return getBuilder(name).parent(parent).texture("layer0", "item/" + name);
+    public void standard(ModelFile parent, String name) {
+        getBuilder(name).parent(parent).texture("layer0", "item/" + name);
     }
 
-    public ItemModelBuilder toolSet(ModelFile parent, String material) {
+    public void toolSet(ModelFile parent, String material) {
         getBuilder(material + "_sword").parent(parent).texture("layer0", "item/" + material + "_sword");
         getBuilder(material + "_pickaxe").parent(parent).texture("layer0", "item/" + material + "_pickaxe");
         getBuilder(material + "_shovel").parent(parent).texture("layer0", "item/" + material + "_shovel");
         getBuilder(material + "_axe").parent(parent).texture("layer0", "item/" + material + "_axe");
-        return getBuilder(material + "_hoe").parent(parent).texture("layer0", "item/" + material + "_hoe");
+        getBuilder(material + "_hoe").parent(parent).texture("layer0", "item/" + material + "_hoe");
     }
 
-    public ItemModelBuilder withExistingParent(String name) {
-        return withExistingParent(name, modLoc("block/" + name));
+    public void block(String name) {
+        withExistingParent(name, modLoc("block/" + name));
     }
 
-    public ItemModelBuilder withExistingParent(String name, String extras) {
-        return withExistingParent(name, modLoc("block/" + name + extras));
+    public void block(String name, String extras) {
+        withExistingParent(name, modLoc("block/" + name + extras));
     }
 
-    public ItemModelBuilder blockItem(String name) {
-        return getBuilder(name).parent(getExistingFile(mcLoc("item/generated"))).texture("layer0", "block/" + name);
+    public void blockItem(String name) {
+        getBuilder(name).parent(getExistingFile(mcLoc("item/generated"))).texture("layer0", "block/" + name);
     }
 
-    public ItemModelBuilder blockItem(String name, String extras) {
-        return getBuilder(name).parent(getExistingFile(mcLoc("item/generated"))).texture("layer0", "block/" + name + extras);
+    public void blockItem(String name, String extras) {
+        getBuilder(name).parent(getExistingFile(mcLoc("item/generated"))).texture("layer0", "block/" + name + extras);
     }
 
-    public ItemModelBuilder glassPane(String name) {
-        return getBuilder(name + "_pane").parent(getExistingFile(mcLoc("item/generated"))).texture("layer0", "block/" + name);
+    public void glassPane(String name) {
+        getBuilder(name + "_pane").parent(getExistingFile(mcLoc("item/generated"))).texture("layer0", "block/" + name);
     }
 }
