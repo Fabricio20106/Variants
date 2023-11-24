@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "variants:empty_armor_slot_boots"
+    "variants:empty_armor_slot_boots",
+    "variants:emerald_boots",
+    "variants:quartz_boots"
   ]
 }

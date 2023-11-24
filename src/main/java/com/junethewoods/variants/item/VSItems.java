@@ -136,6 +136,7 @@ public class VSItems {
     public static final RegistryObject<Item> MUSIC_DISC_DOG = ITEMS.register("music_disc_dog", () -> new MusicDiscItem(2, VSSounds.MUSIC_DISC_DOG, new Item.Properties().rarity(Rarity.RARE).stacksTo(1).tab(VSTab.TAB)));
     public static final RegistryObject<Item> SPAWNER_MINECART = ITEMS.register("spawner_minecart", () -> new MinecartItem(AbstractMinecartEntity.Type.SPAWNER, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1).tab(VSTab.TAB)));
     public static final RegistryObject<Item> FUNGI_STEW = ITEMS.register("fungi_stew", () -> new SoupItem(new Item.Properties().stacksTo(1).tab(VSTab.TAB).food(Foods.MUSHROOM_STEW)));
+    public static final RegistryObject<Item> END_FUNGI_STEW = ITEMS.register("end_fungi_stew", () -> new SoupItem(new Item.Properties().stacksTo(1).tab(VSTab.TAB).food(Foods.MUSHROOM_STEW)));
     public static final RegistryObject<Item> SOUL_LAVA_BUCKET = ITEMS.register("soul_lava_bucket", () -> new SoulLavaBucketItem(new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).tab(VSTab.TAB)));
     public static final RegistryObject<Item> SPLASH_EXPERIENCE_BOTTLE = ITEMS.register("splash_experience_bottle", () -> new ExperienceBottleItem(new Item.Properties().rarity(Rarity.UNCOMMON).tab(VSTab.TAB)));
     public static final RegistryObject<Item> LINGERING_EXPERIENCE_BOTTLE = ITEMS.register("lingering_experience_bottle", () -> new ExperienceBottleItem(new Item.Properties().rarity(Rarity.UNCOMMON).tab(VSTab.TAB)));
@@ -168,8 +169,18 @@ public class VSItems {
     public static final RegistryObject<Item> PAINTING_STICK = ITEMS.register("painting_stick", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> CRIMSON_STICK = ITEMS.register("crimson_stick", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> WARPED_STICK = ITEMS.register("warped_stick", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
-    public static final RegistryObject<Item> ENDER_STICK = ITEMS.register("ender_stick", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> ENDERWOOD_STICK = ITEMS.register("ender_stick", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> NETHERITE_ROD = ITEMS.register("netherite_rod", () -> new Item(new Item.Properties().tab(VSTab.TAB).fireResistant()));
+    public static final RegistryObject<Item> OAK_BOWL = ITEMS.register("oak_bowl", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> SPRUCE_BOWL = ITEMS.register("spruce_bowl", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> BIRCH_BOWL = ITEMS.register("birch_bowl", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> JUNGLE_BOWL = ITEMS.register("jungle_bowl", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> ACACIA_BOWL = ITEMS.register("acacia_bowl", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> DARK_OAK_BOWL = ITEMS.register("dark_oak_bowl", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> PAINTING_BOWL = ITEMS.register("painting_bowl", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> CRIMSON_BOWL = ITEMS.register("crimson_bowl", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> WARPED_BOWL = ITEMS.register("warped_bowl", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> ENDERWOOD_BOWL = ITEMS.register("ender_bowl", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> SOUL_BLAZE_ROD = ITEMS.register("soul_rod", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> SOUL_BLAZE_POWDER = ITEMS.register("soul_powder", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> SOUL_O_CHARGE = ITEMS.register("soul_charge", () -> new FireChargeItem(new Item.Properties().tab(VSTab.TAB)));

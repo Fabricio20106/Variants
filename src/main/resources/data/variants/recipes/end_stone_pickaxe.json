@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " $ ",
+    " $ "
+  ],
+  "key": {
+    "#": {
+      "tag": "variants:crafting_materials/end_stone"
+    },
+    "$": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "variants:end_stone_pickaxe"
+  }
+}

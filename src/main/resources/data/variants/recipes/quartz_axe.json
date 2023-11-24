@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "#$",
+    " $"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:gems/quartz"
+    },
+    "$": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "variants:quartz_axe"
+  }
+}

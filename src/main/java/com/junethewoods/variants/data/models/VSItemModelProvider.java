@@ -120,6 +120,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "music_disc_dog");
         standard(generated, "spawner_minecart");
         standard(generated, "fungi_stew");
+        standard(generated, "end_fungi_stew");
         standard(generated, "enchanted_knowledge_book");
         standard(generated, "splash_experience_bottle");
         standard(generated, "lingering_experience_bottle");
@@ -149,6 +150,16 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(handheld, "warped_stick");
         standard(handheld, "ender_stick");
         standard(handheld, "netherite_rod");
+        standard(handheld, "oak_bowl");
+        standard(handheld, "spruce_bowl");
+        standard(handheld, "birch_bowl");
+        standard(handheld, "jungle_bowl");
+        standard(handheld, "acacia_bowl");
+        standard(handheld, "dark_oak_bowl");
+        standard(handheld, "painting_bowl");
+        standard(handheld, "crimson_bowl");
+        standard(handheld, "warped_bowl");
+        standard(handheld, "ender_bowl");
         standard(handheld, "soul_rod");
         standard(generated, "soul_powder");
         standard(generated, "soul_charge");
@@ -192,14 +203,14 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(handheld, "amethyst_sword");
         standard(handheld, "copper_sword");
         standard(handheld, "magma_sword");
+        standard(generated, "copper_chestplate");
         standard(generated, "phantom_membrane_sweatchest");
         standard(generated, "rabbit_hide_sweatchest");
-        standard(generated, "wool_sweatchest");
-        standard(generated, "empty_armor_slot_helmet");
-        standard(generated, "empty_armor_slot_chestplate");
-        standard(generated, "empty_armor_slot_leggings");
-        standard(generated, "empty_armor_slot_boots");
+        standard(generated, "quartz_horse_armor");
         standard(generated, "empty_armor_slot_shield");
+
+        // Wool Sweater Custom Designs
+        standard(generated, "wool_sweater_glitch_design");
 
         standard(debugBow, "debug_bow_pulling_0");
         standard(debugBow, "debug_bow_pulling_1");
@@ -229,9 +240,15 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "inno_ai_shears");
         standard(generated, "nicolas_ai_shears");
 
+        armorSet(generated, "empty_armor_slot");
+        armorSet(generated, "emerald");
+        armorSet(generated, "quartz");
+
         toolSet(handheld, "andesite");
         toolSet(handheld, "granite");
         toolSet(handheld, "diorite");
+        toolSet(handheld, "end_stone");
+        toolSet(handheld, "quartz");
     }
 
     public void standard(ModelFile parent, String name) {
@@ -244,6 +261,13 @@ public class VSItemModelProvider extends ItemModelProvider {
         getBuilder(material + "_shovel").parent(parent).texture("layer0", "item/" + material + "_shovel");
         getBuilder(material + "_axe").parent(parent).texture("layer0", "item/" + material + "_axe");
         getBuilder(material + "_hoe").parent(parent).texture("layer0", "item/" + material + "_hoe");
+    }
+
+    public void armorSet(ModelFile parent, String material) {
+        getBuilder(material + "_helmet").parent(parent).texture("layer0", "item/" + material + "_helmet");
+        getBuilder(material + "_chestplate").parent(parent).texture("layer0", "item/" + material + "_chestplate");
+        getBuilder(material + "_leggings").parent(parent).texture("layer0", "item/" + material + "_leggings");
+        getBuilder(material + "_boots").parent(parent).texture("layer0", "item/" + material + "_boots");
     }
 
     public void block(String name) {

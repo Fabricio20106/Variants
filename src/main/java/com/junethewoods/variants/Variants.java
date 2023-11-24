@@ -87,6 +87,7 @@ public class Variants {
     public void clientSetup(final FMLClientSetupEvent event) {
         VSClientHelpers.makeBow(VSWeaponry.DEBUG_BOW.get());
         VSClientHelpers.makeShield(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
+        VSClientHelpers.makeCustomWoolSweaters(VSWeaponry.WOOL_SWEATER.get());
         setRenderTypesForBlocks();
 
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_BELL.get(), VSBellBlockEntityRenderer::new);

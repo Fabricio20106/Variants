@@ -48,6 +48,7 @@ public class VSTags {
         public static final ITag.INamedTag<Item> CM_GRANITE = mod("crafting_materials/granite");
         public static final ITag.INamedTag<Item> CM_ANDESITE = mod("crafting_materials/andesite");
         public static final ITag.INamedTag<Item> CM_MAGMA_BLOCK = mod("crafting_materials/magma_block");
+        public static final ITag.INamedTag<Item> CM_END_STONE = mod("crafting_materials/end_stone");
 
         public static final ITag.INamedTag<Item> PAINTING_DOORS = mod("painting_doors");
         public static final ITag.INamedTag<Item> PAINTING_TRAPDOORS = mod("painting_trapdoors");

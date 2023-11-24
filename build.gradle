@@ -13,6 +13,7 @@ buildscript {
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
+
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
@@ -22,7 +23,8 @@ apply plugin: 'idea'
 
 Calendar calendar = Calendar.getInstance()
 String year = String.valueOf(calendar.getWeekYear()).replace("20", "")
-version = '1.16.5-v1.6.11-' + year + 'd' + calendar.get(Calendar.DAY_OF_YEAR) + 'a'
+version = '1.16.5-v1.6.12-' + year + 'd' + calendar.get(Calendar.DAY_OF_YEAR) + 'a'
+
 // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 group = 'com.junethewoods.variants'
 archivesBaseName = 'Variants'
@@ -34,7 +36,7 @@ println('Java: ' + System.getProperty('java.version') + ' Java Virtual Machine (
 minecraft {
     // The mappings can be changed at any time, and must be in the following format:
     // snapshot_YYYYMMDD   Snapshot are built nightly.
-    // stable_#            Stables are built at the discretion of the MCP team.
+    // stable_#                            Stables are built at the discretion of the MCP team.
 
     // Use non-default mappings at your own risk, they may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.

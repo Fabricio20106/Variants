@@ -61,7 +61,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.RODS_SOUL_BLAZE).add(VSItems.SOUL_BLAZE_ROD.get());
         this.tag(Tags.Items.RODS).addTag(VSTags.Items.RODS_DEBUG_WOODEN).addTag(VSTags.Items.RODS_NETHERITE).addTag(VSTags.Items.RODS_SOUL_BLAZE);
         this.tag(Tags.Items.RODS_WOODEN).add(VSItems.OAK_STICK.get()).add(VSItems.SPRUCE_STICK.get()).add(VSItems.BIRCH_STICK.get()).add(VSItems.JUNGLE_STICK.get())
-                .add(VSItems.ACACIA_STICK.get()).add(VSItems.DARK_OAK_STICK.get()).add(VSItems.PAINTING_STICK.get()).add(VSItems.CRIMSON_STICK.get()).add(VSItems.WARPED_STICK.get()).add(VSItems.ENDER_STICK.get());
+                .add(VSItems.ACACIA_STICK.get()).add(VSItems.DARK_OAK_STICK.get()).add(VSItems.PAINTING_STICK.get()).add(VSItems.CRIMSON_STICK.get()).add(VSItems.WARPED_STICK.get()).add(VSItems.ENDERWOOD_STICK.get());
 
         this.tag(Tags.Items.SHEARS).add(VSWeaponry.COAL_SHEARS.get()).add(VSWeaponry.GOLDEN_SHEARS.get()).add(VSWeaponry.COPPER_SHEARS.get()).add(VSWeaponry.EXPOSED_COPPER_SHEARS.get())
                 .add(VSWeaponry.WEATHERED_COPPER_SHEARS.get()).add(VSWeaponry.OXIDIZED_COPPER_SHEARS.get()).add(VSWeaponry.AMETHYST_SHEARS.get()).add(VSWeaponry.DIAMOND_SHEARS.get())
@@ -84,14 +84,15 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.GEMS_ELDER_PRISMARINE).add(VSItems.ELDER_PRISMARINE_CRYSTALS.get());
         this.tag(Tags.Items.GEMS).addTag(VSTags.Items.GEMS_ELDER_PRISMARINE);
 
-        this.tag(VSTags.Items.ARMORS_BOOTS).add(VSWeaponry.EMPTY_ARMOR_SLOT_BOOTS.get());
+        this.tag(VSTags.Items.ARMORS_BOOTS).add(VSWeaponry.EMPTY_ARMOR_SLOT_BOOTS.get()).add(VSWeaponry.EMERALD_BOOTS.get()).add(VSWeaponry.QUARTZ_BOOTS.get());
 
         // Variants' Tags
         this.tag(VSTags.Items.CM_DIORITE).add(Items.DIORITE);
         this.tag(VSTags.Items.CM_GRANITE).add(Items.GRANITE);
         this.tag(VSTags.Items.CM_ANDESITE).add(Items.ANDESITE);
         this.tag(VSTags.Items.CM_MAGMA_BLOCK).add(Items.MAGMA_BLOCK);
-        this.tag(VSTags.Items.CRAFTING_MATERIALS).addTag(VSTags.Items.CM_DIORITE).addTag(VSTags.Items.CM_GRANITE).addTag(VSTags.Items.CM_ANDESITE).addTag(VSTags.Items.CM_MAGMA_BLOCK);
+        this.tag(VSTags.Items.CM_END_STONE).add(Items.END_STONE);
+        this.tag(VSTags.Items.CRAFTING_MATERIALS).addTag(VSTags.Items.CM_DIORITE).addTag(VSTags.Items.CM_GRANITE).addTag(VSTags.Items.CM_ANDESITE).addTag(VSTags.Items.CM_MAGMA_BLOCK).addTag(VSTags.Items.CM_END_STONE);
 
         this.tag(VSTags.Items.BOOKS).add(Items.BOOK).add(Items.WRITABLE_BOOK).add(Items.WRITTEN_BOOK).add(Items.ENCHANTED_BOOK).add(Items.KNOWLEDGE_BOOK).add(VSItems.ENCHANTED_KNOWLEDGE_BOOK.get());
         this.tag(VSTags.Items.BOOKSHELVES).add(Items.BOOKSHELF).add(VSItems.ENDERWOOD_BOOKSHELF.get()).add(VSItems.PLAIN_BIRCH_BOOKSHELF.get());
