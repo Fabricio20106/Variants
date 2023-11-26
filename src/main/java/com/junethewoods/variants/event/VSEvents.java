@@ -1,18 +1,30 @@
 package com.junethewoods.variants.event;
 
 import com.junethewoods.variants.Variants;
+import com.junethewoods.variants.config.VSConfigs;
+import com.junethewoods.variants.entity.VSEntities;
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.VSWeaponry;
 import com.junethewoods.variants.item.custom.armor.WoolArmorItem;
+import com.junethewoods.variants.world.feature.VSFeatures;
+import com.junethewoods.variants.world.feature.VSOreGeneration;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.MerchantOffer;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.MobSpawnInfo;
+import net.minecraft.world.gen.GenerationStage;
+import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
+import net.minecraftforge.common.world.MobSpawnInfoBuilder;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -21,6 +33,29 @@ import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = Variants.MOD_ID)
 public class VSEvents {
+    @SubscribeEvent(priority = EventPriority.HIGH)
+    public static void onBiomeLoading(final BiomeLoadingEvent event) {
+        BiomeGenerationSettingsBuilder settings = event.getGeneration();
+        MobSpawnInfoBuilder spawns = event.getSpawns();
+
+        // World Generation
+        if (event.getCategory() == Biome.Category.PLAINS || event.getCategory() == Biome.Category.FOREST && VSConfigs.COMMON_CONFIGS.generateFlowerPatches.get()) {
+            settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSFeatures.VARIANTS_FLOWER_PATCH);
+        }
+        if (event.getCategory() == Biome.Category.NETHER && VSConfigs.COMMON_CONFIGS.generateSoulLavaSprings.get()) {
+            settings.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, VSFeatures.CLOSED_SOUL_LAVA_SPRING);
+            settings.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, VSFeatures.OPEN_SOUL_LAVA_SPRING);
+        }
+
+        if (VSConfigs.COMMON_CONFIGS.generateQuartzOre.get()) VSOreGeneration.generateQuartzOre(event);
+        if (VSConfigs.COMMON_CONFIGS.generateEndQuartzOre.get()) VSOreGeneration.generateEndQuartzOre(event);
+
+        // Entity Spawning
+        if (event.getCategory() == Biome.Category.OCEAN && VSConfigs.COMMON_CONFIGS.fishSpawning.get()) {
+            spawns.addSpawn(EntityClassification.WATER_CREATURE, new MobSpawnInfo.Spawners(VSEntities.FISH.get(), 10, 3, 6));
+        }
+    }
+
     @SubscribeEvent
     public static void addWanderingTraderTrades(WandererTradesEvent event) {
          List<VillagerTrades.ITrade> genericTrades = event.getGenericTrades();

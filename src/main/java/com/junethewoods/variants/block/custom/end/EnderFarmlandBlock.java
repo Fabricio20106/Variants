@@ -1,4 +1,4 @@
-package com.junethewoods.variants.block.custom.theend;
+package com.junethewoods.variants.block.custom.end;
 
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;

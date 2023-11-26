@@ -20,6 +20,9 @@ public class VSCommonConfigs {
     // Items
     public final ForgeConfigSpec.BooleanValue populateWoolArmorColorInTabs;
 
+    // Entities
+    public final ForgeConfigSpec.BooleanValue fishSpawning;
+
     public VSCommonConfigs(ForgeConfigSpec.Builder builder) {
         builder.comment("Welcome to the Variants config file! This file contains various configs on many aspects of the mod. (Made on 18/11/23)");
 
@@ -37,6 +40,10 @@ public class VSCommonConfigs {
         this.generateQuartzOre = builder.comment("Allow overworld quartz ore to generate?").define("generateOverworldQuartzOre", true);
         this.generateEndQuartzOre = builder.comment("Allow end quartz ore to generate?").define("generateEndQuartzOre", true);
         this.generateSoulLavaSprings = builder.comment("Allow soul lava springs ore to generate in the Nether?").define("generateSoulLavaSprings", true);
+        builder.pop();
+
+        builder.push("entities");
+        this.fishSpawning = builder.comment("Allow fishes (old cods) to spawn in Oceans?").define("fishSpawning", true);
         builder.pop();
 
         builder.push("items");

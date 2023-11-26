@@ -262,6 +262,7 @@ f02e957de8e0beca10864d63f71309f4a124ff32 assets/variants/models/item/copper_ches
 87ee1595addcd8af21f26dd92e15a0b3e87ef263 assets/variants/models/item/copper_shears.json
 2f57bbb350bb87454e9c73b8c27fce622a447b15 assets/variants/models/item/copper_sword.json
 ab5d0a07c0e60c4bdb4929b00ad5c161d19092f1 assets/variants/models/item/creeper_powder_pot.json
+e017c7ff8a3849b45f92b4786273bf58181bc43e assets/variants/models/item/crimson_boat.json
 3beddfcc8b6b44434a300498e55db766516c02c8 assets/variants/models/item/crimson_bowl.json
 b9aba862759234f8021923f707a0e33bf144f5ce assets/variants/models/item/crimson_stick.json
 6df455e770a1b9db11fcd60c785557cd0beca646 assets/variants/models/item/crystal_shears.json
@@ -327,6 +328,7 @@ b9ccd3b0735f7761db0eed21e80af804b589afde assets/variants/models/item/ender_fence
 b51dd53bd862584f5ac9ba7567e787a7711737ed assets/variants/models/item/ender_planks.json
 a6953efb1f4da0b3a79828da7c6820398164a1cf assets/variants/models/item/ender_pressure_plate.json
 c163f9a220c4745614212e3798be0c591d9ce56b assets/variants/models/item/ender_roots.json
+272136f7016351b63f8f633f43a99bddccc8e321 assets/variants/models/item/ender_sign.json
 2d102d64d18d5620dc4ac4c49267ecbee4500f3f assets/variants/models/item/ender_slab.json
 9b8778c0ad171d35aa8bd5bff5db99fe1ef4b470 assets/variants/models/item/ender_sprouts.json
 263b3bf46ec81cadcf827947cd8601993f609179 assets/variants/models/item/ender_stairs.json
@@ -390,9 +392,14 @@ e3e87a53bd8924eefd258da71cd3c1fb517a1b98 assets/variants/models/item/netherite_s
 2c0dda7881ec2d6bb4893e156a802b5f37e91d75 assets/variants/models/item/nicolas_ai_shears.json
 886c411e420958066512723b5dd22682e19990a6 assets/variants/models/item/oak_bowl.json
 1c462d4352264d36c957a37b29729aedb240870f assets/variants/models/item/oak_stick.json
+f7d2d6303ebda1b3c660c0af446001bcdb563d4f assets/variants/models/item/old_cod.json
+79e4201fa7406fb5760811c9ee91273968fba0cd assets/variants/models/item/old_cod_bucket.json
+98167609bf3898587f7565736a6fc24a7966cacd assets/variants/models/item/old_cod_spawn_egg.json
+fc9e89a46aeebab61b65fdffdb6534a4b9460b44 assets/variants/models/item/old_cooked_cod.json
 053d9f206cd87d3bcdbbd437a514f4a01833d353 assets/variants/models/item/orange_shulker_shell.json
 373a3f0e94cbc91e4b60e7d1024eb67377dc0c61 assets/variants/models/item/oxidized_copper_ingot.json
 7726195851d14f3997e8ea2a8f2540ccaa241d10 assets/variants/models/item/oxidized_copper_shears.json
+111ed85fdd5b0a23419786627bb2814ebfbd482f assets/variants/models/item/painting_boat.json
 a93b427882b26c69795ad99557e1ae256c393afe assets/variants/models/item/painting_bowl.json
 ce557d90bb5027ac012e30c25f137afa8ae06555 assets/variants/models/item/painting_button.json
 81146d1fa148edf49f097a3a1538fe73b7cfd6ea assets/variants/models/item/painting_door.json
@@ -465,6 +472,7 @@ dd44fb8b4176f3e823de6957e5aa000923323411 assets/variants/models/item/stylised_po
 82c35938b318b2e8ef0a715db4f10d33a40ea614 assets/variants/models/item/sugar_pot.json
 e6f0a6f9b460c77c5617776c77c210a46aa02cf4 assets/variants/models/item/sweet_berry_pot.json
 269b03009e736a1396e3168aace68a51ff991b2f assets/variants/models/item/wanderer_door.json
+52f41f2a7556a4e93e78f1565b3a3c0a6700aab8 assets/variants/models/item/warped_boat.json
 ce2b93f274027296805b4e2674ba716278e9a760 assets/variants/models/item/warped_bowl.json
 7b366266f435fe03f3a12a4bce1f5a558c667402 assets/variants/models/item/warped_stick.json
 b374078ad46988ecd689b208b493151364099c33 assets/variants/models/item/warped_wart.json
@@ -545,6 +553,8 @@ cc186eea41364cd4a797defac919cd23038fdfa5 data/minecraft/tags/blocks/nylium.json
 da5820c33adfb670e3a2a7312e2fe3066433fd2c data/minecraft/tags/blocks/slabs.json
 16e28896457457c97e8a307c6e0fb4f7d5bebc97 data/minecraft/tags/blocks/small_flowers.json
 af9910e0f9101bd5f0b0c8b3b90b8b87ce74f422 data/minecraft/tags/blocks/stairs.json
+56eb83f5e65af05ea308477fd24d8749ba040bb9 data/minecraft/tags/blocks/standing_signs.json
+d7d2082ed790d1c6aa96288b97e5adca4f8f28cb data/minecraft/tags/blocks/wall_signs.json
 c1d09d4c8ea17132e7cf9530789e5c7a4c09b89e data/minecraft/tags/blocks/walls.json
 8cbc3aa1f954dc15d31971f3c191640928de1291 data/minecraft/tags/blocks/wart_blocks.json
 d36e84160a39de78c6da0a8877b998c8edeeaac9 data/minecraft/tags/blocks/wooden_buttons.json
@@ -557,6 +567,7 @@ c15a9d3882e07cb63edd6b8cff07b55c0a870776 data/minecraft/tags/blocks/wooden_fence
 3e77e4d6f65c6bbaee4e1b25812fbcbc39c29fec data/minecraft/tags/blocks/wool.json
 809fbd27390bfa6516052dead7fe1ee172f578bf data/minecraft/tags/fluids/lava.json
 d0bae256fdd04bdd716188e7694fc138fa904ba1 data/minecraft/tags/items/beds.json
+aa85f8a356f0418829596c7385d302881220f5e5 data/minecraft/tags/items/boats.json
 c9e762314d21e3cd6eaaf4b8e94f666a11c5a371 data/minecraft/tags/items/carpets.json
 bf5aa6d2f7ee6b4735f199508ff8577eb06e90cd data/minecraft/tags/items/creeper_drop_music_discs.json
 4492f1e0128ad6a9a15e7e230b97fcb379000e06 data/minecraft/tags/items/fences.json
@@ -565,6 +576,7 @@ bf5aa6d2f7ee6b4735f199508ff8577eb06e90cd data/minecraft/tags/items/creeper_drop_
 d0a0a94b40c9b3a324bd96a36acbd13a617add6c data/minecraft/tags/items/piglin_loved.json
 16e8a5625eb897b6abec9bd849306a19818c3620 data/minecraft/tags/items/planks.json
 1508344ef52aacaa702da831c9becb7ef6f23fef data/minecraft/tags/items/saplings.json
+56eb83f5e65af05ea308477fd24d8749ba040bb9 data/minecraft/tags/items/signs.json
 da5820c33adfb670e3a2a7312e2fe3066433fd2c data/minecraft/tags/items/slabs.json
 16e28896457457c97e8a307c6e0fb4f7d5bebc97 data/minecraft/tags/items/small_flowers.json
 af9910e0f9101bd5f0b0c8b3b90b8b87ce74f422 data/minecraft/tags/items/stairs.json

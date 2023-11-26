@@ -94,11 +94,6 @@ public class VSItemModelProvider extends ItemModelProvider {
         block("infested_chiseled_purpur_block");
         block("red_nether_brick_fence", "_inventory");
 
-        standard(generated, "quartz_chain");
-        standard(generated, "golden_chain");
-        standard(generated, "diamond_chain");
-        standard(generated, "emerald_chain");
-        standard(generated, "ender_sprouts");
         standard(generated, "white_shulker_shell");
         standard(generated, "inno_shulker_shell");
         standard(generated, "orange_shulker_shell");
@@ -122,6 +117,9 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "fungi_stew");
         standard(generated, "end_fungi_stew");
         standard(generated, "enchanted_knowledge_book");
+        standard(generated, "painting_boat");
+        standard(generated, "crimson_boat");
+        standard(generated, "warped_boat");
         standard(generated, "splash_experience_bottle");
         standard(generated, "lingering_experience_bottle");
         standard(generated, "splash_dragon_breath");
@@ -138,6 +136,8 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "sweet_berry_pot");
         standard(generated, "glow_berry_pot");
         standard(generated, "honey_ball");
+        standard(generated, "old_cod");
+        standard(generated, "old_cooked_cod");
         standard(generated, "raw_debris");
         standard(handheld, "oak_stick");
         standard(handheld, "spruce_stick");
@@ -168,6 +168,8 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "weathered_copper_ingot");
         standard(generated, "oxidized_copper_ingot");
         standard(generated, "soul_lava_bucket");
+        standard(generated, "old_cod_bucket");
+        withExistingParent("old_cod_spawn_egg", mcLoc("item/template_spawn_egg"));
         standard(generated, "milk_glass_bottle");
         standard(generated, "lava_glass_bottle");
         standard(generated, "soul_lava_bottle");
@@ -183,6 +185,12 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "first_door");
         standard(generated, "ender_door");
         standard(generated, "diamond_bell");
+        standard(generated, "ender_sign");
+        standard(generated, "quartz_chain");
+        standard(generated, "golden_chain");
+        standard(generated, "diamond_chain");
+        standard(generated, "emerald_chain");
+        standard(generated, "ender_sprouts");
         standard(generated, "splash_soph_potion");
         standard(generated, "quartz_nugget");
         standard(generated, "purple_nugget");

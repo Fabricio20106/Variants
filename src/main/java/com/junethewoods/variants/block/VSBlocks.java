@@ -2,8 +2,10 @@ package com.junethewoods.variants.block;
 
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.block.custom.*;
-import com.junethewoods.variants.block.custom.theend.*;
+import com.junethewoods.variants.block.custom.end.*;
+import com.junethewoods.variants.block.custom.nether.WarpedWartBlock;
 import com.junethewoods.variants.fluid.VSFluids;
+import com.junethewoods.variants.util.VSWoodTypes;
 import com.junethewoods.variants.world.feature.VSFeatures;
 import com.junethewoods.variants.world.tree.PaintingTree;
 import net.minecraft.block.*;
@@ -59,6 +61,8 @@ public class VSBlocks {
     public static final RegistryObject<Block> ENDERWOOD_BUTTON = BLOCKS.register("ender_button", () -> new WoodButtonBlock(AbstractBlock.Properties.copy(Blocks.WARPED_BUTTON)));
     public static final RegistryObject<Block> ENDERWOOD_TRAPDOOR = BLOCKS.register("ender_trapdoor", () -> new TrapDoorBlock(AbstractBlock.Properties.copy(Blocks.WARPED_TRAPDOOR)));
     public static final RegistryObject<Block> ENDERWOOD_DOOR = BLOCKS.register("ender_door", () -> new DoorBlock(AbstractBlock.Properties.copy(Blocks.WARPED_DOOR)));
+    public static final RegistryObject<Block> ENDERWOOD_SIGN = BLOCKS.register("ender_sign", () -> new VSStandingSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_SIGN), VSWoodTypes.ENDERWOOD));
+    public static final RegistryObject<Block> ENDERWOOD_WALL_SIGN = BLOCKS.register("ender_wall_sign", () -> new VSWallSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_WALL_SIGN).lootFrom(VSBlocks.ENDERWOOD_SIGN), VSWoodTypes.ENDERWOOD));
     public static final RegistryObject<Block> ELDER_SEA_LANTERN = BLOCKS.register("elder_sea_lantern", () -> new ConduitFrameBlock(AbstractBlock.Properties.copy(Blocks.SEA_LANTERN)));
     public static final RegistryObject<Block> ELDER_PRISMARINE = BLOCKS.register("elder_prismarine", () -> new ConduitFrameBlock(AbstractBlock.Properties.copy(Blocks.PRISMARINE)));
     public static final RegistryObject<Block> ELDER_PRISMARINE_STAIRS = BLOCKS.register("elder_prismarine_stairs", () -> new StairsBlock(() -> VSBlocks.ELDER_PRISMARINE.get().defaultBlockState(), AbstractBlock.Properties.copy(Blocks.PRISMARINE_STAIRS)));

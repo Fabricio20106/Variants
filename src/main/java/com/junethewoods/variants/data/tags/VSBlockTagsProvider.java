@@ -76,6 +76,8 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.WOODEN_BUTTONS).add(VSBlocks.PAINTING_BUTTON.get()).add(VSBlocks.ENDERWOOD_BUTTON.get());
         this.tag(BlockTags.WOODEN_DOORS).addTag(VSTags.Blocks.PAINTING_DOORS).add(VSBlocks.PAINTING_DOOR.get()).add(VSBlocks.ENDERWOOD_DOOR.get());
         this.tag(BlockTags.WOODEN_TRAPDOORS).addTag(VSTags.Blocks.PAINTING_TRAPDOORS).add(VSBlocks.PAINTING_TRAPDOOR.get()).add(VSBlocks.ENDERWOOD_TRAPDOOR.get());
+        this.tag(BlockTags.STANDING_SIGNS).add(VSBlocks.ENDERWOOD_SIGN.get());
+        this.tag(BlockTags.WALL_SIGNS).add(VSBlocks.ENDERWOOD_WALL_SIGN.get());
 
         this.tag(BlockTags.STAIRS).add(VSBlocks.ELDER_PRISMARINE_STAIRS.get()).add(VSBlocks.ELDER_PRISMARINE_BRICK_STAIRS.get()).add(VSBlocks.DARK_ELDER_PRISMARINE_STAIRS.get());
         this.tag(BlockTags.SLABS).add(VSBlocks.ELDER_PRISMARINE_SLAB.get()).add(VSBlocks.ELDER_PRISMARINE_BRICK_SLAB.get()).add(VSBlocks.DARK_ELDER_PRISMARINE_SLAB.get());

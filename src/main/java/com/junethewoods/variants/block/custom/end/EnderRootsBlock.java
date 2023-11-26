@@ -1,4 +1,4 @@
-package com.junethewoods.variants.block.custom.theend;
+package com.junethewoods.variants.block.custom.end;
 
 import com.junethewoods.variants.util.VSTags;
 import net.minecraft.block.BlockState;

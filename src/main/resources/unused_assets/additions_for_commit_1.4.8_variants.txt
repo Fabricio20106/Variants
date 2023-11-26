@@ -1,4 +1,4 @@
-Additions for Commit "Build: 1.16.4-1.4.8, Literally 1,102 Files and 27 Universioned Ones":
+Additions for Commit "Build: 1.16.4-1.4.8: Literally 1,102 Files and 27 Universioned Ones":
 
 New Features:
 - Variants cauldrons are now water-loggable [done + vanilla cauldron]
@@ -12,8 +12,8 @@ New Blocks:
 - Chiseled End Stone Bricks & Purpur Blocks [done]
 - Elder Prismarine (Raw, Bricks, Dark & Lantern) [done]
 - Nether Brick & End Stone Pillars
-- Enderwood Set
-- Ender Vegetation (Fungus, Sprouts, Roots & Vines)
+- Enderwood Set [done]
+- Ender Vegetation (Fungus, Sprouts, Roots & Vines) [done]
 - Mossy Nether Brick, End Stone Brick & Purpur Block
 - Potted Golden Carrots, Warped Wart & Grass
 - Quartz Glass, Pane & Bars [done]
@@ -26,7 +26,7 @@ New Blocks:
 - Painting & Enderwood Signs
 - Quartz Cauldron & Beacon
 - Crimson, Warped & Ender Farmlands
-- Ender Nylium
+- Ender Nylium [done]
 - Sunny Flowers
 - Potted Torches
 - Painting Sapling [done]
@@ -36,23 +36,23 @@ New Blocks:
 
 New Items:
 - Exponential Bowls (Beetroot, Mushroom, Rabbit, Fungi, End Fungi, Suspicious, Water, Lava, Milk & Powder Snow)
-- Bowls (Oak, Spruce, Birch, Jungle, Acacia, Dark Oak, Painting, Crimson, Warped & Ender)
+- Bowls (Oak, Spruce, Birch, Jungle, Acacia, Dark Oak, Painting, Crimson, Warped & Ender) [done]
   - Compat Bowls: Glassy Oak, Plain Birch & Wooden (from F10 Blocks)
 - Stew/Soup Buckets
-- Copper Chestplate
+- Copper Chestplate [done]
 - (Corner) Iron Tie, Powered Tie, Detector Plate, Powered Railbed & Wooden Railbed
-- Painting, Crimson & Warped Boats
+- Painting, Crimson & Warped Boats [done]
 - Crystallized Honey
 - Diamond, Emerald & Quartz Nuggets [done]
-- Emerald Armor Set
-- End Fungi Stew
-- End Stone Tool Set
+- Emerald Armor Set [done]
+- End Fungi Stew [done]
+- End Stone Tool Set [done]
 - Enderwood Stick [done]
 - Sweet Berry & Glow Berry Pots [done]
 - Sugar Pot [done]
 - Raw Fish, Cooked Fish & Bucket of Fish (Old Cod)
-- Quartz Tool Set
-- Quartz Armor Set + Horse Armor
+- Quartz Tool Set [done]
+- Quartz Armor Set + Horse Armor [done]
 - Red Nether Brick [done]
 - Soul Lava Bucket [done]
 - Soul Brewing Stand

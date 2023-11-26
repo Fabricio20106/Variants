@@ -5,6 +5,7 @@ import com.junethewoods.variants.block.VSBlocks;
 import com.junethewoods.variants.blockentity.custom.VSBeaconBlockEntity;
 import com.junethewoods.variants.blockentity.custom.VSBedBlockEntity;
 import com.junethewoods.variants.blockentity.custom.VSBellBlockEntity;
+import com.junethewoods.variants.blockentity.custom.VSSignBlockEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -21,4 +22,7 @@ public class VSBlockEntities {
 
     public static final RegistryObject<TileEntityType<VSBedBlockEntity>> VS_BED = BLOCK_ENTITIES.register("vs_bed", () -> TileEntityType.Builder.of(VSBedBlockEntity::new,
             VSBlocks.GLOW_BLACK_BED.get()).build(null));
+
+    public static final RegistryObject<TileEntityType<VSSignBlockEntity>> VS_SIGN = BLOCK_ENTITIES.register("vs_sign", () -> TileEntityType.Builder.of(VSSignBlockEntity::new,
+            VSBlocks.ENDERWOOD_SIGN.get(), VSBlocks.ENDERWOOD_WALL_SIGN.get()).build(null));
 }

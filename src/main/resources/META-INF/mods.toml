@@ -17,7 +17,7 @@ issueTrackerURL="https://github.com/Fabricio20106/Variants/issues" #optional
 # The mod id of the mod.
 modId="variants" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it.
-version="1.16.5-v1.6.12" #mandatory
+version="1.16.5-v1.6.13" #mandatory
  # A display name for the mod.
 displayName="Variants" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>.
@@ -31,7 +31,9 @@ credits="Other Mods" #optional
 # A text field displayed in the mod UI.
 authors="JuneTheWoods" #optional
 # The description text for the mod (multi line!) (#mandatory)
-description='''Variants adds various variants of vanilla items or blocks, ranging from Copper armor and tools to potted sugar cane.'''
+description='''Variants adds various variants of vanilla items or blocks, ranging from Copper armor and tools to potted sugar cane.
+
+Changelogs for versions of Variants can be seen here: https://github.com/Fabricio20106/Informational-Mod-Features/tree/main/Variants/Changelogs'''
 
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.variants]] #optional

@@ -2,6 +2,9 @@ package com.junethewoods.variants;
 
 import com.google.common.collect.ImmutableMap;
 import com.junethewoods.variants.block.VSBlocks;
+import com.junethewoods.variants.entity.VSEntities;
+import com.junethewoods.variants.entity.renderer.FishRenderer;
+import com.junethewoods.variants.entity.renderer.VSBoatRenderer;
 import com.junethewoods.variants.fluid.VSFluids;
 import com.junethewoods.variants.blockentity.VSBlockEntities;
 import com.junethewoods.variants.blockentity.renderer.VSBedBlockEntityRenderer;
@@ -12,18 +15,25 @@ import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.VSWeaponry;
 import com.junethewoods.variants.sound.VSSounds;
 import com.junethewoods.variants.util.VSClientHelpers;
+import com.junethewoods.variants.util.VSWoodTypes;
 import net.minecraft.block.Block;
+import net.minecraft.block.WoodType;
+import net.minecraft.client.renderer.Atlases;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.tileentity.BeaconTileEntityRenderer;
+import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
+import net.minecraft.entity.EntitySpawnPlacementRegistry;
+import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.item.AxeItem;
-import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -32,8 +42,6 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import static com.junethewoods.variants.util.VSClientHelpers.compostable;
 
 @Mod(Variants.MOD_ID)
 public class Variants {
@@ -51,6 +59,7 @@ public class Variants {
         VSWeaponry.ITEMS.register(eventBus);
         VSBlocks.BLOCKS.register(eventBus);
         VSFluids.FLUIDS.register(eventBus);
+        VSEntities.ENTITIES.register(eventBus);
         VSBlockEntities.BLOCK_ENTITIES.register(eventBus);
         VSEffects.EFFECTS.register(eventBus);
         VSSounds.SOUNDS.register(eventBus);
@@ -69,19 +78,14 @@ public class Variants {
                 .put(VSBlocks.ENDERWOOD_STEM.get(), VSBlocks.STRIPPED_ENDERWOOD_STEM.get())
                 .put(VSBlocks.ENDERWOOD_HYPHAE.get(), VSBlocks.STRIPPED_ENDERWOOD_HYPHAE.get()).build();
 
-        compostable(0.3f, VSItems.PAINTING_SAPLING.get());
-        compostable(0.3f, VSItems.PAINTING_LEAVES.get());
-        compostable(0.3f, VSItems.GLOW_BERRY_BUSH.get());
-        compostable(0.5f, VSItems.END_SPROUTS.get());
-        compostable(0.5f, VSItems.WARPING_VINES.get());
-        compostable(0.65f, VSItems.WARPED_WART.get());
-        compostable(0.65f, VSItems.ENDER_WART.get());
-        compostable(0.65f, VSItems.GLOW_BLACK_TULIP.get());
-        compostable(0.65f, VSItems.GOLDEN_CARROTS.get());
-        compostable(0.65f, VSItems.ENDER_ROOTS.get());
-        compostable(0.65f, VSItems.ENDER_FUNGUS.get());
-        compostable(0.65f, Items.GOLDEN_CARROT);
-        compostable(0.85f, VSItems.ENDER_WART_BLOCK.get());
+        EntitySpawnPlacementRegistry.register(VSEntities.FISH.get(), EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractFishEntity::checkFishSpawnRules);
+
+        VSClientHelpers.compostables();
+        VSClientHelpers.tillables();
+        VSClientHelpers.flammables();
+
+        WoodType.register(VSWoodTypes.PAINTING);
+        WoodType.register(VSWoodTypes.ENDERWOOD);
     }
 
     public void clientSetup(final FMLClientSetupEvent event) {
@@ -90,9 +94,16 @@ public class Variants {
         VSClientHelpers.makeCustomWoolSweaters(VSWeaponry.WOOL_SWEATER.get());
         setRenderTypesForBlocks();
 
+        Atlases.addWoodType(VSWoodTypes.PAINTING);
+        Atlases.addWoodType(VSWoodTypes.ENDERWOOD);
+
+        RenderingRegistry.registerEntityRenderingHandler(VSEntities.FISH.get(), FishRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(VSEntities.VS_BOAT.get(), VSBoatRenderer::new);
+
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_BELL.get(), VSBellBlockEntityRenderer::new);
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_BEACON.get(), BeaconTileEntityRenderer::new);
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_BED.get(), VSBedBlockEntityRenderer::new);
+        ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_SIGN.get(), SignTileEntityRenderer::new);
     }
 
     @SubscribeEvent

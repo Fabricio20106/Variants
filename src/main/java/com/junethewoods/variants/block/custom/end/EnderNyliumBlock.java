@@ -1,4 +1,4 @@
-package com.junethewoods.variants.block.custom.theend;
+package com.junethewoods.variants.block.custom.end;
 
 import com.junethewoods.variants.block.VSBlocks;
 import com.junethewoods.variants.world.feature.VSFeatures;
@@ -8,7 +8,6 @@ import net.minecraft.block.NyliumBlock;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldReader;
-import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.feature.NetherVegetationFeature;
 import net.minecraft.world.lighting.LightEngine;
 import net.minecraft.world.server.ServerWorld;
