@@ -12,7 +12,8 @@
     "item.ShearsItemMixin",
     "item.FlintAndSteelItemMixin",
     "item.ShieldItemMixin",
-    "enchantment.QuickChargeEnchantmentMixin"
+    "enchantment.QuickChargeEnchantmentMixin",
+    "world.LightEngineMixin"
   ],
   "client": [],
   "server": [],

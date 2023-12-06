@@ -63,7 +63,7 @@ public class VSBlocks {
     public static final RegistryObject<Block> ENDERWOOD_DOOR = BLOCKS.register("ender_door", () -> new DoorBlock(AbstractBlock.Properties.copy(Blocks.WARPED_DOOR)));
     public static final RegistryObject<Block> ENDERWOOD_SIGN = BLOCKS.register("ender_sign", () -> new VSStandingSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_SIGN), VSWoodTypes.ENDERWOOD));
     public static final RegistryObject<Block> ENDERWOOD_WALL_SIGN = BLOCKS.register("ender_wall_sign", () -> new VSWallSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_WALL_SIGN).lootFrom(VSBlocks.ENDERWOOD_SIGN), VSWoodTypes.ENDERWOOD));
-    public static final RegistryObject<Block> ELDER_SEA_LANTERN = BLOCKS.register("elder_sea_lantern", () -> new ConduitFrameBlock(AbstractBlock.Properties.copy(Blocks.SEA_LANTERN)));
+    public static final RegistryObject<Block> ELDER_SEA_LANTERN = BLOCKS.register("elder_sea_lantern", () -> new ConduitFrameBlock(AbstractBlock.Properties.copy(Blocks.SEA_LANTERN).emissiveRendering((a, b, c) -> true)));
     public static final RegistryObject<Block> ELDER_PRISMARINE = BLOCKS.register("elder_prismarine", () -> new ConduitFrameBlock(AbstractBlock.Properties.copy(Blocks.PRISMARINE)));
     public static final RegistryObject<Block> ELDER_PRISMARINE_STAIRS = BLOCKS.register("elder_prismarine_stairs", () -> new StairsBlock(() -> VSBlocks.ELDER_PRISMARINE.get().defaultBlockState(), AbstractBlock.Properties.copy(Blocks.PRISMARINE_STAIRS)));
     public static final RegistryObject<Block> ELDER_PRISMARINE_SLAB = BLOCKS.register("elder_prismarine_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(Blocks.PRISMARINE_SLAB)));
@@ -83,7 +83,7 @@ public class VSBlocks {
     public static final RegistryObject<Block> QUARTZ_ORE = BLOCKS.register("quartz_ore", () -> new VSOreBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(3f, 3f)));
     public static final RegistryObject<Block> DEEPSLATE_QUARTZ_ORE = BLOCKS.register("deepslate_quartz_ore", () -> new VSOreBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(4.5f, 3f)));
     public static final RegistryObject<Block> END_QUARTZ_ORE = BLOCKS.register("end_quartz_ore", () -> new VSOreBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).requiresCorrectToolForDrops().strength(3f, 9f)));
-    public static final RegistryObject<Block> GOLDEN_CAULDRON = BLOCKS.register("gold_cauldron", () -> new VSCauldronBlock(AbstractBlock.Properties.copy(Blocks.GOLD_BLOCK).noOcclusion()));
+    public static final RegistryObject<Block> GOLDEN_CAULDRON = BLOCKS.register("gold_cauldron", () -> new CauldronBlock(AbstractBlock.Properties.copy(Blocks.GOLD_BLOCK).noOcclusion()));
     public static final RegistryObject<Block> GOLDEN_BEACON = BLOCKS.register("gold_beacon", () -> new VSBeaconBlock(DyeColor.YELLOW, AbstractBlock.Properties.copy(Blocks.BEACON)));
     public static final RegistryObject<Block> DIAMOND_BELL = BLOCKS.register("diamond_bell", () -> new VSBellBlock(AbstractBlock.Properties.copy(Blocks.BELL)));
     public static final RegistryObject<Block> NETHERRACK_LEVER = BLOCKS.register("netherrack_lever", () -> new LeverBlock(AbstractBlock.Properties.copy(Blocks.LEVER).sound(SoundType.NETHERRACK)));

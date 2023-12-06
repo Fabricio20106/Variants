@@ -3,6 +3,7 @@ package com.junethewoods.variants.mixin.item;
 import com.junethewoods.variants.config.VSConfigs;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.HorseArmorItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
@@ -16,7 +17,11 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 @Mixin(HorseArmorItem.class)
-public class HorseArmorItemMixin {
+public class HorseArmorItemMixin extends Item {
+    public HorseArmorItemMixin(Properties properties) {
+        super(properties);
+    }
+
     @Unique
     public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
         if (VSConfigs.COMMON_CONFIGS.horseArmorArmorPointsOnTooltip.get()) {
