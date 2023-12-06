@@ -23,7 +23,7 @@ apply plugin: 'idea'
 
 Calendar calendar = Calendar.getInstance()
 String year = String.valueOf(calendar.getWeekYear()).replace("20", "")
-version = '1.16.5-v1.6.13.2-' + year + 'd' + calendar.get(Calendar.DAY_OF_YEAR) + 'a'
+version = '1.16.5-v1.6.14-' + year + 'd' + calendar.get(Calendar.DAY_OF_YEAR) + 'a'
 
 // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 group = 'com.junethewoods.variants'
@@ -69,6 +69,7 @@ minecraft {
         }
 
         server {
+            property 'mixin.env.disableRefMap', 'true'
             workingDirectory project.file('run')
 
             // Recommended logging data for a user development environment.

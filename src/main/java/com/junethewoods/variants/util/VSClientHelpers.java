@@ -1,6 +1,7 @@
 package com.junethewoods.variants.util;
 
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.junethewoods.variants.block.VSBlocks;
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.custom.armor.WoolArmorItem;
@@ -9,7 +10,9 @@ import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.state.properties.BedPart;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.village.PointOfInterestType;
 
 import static net.minecraft.item.ItemModelsProperties.register;
 
@@ -27,6 +30,11 @@ public class VSClientHelpers {
     public static void tillable(Block block, BlockState farmland) {
         HoeItem.TILLABLES = Maps.newHashMap(HoeItem.TILLABLES);
         HoeItem.TILLABLES.put(block, farmland);
+    }
+
+    public static void addBed(Block bed) {
+        PointOfInterestType.BEDS = Sets.newHashSet(PointOfInterestType.BEDS);
+        PointOfInterestType.BEDS.add(bed.defaultBlockState().setValue(BedBlock.PART, BedPart.HEAD));
     }
 
     public static void flammable(Block block, int encouragement, int flammability) {

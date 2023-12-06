@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "variants:oak_stick",
+    "variants:spruce_stick",
+    "variants:birch_stick",
+    "variants:jungle_stick",
+    "variants:acacia_stick",
+    "variants:dark_oak_stick",
+    "variants:painting_stick"
+  ]
+}

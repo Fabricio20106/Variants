@@ -526,6 +526,7 @@ c12e6adfc6f3eb3e5600b65115bb56045e3147d6 data/forge/tags/items/raw_materials.jso
 6b03655a857833411c1f228f71c284ee34f74daa data/forge/tags/items/rods.json
 8e72f09fad47e0ed6c642b1badf0c5633d29b71e data/forge/tags/items/rods/debug_wooden.json
 e085851eb249e22e061ce33a7f4591a7a9d70f98 data/forge/tags/items/rods/netherite.json
+e2385e125349408b2fe427c2a6f844b28f5ed544 data/forge/tags/items/rods/obtainable_through_fishing.json
 fa6da1a5920753755eb9111edee3b100424af755 data/forge/tags/items/rods/soul_blaze.json
 8a60b72103a7841fa4c3bfb765a4f4807438bde3 data/forge/tags/items/rods/wooden.json
 e7c57ade85b410bc30402be4a3a08605a7b066bf data/forge/tags/items/shears.json
@@ -605,6 +606,10 @@ abe677791f6d916b3b307bd1270f4d6687516251 data/variants/tags/blocks/warped_wart_p
 6ebd4cc1d89baa672698040b5759610f4868fa26 data/variants/tags/items/beacons.json
 b5bc1ca7b58264402db9fe46df7a85efa35a17a4 data/variants/tags/items/books.json
 3aaeb88de44811b3a9955501fe0607fe9aefb4bf data/variants/tags/items/bookshelves.json
+d4748672d2f4454df1e9b0d9b090e328beca11bc data/variants/tags/items/bowls.json
+8ab7d440c65f672ec0ec1ee0c52c15793cc1f31e data/variants/tags/items/bowls/obtainable_through_fishing.json
+dd34e8107b95914e6b94f0acb520c36b45480a06 data/variants/tags/items/bowls/wooden.json
+4d9115ef8b4c92c233e724324962ac62c8e1b6a8 data/variants/tags/items/catlike_tame_items.json
 8459b8738727a0ee656535abf26353c5e6faec51 data/variants/tags/items/cauldrons.json
 5864a9f17585a1454adc6792234949aa0096416c data/variants/tags/items/crafting_materials.json
 1f70ed4ddc878bada5e43d3c44a34157806beda8 data/variants/tags/items/crafting_materials/andesite.json

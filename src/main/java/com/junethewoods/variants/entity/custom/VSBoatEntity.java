@@ -38,21 +38,21 @@ public class VSBoatEntity extends BoatEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(WOOD_TYPE, "painting");
+    protected void addAdditionalSaveData(CompoundNBT compoundNBT) {
+        super.addAdditionalSaveData(compoundNBT);
+        compoundNBT.putString("Type", this.getWoodType());
     }
 
     @Override
     protected void readAdditionalSaveData(CompoundNBT compoundNBT) {
         super.readAdditionalSaveData(compoundNBT);
-        compoundNBT.putString("Type", this.getWoodType());
+        this.setWoodType(compoundNBT.getString("Type"));
     }
 
     @Override
-    protected void addAdditionalSaveData(CompoundNBT compoundNBT) {
-        super.addAdditionalSaveData(compoundNBT);
-        compoundNBT.putString("Type", this.getWoodType());
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(WOOD_TYPE, "painting");
     }
 
     public String getWoodType() {

@@ -2,15 +2,15 @@ package com.junethewoods.variants;
 
 import com.google.common.collect.ImmutableMap;
 import com.junethewoods.variants.block.VSBlocks;
-import com.junethewoods.variants.entity.VSEntities;
-import com.junethewoods.variants.entity.renderer.FishRenderer;
-import com.junethewoods.variants.entity.renderer.VSBoatRenderer;
-import com.junethewoods.variants.fluid.VSFluids;
 import com.junethewoods.variants.blockentity.VSBlockEntities;
 import com.junethewoods.variants.blockentity.renderer.VSBedBlockEntityRenderer;
 import com.junethewoods.variants.blockentity.renderer.VSBellBlockEntityRenderer;
 import com.junethewoods.variants.config.VSConfigs;
 import com.junethewoods.variants.effect.VSEffects;
+import com.junethewoods.variants.entity.VSEntities;
+import com.junethewoods.variants.entity.renderer.FishRenderer;
+import com.junethewoods.variants.entity.renderer.VSBoatRenderer;
+import com.junethewoods.variants.fluid.VSFluids;
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.VSWeaponry;
 import com.junethewoods.variants.sound.VSSounds;
@@ -83,8 +83,9 @@ public class Variants {
         VSClientHelpers.compostables();
         VSClientHelpers.tillables();
         VSClientHelpers.flammables();
+        VSClientHelpers.addBed(VSBlocks.GLOW_BLACK_BED.get());
 
-        WoodType.register(VSWoodTypes.PAINTING);
+//        WoodType.register(VSWoodTypes.PAINTING);
         WoodType.register(VSWoodTypes.ENDERWOOD);
     }
 
@@ -94,7 +95,7 @@ public class Variants {
         VSClientHelpers.makeCustomWoolSweaters(VSWeaponry.WOOL_SWEATER.get());
         setRenderTypesForBlocks();
 
-        Atlases.addWoodType(VSWoodTypes.PAINTING);
+//        Atlases.addWoodType(VSWoodTypes.PAINTING);
         Atlases.addWoodType(VSWoodTypes.ENDERWOOD);
 
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.FISH.get(), FishRenderer::new);

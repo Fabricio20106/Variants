@@ -59,9 +59,11 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.RODS_DEBUG_WOODEN).add(Items.DEBUG_STICK);
         this.tag(VSTags.Items.RODS_NETHERITE).add(VSItems.NETHERITE_ROD.get());
         this.tag(VSTags.Items.RODS_SOUL_BLAZE).add(VSItems.SOUL_BLAZE_ROD.get());
-        this.tag(Tags.Items.RODS).addTag(VSTags.Items.RODS_DEBUG_WOODEN).addTag(VSTags.Items.RODS_NETHERITE).addTag(VSTags.Items.RODS_SOUL_BLAZE);
-        this.tag(Tags.Items.RODS_WOODEN).add(VSItems.OAK_STICK.get()).add(VSItems.SPRUCE_STICK.get()).add(VSItems.BIRCH_STICK.get()).add(VSItems.JUNGLE_STICK.get())
-                .add(VSItems.ACACIA_STICK.get()).add(VSItems.DARK_OAK_STICK.get()).add(VSItems.PAINTING_STICK.get()).add(VSItems.CRIMSON_STICK.get()).add(VSItems.WARPED_STICK.get()).add(VSItems.ENDERWOOD_STICK.get());
+        this.tag(VSTags.Items.FISHING_WOODEN_RODS).add(Items.STICK).add(VSItems.OAK_STICK.get()).add(VSItems.SPRUCE_STICK.get()).add(VSItems.BIRCH_STICK.get()).add(VSItems.JUNGLE_STICK.get()).add(VSItems.ACACIA_STICK.get())
+                .add(VSItems.DARK_OAK_STICK.get()).add(VSItems.PAINTING_STICK.get());
+        this.tag(Tags.Items.RODS_WOODEN).add(VSItems.OAK_STICK.get()).add(VSItems.SPRUCE_STICK.get()).add(VSItems.BIRCH_STICK.get()).add(VSItems.JUNGLE_STICK.get()).add(VSItems.ACACIA_STICK.get()).add(VSItems.DARK_OAK_STICK.get())
+                .add(VSItems.PAINTING_STICK.get()).add(VSItems.CRIMSON_STICK.get()).add(VSItems.WARPED_STICK.get()).add(VSItems.ENDERWOOD_STICK.get());
+        this.tag(Tags.Items.RODS).addTag(VSTags.Items.FISHING_WOODEN_RODS).addTag(VSTags.Items.RODS_DEBUG_WOODEN).addTag(VSTags.Items.RODS_NETHERITE).addTag(VSTags.Items.RODS_SOUL_BLAZE);
 
         this.tag(Tags.Items.SHEARS).add(VSWeaponry.COAL_SHEARS.get()).add(VSWeaponry.GOLDEN_SHEARS.get()).add(VSWeaponry.COPPER_SHEARS.get()).add(VSWeaponry.EXPOSED_COPPER_SHEARS.get())
                 .add(VSWeaponry.WEATHERED_COPPER_SHEARS.get()).add(VSWeaponry.OXIDIZED_COPPER_SHEARS.get()).add(VSWeaponry.AMETHYST_SHEARS.get()).add(VSWeaponry.DIAMOND_SHEARS.get())
@@ -105,12 +107,18 @@ public class VSItemTagsProvider extends ItemTagsProvider {
                 .add(VSItems.GUNPOWDER_POT.get()).add(VSItems.CREEPER_POWDER_POT.get()).add(VSItems.SUGAR_POT.get()).add(VSItems.SWEET_BERRY_POT.get()).add(VSItems.GLOW_BERRY_POT.get());
         this.tag(VSTags.Items.SHIELDS).add(Items.SHIELD).add(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
         this.tag(VSTags.Items.SPYGLASSES).add(VSWeaponry.IRON_SPYGLASS.get()).add(VSWeaponry.DIAMOND_SPYGLASS.get()).add(VSWeaponry.NETHERITE_SPYGLASS.get());
+        this.tag(VSTags.Items.CATLIKE_TAME_ITEMS).add(Items.COD).add(Items.SALMON).add(Items.TROPICAL_FISH).add(VSItems.RAW_FISH.get());
         this.tag(VSTags.Items.SHULKER_SHELLS).add(Items.SHULKER_SHELL).add(VSItems.WHITE_SHULKER_SHELL.get()).add(VSItems.INNO_SHULKER_SHELL.get())
                 .add(VSItems.ORANGE_SHULKER_SHELL.get()).add(VSItems.MAGENTA_SHULKER_SHELL.get()).add(VSItems.LIGHT_BLUE_SHULKER_SHELL.get()).add(VSItems.GLOW_BLACK_SHULKER_SHELL.get())
                 .add(VSItems.YELLOW_SHULKER_SHELL.get()).add(VSItems.LIME_SHULKER_SHELL.get()).add(VSItems.PINK_SHULKER_SHELL.get())
                 .add(VSItems.GRAY_SHULKER_SHELL.get()).add(VSItems.LIGHT_GRAY_SHULKER_SHELL.get()).add(VSItems.CYAN_SHULKER_SHELL.get())
                 .add(VSItems.PURPLE_SHULKER_SHELL.get()).add(VSItems.BLUE_SHULKER_SHELL.get()).add(VSItems.BROWN_SHULKER_SHELL.get())
                 .add(VSItems.GREEN_SHULKER_SHELL.get()).add(VSItems.RED_SHULKER_SHELL.get()).add(VSItems.BLACK_SHULKER_SHELL.get());
+        this.tag(VSTags.Items.FISHING_BOWLS).add(Items.BOWL).add(VSItems.OAK_BOWL.get()).add(VSItems.SPRUCE_BOWL.get()).add(VSItems.BIRCH_BOWL.get()).add(VSItems.JUNGLE_BOWL.get()).add(VSItems.ACACIA_BOWL.get()).add(VSItems.DARK_OAK_BOWL.get())
+                .add(VSItems.PAINTING_BOWL.get());
+        this.tag(VSTags.Items.WOODEN_BOWLS).add(Items.BOWL).add(VSItems.OAK_BOWL.get()).add(VSItems.SPRUCE_BOWL.get()).add(VSItems.BIRCH_BOWL.get()).add(VSItems.JUNGLE_BOWL.get()).add(VSItems.ACACIA_BOWL.get()).add(VSItems.DARK_OAK_BOWL.get())
+                .add(VSItems.PAINTING_BOWL.get()).add(VSItems.CRIMSON_BOWL.get()).add(VSItems.WARPED_BOWL.get()).add(VSItems.ENDERWOOD_BOWL.get());
+        this.tag(VSTags.Items.BOWLS).addTag(VSTags.Items.WOODEN_BOWLS).addTag(VSTags.Items.FISHING_BOWLS);
 
         this.tag(VSTags.Items.PAINTING_LOGS).add(VSItems.PAINTING_LOG.get()).add(VSItems.PAINTING_WOOD.get()).add(VSItems.STRIPPED_PAINTING_LOG.get())
                 .add(VSItems.STRIPPED_PAINTING_WOOD.get());

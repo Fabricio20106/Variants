@@ -27,6 +27,7 @@ public class VSTags {
         public static final ITag.INamedTag<Item> RAW_MATERIALS = forge("raw_materials");
         public static final ITag.INamedTag<Item> RAW_MATERIALS_NETHERITE_SCRAP = forge("raw_materials/netherite_scrap");
 
+        public static final ITag.INamedTag<Item> FISHING_WOODEN_RODS = forge("rods/obtainable_through_fishing");
         public static final ITag.INamedTag<Item> RODS_DEBUG_WOODEN = forge("rods/debug_wooden");
         public static final ITag.INamedTag<Item> RODS_NETHERITE = forge("rods/netherite");
         public static final ITag.INamedTag<Item> RODS_SOUL_BLAZE = forge("rods/soul_blaze");
@@ -62,6 +63,10 @@ public class VSTags {
         public static final ITag.INamedTag<Item> POTS = mod("pots");
         public static final ITag.INamedTag<Item> SHIELDS = mod("shields");
         public static final ITag.INamedTag<Item> SPYGLASSES = mod("spyglasses");
+        public static final ITag.INamedTag<Item> BOWLS = mod("bowls");
+        public static final ITag.INamedTag<Item> FISHING_BOWLS = mod("bowls/obtainable_through_fishing");
+        public static final ITag.INamedTag<Item> WOODEN_BOWLS = mod("bowls/wooden");
+        public static final ITag.INamedTag<Item> CATLIKE_TAME_ITEMS = mod("catlike_tame_items");
 
         public static ITag.INamedTag<Item> forge(String name) {
             return ItemTags.bind(new ResourceLocation("forge", name).toString());

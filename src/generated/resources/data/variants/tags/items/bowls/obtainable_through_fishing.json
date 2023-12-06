@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:bowl",
+    "variants:oak_bowl",
+    "variants:spruce_bowl",
+    "variants:birch_bowl",
+    "variants:jungle_bowl",
+    "variants:acacia_bowl",
+    "variants:dark_oak_bowl",
+    "variants:painting_bowl"
+  ]
+}

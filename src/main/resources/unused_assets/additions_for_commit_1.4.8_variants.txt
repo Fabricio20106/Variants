@@ -23,9 +23,9 @@ New Blocks:
 - Azure Bluet Leaves
 - Diamond, Emerald & Quartz Chains [done + golden chain]
 - Netherrack & End Stone Levers [done]
-- Painting & Enderwood Signs
+- Painting & Enderwood Signs [enderwood done]
 - Quartz Cauldron & Beacon
-- Crimson, Warped & Ender Farmlands
+- Crimson, Warped & Ender Farmlands [ender farmland done]
 - Ender Nylium [done]
 - Sunny Flowers
 - Potted Torches
@@ -33,6 +33,7 @@ New Blocks:
 - Infested Chiseled End Stone & Purpur Blocks [done]
 - Infested Mossy End Stone Bricks, Nether Bricks & Purpur Block
 - Enderwood Bookshelves [done]
+- Soul Brewing Stand
 
 New Items:
 - Exponential Bowls (Beetroot, Mushroom, Rabbit, Fungi, End Fungi, Suspicious, Water, Lava, Milk & Powder Snow)
@@ -55,5 +56,4 @@ New Items:
 - Quartz Armor Set + Horse Armor [done]
 - Red Nether Brick [done]
 - Soul Lava Bucket [done]
-- Soul Brewing Stand
 - Wither Bone & Bone Meal

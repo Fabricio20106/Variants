@@ -112,8 +112,8 @@
   "death.attack.poisoning.glowstone.player": "%1$s died of glowstone poisoning whilst %2$s watched",
   "death.attack.poisoning.gunpowder": "%1$s died of gunpowder poisoning",
   "death.attack.poisoning.gunpowder.player": "%1$s died of gunpowder poisoning whilst %2$s watched",
-  "death.attack.poisoning.creeper_powder": "%1$s died of creeperpowder poisoning",
-  "death.attack.poisoning.creeper_powder.player": "%1$s died of creeperpowder poisoning whilst %2$s watched",
+  "death.attack.poisoning.creeper_powder": "%1$s died of explosive blend poisoning",
+  "death.attack.poisoning.creeper_powder.player": "%1$s died of explosive blend poisoning whilst %2$s watched",
 
   "entity.variants.vs_boat": "Boat (Variants)",
   "entity.variants.old_cod": "Fish",
@@ -122,7 +122,7 @@
   "effect.variants.bluestone_poisoning": "Bluestone Poisoning",
   "effect.variants.glowstone_poisoning": "Glowstone Poisoning",
   "effect.variants.gunpowder_poisoning": "Gunpowder Poisoning",
-  "effect.variants.creeper_powder_poisoning": "Creeperpowder Poisoning",
+  "effect.variants.creeper_powder_poisoning": "Ex. Blend Poisoning",
 
   "item.variants.diorite_sword": "Diorite Sword",
   "item.variants.diorite_pickaxe": "Diorite Pickaxe",
@@ -180,7 +180,7 @@
   "item.variants.bluestone_pot": "Bluestone Pot",
   "item.variants.glowstone_pot": "Glowstone Pot",
   "item.variants.gunpowder_pot": "Gunpowder Pot",
-  "item.variants.creeper_powder_pot": "Creeperpowder Pot",
+  "item.variants.creeper_powder_pot": "Explosive Blend Pot",
   "item.variants.sugar_pot": "Sugar Pot",
   "item.variants.sweet_berry_pot": "Sweet Berry Pot",
   "item.variants.glow_berry_pot": "Glow Berry Pot",
@@ -224,9 +224,6 @@
   "item.variants.fungi_stew": "Fungi Stew",
   "item.variants.end_fungi_stew": "End Fungi Stew",
   "item.variants.debug_bow": "Debug Bow",
-  "item.variants.debug_bow.empty": "%s has no properties",
-  "item.variants.debug_bow.update": "Changed property \"%s\" to %s",
-  "item.variants.debug_bow.select": "Selected \"%s\" (Currently \"%s\")",
   "item.variants.music_disc_dog": "Music Disc",
   "item.variants.music_disc_dog.desc": "C418 - dog",
   "item.variants.spawner_minecart": "Minecart with Spawner",
@@ -309,6 +306,13 @@
 
   "tooltip.variants.horse_armor.when_on_horse": "When on Horse:",
   "tooltip.variants.horse_armor.armor_stats": "+%s Armor",
+
+  "tooltip.variants.debug.empty": "%s has no properties",
+  "tooltip.variants.debug.update": "Changed property \"%s\" to %s",
+  "tooltip.variants.debug.select": "Selected \"%s\" (Currently \"%s\")",
+  "tooltip.variants.debug.survival": "Cannot change block states in Survival Mode",
+  "tooltip.variants.debug.adventure": "Cannot change block states in Adventure Mode",
+  "tooltip.variants.debug.spectator": "Cannot change block states in Spectator Mode",
 
   "tooltip.variants.firework_rocket.flight_duration": "§7Flight Duration: %s",
   "tooltip.variants.firework_rocket.flight_duration.unknown": "Unknown",

@@ -1,5 +1,6 @@
 package com.junethewoods.variants.item.custom.tool;
 
+import com.junethewoods.variants.Variants;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,6 +18,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.ChatType;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
@@ -58,7 +60,7 @@ public class DebugBowItem extends BowItem {
             Collection<Property<?>> collection = stateDefinition.getProperties();
             String blockRegistryKey = Registry.BLOCK.getKey(block).toString();
             if (collection.isEmpty()) {
-                sendMessage(player, new TranslationTextComponent(this.getDescriptionId() + ".empty", blockRegistryKey));
+                sendMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.empty", blockRegistryKey));
             } else {
                 CompoundNBT debugProperty = stack.getOrCreateTagElement("debug_property");
                 String s1 = debugProperty.getString(blockRegistryKey);
@@ -70,15 +72,18 @@ public class DebugBowItem extends BowItem {
 
                     BlockState state1 = cycleState(state, property, player.isSecondaryUseActive());
                     world.setBlock(pos, state1, 18);
-                    sendMessage(player, new TranslationTextComponent(this.getDescriptionId() + ".update", property.getName(), getNameHelper(state1, property)));
+                    sendMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.update", property.getName(), getNameHelper(state1, property)));
                 } else {
                     property = getRelative(collection, property, player.isSecondaryUseActive());
                     String s2 = property.getName();
                     debugProperty.putString(blockRegistryKey, s2);
-                    sendMessage(player, new TranslationTextComponent(this.getDescriptionId() + ".select", s2, getNameHelper(state, property)));
+                    sendMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.select", s2, getNameHelper(state, property)));
                 }
             }
         }
+        if (!player.abilities.mayfly) sendMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.survival").withStyle(TextFormatting.RED));
+        if (!player.abilities.mayBuild) sendMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.adventure").withStyle(TextFormatting.RED));
+        if (player.isSpectator()) sendMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.spectator").withStyle(TextFormatting.RED));
     }
 
     private static <T extends Comparable<T>> BlockState cycleState(BlockState state, Property<T> property, boolean backwards) {

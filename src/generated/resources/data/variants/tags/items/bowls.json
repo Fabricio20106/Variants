@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#variants:bowls/wooden",
+    "#variants:bowls/obtainable_through_fishing"
+  ]
+}

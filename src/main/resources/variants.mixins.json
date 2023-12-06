@@ -6,16 +6,18 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "block.CauldronBlockMixin",
-    "item.FireworkRocketItemMixin",
-    "item.FireworkStarItemMixin",
-    "item.HorseArmorItemMixin",
     "item.ShearsItemMixin",
     "item.FlintAndSteelItemMixin",
     "item.ShieldItemMixin",
     "enchantment.QuickChargeEnchantmentMixin",
-    "world.LightEngineMixin"
+    "entity.EntityTameItemMixins$CatEntityMixin",
+    "entity.EntityTameItemMixins$OcelotEntityMixin"
   ],
-  "client": [],
+  "client": [
+    "item.FireworkRocketItemMixin",
+    "item.FireworkStarItemMixin",
+    "item.HorseArmorItemMixin"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1

@@ -22,6 +22,7 @@ public class FireworkStarItemMixin extends Item {
     }
 
     @Inject(method = "appendHoverText(Lnet/minecraft/nbt/CompoundNBT;Ljava/util/List;)V", at = @At("HEAD"), cancellable = true)
+    @OnlyIn(Dist.CLIENT)
     private static void appendHoverText(CompoundNBT nbt, List<ITextComponent> tooltip, CallbackInfo ci) {
         if (VSConfigs.COMMON_CONFIGS.customFireworkDescriptions.get()) {
             ci.cancel();
