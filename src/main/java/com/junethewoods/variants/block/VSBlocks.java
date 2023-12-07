@@ -20,7 +20,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class VSBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Variants.MOD_ID);
 
-    public static final RegistryObject<Block> PLAIN_BIRCH_BOOKSHELF = BLOCKS.register("plain_birch_bookshelf", () -> new VSBookshelfBlock(AbstractBlock.Properties.copy(Blocks.BOOKSHELF)));
+    public static final RegistryObject<Block> PLAIN_BIRCH_BOOKSHELF = BLOCKS.register("plain_birch_bookshelf", () -> new VSBookshelfBlock(1, AbstractBlock.Properties.copy(Blocks.BOOKSHELF)));
     public static final RegistryObject<Block> PAINTING_LOG = BLOCKS.register("painting_log", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.OAK_LOG)));
     public static final RegistryObject<Block> PAINTING_WOOD = BLOCKS.register("painting_wood", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.OAK_WOOD)));
     public static final RegistryObject<Block> STRIPPED_PAINTING_LOG = BLOCKS.register("stripped_painting_log", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
@@ -46,13 +46,15 @@ public class VSBlocks {
     public static final RegistryObject<Block> PAINTING_DOOR_WANDERER = BLOCKS.register("wanderer_door", () -> new DoorBlock(AbstractBlock.Properties.copy(Blocks.OAK_DOOR)));
     public static final RegistryObject<Block> PAINTING_DOOR_GRAHAM = BLOCKS.register("graham_door", () -> new DoorBlock(AbstractBlock.Properties.copy(Blocks.OAK_DOOR)));
     public static final RegistryObject<Block> PAINTING_DOOR_FIRST = BLOCKS.register("first_door", () -> new DoorBlock(AbstractBlock.Properties.copy(Blocks.OAK_DOOR)));
+    public static final RegistryObject<Block> PAINTING_SIGN = BLOCKS.register("painting_sign", () -> new VSStandingSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_SIGN), VSWoodTypes.PAINTING));
+    public static final RegistryObject<Block> PAINTING_WALL_SIGN = BLOCKS.register("painting_wall_sign", () -> new VSWallSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_WALL_SIGN).lootFrom(VSBlocks.PAINTING_SIGN), VSWoodTypes.PAINTING));
     public static final RegistryObject<Block> ENDERWOOD_STEM = BLOCKS.register("ender_stem", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.WARPED_STEM)));
     public static final RegistryObject<Block> ENDERWOOD_HYPHAE = BLOCKS.register("ender_hyphae", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.WARPED_HYPHAE)));
     public static final RegistryObject<Block> STRIPPED_ENDERWOOD_STEM = BLOCKS.register("stripped_ender_stem", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.STRIPPED_WARPED_STEM)));
     public static final RegistryObject<Block> STRIPPED_ENDERWOOD_HYPHAE = BLOCKS.register("stripped_ender_hyphae", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.STRIPPED_WARPED_HYPHAE)));
     public static final RegistryObject<Block> ENDER_WART_BLOCK = BLOCKS.register("ender_wart_block", () -> new Block(AbstractBlock.Properties.copy(Blocks.WARPED_WART_BLOCK)));
     public static final RegistryObject<Block> ENDERWOOD_PLANKS = BLOCKS.register("ender_planks", () -> new Block(AbstractBlock.Properties.copy(Blocks.WARPED_PLANKS)));
-    public static final RegistryObject<Block> ENDERWOOD_BOOKSHELF = BLOCKS.register("ender_bookshelf", () -> new VSBookshelfBlock(AbstractBlock.Properties.copy(Blocks.BOOKSHELF)));
+    public static final RegistryObject<Block> ENDERWOOD_BOOKSHELF = BLOCKS.register("ender_bookshelf", () -> new VSBookshelfBlock(2, AbstractBlock.Properties.copy(Blocks.BOOKSHELF)));
     public static final RegistryObject<Block> ENDERWOOD_STAIRS = BLOCKS.register("ender_stairs", () -> new StairsBlock(() -> VSBlocks.ENDERWOOD_PLANKS.get().defaultBlockState(), AbstractBlock.Properties.copy(Blocks.WARPED_STAIRS)));
     public static final RegistryObject<Block> ENDERWOOD_SLAB = BLOCKS.register("ender_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(Blocks.WARPED_SLAB)));
     public static final RegistryObject<Block> ENDERWOOD_FENCE = BLOCKS.register("ender_fence", () -> new FenceBlock(AbstractBlock.Properties.copy(Blocks.WARPED_FENCE)));
@@ -79,6 +81,7 @@ public class VSBlocks {
     public static final RegistryObject<Block> CHISELED_PURPUR_BLOCK = BLOCKS.register("chiseled_purpur_block", () -> new Block(AbstractBlock.Properties.copy(Blocks.PURPUR_BLOCK)));
     public static final RegistryObject<Block> INFESTED_CHISELED_PURPUR_BLOCK = BLOCKS.register("infested_chiseled_purpur_block", () -> new SilverfishBlock(VSBlocks.CHISELED_PURPUR_BLOCK.get(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_MAGENTA).strength(0, 0.75F)));
     public static final RegistryObject<Block> RED_NETHER_BRICK_FENCE = BLOCKS.register("red_nether_brick_fence", () -> new FenceBlock(AbstractBlock.Properties.copy(Blocks.NETHER_BRICK_FENCE)));
+    public static final RegistryObject<Block> WITHER_BONE_BLOCK = BLOCKS.register("wither_bone_block", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.BONE_BLOCK)));
     public static final RegistryObject<Block> RAW_DEBRIS_BLOCK = BLOCKS.register("raw_debris_block", () -> new Block(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(30f, 1200f).sound(SoundType.ANCIENT_DEBRIS)));
     public static final RegistryObject<Block> QUARTZ_ORE = BLOCKS.register("quartz_ore", () -> new VSOreBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(3f, 3f)));
     public static final RegistryObject<Block> DEEPSLATE_QUARTZ_ORE = BLOCKS.register("deepslate_quartz_ore", () -> new VSOreBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(4.5f, 3f)));
@@ -109,11 +112,13 @@ public class VSBlocks {
     public static final RegistryObject<Block> WARPING_VINES_PLANT = BLOCKS.register("warping_vines_plant", () -> new WarpingVinesBlock(AbstractBlock.Properties.copy(Blocks.WEEPING_VINES_PLANT)));
     public static final RegistryObject<Block> GOLDEN_CARROTS = BLOCKS.register("golden_carrots", () -> new GoldenCarrotsBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
     public static final RegistryObject<Block> GLOW_BLACK_TULIP = BLOCKS.register("glow_black_tulip", () -> new FlowerBlock(Effects.GLOWING, 7, AbstractBlock.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.CROP)));
+    public static final RegistryObject<Block> SUNNY_FLOWER = BLOCKS.register("sunny_flower", () -> new FlowerBlock(Effects.INVISIBILITY, 9, AbstractBlock.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.CROP)));
     public static final RegistryObject<Block> GLOW_BERRY_BUSH = BLOCKS.register("glow_berry_bush", () -> new SweetBerryBushBlock(AbstractBlock.Properties.copy(Blocks.SWEET_BERRY_BUSH)));
     public static final RegistryObject<Block> WARPED_WART = BLOCKS.register("warped_wart", () -> new WarpedWartBlock(AbstractBlock.Properties.of(Material.PLANT, MaterialColor.WARPED_WART_BLOCK).noCollission().randomTicks().sound(SoundType.FUNGUS)));
     public static final RegistryObject<Block> ENDER_WART = BLOCKS.register("ender_wart", () -> new EnderWartBlock(AbstractBlock.Properties.of(Material.PLANT, MaterialColor.COLOR_PURPLE).noCollission().randomTicks().sound(SoundType.FUNGUS)));
     public static final RegistryObject<Block> POTTED_SUGAR_CANE = BLOCKS.register("potted_sugar_cane", () -> new FlowerPotBlock(Blocks.SUGAR_CANE, AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
     public static final RegistryObject<Block> POTTED_GLOW_BLACK_TULIP = BLOCKS.register("potted_glow_black_tulip", () -> new FlowerPotBlock(VSBlocks.GLOW_BLACK_TULIP.get(), AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
+    public static final RegistryObject<Block> POTTED_SUNNY_FLOWER = BLOCKS.register("potted_sunny_flower", () -> new FlowerPotBlock(VSBlocks.SUNNY_FLOWER.get(), AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
     public static final RegistryObject<Block> POTTED_PAINTING_SAPLING = BLOCKS.register("potted_painting_sapling", () -> new FlowerPotBlock(VSBlocks.PAINTING_SAPLING.get(), AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
     public static final RegistryObject<Block> POTTED_ENDER_ROOTS = BLOCKS.register("potted_ender_roots", () -> new FlowerPotBlock(VSBlocks.ENDER_ROOTS.get(), AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
     public static final RegistryObject<Block> POTTED_ENDER_FUNGUS = BLOCKS.register("potted_ender_fungus", () -> new FlowerPotBlock(VSBlocks.ENDER_FUNGUS.get(), AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));

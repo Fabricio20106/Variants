@@ -1,7 +1,7 @@
 Additions for Commit "Build: 1.16.4-1.4.8: Literally 1,102 Files and 27 Universioned Ones":
 
 New Features:
-- Variants cauldrons are now water-loggable [done + vanilla cauldron]
+- Variants cauldrons are now waterloggable [done + vanilla cauldron]
 - Painting Trees [done]
 - Soul Lava fluid [done]
 - Mushroom Stew fluid
@@ -19,15 +19,15 @@ New Blocks:
 - Quartz Glass, Pane & Bars [done]
 - Red Nether Brick Fence [done]
 - Smooth Purpur + Slab
-- Wither Bone Block
+- Wither Bone Block [done]
 - Azure Bluet Leaves
 - Diamond, Emerald & Quartz Chains [done + golden chain]
 - Netherrack & End Stone Levers [done]
-- Painting & Enderwood Signs [enderwood done]
+- Painting & Enderwood Signs [done]
 - Quartz Cauldron & Beacon
 - Crimson, Warped & Ender Farmlands [ender farmland done]
 - Ender Nylium [done]
-- Sunny Flowers
+- Sunny Flowers [done]
 - Potted Torches
 - Painting Sapling [done]
 - Infested Chiseled End Stone & Purpur Blocks [done]
@@ -38,22 +38,22 @@ New Blocks:
 New Items:
 - Exponential Bowls (Beetroot, Mushroom, Rabbit, Fungi, End Fungi, Suspicious, Water, Lava, Milk & Powder Snow)
 - Bowls (Oak, Spruce, Birch, Jungle, Acacia, Dark Oak, Painting, Crimson, Warped & Ender) [done]
-  - Compat Bowls: Glassy Oak, Plain Birch & Wooden (from F10 Blocks)
+  - Compat Bowls: Glassy Oak, Plain Birch & Wooden (from F10 Blocks) [for Variants Compatibilities]
 - Stew/Soup Buckets
 - Copper Chestplate [done]
 - (Corner) Iron Tie, Powered Tie, Detector Plate, Powered Railbed & Wooden Railbed
 - Painting, Crimson & Warped Boats [done]
 - Crystallized Honey
-- Diamond, Emerald & Quartz Nuggets [done]
+- Diamond, Emerald & Quartz Nuggets [quartz shard done]
 - Emerald Armor Set [done]
 - End Fungi Stew [done]
 - End Stone Tool Set [done]
 - Enderwood Stick [done]
 - Sweet Berry & Glow Berry Pots [done]
 - Sugar Pot [done]
-- Raw Fish, Cooked Fish & Bucket of Fish (Old Cod)
+- Raw Fish, Cooked Fish & Bucket of Fish (Old Cod) [done]
 - Quartz Tool Set [done]
 - Quartz Armor Set + Horse Armor [done]
 - Red Nether Brick [done]
 - Soul Lava Bucket [done]
-- Wither Bone & Bone Meal
+- Wither Bone & Bone Meal [done]

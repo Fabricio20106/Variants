@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "variants:painting_sign",
     "variants:ender_sign"
   ]
 }

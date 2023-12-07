@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "#forge:rods/obtainable_through_fishing",
     "#forge:rods/debug_wooden",
     "#forge:rods/netherite",
     "#forge:rods/soul_blaze"

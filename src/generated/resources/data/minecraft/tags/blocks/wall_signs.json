@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "variants:painting_wall_sign",
     "variants:ender_wall_sign"
   ]
 }

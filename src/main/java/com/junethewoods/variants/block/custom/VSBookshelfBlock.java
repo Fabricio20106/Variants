@@ -7,11 +7,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldReader;
 
 public class VSBookshelfBlock extends Block {
-    public VSBookshelfBlock(Properties properties) {
+    private final int enchantingPower;
+
+    public VSBookshelfBlock(int enchantingPower, Properties properties) {
         super(properties);
+        this.enchantingPower = enchantingPower;
     }
 
     public float getEnchantPowerBonus(BlockState state, IWorldReader world, BlockPos pos) {
-        return state.is(VSTags.Blocks.BOOKSHELVES) ? 1 : 0;
+        return state.is(VSTags.Blocks.BOOKSHELVES) ? this.enchantingPower : 0;
     }
 }

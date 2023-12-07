@@ -38,10 +38,12 @@ public class VSTags {
         public static final ITag.INamedTag<Item> DUSTS_SUGAR = forge("dusts/sugar");
         public static final ITag.INamedTag<Item> DUSTS_BLAZE = forge("dusts/blaze");
         public static final ITag.INamedTag<Item> DUSTS_SOUL_BLAZE = forge("dusts/soul_blaze");
+        public static final ITag.INamedTag<Item> DUSTS_ELDER_PRISMARINE = forge("dusts/elder_prismarine");
 
         public static final ITag.INamedTag<Item> GEMS_ELDER_PRISMARINE = forge("gems/elder_prismarine");
 
         public static final ITag.INamedTag<Item> ARMORS_BOOTS = forge("armors/boots");
+        public static final ITag.INamedTag<Item> BONE_MEALS = forge("bone_meals");
 
         // Variants' Tags
         public static final ITag.INamedTag<Item> CRAFTING_MATERIALS = mod("crafting_materials");

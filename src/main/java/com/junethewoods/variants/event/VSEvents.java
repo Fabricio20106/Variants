@@ -66,6 +66,8 @@ public class VSEvents {
                  8, 1, 0.05f));
         genericTrades.add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(VSItems.GLOW_BLACK_TULIP.get(), 1),
                 12, 1, 0.05f));
+        genericTrades.add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(VSItems.SUNNY_FLOWER.get(), 1),
+                12, 1, 0.05f));
         genericTrades.add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(VSItems.GLOW_BLACK_DYE.get(), 3),
                 12, 1, 0.05f));
         genericTrades.add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 5), new ItemStack(VSItems.GLOW_BERRY_BUSH.get(), 1),

@@ -51,6 +51,7 @@ public class VSClientHelpers {
         compostable(0.65f, VSItems.WARPED_WART.get());
         compostable(0.65f, VSItems.ENDER_WART.get());
         compostable(0.65f, VSItems.GLOW_BLACK_TULIP.get());
+        compostable(0.65f, VSItems.SUNNY_FLOWER.get());
         compostable(0.65f, VSItems.GOLDEN_CARROTS.get());
         compostable(0.65f, VSItems.ENDER_ROOTS.get());
         compostable(0.65f, VSItems.ENDER_FUNGUS.get());
@@ -66,6 +67,7 @@ public class VSClientHelpers {
         flammable(VSBlocks.GLOW_BLACK_WOOL.get(), 30, 60);
         flammable(VSBlocks.GLOW_BLACK_CARPET.get(), 50, 20);
         flammable(VSBlocks.GLOW_BLACK_TULIP.get(), 60, 100);
+        flammable(VSBlocks.SUNNY_FLOWER.get(), 60, 100);
         flammable(VSBlocks.GLOW_BERRY_BUSH.get(), 60, 100);
         flammable(VSBlocks.ENDER_ROOTS.get(), 60, 100);
         flammable(VSBlocks.END_SPROUTS.get(), 60, 100);
@@ -80,6 +82,8 @@ public class VSClientHelpers {
         flammable(VSBlocks.PAINTING_SLAB.get(), 5, 20);
         flammable(VSBlocks.PAINTING_FENCE.get(), 5, 20);
         flammable(VSBlocks.PAINTING_FENCE_GATE.get(), 5, 20);
+        flammable(VSBlocks.PAINTING_SIGN.get(), 5, 20);
+        flammable(VSBlocks.PAINTING_WALL_SIGN.get(), 5, 20);
         flammable(VSBlocks.PAINTING_LEAVES.get(), 30, 60);
         flammable(VSBlocks.PAINTING_SAPLING.get(), 60, 100);
 
@@ -93,9 +97,9 @@ public class VSClientHelpers {
         flammable(VSBlocks.ENDERWOOD_SLAB.get(), 5, 20);
         flammable(VSBlocks.ENDERWOOD_FENCE.get(), 5, 20);
         flammable(VSBlocks.ENDERWOOD_FENCE_GATE.get(), 5, 20);
-        flammable(VSBlocks.ENDER_WART_BLOCK.get(), 30, 60);
         flammable(VSBlocks.ENDERWOOD_SIGN.get(), 5, 20);
         flammable(VSBlocks.ENDERWOOD_WALL_SIGN.get(), 5, 20);
+        flammable(VSBlocks.ENDER_WART_BLOCK.get(), 30, 60);
     }
 
     public static void makeBow(Item bow) {
@@ -113,7 +117,7 @@ public class VSClientHelpers {
         register(shield, new ResourceLocation("blocking"), (stack, world, livEntity) -> livEntity != null && livEntity.isUsingItem() && livEntity.getUseItem() == stack ? 1 : 0);
     }
 
-    public static void makeCustomWoolSweaters(Item sweater) {
+    public static void makeCustomWoolSweater(Item sweater) {
         register(sweater, new ResourceLocation("design"), (stack, world, livEntity) -> {
             CompoundNBT tag = stack.getTag();
             if (tag != null && tag.contains("armor_design")) {

@@ -85,17 +85,17 @@ public class Variants {
         VSClientHelpers.flammables();
         VSClientHelpers.addBed(VSBlocks.GLOW_BLACK_BED.get());
 
-//        WoodType.register(VSWoodTypes.PAINTING);
+        WoodType.register(VSWoodTypes.PAINTING);
         WoodType.register(VSWoodTypes.ENDERWOOD);
     }
 
     public void clientSetup(final FMLClientSetupEvent event) {
         VSClientHelpers.makeBow(VSWeaponry.DEBUG_BOW.get());
         VSClientHelpers.makeShield(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
-        VSClientHelpers.makeCustomWoolSweaters(VSWeaponry.WOOL_SWEATER.get());
+        VSClientHelpers.makeCustomWoolSweater(VSWeaponry.WOOL_SWEATER.get());
         setRenderTypesForBlocks();
 
-//        Atlases.addWoodType(VSWoodTypes.PAINTING);
+        Atlases.addWoodType(VSWoodTypes.PAINTING);
         Atlases.addWoodType(VSWoodTypes.ENDERWOOD);
 
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.FISH.get(), FishRenderer::new);
@@ -112,10 +112,12 @@ public class Variants {
 
     public static void setRenderTypesForBlocks() {
         RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_GLOW_BLACK_TULIP.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_SUNNY_FLOWER.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_SUGAR_CANE.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_PAINTING_SAPLING.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.GOLDEN_CARROTS.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.GLOW_BLACK_TULIP.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.SUNNY_FLOWER.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.GLOW_BERRY_BUSH.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.PAINTING_SAPLING.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.WARPED_WART.get(), RenderType.cutout());

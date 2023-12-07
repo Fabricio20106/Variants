@@ -102,11 +102,11 @@ public class VSBlockStateProvider extends BlockStateProvider {
         simpleBlock(VSBlocks.POTTED_ENDER_FUNGUS.get(), models().withExistingParent("potted_ender_fungus", modLoc("block/inventory_potted_plant")).texture("plant",  "block/ender_fungus"));
         simpleBlock(VSBlocks.WARPING_VINES.get(), models().cross("warping_vines", modLoc("block/warping_vines")));
         simpleBlock(VSBlocks.WARPING_VINES_PLANT.get(), models().cross("warping_vines_plant", modLoc("block/warping_vines_plant")));
+        axisBlock((RotatedPillarBlock) VSBlocks.WITHER_BONE_BLOCK.get(), modLoc("block/wither_bone_block_side"), modLoc("block/wither_bone_block_top"));
 
         getVariantBuilder(VSBlocks.GOLDEN_CARROTS.get()).forAllStates(state -> {
             int cropAgeIndex = cropAgeToIndexPotato(state.getValue(BlockStateProperties.AGE_7));
-            return ConfiguredModel.builder().modelFile(models().withExistingParent("golden_carrots_stage" + cropAgeIndex, modLoc("block/inventory_crop")).texture("crop",
-                    "block/golden_carrots_stage" + cropAgeIndex)).build();
+            return ConfiguredModel.builder().modelFile(models().withExistingParent("golden_carrots_stage" + cropAgeIndex, modLoc("block/inventory_crop")).texture("crop", "block/golden_carrots_stage" + cropAgeIndex)).build();
         });
         getVariantBuilder(VSBlocks.WARPED_WART.get()).forAllStates(state -> {
             int cropAgeIndex = cropAgeToIndexWart(state.getValue(BlockStateProperties.AGE_3));

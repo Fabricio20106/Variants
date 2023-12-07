@@ -32,6 +32,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         block("quartz_ore");
         block("deepslate_quartz_ore");
         block("end_quartz_ore");
+        block("wither_bone_block");
         block("raw_debris_block");
         block("glow_black_wool");
         block("glow_black_carpet");
@@ -75,6 +76,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         block("ender_button", "_inventory");
         block("ender_trapdoor", "_bottom");
         block("potted_glow_black_tulip");
+        block("potted_sunny_flower");
         block("potted_sugar_cane");
         block("potted_painting_sapling");
         block("elder_sea_lantern");
@@ -120,6 +122,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "painting_boat");
         standard(generated, "crimson_boat");
         standard(generated, "warped_boat");
+        standard(generated, "variated_instructions");
         standard(generated, "splash_experience_bottle");
         standard(generated, "lingering_experience_bottle");
         standard(generated, "splash_dragon_breath");
@@ -150,16 +153,16 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(handheld, "warped_stick");
         standard(handheld, "ender_stick");
         standard(handheld, "netherite_rod");
-        standard(handheld, "oak_bowl");
-        standard(handheld, "spruce_bowl");
-        standard(handheld, "birch_bowl");
-        standard(handheld, "jungle_bowl");
-        standard(handheld, "acacia_bowl");
-        standard(handheld, "dark_oak_bowl");
-        standard(handheld, "painting_bowl");
-        standard(handheld, "crimson_bowl");
-        standard(handheld, "warped_bowl");
-        standard(handheld, "ender_bowl");
+        standard(generated, "oak_bowl");
+        standard(generated, "spruce_bowl");
+        standard(generated, "birch_bowl");
+        standard(generated, "jungle_bowl");
+        standard(generated, "acacia_bowl");
+        standard(generated, "dark_oak_bowl");
+        standard(generated, "painting_bowl");
+        standard(generated, "crimson_bowl");
+        standard(generated, "warped_bowl");
+        standard(generated, "ender_bowl");
         standard(handheld, "soul_rod");
         standard(generated, "soul_powder");
         standard(generated, "soul_charge");
@@ -177,6 +180,8 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "glow_black_dye");
         standard(generated, "elder_prismarine_shard");
         standard(generated, "elder_prismarine_crystals");
+        standard(handheld, "wither_bone");
+        standard(generated, "wither_bone_meal");
         standard(generated, "warped_wart");
         standard(generated, "ender_wart");
         standard(generated, "painting_door");
@@ -185,6 +190,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "first_door");
         standard(generated, "ender_door");
         standard(generated, "diamond_bell");
+        standard(generated, "painting_sign");
         standard(generated, "ender_sign");
         standard(generated, "quartz_chain");
         standard(generated, "golden_chain");
@@ -204,6 +210,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         blockItem("ender_roots");
         blockItem("ender_fungus");
         blockItem("warping_vines", "_plant");
+        getBuilder("sunny_flower").parent(generated).texture("layer0", mcLoc("block/sunflower_top")).texture("layer1", mcLoc("block/sunflower_front"));
         glassPane("glow_black_stained_glass");
         glassPane("quartz_glass");
 

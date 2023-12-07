@@ -77,11 +77,15 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.DYES_GLOW_BLACK).add(VSItems.GLOW_BLACK_DYE.get());
         this.tag(Tags.Items.DYES).addTag(VSTags.Items.DYES_GLOW_BLACK);
 
+        this.tag(Tags.Items.BONES).add(VSItems.WITHER_BONE.get());
+        this.tag(VSTags.Items.BONE_MEALS).add(Items.BONE_MEAL).add(VSItems.WITHER_BONE_MEAL.get());
+
         this.tag(VSTags.Items.DUSTS_GUNPOWDER).add(Items.GUNPOWDER);
         this.tag(VSTags.Items.DUSTS_SUGAR).add(Items.SUGAR);
         this.tag(VSTags.Items.DUSTS_BLAZE).add(Items.BLAZE_POWDER);
         this.tag(VSTags.Items.DUSTS_SOUL_BLAZE).add(VSItems.SOUL_BLAZE_POWDER.get());
-        this.tag(Tags.Items.DUSTS).addTag(VSTags.Items.DUSTS_SUGAR).addTag(VSTags.Items.DUSTS_GUNPOWDER).addTag(VSTags.Items.DUSTS_BLAZE).addTag(VSTags.Items.DUSTS_SOUL_BLAZE);
+        this.tag(VSTags.Items.DUSTS_ELDER_PRISMARINE).add(VSItems.ELDER_PRISMARINE_SHARD.get());
+        this.tag(Tags.Items.DUSTS).addTag(VSTags.Items.DUSTS_SUGAR).addTag(VSTags.Items.DUSTS_GUNPOWDER).addTag(VSTags.Items.DUSTS_BLAZE).addTag(VSTags.Items.DUSTS_SOUL_BLAZE).addTag(VSTags.Items.DUSTS_ELDER_PRISMARINE);
 
         this.tag(VSTags.Items.GEMS_ELDER_PRISMARINE).add(VSItems.ELDER_PRISMARINE_CRYSTALS.get());
         this.tag(Tags.Items.GEMS).addTag(VSTags.Items.GEMS_ELDER_PRISMARINE);
@@ -137,14 +141,14 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(ItemTags.WOODEN_BUTTONS).add(VSItems.PAINTING_BUTTON.get()).add(VSItems.ENDERWOOD_BUTTON.get());
         this.tag(ItemTags.WOODEN_DOORS).addTag(VSTags.Items.PAINTING_DOORS).add(VSItems.PAINTING_DOOR.get()).add(VSItems.ENDERWOOD_DOOR.get());
         this.tag(ItemTags.WOODEN_TRAPDOORS).addTag(VSTags.Items.PAINTING_TRAPDOORS).add(VSItems.PAINTING_TRAPDOOR.get()).add(VSItems.ENDERWOOD_TRAPDOOR.get());
-        this.tag(ItemTags.SIGNS).add(VSItems.ENDERWOOD_SIGN.get());
+        this.tag(ItemTags.SIGNS).add(VSItems.PAINTING_SIGN.get()).add(VSItems.ENDERWOOD_SIGN.get());
 
         this.tag(ItemTags.STAIRS).add(VSItems.ELDER_PRISMARINE_STAIRS.get()).add(VSItems.ELDER_PRISMARINE_BRICK_STAIRS.get()).add(VSItems.DARK_ELDER_PRISMARINE_STAIRS.get());
         this.tag(ItemTags.SLABS).add(VSItems.ELDER_PRISMARINE_SLAB.get()).add(VSItems.ELDER_PRISMARINE_BRICK_SLAB.get()).add(VSItems.DARK_ELDER_PRISMARINE_SLAB.get());
         this.tag(ItemTags.WALLS).add(VSItems.ELDER_PRISMARINE_WALL.get());
         this.tag(ItemTags.FENCES).add(VSItems.RED_NETHER_BRICK_FENCE.get());
 
-        this.tag(ItemTags.SMALL_FLOWERS).add(VSItems.GLOW_BLACK_TULIP.get());
+        this.tag(ItemTags.SMALL_FLOWERS).add(VSItems.GLOW_BLACK_TULIP.get()).add(VSItems.SUNNY_FLOWER.get());
         this.tag(ItemTags.WOOL).add(VSItems.GLOW_BLACK_WOOL.get());
         this.tag(ItemTags.CARPETS).add(VSItems.GLOW_BLACK_CARPET.get());
         this.tag(ItemTags.BEDS).add(VSItems.GLOW_BLACK_BED.get());

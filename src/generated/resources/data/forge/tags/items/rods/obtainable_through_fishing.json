@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "minecraft:stick",
     "variants:oak_stick",
     "variants:spruce_stick",
     "variants:birch_stick",

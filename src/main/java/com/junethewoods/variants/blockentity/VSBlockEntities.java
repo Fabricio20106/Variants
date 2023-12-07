@@ -24,5 +24,5 @@ public class VSBlockEntities {
             VSBlocks.GLOW_BLACK_BED.get()).build(null));
 
     public static final RegistryObject<TileEntityType<VSSignBlockEntity>> VS_SIGN = BLOCK_ENTITIES.register("vs_sign", () -> TileEntityType.Builder.of(VSSignBlockEntity::new,
-            VSBlocks.ENDERWOOD_SIGN.get(), VSBlocks.ENDERWOOD_WALL_SIGN.get()).build(null));
+            VSBlocks.ENDERWOOD_SIGN.get(), VSBlocks.ENDERWOOD_WALL_SIGN.get(), VSBlocks.PAINTING_SIGN.get(), VSBlocks.PAINTING_WALL_SIGN.get()).build(null));
 }

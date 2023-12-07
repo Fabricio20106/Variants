@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "variants:wither_bone_meal"
+    }
+  },
+  "result": {
+    "item": "variants:wither_bone_block"
+  }
+}
