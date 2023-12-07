@@ -1,115 +1,80 @@
-buildscript {
-    repositories {
-        maven {
-            url = 'https://files.minecraftforge.net/maven'
-        }
-        maven {
-            url = 'https://repo.spongepowered.org/maven'
-        }
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
-        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
-    }
+plugins {
+    id 'java-library'
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.neoforged.gradle.userdev' version '7.0.57'
+//    id 'org.spongepowered.mixin'
 }
-
-apply plugin: 'net.minecraftforge.gradle'
-// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
-apply plugin: 'org.spongepowered.mixin'
-apply plugin: 'idea'
 
 Calendar calendar = Calendar.getInstance()
 String year = String.valueOf(calendar.getWeekYear()).replace("20", "")
-version = '1.16.5-v1.6.15-' + year + 'd' + calendar.get(Calendar.DAY_OF_YEAR) + 'a'
+version = '1.20.2-v3.0.15-' + year + 'd' + calendar.get(Calendar.DAY_OF_YEAR) + 'a'
+group = mod_group_id
+
+repositories {
+    mavenLocal()
+}
 
 // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-group = 'com.junethewoods.variants'
-archivesBaseName = 'Variants'
+base {
+    archivesName = 'Variants'
+}
 
-// Need this here so eclipse task generates correctly.
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+// Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-println('Java: ' + System.getProperty('java.version') + ' Java Virtual Machine (JVM): ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
-minecraft {
-    // The mappings can be changed at any time, and must be in the following format:
-    // snapshot_YYYYMMDD   Snapshot are built nightly.
-    // stable_#                            Stables are built at the discretion of the MCP team.
+minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
 
-    // Use non-default mappings at your own risk, they may not always work.
-    // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'official', version: '1.16.5'
-    // An Srg-named sources jar is made by default. Uncomment this to disable.
-    // makeObfSourceJar = false
+// Default run configurations.
+// These can be tweaked, removed, or duplicated as needed.
+runs {
+    // Applies to all run configurations below.
+    configureEach {
+//        systemProperty 'mixin.env.disableRefMap', 'true'
+//        systemProperty 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+//        workingDirectory project.file('run')
 
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+        // Recommended logging data for a user development environment.
+        systemProperty 'forge.logging.markers', 'REGISTRIES'
 
-    // Default run configurations.
-    // These can be tweaked, removed, or duplicated as needed.
-    runs {
-        client {
-            property 'mixin.env.disableRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-            workingDirectory project.file('run')
-            property "mixin.debug.export", "true"
+        // Recommended logging level for the console.
+        systemProperty 'forge.logging.console.level', 'debug'
 
-            // Recommended logging data for a user development environment.
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+        modSource project.sourceSets.main
+    }
 
-            // Recommended logging level for the console.
-            property 'forge.logging.console.level', 'debug'
+    client {
+//        systemProperty "mixin.debug.export", "true"
 
-            mods {
-                variants {
-                    source sourceSets.main
-                }
-            }
-        }
+        // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+    }
 
-        server {
-            property 'mixin.env.disableRefMap', 'true'
-            workingDirectory project.file('run')
+    server {
+        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+        programArgument '--nogui'
+    }
 
-            // Recommended logging data for a user development environment.
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+    // This run config launches GameTestServer and runs all registered gametests, then exits.
+    // By default, the server will crash when no gametests are provided.
+    // The gametest system is also enabled by default for other run configs under the /test command.
+    gameTestServer {
+        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+    }
 
-            // Recommended logging level for the console.
-            property 'forge.logging.console.level', 'debug'
+    data {
+        // Example of overriding the "workingDirectory" set in "configureEach" above, uncomment if you want to use it.
+        // workingDirectory project.file('run-data')
 
-            mods {
-                variants {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        data {
-            property 'mixin.env.disableRefMap', 'true'
-            workingDirectory project.file('run')
-
-            // Recommended logging data for a user development environment.
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
-            // Recommended logging level for the console.
-            property 'forge.logging.console.level', 'debug'
-
-            // Specify the mod id for data generation, where to output the resulting resources, and where to look for existing resources.
-            args '--mod', 'variants', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
-            mods {
-                variants {
-                    source sourceSets.main
-                }
-            }
-        }
+        // Specify the mod id for data generation, where to output the resulting resources, and where to look for existing resources.
+        programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
     }
 }
 
-mixin {
-    add sourceSets.main, "variants.mixins.refmap.json"
-}
+//mixin {
+//    add sourceSets.main, "variants.mixins.refmap.json"
+//}
 
 // Include resources generated by data generators.
 sourceSets.main.resources {
@@ -117,22 +82,26 @@ sourceSets.main.resources {
 }
 
 dependencies {
-    // Specify the Minecraft version to use.
-    // If this is any group other than 'net.minecraft', it is assumed that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
-    // The user development artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.16.5-36.2.39'
+    // Specify the version of Minecraft to use.
+    // Depending on the plugin applied there are several options. We will assume you applied the userdev plugin as shown above.
+    // The group for userdev is net.neoforged, the module name is neoforge, and the version is the same as the neoforge version.
+    // You can however also use the vanilla plugin (net.neoforged.gradle.vanilla) to use a version of Minecraft without the neoforge loader.
+    // And its provides the option to then use net.minecraft as the group, and one of; client, server or joined as the module name, plus the game version as version.
+    // For all intends and purposes: You can treat this dependency as if it is a normal library you would use.
+    implementation "net.neoforged:neoforge:${neo_version}"
 
+    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     // Compile against the Just Enough Items API but do not include it at runtime.
-    compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
+    compileOnly "mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"
     // At runtime, use the full Just Enough Items jar.
-    runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
+    runtimeOnly "mezz.jei:jei-${minecraft_version}-forge:${jei_version}"
 
     // Patchouli
 //    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
 //    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
 
     // Annotation Processors
-    annotationProcessor 'org.spongepowered:mixin:0.8:processor'
+//    annotationProcessor 'org.spongepowered:mixin:0.8:processor'
 
     // You may put jars on which you depend on in ./libs or you may define them like so:
     // compile "some.group:artifact:version:classifier"
@@ -155,9 +124,14 @@ dependencies {
 
 repositories {
     maven {
-        // Just Enough Items
-        name 'DVS1 Maven FS'
-        url 'https://dvs1.progwml6.com/files/maven'
+        // Location of the maven that hosts Just Enough Items files since January 2023.
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        // Location of a maven mirror for Just Enough Items files, as a fallback.
+        name = "ModMaven"
+        url = "https://modmaven.dev"
     }
 //    maven {
  //          Patchouli
@@ -165,38 +139,43 @@ repositories {
 //    }
 }
 
-// Example for how to get properties into the manifest for reading by the runtime:
-jar {
-    manifest {
-        attributes([
-            "Specification-Title": "Variants",
-            "Specification-Vendor": "JuneTheWoods",
-            // We are version one of ourselves.
-            "Specification-Version": "1",
-            "Implementation-Title": project.name,
-            "Implementation-Version": "${version}",
-            "Implementation-Vendor" : "JuneTheWoods",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-            "MixinConfigs": "variants.mixins.json"
-        ])
+// This block of code expands all declared replace properties in the specified resource targets.
+// A missing property will result in an error. Properties are expanded using ${} Groovy notation.
+// When "copyIdeResources" is enabled, this will also run before the game launches in IDE environments.
+// See https://docs.gradle.org/current/dsl/org.gradle.language.jvm.tasks.ProcessResources.html
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
+            forge_version: forge_version, forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors: mod_authors, mod_description: mod_description, pack_format_number: pack_format_number,
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
     }
 }
 
-// Example configuration to allow publishing using the maven-publish task.
-// This is the preferred method to reobfuscate your jar file.
-jar.finalizedBy('reobfJar') 
-// However if you are in a multi-project build, development time needs unobfuscated jar files, so you can delay the obfuscation until publishing by doing
-// publish.dependsOn('reobfJar')
+// However if you are in a multi-project build, development time needs unobfuscated jar files, so you can delay the obfuscation until publishing by doing:
+// tasks.named('publish').configure {
+//     dependsOn 'reobfJar'
+// }
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
-            artifact jar
+        register('mavenJava', MavenPublication) {
+            from components.java
         }
     }
     repositories {
         maven {
-            url "file:///${project.projectDir}/mcmodsrepo"
+            url "file://${project.projectDir}/repo"
         }
     }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }

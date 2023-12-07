@@ -1,6 +1,8 @@
 {
   "pack": {
-    "description": "Mod data for Variants 1.6.X.",
-    "pack_format": 6
+    "description": {
+      "description": "Mod data for Variants 1.6.X."
+    }
+    "pack_format": ${pack_format_number}
   }
 }
