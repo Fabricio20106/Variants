@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column_horizontal",
   "textures": {
-    "side": "variants:block/stripped_ender_stem",
-    "end": "variants:block/stripped_ender_stem_top"
+    "end": "variants:block/stripped_ender_stem_top",
+    "side": "variants:block/stripped_ender_stem"
   }
 }

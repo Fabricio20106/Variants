@@ -1,15 +1,16 @@
 package com.junethewoods.variants.sound;
 
 import com.junethewoods.variants.Variants;
-import net.minecraft.util.SoundEvent;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.sounds.SoundEvent;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
 
 public class VSSounds {
-    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Variants.MOD_ID);
+    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(Registries.SOUND_EVENT, Variants.MOD_ID);
 
-    public static final RegistryObject<SoundEvent> MUSIC_DISC_DOG = SOUNDS.register("music_disc.dog", () -> new SoundEvent(Variants.resourceLoc("music_disc.dog")));
-    public static final RegistryObject<SoundEvent> SPYGLASS_USE = SOUNDS.register("item.spyglass.use", () -> new SoundEvent(Variants.resourceLoc("item.spyglass.use")));
-    public static final RegistryObject<SoundEvent> SPYGLASS_STOP_USING = SOUNDS.register("item.spyglass.stop_using", () -> new SoundEvent(Variants.resourceLoc("item.spyglass.stop_using")));
+    public static final Supplier<SoundEvent> MUSIC_DISC_DOG = SOUNDS.register("music_disc.dog", () -> SoundEvent.createVariableRangeEvent(Variants.resourceLoc("music_disc.dog")));
+    public static final Supplier<SoundEvent> SPYGLASS_USE = SOUNDS.register("item.spyglass.use", () -> SoundEvent.createVariableRangeEvent(Variants.resourceLoc("item.spyglass.use")));
+    public static final Supplier<SoundEvent> SPYGLASS_STOP_USING = SOUNDS.register("item.spyglass.stop_using", () -> SoundEvent.createVariableRangeEvent(Variants.resourceLoc("item.spyglass.stop_using")));
 }

@@ -3,24 +3,20 @@ package com.junethewoods.variants.item.custom;
 import com.google.common.collect.Lists;
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.item.VSItems;
-import com.junethewoods.variants.util.tab.VSTab;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentData;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.EnchantedBookItem;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.RecipeManager;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.ListNBT;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.EnchantedBookItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
+import net.minecraft.world.level.Level;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,25 +26,25 @@ public class EnchantedKnowledgeBookItem extends EnchantedBookItem {
         super(properties);
     }
 
-    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack handStack = player.getItemInHand(hand);
-        CompoundNBT handStackTag = handStack.getTag();
-        if (!player.abilities.instabuild) {
+        CompoundTag handStackTag = handStack.getTag();
+        if (!player.getAbilities().instabuild) {
             player.setItemInHand(hand, ItemStack.EMPTY);
         }
 
         if (handStackTag != null && handStackTag.contains("Recipes", 9)) {
-            if (!world.isClientSide) {
-                ListNBT nbtList = handStackTag.getList("Recipes", 8);
-                List<IRecipe<?>> recipesList = Lists.newArrayList();
-                RecipeManager recipeManager = world.getServer().getRecipeManager();
+            if (!level.isClientSide) {
+                ListTag nbtList = handStackTag.getList("Recipes", 8);
+                List<RecipeHolder<?>> recipesList = Lists.newArrayList();
+                RecipeManager recipeManager = level.getServer().getRecipeManager();
 
                 for(int listString = 0; listString < nbtList.size(); ++listString) {
                     String nbtListString = nbtList.getString(listString);
-                    Optional<? extends IRecipe<?>> optionalRecipe = recipeManager.byKey(new ResourceLocation(nbtListString));
+                    Optional<RecipeHolder<?>> optionalRecipe = recipeManager.byKey(new ResourceLocation(nbtListString));
                     if (!optionalRecipe.isPresent()) {
                         Variants.LOGGER.error("Variants: Invalid recipe for Enchanted Knowledge Book: {}", nbtListString);
-                        return ActionResult.fail(handStack);
+                        return InteractionResultHolder.fail(handStack);
                     }
 
                     recipesList.add(optionalRecipe.get());
@@ -58,33 +54,41 @@ public class EnchantedKnowledgeBookItem extends EnchantedBookItem {
                 player.awardStat(Stats.ITEM_USED.get(this));
             }
 
-            return ActionResult.sidedSuccess(handStack, world.isClientSide());
+            return InteractionResultHolder.sidedSuccess(handStack, level.isClientSide());
         } else {
             Variants.LOGGER.error("Variants: Enchanted Knowledge Book tag not valid: {}", handStackTag);
-            return ActionResult.fail(handStack);
+            return InteractionResultHolder.fail(handStack);
         }
     }
 
-    public static ItemStack createForEnchantment(EnchantmentData enchData) {
-        ItemStack bookStack = new ItemStack(VSItems.ENCHANTED_KNOWLEDGE_BOOK.get());
-        addEnchantment(bookStack, enchData);
-        return bookStack;
-    }
+    public static void addEnchantment(ItemStack stack, EnchantmentInstance enchInstance) {
+        ListTag enchantsList = getEnchantments(stack);
+        boolean flag = true;
+        ResourceLocation enchantLocations = EnchantmentHelper.getEnchantmentId(enchInstance.enchantment);
 
-    @Override
-    public void fillItemCategory(ItemGroup itemTab, NonNullList<ItemStack> stackList) {
-        if (itemTab == ItemGroup.TAB_SEARCH) {
-            for(Enchantment enchantments : Registry.ENCHANTMENT) {
-                if (enchantments.category != null) {
-                    for(int i = enchantments.getMinLevel(); i <= enchantments.getMaxLevel(); ++i) {
-                        stackList.add(createForEnchantment(new EnchantmentData(enchantments, i)));
-                    }
+        for(int i = 0; i < enchantsList.size(); ++i) {
+            CompoundTag tag = enchantsList.getCompound(i);
+            ResourceLocation enchantFromTag = EnchantmentHelper.getEnchantmentId(tag);
+            if (enchantFromTag != null && enchantFromTag.equals(enchantLocations)) {
+                if (EnchantmentHelper.getEnchantmentLevel(tag) < enchInstance.level) {
+                    EnchantmentHelper.setEnchantmentLevel(tag, enchInstance.level);
                 }
-            }
-        } else if (itemTab == VSTab.TAB) {
-            for(Enchantment enchantments : Registry.ENCHANTMENT) {
-                stackList.add(createForEnchantment(new EnchantmentData(enchantments, enchantments.getMaxLevel())));
+
+                flag = false;
+                break;
             }
         }
+
+        if (flag) {
+            enchantsList.add(EnchantmentHelper.storeEnchantment(enchantLocations, enchInstance.level));
+        }
+
+        stack.getOrCreateTag().put("StoredEnchantments", enchantsList);
+    }
+
+    public static ItemStack createForEnchantment(EnchantmentInstance enchInstance) {
+        ItemStack bookStack = new ItemStack(VSItems.ENCHANTED_KNOWLEDGE_BOOK.get());
+        addEnchantment(bookStack, enchInstance);
+        return bookStack;
     }
 }

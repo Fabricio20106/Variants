@@ -1,20 +1,13 @@
 package com.junethewoods.variants.util;
 
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.junethewoods.variants.block.VSBlocks;
-import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.custom.armor.WoolArmorItem;
-import net.minecraft.block.*;
-import net.minecraft.item.HoeItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.state.properties.BedPart;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.village.PointOfInterestType;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.ComposterBlock;
 
-import static net.minecraft.item.ItemModelsProperties.register;
+import static net.minecraft.client.renderer.item.ItemProperties.register;
 
 public class VSClientHelpers {
     // Can be used to add new wool armor (currently only sweater) colors.
@@ -27,7 +20,7 @@ public class VSClientHelpers {
         ComposterBlock.COMPOSTABLES.put(item, chance);
     }
 
-    public static void tillable(Block block, BlockState farmland) {
+    /*public static void tillable(Block block, BlockState farmland) {
         HoeItem.TILLABLES = Maps.newHashMap(HoeItem.TILLABLES);
         HoeItem.TILLABLES.put(block, farmland);
     }
@@ -100,26 +93,26 @@ public class VSClientHelpers {
         flammable(VSBlocks.ENDERWOOD_SIGN.get(), 5, 20);
         flammable(VSBlocks.ENDERWOOD_WALL_SIGN.get(), 5, 20);
         flammable(VSBlocks.ENDER_WART_BLOCK.get(), 30, 60);
-    }
+    }*/
 
     public static void makeBow(Item bow) {
-        register(bow, new ResourceLocation("pull"), (stack, world, livEntity) -> {
+        register(bow, new ResourceLocation("pull"), (stack, level, livEntity, x) -> {
             if (livEntity == null) {
                 return 0;
             } else {
                 return livEntity.getUseItem() != stack ? 0 : (float) (stack.getUseDuration() - livEntity.getUseItemRemainingTicks()) / 20;
             }
         });
-        register(bow, new ResourceLocation("pulling"), (stack, world, livEntity) -> livEntity != null && livEntity.isUsingItem() && livEntity.getUseItem() == stack ? 1 : 0);
+        register(bow, new ResourceLocation("pulling"), (stack, level, livEntity, x) -> livEntity != null && livEntity.isUsingItem() && livEntity.getUseItem() == stack ? 1 : 0);
     }
 
     public static void makeShield(Item shield) {
-        register(shield, new ResourceLocation("blocking"), (stack, world, livEntity) -> livEntity != null && livEntity.isUsingItem() && livEntity.getUseItem() == stack ? 1 : 0);
+        register(shield, new ResourceLocation("blocking"), (stack, level, livEntity, x) -> livEntity != null && livEntity.isUsingItem() && livEntity.getUseItem() == stack ? 1 : 0);
     }
 
     public static void makeCustomWoolSweater(Item sweater) {
-        register(sweater, new ResourceLocation("design"), (stack, world, livEntity) -> {
-            CompoundNBT tag = stack.getTag();
+        register(sweater, new ResourceLocation("design"), (stack, level, livEntity, x) -> {
+            CompoundTag tag = stack.getTag();
             if (tag != null && tag.contains("armor_design")) {
                 return tag.getInt("armor_design");
             }

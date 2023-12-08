@@ -1,5 +1,6 @@
 {
   "ambientocclusion": false,
+  "render_type": "cutout",
   "textures": {
     "particle": "variants:block/gold_cauldron_side",
     "top": "variants:block/gold_cauldron_top",

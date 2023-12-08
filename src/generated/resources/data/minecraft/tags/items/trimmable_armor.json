@@ -1,0 +1,20 @@
+{
+  "values": [
+    "variants:empty_armor_slot_helmet",
+    "variants:empty_armor_slot_chestplate",
+    "variants:empty_armor_slot_leggings",
+    "variants:empty_armor_slot_boots",
+    "variants:emerald_helmet",
+    "variants:emerald_chestplate",
+    "variants:emerald_leggings",
+    "variants:emerald_boots",
+    "variants:quartz_helmet",
+    "variants:quartz_chestplate",
+    "variants:quartz_leggings",
+    "variants:quartz_boots",
+    "variants:copper_chestplate",
+    "variants:phantom_membrane_sweatchest",
+    "variants:rabbit_hide_sweatchest",
+    "variants:wool_sweatchest"
+  ]
+}

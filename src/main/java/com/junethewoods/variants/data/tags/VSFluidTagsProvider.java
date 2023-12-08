@@ -1,17 +1,17 @@
 package com.junethewoods.variants.data.tags;
 
 import com.junethewoods.variants.Variants;
-import com.junethewoods.variants.fluid.VSFluids;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.FluidTagsProvider;
-import net.minecraft.tags.FluidTags;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.FluidTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
 
 public class VSFluidTagsProvider extends FluidTagsProvider {
-    public VSFluidTagsProvider(DataGenerator generator, @Nullable ExistingFileHelper fileHelper) {
-        super(generator, Variants.MOD_ID, fileHelper);
+    public VSFluidTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper fileHelper) {
+        super(output, lookupProvider, Variants.MOD_ID, fileHelper);
     }
 
     @Override
@@ -20,7 +20,7 @@ public class VSFluidTagsProvider extends FluidTagsProvider {
     }
 
     @Override
-    protected void addTags() {
-        this.tag(FluidTags.LAVA).add(VSFluids.SOUL_LAVA.get()).add(VSFluids.FLOWING_SOUL_LAVA.get());
+    protected void addTags(HolderLookup.Provider provider) {
+        //this.tag(FluidTags.LAVA).add(VSFluids.SOUL_LAVA.get()).add(VSFluids.FLOWING_SOUL_LAVA.get());
     }
 }

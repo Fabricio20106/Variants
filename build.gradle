@@ -7,9 +7,10 @@ plugins {
 //    id 'org.spongepowered.mixin'
 }
 
-Calendar calendar = Calendar.getInstance()
-String year = String.valueOf(calendar.getWeekYear()).replace("20", "")
-version = '1.20.2-v3.0.15-' + year + 'd' + calendar.get(Calendar.DAY_OF_YEAR) + 'a'
+//Calendar calendar = Calendar.getInstance()
+//String year = String.valueOf(calendar.getWeekYear()).replace("20", "")
+//+ year + 'd' + calendar.get(Calendar.DAY_OF_YEAR) + 'a'
+version = '1.20.2-3.0.15'
 group = mod_group_id
 
 repositories {
@@ -18,13 +19,13 @@ repositories {
 
 // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 base {
-    archivesName = 'Variants'
+    archivesName = mod_name
 }
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
+//minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
 
 // Default run configurations.
 // These can be tweaked, removed, or duplicated as needed.
@@ -90,11 +91,11 @@ dependencies {
     // For all intends and purposes: You can treat this dependency as if it is a normal library you would use.
     implementation "net.neoforged:neoforge:${neo_version}"
 
-    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+//    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     // Compile against the Just Enough Items API but do not include it at runtime.
-    compileOnly "mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"
+//    compileOnly "mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"
     // At runtime, use the full Just Enough Items jar.
-    runtimeOnly "mezz.jei:jei-${minecraft_version}-forge:${jei_version}"
+//    runtimeOnly "mezz.jei:jei-${minecraft_version}-forge:${jei_version}"
 
     // Patchouli
 //    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
@@ -146,7 +147,7 @@ repositories {
 tasks.withType(ProcessResources).configureEach {
     var replaceProperties = [
             minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
-            forge_version: forge_version, forge_version_range: forge_version_range,
+            neo_version: neo_version, neo_version_range: neo_version_range,
             loader_version_range: loader_version_range,
             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
             mod_authors: mod_authors, mod_description: mod_description, pack_format_number: pack_format_number,

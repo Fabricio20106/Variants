@@ -4,19 +4,21 @@ import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.VSWeaponry;
 import com.junethewoods.variants.util.VSTags;
-import net.minecraft.data.BlockTagsProvider;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.ItemTagsProvider;
-import net.minecraft.item.Items;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
 
 public class VSItemTagsProvider extends ItemTagsProvider {
-    public VSItemTagsProvider(DataGenerator generator, BlockTagsProvider blockTagsProvider, @Nullable ExistingFileHelper fileHelper) {
-        super(generator, blockTagsProvider, Variants.MOD_ID, fileHelper);
+    public VSItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> holderLookupProvider, CompletableFuture<TagLookup<Block>> tagLookupProvider, @Nullable ExistingFileHelper fileHelper) {
+        super(output, holderLookupProvider, tagLookupProvider, Variants.MOD_ID, fileHelper);
     }
 
     @Override
@@ -25,7 +27,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
     }
 
     @Override
-    protected void addTags() {
+    protected void addTags(HolderLookup.Provider provider) {
         this.tag(VSTags.Items.STORAGE_BLOCKS_NETHERITE_SCRAP).add(VSItems.RAW_DEBRIS_BLOCK.get());
         this.tag(Tags.Items.STORAGE_BLOCKS).addTag(VSTags.Items.STORAGE_BLOCKS_NETHERITE_SCRAP);
 
@@ -40,9 +42,15 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(Tags.Items.NUGGETS).addTag(VSTags.Items.NUGGETS_QUARTZ).addTag(VSTags.Items.NUGGETS_PURPLE_IRON);
 
         this.tag(VSTags.Items.RAW_MATERIALS_NETHERITE_SCRAP).add(VSItems.RAW_DEBRIS.get());
-        this.tag(VSTags.Items.RAW_MATERIALS).addTag(VSTags.Items.RAW_MATERIALS_NETHERITE_SCRAP);
+        this.tag(Tags.Items.RAW_MATERIALS).addTag(VSTags.Items.RAW_MATERIALS_NETHERITE_SCRAP);
 
         this.tag(Tags.Items.ORES_QUARTZ).add(VSItems.QUARTZ_ORE.get()).add(VSItems.DEEPSLATE_QUARTZ_ORE.get()).add(VSItems.END_QUARTZ_ORE.get());
+
+        this.tag(Tags.Items.ORES_IN_GROUND_STONE).add(VSItems.QUARTZ_ORE.get());
+        this.tag(Tags.Items.ORES_IN_GROUND_DEEPSLATE).add(VSItems.DEEPSLATE_QUARTZ_ORE.get());
+        this.tag(VSTags.Items.ORES_IN_GROUND_END_STONE).add(VSItems.END_QUARTZ_ORE.get());
+
+        this.tag(Tags.Items.ORE_RATES_SINGULAR).add(VSItems.QUARTZ_ORE.get()).add(VSItems.DEEPSLATE_QUARTZ_ORE.get()).add(VSItems.END_QUARTZ_ORE.get());
 
         this.tag(Tags.Items.FENCE_GATES_WOODEN).add(VSItems.PAINTING_FENCE_GATE.get());
 
@@ -68,11 +76,13 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(Tags.Items.SHEARS).add(VSWeaponry.COAL_SHEARS.get()).add(VSWeaponry.GOLDEN_SHEARS.get()).add(VSWeaponry.COPPER_SHEARS.get()).add(VSWeaponry.EXPOSED_COPPER_SHEARS.get())
                 .add(VSWeaponry.WEATHERED_COPPER_SHEARS.get()).add(VSWeaponry.OXIDIZED_COPPER_SHEARS.get()).add(VSWeaponry.AMETHYST_SHEARS.get()).add(VSWeaponry.DIAMOND_SHEARS.get())
                 .add(VSWeaponry.NETHERITE_SHEARS.get()).add(VSWeaponry.REDSTONE_SHEARS.get()).add(VSWeaponry.LAPIS_LAZULI_SHEARS.get()).add(VSWeaponry.EMERALD_SHEARS.get())
-                .add(VSWeaponry.QUARTZ_SHEARS.get()).add(VSWeaponry.RUBY_SHEARS.get()).add(VSWeaponry.DIAEMERALD_SHEARS.get()).add(VSWeaponry.CRYSTAL_SHEARS.get())
-                .add(VSWeaponry.PLASTEEL_SHEARS.get()).add(VSWeaponry.LIGHT_MAGENTA_SHEARS.get()).add(VSWeaponry.ALAN_AI_SHEARS.get()).add(VSWeaponry.ALICE_AI_SHEARS.get())
+                .add(VSWeaponry.QUARTZ_SHEARS.get()).add(VSWeaponry.RUBY_SHEARS.get()).add(VSWeaponry.DIAEMERALD_SHEARS.get()).add(VSWeaponry.MAGENTIC_CRYSTAL_SHEARS.get())
+                .add(VSWeaponry.PLASTEEL_SHEARS.get()).add(VSWeaponry.MAGENTIC_SHEARS.get()).add(VSWeaponry.ALAN_AI_SHEARS.get()).add(VSWeaponry.ALICE_AI_SHEARS.get())
                 .add(VSWeaponry.INNO_AI_SHEARS.get()).add(VSWeaponry.NICOLAS_AI_SHEARS.get());
+        this.tag(Tags.Items.TOOLS_SHIELDS).add(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
+        this.tag(Tags.Items.TOOLS_BOWS).add(VSWeaponry.DEBUG_BOW.get());
 
-        this.tag(Tags.Items.BOOKSHELVES).add(VSItems.PLAIN_BIRCH_BOOKSHELF.get());
+        this.tag(Tags.Items.BOOKSHELVES).add(VSItems.PLAIN_BIRCH_BOOKSHELF.get()).add(VSItems.ENDERWOOD_BOOKSHELF.get());
 
         this.tag(VSTags.Items.DYES_GLOW_BLACK).add(VSItems.GLOW_BLACK_DYE.get());
         this.tag(Tags.Items.DYES).addTag(VSTags.Items.DYES_GLOW_BLACK);
@@ -90,7 +100,11 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.GEMS_ELDER_PRISMARINE).add(VSItems.ELDER_PRISMARINE_CRYSTALS.get());
         this.tag(Tags.Items.GEMS).addTag(VSTags.Items.GEMS_ELDER_PRISMARINE);
 
-        this.tag(VSTags.Items.ARMORS_BOOTS).add(VSWeaponry.EMPTY_ARMOR_SLOT_BOOTS.get()).add(VSWeaponry.EMERALD_BOOTS.get()).add(VSWeaponry.QUARTZ_BOOTS.get());
+        this.tag(Tags.Items.ARMORS_HELMETS).add(VSWeaponry.EMPTY_ARMOR_SLOT_HELMET.get()).add(VSWeaponry.EMERALD_HELMET.get()).add(VSWeaponry.QUARTZ_HELMET.get());
+        this.tag(Tags.Items.ARMORS_CHESTPLATES).add(VSWeaponry.EMPTY_ARMOR_SLOT_CHESTPLATE.get()).add(VSWeaponry.EMERALD_CHESTPLATE.get()).add(VSWeaponry.QUARTZ_CHESTPLATE.get()).add(VSWeaponry.COPPER_CHESTPLATE.get())
+                .add(VSWeaponry.PHANTOM_MEMBRANE_TUNIC.get()).add(VSWeaponry.RABBIT_HIDE_TUNIC.get()).add(VSWeaponry.WOOL_SWEATER.get());
+        this.tag(Tags.Items.ARMORS_LEGGINGS).add(VSWeaponry.EMPTY_ARMOR_SLOT_LEGGINGS.get()).add(VSWeaponry.EMERALD_LEGGINGS.get()).add(VSWeaponry.QUARTZ_LEGGINGS.get());
+        this.tag(Tags.Items.ARMORS_BOOTS).add(VSWeaponry.EMPTY_ARMOR_SLOT_BOOTS.get()).add(VSWeaponry.EMERALD_BOOTS.get()).add(VSWeaponry.QUARTZ_BOOTS.get());
 
         // Variants' Tags
         this.tag(VSTags.Items.CM_DIORITE).add(Items.DIORITE);
@@ -108,9 +122,9 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.CAULDRONS).add(Items.CAULDRON).add(VSItems.GOLDEN_CAULDRON.get());
         this.tag(VSTags.Items.BEACONS).add(Items.BEACON).add(VSItems.GOLDEN_BEACON.get());
         this.tag(VSTags.Items.POTS).add(VSItems.STYLISED_POT.get()).add(VSItems.REDSTONE_POT.get()).add(VSItems.BLUESTONE_POT.get()).add(VSItems.GLOWSTONE_POT.get())
-                .add(VSItems.GUNPOWDER_POT.get()).add(VSItems.CREEPER_POWDER_POT.get()).add(VSItems.SUGAR_POT.get()).add(VSItems.SWEET_BERRY_POT.get()).add(VSItems.GLOW_BERRY_POT.get());
+                .add(VSItems.GUNPOWDER_POT.get()).add(VSItems.EXPLOSIVE_BLEND_POT.get()).add(VSItems.SUGAR_POT.get()).add(VSItems.SWEET_BERRY_POT.get()).add(VSItems.GLOW_BERRY_POT.get());
         this.tag(VSTags.Items.SHIELDS).add(Items.SHIELD).add(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
-        this.tag(VSTags.Items.SPYGLASSES).add(VSWeaponry.IRON_SPYGLASS.get()).add(VSWeaponry.DIAMOND_SPYGLASS.get()).add(VSWeaponry.NETHERITE_SPYGLASS.get());
+        this.tag(VSTags.Items.SPYGLASSES).add(Items.SPYGLASS).add(VSWeaponry.IRON_SPYGLASS.get()).add(VSWeaponry.DIAMOND_SPYGLASS.get()).add(VSWeaponry.NETHERITE_SPYGLASS.get());
         this.tag(VSTags.Items.CATLIKE_TAME_ITEMS).add(Items.COD).add(Items.SALMON).add(Items.TROPICAL_FISH).add(VSItems.RAW_FISH.get());
         this.tag(VSTags.Items.SHULKER_SHELLS).add(Items.SHULKER_SHELL).add(VSItems.WHITE_SHULKER_SHELL.get()).add(VSItems.INNO_SHULKER_SHELL.get())
                 .add(VSItems.ORANGE_SHULKER_SHELL.get()).add(VSItems.MAGENTA_SHULKER_SHELL.get()).add(VSItems.LIGHT_BLUE_SHULKER_SHELL.get()).add(VSItems.GLOW_BLACK_SHULKER_SHELL.get())
@@ -150,11 +164,28 @@ public class VSItemTagsProvider extends ItemTagsProvider {
 
         this.tag(ItemTags.SMALL_FLOWERS).add(VSItems.GLOW_BLACK_TULIP.get()).add(VSItems.SUNNY_FLOWER.get());
         this.tag(ItemTags.WOOL).add(VSItems.GLOW_BLACK_WOOL.get());
-        this.tag(ItemTags.CARPETS).add(VSItems.GLOW_BLACK_CARPET.get());
+        this.tag(ItemTags.WOOL_CARPETS).add(VSItems.GLOW_BLACK_CARPET.get());
         this.tag(ItemTags.BEDS).add(VSItems.GLOW_BLACK_BED.get());
         this.tag(ItemTags.CREEPER_DROP_MUSIC_DISCS).add(VSItems.MUSIC_DISC_DOG.get());
         this.tag(ItemTags.PIGLIN_LOVED).add(VSItems.GOLDEN_CAULDRON.get()).add(VSItems.GOLDEN_BEACON.get()).add(VSItems.GOLDEN_CARROTS.get()).add(VSItems.GOLDEN_CHAIN.get()).add(VSWeaponry.GOLDEN_SHEARS.get())
                 .add(VSWeaponry.ALICE_AI_SHEARS.get());
         this.tag(ItemTags.BOATS).add(VSItems.PAINTING_BOAT.get()).add(VSItems.CRIMSON_BOAT.get()).add(VSItems.WARPED_BOAT.get());
+
+        // 1.17-1.20 Tags
+        this.tag(ItemTags.SWORDS).add(VSWeaponry.DIORITE_SWORD.get()).add(VSWeaponry.GRANITE_SWORD.get()).add(VSWeaponry.ANDESITE_SWORD.get()).add(VSWeaponry.END_STONE_SWORD.get()).add(VSWeaponry.MAGMA_SWORD.get())
+                .add(VSWeaponry.COPPER_SWORD.get()).add(VSWeaponry.AMETHYST_SWORD.get()).add(VSWeaponry.QUARTZ_SWORD.get());
+        this.tag(ItemTags.PICKAXES).add(VSWeaponry.DIORITE_PICKAXE.get()).add(VSWeaponry.GRANITE_PICKAXE.get()).add(VSWeaponry.ANDESITE_PICKAXE.get()).add(VSWeaponry.END_STONE_PICKAXE.get()).add(VSWeaponry.QUARTZ_PICKAXE.get());
+        this.tag(ItemTags.SHOVELS).add(VSWeaponry.DIORITE_SHOVEL.get()).add(VSWeaponry.GRANITE_SHOVEL.get()).add(VSWeaponry.ANDESITE_SHOVEL.get()).add(VSWeaponry.END_STONE_SHOVEL.get()).add(VSWeaponry.QUARTZ_SHOVEL.get());
+        this.tag(ItemTags.AXES).add(VSWeaponry.DIORITE_AXE.get()).add(VSWeaponry.GRANITE_AXE.get()).add(VSWeaponry.ANDESITE_AXE.get()).add(VSWeaponry.END_STONE_AXE.get()).add(VSWeaponry.QUARTZ_AXE.get());
+        this.tag(ItemTags.HOES).add(VSWeaponry.DIORITE_HOE.get()).add(VSWeaponry.GRANITE_HOE.get()).add(VSWeaponry.ANDESITE_HOE.get()).add(VSWeaponry.END_STONE_HOE.get()).add(VSWeaponry.QUARTZ_HOE.get());
+        this.tag(ItemTags.TRIMMABLE_ARMOR).add(VSWeaponry.EMPTY_ARMOR_SLOT_HELMET.get()).add(VSWeaponry.EMPTY_ARMOR_SLOT_CHESTPLATE.get()).add(VSWeaponry.EMPTY_ARMOR_SLOT_LEGGINGS.get())
+                .add(VSWeaponry.EMPTY_ARMOR_SLOT_BOOTS.get()).add(VSWeaponry.EMERALD_HELMET.get()).add(VSWeaponry.EMERALD_CHESTPLATE.get()).add(VSWeaponry.EMERALD_LEGGINGS.get()).add(VSWeaponry.EMERALD_BOOTS.get())
+                .add(VSWeaponry.QUARTZ_HELMET.get()).add(VSWeaponry.QUARTZ_CHESTPLATE.get()).add(VSWeaponry.QUARTZ_LEGGINGS.get()).add(VSWeaponry.QUARTZ_BOOTS.get()).add(VSWeaponry.COPPER_CHESTPLATE.get())
+                .add(VSWeaponry.PHANTOM_MEMBRANE_TUNIC.get()).add(VSWeaponry.RABBIT_HIDE_TUNIC.get()).add(VSWeaponry.WOOL_SWEATER.get());
+        this.tag(ItemTags.FREEZE_IMMUNE_WEARABLES).add(VSWeaponry.WOOL_SWEATER.get());
+
+        this.tag(ItemTags.BOOKSHELF_BOOKS).add(VSItems.ENCHANTED_KNOWLEDGE_BOOK.get());
+        this.tag(ItemTags.CREEPER_IGNITERS).add(VSItems.SOUL_O_CHARGE.get());
+        this.tag(ItemTags.FISHES).add(VSItems.RAW_FISH.get()).add(VSItems.COOKED_FISH.get());
     }
 }

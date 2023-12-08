@@ -1,5 +1,6 @@
 {
   "parent": "variants:block/inventory_potted_plant",
+  "render_type": "minecraft:cutout",
   "textures": {
     "plant": "variants:block/ender_roots_pot"
   }

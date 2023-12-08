@@ -1,18 +1,14 @@
 package com.junethewoods.variants.item.custom.food;
 
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.UseAction;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.DrinkHelper;
-import net.minecraft.util.Hand;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.Level;
 
 public abstract class DrinkableContainerItem extends Item {
     public ItemStack containerItem = new ItemStack(Items.GLASS_BOTTLE);
@@ -21,23 +17,23 @@ public abstract class DrinkableContainerItem extends Item {
         super(properties);
     }
 
-    public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity livEntity) {
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livEntity) {
         setContainerItem(containerItem);
 
-        if (livEntity instanceof ServerPlayerEntity) {
-            ServerPlayerEntity serverPlayer = (ServerPlayerEntity) livEntity;
+        if (livEntity instanceof ServerPlayer) {
+            ServerPlayer serverPlayer = (ServerPlayer) livEntity;
             CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
 
-        bottleFunctionality(containerItem, stack, world, livEntity);
+        bottleFunctionality(containerItem, stack, level, livEntity);
 
         if (stack.isEmpty()) {
             return containerItem;
         } else {
-            if (livEntity instanceof PlayerEntity && !((PlayerEntity) livEntity).abilities.instabuild) {
-                PlayerEntity player = (PlayerEntity) livEntity;
-                if (!player.inventory.add(containerItem)) {
+            if (livEntity instanceof Player && !((Player) livEntity).getAbilities().instabuild) {
+                Player player = (Player) livEntity;
+                if (!player.getInventory().add(containerItem)) {
                     player.drop(containerItem, false);
                 }
             }
@@ -50,22 +46,17 @@ public abstract class DrinkableContainerItem extends Item {
         return 32;
     }
 
-    public UseAction getUseAnimation(ItemStack stack) {
-        return UseAction.DRINK;
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.DRINK;
     }
 
-    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
-        return DrinkHelper.useDrink(world, player, hand);
-    }
-
-    @Override
-    public ItemStack getContainerItem(ItemStack itemStack) {
-        return containerItem;
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        return ItemUtils.startUsingInstantly(level, player, hand);
     }
 
     public ItemStack setContainerItem(ItemStack stack) {
         return this.containerItem = stack;
     };
 
-    public abstract void bottleFunctionality(ItemStack containerStack, ItemStack stack, World world, LivingEntity livEntity);
+    public abstract void bottleFunctionality(ItemStack containerStack, ItemStack stack, Level level, LivingEntity livEntity);
 }

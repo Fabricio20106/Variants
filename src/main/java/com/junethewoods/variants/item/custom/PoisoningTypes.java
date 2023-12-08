@@ -1,8 +1,9 @@
 package com.junethewoods.variants.item.custom;
 
 import com.junethewoods.variants.effect.VSEffects;
-import net.minecraft.potion.Effect;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.effect.MobEffect;
+
+import java.util.function.Supplier;
 
 public class PoisoningTypes implements IPoisoningType {
     public static final IPoisoningType REDSTONE = new PoisoningTypes(VSEffects.REDSTONE_POISONING);
@@ -11,14 +12,14 @@ public class PoisoningTypes implements IPoisoningType {
     public static final IPoisoningType GUNPOWDER = new PoisoningTypes(VSEffects.GUNPOWDER_POISONING);
     public static final IPoisoningType CREEPER_POWDER = new PoisoningTypes(VSEffects.CREEPER_POWDER_POISONING);
 
-    private final RegistryObject<Effect> poisoningEffect;
+    private final Supplier<MobEffect> poisoningEffect;
 
-    public PoisoningTypes(RegistryObject<Effect> effect) {
+    public PoisoningTypes(Supplier<MobEffect> effect) {
         this.poisoningEffect = effect;
     }
 
     @Override
-    public RegistryObject<Effect> getPoisoningEffect() {
+    public Supplier<MobEffect> getPoisoningEffect() {
         return this.poisoningEffect;
     }
 }

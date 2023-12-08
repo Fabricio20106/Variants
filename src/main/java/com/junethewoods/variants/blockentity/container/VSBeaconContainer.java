@@ -1,14 +1,7 @@
 package com.junethewoods.variants.blockentity.container;
 
-import com.junethewoods.variants.util.VSTags;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.container.BeaconContainer;
-import net.minecraft.util.IIntArray;
-import net.minecraft.util.IWorldPosCallable;
-
-public class VSBeaconContainer extends BeaconContainer {
-    private final IWorldPosCallable access;
+public class VSBeaconContainer {
+    /*private final IWorldPosCallable access;
 
     public VSBeaconContainer(int containerId, IInventory inventory, IIntArray intArray, IWorldPosCallable access) {
         super(containerId, inventory, intArray, access);
@@ -23,5 +16,5 @@ public class VSBeaconContainer extends BeaconContainer {
     @Override
     public boolean stillValid(PlayerEntity player) {
         return stillValid(this.access, player);
-    }
+    }*/
 }

@@ -2,19 +2,18 @@ package com.junethewoods.variants.item.tool;
 
 import java.util.function.Supplier;
 import com.junethewoods.variants.Variants;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.LazyValue;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.Tags;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.common.Tags;
 
-public class VSArmors implements IArmorMaterial {
+public class VSArmors implements ArmorMaterial {
     public static final VSArmors EMPTY_SLOT = new VSArmors(Variants.MOD_ID + ":empty_armor_slot", 15, new int[] {2, 5, 6, 2}, 9, SoundEvents.ARMOR_EQUIP_IRON, 0f, 0f, () -> Ingredient.of(Tags.Items.INGOTS_IRON));
     public static final VSArmors PHANTOM_MEMBRANE = new VSArmors(Variants.MOD_ID + ":phantom", 5, new int[] {1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0f, 0f, () -> Ingredient.of(Items.PHANTOM_MEMBRANE));
     public static final VSArmors RABBIT_HIDE = new VSArmors(Variants.MOD_ID + ":rabbit", 5, new int[] {1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0f, 0f, () -> Ingredient.of(Items.RABBIT_HIDE));
@@ -23,7 +22,7 @@ public class VSArmors implements IArmorMaterial {
     public static final VSArmors QUARTZ = new VSArmors(Variants.MOD_ID + ":quartz", 15, new int[] {2, 5, 6, 2}, 9, SoundEvents.ARMOR_EQUIP_IRON, 0f, 0f, () -> Ingredient.of(Tags.Items.GEMS_QUARTZ));
     public static final VSArmors COPPER = new VSArmors(Variants.MOD_ID + ":copper", 15, new int[] {1, 4, 5, 2}, 12, SoundEvents.ARMOR_EQUIP_IRON, 0f, 0.01f, () -> Ingredient.EMPTY);
 
-    private static final int[] MAX_DAMAGE_ARRAY = new int[] {13, 15, 16, 11};
+    private static final int[] BASE_DURABILITY = new int[] {13, 15, 16, 11};
     private final String name;
     private final int durabilityMultiplier;
     private final int[] slotProtections;
@@ -31,7 +30,7 @@ public class VSArmors implements IArmorMaterial {
     private final SoundEvent equipSound;
     private final float toughness;
     private final float knockbackRes;
-    private final LazyValue<Ingredient> repairIngredient;
+    private final Supplier<Ingredient> repairIngredient;
 
     public VSArmors(String name, int durabilityMultiplier, int[] slotProtections, int enchValue, SoundEvent equipSound, float toughness, float knockbackRes, Supplier<Ingredient> repairIngredient) {
         this.name = name;
@@ -41,15 +40,15 @@ public class VSArmors implements IArmorMaterial {
         this.equipSound = equipSound;
         this.toughness = toughness;
         this.knockbackRes = knockbackRes;
-        this.repairIngredient = new LazyValue<>(repairIngredient);
+        this.repairIngredient = repairIngredient;
     }
 
-    public int getDurabilityForSlot(EquipmentSlotType slot) {
-        return MAX_DAMAGE_ARRAY[slot.getIndex()] * this.durabilityMultiplier;
+    public int getDurabilityForType(ArmorItem.Type slot) {
+        return BASE_DURABILITY[slot.ordinal()] * this.durabilityMultiplier;
     }
 
-    public int getDefenseForSlot(EquipmentSlotType slot) {
-        return this.slotProtections[slot.getIndex()];
+    public int getDefenseForType(ArmorItem.Type slot) {
+        return this.slotProtections[slot.ordinal()];
     }
 
     public int getEnchantmentValue() {

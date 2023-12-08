@@ -2,21 +2,20 @@ package com.junethewoods.variants.block.custom.end;
 
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.util.VSTags;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BushBlock;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.common.ForgeHooks;
-
-import java.util.Random;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.common.CommonHooks;
 
 public class EnderWartBlock extends BushBlock {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
@@ -31,11 +30,11 @@ public class EnderWartBlock extends BushBlock {
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
     }
 
-    public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPES[state.getValue(AGE)];
     }
 
-    protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
+    protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
         return state.is(VSTags.Blocks.ENDER_WART_PLANTABLE_ON);
     }
 
@@ -43,20 +42,20 @@ public class EnderWartBlock extends BushBlock {
         return state.getValue(AGE) < 3;
     }
 
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random rand) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {
         int age = state.getValue(AGE);
-        if (age < 3 && ForgeHooks.onCropsGrowPre(world, pos, state, rand.nextInt(10) == 0)) {
+        if (age < 3 && CommonHooks.onCropsGrowPre(level, pos, state, rand.nextInt(10) == 0)) {
             state = state.setValue(AGE, age + 1);
-            world.setBlock(pos, state, 2);
-            ForgeHooks.onCropsGrowPost(world, pos, state);
+            level.setBlock(pos, state, 2);
+            CommonHooks.onCropsGrowPost(level, pos, state);
         }
     }
 
-    public ItemStack getCloneItemStack(IBlockReader world, BlockPos pos, BlockState state) {
+    public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
         return new ItemStack(VSItems.ENDER_WART.get());
     }
 
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(AGE);
     }
 }

@@ -1,5 +1,6 @@
 {
   "parent": "minecraft:block/cross",
+  "render_type": "cutout",
   "textures": {
     "cross": "variants:block/glow_berry_bush_stage1"
   }

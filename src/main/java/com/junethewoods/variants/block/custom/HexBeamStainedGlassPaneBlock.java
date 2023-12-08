@@ -1,15 +1,16 @@
 package com.junethewoods.variants.block.custom;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.IBeaconBeamColorProvider;
-import net.minecraft.block.PaneBlock;
-import net.minecraft.item.DyeColor;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorldReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.BeaconBeamBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.IronBarsBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
-public class HexBeamStainedGlassPaneBlock extends PaneBlock implements IBeaconBeamColorProvider {
+public class HexBeamStainedGlassPaneBlock extends IronBarsBlock implements BeaconBeamBlock {
     private final int beaconBeamColor;
 
     public HexBeamStainedGlassPaneBlock(int beaconBeamColor, Properties properties) {
@@ -19,18 +20,22 @@ public class HexBeamStainedGlassPaneBlock extends PaneBlock implements IBeaconBe
     }
 
     @Nullable
-    public float[] getBeaconColorMultiplier(BlockState state, IWorldReader world, BlockPos pos, BlockPos beaconPos) {
+    public float[] getBeaconColorMultiplier(BlockState state, LevelReader level, BlockPos pos, BlockPos beaconPos) {
         int i = (beaconBeamColor & 16711680) >> 16;
         int j = (beaconBeamColor & '\uff00') >> 8;
         int k = (beaconBeamColor & 255) >> 0;
 
         float[] textureDiffuseColors = new float[] {(float) i / 255f, (float) j / 255f, (float) k / 255f};
 
-        if (getBlock() instanceof IBeaconBeamColorProvider) {
+        if (getBlock() instanceof BeaconBeamBlock) {
             return textureDiffuseColors;
         }
 
         return null;
+    }
+
+    public Block getBlock() {
+        return this;
     }
 
     @Override

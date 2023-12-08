@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column_horizontal",
   "textures": {
-    "side": "variants:block/painting_log",
-    "end": "variants:block/painting_log"
+    "end": "variants:block/painting_log",
+    "side": "variants:block/painting_log"
   }
 }

@@ -1,5 +1,6 @@
 {
   "credit": "Made with Blockbench by JuneTheWoods",
+  "render_type": "cutout",
   "ambientocclusion": false,
   "textures": {
     "sugar_cane": "block/sugar_cane",

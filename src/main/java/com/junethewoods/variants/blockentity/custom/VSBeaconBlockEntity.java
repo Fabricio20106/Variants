@@ -1,21 +1,18 @@
 package com.junethewoods.variants.blockentity.custom;
 
 import com.junethewoods.variants.blockentity.VSBlockEntities;
-import com.junethewoods.variants.util.VSTags;
-import net.minecraft.block.BlockState;
-import net.minecraft.tileentity.BeaconTileEntity;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.entity.BeaconBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
 
-public class VSBeaconBlockEntity extends BeaconTileEntity {
-    public VSBeaconBlockEntity() {
-        super();
+public class VSBeaconBlockEntity extends BeaconBlockEntity {
+    public VSBeaconBlockEntity(BlockPos pos, BlockState state) {
+        super(pos, state);
     }
 
     @Override
-    public TileEntityType<?> getType() {
+    public BlockEntityType<?> getType() {
         return VSBlockEntities.VS_BEACON.get();
     }
 
@@ -26,7 +23,7 @@ public class VSBeaconBlockEntity extends BeaconTileEntity {
                 IWorldPosCallable.create(this.level, this.getBlockPos())) : null;
     }*/
 
-    @Override
+    /*@Override
     public AxisAlignedBB getRenderBoundingBox() {
         AxisAlignedBB bb = INFINITE_EXTENT_AABB;
         BlockState state = getTileEntity().getBlockState();
@@ -46,5 +43,5 @@ public class VSBeaconBlockEntity extends BeaconTileEntity {
             if (aabb != null) bb = aabb;
         }
         return bb;
-    }
+    }*/
 }

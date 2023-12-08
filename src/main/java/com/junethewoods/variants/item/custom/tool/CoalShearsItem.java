@@ -1,8 +1,8 @@
 package com.junethewoods.variants.item.custom.tool;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ShearsItem;
-import net.minecraft.item.crafting.IRecipeType;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ShearsItem;
+import net.minecraft.world.item.crafting.RecipeType;
 
 import javax.annotation.Nullable;
 
@@ -12,7 +12,7 @@ public class CoalShearsItem extends ShearsItem {
     }
 
     @Override
-    public int getBurnTime(ItemStack stack, @Nullable IRecipeType<?> recipeType) {
+    public int getBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType) {
         return 3200;
     }
 }

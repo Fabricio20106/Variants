@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column_horizontal",
   "textures": {
-    "side": "variants:block/wither_bone_block_side",
-    "end": "variants:block/wither_bone_block_top"
+    "end": "variants:block/wither_bone_block_top",
+    "side": "variants:block/wither_bone_block_side"
   }
 }

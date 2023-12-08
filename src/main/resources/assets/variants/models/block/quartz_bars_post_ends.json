@@ -1,5 +1,6 @@
 {
   "ambientocclusion": false,
+  "render_type": "cutout",
   "textures": {
     "particle": "variants:block/quartz_bars",
     "edge": "variants:block/quartz_bars"

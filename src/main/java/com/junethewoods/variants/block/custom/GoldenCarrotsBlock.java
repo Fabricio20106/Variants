@@ -1,17 +1,17 @@
 package com.junethewoods.variants.block.custom;
 
 import com.junethewoods.variants.util.VSTags;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.CropsBlock;
-import net.minecraft.item.Items;
-import net.minecraft.util.IItemProvider;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class GoldenCarrotsBlock extends CropsBlock {
+public class GoldenCarrotsBlock extends CropBlock {
     private static final VoxelShape[] SHAPES = new VoxelShape[] {
             Block.box(0d, 0d, 0d, 16d, 2d, 16d),
             Block.box(0d, 0d, 0d, 16d, 3d, 16d),
@@ -27,15 +27,15 @@ public class GoldenCarrotsBlock extends CropsBlock {
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
+    protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
         return state.is(VSTags.Blocks.GOLDEN_CARROTS_PLANTABLE_ON);
     }
 
-    protected IItemProvider getBaseSeedId() {
+    protected ItemLike getBaseSeedId() {
         return Items.GOLDEN_CARROT;
     }
 
-    public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPES[state.getValue(this.getAgeProperty())];
     }
 }

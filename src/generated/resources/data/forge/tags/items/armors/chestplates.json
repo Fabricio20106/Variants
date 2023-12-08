@@ -1,0 +1,11 @@
+{
+  "values": [
+    "variants:empty_armor_slot_chestplate",
+    "variants:emerald_chestplate",
+    "variants:quartz_chestplate",
+    "variants:copper_chestplate",
+    "variants:phantom_membrane_sweatchest",
+    "variants:rabbit_hide_sweatchest",
+    "variants:wool_sweatchest"
+  ]
+}

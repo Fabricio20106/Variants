@@ -1,31 +1,6 @@
 package com.junethewoods.variants.blockentity.renderer;
 
-import com.junethewoods.variants.Variants;
-import com.junethewoods.variants.blockentity.custom.VSBedBlockEntity;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import net.minecraft.block.BedBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ChestBlock;
-import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.client.renderer.model.RenderMaterial;
-import net.minecraft.client.renderer.tileentity.DualBrightnessCallback;
-import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
-import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
-import net.minecraft.state.properties.BedPart;
-import net.minecraft.tileentity.BedTileEntity;
-import net.minecraft.tileentity.TileEntityMerger;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.vector.Vector3f;
-import net.minecraft.world.World;
-
-import static net.minecraft.client.renderer.Atlases.BED_SHEET;
-
-@SuppressWarnings("unchecked")
+/*@SuppressWarnings("unchecked")
 public class VSBedBlockEntityRenderer extends TileEntityRenderer<VSBedBlockEntity> {
     private final ModelRenderer headPiece = new ModelRenderer(64, 64, 0, 0);
     private final ModelRenderer footPiece = new ModelRenderer(64, 64, 0, 22);
@@ -89,4 +64,4 @@ public class VSBedBlockEntityRenderer extends TileEntityRenderer<VSBedBlockEntit
         this.legs[3].render(matrixStack, vertexBuilder, i1, i2);
         matrixStack.popPose();
     }
-}
+}*/

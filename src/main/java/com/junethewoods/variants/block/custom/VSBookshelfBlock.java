@@ -1,10 +1,10 @@
 package com.junethewoods.variants.block.custom;
 
 import com.junethewoods.variants.util.VSTags;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorldReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class VSBookshelfBlock extends Block {
     private final int enchantingPower;
@@ -14,7 +14,7 @@ public class VSBookshelfBlock extends Block {
         this.enchantingPower = enchantingPower;
     }
 
-    public float getEnchantPowerBonus(BlockState state, IWorldReader world, BlockPos pos) {
+    public float getEnchantPowerBonus(BlockState state, LevelReader world, BlockPos pos) {
         return state.is(VSTags.Blocks.BOOKSHELVES) ? this.enchantingPower : 0;
     }
 }

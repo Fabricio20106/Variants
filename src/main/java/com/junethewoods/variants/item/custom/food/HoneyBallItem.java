@@ -1,32 +1,36 @@
 package com.junethewoods.variants.item.custom.food;
 
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.UseAction;
-import net.minecraft.potion.Effects;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.*;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.level.Level;
 
 public class HoneyBallItem extends Item {
     public HoneyBallItem(Properties properties) {
         super(properties);
     }
 
-    public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity livEntity) {
-        super.finishUsingItem(stack, world, livEntity);
-        if (livEntity instanceof ServerPlayerEntity) {
-            ServerPlayerEntity serverPlayer = (ServerPlayerEntity) livEntity;
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livEntity) {
+        super.finishUsingItem(stack, level, livEntity);
+        if (livEntity instanceof ServerPlayer) {
+            ServerPlayer serverPlayer = (ServerPlayer) livEntity;
             CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
 
-        if (!world.isClientSide) {
-            livEntity.removeEffect(Effects.POISON);
+        if (!level.isClientSide) {
+            livEntity.removeEffect(MobEffects.POISON);
         }
         return stack;
     }
@@ -35,15 +39,15 @@ public class HoneyBallItem extends Item {
         return 40;
     }
 
-    public UseAction getUseAnimation(ItemStack stack) {
-        return UseAction.EAT;
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.EAT;
     }
 
     public SoundEvent getEatingSound() {
         return SoundEvents.HONEY_DRINK;
     }
 
-    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
-        return DrinkHelper.useDrink(world, player, hand);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        return ItemUtils.startUsingInstantly(level, player, hand);
     }
 }

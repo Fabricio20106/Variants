@@ -1,16 +1,14 @@
 package com.junethewoods.variants.item.tool;
 
 import com.junethewoods.variants.util.VSTags;
-import net.minecraft.block.Blocks;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.LazyValue;
-import net.minecraftforge.common.Tags;
+import net.minecraft.util.LazyLoadedValue;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.neoforged.neoforge.common.Tags;
 
 import java.util.function.Supplier;
 
-public class VSTools implements IItemTier {
+public class VSTools implements Tier {
     public static final VSTools ANDESITE = new VSTools(1, 131, 4f, 1f, 5, () -> Ingredient.of(VSTags.Items.CM_ANDESITE));
     public static final VSTools DIORITE = new VSTools(1, 131, 4f, 1f, 5, () -> Ingredient.of(VSTags.Items.CM_DIORITE));
     public static final VSTools GRANITE = new VSTools(1, 131, 4f, 1f, 5, () -> Ingredient.of(VSTags.Items.CM_GRANITE));
@@ -26,7 +24,7 @@ public class VSTools implements IItemTier {
     private final float harvestSpeed;
     private final float attackDamage;
     private final int enchantmentValue;
-    private final LazyValue<Ingredient> repairIngredient;
+    private final Supplier<Ingredient> repairIngredient;
 
     public VSTools(int level, int durability, float efficiency, float damage, int enchValue, Supplier<Ingredient> repairIngredient) {
         this.harvestLevel = level;
@@ -34,7 +32,7 @@ public class VSTools implements IItemTier {
         this.harvestSpeed = efficiency;
         this.attackDamage = damage;
         this.enchantmentValue = enchValue;
-        this.repairIngredient = new LazyValue<>(repairIngredient);
+        this.repairIngredient = repairIngredient;
     }
 
     public int getUses() {

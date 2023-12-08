@@ -1,17 +1,40 @@
 package com.junethewoods.variants.data.models;
 
 import com.junethewoods.variants.Variants;
-import net.minecraft.data.DataGenerator;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import com.junethewoods.variants.item.VSWeaponry;
+import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.armortrim.TrimMaterial;
+import net.minecraft.world.item.armortrim.TrimMaterials;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nonnull;
+import java.util.LinkedHashMap;
 
 public class VSItemModelProvider extends ItemModelProvider {
-    public VSItemModelProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
-        super(generator, Variants.MOD_ID, fileHelper);
+    private static final LinkedHashMap<ResourceKey<TrimMaterial>, Float> trimMaterials = new LinkedHashMap<>();
+
+    static {
+        trimMaterials.put(TrimMaterials.QUARTZ, 0.1F);
+        trimMaterials.put(TrimMaterials.IRON, 0.2F);
+        trimMaterials.put(TrimMaterials.NETHERITE, 0.3F);
+        trimMaterials.put(TrimMaterials.REDSTONE, 0.4F);
+        trimMaterials.put(TrimMaterials.COPPER, 0.5F);
+        trimMaterials.put(TrimMaterials.GOLD, 0.6F);
+        trimMaterials.put(TrimMaterials.EMERALD, 0.7F);
+        trimMaterials.put(TrimMaterials.DIAMOND, 0.8F);
+        trimMaterials.put(TrimMaterials.LAPIS, 0.9F);
+        trimMaterials.put(TrimMaterials.AMETHYST, 1.0F);
+    }
+
+    public VSItemModelProvider(PackOutput output, ExistingFileHelper fileHelper) {
+        super(output, Variants.MOD_ID, fileHelper);
     }
 
     @Nonnull
@@ -218,9 +241,9 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(handheld, "amethyst_sword");
         standard(handheld, "copper_sword");
         standard(handheld, "magma_sword");
-        standard(generated, "copper_chestplate");
-        standard(generated, "phantom_membrane_sweatchest");
-        standard(generated, "rabbit_hide_sweatchest");
+        trimmedArmor(VSWeaponry.COPPER_CHESTPLATE.get(), "copper_chestplate");
+        trimmedArmor(VSWeaponry.PHANTOM_MEMBRANE_TUNIC.get(), "phantom_membrane_sweatchest");
+        trimmedArmor(VSWeaponry.RABBIT_HIDE_TUNIC.get(), "rabbit_hide_sweatchest");
         standard(generated, "quartz_horse_armor");
         standard(generated, "empty_armor_slot_shield");
 
@@ -255,9 +278,18 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "inno_ai_shears");
         standard(generated, "nicolas_ai_shears");
 
-        armorSet(generated, "empty_armor_slot");
-        armorSet(generated, "emerald");
-        armorSet(generated, "quartz");
+        trimmedArmor(VSWeaponry.EMPTY_ARMOR_SLOT_HELMET.get(), "empty_armor_slot_helmet");
+        trimmedArmor(VSWeaponry.EMPTY_ARMOR_SLOT_CHESTPLATE.get(), "empty_armor_slot_chestplate");
+        trimmedArmor(VSWeaponry.EMPTY_ARMOR_SLOT_LEGGINGS.get(), "empty_armor_slot_leggings");
+        trimmedArmor(VSWeaponry.EMPTY_ARMOR_SLOT_BOOTS.get(), "empty_armor_slot_boots");
+        trimmedArmor(VSWeaponry.EMERALD_HELMET.get(), "emerald_helmet");
+        trimmedArmor(VSWeaponry.EMERALD_CHESTPLATE.get(), "emerald_chestplate");
+        trimmedArmor(VSWeaponry.EMERALD_LEGGINGS.get(), "emerald_leggings");
+        trimmedArmor(VSWeaponry.EMERALD_BOOTS.get(), "emerald_boots");
+        trimmedArmor(VSWeaponry.QUARTZ_HELMET.get(), "quartz_helmet");
+        trimmedArmor(VSWeaponry.QUARTZ_CHESTPLATE.get(), "quartz_chestplate");
+        trimmedArmor(VSWeaponry.QUARTZ_LEGGINGS.get(), "quartz_leggings");
+        trimmedArmor(VSWeaponry.QUARTZ_BOOTS.get(), "quartz_boots");
 
         toolSet(handheld, "andesite");
         toolSet(handheld, "granite");
@@ -278,13 +310,6 @@ public class VSItemModelProvider extends ItemModelProvider {
         getBuilder(material + "_hoe").parent(parent).texture("layer0", "item/" + material + "_hoe");
     }
 
-    public void armorSet(ModelFile parent, String material) {
-        getBuilder(material + "_helmet").parent(parent).texture("layer0", "item/" + material + "_helmet");
-        getBuilder(material + "_chestplate").parent(parent).texture("layer0", "item/" + material + "_chestplate");
-        getBuilder(material + "_leggings").parent(parent).texture("layer0", "item/" + material + "_leggings");
-        getBuilder(material + "_boots").parent(parent).texture("layer0", "item/" + material + "_boots");
-    }
-
     public void block(String name) {
         withExistingParent(name, modLoc("block/" + name));
     }
@@ -303,5 +328,47 @@ public class VSItemModelProvider extends ItemModelProvider {
 
     public void glassPane(String name) {
         getBuilder(name + "_pane").parent(getExistingFile(mcLoc("item/generated"))).texture("layer0", "block/" + name);
+    }
+
+    // Copied from Modding By Kaupenjoe's Forge 1.20 repository. - June
+    // Shoutout to El_Redstoniano for making this
+    private void trimmedArmor(Item armor, String armorName) {
+        final String MOD_ID = Variants.MOD_ID; // Change this to your mod id
+
+        if (armor instanceof ArmorItem armorItem) {
+            trimMaterials.entrySet().forEach(entry -> {
+
+                ResourceKey<TrimMaterial> trimMaterial = entry.getKey();
+                float trimValue = entry.getValue();
+
+                String armorType = switch (armorItem.getEquipmentSlot()) {
+                    case HEAD -> "helmet";
+                    case CHEST -> "chestplate";
+                    case LEGS -> "leggings";
+                    case FEET -> "boots";
+                    default -> "";
+                };
+
+                String armorItemPath = "item/" + armorName;
+                String trimPath = "trims/items/" + armorType + "_trim_" + trimMaterial.location().getPath();
+                String currentTrimName = armorItemPath + "_" + trimMaterial.location().getPath() + "_trim";
+                ResourceLocation armorItemResLoc = new ResourceLocation(MOD_ID, armorItemPath);
+                ResourceLocation trimResLoc = new ResourceLocation(trimPath); // Minecraft namespace.
+                ResourceLocation trimNameResLoc = new ResourceLocation(MOD_ID, currentTrimName);
+
+                // This is used for making the ExistingFileHelper acknowledge that this texture exist, so this will avoid an IllegalArgumentException.
+                existingFileHelper.trackGenerated(trimResLoc, PackType.CLIENT_RESOURCES, ".png", "textures");
+
+                // Trimmed armorItem files
+                getBuilder(currentTrimName)
+                        .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                        .texture("layer0", armorItemResLoc)
+                        .texture("layer1", trimResLoc);
+
+                // Non-trimmed armorItem file (normal variant).
+                this.withExistingParent(armorName, mcLoc("item/generated")).override().model(new ModelFile.UncheckedModelFile(trimNameResLoc)).predicate(mcLoc("trim_type"), trimValue).end().texture("layer0", new ResourceLocation(MOD_ID,
+                        "item/" + armorName));
+            });
+        }
     }
 }

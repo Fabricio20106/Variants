@@ -1,13 +1,13 @@
 package com.junethewoods.variants.item.custom.armor;
 
-import net.minecraft.item.IDyeableArmorItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.DyeableLeatherItem;
+import net.minecraft.world.item.ItemStack;
 
-public interface IDyeableWoolArmorItem extends IDyeableArmorItem {
+public interface IDyeableWoolArmorItem extends DyeableLeatherItem {
     @Override
     default int getColor(ItemStack stack) {
-        CompoundNBT nbt = stack.getTagElement("display");
+        CompoundTag nbt = stack.getTagElement("display");
         return nbt != null && nbt.contains("color", 99) ? nbt.getInt("color") : 16777215;
     }
 }

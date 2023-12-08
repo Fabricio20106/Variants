@@ -2,14 +2,13 @@ package com.junethewoods.variants.item.custom.food;
 
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.custom.IPoisoningType;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -22,11 +21,11 @@ public class StylisedPotItem extends DrinkableContainerItem {
     public StylisedPotItem(Properties properties, String compatMod, IPoisoningType poisoningEffect, int poisoningDuration) {
         super(properties);
         this.poisoningEffect = poisoningEffect;
-        if (poisoningEffect.getPoisoningEffect().isPresent() && poisoningEffect.getPoisoningEffect().get().isInstantenous()) {
-            this.poisoningDuration = poisoningDuration;
-        } else {
+//        if (poisoningEffect.getPoisoningEffect(). && poisoningEffect.getPoisoningEffect().get().isInstantenous()) {
+//            this.poisoningDuration = poisoningDuration;
+//        } else {
             this.poisoningDuration = poisoningDuration * 20;
-        }
+//        }
         this.compatMod = compatMod;
     }
 
@@ -35,9 +34,9 @@ public class StylisedPotItem extends DrinkableContainerItem {
     }
 
     @Override
-    public void bottleFunctionality(ItemStack containerStack, ItemStack stack, World world, LivingEntity livEntity) {
+    public void bottleFunctionality(ItemStack containerStack, ItemStack stack, Level level, LivingEntity livEntity) {
         if (poisoningEffect != null) {
-            if (!world.isClientSide) livEntity.addEffect(new EffectInstance(poisoningEffect.getPoisoningEffect().get(), this.poisoningDuration));
+            if (!level.isClientSide) livEntity.addEffect(new MobEffectInstance(poisoningEffect.getPoisoningEffect().get(), this.poisoningDuration));
         }
     }
 
@@ -47,10 +46,10 @@ public class StylisedPotItem extends DrinkableContainerItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         if (compatMod != null) {
-            tooltip.add(new TranslationTextComponent("tooltip.variants.compat_item_from", compatMod).withStyle(TextFormatting.GRAY).withStyle(TextFormatting.ITALIC));
+            tooltip.add(Component.translatable("tooltip.variants.compat_item_from", compatMod).withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.ITALIC));
         }
-        super.appendHoverText(stack, world, tooltip, flag);
+        super.appendHoverText(stack, level, tooltip, flag);
     }
 }

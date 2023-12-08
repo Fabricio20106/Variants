@@ -1,0 +1,12 @@
+{
+  "values": [
+    "variants:diorite_sword",
+    "variants:granite_sword",
+    "variants:andesite_sword",
+    "variants:end_stone_sword",
+    "variants:magma_sword",
+    "variants:copper_sword",
+    "variants:amethyst_sword",
+    "variants:quartz_sword"
+  ]
+}

@@ -1,35 +1,6 @@
 package com.junethewoods.variants.fluid.custom;
 
-import com.junethewoods.variants.Variants;
-import com.junethewoods.variants.block.VSBlocks;
-import com.junethewoods.variants.fluid.VSFluids;
-import com.junethewoods.variants.item.VSItems;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FlowingFluidBlock;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.item.Item;
-import net.minecraft.item.Rarity;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.state.StateContainer;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Direction;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.*;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.fluids.FluidAttributes;
-import net.minecraftforge.fluids.ForgeFlowingFluid;
-
-import javax.annotation.Nullable;
-import java.util.Random;
-
-public abstract class SoulLavaFluid extends ForgeFlowingFluid {
+/*public abstract class SoulLavaFluid extends ForgeFlowingFluid {
     public static final ForgeFlowingFluid.Properties SOUL_LAVA_PROPERTIES = new ForgeFlowingFluid.Properties(VSFluids.SOUL_LAVA, VSFluids.FLOWING_SOUL_LAVA,
             FluidAttributes.builder(Variants.resourceLoc("block/soul_lava_still"), Variants.resourceLoc("block/soul_lava_flowing")).rarity(Rarity.UNCOMMON).sound(SoundEvents.BUCKET_EMPTY_LAVA)
                     .overlay(Variants.resourceLoc("block/soul_lava_overlay"))).levelDecreasePerBlock(2).slopeFindDistance(2).block(VSBlocks.SOUL_LAVA).tickRate(40).bucket(VSItems.SOUL_LAVA_BUCKET);
@@ -231,4 +202,4 @@ public abstract class SoulLavaFluid extends ForgeFlowingFluid {
             return 8;
         }
     }
-}
+}*/

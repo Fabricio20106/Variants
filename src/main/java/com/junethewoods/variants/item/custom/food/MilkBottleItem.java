@@ -1,8 +1,8 @@
 package com.junethewoods.variants.item.custom.food;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 
 public class MilkBottleItem extends DrinkableContainerItem {
     public MilkBottleItem(Properties properties) {
@@ -10,8 +10,8 @@ public class MilkBottleItem extends DrinkableContainerItem {
     }
 
     @Override
-    public void bottleFunctionality(ItemStack containerStack, ItemStack stack, World world, LivingEntity livEntity) {
+    public void bottleFunctionality(ItemStack containerStack, ItemStack stack, Level level, LivingEntity livEntity) {
         // FORGE - move up so stack.shrink does not turn stack into air
-        if (!world.isClientSide) livEntity.curePotionEffects(stack);
+        if (!level.isClientSide) livEntity.curePotionEffects(stack);
     }
 }

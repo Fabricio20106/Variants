@@ -1,7 +1,7 @@
 {
-  "itemGroup.variants": "Variants",
-  "itemGroup.variants_blocks": "Variants: Blocks",
-  "itemGroup.weaponryTab": "Variants: Weapons",
+  "creative_mode_tab.variants.main": "Variants",
+  "creative_mode_tab.variants.blocks": "Variants: Blocks",
+  "creative_mode_tab.variants.weaponry": "Variants: Weapons",
 
   "block.variants.potted_sugar_cane": "Potted Sugar Cane",
   "block.variants.golden_carrots": "Golden Carrots",
@@ -121,6 +121,7 @@
   "death.attack.poisoning.creeper_powder.player": "%1$s died of explosive blend poisoning whilst %2$s watched",
 
   "entity.variants.vs_boat": "Boat (Variants)",
+  "entity.variants.vs_chest_boat": "Boat with Chest (Variants)",
   "entity.variants.old_cod": "Fish",
 
   "effect.variants.redstone_poisoning": "Redstone Poisoning",

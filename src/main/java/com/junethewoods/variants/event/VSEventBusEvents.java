@@ -7,32 +7,38 @@ import com.junethewoods.variants.data.tags.VSBlockTagsProvider;
 import com.junethewoods.variants.data.tags.VSFluidTagsProvider;
 import com.junethewoods.variants.data.tags.VSItemTagsProvider;
 import com.junethewoods.variants.entity.VSEntities;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.entity.passive.fish.AbstractFishEntity;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
+import net.minecraft.data.PackOutput;
+import net.minecraft.world.entity.animal.AbstractSchoolingFish;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+
+import java.util.concurrent.CompletableFuture;
 
 @Mod.EventBusSubscriber(modid = Variants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class VSEventBusEvents {
     @SubscribeEvent
     public static void gatherData(final GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
+        PackOutput output = generator.getPackOutput();
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        generator.addProvider(new VSBlockStateProvider(generator, fileHelper));
-        generator.addProvider(new VSItemModelProvider(generator, fileHelper));
+        generator.addProvider(event.includeClient(), new VSBlockStateProvider(output, fileHelper));
+        generator.addProvider(event.includeClient(), new VSItemModelProvider(output, fileHelper));
 
-        VSBlockTagsProvider vsBlockStateProvider = new VSBlockTagsProvider(generator, fileHelper);
-        generator.addProvider(vsBlockStateProvider);
-        generator.addProvider(new VSItemTagsProvider(generator, vsBlockStateProvider, fileHelper));
-        generator.addProvider(new VSFluidTagsProvider(generator, fileHelper));
+        VSBlockTagsProvider vsBlockStateProvider = new VSBlockTagsProvider(output, lookupProvider, fileHelper);
+        generator.addProvider(event.includeServer(), vsBlockStateProvider);
+        generator.addProvider(event.includeServer(), new VSItemTagsProvider(output, lookupProvider, vsBlockStateProvider.contentsGetter(), fileHelper));
+        generator.addProvider(event.includeServer(), new VSFluidTagsProvider(output, lookupProvider, fileHelper));
     }
 
     @SubscribeEvent
     public static void createEntityAttributes(EntityAttributeCreationEvent event) {
-        event.put(VSEntities.FISH.get(), AbstractFishEntity.createAttributes().build());
+        event.put(VSEntities.FISH.get(), AbstractSchoolingFish.createAttributes().build());
     }
 }

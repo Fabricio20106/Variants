@@ -1,72 +1,85 @@
 package com.junethewoods.variants.item.custom;
 
-import com.junethewoods.variants.entity.custom.VSBoatEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BoatItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import com.junethewoods.variants.entity.custom.VSBoat;
+import com.junethewoods.variants.entity.custom.VSChestBoat;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EntityPredicates;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.RayTraceContext;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySelector;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 import java.util.function.Predicate;
 
-public class VSBoatItem extends BoatItem {
-    private static final Predicate<Entity> SPECTATORS_PREDICATE = EntityPredicates.NO_SPECTATORS.and(Entity::canBeCollidedWith);
-    private final String woodType;
+public class VSBoatItem extends Item {
+    private static final Predicate<Entity> ENTITY_PREDICATE = EntitySelector.NO_SPECTATORS.and(Entity::isPickable);
+    private final VSBoat.Type type;
+    private final boolean hasChest;
 
-    public VSBoatItem(Item.Properties properties, String woodType) {
-        super(null, properties);
-        this.woodType = woodType;
+    public VSBoatItem(boolean hasChest, VSBoat.Type woodType, Properties properties) {
+        super(properties);
+        this.hasChest = hasChest;
+        this.type = woodType;
     }
 
-    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
-        ItemStack heldItem = player.getItemInHand(hand);
-        RayTraceResult fluidRayTrace = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.ANY);
-        if (fluidRayTrace.getType() == RayTraceResult.Type.MISS) {
-            return ActionResult.pass(heldItem);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack handStack = player.getItemInHand(hand);
+        HitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.ANY);
+        if (hitResult.getType() == HitResult.Type.MISS) {
+            return InteractionResultHolder.pass(handStack);
         } else {
-            Vector3d vector3D = player.getViewVector(1);
-            List<Entity> list = world.getEntities(player, player.getBoundingBox().expandTowards(vector3D.scale(5)).inflate(1), SPECTATORS_PREDICATE);
+            Vec3 vec3 = player.getViewVector(1);
+            List<Entity> list = level.getEntities(player, player.getBoundingBox().expandTowards(vec3.scale(5)).inflate(1), ENTITY_PREDICATE);
             if (!list.isEmpty()) {
-                Vector3d vector3D1 = player.getEyePosition(1);
+                Vec3 vec31 = player.getEyePosition();
 
                 for(Entity entity : list) {
-                    AxisAlignedBB axisAlignedBB = entity.getBoundingBox().inflate(entity.getPickRadius());
-                    if (axisAlignedBB.contains(vector3D1)) {
-                        return ActionResult.pass(heldItem);
+                    AABB aabb = entity.getBoundingBox().inflate(entity.getPickRadius());
+                    if (aabb.contains(vec31)) {
+                        return InteractionResultHolder.pass(handStack);
                     }
                 }
             }
 
-            if (fluidRayTrace.getType() == RayTraceResult.Type.BLOCK) {
-                VSBoatEntity variantsBoat = new VSBoatEntity(world, fluidRayTrace.getLocation().x, fluidRayTrace.getLocation().y, fluidRayTrace.getLocation().z);
-                variantsBoat.setWoodType(woodType);
-                variantsBoat.yRot = player.yRot;
-                if (!world.noCollision(variantsBoat, variantsBoat.getBoundingBox().inflate(-0.1D))) {
-                    return ActionResult.fail(heldItem);
+            if (hitResult.getType() == HitResult.Type.BLOCK) {
+                Boat boat = this.getBoat(level, hitResult);
+                if(boat instanceof VSChestBoat chestBoat) {
+                    chestBoat.setVariant(this.type);
+                } else if(boat instanceof VSBoat) {
+                    ((VSBoat) boat).setVariant(this.type);
+                }
+                boat.setYRot(player.getYRot());
+                if (!level.noCollision(boat, boat.getBoundingBox())) {
+                    return InteractionResultHolder.fail(handStack);
                 } else {
-                    if (!world.isClientSide) {
-                        world.addFreshEntity(variantsBoat);
-                        if (!player.abilities.instabuild) {
-                            heldItem.shrink(1);
+                    if (!level.isClientSide) {
+                        level.addFreshEntity(boat);
+                        level.gameEvent(player, GameEvent.ENTITY_PLACE, hitResult.getLocation());
+                        if (!player.getAbilities().instabuild) {
+                            handStack.shrink(1);
                         }
                     }
 
                     player.awardStat(Stats.ITEM_USED.get(this));
-                    return ActionResult.sidedSuccess(heldItem, world.isClientSide());
+                    return InteractionResultHolder.sidedSuccess(handStack, level.isClientSide());
                 }
             } else {
-                return ActionResult.pass(heldItem);
+                return InteractionResultHolder.pass(handStack);
             }
         }
+    }
+
+    private Boat getBoat(Level level, HitResult hitResult) {
+        return this.hasChest ? new VSChestBoat(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z) : new VSBoat(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z);
     }
 }

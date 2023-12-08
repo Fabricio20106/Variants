@@ -1,8 +1,8 @@
 package com.junethewoods.variants.item.custom.food;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 
 public class PowderSnowBottleItem extends DrinkableContainerItem {
     public PowderSnowBottleItem(Properties properties) {
@@ -10,5 +10,5 @@ public class PowderSnowBottleItem extends DrinkableContainerItem {
     }
 
     @Override
-    public void bottleFunctionality(ItemStack containerStack, ItemStack stack, World world, LivingEntity livEntity) {}
+    public void bottleFunctionality(ItemStack containerStack, ItemStack stack, Level level, LivingEntity livEntity) {}
 }

@@ -3,18 +3,20 @@ package com.junethewoods.variants.data.tags;
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.block.VSBlocks;
 import com.junethewoods.variants.util.VSTags;
-import net.minecraft.block.Blocks;
-import net.minecraft.data.BlockTagsProvider;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
 
 public class VSBlockTagsProvider extends BlockTagsProvider {
-    public VSBlockTagsProvider(DataGenerator generator, @Nullable ExistingFileHelper fileHelper) {
-        super(generator, Variants.MOD_ID, fileHelper);
+    public VSBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper fileHelper) {
+        super(output, lookupProvider, Variants.MOD_ID, fileHelper);
     }
 
     @Override
@@ -23,7 +25,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
     }
 
     @Override
-    protected void addTags() {
+    protected void addTags(HolderLookup.Provider provider) {
         this.tag(VSTags.Blocks.STORAGE_BLOCKS_NETHERITE_SCRAP).add(VSBlocks.RAW_DEBRIS_BLOCK.get());
         this.tag(Tags.Blocks.STORAGE_BLOCKS).addTag(VSTags.Blocks.STORAGE_BLOCKS_NETHERITE_SCRAP);
 
@@ -52,7 +54,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
                 .add(VSBlocks.STRIPPED_PAINTING_WOOD.get());
         this.tag(VSTags.Blocks.ENDERWOOD_STEMS).add(VSBlocks.ENDERWOOD_STEM.get()).add(VSBlocks.ENDERWOOD_HYPHAE.get()).add(VSBlocks.STRIPPED_ENDERWOOD_STEM.get())
                 .add(VSBlocks.STRIPPED_ENDERWOOD_HYPHAE.get());
-        this.tag(VSTags.Blocks.CAULDRONS).add(Blocks.CAULDRON).add(VSBlocks.GOLDEN_CAULDRON.get());
+        this.tag(VSTags.Blocks.CAULDRONS).addTag(BlockTags.CAULDRONS);
         this.tag(VSTags.Blocks.BEACONS).add(Blocks.BEACON).add(VSBlocks.GOLDEN_BEACON.get());
         this.tag(VSTags.Blocks.FARMLAND).add(Blocks.FARMLAND).add(VSBlocks.ENDER_FARMLAND.get());
         this.tag(VSTags.Blocks.WARPED_WART_PLANTABLE_ON).add(Blocks.SOUL_SAND).add(Blocks.SOUL_SOIL);
@@ -90,7 +92,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.FLOWER_POTS).add(VSBlocks.POTTED_GLOW_BLACK_TULIP.get()).add(VSBlocks.POTTED_SUNNY_FLOWER.get()).add(VSBlocks.POTTED_SUGAR_CANE.get()).add(VSBlocks.POTTED_PAINTING_SAPLING.get())
                 .add(VSBlocks.POTTED_ENDER_ROOTS.get()).add(VSBlocks.POTTED_ENDER_FUNGUS.get());
         this.tag(BlockTags.WOOL).add(VSBlocks.GLOW_BLACK_WOOL.get());
-        this.tag(BlockTags.CARPETS).add(VSBlocks.GLOW_BLACK_CARPET.get());
+        this.tag(BlockTags.WOOL_CARPETS).add(VSBlocks.GLOW_BLACK_CARPET.get());
         this.tag(BlockTags.GUARDED_BY_PIGLINS).add(VSBlocks.GOLDEN_CAULDRON.get()).add(VSBlocks.GOLDEN_BEACON.get()).add(VSBlocks.GOLDEN_CARROTS.get()).add(VSBlocks.GOLDEN_CHAIN.get());
         this.tag(BlockTags.DRAGON_IMMUNE).add(VSBlocks.END_QUARTZ_ORE.get()).add(VSBlocks.QUARTZ_BARS.get());
         this.tag(BlockTags.IMPERMEABLE).add(VSBlocks.QUARTZ_GLASS.get()).add(VSBlocks.GLOW_BLACK_STAINED_GLASS.get());
@@ -98,5 +100,6 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.ENDERMAN_HOLDABLE).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_ROOTS.get()).add(VSBlocks.ENDER_FUNGUS.get());
         this.tag(BlockTags.CLIMBABLE).add(VSBlocks.WARPING_VINES.get()).add(VSBlocks.WARPING_VINES_PLANT.get());
         this.tag(BlockTags.BEDS).add(VSBlocks.GLOW_BLACK_BED.get());
+        this.tag(BlockTags.CAULDRONS).add(VSBlocks.GOLDEN_CAULDRON.get());
     }
 }

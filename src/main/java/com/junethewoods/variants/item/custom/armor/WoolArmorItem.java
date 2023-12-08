@@ -1,16 +1,15 @@
 package com.junethewoods.variants.item.custom.armor;
 
 import com.google.common.collect.ImmutableMap;
-import com.junethewoods.variants.config.VSConfigs;
-import com.junethewoods.variants.item.VSWeaponry;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.*;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.Map;
+import java.util.Random;
 
 public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
     // If you add an item to this list through the method used in Back Math, it will brick the order of the colors in the creative menu! Which is the whole point I wrote this thing.
@@ -28,46 +27,27 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
             .put("color.minecraft.brown", 8606770).put("color.backmath.poison_brown", 8921856).put("color.minecraft.green", 6192150).put("color.minecraft.red", 11546150)
             .put("color.backmath.red_yellow", 15731456).put("color.minecraft.black", 1908001).build();
 
-    public WoolArmorItem(IArmorMaterial material, EquipmentSlotType slot, Properties properties) {
+    public WoolArmorItem(ArmorMaterial material, ArmorItem.Type slot, Properties properties) {
         super(material, slot, properties);
     }
 
     @Override
-    public ITextComponent getName(ItemStack stack) {
+    public Component getName(ItemStack stack) {
         if (stack.hasTag() && !stack.getTag().getString("color_name").isEmpty()) {
-            return new TranslationTextComponent(this.getDescriptionId() + ".colored", new TranslationTextComponent(stack.getTag().getString("color_name")));
+            return Component.translatable(this.getDescriptionId() + ".colored", Component.translatable(stack.getTag().getString("color_name")));
         } else {
-            return new TranslationTextComponent(this.getDescriptionId());
-        }
-    }
-
-    @Override
-    public void fillItemCategory(ItemGroup itemTab, NonNullList<ItemStack> list) {
-        if (this.allowdedIn(itemTab)) {
-            list.add(new ItemStack(VSWeaponry.WOOL_SWEATER.get()));
-
-            if (VSConfigs.COMMON_CONFIGS.populateWoolArmorColorInTabs.get()) {
-                for (String i : COLOR_NAME_TO_CODE.keySet()) {
-                    ItemStack stack = new ItemStack(VSWeaponry.WOOL_SWEATER.get());
-                    CompoundNBT displayTag = stack.getOrCreateTagElement("display");
-                    CompoundNBT tag = stack.getOrCreateTag();
-
-                    displayTag.putInt("color", COLOR_NAME_TO_CODE.get(i));
-                    tag.putString("color_name", i);
-                    list.add(stack);
-                }
-            }
+            return Component.translatable(this.getDescriptionId());
         }
     }
 
     public static ItemStack pickRandomColor(Item item) {
         ItemStack stack = new ItemStack(item);
-        CompoundNBT displayTag = stack.getOrCreateTagElement("display");
-        CompoundNBT tag = stack.getOrCreateTag();
+        CompoundTag displayTag = stack.getOrCreateTagElement("display");
+        CompoundTag tag = stack.getOrCreateTag();
 
         Object[] colorCodes = COLOR_NAME_TO_CODE.values().toArray();
         Object[] colorNames = COLOR_NAME_TO_CODE.keySet().toArray();
-        int randomValue = random.nextInt(colorCodes.length);
+        int randomValue = new Random().nextInt(colorCodes.length);
         int randomCode = (int) colorCodes[randomValue];
         String randomName = (String) colorNames[randomValue];
 

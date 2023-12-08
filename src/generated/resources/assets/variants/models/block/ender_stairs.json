@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/stairs",
   "textures": {
-    "side": "variants:block/ender_planks",
     "bottom": "variants:block/ender_planks",
+    "side": "variants:block/ender_planks",
     "top": "variants:block/ender_planks"
   }
 }

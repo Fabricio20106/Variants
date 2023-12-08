@@ -1,5 +1,6 @@
 {
   "ambientocclusion": false,
+  "render_type": "cutout",
   "textures": {
     "particle": "block/sunflower_front",
     "cross": "block/sunflower_top",

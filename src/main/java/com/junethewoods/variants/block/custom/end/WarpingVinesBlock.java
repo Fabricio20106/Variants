@@ -1,13 +1,13 @@
 package com.junethewoods.variants.block.custom.end;
 
 import com.junethewoods.variants.block.VSBlocks;
-import net.minecraft.block.AbstractBodyPlantBlock;
-import net.minecraft.block.AbstractTopPlantBlock;
-import net.minecraft.block.Block;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.GrowingPlantBodyBlock;
+import net.minecraft.world.level.block.GrowingPlantHeadBlock;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class WarpingVinesBlock extends AbstractBodyPlantBlock {
+public class WarpingVinesBlock extends GrowingPlantBodyBlock {
     public static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 16, 15);
 
     public WarpingVinesBlock(Properties properties) {
@@ -15,7 +15,7 @@ public class WarpingVinesBlock extends AbstractBodyPlantBlock {
     }
 
     @Override
-    protected AbstractTopPlantBlock getHeadBlock() {
-        return (AbstractTopPlantBlock) VSBlocks.WARPING_VINES.get();
+    protected GrowingPlantHeadBlock getHeadBlock() {
+        return (GrowingPlantHeadBlock) VSBlocks.WARPING_VINES.get();
     }
 }

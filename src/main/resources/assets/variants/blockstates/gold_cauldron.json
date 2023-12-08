@@ -1,16 +1,7 @@
 {
   "variants": {
-    "level=0": {
+    "": {
       "model": "variants:block/gold_cauldron"
-    },
-    "level=1": {
-      "model": "variants:block/gold_cauldron_level1"
-    },
-    "level=2": {
-      "model": "variants:block/gold_cauldron_level2"
-    },
-    "level=3": {
-      "model": "variants:block/gold_cauldron_level3"
     }
   }
 }

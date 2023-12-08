@@ -1,9 +1,9 @@
 package com.junethewoods.variants.item.custom.tool;
 
 import com.junethewoods.variants.util.VSTags;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ShieldItem;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ShieldItem;
 
 import javax.annotation.Nullable;
 
@@ -12,8 +12,7 @@ public class VSShieldItem extends ShieldItem {
         super(properties);
     }
 
-    @Override
     public boolean isShield(ItemStack stack, @Nullable LivingEntity entity) {
-        return stack.getItem().is(VSTags.Items.SHIELDS);
+        return stack.is(VSTags.Items.SHIELDS);
     }
 }

@@ -1,5 +1,6 @@
 {
   "parent": "variants:block/inventory_crop",
+  "render_type": "minecraft:cutout",
   "textures": {
     "crop": "variants:block/golden_carrots_stage0"
   }
