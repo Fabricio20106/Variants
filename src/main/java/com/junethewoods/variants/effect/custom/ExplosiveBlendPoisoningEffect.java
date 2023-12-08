@@ -5,14 +5,14 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectType;
 
-public class CreeperPowderPoisoningEffect extends Effect {
-    public CreeperPowderPoisoningEffect() {
-        super(EffectType.HARMFUL, 0xEBAA4E);
+public class ExplosiveBlendPoisoningEffect extends Effect {
+    public ExplosiveBlendPoisoningEffect() {
+        super(EffectType.HARMFUL, 0x47BF4A);
     }
 
     @Override
     public void applyEffectTick(LivingEntity livEntity, int potency) {
-        livEntity.hurt(VSDamageSources.CREEPER_POWDER_POISONING, potency == 0 ? 1 : potency);
+        livEntity.hurt(VSDamageSources.EXPLOSIVE_POWDER_POISONING, potency == 0 ? 1 : potency);
     }
 
     @Override

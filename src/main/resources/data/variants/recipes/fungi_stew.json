@@ -8,7 +8,7 @@
       "item": "minecraft:warped_fungus"
     },
     {
-      "item": "minecraft:bowl"
+      "tag": "variants:bowls/wooden"
     }
   ],
   "result": {

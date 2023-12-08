@@ -1,6 +1,5 @@
 package com.junethewoods.variants.block.custom;
 
-import com.junethewoods.variants.block.VSBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.OreBlock;
 import net.minecraft.item.ItemStack;
@@ -12,16 +11,13 @@ import net.minecraft.world.server.ServerWorld;
 import java.util.Random;
 
 public class VSOreBlock extends OreBlock {
-    public VSOreBlock(Properties properties) {
-        super(properties);
-    }
+    private final int minXP;
+    private final int maxXP;
 
-    @Override
-    protected int xpOnDrop(Random rand) {
-        if (this == VSBlocks.QUARTZ_ORE.get() || this == VSBlocks.DEEPSLATE_QUARTZ_ORE.get() || this == VSBlocks.END_QUARTZ_ORE.get()) {
-            return MathHelper.nextInt(rand, 2, 5);
-        }
-        return 0;
+    public VSOreBlock(int minXP, int maxXP, Properties properties) {
+        super(properties);
+        this.minXP = minXP;
+        this.maxXP = maxXP;
     }
 
     public void spawnAfterBreak(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack) {
@@ -30,6 +26,6 @@ public class VSOreBlock extends OreBlock {
 
     @Override
     public int getExpDrop(BlockState state, IWorldReader world, BlockPos pos, int fortune, int silkTouch) {
-        return silkTouch == 0 ? this.xpOnDrop(RANDOM) : 0;
+        return silkTouch == 0 ? MathHelper.nextInt(RANDOM, minXP, maxXP) : 0;
     }
 }

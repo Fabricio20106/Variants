@@ -55,7 +55,7 @@ public class VSBlockStateProvider extends BlockStateProvider {
         simpleBlock(VSBlocks.GLOW_BLACK_STAINED_GLASS.get());
         paneBlock(((PaneBlock) VSBlocks.GLOW_BLACK_STAINED_GLASS_PANE.get()), modLoc("block/glow_black_stained_glass"), modLoc("block/glow_black_stained_glass_pane_top"));
 
-        // Additions of the biggest commit yet:
+        // Additions of the biggest commit yet (1.4.8):
         simpleBlock(VSBlocks.ELDER_SEA_LANTERN.get());
         simpleBlock(VSBlocks.ELDER_PRISMARINE.get());
         stairsBlock((StairsBlock) VSBlocks.ELDER_PRISMARINE_STAIRS.get(), modLoc("block/elder_prismarine"));

@@ -1,7 +1,7 @@
 {
-  "itemGroup.variants": "Variants",
-  "itemGroup.variants_blocks": "Variants: Blocks",
-  "itemGroup.weaponryTab": "Variants: Weapons",
+  "itemGroup.variants.main": "Variants",
+  "itemGroup.variants.blocks": "Variants: Blocks",
+  "itemGroup.variants.weapons": "Variants: Weapons",
 
   "block.variants.potted_sugar_cane": "Potted Sugar Cane",
   "block.variants.golden_carrots": "Golden Carrots",
@@ -117,8 +117,8 @@
   "death.attack.poisoning.glowstone.player": "%1$s died of glowstone poisoning whilst %2$s watched",
   "death.attack.poisoning.gunpowder": "%1$s died of gunpowder poisoning",
   "death.attack.poisoning.gunpowder.player": "%1$s died of gunpowder poisoning whilst %2$s watched",
-  "death.attack.poisoning.creeper_powder": "%1$s died of explosive blend poisoning",
-  "death.attack.poisoning.creeper_powder.player": "%1$s died of explosive blend poisoning whilst %2$s watched",
+  "death.attack.poisoning.explosive_blend": "%1$s died of explosive blend poisoning",
+  "death.attack.poisoning.explosive_blend.player": "%1$s died of explosive blend poisoning whilst %2$s watched",
 
   "entity.variants.vs_boat": "Boat (Variants)",
   "entity.variants.old_cod": "Fish",

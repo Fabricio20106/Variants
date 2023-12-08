@@ -5,7 +5,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
 public class VSWeaponryTab extends ItemGroup {
-    public static final VSWeaponryTab TAB = new VSWeaponryTab(ItemGroup.TABS.length, "weaponryTab");
+    public static final VSWeaponryTab TAB = new VSWeaponryTab(ItemGroup.TABS.length, "variants.weapons");
 
     public VSWeaponryTab(int index, String label) {
         super(index, label);

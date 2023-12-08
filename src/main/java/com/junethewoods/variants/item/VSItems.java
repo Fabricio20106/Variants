@@ -151,12 +151,12 @@ public class VSItems {
     public static final RegistryObject<Item> PAINTING_BOAT = ITEMS.register("painting_boat", () -> new VSBoatItem(new Item.Properties().stacksTo(1).tab(VSTab.TAB), "painting"));
     public static final RegistryObject<Item> CRIMSON_BOAT = ITEMS.register("crimson_boat", () -> new VSBoatItem(new Item.Properties().stacksTo(1).tab(VSTab.TAB), "crimson"));
     public static final RegistryObject<Item> WARPED_BOAT = ITEMS.register("warped_boat", () -> new VSBoatItem(new Item.Properties().stacksTo(1).tab(VSTab.TAB), "warped"));
-    public static final RegistryObject<Item> SPLASH_EXPERIENCE_BOTTLE = ITEMS.register("splash_experience_bottle", () -> new ExperienceBottleItem(new Item.Properties().rarity(Rarity.UNCOMMON).tab(VSTab.TAB)));
-    public static final RegistryObject<Item> LINGERING_EXPERIENCE_BOTTLE = ITEMS.register("lingering_experience_bottle", () -> new ExperienceBottleItem(new Item.Properties().rarity(Rarity.UNCOMMON).tab(VSTab.TAB)));
-    public static final RegistryObject<Item> SPLASH_DRAGON_BREATH = ITEMS.register("splash_dragon_breath", () -> new Item(new Item.Properties().craftRemainder(Items.SPLASH_POTION).rarity(Rarity.UNCOMMON).tab(VSTab.TAB)));
-    public static final RegistryObject<Item> LINGERING_DRAGON_BREATH = ITEMS.register("lingering_dragon_breath", () -> new Item(new Item.Properties().craftRemainder(Items.LINGERING_POTION).rarity(Rarity.UNCOMMON).tab(VSTab.TAB)));
     public static final RegistryObject<Item> SPLASH_GLASS_BOTTLE = ITEMS.register("splash_glass_bottle", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> LINGERING_GLASS_BOTTLE = ITEMS.register("lingering_glass_bottle", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> SPLASH_EXPERIENCE_BOTTLE = ITEMS.register("splash_experience_bottle", () -> new ExperienceBottleItem(new Item.Properties().rarity(Rarity.UNCOMMON).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> LINGERING_EXPERIENCE_BOTTLE = ITEMS.register("lingering_experience_bottle", () -> new ExperienceBottleItem(new Item.Properties().rarity(Rarity.UNCOMMON).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> SPLASH_DRAGON_BREATH = ITEMS.register("splash_dragon_breath", () -> new Item(new Item.Properties().craftRemainder(VSItems.SPLASH_GLASS_BOTTLE.get()).rarity(Rarity.UNCOMMON).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> LINGERING_DRAGON_BREATH = ITEMS.register("lingering_dragon_breath", () -> new Item(new Item.Properties().craftRemainder(VSItems.LINGERING_GLASS_BOTTLE.get()).rarity(Rarity.UNCOMMON).tab(VSTab.TAB)));
     public static final RegistryObject<Item> LAVA_BOTTLE = ITEMS.register("lava_glass_bottle", () -> new LavaBottleItem(new Item.Properties().stacksTo(8).craftRemainder(Items.GLASS_BOTTLE).tab(VSTab.TAB)));
     public static final RegistryObject<Item> SOUL_LAVA_BOTTLE = ITEMS.register("soul_lava_bottle", () -> new LavaBottleItem(new Item.Properties().stacksTo(8).craftRemainder(Items.GLASS_BOTTLE).tab(VSTab.TAB)));
     public static final RegistryObject<Item> MILK_BOTTLE = ITEMS.register("milk_glass_bottle", () -> new MilkBottleItem(new Item.Properties().stacksTo(8).craftRemainder(Items.GLASS_BOTTLE).tab(VSTab.TAB)));
@@ -167,7 +167,7 @@ public class VSItems {
     public static final RegistryObject<Item> BLUESTONE_POT = ITEMS.register("bluestone_pot", () -> new StylisedPotItem(new Item.Properties().stacksTo(16).tab(VSTab.TAB), "Fabricio2010's Pack", PoisoningTypes.BLUESTONE, 10));
     public static final RegistryObject<Item> GLOWSTONE_POT = ITEMS.register("glowstone_pot", () -> new StylisedPotItem(new Item.Properties().stacksTo(16).tab(VSTab.TAB), PoisoningTypes.GLOWSTONE, 10));
     public static final RegistryObject<Item> GUNPOWDER_POT = ITEMS.register("gunpowder_pot", () -> new StylisedPotItem(new Item.Properties().stacksTo(16).tab(VSTab.TAB), PoisoningTypes.GUNPOWDER, 10));
-    public static final RegistryObject<Item> CREEPER_POWDER_POT = ITEMS.register("creeper_powder_pot", () -> new StylisedPotItem(new Item.Properties().stacksTo(16).tab(VSTab.TAB), "Creeper Edits", PoisoningTypes.CREEPER_POWDER, 10));
+    public static final RegistryObject<Item> EXPLOSIVE_BLEND_POT = ITEMS.register("creeper_powder_pot", () -> new StylisedPotItem(new Item.Properties().stacksTo(16).tab(VSTab.TAB), "Creeper Edits", PoisoningTypes.EXPLOSIVE_BLEND, 10));
     public static final RegistryObject<Item> SUGAR_POT = ITEMS.register("sugar_pot", () -> new SugarPotItem(new Item.Properties().stacksTo(16).tab(VSTab.TAB)));
     public static final RegistryObject<Item> SWEET_BERRY_POT = ITEMS.register("sweet_berry_pot", () -> new Item(new Item.Properties().stacksTo(16).food(VSFoods.BERRY_POTS).craftRemainder(VSItems.STYLISED_POT.get()).tab(VSTab.TAB)));
     public static final RegistryObject<Item> GLOW_BERRY_POT = ITEMS.register("glow_berry_pot", () -> new Item(new Item.Properties().stacksTo(16).food(VSFoods.BERRY_POTS).craftRemainder(VSItems.STYLISED_POT.get()).tab(VSTab.TAB)));

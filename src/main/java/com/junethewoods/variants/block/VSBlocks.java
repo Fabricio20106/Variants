@@ -83,9 +83,9 @@ public class VSBlocks {
     public static final RegistryObject<Block> RED_NETHER_BRICK_FENCE = BLOCKS.register("red_nether_brick_fence", () -> new FenceBlock(AbstractBlock.Properties.copy(Blocks.NETHER_BRICK_FENCE)));
     public static final RegistryObject<Block> WITHER_BONE_BLOCK = BLOCKS.register("wither_bone_block", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.BONE_BLOCK)));
     public static final RegistryObject<Block> RAW_DEBRIS_BLOCK = BLOCKS.register("raw_debris_block", () -> new Block(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(30f, 1200f).sound(SoundType.ANCIENT_DEBRIS)));
-    public static final RegistryObject<Block> QUARTZ_ORE = BLOCKS.register("quartz_ore", () -> new VSOreBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(3f, 3f)));
-    public static final RegistryObject<Block> DEEPSLATE_QUARTZ_ORE = BLOCKS.register("deepslate_quartz_ore", () -> new VSOreBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(4.5f, 3f)));
-    public static final RegistryObject<Block> END_QUARTZ_ORE = BLOCKS.register("end_quartz_ore", () -> new VSOreBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).requiresCorrectToolForDrops().strength(3f, 9f)));
+    public static final RegistryObject<Block> QUARTZ_ORE = BLOCKS.register("quartz_ore", () -> new VSOreBlock(2, 5, AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(3f, 3f)));
+    public static final RegistryObject<Block> DEEPSLATE_QUARTZ_ORE = BLOCKS.register("deepslate_quartz_ore", () -> new VSOreBlock(2, 5, AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(4.5f, 3f)));
+    public static final RegistryObject<Block> END_QUARTZ_ORE = BLOCKS.register("end_quartz_ore", () -> new VSOreBlock(2, 5, AbstractBlock.Properties.of(Material.STONE, MaterialColor.SAND).requiresCorrectToolForDrops().strength(3f, 9f)));
     public static final RegistryObject<Block> GOLDEN_CAULDRON = BLOCKS.register("gold_cauldron", () -> new CauldronBlock(AbstractBlock.Properties.copy(Blocks.GOLD_BLOCK).noOcclusion()));
     public static final RegistryObject<Block> GOLDEN_BEACON = BLOCKS.register("gold_beacon", () -> new VSBeaconBlock(DyeColor.YELLOW, AbstractBlock.Properties.copy(Blocks.BEACON)));
     public static final RegistryObject<Block> DIAMOND_BELL = BLOCKS.register("diamond_bell", () -> new VSBellBlock(AbstractBlock.Properties.copy(Blocks.BELL)));
@@ -94,10 +94,10 @@ public class VSBlocks {
     public static final RegistryObject<Block> GLOW_BLACK_WOOL = BLOCKS.register("glow_black_wool", () -> new Block(AbstractBlock.Properties.copy(Blocks.LIGHT_BLUE_WOOL)));
     public static final RegistryObject<Block> GLOW_BLACK_CARPET = BLOCKS.register("glow_black_carpet", () -> new VSCarpetBlock(AbstractBlock.Properties.copy(Blocks.LIGHT_BLUE_CARPET)));
     public static final RegistryObject<Block> GLOW_BLACK_BED = BLOCKS.register("glow_black_bed", () -> new VSBedBlock(DyeColor.LIGHT_BLUE, AbstractBlock.Properties.copy(Blocks.LIGHT_BLUE_BED)));
-    public static final RegistryObject<Block> GLOW_BLACK_STAINED_GLASS = BLOCKS.register("glow_black_stained_glass", () -> new HexBeamStainedGlassBlock(0x4bdeba, AbstractBlock.Properties.copy(Blocks.LIGHT_BLUE_STAINED_GLASS)));
-    public static final RegistryObject<Block> GLOW_BLACK_STAINED_GLASS_PANE = BLOCKS.register("glow_black_stained_glass_pane", () -> new HexBeamStainedGlassPaneBlock(0x4bdeba, AbstractBlock.Properties.copy(Blocks.LIGHT_BLUE_STAINED_GLASS_PANE)));
-    public static final RegistryObject<Block> QUARTZ_GLASS = BLOCKS.register("quartz_glass", () -> new HexBeamStainedGlassBlock(0xddd4c6, AbstractBlock.Properties.copy(Blocks.GLASS)));
-    public static final RegistryObject<Block> QUARTZ_GLASS_PANE = BLOCKS.register("quartz_glass_pane", () -> new HexBeamStainedGlassPaneBlock(0xddd4c6, AbstractBlock.Properties.copy(Blocks.GLASS_PANE)));
+    public static final RegistryObject<Block> GLOW_BLACK_STAINED_GLASS = BLOCKS.register("glow_black_stained_glass", () -> new CustomBeamGlassBlock(0x4BDEBA, AbstractBlock.Properties.copy(Blocks.LIGHT_BLUE_STAINED_GLASS)));
+    public static final RegistryObject<Block> GLOW_BLACK_STAINED_GLASS_PANE = BLOCKS.register("glow_black_stained_glass_pane", () -> new CustomBeamGlassPaneBlock(0x4BDEBA, AbstractBlock.Properties.copy(Blocks.LIGHT_BLUE_STAINED_GLASS_PANE)));
+    public static final RegistryObject<Block> QUARTZ_GLASS = BLOCKS.register("quartz_glass", () -> new CustomBeamGlassBlock(0xDDD4C6, AbstractBlock.Properties.copy(Blocks.GLASS)));
+    public static final RegistryObject<Block> QUARTZ_GLASS_PANE = BLOCKS.register("quartz_glass_pane", () -> new CustomBeamGlassPaneBlock(0xDDD4C6, AbstractBlock.Properties.copy(Blocks.GLASS_PANE)));
     public static final RegistryObject<Block> QUARTZ_BARS = BLOCKS.register("quartz_bars", () -> new PaneBlock(AbstractBlock.Properties.copy(Blocks.IRON_BARS)));
     public static final RegistryObject<Block> QUARTZ_CHAIN = BLOCKS.register("quartz_chain", () -> new ChainBlock(AbstractBlock.Properties.copy(Blocks.CHAIN)));
     public static final RegistryObject<Block> GOLDEN_CHAIN = BLOCKS.register("golden_chain", () -> new ChainBlock(AbstractBlock.Properties.copy(Blocks.CHAIN)));

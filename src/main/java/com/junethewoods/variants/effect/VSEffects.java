@@ -13,6 +13,6 @@ public class VSEffects {
     public static final RegistryObject<Effect> REDSTONE_POISONING = EFFECTS.register("redstone_poisoning", RedstonePoisoningEffect::new);
     public static final RegistryObject<Effect> BLUESTONE_POISONING = EFFECTS.register("bluestone_poisoning", BluestonePoisoningEffect::new);
     public static final RegistryObject<Effect> GLOWSTONE_POISONING = EFFECTS.register("glowstone_poisoning", GlowstonePoisoningEffect::new);
-    public static final RegistryObject<Effect> CREEPER_POWDER_POISONING = EFFECTS.register("creeper_powder_poisoning", CreeperPowderPoisoningEffect::new);
+    public static final RegistryObject<Effect> EXPLOSIVE_BLEND_POISONING = EFFECTS.register("creeper_powder_poisoning", ExplosiveBlendPoisoningEffect::new);
     public static final RegistryObject<Effect> GUNPOWDER_POISONING = EFFECTS.register("gunpowder_poisoning", GunpowderPoisoningEffect::new);
 }

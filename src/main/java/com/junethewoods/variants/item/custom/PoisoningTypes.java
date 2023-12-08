@@ -9,7 +9,7 @@ public class PoisoningTypes implements IPoisoningType {
     public static final IPoisoningType BLUESTONE = new PoisoningTypes(VSEffects.BLUESTONE_POISONING);
     public static final IPoisoningType GLOWSTONE = new PoisoningTypes(VSEffects.GLOWSTONE_POISONING);
     public static final IPoisoningType GUNPOWDER = new PoisoningTypes(VSEffects.GUNPOWDER_POISONING);
-    public static final IPoisoningType CREEPER_POWDER = new PoisoningTypes(VSEffects.CREEPER_POWDER_POISONING);
+    public static final IPoisoningType EXPLOSIVE_BLEND = new PoisoningTypes(VSEffects.EXPLOSIVE_BLEND_POISONING);
 
     private final RegistryObject<Effect> poisoningEffect;
 

@@ -9,10 +9,10 @@ import net.minecraft.world.IWorldReader;
 
 import javax.annotation.Nullable;
 
-public class HexBeamStainedGlassBlock extends AbstractGlassBlock implements IBeaconBeamColorProvider {
+public class CustomBeamGlassBlock extends AbstractGlassBlock implements IBeaconBeamColorProvider {
     private final int beaconBeamColor;
 
-    public HexBeamStainedGlassBlock(int beaconBeamColor, Properties properties) {
+    public CustomBeamGlassBlock(int beaconBeamColor, Properties properties) {
         super(properties);
         this.beaconBeamColor = beaconBeamColor;
     }

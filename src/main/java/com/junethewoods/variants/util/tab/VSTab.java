@@ -5,7 +5,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
 public class VSTab extends ItemGroup {
-    public static final VSTab TAB = new VSTab(ItemGroup.TABS.length, "variants");
+    public static final VSTab TAB = new VSTab(ItemGroup.TABS.length, "variants.main");
 
     public VSTab(int index, String label) {
         super(index, label);
