@@ -93,6 +93,7 @@ public class Variants {
         VSClientHelpers.makeBow(VSWeaponry.DEBUG_BOW.get());
         VSClientHelpers.makeShield(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
         VSClientHelpers.makeCustomWoolSweater(VSWeaponry.WOOL_SWEATER.get());
+        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_MUSHROOM_STEW.get());
         setRenderTypesForBlocks();
 
         Atlases.addWoodType(VSWoodTypes.PAINTING);

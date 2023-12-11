@@ -6,6 +6,22 @@
     "minecraft:written_book",
     "minecraft:enchanted_book",
     "minecraft:knowledge_book",
-    "variants:enchanted_knowledge_book"
+    "variants:enchanted_knowledge_book",
+    {
+      "id": "backmath:regular_molds_book",
+      "required": false
+    },
+    {
+      "id": "backmath:advanced_molds_book",
+      "required": false
+    },
+    {
+      "id": "patchouli:guide_book",
+      "required": false
+    },
+    {
+      "id": "ftbquests:book",
+      "required": false
+    }
   ]
 }

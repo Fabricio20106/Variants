@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#variants:bowl_foods/mushroom",
+    "#variants:bowl_foods/beetroot",
+    "#variants:bowl_foods/rabbit",
+    "#variants:bowl_foods/fungi",
+    "#variants:bowl_foods/end_fungi",
+    "#variants:bowl_foods/aljan_fungi"
+  ]
+}

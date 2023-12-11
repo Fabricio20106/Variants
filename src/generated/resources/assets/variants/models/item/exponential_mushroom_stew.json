@@ -1,0 +1,68 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer1": "variants:item/stew_mushroom"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "minecraft:bowl_id": 0.0
+      },
+      "model": "variants:item/oak_bowl"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 1.0
+      },
+      "model": "variants:item/spruce_bowl"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 2.0
+      },
+      "model": "variants:item/birch_bowl"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 3.0
+      },
+      "model": "variants:item/jungle_bowl"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 4.0
+      },
+      "model": "variants:item/acacia_bowl"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 5.0
+      },
+      "model": "variants:item/dark_oak_bowl"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 6.0
+      },
+      "model": "variants:item/painting_bowl"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 7.0
+      },
+      "model": "variants:item/crimson_bowl"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 8.0
+      },
+      "model": "variants:item/warped_bowl"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 9.0
+      },
+      "model": "variants:item/ender_bowl"
+    }
+  ]
+}

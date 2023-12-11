@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TRT"
+  ],
+  "key": {
+    "T": {
+      "item": "variants:powered_tie"
+    },
+    "R": {
+      "item": "variants:powered_railbed"
+    }
+  },
+  "result": {
+    "item": "minecraft:powered_rail",
+    "count": 6
+  }
+}

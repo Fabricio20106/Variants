@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "THT"
+  ],
+  "key": {
+    "T": {
+      "tag": "forge:rods/wooden"
+    },
+    "H": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "result": {
+    "item": "variants:wooden_railbed",
+    "count": 4
+  }
+}

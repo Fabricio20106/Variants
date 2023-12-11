@@ -2,6 +2,26 @@
   "replace": false,
   "values": [
     "minecraft:shield",
-    "variants:empty_armor_slot_shield"
+    "variants:empty_armor_slot_shield",
+    {
+      "id": "backmath:devil_shield",
+      "required": false
+    },
+    {
+      "id": "backmath:angelic_shield",
+      "required": false
+    },
+    {
+      "id": "backmath:mid_term_shield",
+      "required": false
+    },
+    {
+      "id": "backmath:aljameed_shield",
+      "required": false
+    },
+    {
+      "id": "backmath:moonering_shield",
+      "required": false
+    }
   ]
 }

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    "TRT"
+  ],
+  "key": {
+    "T": {
+      "item": "variants:iron_tie"
+    },
+    "R": {
+      "item": "variants:wooden_railbed"
+    },
+    "P": {
+      "item": "variants:detector_plate"
+    }
+  },
+  "result": {
+    "item": "minecraft:detector_rail",
+    "count": 6
+  }
+}

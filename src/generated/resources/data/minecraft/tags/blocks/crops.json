@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "variants:golden_carrots",
-    "variants:warped_wart"
+    "minecraft:nether_wart",
+    "variants:warped_wart",
+    "variants:ender_wart"
   ]
 }

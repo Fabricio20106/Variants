@@ -181,7 +181,7 @@ public class VSEvents {
             // Level 3 "Journeyman"
             trades.get(3).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 3), new ItemStack(VSItems.GLOW_BLACK_BED.get(), 1),
                     12, 10, 0.05f));
-            trades.get(3).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 2), WoolArmorItem.pickRandomColor(VSWeaponry.WOOL_SWEATER.get()),
+            trades.get(3).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 2), WoolArmorItem.pickRandomColor(new ItemStack(VSWeaponry.WOOL_SWEATER.get())),
                     12, 5, 0.2f));
             trades.get(3).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 4), new ItemStack(VSWeaponry.RABBIT_HIDE_TUNIC.get(), 1),
                     10, 5, 0.25f));

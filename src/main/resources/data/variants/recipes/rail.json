@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TRT"
+  ],
+  "key": {
+    "T": {
+      "item": "variants:iron_tie"
+    },
+    "R": {
+      "item": "variants:wooden_railbed"
+    }
+  },
+  "result": {
+    "item": "minecraft:rail",
+    "count": 16
+  }
+}

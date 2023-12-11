@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "backmath:aljan_fungi_stew",
+      "required": false
+    }
+  ]
+}

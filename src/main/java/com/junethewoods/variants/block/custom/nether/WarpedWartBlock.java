@@ -2,7 +2,9 @@ package com.junethewoods.variants.block.custom.nether;
 
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.util.VSTags;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.BushBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
@@ -34,7 +36,7 @@ public class WarpedWartBlock extends BushBlock {
     }
 
     protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
-        return state.is(VSTags.Blocks.WARPED_WART_PLANTABLE_ON);
+        return state.is(VSTags.Blocks.NETHER_WART_PLACEABLE_ON);
     }
 
     public boolean isRandomlyTicking(BlockState state) {

@@ -1,0 +1,6 @@
+{
+  "parent": "variants:item/template_spyglass",
+  "textures": {
+    "spyglass": "variants:item/diamond_spyglass"
+  }
+}

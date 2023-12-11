@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "variants:item/infinity_sweaters_tab_icon"
+  }
+}

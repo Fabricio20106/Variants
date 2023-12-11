@@ -1,21 +1,17 @@
 package com.junethewoods.variants.data.models;
 
-import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.block.VSBlocks;
 import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.fml.RegistryObject;
 
 import javax.annotation.Nonnull;
 
-public class VSBlockStateProvider extends BlockStateProvider {
+public class VSBlockStateProvider extends VSBlockStateModels {
     public VSBlockStateProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
-        super(generator, Variants.MOD_ID, fileHelper);
+        super(generator, fileHelper);
     }
 
     @Nonnull
@@ -37,6 +33,8 @@ public class VSBlockStateProvider extends BlockStateProvider {
         slabBlock((SlabBlock) VSBlocks.PAINTING_SLAB.get(), modLoc("block/painting_planks"), modLoc("block/painting_planks"));
         fenceBlock((FenceBlock) VSBlocks.PAINTING_FENCE.get(), modLoc("block/painting_planks"));
         fenceGateBlock((FenceGateBlock) VSBlocks.PAINTING_FENCE_GATE.get(), modLoc("block/painting_planks"));
+        buttonBlock((AbstractButtonBlock) VSBlocks.PAINTING_BUTTON.get(), modLoc("block/painting_planks"));
+        pressurePlate(VSBlocks.PAINTING_PRESSURE_PLATE.get(), modLoc("block/painting_planks"));
         doorBlock((DoorBlock) VSBlocks.PAINTING_DOOR.get(), modLoc("block/painting_door_bottom"), modLoc("block/painting_door_top"));
         doorBlock((DoorBlock) VSBlocks.PAINTING_DOOR_WANDERER.get(), modLoc("block/wanderer_door_bottom"), modLoc("block/wanderer_door_top"));
         doorBlock((DoorBlock) VSBlocks.PAINTING_DOOR_GRAHAM.get(), modLoc("block/graham_door_bottom"), modLoc("block/graham_door_top"));
@@ -52,6 +50,7 @@ public class VSBlockStateProvider extends BlockStateProvider {
         simpleBlock(VSBlocks.POTTED_PAINTING_SAPLING.get(), models().withExistingParent("potted_painting_sapling", modLoc("block/inventory_potted_plant")).texture("plant", "block/painting_sapling"));
         simpleBlock(VSBlocks.GLOW_BLACK_WOOL.get());
         simpleBlock(VSBlocks.GLOW_BLACK_CARPET.get(), models().carpet("glow_black_carpet", modLoc("block/glow_black_wool")));
+        simpleBlock(VSBlocks.GLOW_BLACK_BED.get(), models().getBuilder("glow_black_bed").parent(models().getExistingFile(mcLoc("block/bed"))));
         simpleBlock(VSBlocks.GLOW_BLACK_STAINED_GLASS.get());
         paneBlock(((PaneBlock) VSBlocks.GLOW_BLACK_STAINED_GLASS_PANE.get()), modLoc("block/glow_black_stained_glass"), modLoc("block/glow_black_stained_glass_pane_top"));
 
@@ -81,6 +80,8 @@ public class VSBlockStateProvider extends BlockStateProvider {
         paintingTrapdoor(VSBlocks.PAINTING_TRAPDOOR_KEBAB, mcLoc("painting/kebab"));
         paintingTrapdoor(VSBlocks.PAINTING_TRAPDOOR_PLANT, mcLoc("painting/plant"));
         paintingTrapdoor(VSBlocks.PAINTING_TRAPDOOR_WASTELAND, mcLoc("painting/wasteland"));
+        simpleBlock(VSBlocks.PAINTING_SIGN.get(), models().getBuilder("painting_sign").texture("particle", modLoc("block/painting_planks")));
+        simpleBlock(VSBlocks.PAINTING_WALL_SIGN.get(), models().getBuilder("painting_wall_sign").texture("particle", modLoc("block/painting_planks")));
         axisBlock((RotatedPillarBlock) VSBlocks.ENDERWOOD_STEM.get(), modLoc("block/ender_stem"), modLoc("block/ender_stem_top"));
         axisBlock((RotatedPillarBlock) VSBlocks.ENDERWOOD_HYPHAE.get(), modLoc("block/ender_stem"), modLoc("block/ender_stem"));
         axisBlock((RotatedPillarBlock) VSBlocks.STRIPPED_ENDERWOOD_STEM.get(), modLoc("block/stripped_ender_stem"), modLoc("block/stripped_ender_stem_top"));
@@ -92,8 +93,12 @@ public class VSBlockStateProvider extends BlockStateProvider {
         slabBlock((SlabBlock) VSBlocks.ENDERWOOD_SLAB.get(), modLoc("block/ender_planks"), modLoc("block/ender_planks"));
         fenceBlock((FenceBlock) VSBlocks.ENDERWOOD_FENCE.get(), modLoc("block/ender_planks"));
         fenceGateBlock((FenceGateBlock) VSBlocks.ENDERWOOD_FENCE_GATE.get(), modLoc("block/ender_planks"));
+        buttonBlock((AbstractButtonBlock) VSBlocks.ENDERWOOD_BUTTON.get(), modLoc("block/ender_planks"));
+        pressurePlate(VSBlocks.ENDERWOOD_PRESSURE_PLATE.get(), modLoc("block/ender_planks"));
         doorBlock((DoorBlock) VSBlocks.ENDERWOOD_DOOR.get(), modLoc("block/ender_door_bottom"), modLoc("block/ender_door_top"));
         trapdoorBlock((TrapDoorBlock) VSBlocks.ENDERWOOD_TRAPDOOR.get(), modLoc("block/ender_trapdoor"), true);
+        simpleBlock(VSBlocks.ENDERWOOD_SIGN.get(), models().getBuilder("ender_sign").texture("particle", modLoc("block/ender_planks")));
+        simpleBlock(VSBlocks.ENDERWOOD_WALL_SIGN.get(), models().getBuilder("ender_wall_sign").texture("particle", modLoc("block/ender_planks")));
         simpleBlock(VSBlocks.ENDER_NYLIUM.get(), models().cubeBottomTop("ender_nylium", modLoc("block/ender_nylium_side"), mcLoc("block/end_stone"), modLoc("block/ender_nylium")));
         simpleBlock(VSBlocks.ENDER_ROOTS.get(), models().cross("ender_roots", modLoc("block/ender_roots")));
         simpleBlock(VSBlocks.POTTED_ENDER_ROOTS.get(), models().withExistingParent("potted_ender_roots", modLoc("block/inventory_potted_plant")).texture("plant",  "block/ender_roots_pot"));
@@ -102,10 +107,11 @@ public class VSBlockStateProvider extends BlockStateProvider {
         simpleBlock(VSBlocks.POTTED_ENDER_FUNGUS.get(), models().withExistingParent("potted_ender_fungus", modLoc("block/inventory_potted_plant")).texture("plant",  "block/ender_fungus"));
         simpleBlock(VSBlocks.WARPING_VINES.get(), models().cross("warping_vines", modLoc("block/warping_vines")));
         simpleBlock(VSBlocks.WARPING_VINES_PLANT.get(), models().cross("warping_vines_plant", modLoc("block/warping_vines_plant")));
+        simpleBlock(VSBlocks.SOUL_LAVA.get(), models().getBuilder("soul_lava").texture("particle", modLoc("block/soul_lava_still")));
         axisBlock((RotatedPillarBlock) VSBlocks.WITHER_BONE_BLOCK.get(), modLoc("block/wither_bone_block_side"), modLoc("block/wither_bone_block_top"));
 
         getVariantBuilder(VSBlocks.GOLDEN_CARROTS.get()).forAllStates(state -> {
-            int cropAgeIndex = cropAgeToIndexPotato(state.getValue(BlockStateProperties.AGE_7));
+            int cropAgeIndex = cropAgeToIndexSeven(state.getValue(BlockStateProperties.AGE_7));
             return ConfiguredModel.builder().modelFile(models().withExistingParent("golden_carrots_stage" + cropAgeIndex, modLoc("block/inventory_crop")).texture("crop", "block/golden_carrots_stage" + cropAgeIndex)).build();
         });
         getVariantBuilder(VSBlocks.WARPED_WART.get()).forAllStates(state -> {
@@ -116,22 +122,16 @@ public class VSBlockStateProvider extends BlockStateProvider {
             int cropAgeIndex = cropAgeToIndexWart(state.getValue(BlockStateProperties.AGE_3));
             return ConfiguredModel.builder().modelFile(models().crop("ender_wart_stage" + cropAgeIndex, modLoc("block/ender_wart_stage" + cropAgeIndex))).build();
         });
-    }
+        getVariantBuilder(VSBlocks.GLOW_BERRY_BUSH.get()).forAllStates(state -> {
+            int cropAgeIndex = cropAgeToIndexBush(state.getValue(BlockStateProperties.AGE_3));
+            return ConfiguredModel.builder().modelFile(models().cross("glow_berry_bush_stage" + cropAgeIndex, modLoc("block/glow_berry_bush_stage" + cropAgeIndex))).build();
+        });
 
-    public void paintingTrapdoor(RegistryObject<Block> block, ResourceLocation painting) {
-        trapdoorBlock((TrapDoorBlock) block.get(), painting, true);
-    }
-
-    public static int cropAgeToIndexPotato(int age) {
-        if (age > 6) return 3;
-        if (age > 3) return 2;
-        if (age > 1) return 1;
-        return 0;
-    }
-
-    public static int cropAgeToIndexWart(int age) {
-        if (age == 3) return 2;
-        if (age == 2 || age == 1) return 1;
-        return 0;
+        // Variants Builder for blocks other than plants.
+        getVariantBuilder(VSBlocks.ENDER_FARMLAND.get()).forAllStates(state -> {
+            String isMoist = moistIndex(state.getValue(BlockStateProperties.MOISTURE));
+            return ConfiguredModel.builder().modelFile(models().getBuilder("ender_farmland" + isMoist).parent(models().getExistingFile(modLoc("block/template_farmland")))
+                    .texture("top", modLoc("block/ender_farmland" + isMoist)).texture("side", modLoc("block/ender_farmland_side" + isMoist)).texture("dirt", mcLoc("block/end_stone"))).build();
+        });
     }
 }

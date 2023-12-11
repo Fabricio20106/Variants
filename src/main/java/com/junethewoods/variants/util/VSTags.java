@@ -16,6 +16,10 @@ public class VSTags {
         public static final ITag.INamedTag<Item> GLASS_GLOW_BLACK = forge("glass/glow_black");
         public static final ITag.INamedTag<Item> GLASS_PANES_GLOW_BLACK = forge("glass_panes/glow_black");
 
+        public static final ITag.INamedTag<Item> CROPS_GOLDEN_CARROT = forge("crops/golden_carrot");
+        public static final ITag.INamedTag<Item> CROPS_WARPED_WART = forge("crops/warped_wart");
+        public static final ITag.INamedTag<Item> CROPS_ENDER_WART = forge("crops/ender_wart");
+
         public static final ITag.INamedTag<Item> INGOTS_EXPOSED_COPPER = forge("ingots/exposed_copper");
         public static final ITag.INamedTag<Item> INGOTS_WEATHERED_COPPER = forge("ingots/weathered_copper");
         public static final ITag.INamedTag<Item> INGOTS_OXIDIZED_COPPER = forge("ingots/oxidized_copper");
@@ -70,6 +74,14 @@ public class VSTags {
         public static final ITag.INamedTag<Item> WOODEN_BOWLS = mod("bowls/wooden");
         public static final ITag.INamedTag<Item> CATLIKE_TAME_ITEMS = mod("catlike_tame_items");
 
+        public static final ITag.INamedTag<Item> BOWL_FOODS = mod("bowl_foods");
+        public static final ITag.INamedTag<Item> BOWL_FOODS_MUSHROOM = mod("bowl_foods/mushroom");
+        public static final ITag.INamedTag<Item> BOWL_FOODS_BEETROOT = mod("bowl_foods/beetroot");
+        public static final ITag.INamedTag<Item> BOWL_FOODS_RABBIT = mod("bowl_foods/rabbit");
+        public static final ITag.INamedTag<Item> BOWL_FOODS_FUNGI = mod("bowl_foods/fungi");
+        public static final ITag.INamedTag<Item> BOWL_FOODS_END_FUNGI = mod("bowl_foods/end_fungi");
+        public static final ITag.INamedTag<Item> BOWL_FOODS_ALJAN_FUNGI = mod("bowl_foods/aljan_fungi");
+
         public static ITag.INamedTag<Item> forge(String name) {
             return ItemTags.bind(new ResourceLocation("forge", name).toString());
         }
@@ -98,7 +110,7 @@ public class VSTags {
         public static final ITag.INamedTag<Block> BEACONS = mod("beacons");
         public static final ITag.INamedTag<Block> FARMLAND = mod("farmland");
         public static final ITag.INamedTag<Block> CONDUIT_FRAME_BLOCKS = mod("conduit_frame_blocks");
-        public static final ITag.INamedTag<Block> WARPED_WART_PLANTABLE_ON = mod("warped_wart_plantable_on");
+        public static final ITag.INamedTag<Block> NETHER_WART_PLACEABLE_ON = mod("nether_wart_plantable_on");
         public static final ITag.INamedTag<Block> ENDER_WART_PLANTABLE_ON = mod("ender_wart_plantable_on");
         public static final ITag.INamedTag<Block> GOLDEN_CARROTS_PLANTABLE_ON = mod("golden_carrots_plantable_on");
         public static final ITag.INamedTag<Block> END_PLANTS_PLANTABLE_ON = mod("end_plants_plantable_on");

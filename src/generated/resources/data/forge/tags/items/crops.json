@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:crops/golden_carrot",
+    "#forge:crops/warped_wart",
+    "#forge:crops/ender_wart"
+  ]
+}

@@ -7,6 +7,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -31,7 +32,8 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
 
         this.tag(Tags.Blocks.FENCE_GATES_WOODEN).add(VSBlocks.PAINTING_FENCE_GATE.get());
 
-        this.tag(VSTags.Blocks.DEEPSLATE_REPLACEABLES);
+        this.tag(VSTags.Blocks.DEEPSLATE_REPLACEABLES).addOptional(new ResourceLocation("minecraft:deepslate")).addOptional(new ResourceLocation("cavesandcliffs:deepslate")).addOptional(new ResourceLocation(
+                "quark:deepslate"));
 
         this.tag(Tags.Blocks.STAINED_GLASS).add(VSBlocks.GLOW_BLACK_STAINED_GLASS.get());
         this.tag(Tags.Blocks.STAINED_GLASS_PANES).add(VSBlocks.GLOW_BLACK_STAINED_GLASS_PANE.get());
@@ -54,8 +56,8 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
                 .add(VSBlocks.STRIPPED_ENDERWOOD_HYPHAE.get());
         this.tag(VSTags.Blocks.CAULDRONS).add(Blocks.CAULDRON).add(VSBlocks.GOLDEN_CAULDRON.get());
         this.tag(VSTags.Blocks.BEACONS).add(Blocks.BEACON).add(VSBlocks.GOLDEN_BEACON.get());
-        this.tag(VSTags.Blocks.FARMLAND).add(Blocks.FARMLAND).add(VSBlocks.ENDER_FARMLAND.get());
-        this.tag(VSTags.Blocks.WARPED_WART_PLANTABLE_ON).add(Blocks.SOUL_SAND).add(Blocks.SOUL_SOIL);
+        this.tag(VSTags.Blocks.FARMLAND).add(Blocks.FARMLAND).add(VSBlocks.ENDER_FARMLAND.get()).addOptional(backMath("aljamic_farmland"));
+        this.tag(VSTags.Blocks.NETHER_WART_PLACEABLE_ON).add(Blocks.SOUL_SAND).add(Blocks.SOUL_SOIL);
         this.tag(VSTags.Blocks.ENDER_WART_PLANTABLE_ON).add(VSBlocks.ENDER_FARMLAND.get()).add(Blocks.END_STONE).add(Blocks.OBSIDIAN);
         this.tag(VSTags.Blocks.GOLDEN_CARROTS_PLANTABLE_ON).addTag(VSTags.Blocks.FARMLAND);
         this.tag(VSTags.Blocks.CONDUIT_FRAME_BLOCKS).add(Blocks.PRISMARINE).add(Blocks.PRISMARINE_BRICKS).add(Blocks.DARK_PRISMARINE).add(Blocks.SEA_LANTERN)
@@ -84,7 +86,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.WALLS).add(VSBlocks.ELDER_PRISMARINE_WALL.get());
         this.tag(BlockTags.FENCES).add(VSBlocks.RED_NETHER_BRICK_FENCE.get());
 
-        this.tag(BlockTags.CROPS).add(VSBlocks.GOLDEN_CARROTS.get()).add(VSBlocks.WARPED_WART.get());
+        this.tag(BlockTags.CROPS).add(VSBlocks.GOLDEN_CARROTS.get()).add(Blocks.NETHER_WART).add(VSBlocks.WARPED_WART.get()).add(VSBlocks.ENDER_WART.get());
         this.tag(BlockTags.BEE_GROWABLES).add(VSBlocks.GLOW_BERRY_BUSH.get());
         this.tag(BlockTags.SMALL_FLOWERS).add(VSBlocks.GLOW_BLACK_TULIP.get()).add(VSBlocks.SUNNY_FLOWER.get());
         this.tag(BlockTags.FLOWER_POTS).add(VSBlocks.POTTED_GLOW_BLACK_TULIP.get()).add(VSBlocks.POTTED_SUNNY_FLOWER.get()).add(VSBlocks.POTTED_SUGAR_CANE.get()).add(VSBlocks.POTTED_PAINTING_SAPLING.get())
@@ -98,5 +100,9 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.ENDERMAN_HOLDABLE).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_ROOTS.get()).add(VSBlocks.ENDER_FUNGUS.get());
         this.tag(BlockTags.CLIMBABLE).add(VSBlocks.WARPING_VINES.get()).add(VSBlocks.WARPING_VINES_PLANT.get());
         this.tag(BlockTags.BEDS).add(VSBlocks.GLOW_BLACK_BED.get());
+    }
+
+    private static ResourceLocation backMath(String block) {
+        return new ResourceLocation("backmath", block);
     }
 }

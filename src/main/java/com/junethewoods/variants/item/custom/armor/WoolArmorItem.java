@@ -3,6 +3,7 @@ package com.junethewoods.variants.item.custom.armor;
 import com.google.common.collect.ImmutableMap;
 import com.junethewoods.variants.config.VSConfigs;
 import com.junethewoods.variants.item.VSWeaponry;
+import com.junethewoods.variants.util.tab.VSSweaterTab;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
@@ -58,10 +59,20 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
                 }
             }
         }
+        if (itemTab == VSSweaterTab.TAB && VSConfigs.COMMON_CONFIGS.enableInfinitySweatersTab.get()) {
+            for (int i = 0; i < VSConfigs.COMMON_CONFIGS.infinitySweatersTabLength.get();  i = i + VSConfigs.COMMON_CONFIGS.infinitySweatersTabSpacing.get())  {
+                ItemStack stack = new ItemStack(VSWeaponry.WOOL_SWEATER.get());
+                CompoundNBT displayTag = stack.getOrCreateTagElement("display");
+                CompoundNBT tag = stack.getOrCreateTag();
+
+                displayTag.putInt("color", i);
+                tag.putString("color_name", "#" + i);
+                list.add(stack);
+            }
+        }
     }
 
-    public static ItemStack pickRandomColor(Item item) {
-        ItemStack stack = new ItemStack(item);
+    public static ItemStack pickRandomColor(ItemStack stack) {
         CompoundNBT displayTag = stack.getOrCreateTagElement("display");
         CompoundNBT tag = stack.getOrCreateTag();
 

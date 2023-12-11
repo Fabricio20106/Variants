@@ -9,6 +9,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;
 import net.minecraft.item.Items;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -56,6 +57,11 @@ public class VSItemTagsProvider extends ItemTagsProvider {
 
         this.tag(Tags.Items.FENCES_NETHER_BRICK).add(VSItems.RED_NETHER_BRICK_FENCE.get());
 
+        this.tag(VSTags.Items.CROPS_GOLDEN_CARROT).add(Items.GOLDEN_CARROT).add(VSItems.GOLDEN_CARROTS.get());
+        this.tag(VSTags.Items.CROPS_WARPED_WART).add(VSItems.WARPED_WART.get());
+        this.tag(VSTags.Items.CROPS_ENDER_WART).add(VSItems.ENDER_WART.get());
+        this.tag(Tags.Items.CROPS).addTag(VSTags.Items.CROPS_GOLDEN_CARROT).addTag(VSTags.Items.CROPS_WARPED_WART).addTag(VSTags.Items.CROPS_ENDER_WART);
+
         this.tag(VSTags.Items.RODS_DEBUG_WOODEN).add(Items.DEBUG_STICK);
         this.tag(VSTags.Items.RODS_NETHERITE).add(VSItems.NETHERITE_ROD.get());
         this.tag(VSTags.Items.RODS_SOUL_BLAZE).add(VSItems.SOUL_BLAZE_ROD.get());
@@ -100,7 +106,8 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.CM_END_STONE).add(Items.END_STONE);
         this.tag(VSTags.Items.CRAFTING_MATERIALS).addTag(VSTags.Items.CM_DIORITE).addTag(VSTags.Items.CM_GRANITE).addTag(VSTags.Items.CM_ANDESITE).addTag(VSTags.Items.CM_MAGMA_BLOCK).addTag(VSTags.Items.CM_END_STONE);
 
-        this.tag(VSTags.Items.BOOKS).add(Items.BOOK).add(Items.WRITABLE_BOOK).add(Items.WRITTEN_BOOK).add(Items.ENCHANTED_BOOK).add(Items.KNOWLEDGE_BOOK).add(VSItems.ENCHANTED_KNOWLEDGE_BOOK.get());
+        this.tag(VSTags.Items.BOOKS).add(Items.BOOK).add(Items.WRITABLE_BOOK).add(Items.WRITTEN_BOOK).add(Items.ENCHANTED_BOOK).add(Items.KNOWLEDGE_BOOK).add(VSItems.ENCHANTED_KNOWLEDGE_BOOK.get())
+                .addOptional(backMath("regular_molds_book")).addOptional(backMath("advanced_molds_book")).addOptional(new ResourceLocation("patchouli:guide_book")).addOptional(new ResourceLocation("ftbquests:book"));
         this.tag(VSTags.Items.BOOKSHELVES).add(Items.BOOKSHELF).add(VSItems.ENDERWOOD_BOOKSHELF.get()).add(VSItems.PLAIN_BIRCH_BOOKSHELF.get());
         this.tag(VSTags.Items.PAINTING_DOORS).add(VSItems.PAINTING_DOOR_WANDERER.get()).add(VSItems.PAINTING_DOOR_GRAHAM.get()).add(VSItems.PAINTING_DOOR_FIRST.get());
         this.tag(VSTags.Items.PAINTING_TRAPDOORS).add(VSItems.PAINTING_TRAPDOOR_ALBAN.get()).add(VSItems.PAINTING_TRAPDOOR_AZTEC.get()).add(VSItems.PAINTING_TRAPDOOR_AZTEC2.get())
@@ -109,7 +116,8 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.BEACONS).add(Items.BEACON).add(VSItems.GOLDEN_BEACON.get());
         this.tag(VSTags.Items.POTS).add(VSItems.STYLISED_POT.get()).add(VSItems.REDSTONE_POT.get()).add(VSItems.BLUESTONE_POT.get()).add(VSItems.GLOWSTONE_POT.get())
                 .add(VSItems.GUNPOWDER_POT.get()).add(VSItems.EXPLOSIVE_BLEND_POT.get()).add(VSItems.SUGAR_POT.get()).add(VSItems.SWEET_BERRY_POT.get()).add(VSItems.GLOW_BERRY_POT.get());
-        this.tag(VSTags.Items.SHIELDS).add(Items.SHIELD).add(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
+        this.tag(VSTags.Items.SHIELDS).add(Items.SHIELD).add(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get()).addOptional(backMath("devil_shield")).addOptional(backMath("angelic_shield")).addOptional(backMath("mid_term_shield"))
+                .addOptional(backMath("aljameed_shield")).addOptional(backMath("moonering_shield"));
         this.tag(VSTags.Items.SPYGLASSES).add(VSWeaponry.IRON_SPYGLASS.get()).add(VSWeaponry.DIAMOND_SPYGLASS.get()).add(VSWeaponry.NETHERITE_SPYGLASS.get());
         this.tag(VSTags.Items.CATLIKE_TAME_ITEMS).add(Items.COD).add(Items.SALMON).add(Items.TROPICAL_FISH).add(VSItems.RAW_FISH.get());
         this.tag(VSTags.Items.SHULKER_SHELLS).add(Items.SHULKER_SHELL).add(VSItems.WHITE_SHULKER_SHELL.get()).add(VSItems.INNO_SHULKER_SHELL.get())
@@ -123,6 +131,17 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.WOODEN_BOWLS).add(Items.BOWL).add(VSItems.OAK_BOWL.get()).add(VSItems.SPRUCE_BOWL.get()).add(VSItems.BIRCH_BOWL.get()).add(VSItems.JUNGLE_BOWL.get()).add(VSItems.ACACIA_BOWL.get()).add(VSItems.DARK_OAK_BOWL.get())
                 .add(VSItems.PAINTING_BOWL.get()).add(VSItems.CRIMSON_BOWL.get()).add(VSItems.WARPED_BOWL.get()).add(VSItems.ENDERWOOD_BOWL.get());
         this.tag(VSTags.Items.BOWLS).addTag(VSTags.Items.WOODEN_BOWLS).addTag(VSTags.Items.FISHING_BOWLS);
+
+        // Bowl/Bucket Foods
+        this.tag(VSTags.Items.BOWL_FOODS_MUSHROOM).add(Items.MUSHROOM_STEW);
+        this.tag(VSTags.Items.BOWL_FOODS_BEETROOT).add(Items.BEETROOT_SOUP);
+        this.tag(VSTags.Items.BOWL_FOODS_RABBIT).add(Items.RABBIT_STEW);
+        this.tag(VSTags.Items.BOWL_FOODS_FUNGI).add(VSItems.FUNGI_STEW.get());
+        this.tag(VSTags.Items.BOWL_FOODS_END_FUNGI).add(VSItems.END_FUNGI_STEW.get());
+        this.tag(VSTags.Items.BOWL_FOODS_ALJAN_FUNGI).addOptional(backMath("aljan_fungi_stew"));
+
+        this.tag(VSTags.Items.BOWL_FOODS).addTag(VSTags.Items.BOWL_FOODS_MUSHROOM).addTag(VSTags.Items.BOWL_FOODS_BEETROOT).addTag(VSTags.Items.BOWL_FOODS_RABBIT).addTag(VSTags.Items.BOWL_FOODS_FUNGI)
+                .addTag(VSTags.Items.BOWL_FOODS_END_FUNGI).addTag(VSTags.Items.BOWL_FOODS_ALJAN_FUNGI);
 
         this.tag(VSTags.Items.PAINTING_LOGS).add(VSItems.PAINTING_LOG.get()).add(VSItems.PAINTING_WOOD.get()).add(VSItems.STRIPPED_PAINTING_LOG.get())
                 .add(VSItems.STRIPPED_PAINTING_WOOD.get());
@@ -156,5 +175,9 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(ItemTags.PIGLIN_LOVED).add(VSItems.GOLDEN_CAULDRON.get()).add(VSItems.GOLDEN_BEACON.get()).add(VSItems.GOLDEN_CARROTS.get()).add(VSItems.GOLDEN_CHAIN.get()).add(VSWeaponry.GOLDEN_SHEARS.get())
                 .add(VSWeaponry.ALICE_AI_SHEARS.get());
         this.tag(ItemTags.BOATS).add(VSItems.PAINTING_BOAT.get()).add(VSItems.CRIMSON_BOAT.get()).add(VSItems.WARPED_BOAT.get());
+    }
+
+    private static ResourceLocation backMath(String item) {
+        return new ResourceLocation("backmath", item);
     }
 }

@@ -1,6 +1,7 @@
 package com.junethewoods.variants.util.tab;
 
 import com.junethewoods.variants.item.VSWeaponry;
+import com.junethewoods.variants.item.custom.armor.WoolArmorItem;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
@@ -13,6 +14,6 @@ public class VSWeaponryTab extends ItemGroup {
 
     @Override
     public ItemStack makeIcon() {
-        return new ItemStack(VSWeaponry.PHANTOM_MEMBRANE_TUNIC.get());
+        return WoolArmorItem.pickRandomColor(new ItemStack(VSWeaponry.WOOL_SWEATER.get()));
     }
 }

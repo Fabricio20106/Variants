@@ -1,4 +1,17 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    {
+      "id": "minecraft:deepslate",
+      "required": false
+    },
+    {
+      "id": "cavesandcliffs:deepslate",
+      "required": false
+    },
+    {
+      "id": "quark:deepslate",
+      "required": false
+    }
+  ]
 }

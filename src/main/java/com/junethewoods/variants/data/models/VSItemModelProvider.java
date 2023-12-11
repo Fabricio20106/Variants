@@ -1,17 +1,14 @@
 package com.junethewoods.variants.data.models;
 
-import com.junethewoods.variants.Variants;
 import net.minecraft.data.DataGenerator;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nonnull;
 
-public class VSItemModelProvider extends ItemModelProvider {
+public class VSItemModelProvider extends VSItemModelModels {
     public VSItemModelProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
-        super(generator, Variants.MOD_ID, fileHelper);
+        super(generator, fileHelper);
     }
 
     @Nonnull
@@ -36,6 +33,7 @@ public class VSItemModelProvider extends ItemModelProvider {
         block("raw_debris_block");
         block("glow_black_wool");
         block("glow_black_carpet");
+        getBuilder("glow_black_bed").parent(getExistingFile(mcLoc("item/template_bed"))).texture("particle", modLoc("block/glow_black_wool"));
         block("glow_black_stained_glass");
         block("quartz_glass");
         block("plain_birch_bookshelf");
@@ -170,14 +168,25 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "exposed_copper_ingot");
         standard(generated, "weathered_copper_ingot");
         standard(generated, "oxidized_copper_ingot");
+        withExistingParent("old_cod_spawn_egg", mcLoc("item/template_spawn_egg"));
         standard(generated, "soul_lava_bucket");
         standard(generated, "old_cod_bucket");
-        withExistingParent("old_cod_spawn_egg", mcLoc("item/template_spawn_egg"));
+        standard(generated, "mushroom_stew_bucket");
+        standard(generated, "beetroot_soup_bucket");
+        standard(generated, "rabbit_stew_bucket");
+        standard(generated, "fungi_stew_bucket");
+        standard(generated, "end_fungi_stew_bucket");
         standard(generated, "milk_glass_bottle");
         standard(generated, "lava_glass_bottle");
         standard(generated, "soul_lava_bottle");
         standard(generated, "powder_snow_bottle");
         standard(generated, "glow_black_dye");
+        standard(generated, "iron_tie");
+        standard(generated, "powered_tie");
+        standard(generated, "corner_iron_tie");
+        standard(generated, "wooden_railbed");
+        standard(generated, "powered_railbed");
+        standard(generated, "detector_plate");
         standard(generated, "elder_prismarine_shard");
         standard(generated, "elder_prismarine_crystals");
         standard(handheld, "wither_bone");
@@ -201,6 +210,9 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "quartz_nugget");
         standard(generated, "purple_nugget");
 
+        // Exponential Soups/Stews
+        expoStew("exponential_mushroom_stew", "mushroom");
+
         blockItem("glow_berry_bush", "_stage3");
         blockItem("glow_black_tulip");
         blockItem("painting_sapling");
@@ -223,9 +235,14 @@ public class VSItemModelProvider extends ItemModelProvider {
         standard(generated, "rabbit_hide_sweatchest");
         standard(generated, "quartz_horse_armor");
         standard(generated, "empty_armor_slot_shield");
+        spyglass("iron_spyglass");
+        spyglass("diamond_spyglass");
+        spyglass("netherite_spyglass");
 
-        // Wool Sweater Custom Designs
+        // Wool Sweater Related
         standard(generated, "wool_sweater_glitch_design");
+        standard(generated, "infinity_sweaters_tab_icon");
+        getBuilder("wool_sweatchest").parent(generated).texture("layer0", "item/wool_sweatchest").override().predicate(armorDesign(), 1).model(getExistingFile(modLoc("item/wool_sweater_glitch_design"))).end();
 
         standard(debugBow, "debug_bow_pulling_0");
         standard(debugBow, "debug_bow_pulling_1");
@@ -264,44 +281,5 @@ public class VSItemModelProvider extends ItemModelProvider {
         toolSet(handheld, "diorite");
         toolSet(handheld, "end_stone");
         toolSet(handheld, "quartz");
-    }
-
-    public void standard(ModelFile parent, String name) {
-        getBuilder(name).parent(parent).texture("layer0", "item/" + name);
-    }
-
-    public void toolSet(ModelFile parent, String material) {
-        getBuilder(material + "_sword").parent(parent).texture("layer0", "item/" + material + "_sword");
-        getBuilder(material + "_pickaxe").parent(parent).texture("layer0", "item/" + material + "_pickaxe");
-        getBuilder(material + "_shovel").parent(parent).texture("layer0", "item/" + material + "_shovel");
-        getBuilder(material + "_axe").parent(parent).texture("layer0", "item/" + material + "_axe");
-        getBuilder(material + "_hoe").parent(parent).texture("layer0", "item/" + material + "_hoe");
-    }
-
-    public void armorSet(ModelFile parent, String material) {
-        getBuilder(material + "_helmet").parent(parent).texture("layer0", "item/" + material + "_helmet");
-        getBuilder(material + "_chestplate").parent(parent).texture("layer0", "item/" + material + "_chestplate");
-        getBuilder(material + "_leggings").parent(parent).texture("layer0", "item/" + material + "_leggings");
-        getBuilder(material + "_boots").parent(parent).texture("layer0", "item/" + material + "_boots");
-    }
-
-    public void block(String name) {
-        withExistingParent(name, modLoc("block/" + name));
-    }
-
-    public void block(String name, String extras) {
-        withExistingParent(name, modLoc("block/" + name + extras));
-    }
-
-    public void blockItem(String name) {
-        getBuilder(name).parent(getExistingFile(mcLoc("item/generated"))).texture("layer0", "block/" + name);
-    }
-
-    public void blockItem(String name, String extras) {
-        getBuilder(name).parent(getExistingFile(mcLoc("item/generated"))).texture("layer0", "block/" + name + extras);
-    }
-
-    public void glassPane(String name) {
-        getBuilder(name + "_pane").parent(getExistingFile(mcLoc("item/generated"))).texture("layer0", "block/" + name);
     }
 }

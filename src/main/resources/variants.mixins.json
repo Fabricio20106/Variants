@@ -6,9 +6,14 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "block.CauldronBlockMixin",
+    "block.NetherWartBlockMixin",
+    "block.StainedGlassBlockMixin",
+    "block.StainedGlassPaneBlockMixin",
     "item.ShearsItemMixin",
     "item.FlintAndSteelItemMixin",
     "item.ShieldItemMixin",
+    "item.ItemStackMixin",
+    "enchantment.EnchantmentMixin",
     "enchantment.QuickChargeEnchantmentMixin",
     "entity.EntityTameItemMixins$CatEntityMixin",
     "entity.EntityTameItemMixins$OcelotEntityMixin"

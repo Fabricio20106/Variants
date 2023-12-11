@@ -11,7 +11,11 @@ public class VSCommonConfigs {
 
     // Items
     public final ForgeConfigSpec.BooleanValue populateWoolArmorColorInTabs;
+    public final ForgeConfigSpec.BooleanValue enableInfinitySweatersTab;
+    public final ForgeConfigSpec.IntValue infinitySweatersTabLength;
+    public final ForgeConfigSpec.IntValue infinitySweatersTabSpacing;
     public final ForgeConfigSpec.BooleanValue customFireworkDescriptions;
+    public final ForgeConfigSpec.BooleanValue customEnchantmentDescriptions;
     public final ForgeConfigSpec.BooleanValue horseArmorArmorPointsOnTooltip;
     public final ForgeConfigSpec.BooleanValue enchantableShears;
     public final ForgeConfigSpec.BooleanValue enchantableFlintAndSteel;
@@ -44,10 +48,14 @@ public class VSCommonConfigs {
         builder.push("items");
         this.populateWoolArmorColorInTabs = builder.comment("Should the item tabs populate all (dye) colors of wool armor?").define("populateWoolArmorColorInTabs", true);
         this.customFireworkDescriptions = builder.comment("Updates the Firework Rocket & Charge's descriptions.").define("customFireworkDescriptions", true);
+        this.customEnchantmentDescriptions = builder.comment("Updates the enchantment description on enchanted items.").define("customEnchantmentDescriptions", true);
         this.horseArmorArmorPointsOnTooltip = builder.comment("Shows how many armor points each horse armor gives on the item's tooltip.").define("horseArmorArmorPointsOnTooltip", true);
         this.enchantableShears = builder.comment("Allows any Shears to be enchanted at an Enchanting Table.").define("enchantableShears", true);
         this.enchantableFlintAndSteel = builder.comment("Allows any Flint and Steel to be enchanted at an Enchanting Table.").define("enchantableFlintAndSteel", true);
         this.enchantableShields = builder.comment("Allows any Shield to be enchanted at an Enchanting Table.").define("enchantableShields", true);
+        this.enableInfinitySweatersTab = builder.comment("Enables the Infinity Sweaters tab (WARNING: This tab is *very* fragile and will most likely crash when you click on any other tab with this one open).").define("infinitySweatersTab.enableInfinitySweatersTab", false);
+        this.infinitySweatersTabLength = builder.comment("How many sweaters should the tab load in. (Def: 4096)").defineInRange("infinitySweatersTab.infinitySweatersTabLength", 4096, 1, 16777215);
+        this.infinitySweatersTabSpacing = builder.comment("The spacing between sweater colors. (Def: 16)").defineInRange("infinitySweatersTab.infinitySweatersTabSpacing", 16, 1, 16777215);
         builder.pop();
     }
 }
