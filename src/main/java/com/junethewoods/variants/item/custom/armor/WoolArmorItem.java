@@ -2,10 +2,12 @@ package com.junethewoods.variants.item.custom.armor;
 
 import com.google.common.collect.ImmutableMap;
 import com.junethewoods.variants.config.VSConfigs;
-import com.junethewoods.variants.item.VSWeaponry;
 import com.junethewoods.variants.util.tab.VSSweaterTab;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.*;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.IArmorMaterial;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
@@ -45,11 +47,11 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
     @Override
     public void fillItemCategory(ItemGroup itemTab, NonNullList<ItemStack> list) {
         if (this.allowdedIn(itemTab)) {
-            list.add(new ItemStack(VSWeaponry.WOOL_SWEATER.get()));
+            list.add(new ItemStack(this));
 
             if (VSConfigs.COMMON_CONFIGS.populateWoolArmorColorInTabs.get()) {
                 for (String i : COLOR_NAME_TO_CODE.keySet()) {
-                    ItemStack stack = new ItemStack(VSWeaponry.WOOL_SWEATER.get());
+                    ItemStack stack = new ItemStack(this);
                     CompoundNBT displayTag = stack.getOrCreateTagElement("display");
                     CompoundNBT tag = stack.getOrCreateTag();
 
@@ -61,7 +63,7 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
         }
         if (itemTab == VSSweaterTab.TAB && VSConfigs.COMMON_CONFIGS.enableInfinitySweatersTab.get()) {
             for (int i = 0; i < VSConfigs.COMMON_CONFIGS.infinitySweatersTabLength.get();  i = i + VSConfigs.COMMON_CONFIGS.infinitySweatersTabSpacing.get())  {
-                ItemStack stack = new ItemStack(VSWeaponry.WOOL_SWEATER.get());
+                ItemStack stack = new ItemStack(this);
                 CompoundNBT displayTag = stack.getOrCreateTagElement("display");
                 CompoundNBT tag = stack.getOrCreateTag();
 

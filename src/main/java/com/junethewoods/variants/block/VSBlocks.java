@@ -4,6 +4,7 @@ import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.block.custom.*;
 import com.junethewoods.variants.block.custom.end.*;
 import com.junethewoods.variants.block.custom.nether.WarpedWartBlock;
+import com.junethewoods.variants.block.custom.nether.WitherBoneBlock;
 import com.junethewoods.variants.fluid.VSFluids;
 import com.junethewoods.variants.util.VSWoodTypes;
 import com.junethewoods.variants.world.feature.VSFeatures;
@@ -81,7 +82,7 @@ public class VSBlocks {
     public static final RegistryObject<Block> CHISELED_PURPUR_BLOCK = BLOCKS.register("chiseled_purpur_block", () -> new Block(AbstractBlock.Properties.copy(Blocks.PURPUR_BLOCK)));
     public static final RegistryObject<Block> INFESTED_CHISELED_PURPUR_BLOCK = BLOCKS.register("infested_chiseled_purpur_block", () -> new SilverfishBlock(VSBlocks.CHISELED_PURPUR_BLOCK.get(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_MAGENTA).strength(0, 0.75F)));
     public static final RegistryObject<Block> RED_NETHER_BRICK_FENCE = BLOCKS.register("red_nether_brick_fence", () -> new FenceBlock(AbstractBlock.Properties.copy(Blocks.NETHER_BRICK_FENCE)));
-    public static final RegistryObject<Block> WITHER_BONE_BLOCK = BLOCKS.register("wither_bone_block", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.BONE_BLOCK)));
+    public static final RegistryObject<Block> WITHER_BONE_BLOCK = BLOCKS.register("wither_bone_block", () -> new WitherBoneBlock(AbstractBlock.Properties.copy(Blocks.BONE_BLOCK)));
     public static final RegistryObject<Block> RAW_DEBRIS_BLOCK = BLOCKS.register("raw_debris_block", () -> new Block(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(30f, 1200f).sound(SoundType.ANCIENT_DEBRIS)));
     public static final RegistryObject<Block> QUARTZ_ORE = BLOCKS.register("quartz_ore", () -> new VSOreBlock(2, 5, AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(3f, 3f)));
     public static final RegistryObject<Block> DEEPSLATE_QUARTZ_ORE = BLOCKS.register("deepslate_quartz_ore", () -> new VSOreBlock(2, 5, AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(4.5f, 3f)));

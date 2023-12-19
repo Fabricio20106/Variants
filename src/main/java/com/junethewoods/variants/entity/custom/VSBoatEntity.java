@@ -70,6 +70,8 @@ public class VSBoatEntity extends BoatEntity {
                 return VSItems.CRIMSON_BOAT.get();
             case "warped":
                 return VSItems.WARPED_BOAT.get();
+            case "ender":
+                return VSItems.ENDERWOOD_BOAT.get();
             case "painting":
             default:
                 return VSItems.PAINTING_BOAT.get();

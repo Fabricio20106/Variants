@@ -17,13 +17,13 @@ issueTrackerURL="https://github.com/Fabricio20106/Variants/issues" #optional
 # The mod id of the mod.
 modId="variants" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it.
-version="1.16.5-v1.6.16" #mandatory
+version="1.16.5-v1.6.17" #mandatory
  # A display name for the mod.
 displayName="Variants" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>.
 #updateJSONURL="http://myurl.me/" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI.
-displayURL="https://github.com/Fabricio20106/Variants" #optional
+displayURL="https://github.com/Fabricio20106/Variants/tree/forge-1.16.5" #optional
 # A file name (in the root of the mod JAR) containing a logo for display.
 logoFile="variants.png" #optional
 # A text field displayed in the mod UI.

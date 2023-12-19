@@ -174,7 +174,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(ItemTags.CREEPER_DROP_MUSIC_DISCS).add(VSItems.MUSIC_DISC_DOG.get());
         this.tag(ItemTags.PIGLIN_LOVED).add(VSItems.GOLDEN_CAULDRON.get()).add(VSItems.GOLDEN_BEACON.get()).add(VSItems.GOLDEN_CARROTS.get()).add(VSItems.GOLDEN_CHAIN.get()).add(VSWeaponry.GOLDEN_SHEARS.get())
                 .add(VSWeaponry.ALICE_AI_SHEARS.get());
-        this.tag(ItemTags.BOATS).add(VSItems.PAINTING_BOAT.get()).add(VSItems.CRIMSON_BOAT.get()).add(VSItems.WARPED_BOAT.get());
+        this.tag(ItemTags.BOATS).add(VSItems.PAINTING_BOAT.get()).add(VSItems.CRIMSON_BOAT.get()).add(VSItems.WARPED_BOAT.get()).add(VSItems.ENDERWOOD_BOAT.get());
     }
 
     private static ResourceLocation backMath(String item) {

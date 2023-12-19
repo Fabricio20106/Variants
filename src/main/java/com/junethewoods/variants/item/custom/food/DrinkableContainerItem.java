@@ -37,6 +37,7 @@ public abstract class DrinkableContainerItem extends Item {
         } else {
             if (livEntity instanceof PlayerEntity && !((PlayerEntity) livEntity).abilities.instabuild) {
                 PlayerEntity player = (PlayerEntity) livEntity;
+                stack.shrink(1);
                 if (!player.inventory.add(containerItem)) {
                     player.drop(containerItem, false);
                 }

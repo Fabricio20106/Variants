@@ -120,6 +120,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(generated, "painting_boat");
         standard(generated, "crimson_boat");
         standard(generated, "warped_boat");
+        standard(generated, "ender_boat");
         standard(generated, "variated_instructions");
         standard(generated, "splash_experience_bottle");
         standard(generated, "lingering_experience_bottle");
