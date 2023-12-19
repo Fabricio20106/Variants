@@ -24,19 +24,19 @@ public class GlowBerryBushBlock extends SweetBerryBushBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         int ageState = state.getValue(AGE);
         boolean ageIsThree = ageState == 3;
         if (!ageIsThree && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
             return InteractionResult.PASS;
         } else if (ageState > 1) {
-            int j = 1 + world.random.nextInt(2);
-            popResource(world, pos, new ItemStack(Items.GLOW_BERRIES, j + (ageIsThree ? 1 : 0)));
-            world.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
-            world.setBlock(pos, state.setValue(AGE, Integer.valueOf(1)), 2);
-            return InteractionResult.sidedSuccess(world.isClientSide);
+            int j = 1 + level.random.nextInt(2);
+            popResource(level, pos, new ItemStack(Items.GLOW_BERRIES, j + (ageIsThree ? 1 : 0)));
+            level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1, 0.8F + level.random.nextFloat() * 0.4F);
+            level.setBlock(pos, state.setValue(AGE, Integer.valueOf(1)), 2);
+            return InteractionResult.sidedSuccess(level.isClientSide);
         } else {
-            return super.use(state, world, pos, player, hand, hitResult);
+            return super.use(state, level, pos, player, hand, hitResult);
         }
     }
 }

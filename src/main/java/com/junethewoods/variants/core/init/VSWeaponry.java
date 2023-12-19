@@ -1,9 +1,10 @@
 package com.junethewoods.variants.core.init;
 
 import com.junethewoods.variants.common.item.DebugBowItem;
-import com.junethewoods.variants.common.item.VariantDyeArmorItem;
+import com.junethewoods.variants.common.item.MagmaSwordItem;
+import com.junethewoods.variants.common.item.WoolArmorItem;
 import com.junethewoods.variants.core.Variants;
-import com.junethewoods.variants.core.tabs.VSWeaponryTab;
+import com.junethewoods.variants.core.tab.VSWeaponryTab;
 import com.junethewoods.variants.common.util.VSArmors;
 import com.junethewoods.variants.common.util.VSTools;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -142,7 +143,7 @@ public class VSWeaponry {
     public static final RegistryObject<Item> BASALT_SHOVEL = ITEMS.register("basalt_shovel", () -> new ShovelItem(VSTools.BASALT, 1.5F, -3.0F, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> BASALT_AXE = ITEMS.register("basalt_axe", () -> new AxeItem(VSTools.BASALT, 7.0F, -3.2F, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> BASALT_HOE = ITEMS.register("basalt_hoe", () -> new HoeItem(VSTools.BASALT, -2, -2.0F, new Item.Properties().tab(VSWeaponryTab.TAB)));
-    public static final RegistryObject<Item> MAGMA_SWORD = ITEMS.register("magma_sword", () -> new SwordItem(VSTools.MAGMA, 3, -2.4F, new Item.Properties().tab(VSWeaponryTab.TAB)));
+    public static final RegistryObject<Item> MAGMA_SWORD = ITEMS.register("magma_sword", () -> new MagmaSwordItem(VSTools.MAGMA, 3, -2.4F, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> MAGMA_PICKAXE = ITEMS.register("magma_pickaxe", () -> new PickaxeItem(VSTools.MAGMA, 1, -2.8F, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> MAGMA_SHOVEL = ITEMS.register("magma_shovel", () -> new ShovelItem(VSTools.MAGMA, 1.5F, -3.0F, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> MAGMA_AXE = ITEMS.register("magma_axe", () -> new AxeItem(VSTools.MAGMA, 7.0F, -3.2F, new Item.Properties().tab(VSWeaponryTab.TAB)));
@@ -243,8 +244,8 @@ public class VSWeaponry {
     public static final RegistryObject<Item> RABBIT_HIDE_SWEATCHEST = ITEMS.register("rabbit_hide_sweatchest", () -> new ArmorItem(VSArmors.RABBIT, EquipmentSlot.CHEST, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> RABBIT_HIDE_LEGGINGS = ITEMS.register("rabbit_hide_leggings", () -> new ArmorItem(VSArmors.RABBIT, EquipmentSlot.LEGS, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> RABBIT_HIDE_BOOTS = ITEMS.register("rabbit_hide_boots", () -> new ArmorItem(VSArmors.RABBIT, EquipmentSlot.FEET, new Item.Properties().tab(VSWeaponryTab.TAB)));
-    public static final RegistryObject<Item> WOOL_HELMET = ITEMS.register("wool_helmet", () -> new VariantDyeArmorItem(VSArmors.WOOL, EquipmentSlot.HEAD, new Item.Properties().tab(VSWeaponryTab.TAB)));
-    public static final RegistryObject<Item> WOOL_SWEATCHEST = ITEMS.register("wool_sweatchest", () -> new VariantDyeArmorItem(VSArmors.WOOL, EquipmentSlot.CHEST, new Item.Properties().tab(VSWeaponryTab.TAB)));
-    public static final RegistryObject<Item> WOOL_LEGGINGS = ITEMS.register("wool_leggings", () -> new VariantDyeArmorItem(VSArmors.WOOL, EquipmentSlot.LEGS, new Item.Properties().tab(VSWeaponryTab.TAB)));
-    public static final RegistryObject<Item> WOOL_BOOTS = ITEMS.register("wool_boots", () -> new VariantDyeArmorItem(VSArmors.WOOL, EquipmentSlot.FEET, new Item.Properties().tab(VSWeaponryTab.TAB)));
+    public static final RegistryObject<Item> WOOL_HELMET = ITEMS.register("wool_helmet", () -> new WoolArmorItem(VSArmors.WOOL, EquipmentSlot.HEAD, new Item.Properties().tab(VSWeaponryTab.TAB)));
+    public static final RegistryObject<Item> WOOL_SWEATCHEST = ITEMS.register("wool_sweatchest", () -> new WoolArmorItem(VSArmors.WOOL, EquipmentSlot.CHEST, new Item.Properties().tab(VSWeaponryTab.TAB)));
+    public static final RegistryObject<Item> WOOL_LEGGINGS = ITEMS.register("wool_leggings", () -> new WoolArmorItem(VSArmors.WOOL, EquipmentSlot.LEGS, new Item.Properties().tab(VSWeaponryTab.TAB)));
+    public static final RegistryObject<Item> WOOL_BOOTS = ITEMS.register("wool_boots", () -> new WoolArmorItem(VSArmors.WOOL, EquipmentSlot.FEET, new Item.Properties().tab(VSWeaponryTab.TAB)));
 }

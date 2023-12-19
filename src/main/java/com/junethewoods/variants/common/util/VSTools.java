@@ -3,7 +3,6 @@ package com.junethewoods.variants.common.util;
 import com.junethewoods.variants.core.init.VSItems;
 import com.junethewoods.variants.core.init.VSTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -13,17 +12,17 @@ import net.minecraftforge.common.Tags;
 import java.util.function.Supplier;
 
 public enum VSTools implements Tier {
-    ANDESITE(1, 131, 4.0F, 1.0F, 5, () -> Ingredient.of(Blocks.ANDESITE)),
-    END_STONE(1, 151, 4.0F, 1.0F, 5, () -> Ingredient.of(Blocks.END_STONE)),
-    DIORITE(1, 131, 4.0F, 1.0F, 5, () -> Ingredient.of(Blocks.DIORITE)),
-    GRANITE(2, 425, 4.0F, 1.0F, 5, () -> Ingredient.of(Blocks.GRANITE)),
-    MAGMA(1, 131, 4.0F, 1.0F, 5, () -> Ingredient.of(Blocks.MAGMA_BLOCK)),
-    EMERALD(3, 2031, 5.0F, 3.0F, 15, () -> Ingredient.of(Tags.Items.GEMS_EMERALD)),
-    AMETHYST(2, 250, 6.0F, 2.0F, 17, () -> Ingredient.of(Tags.Items.GEMS_AMETHYST)),
-    COPPER(2, 250, 6.0F, 2.0F, 14, () -> Ingredient.of(Tags.Items.INGOTS_COPPER)),
-    QUARTZ(2, 350, 6.0F, 2.0F, 14, () -> Ingredient.of(Tags.Items.GEMS_QUARTZ)),
+    ANDESITE(1, 131, 4, 1, 5, () -> Ingredient.of(Blocks.ANDESITE)),
+    END_STONE(1, 151, 4, 1, 5, () -> Ingredient.of(Blocks.END_STONE)),
+    DIORITE(1, 131, 4, 1, 5, () -> Ingredient.of(Blocks.DIORITE)),
+    GRANITE(2, 425, 4, 1, 5, () -> Ingredient.of(Blocks.GRANITE)),
+    MAGMA(1, 131, 4, 1, 5, () -> Ingredient.of(Blocks.MAGMA_BLOCK)),
+    EMERALD(3, 2031, 5, 3, 15, () -> Ingredient.of(Tags.Items.GEMS_EMERALD)),
+    AMETHYST(2, 250, 6, 2, 17, () -> Ingredient.of(Tags.Items.GEMS_AMETHYST)),
+    COPPER(2, 250, 6, 2, 14, () -> Ingredient.of(Tags.Items.INGOTS_COPPER)),
+    QUARTZ(2, 350, 6, 2, 14, () -> Ingredient.of(Tags.Items.GEMS_QUARTZ)),
 
-    // Wood tools
+    // Wood Tools
     OAK(0, 59, 2, 0, 15, () -> Ingredient.of(Items.OAK_PLANKS)),
     SPRUCE(0, 62, 2.2f, 0.5f, 15, () -> Ingredient.of(Items.SPRUCE_PLANKS)),
     BIRCH(0, 60, 2, 0.3f, 16, () -> Ingredient.of(Items.BIRCH_PLANKS)),
@@ -38,7 +37,7 @@ public enum VSTools implements Tier {
     WARPED(0, 65, 2.5f, 0.5f, 13, () -> Ingredient.of(Items.WARPED_PLANKS)),
     ENDER(0, 68, 2.6f, 0.6f, 13, () -> Ingredient.of(VSItems.ENDER_PLANKS.get())),
 
-    // Stone tools
+    // Stone Tools
     DEEPSLATE(1, 151, 3.75f, 1.5f, 5, () -> Ingredient.of(Items.COBBLED_DEEPSLATE)),
     SANDSTONE(1, 101, 4, 0.8f, 3, () -> Ingredient.of(Items.SANDSTONE)),
     RED_SANDSTONE(1, 101, 4, 0.8f, 3, () -> Ingredient.of(Items.RED_SANDSTONE)),
@@ -51,7 +50,7 @@ public enum VSTools implements Tier {
     BASALT(1, 141, 4.25f, 1.25f, 3, () -> Ingredient.of(Items.BASALT)),
     BLACKSTONE(1, 151, 4f, 1.25f, 4, () -> Ingredient.of(Items.BLACKSTONE)),
 
-    // Mineral tools
+    // Mineral Tools
     REDSTONE(2, 350, 10, 0.5f, 8, () -> Ingredient.of(Tags.Items.DUSTS_REDSTONE)),
     PRISMARINE_CRYSTALS(3, 850, 3.5f, 2, 12, () -> Ingredient.of(Tags.Items.GEMS_PRISMARINE)),
     ELDER_PRISMARINE_CRYSTALS(3, 850, 3.5f, 2, 12, () -> Ingredient.of(VSItems.ELDER_PRISMARINE_CRYSTALS.get())),
@@ -63,7 +62,7 @@ public enum VSTools implements Tier {
     private final float miningSpeed;
     private final float attackDamageBonus;
     private final int enchantmentValue;
-    private final LazyLoadedValue<Ingredient> repairIngredient;
+    private final Supplier<Ingredient> repairIngredient;
 
     VSTools(int harvestLevel, int durability, float miningSpeed, float attackDamageBonus, int enchantmentValue, Supplier<Ingredient> repairIngredient) {
         this.harvestLevel = harvestLevel;
@@ -71,7 +70,7 @@ public enum VSTools implements Tier {
         this.miningSpeed = miningSpeed;
         this.attackDamageBonus = attackDamageBonus;
         this.enchantmentValue = enchantmentValue;
-        this.repairIngredient = new LazyLoadedValue<>(repairIngredient);
+        this.repairIngredient = repairIngredient;
     }
 
     public int getUses() {

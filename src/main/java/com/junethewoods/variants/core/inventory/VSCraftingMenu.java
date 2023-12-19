@@ -15,8 +15,7 @@ public class VSCraftingMenu extends CraftingMenu {
     }
 
     protected static boolean stillValid(ContainerLevelAccess access, Player player) {
-        return access.evaluate((world, pos) -> world.getBlockState(pos).is(VSTags.Blocks.CRAFTING_TABLES) && player.distanceToSqr((double) pos.getX() + 0.5d,
-                (double) pos.getY() + 0.5d, (double) pos.getZ() + 0.5d) <= 64, true);
+        return access.evaluate((world, pos) -> world.getBlockState(pos).is(VSTags.Blocks.CRAFTING_TABLES) && player.distanceToSqr((double) pos.getX() + 0.5d, (double) pos.getY() + 0.5d, (double) pos.getZ() + 0.5d) <= 64, true);
     }
 
     @Override

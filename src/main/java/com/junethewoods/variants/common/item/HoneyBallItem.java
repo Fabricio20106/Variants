@@ -21,15 +21,15 @@ public class HoneyBallItem extends Item {
         super(properties);
     }
 
-    public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
-        super.finishUsingItem(stack, world, livingEntity);
-        if (livingEntity instanceof ServerPlayer serverPlayer) {
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livEntity) {
+        super.finishUsingItem(stack, level, livEntity);
+        if (livEntity instanceof ServerPlayer serverPlayer) {
             CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
 
-        if (!world.isClientSide) {
-            livingEntity.removeEffect(MobEffects.POISON);
+        if (!level.isClientSide) {
+            livEntity.removeEffect(MobEffects.POISON);
         }
         return stack;
     }
@@ -46,7 +46,7 @@ public class HoneyBallItem extends Item {
         return SoundEvents.HONEY_DRINK;
     }
 
-    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-        return ItemUtils.startUsingInstantly(world, player, hand);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        return ItemUtils.startUsingInstantly(level, player, hand);
     }
 }

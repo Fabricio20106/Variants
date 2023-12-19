@@ -16,8 +16,8 @@ public class VSBiomes {
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, Variants.MOD_ID);
 
     public static final RegistryObject<Biome> PAINTING_WOODED_FOREST = BIOMES.register("painting_wooded_forest", VSBiomes::paintingWoodedForest);
-    //public static final RegistryObject<Biome> azure_fields = BIOMES.register("azure_fields", VSBiomes::createAzureFields);
-    //public static final RegistryObject<Biome> ender_forest = BIOMES.register("ender_forest", VSBiomes::createEnderForest);
+    // public static final RegistryObject<Biome> AZURE_FIELDS = BIOMES.register("azure_fields", VSBiomes::azureFields);
+    // public static final RegistryObject<Biome> ENDERWOOD_FOREST = BIOMES.register("ender_forest", VSBiomes::enderwoodForest);
 
     // Helper methods from the "OverworldBiomes" class.
     private static void globalOverworldGeneration(BiomeGenerationSettings.Builder settings) {

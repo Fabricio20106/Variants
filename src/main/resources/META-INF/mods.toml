@@ -5,24 +5,25 @@
 # Find more information on toml format here:  https://github.com/toml-lang/toml
 # The name of the mod loader type to load - for regular FML @Mod mods it should be javafml
 modLoader="javafml" #mandatory
-
+# The license for you mod. This is mandatory metadata and allows for easier comprehension of your redistributive properties.
+# Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
 license="MIT License"
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
 loaderVersion="[40,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
 # A URL to refer people to when problems occur with this mod
-#issueTrackerURL="http://my.issue.tracker/" #optional
+issueTrackerURL="https://github.com/Fabricio20106/Variants/issues" #optional
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
 modId="variants" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="1.18.2-2.0.4" #mandatory
+version="1.18.2-v2.0.5.1" #mandatory
  # A display name for the mod
 displayName="Variants" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
 #updateJSONURL="http://myurl.me/" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
-#displayURL="http://example.com/" #optional
+displayURL="https://github.com/Fabricio20106/Variants" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="variants.png" #optional
 # A text field displayed in the mod UI
@@ -30,7 +31,9 @@ credits="Other Mods" #optional
 # A text field displayed in the mod UI
 authors="JuneTheWoods" #optional
 # The description text for the mod (multi line!) (#mandatory)
-description='''Variants adds various variants of vanilla items or blocks, ranging from Copper armor and tools to potted sugar cane.'''
+description='''Variants adds various variants of vanilla items or blocks, ranging from copper armor and tools to potted sugar cane.
+
+Changelogs for versions of Variants can be seen here: https://github.com/Fabricio20106/Informational-Mod-Features/tree/main/Variants/Changelogs'''
 
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.variants]] #optional

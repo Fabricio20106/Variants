@@ -18,10 +18,10 @@ public class StewBucketItem extends BucketItem {
         super(supplier, properties);
     }
 
-    public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
-        super.finishUsingItem(stack, world, livingEntity);
-        if (livingEntity instanceof ServerPlayer) {
-            ServerPlayer serverPlayer = (ServerPlayer) livingEntity;
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livEntity) {
+        super.finishUsingItem(stack, level, livEntity);
+        if (livEntity instanceof ServerPlayer) {
+            ServerPlayer serverPlayer = (ServerPlayer) livEntity;
             CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
@@ -29,9 +29,9 @@ public class StewBucketItem extends BucketItem {
         if (stack.isEmpty()) {
             return new ItemStack(Items.BUCKET);
         } else {
-            if (livingEntity instanceof Player && !((Player) livingEntity).getAbilities().instabuild) {
+            if (livEntity instanceof Player && !((Player) livEntity).getAbilities().instabuild) {
                 ItemStack bucketStack = new ItemStack(Items.BUCKET);
-                Player player = (Player) livingEntity;
+                Player player = (Player) livEntity;
                 if (!player.getInventory().add(bucketStack)) {
                     player.drop(bucketStack, false);
                 }
@@ -48,7 +48,7 @@ public class StewBucketItem extends BucketItem {
         return UseAnim.DRINK;
     }
 
-    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-        return ItemUtils.startUsingInstantly(world, player, hand);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        return ItemUtils.startUsingInstantly(level, player, hand);
     }
 }

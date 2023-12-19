@@ -1,19 +1,19 @@
 {
-  "music_disc.dog": {
+  "music.music_disc.dog": {
     "category": "record",
     "sounds": [
       {
-        "name": "variants:music/disc/dog",
+        "name": "variants:music/music_disc/dog",
         "stream": true
       }
     ]
   },
-  "moog_city": {
+  "music.menu.moog_city": {
     "category": "music",
     "sounds": [
       {
         "name": "variants:music/menu/moog_city",
-        "stream": true
+        "stream": false
       }
     ]
   }

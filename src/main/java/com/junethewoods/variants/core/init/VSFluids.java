@@ -24,7 +24,7 @@ public class VSFluids {
 
     public static final ForgeFlowingFluid.Properties SOUL_LAVA_PROPERTIES = new ForgeFlowingFluid.Properties(SOUL_LAVA, FLOWING_SOUL_LAVA,
             FluidAttributes.builder(SOUL_LAVA_STILL, SOUL_LAVA_FLOWING).rarity(Rarity.RARE).sound(SoundEvents.BUCKET_EMPTY_LAVA).overlay(SOUL_LAVA_OVERLAY)
-    ).block(() -> (LiquidBlock) VSBlocks.SOUL_LAVA.get()).bucket(VSItems.SOUL_LAVA_BUCKET);
+    ).block(() -> (LiquidBlock) VSBlocks.SOUL_LAVA.get()).bucket(VSItems.SOUL_LAVA_BUCKET).slopeFindDistance(2).levelDecreasePerBlock(2);
 
     public static final ForgeFlowingFluid.Properties MUSHROOM_STEW_PROPERTIES = new ForgeFlowingFluid.Properties(MUSHROOM_STEW, FLOWING_MUSHROOM_STEW,
             FluidAttributes.builder(MUSHROOM_STEW_STILL, MUSHROOM_STILL_FLOWING).sound(SoundEvents.BUCKET_EMPTY).overlay(MUSHROOM_STEW_OVERLAY)

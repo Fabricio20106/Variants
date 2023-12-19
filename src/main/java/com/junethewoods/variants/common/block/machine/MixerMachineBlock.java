@@ -28,15 +28,15 @@ public class MixerMachineBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult rayTraceResult) {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         ItemStack MainHand = player.getItemInHand(hand);
         if (MainHand.getItem() == VSItems.CRYSTALLIZED_MAGMA_CREAM.get() && MainHand.getCount() == 4) {
             player.addItem(new ItemStack(VSItems.GELATINOUS_MAGMA_CREAM.get(), 4));
-            world.playSound(null, pos, SoundEvents.GLASS_BREAK, SoundSource.BLOCKS, 1.0f, 1.0f);
+            level.playSound(null, pos, SoundEvents.GLASS_BREAK, SoundSource.BLOCKS, 1, 1);
             MainHand.shrink(4);
         }
 
-        return super.use(state, world, pos, player, hand, rayTraceResult);
+        return super.use(state, level, pos, player, hand, hitResult);
     }
 
     public BlockState rotate(BlockState state, Rotation rotation) {

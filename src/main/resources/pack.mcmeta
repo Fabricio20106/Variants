@@ -1,6 +1,6 @@
 {
-    "pack": {
-        "description": "Variants 2.X resources.",
-        "pack_format": 8
-    }
+  "pack": {
+    "description": "Mod data for Variants 2.X.",
+    "pack_format": 8
+  }
 }

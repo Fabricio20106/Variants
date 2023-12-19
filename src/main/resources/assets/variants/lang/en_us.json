@@ -184,7 +184,8 @@
   "item.variants.empty_armor_slot_shield": "Empty Armor Slot Shield",
   "item.variants.phantom_membrane_sweatchest": "Phantom Membrane Sweatchest",
   "item.variants.rabbit_hide_sweatchest": "Rabbit Hide Sweatchest",
-  "item.variants.wool_sweatchest": "Wool Sweatchest",
+  "item.variants.wool_sweatchest": "Wool Sweater",
+  "item.variants.wool_sweatchest.colored": "%s Wool Sweater",
   "item.variants.amethyst_sword": "Amethyst Sword",
   "item.variants.copper_sword": "Copper Sword",
   "item.variants.andesite_sword": "Andesite Sword",
@@ -549,8 +550,11 @@
   "item.variants.rabbit_hide_leggings": "Rabbit Hide Pants",
   "item.variants.rabbit_hide_boots": "Rabbit Hide Boots",
   "item.variants.wool_helmet": "Wool Cap",
+  "item.variants.wool_helmet.colored": "%s Wool Cap",
   "item.variants.wool_leggings": "Wool Pants",
+  "item.variants.wool_leggings.colored": "%s Wool Pants",
   "item.variants.wool_boots": "Wool Boots",
+  "item.variants.wool_boots.colored": "%s Wool Boots",
   "item.variants.copper_helmet": "Copper Helmet",
   "item.variants.copper_leggings": "Copper Leggings",
   "item.variants.copper_boots": "Copper Boots",
@@ -654,5 +658,13 @@
   "item.variants.empty_slot_pickaxe": "Empty Slot Pickaxe",
   "item.variants.empty_slot_shovel": "Empty Slot Shovel",
   "item.variants.empty_slot_axe": "Empty Slot Axe",
-  "item.variants.empty_slot_hoe": "Empty Slot Hoe"
+  "item.variants.empty_slot_hoe": "Empty Slot Hoe",
+
+  "color.f10elements.inno": "Inno",
+  "color.backmath.aljan_light_blue": "Aljan Light Blue",
+  "color.backmath.insomnian": "Insomnian",
+  "color.backmath.poison_brown": "Poison Brown",
+  "color.backmath.red_yellow": "Red Yellow",
+  "color.variants.glow_black": "Glow Black",
+  "null": "Null"
 }

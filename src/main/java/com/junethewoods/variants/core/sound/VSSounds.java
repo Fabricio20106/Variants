@@ -10,8 +10,8 @@ public class VSSounds {
     public static SoundEvent MOOG_CITY;
 
     public static void registerSounds() {
-        MUSIC_DISC_DOG = registerSound("music_disc.dog");
-        MOOG_CITY = registerSound("moog_city");
+        MUSIC_DISC_DOG = registerSound("music.music_disc.dog");
+        MOOG_CITY = registerSound("music.menu.moog_city");
     }
 
     private static SoundEvent registerSound(String name) {

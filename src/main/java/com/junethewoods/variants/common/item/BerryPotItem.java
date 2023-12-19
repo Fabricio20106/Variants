@@ -19,14 +19,10 @@ public class BerryPotItem extends Item {
         super(properties);
     }
 
-    /**
-     * Called when the player finishes using this Item (E.g. finishes eating.). Not called when the player stops using
-     * the Item before the action is complete.
-     */
-    public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
-        super.finishUsingItem(stack, world, livingEntity);
-        if (livingEntity instanceof ServerPlayer) {
-            ServerPlayer serverPlayer = (ServerPlayer) livingEntity;
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livEntity) {
+        super.finishUsingItem(stack, level, livEntity);
+        if (livEntity instanceof ServerPlayer) {
+            ServerPlayer serverPlayer = (ServerPlayer) livEntity;
             CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
@@ -34,9 +30,9 @@ public class BerryPotItem extends Item {
         if (stack.isEmpty()) {
             return new ItemStack(VSItems.STYLISED_POT.get());
         } else {
-            if (livingEntity instanceof Player && !((Player)livingEntity).getAbilities().instabuild) {
+            if (livEntity instanceof Player && !((Player)livEntity).getAbilities().instabuild) {
                 ItemStack stylizedPot = new ItemStack(VSItems.STYLISED_POT.get());
-                Player player = (Player) livingEntity;
+                Player player = (Player) livEntity;
                 if (!player.getInventory().add(stylizedPot)) {
                     player.drop(stylizedPot, false);
                 }
@@ -45,25 +41,15 @@ public class BerryPotItem extends Item {
         }
     }
 
-    /**
-     * How long it takes to use or consume an item
-     */
     public int getUseDuration(ItemStack stack) {
         return 32;
     }
 
-    /**
-     * returns the action that specifies what animation to play when the items are being used
-     */
     public UseAnim getUseAnimation(ItemStack stack) {
         return UseAnim.EAT;
     }
 
-    /**
-     * Called to trigger the item's "innate" right click behavior. To handle when this item is used on a Block, see
-     * {@link #use}.
-     */
-    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-        return ItemUtils.startUsingInstantly(world, player, hand);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        return ItemUtils.startUsingInstantly(level, player, hand);
     }
 }

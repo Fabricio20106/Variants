@@ -17,17 +17,18 @@ public class LavaBottleItem extends Item {
         super(properties);
     }
 
-    public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
-        if (!world.isClientSide) livingEntity.addEffect(new MobEffectInstance(MobEffects.HARM, 100, 1)); // FORGE - move up so stack.shrink does not turn stack into air
-        if (!world.isClientSide) livingEntity.setSecondsOnFire(100);
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livEntity) {
+        // FORGE - move up so stack.shrink does not turn stack into air.
+        if (!level.isClientSide) livEntity.addEffect(new MobEffectInstance(MobEffects.HARM, 100, 1));
+        if (!level.isClientSide) livEntity.setSecondsOnFire(100);
 
-        if (livingEntity instanceof ServerPlayer) {
-            ServerPlayer serverPlayer = (ServerPlayer) livingEntity;
+        if (livEntity instanceof ServerPlayer) {
+            ServerPlayer serverPlayer = (ServerPlayer) livEntity;
             CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
 
-        if (livingEntity instanceof Player && !((Player) livingEntity).getAbilities().instabuild) {
+        if (livEntity instanceof Player && !((Player) livEntity).getAbilities().instabuild) {
             stack.shrink(1);
         }
 
@@ -42,7 +43,7 @@ public class LavaBottleItem extends Item {
         return UseAnim.DRINK;
     }
 
-    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-        return ItemUtils.startUsingInstantly(world, player, hand);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        return ItemUtils.startUsingInstantly(level, player, hand);
     }
 }

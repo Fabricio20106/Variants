@@ -16,7 +16,7 @@ This release includes builds 2.0.2, .3 and .4. This changelog will only describe
 - Changed the mod's description on mods.toml.
 - Renamed "Old Cod" to "Fish", and fixed crafting table names.
 - Slightly changed the Painting Log side texture.
-- Mushroom Stew fluid is now transparent (I think).
+- Mushroom Stew fluid is now transparent (why has no testing been done on this?)
 
 ### **Build Version: 1.18.2, Release 2.0.3**:
 
@@ -24,16 +24,17 @@ This release includes builds 2.0.2, .3 and .4. This changelog will only describe
 - Re-Added the Painting-Wooded Forest.
 > Includes Painting Trees (includes fancy and beehive variants).
 > 
-> Includes regular Plains Villages.
+> Includes (default) Plains Villages.
 > 
-> Currently does not generate naturally; Can only be accessed by Single Biome worlds or custom datapacks.
+> Currently, this biome does not generate naturally. It can only be accessed through the Single Biome world preset or through custom data packs.
 - Glow Black Tulips and Sunny Flowers now generate in the world.
 > Sunny Flowers were meant to generate only in Sunflower Plains, but the code that did such thing did not work.
 - Quartz Ore, End Quartz Ore and Nether Coal Ore generation now works again.
 > The numbers of Quartz Ore generation are slightly lower than regular Nether Quartz.
 > 
 > The other two have the same generation parameters as their vanilla counterparts.
-- Added ```variants:crafting_tables``` block tag.
+- Added ```#variants:crafting_tables``` block tag.
+  - Contains all new crafting tables added in this version.
 - Painting Leaves are now affected by biome-tinting.
 - Glow Berry Bushes were supposed to generate in Lush Caves, but it runs into the same issues as the Sunny Flowers in Sunflower Plains.
 

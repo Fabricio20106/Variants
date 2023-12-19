@@ -1,12 +1,12 @@
 package com.junethewoods.variants.core.init;
 
 import com.junethewoods.variants.common.block.*;
+import com.junethewoods.variants.common.block.end.*;
 import com.junethewoods.variants.common.block.machine.MixerMachineBlock;
-import com.junethewoods.variants.common.block.plant.*;
-import com.junethewoods.variants.common.block.plant.theend.*;
+import com.junethewoods.variants.common.block.nether.*;
 import com.junethewoods.variants.core.Variants;
 import com.junethewoods.variants.core.sound.VSSoundTypes;
-import com.junethewoods.variants.core.worldgen.vegetation.tree.PaintingTreeGrower;
+import com.junethewoods.variants.core.world.vegetation.tree.PaintingTreeGrower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.data.worldgen.features.TreeFeatures;
@@ -73,7 +73,7 @@ public class VSBlocks {
     public static final RegistryObject<Block> ENDER_DOOR = BLOCKS.register("ender_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_DOOR)));
     public static final RegistryObject<Block> ENDER_FUNGUS = BLOCKS.register("ender_fungus", () -> new EnderFungusBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_FUNGUS), () -> TreeFeatures.CRIMSON_FUNGUS_PLANTED));
     public static final RegistryObject<Block> ENDER_ROOTS = BLOCKS.register("ender_roots", () -> new EnderRootsBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_ROOTS)));
-    public static final RegistryObject<Block> ENDER_SPROUTS = BLOCKS.register("ender_sprouts", () -> new EnderSproutsBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_SPROUTS)));
+    public static final RegistryObject<Block> ENDER_SPROUTS = BLOCKS.register("ender_sprouts", () -> new EndSproutsBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_SPROUTS)));
     public static final RegistryObject<Block> WARPING_VINES_PLANT = BLOCKS.register("warping_vines_plant", () -> new WarpingVinesBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES_PLANT)));
     public static final RegistryObject<Block> WARPING_VINES = BLOCKS.register("warping_vines", () -> new WarpingVinesTopBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES)));
     public static final RegistryObject<Block> POTTED_ENDER_ROOTS = BLOCKS.register("potted_ender_roots", () -> new FlowerPotBlock(VSBlocks.ENDER_ROOTS.get(), BlockBehaviour.Properties.copy(Blocks.POTTED_CRIMSON_ROOTS)));

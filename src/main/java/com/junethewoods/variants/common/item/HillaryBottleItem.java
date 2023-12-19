@@ -20,13 +20,13 @@ public class HillaryBottleItem extends Item {
         super(properties);
     }
 
-    public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
-        if (livingEntity instanceof ServerPlayer serverPlayer) {
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livEntity) {
+        if (livEntity instanceof ServerPlayer serverPlayer) {
             CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
 
-        if (livingEntity instanceof Player && !((Player) livingEntity).getAbilities().instabuild) {
+        if (livEntity instanceof Player && !((Player) livEntity).getAbilities().instabuild) {
             stack.shrink(1);
         }
         return stack.isEmpty() ? new ItemStack(Items.GLASS_BOTTLE) : stack;
@@ -40,13 +40,13 @@ public class HillaryBottleItem extends Item {
         return UseAnim.DRINK;
     }
 
-    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-        return ItemUtils.startUsingInstantly(world, player, hand);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        return ItemUtils.startUsingInstantly(level, player, hand);
     }
 
     @Nullable
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
+    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag tag) {
         return new FluidBucketWrapper(stack);
     }
 }

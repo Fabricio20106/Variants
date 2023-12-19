@@ -15,16 +15,17 @@ public class MilkBottleItem extends Item {
         super(properties);
     }
 
-    public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity livingEntity) {
-        if (!world.isClientSide) livingEntity.curePotionEffects(stack); // FORGE - move up so stack.shrink does not turn stack into air
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livEntity) {
+        // FORGE - move up so stack.shrink does not turn stack into air.
+        if (!level.isClientSide) livEntity.curePotionEffects(stack);
 
-        if (livingEntity instanceof ServerPlayer) {
-            ServerPlayer serverPlayer = (ServerPlayer) livingEntity;
+        if (livEntity instanceof ServerPlayer) {
+            ServerPlayer serverPlayer = (ServerPlayer) livEntity;
             CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
 
-        if (livingEntity instanceof Player && !((Player) livingEntity).getAbilities().instabuild) {
+        if (livEntity instanceof Player && !((Player) livEntity).getAbilities().instabuild) {
             stack.shrink(1);
         }
 
@@ -39,7 +40,7 @@ public class MilkBottleItem extends Item {
         return UseAnim.DRINK;
     }
 
-    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-        return ItemUtils.startUsingInstantly(world, player, hand);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        return ItemUtils.startUsingInstantly(level, player, hand);
     }
 }

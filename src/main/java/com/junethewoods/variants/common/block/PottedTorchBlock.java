@@ -18,12 +18,12 @@ public class PottedTorchBlock extends FlowerPotBlock {
         this.flameParticle = torchParticle;
     }
 
-    public void animateTick(BlockState state, Level world, BlockPos pos, Random rand) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, Random rand) {
         double addedX = (double) pos.getX() + 0.5d;
         double addedY = (double) pos.getY() + 1;
         double addedZ = (double) pos.getZ() + 0.5d;
 
-        world.addParticle(ParticleTypes.SMOKE, addedX, addedY, addedZ, 0, 0, 0);
-        world.addParticle(this.flameParticle, addedX, addedY, addedZ, 0, 0, 0);
+        level.addParticle(ParticleTypes.SMOKE, addedX, addedY, addedZ, 0, 0, 0);
+        level.addParticle(this.flameParticle, addedX, addedY, addedZ, 0, 0, 0);
     }
 }

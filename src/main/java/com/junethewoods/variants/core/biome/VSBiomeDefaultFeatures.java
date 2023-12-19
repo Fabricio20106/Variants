@@ -1,6 +1,6 @@
 package com.junethewoods.variants.core.biome;
 
-import com.junethewoods.variants.core.worldgen.vegetation.VSVegetationPlacements;
+import com.junethewoods.variants.core.world.vegetation.VSVegetationPlacements;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 

@@ -3,8 +3,8 @@ package com.junethewoods.variants.core;
 import com.junethewoods.variants.core.biome.VSBiomes;
 import com.junethewoods.variants.core.init.*;
 import com.junethewoods.variants.core.sound.VSSounds;
-import com.junethewoods.variants.core.worldgen.ore.VSOrePlacements;
-import com.junethewoods.variants.core.worldgen.vegetation.VSVegetationPlacements;
+import com.junethewoods.variants.core.world.ore.VSOrePlacements;
+import com.junethewoods.variants.core.world.vegetation.VSVegetationPlacements;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -25,11 +25,6 @@ import org.apache.logging.log4j.Logger;
 public class Variants {
     public static final Logger LOGGER = LogManager.getLogger(Variants.MOD_ID);
     public static final String MOD_ID = "variants";
-    public static final CreativeModeTab VARIANT_FOODSTUFFS = new CreativeModeTab("variant.food") {
-        @Override public ItemStack makeIcon() {
-            return new ItemStack(VSItems.FUNGI_STEW.get());
-        }
-    };
 
     public Variants() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -48,14 +43,7 @@ public class Variants {
 
     public void commonSetup(final FMLCommonSetupEvent event) {
         loadPlacementClasses();
-        //VariantFeatures.actuallyGenerateStuff();
-        //VanillaCompat.register();
-        //RegistryKey<Biome> paintingWoodenForestKey = RegistryKey.create(ForgeRegistries.Keys.BIOMES, BiomeInit.painting_wooded_forest.getId());
-        //RegistryKey<Biome> azureFieldsKey = RegistryKey.create(ForgeRegistries.Keys.BIOMES, BiomeInit.azure_fields.getId());
-        //BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(paintingWoodenForestKey, 10));
-        //BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(azureFieldsKey, 15));
-        //GlobalEntityTypeAttributes.put(EntityInit.old_cod.get(), AbstractSchoolingFish.createAttributes().build());
-        //GlobalEntityTypeAttributes.put(EntityInit.pornhey.get(), PornheyEntity.createAttributes().build());
+        VSVanillaCompatibility.register();
     }
 
     public static ResourceLocation resourceLoc(String name) {
@@ -125,17 +113,14 @@ public class Variants {
         ItemBlockRenderTypes.setRenderLayer(VSFluids.MUSHROOM_STEW.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(VSFluids.FLOWING_MUSHROOM_STEW.get(), RenderType.translucent());
 
-        //RenderingRegistry.registerEntityRenderingHandler(EntityInit.old_cod.get(), OldCodRenderer::new);
-        //RenderingRegistry.registerEntityRenderingHandler(EntityInit.pornhey.get(), PornheyRenderer::new);
-
-        ItemProperties.register(VSWeaponry.DEBUG_BOW.get(), new ResourceLocation("pull"), (stack, world, livingEntity, idk) -> {
-            if (livingEntity == null) {
+        ItemProperties.register(VSWeaponry.DEBUG_BOW.get(), new ResourceLocation("pull"), (stack, world, livEntity, what) -> {
+            if (livEntity == null) {
                 return 0.0F;
             } else {
-                return livingEntity.getUseItem() != stack ? 0.0F : (float) (stack.getUseDuration() - livingEntity.getUseItemRemainingTicks()) / 20.0F;
+                return livEntity.getUseItem() != stack ? 0 : (float) (stack.getUseDuration() - livEntity.getUseItemRemainingTicks()) / 20;
             }
         });
-        ItemProperties.register(VSWeaponry.DEBUG_BOW.get(), new ResourceLocation("pulling"), (stack, world, livingEntity, idk) ->
-                livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == stack ? 1.0F : 0.0F);
+        ItemProperties.register(VSWeaponry.DEBUG_BOW.get(), new ResourceLocation("pulling"), (stack, world, livEntity, what) ->
+                livEntity != null && livEntity.isUsingItem() && livEntity.getUseItem() == stack ? 1 : 0);
     }
 }
