@@ -355,6 +355,7 @@ eb07839fb44c096c232732ec787d39f18011831c assets/variants/models/item/end_quartz_
 17ee8814d7f302f750a0d6ca0e4ae330a414db84 assets/variants/models/item/end_stone_pickaxe.json
 78596b7bd79a9351a997a20b6de725e11d3a8359 assets/variants/models/item/end_stone_shovel.json
 7a17e8b7926ba76e9a899d57ac972c76e71e3c53 assets/variants/models/item/end_stone_sword.json
+92a65587c2de4f3e36c2f4f1f658641a9228606a assets/variants/models/item/ender_boat.json
 22468d4a7387093c8cb3a43fbde10c453edae2e2 assets/variants/models/item/ender_bookshelf.json
 d167e40d1a6077102dc5c021bacee51adcbbf196 assets/variants/models/item/ender_bowl.json
 d229ab268b1b98a486b64e3e490394c55a03b8c6 assets/variants/models/item/ender_button.json
@@ -635,7 +636,7 @@ c15a9d3882e07cb63edd6b8cff07b55c0a870776 data/minecraft/tags/blocks/wooden_fence
 3e77e4d6f65c6bbaee4e1b25812fbcbc39c29fec data/minecraft/tags/blocks/wool.json
 809fbd27390bfa6516052dead7fe1ee172f578bf data/minecraft/tags/fluids/lava.json
 d0bae256fdd04bdd716188e7694fc138fa904ba1 data/minecraft/tags/items/beds.json
-aa85f8a356f0418829596c7385d302881220f5e5 data/minecraft/tags/items/boats.json
+50b6b2ef1fa88f90d6bca5c6c979f1b55a348d8b data/minecraft/tags/items/boats.json
 c9e762314d21e3cd6eaaf4b8e94f666a11c5a371 data/minecraft/tags/items/carpets.json
 bf5aa6d2f7ee6b4735f199508ff8577eb06e90cd data/minecraft/tags/items/creeper_drop_music_discs.json
 4492f1e0128ad6a9a15e7e230b97fcb379000e06 data/minecraft/tags/items/fences.json

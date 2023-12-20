@@ -1,0 +1,57 @@
+{
+  "display": {
+    "icon": {
+      "item": "variants:glow_black_tulip"
+    },
+    "title": {
+      "translate": "advancements.variants.root.title"
+    },
+    "description": {
+      "translate": "advancements.variants.root.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "variants:textures/gui/advancements/backgrounds/variants.png"
+  },
+  "criteria": {
+    "obtained_log": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:painting_log"
+          }
+        ]
+      }
+    },
+    "obtained_sapling": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:painting_sapling"
+          }
+        ]
+      }
+    },
+    "obtained_tulip": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:glow_black_tulip"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtained_log",
+      "obtained_sapling",
+      "obtained_tulip"
+    ]
+  ]
+}

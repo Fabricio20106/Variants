@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "variants:ender_planks"
+    }
+  },
+  "result": {
+    "item": "variants:ender_boat"
+  }
+}

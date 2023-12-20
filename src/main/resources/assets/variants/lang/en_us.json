@@ -4,6 +4,11 @@
   "itemGroup.variants.weapons": "Variants: Weapons",
   "itemGroup.variants.infinity_sweaters": "Variants: Infinity Sweaters",
 
+  "advancements.variants.root.title": "Variants",
+  "advancements.variants.root.description": "Many variations of existing things! See if you can notice them all.",
+  "advancements.variants.obtain_painting_planks.title": "Recycling Textures",
+  "advancements.variants.obtain_painting_planks.description": "Get some painting planks, which is just the Painting's back texture turned into a wood set.",
+
   "block.variants.potted_sugar_cane": "Potted Sugar Cane",
   "block.variants.golden_carrots": "Golden Carrots",
   "block.variants.gold_cauldron": "Golden Cauldron",

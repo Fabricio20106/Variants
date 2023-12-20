@@ -4,6 +4,9 @@
   "itemGroup.variants.weapons": "Variants: Ferramentas",
   "itemGroup.variants.infinity_sweaters": "Variants: Suéteres infinitos",
 
+  "advancements.variants.root.title": "Variants",
+  "advancements.variants.root.description": "Muitas variações de coisas existentes! Veja se você consegue notar todas.",
+
   "block.variants.potted_sugar_cane": "Cana-de-açúcar envasada",
   "block.variants.golden_carrots": "Cenouras douradas",
   "block.variants.gold_cauldron": "Caldeirão de ouro",
