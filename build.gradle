@@ -21,7 +21,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'idea'
 
-version = '1.16.5-v1.6.17.1-' + new Date().format("dd-MM-yyyy")
+version = '1.16.5-v1.6.17.2-' + new Date().format("dd-MM-yyyy")
 // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 group = 'com.junethewoods.variants'
 archivesBaseName = 'Variants'

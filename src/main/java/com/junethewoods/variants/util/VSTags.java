@@ -64,15 +64,8 @@ public class VSTags {
         public static final ITag.INamedTag<Item> CAULDRONS = mod("cauldrons");
         public static final ITag.INamedTag<Item> BEACONS = mod("beacons");
         public static final ITag.INamedTag<Item> SHULKER_SHELLS = mod("shulker_shells");
-        public static final ITag.INamedTag<Item> BOOKS = mod("books");
-        public static final ITag.INamedTag<Item> BOOKSHELVES = mod("bookshelves");
         public static final ITag.INamedTag<Item> POTS = mod("pots");
-        public static final ITag.INamedTag<Item> SHIELDS = mod("shields");
         public static final ITag.INamedTag<Item> SPYGLASSES = mod("spyglasses");
-        public static final ITag.INamedTag<Item> BOWLS = mod("bowls");
-        public static final ITag.INamedTag<Item> FISHING_BOWLS = mod("bowls/obtainable_through_fishing");
-        public static final ITag.INamedTag<Item> WOODEN_BOWLS = mod("bowls/wooden");
-        public static final ITag.INamedTag<Item> CATLIKE_TAME_ITEMS = mod("catlike_tame_items");
 
         public static final ITag.INamedTag<Item> BOWL_FOODS = mod("bowl_foods");
         public static final ITag.INamedTag<Item> BOWL_FOODS_MUSHROOM = mod("bowl_foods/mushroom");
@@ -82,8 +75,21 @@ public class VSTags {
         public static final ITag.INamedTag<Item> BOWL_FOODS_END_FUNGI = mod("bowl_foods/end_fungi");
         public static final ITag.INamedTag<Item> BOWL_FOODS_ALJAN_FUNGI = mod("bowl_foods/aljan_fungi");
 
+        // Melony (convention) Tags
+        public static final ITag.INamedTag<Item> BOOKS = melony("books");
+        public static final ITag.INamedTag<Item> BOOKSHELVES = melony("bookshelves");
+        public static final ITag.INamedTag<Item> SHIELDS = melony("shields");
+        public static final ITag.INamedTag<Item> BOWLS = melony("bowls");
+        public static final ITag.INamedTag<Item> FISHING_BOWLS = melony("bowls/obtainable_through_fishing");
+        public static final ITag.INamedTag<Item> WOODEN_BOWLS = melony("bowls/wooden");
+        public static final ITag.INamedTag<Item> CATLIKE_TAME_ITEMS = melony("catlike_tame_items");
+
         public static ITag.INamedTag<Item> forge(String name) {
             return ItemTags.bind(new ResourceLocation("forge", name).toString());
+        }
+
+        public static ITag.INamedTag<Item> melony(String name) {
+            return ItemTags.bind(new ResourceLocation("melony", name).toString());
         }
 
         public static ITag.INamedTag<Item> mod(String name) {
@@ -98,8 +104,6 @@ public class VSTags {
         public static final ITag.INamedTag<Block> GLASS_GLOW_BLACK = forge("glass/glow_black");
         public static final ITag.INamedTag<Block> GLASS_PANES_GLOW_BLACK = forge("glass_panes/glow_black");
 
-        public static final ITag.INamedTag<Block> DEEPSLATE_REPLACEABLES = forge("deepslate_replaceables");
-
         // Variants' Tags
         public static final ITag.INamedTag<Block> PAINTING_DOORS = mod("painting_doors");
         public static final ITag.INamedTag<Block> PAINTING_TRAPDOORS = mod("painting_trapdoors");
@@ -108,15 +112,22 @@ public class VSTags {
         public static final ITag.INamedTag<Block> BOOKSHELVES = mod("bookshelves");
         public static final ITag.INamedTag<Block> CAULDRONS = mod("cauldrons");
         public static final ITag.INamedTag<Block> BEACONS = mod("beacons");
-        public static final ITag.INamedTag<Block> FARMLAND = mod("farmland");
-        public static final ITag.INamedTag<Block> CONDUIT_FRAME_BLOCKS = mod("conduit_frame_blocks");
         public static final ITag.INamedTag<Block> NETHER_WART_PLACEABLE_ON = mod("nether_wart_plantable_on");
         public static final ITag.INamedTag<Block> ENDER_WART_PLANTABLE_ON = mod("ender_wart_plantable_on");
         public static final ITag.INamedTag<Block> GOLDEN_CARROTS_PLANTABLE_ON = mod("golden_carrots_plantable_on");
         public static final ITag.INamedTag<Block> END_PLANTS_PLANTABLE_ON = mod("end_plants_plantable_on");
 
+        // Melony (convention) Tags
+        public static final ITag.INamedTag<Block> DEEPSLATE_REPLACEABLES = melony("deepslate_replaceables");
+        public static final ITag.INamedTag<Block> FARMLAND = melony("farmland");
+        public static final ITag.INamedTag<Block> CONDUIT_FRAME_BLOCKS = melony("conduit_frame_blocks");
+
         public static ITag.INamedTag<Block> forge(String name) {
             return BlockTags.bind(new ResourceLocation("forge", name).toString());
+        }
+
+        public static ITag.INamedTag<Block> melony(String name) {
+            return BlockTags.bind(new ResourceLocation("melony", name).toString());
         }
 
         public static ITag.INamedTag<Block> mod(String name) {

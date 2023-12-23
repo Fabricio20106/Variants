@@ -66,7 +66,7 @@
         {
           "type": "minecraft:tag",
           "weight": 10,
-          "name": "variants:bowls/obtainable_through_fishing",
+          "name": "melony:bowls/obtainable_through_fishing",
           "expand": true
         },
         {

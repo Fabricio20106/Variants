@@ -6,6 +6,8 @@
 
   "advancements.variants.root.title": "Variants",
   "advancements.variants.root.description": "Muitas variações de coisas existentes! Veja se você consegue notar todas.",
+  "advancements.variants.obtain_painting_planks.title": "Reciclando texturas",
+  "advancements.variants.obtain_painting_planks.description": "Obtenha algumas tábuas de pintura, que são apenas a textura de trás da pintura feita em um set de madeira.",
 
   "block.variants.potted_sugar_cane": "Cana-de-açúcar envasada",
   "block.variants.golden_carrots": "Cenouras douradas",
@@ -334,7 +336,6 @@
   "tooltip.variants.ore_experience_drops": "Solta entre %s-%s de experiência.",
   "tooltip.variants.glass_beam_color": "§7Cor: %s",
 
-  "tooltip.variants.enchant.enchantments": "Encantamentos:",
   "tooltip.variants.enchant.arrow": " > %s",
   "tooltip.variants.enchant.type": " (%s)",
   "tooltip.variants.enchant_type.armor":  "Armadura",

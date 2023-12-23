@@ -336,7 +336,6 @@
   "tooltip.variants.ore_experience_drops": "Drops between %s-%s experience.",
   "tooltip.variants.glass_beam_color": "§7Color: %s",
 
-  "tooltip.variants.enchant.enchantments": "Enchantments:",
   "tooltip.variants.enchant.arrow": " > %s",
   "tooltip.variants.enchant.type": " (%s)",
   "tooltip.variants.enchant_type.armor":  "Armor",

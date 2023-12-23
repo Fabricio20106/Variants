@@ -25,13 +25,9 @@ public class ItemStackMixin {
     private static void appendEnchantmentNames(List<ITextComponent> tooltip, ListNBT tagList, CallbackInfo ci) {
         if (VSConfigs.COMMON_CONFIGS.customEnchantmentDescriptions.get()) {
             ci.cancel();
-//            if (!tagList.isEmpty()) {
-//                tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".enchant.enchantments").withStyle(TextFormatting.GOLD).withStyle(TextFormatting.BOLD));
-//            }
             for (int i = 0; i < tagList.size(); ++i) {
                 CompoundNBT tagListCompound = tagList.getCompound(i);
                 Registry.ENCHANTMENT.getOptional(ResourceLocation.tryParse(tagListCompound.getString("id"))).ifPresent((enchantment) ->
-                        //tooltip.add(enchantment.getFullname(tagListCompound.getInt("lvl"))));
                         tooltip.add(new StringTextComponent(" > ").withStyle(TextFormatting.GOLD).append(enchantment.getFullname(tagListCompound.getInt("lvl"))))
                 );
             }
