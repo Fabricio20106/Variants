@@ -109,6 +109,14 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         simpleBlock(VSBlocks.WARPING_VINES_PLANT.get(), models().cross("warping_vines_plant", modLoc("block/warping_vines_plant")));
         simpleBlock(VSBlocks.SOUL_LAVA.get(), models().getBuilder("soul_lava").texture("particle", modLoc("block/soul_lava_still")));
         axisBlock((RotatedPillarBlock) VSBlocks.WITHER_BONE_BLOCK.get(), modLoc("block/wither_bone_block_side"), modLoc("block/wither_bone_block_top"));
+        simpleBlock(VSBlocks.POTTED_GRASS.get(), models().withExistingParent("potted_grass", modLoc("block/inventory_tinted_potted_plant")).texture("plant",  "block/grass_pot"));
+        simpleBlock(VSBlocks.POTTED_GOLDEN_CARROTS.get(), models().withExistingParent("potted_golden_carrots", modLoc("block/inventory_potted_plant")).texture("dirt", mcLoc("block/farmland")).texture("plant",
+                "block/golden_carrots_pot"));
+        simpleBlock(VSBlocks.POTTED_NETHER_WART.get(), models().withExistingParent("potted_nether_wart", modLoc("block/inventory_potted_plant")).texture("dirt", mcLoc("block/soul_sand")).texture("plant",
+                "block/nether_wart_pot"));
+        simpleBlock(VSBlocks.POTTED_WARPED_WART.get(), models().withExistingParent("potted_warped_wart", modLoc("block/inventory_potted_plant")).texture("dirt", mcLoc("block/soul_sand")).texture("plant",
+                "block/warped_wart_pot"));
+        simpleBlock(VSBlocks.POTTED_ENDER_WART.get(), models().withExistingParent("potted_ender_wart", modLoc("block/inventory_potted_plant")).texture("dirt", "block/ender_farmland").texture("plant",  "block/ender_wart_pot"));
 
         getVariantBuilder(VSBlocks.GOLDEN_CARROTS.get()).forAllStates(state -> {
             int cropAgeIndex = cropAgeToIndexSeven(state.getValue(BlockStateProperties.AGE_7));

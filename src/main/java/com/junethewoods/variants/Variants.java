@@ -146,6 +146,11 @@ public class Variants {
         RenderTypeLookup.setRenderLayer(VSBlocks.WARPING_VINES.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.WARPING_VINES_PLANT.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.ENDER_WART.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_GRASS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_GOLDEN_CARROTS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_NETHER_WART.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_WARPED_WART.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_ENDER_WART.get(), RenderType.cutout());
 
         RenderTypeLookup.setRenderLayer(VSBlocks.GLOW_BLACK_STAINED_GLASS.get(), RenderType.translucent());
         RenderTypeLookup.setRenderLayer(VSBlocks.GLOW_BLACK_STAINED_GLASS_PANE.get(), RenderType.translucent());

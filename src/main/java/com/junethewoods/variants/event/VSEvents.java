@@ -118,6 +118,19 @@ public class VSEvents {
                     12, 30, 0.05f));
         }
 
+        // Todo: Fisherman Trades
+        if(event.getType() == VillagerProfession.FISHERMAN) {
+            Int2ObjectMap<List<VillagerTrades.ITrade>> trades = event.getTrades();
+
+            // Level 1 "Novice"
+            trades.get(1).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 3), new ItemStack(VSItems.FISH_BUCKET.get(), 1),
+                    16, 1, 0.05f));
+
+            // Level 2 "Apprentice"
+            trades.get(2).add((trader, rand) -> new MerchantOffer(new ItemStack(VSItems.RAW_FISH.get(), 15), new ItemStack(Items.EMERALD, 1),
+                    16, 10, 0.05f));
+        }
+
         // Todo: Fletcher Trades
         if(event.getType() == VillagerProfession.FLETCHER) {
             Int2ObjectMap<List<VillagerTrades.ITrade>> trades = event.getTrades();

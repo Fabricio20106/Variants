@@ -93,6 +93,13 @@ public class VSItemModelProvider extends VSItemModelModels {
         block("chiseled_purpur_block");
         block("infested_chiseled_purpur_block");
         block("red_nether_brick_fence", "_inventory");
+        block("potted_nether_wart");
+        block("potted_warped_wart");
+        block("potted_ender_wart");
+        block("potted_golden_carrots");
+        block("potted_grass");
+        block("potted_ender_roots");
+        block("potted_ender_fungus");
 
         standard(generated, "white_shulker_shell");
         standard(generated, "inno_shulker_shell");

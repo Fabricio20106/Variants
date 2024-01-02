@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "variants:ender_bookshelf",
     "variants:plain_birch_bookshelf"
   ]
 }

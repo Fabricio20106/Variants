@@ -121,6 +121,10 @@ public class VSItemTagsProvider extends ItemTagsProvider {
                 .add(VSItems.PURPLE_SHULKER_SHELL.get()).add(VSItems.BLUE_SHULKER_SHELL.get()).add(VSItems.BROWN_SHULKER_SHELL.get())
                 .add(VSItems.GREEN_SHULKER_SHELL.get()).add(VSItems.RED_SHULKER_SHELL.get()).add(VSItems.BLACK_SHULKER_SHELL.get());
 
+        this.tag(VSTags.Items.FLOWER_POTS).add(VSItems.POTTED_GLOW_BLACK_TULIP.get()).add(VSItems.POTTED_SUNNY_FLOWER.get()).add(VSItems.POTTED_SUGAR_CANE.get()).add(VSItems.POTTED_GRASS.get()).add(VSItems.POTTED_PAINTING_SAPLING.get())
+                .add(VSItems.POTTED_GOLDEN_CARROTS.get()).add(VSItems.POTTED_ENDER_ROOTS.get()).add(VSItems.POTTED_ENDER_FUNGUS.get()).add(VSItems.POTTED_NETHER_WART.get()).add(VSItems.POTTED_WARPED_WART.get())
+                .add(VSItems.POTTED_ENDER_WART.get());
+
         // Bowl/Bucket Foods
         this.tag(VSTags.Items.BOWL_FOODS_MUSHROOM).add(Items.MUSHROOM_STEW);
         this.tag(VSTags.Items.BOWL_FOODS_BEETROOT).add(Items.BEETROOT_SOUP);
@@ -174,8 +178,8 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(ItemTags.CARPETS).add(VSItems.GLOW_BLACK_CARPET.get());
         this.tag(ItemTags.BEDS).add(VSItems.GLOW_BLACK_BED.get());
         this.tag(ItemTags.CREEPER_DROP_MUSIC_DISCS).add(VSItems.MUSIC_DISC_DOG.get());
-        this.tag(ItemTags.PIGLIN_LOVED).add(VSItems.GOLDEN_CAULDRON.get()).add(VSItems.GOLDEN_BEACON.get()).add(VSItems.GOLDEN_CARROTS.get()).add(VSItems.GOLDEN_CHAIN.get()).add(VSWeaponry.GOLDEN_SHEARS.get())
-                .add(VSWeaponry.ALICE_AI_SHEARS.get());
+        this.tag(ItemTags.PIGLIN_LOVED).add(VSItems.GOLDEN_CAULDRON.get()).add(VSItems.GOLDEN_BEACON.get()).add(VSItems.POTTED_GOLDEN_CARROTS.get()).add(VSItems.GOLDEN_CARROTS.get()).add(VSItems.GOLDEN_CHAIN.get())
+                .add(VSItems.POWERED_TIE.get()).add(VSWeaponry.GOLDEN_SHEARS.get()).add(VSWeaponry.ALICE_AI_SHEARS.get());
         this.tag(ItemTags.BOATS).add(VSItems.PAINTING_BOAT.get()).add(VSItems.CRIMSON_BOAT.get()).add(VSItems.WARPED_BOAT.get()).add(VSItems.ENDERWOOD_BOAT.get());
     }
 

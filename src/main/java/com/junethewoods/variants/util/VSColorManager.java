@@ -5,7 +5,6 @@ import com.junethewoods.variants.block.VSBlocks;
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.VSWeaponry;
 import com.junethewoods.variants.item.custom.armor.IDyeableWoolArmorItem;
-import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.world.GrassColors;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
@@ -26,13 +25,13 @@ public class VSColorManager {
                 VSBlocks.PAINTING_LEAVES.get());
 
         event.getBlockColors().register((x, reader, pos, u) -> reader != null && pos != null ? BiomeColors.getAverageGrassColor(reader, pos) : -1,
-                VSBlocks.POTTED_SUGAR_CANE.get());
+                VSBlocks.POTTED_GRASS.get(), VSBlocks.POTTED_SUGAR_CANE.get());
     }
 
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public static void registerItemColorHandlers(final ColorHandlerEvent.Item event) {
-        event.getItemColors().register((stack, color) -> GrassColors.get(0.5d, 1), VSItems.POTTED_SUGAR_CANE.get(), VSItems.PAINTING_LEAVES.get());
+        event.getItemColors().register((stack, color) -> GrassColors.get(0.5d, 1), VSItems.POTTED_GRASS.get(), VSItems.POTTED_SUGAR_CANE.get(), VSItems.PAINTING_LEAVES.get());
 
         event.getItemColors().register((stack, color) -> {
             if (stack.getTag() != null && stack.getTag().contains("armor_design")) {

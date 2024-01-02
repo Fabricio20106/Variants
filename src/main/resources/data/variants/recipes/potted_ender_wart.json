@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:flower_pot"
+    },
+    "C": {
+      "item": "variants:ender_wart"
+    }
+  },
+  "result": {
+    "item": "variants:potted_ender_wart"
+  }
+}

@@ -6,9 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.UseAction;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.DrinkHelper;
-import net.minecraft.util.Hand;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 
 public class BucketFoodItem extends Item {
@@ -22,6 +20,14 @@ public class BucketFoodItem extends Item {
 
     public UseAction getUseAnimation(ItemStack stack) {
         return UseAction.DRINK;
+    }
+
+    public SoundEvent getDrinkingSound() {
+        return SoundEvents.GENERIC_DRINK;
+    }
+
+    public SoundEvent getEatingSound() {
+        return SoundEvents.GENERIC_DRINK;
     }
 
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {

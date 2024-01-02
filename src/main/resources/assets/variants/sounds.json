@@ -25,7 +25,7 @@
         "volume": 0.5
       }
     ],
-    "subtitle": "subtitles.variants.spyglass.stop_using"
+    "subtitle": "subtitles.item.spyglass.stop_using"
   },
   "item.spyglass.use": {
     "sounds": [
@@ -50,6 +50,125 @@
         "volume": 0.5
       }
     ],
-    "subtitle": "subtitles.variants.spyglass.use"
+    "subtitle": "subtitles.item.spyglass.use"
+  },
+  "entity.fish.ambient": {
+    "sounds": []
+  },
+  "entity.fish.death": {
+    "sounds": [
+      "entity/fish/hurt1",
+      "entity/fish/hurt2",
+      "entity/fish/hurt3",
+      "entity/fish/hurt4"
+    ],
+    "subtitle": "subtitles.entity.fish.death"
+  },
+  "entity.fish.flop": {
+    "sounds": [
+      {
+        "name": "entity/fish/flop1",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop2",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop3",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop4",
+        "volume": 0.3
+      }
+    ],
+    "subtitle": "subtitles.entity.fish.flop"
+  },
+  "entity.fish.hurt": {
+    "sounds": [
+      "entity/fish/hurt1",
+      "entity/fish/hurt2",
+      "entity/fish/hurt3",
+      "entity/fish/hurt4"
+    ],
+    "subtitle": "subtitles.entity.fish.hurt"
+  },
+  "item.armor.equip_empty_slot": {
+    "sounds": [
+      "item/armor/equip_iron1",
+      "item/armor/equip_iron2",
+      "item/armor/equip_iron3",
+      "item/armor/equip_iron4",
+      "item/armor/equip_iron5",
+      "item/armor/equip_iron6"
+    ],
+    "subtitle": "subtitles.item.armor.equip_empty_slot"
+  },
+  "item.armor.equip_quartz": {
+    "sounds": [
+        "item/armor/equip_iron1",
+      "item/armor/equip_iron2",
+      "item/armor/equip_iron3",
+      "item/armor/equip_iron4",
+      "item/armor/equip_iron5",
+      "item/armor/equip_iron6"
+    ],
+    "subtitle": "subtitles.item.armor.equip_quartz"
+  },
+  "item.armor.equip_copper": {
+    "sounds": [
+      "item/armor/equip_iron1",
+      "item/armor/equip_iron2",
+      "item/armor/equip_iron3",
+      "item/armor/equip_iron4",
+      "item/armor/equip_iron5",
+      "item/armor/equip_iron6"
+    ],
+    "subtitle": "subtitles.item.armor.equip_copper"
+  },
+  "item.armor.equip_emerald": {
+    "sounds": [
+      "item/armor/equip_diamond1",
+      "item/armor/equip_diamond2",
+      "item/armor/equip_diamond3",
+      "item/armor/equip_diamond4",
+      "item/armor/equip_diamond5",
+      "item/armor/equip_diamond6"
+    ],
+    "subtitle": "subtitles.item.armor.equip_emerald"
+  },
+  "item.armor.equip_phantom_membrane": {
+    "sounds": [
+      "item/armor/equip_leather1",
+      "item/armor/equip_leather2",
+      "item/armor/equip_leather3",
+      "item/armor/equip_leather4",
+      "item/armor/equip_leather5",
+      "item/armor/equip_leather6"
+    ],
+    "subtitle": "subtitles.item.armor.equip_phantom_membrane"
+  },
+  "item.armor.equip_rabbit_hide": {
+    "sounds": [
+      "item/armor/equip_leather1",
+      "item/armor/equip_leather2",
+      "item/armor/equip_leather3",
+      "item/armor/equip_leather4",
+      "item/armor/equip_leather5",
+      "item/armor/equip_leather6"
+    ],
+    "subtitle": "subtitles.item.armor.equip_rabbit_hide"
+  },
+  "item.armor.equip_wool": {
+    "sounds": [
+      "item/armor/equip_leather1",
+      "item/armor/equip_leather2",
+      "item/armor/equip_leather3",
+      "item/armor/equip_leather4",
+      "item/armor/equip_leather5",
+      "item/armor/equip_leather6"
+    ],
+    "subtitle": "subtitles.item.armor.equip_wool"
   }
 }

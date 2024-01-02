@@ -1,0 +1,7 @@
+{
+  "parent": "variants:block/inventory_potted_plant",
+  "textures": {
+    "dirt": "minecraft:block/soul_sand",
+    "plant": "variants:block/warped_wart_pot"
+  }
+}

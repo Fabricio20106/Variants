@@ -1,12 +1,12 @@
 package com.junethewoods.variants.entity.custom;
 
 import com.junethewoods.variants.item.VSItems;
+import com.junethewoods.variants.sound.VSSounds;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.fish.AbstractGroupFishEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 
 public class FishEntity extends AbstractGroupFishEntity {
@@ -21,21 +21,21 @@ public class FishEntity extends AbstractGroupFishEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.COD_AMBIENT;
+        return VSSounds.FISH_AMBIENT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.COD_DEATH;
+        return VSSounds.FISH_DEATH.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundEvents.COD_HURT;
+        return VSSounds.FISH_HURT.get();
     }
 
     @Override
     protected SoundEvent getFlopSound() {
-        return SoundEvents.COD_FLOP;
+        return VSSounds.FISH_FLOP.get();
     }
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "variants:block/inventory_tinted_potted_plant",
+  "textures": {
+    "plant": "variants:block/grass_pot"
+  }
+}

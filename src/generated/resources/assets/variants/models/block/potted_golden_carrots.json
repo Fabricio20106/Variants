@@ -1,0 +1,7 @@
+{
+  "parent": "variants:block/inventory_potted_plant",
+  "textures": {
+    "dirt": "minecraft:block/farmland",
+    "plant": "variants:block/golden_carrots_pot"
+  }
+}

@@ -90,8 +90,9 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.CROPS).add(VSBlocks.GOLDEN_CARROTS.get()).add(Blocks.NETHER_WART).add(VSBlocks.WARPED_WART.get()).add(VSBlocks.ENDER_WART.get());
         this.tag(BlockTags.BEE_GROWABLES).add(VSBlocks.GLOW_BERRY_BUSH.get());
         this.tag(BlockTags.SMALL_FLOWERS).add(VSBlocks.GLOW_BLACK_TULIP.get()).add(VSBlocks.SUNNY_FLOWER.get());
-        this.tag(BlockTags.FLOWER_POTS).add(VSBlocks.POTTED_GLOW_BLACK_TULIP.get()).add(VSBlocks.POTTED_SUNNY_FLOWER.get()).add(VSBlocks.POTTED_SUGAR_CANE.get()).add(VSBlocks.POTTED_PAINTING_SAPLING.get())
-                .add(VSBlocks.POTTED_ENDER_ROOTS.get()).add(VSBlocks.POTTED_ENDER_FUNGUS.get());
+        this.tag(BlockTags.FLOWER_POTS).add(VSBlocks.POTTED_GLOW_BLACK_TULIP.get()).add(VSBlocks.POTTED_SUNNY_FLOWER.get()).add(VSBlocks.POTTED_SUGAR_CANE.get()).add(VSBlocks.POTTED_GRASS.get()).add(VSBlocks.POTTED_PAINTING_SAPLING.get())
+                .add(VSBlocks.POTTED_GOLDEN_CARROTS.get()).add(VSBlocks.POTTED_ENDER_ROOTS.get()).add(VSBlocks.POTTED_ENDER_FUNGUS.get()).add(VSBlocks.POTTED_NETHER_WART.get()).add(VSBlocks.POTTED_WARPED_WART.get())
+                .add(VSBlocks.POTTED_ENDER_WART.get());
         this.tag(BlockTags.WOOL).add(VSBlocks.GLOW_BLACK_WOOL.get());
         this.tag(BlockTags.CARPETS).add(VSBlocks.GLOW_BLACK_CARPET.get());
         this.tag(BlockTags.GUARDED_BY_PIGLINS).add(VSBlocks.GOLDEN_CAULDRON.get()).add(VSBlocks.GOLDEN_BEACON.get()).add(VSBlocks.GOLDEN_CARROTS.get()).add(VSBlocks.GOLDEN_CHAIN.get());

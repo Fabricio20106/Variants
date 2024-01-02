@@ -1,9 +1,8 @@
 {
   "replace": false,
   "values": [
+    "#minecraft:lectern_books",
     "minecraft:book",
-    "minecraft:writable_book",
-    "minecraft:written_book",
     "minecraft:enchanted_book",
     "minecraft:knowledge_book",
     "variants:enchanted_knowledge_book",
@@ -13,10 +12,6 @@
     },
     {
       "id": "backmath:advanced_molds_book",
-      "required": false
-    },
-    {
-      "id": "patchouli:guide_book",
       "required": false
     },
     {
