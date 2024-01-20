@@ -1,4 +1,4 @@
-# Variants
+# <center> - Variants - </center>
 
-added spawner minecart texture
-added honey balls
+- Added Minecart with Spawner texture;
+- Added Honey Balls.
