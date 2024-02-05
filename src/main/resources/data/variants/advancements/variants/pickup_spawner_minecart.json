@@ -2,26 +2,26 @@
   "parent": "variants:variants/root",
   "display": {
     "icon": {
-      "item": "variants:painting_planks"
+      "item": "variants:spawner_minecart"
     },
     "title": {
-      "translate": "advancements.variants.obtain_painting_planks.title"
+      "translate": "advancements.variants.obtain_spawner_minecart.title"
     },
     "description": {
-      "translate": "advancements.variants.obtain_painting_planks.description"
+      "translate": "advancements.variants.obtain_spawner_minecart.description"
     },
-    "frame": "task",
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
   "criteria": {
-    "obtained_painting_planks": {
+    "obtained_spawner_minecart": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "variants:painting_planks"
+            "item": "variants:spawner_minecart"
           }
         ]
       }
@@ -29,7 +29,7 @@
   },
   "requirements": [
     [
-      "obtained_painting_planks"
+      "obtained_spawner_minecart"
     ]
   ]
 }

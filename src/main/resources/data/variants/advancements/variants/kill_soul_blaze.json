@@ -1,0 +1,28 @@
+{
+  "parent": "variants:variants/obtain_soul_lava_bucket",
+  "display": {
+    "icon": {
+      "item": "variants:soul_rod"
+    },
+    "title": {
+      "translate": "advancements.variants.kill_soul_blaze.title"
+    },
+    "description": {
+      "translate": "advancements.variants.kill_soul_blaze.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "kill_soul_blaze": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "kill_soul_blaze"
+    ]
+  ]
+}

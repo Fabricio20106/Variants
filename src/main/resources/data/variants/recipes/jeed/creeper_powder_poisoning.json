@@ -1,0 +1,17 @@
+{
+  "type": "jeed:effect_provider",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "jeed"
+    }
+  ],
+  "effect":{
+    "id": "variants:creeper_powder_poisoning"
+  },
+  "providers": [
+    {
+      "item": "mobarmor:creeper_powder_pot"
+    }
+  ]
+}

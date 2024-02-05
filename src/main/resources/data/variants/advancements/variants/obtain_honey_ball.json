@@ -1,0 +1,46 @@
+{
+  "parent": "variants:variants/root",
+  "display": {
+    "icon": {
+      "item": "variants:honey_ball"
+    },
+    "title": {
+      "translate": "advancements.variants.obtain_honey_ball.title"
+    },
+    "description": {
+      "translate": "advancements.variants.obtain_honey_ball.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "obtained_honey_ball": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:honey_ball"
+          }
+        ]
+      }
+    },
+    "consumed_honey_ball": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "variants:honey_ball"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtained_honey_ball"
+    ],
+    [
+      "consumed_honey_ball"
+    ]
+  ]
+}

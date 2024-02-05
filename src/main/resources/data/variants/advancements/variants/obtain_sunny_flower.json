@@ -2,13 +2,13 @@
   "parent": "variants:variants/root",
   "display": {
     "icon": {
-      "item": "variants:painting_planks"
+      "item": "variants:sunny_flower"
     },
     "title": {
-      "translate": "advancements.variants.obtain_painting_planks.title"
+      "translate": "advancements.variants.obtain_sunny_flower.title"
     },
     "description": {
-      "translate": "advancements.variants.obtain_painting_planks.description"
+      "translate": "advancements.variants.obtain_sunny_flower.description"
     },
     "frame": "task",
     "show_toast": true,
@@ -16,12 +16,12 @@
     "hidden": false
   },
   "criteria": {
-    "obtained_painting_planks": {
+    "obtained_sunny_flower": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "variants:painting_planks"
+            "item": "variants:sunny_flower"
           }
         ]
       }
@@ -29,7 +29,7 @@
   },
   "requirements": [
     [
-      "obtained_painting_planks"
+      "obtained_sunny_flower"
     ]
   ]
 }

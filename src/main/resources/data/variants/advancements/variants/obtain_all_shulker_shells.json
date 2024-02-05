@@ -1,0 +1,256 @@
+{
+  "parent": "variants:variants/enter_the_end",
+  "display": {
+    "icon": {
+      "item": "minecraft:shulker_shell"
+    },
+    "title": {
+      "translate": "advancements.variants.obtain_all_shulker_shells.title"
+    },
+    "description": {
+      "translate": "advancements.variants.obtain_all_shulker_shells.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "obtained_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:shulker_shell"
+          }
+        ]
+      }
+    },
+    "obtained_white_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:white_shulker_shell"
+          }
+        ]
+      }
+    },
+    "obtained_light_gray_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:light_gray_shulker_shell"
+          }
+        ]
+      }
+    },
+    "obtained_gray_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:gray_shulker_shell"
+          }
+        ]
+      }
+    },
+    "obtained_black_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:black_shulker_shell"
+          }
+        ]
+      }
+    },
+    "obtained_brown_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:brown_shulker_shell"
+          }
+        ]
+      }
+    },
+    "obtained_red_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:red_shulker_shell"
+          }
+        ]
+      }
+    },
+    "obtained_orange_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:orange_shulker_shell"
+          }
+        ]
+      }
+    },
+    "obtained_yellow_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:yellow_shulker_shell"
+          }
+        ]
+      }
+    },
+    "obtained_lime_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:lime_shulker_shell"
+          }
+        ]
+      }
+    },
+    "obtained_green_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:green_shulker_shell"
+          }
+        ]
+      }
+    },
+    "obtained_cyan_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:cyan_shulker_shell"
+          }
+        ]
+      }
+    },
+    "obtained_light_blue_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:light_blue_shulker_shell"
+          }
+        ]
+      }
+    },
+    "obtained_glow_black_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:glow_black_shulker_shell"
+          }
+        ]
+      }
+    },
+    "obtained_blue_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:blue_shulker_shell"
+          }
+        ]
+      }
+    },
+    "obtained_purple_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:purple_shulker_shell"
+          }
+        ]
+      }
+    },
+    "obtained_magenta_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:magenta_shulker_shell"
+          }
+        ]
+      }
+    },
+    "obtained_pink_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:pink_shulker_shell"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtained_shulker_shell"
+    ],
+    [
+      "obtained_white_shulker_shell"
+    ],
+    [
+      "obtained_light_gray_shulker_shell"
+    ],
+    [
+      "obtained_gray_shulker_shell"
+    ],
+    [
+      "obtained_black_shulker_shell"
+    ],
+    [
+      "obtained_brown_shulker_shell"
+    ],
+    [
+      "obtained_red_shulker_shell"
+    ],
+    [
+      "obtained_orange_shulker_shell"
+    ],
+    [
+      "obtained_yellow_shulker_shell"
+    ],
+    [
+      "obtained_lime_shulker_shell"
+    ],
+    [
+      "obtained_green_shulker_shell"
+    ],
+    [
+      "obtained_cyan_shulker_shell"
+    ],
+    [
+      "obtained_light_blue_shulker_shell"
+    ],
+    [
+      "obtained_glow_black_shulker_shell"
+    ],
+    [
+      "obtained_blue_shulker_shell"
+    ],
+    [
+      "obtained_purple_shulker_shell"
+    ],
+    [
+      "obtained_magenta_shulker_shell"
+    ],
+    [
+      "obtained_pink_shulker_shell"
+    ]
+  ]
+}

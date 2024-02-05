@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
+    "minecraft:end_stone",
     "variants:ender_nylium",
-    "variants:ender_roots",
-    "variants:ender_fungus"
+    "variants:ender_wart_block"
   ]
 }

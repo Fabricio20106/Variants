@@ -1,0 +1,46 @@
+{
+  "parent": "variants:variants/root",
+  "display": {
+    "icon": {
+      "item": "variants:elder_prismarine_shard"
+    },
+    "title": {
+      "translate": "advancements.variants.obtain_elder_prismarine.title"
+    },
+    "description": {
+      "translate": "advancements.variants.obtain_elder_prismarine.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "obtained_elder_prismarine_shard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:elder_prismarine_shard"
+          }
+        ]
+      }
+    },
+    "obtained_elder_prismarine_crystals": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:elder_prismarine_crystals"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtained_elder_prismarine_shard",
+      "obtained_elder_prismarine_crystals"
+    ]
+  ]
+}

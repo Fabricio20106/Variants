@@ -9,6 +9,8 @@
   "advancements.variants.obtain_painting_planks.title": "Reciclando texturas",
   "advancements.variants.obtain_painting_planks.description": "Obtenha algumas tábuas de pintura, que são apenas a textura de trás da pintura feita em um set de madeira.",
 
+  "biome.variants.ender_forest": "Floresta de madeira do End",
+
   "block.variants.potted_sugar_cane": "Cana-de-açúcar envasada",
   "block.variants.potted_grass": "Grama envasada",
   "block.variants.golden_carrots": "Cenouras douradas",
@@ -367,8 +369,9 @@
   "tooltip.variants.enchant_type.crossbow":  "Bestas",
   "tooltip.variants.enchant_type.wearable":  "Vestíveis",
   "tooltip.variants.enchant_type.vanishable":  "Itens desaparecíveis",
+  "tooltip.variants.enchant_type.other":  "Outro",
 
-  "tooltip.variants.horse_armor.when_on_horse": "No cavalo:",
+  "tooltip.variants.horse_armor.when_on_horse": "No corpo:",
   "tooltip.variants.horse_armor.armor_stats": "Pontos de armadura: +%s",
 
   "tooltip.variants.debug.empty": "%s não tem propriedades",

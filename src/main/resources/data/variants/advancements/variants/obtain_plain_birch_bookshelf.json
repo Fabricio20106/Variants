@@ -2,26 +2,26 @@
   "parent": "variants:variants/root",
   "display": {
     "icon": {
-      "item": "variants:painting_planks"
+      "item": "variants:plain_birch_bookshelf"
     },
     "title": {
-      "translate": "advancements.variants.obtain_painting_planks.title"
+      "translate": "advancements.variants.obtain_plain_birch_bookshelf.title"
     },
     "description": {
-      "translate": "advancements.variants.obtain_painting_planks.description"
+      "translate": "advancements.variants.obtain_plain_birch_bookshelf.description"
     },
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,
-    "hidden": false
+    "hidden": true
   },
   "criteria": {
-    "obtained_painting_planks": {
+    "obtained_plain_birch_bookshelf": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "variants:painting_planks"
+            "item": "variants:plain_birch_bookshelf"
           }
         ]
       }
@@ -29,7 +29,7 @@
   },
   "requirements": [
     [
-      "obtained_painting_planks"
+      "obtained_plain_birch_bookshelf"
     ]
   ]
 }

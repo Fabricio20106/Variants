@@ -1,0 +1,17 @@
+{
+  "type": "jeed:effect_provider",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "jeed"
+    }
+  ],
+  "effect":{
+    "id": "variants:bluestone_poisoning"
+  },
+  "providers": [
+    {
+      "item": "mobarmor:bluestone_pot"
+    }
+  ]
+}

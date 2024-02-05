@@ -1,0 +1,33 @@
+{
+  "parent": "variants:variants/enter_the_end",
+  "display": {
+    "icon": {
+      "item": "variants:ender_stem"
+    },
+    "title": {
+      "translate": "advancements.variants.find_enderwood_forest.title"
+    },
+    "description": {
+      "translate": "advancements.variants.find_enderwood_forest.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "locate_enderwood_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "variants:ender_forest"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "locate_enderwood_forest"
+    ]
+  ]
+}

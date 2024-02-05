@@ -1,0 +1,50 @@
+{
+  "parent": "variants:variants/root",
+  "display": {
+    "icon": {
+      "item": "variants:old_cod"
+    },
+    "title": {
+      "translate": "advancements.variants.obtain_fish.title"
+    },
+    "description": {
+      "translate": "advancements.variants.obtain_fish.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "obtained_raw_fish": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:old_cod"
+          }
+        ]
+      }
+    },
+    "kill_fish": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "predicate": {
+              "type": "variants:old_cod"
+            },
+            "entity": "this"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtained_raw_fish",
+      "kill_fish"
+    ]
+  ]
+}

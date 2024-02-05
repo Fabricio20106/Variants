@@ -54,9 +54,11 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSTags.Blocks.CAULDRONS).add(Blocks.CAULDRON).add(VSBlocks.GOLDEN_CAULDRON.get());
         this.tag(VSTags.Blocks.BEACONS).add(Blocks.BEACON).add(VSBlocks.GOLDEN_BEACON.get());
         this.tag(VSTags.Blocks.NETHER_WART_PLACEABLE_ON).add(Blocks.SOUL_SAND).add(Blocks.SOUL_SOIL);
-        this.tag(VSTags.Blocks.ENDER_WART_PLANTABLE_ON).add(VSBlocks.ENDER_FARMLAND.get()).add(Blocks.END_STONE).add(Blocks.OBSIDIAN);
+        this.tag(VSTags.Blocks.ENDER_WART_PLANTABLE_ON).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_FARMLAND.get()).add(Blocks.END_STONE).add(Blocks.OBSIDIAN);
         this.tag(VSTags.Blocks.GOLDEN_CARROTS_PLANTABLE_ON).addTag(VSTags.Blocks.FARMLAND);
         this.tag(VSTags.Blocks.END_PLANTS_PLANTABLE_ON).addTag(BlockTags.NYLIUM).add(Blocks.END_STONE).add(Blocks.OBSIDIAN);
+        this.tag(VSTags.Blocks.WARPING_VINES_CAN_PLACE_ON).add(Blocks.END_STONE).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_WART_BLOCK.get());
+        this.tag(VSTags.Blocks.CHORUS_FLOWER_PLANTABLE_ON).add(Blocks.END_STONE).add(VSBlocks.ENDER_NYLIUM.get());
 
         // Melony Tags
         this.tag(VSTags.Blocks.DEEPSLATE_REPLACEABLES).addOptional(new ResourceLocation("minecraft:deepslate")).addOptional(new ResourceLocation("cavesandcliffs:deepslate")).addOptional(new ResourceLocation(
@@ -96,10 +98,9 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.WOOL).add(VSBlocks.GLOW_BLACK_WOOL.get());
         this.tag(BlockTags.CARPETS).add(VSBlocks.GLOW_BLACK_CARPET.get());
         this.tag(BlockTags.GUARDED_BY_PIGLINS).add(VSBlocks.GOLDEN_CAULDRON.get()).add(VSBlocks.GOLDEN_BEACON.get()).add(VSBlocks.GOLDEN_CARROTS.get()).add(VSBlocks.GOLDEN_CHAIN.get());
-        this.tag(BlockTags.DRAGON_IMMUNE).add(VSBlocks.END_QUARTZ_ORE.get()).add(VSBlocks.QUARTZ_BARS.get());
+        this.tag(BlockTags.DRAGON_IMMUNE).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.END_QUARTZ_ORE.get()).add(VSBlocks.QUARTZ_BARS.get());
         this.tag(BlockTags.IMPERMEABLE).add(VSBlocks.QUARTZ_GLASS.get()).add(VSBlocks.GLOW_BLACK_STAINED_GLASS.get());
         this.tag(BlockTags.NYLIUM).add(VSBlocks.ENDER_NYLIUM.get());
-        this.tag(BlockTags.ENDERMAN_HOLDABLE).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_ROOTS.get()).add(VSBlocks.ENDER_FUNGUS.get());
         this.tag(BlockTags.CLIMBABLE).add(VSBlocks.WARPING_VINES.get()).add(VSBlocks.WARPING_VINES_PLANT.get());
         this.tag(BlockTags.BEDS).add(VSBlocks.GLOW_BLACK_BED.get());
     }

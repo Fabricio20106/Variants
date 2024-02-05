@@ -1,14 +1,14 @@
 {
-  "parent": "variants:variants/root",
+  "parent": "variants:variants/enter_the_nether",
   "display": {
     "icon": {
-      "item": "variants:painting_planks"
+      "item": "variants:wither_bone"
     },
     "title": {
-      "translate": "advancements.variants.obtain_painting_planks.title"
+      "translate": "advancements.variants.obtain_wither_bone.title"
     },
     "description": {
-      "translate": "advancements.variants.obtain_painting_planks.description"
+      "translate": "advancements.variants.obtain_wither_bone.description"
     },
     "frame": "task",
     "show_toast": true,
@@ -16,12 +16,12 @@
     "hidden": false
   },
   "criteria": {
-    "obtained_painting_planks": {
+    "obtained_wither_bone": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "variants:painting_planks"
+            "item": "variants:wither_bone"
           }
         ]
       }
@@ -29,7 +29,7 @@
   },
   "requirements": [
     [
-      "obtained_painting_planks"
+      "obtained_wither_bone"
     ]
   ]
 }

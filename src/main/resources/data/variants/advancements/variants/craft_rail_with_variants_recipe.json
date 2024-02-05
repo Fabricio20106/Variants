@@ -1,0 +1,31 @@
+{
+  "parent": "variants:variants/root",
+  "display": {
+    "icon": {
+      "item": "minecraft:rail"
+    },
+    "title": {
+      "translate": "advancements.variants.craft_rail_with_variants_recipe.title"
+    },
+    "description": {
+      "translate": "advancements.variants.craft_rail_with_variants_recipe.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "crafted_rail": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:rail"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "crafted_rail"
+    ]
+  ]
+}

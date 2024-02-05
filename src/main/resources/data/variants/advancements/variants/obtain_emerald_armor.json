@@ -1,0 +1,74 @@
+{
+  "parent": "variants:variants/root",
+  "display": {
+    "icon": {
+      "item": "variants:emerald_chestplate"
+    },
+    "title": {
+      "translate": "advancements.variants.obtain_emerald_armor.title"
+    },
+    "description": {
+      "translate": "advancements.variants.obtain_emerald_armor.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "obtained_emerald_helmet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:emerald_helmet"
+          }
+        ]
+      }
+    },
+    "obtained_emerald_chestplate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:emerald_chestplate"
+          }
+        ]
+      }
+    },
+    "obtained_emerald_leggings": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:emerald_leggings"
+          }
+        ]
+      }
+    },
+    "obtained_emerald_boots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:emerald_boots"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtained_emerald_helmet"
+    ],
+    [
+      "obtained_emerald_chestplate"
+    ],
+    [
+      "obtained_emerald_leggings"
+    ],
+    [
+      "obtained_emerald_boots"
+    ]
+  ]
+}

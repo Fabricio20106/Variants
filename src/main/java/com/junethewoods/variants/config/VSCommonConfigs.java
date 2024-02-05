@@ -16,6 +16,7 @@ public class VSCommonConfigs {
     public final ForgeConfigSpec.IntValue infinitySweatersTabSpacing;
     public final ForgeConfigSpec.BooleanValue customFireworkDescriptions;
     public final ForgeConfigSpec.BooleanValue customEnchantmentDescriptions;
+    public final ForgeConfigSpec.BooleanValue enchantmentTypesOnTooltip;
     public final ForgeConfigSpec.BooleanValue horseArmorArmorPointsOnTooltip;
     public final ForgeConfigSpec.BooleanValue enchantableShears;
     public final ForgeConfigSpec.BooleanValue enchantableFlintAndSteel;
@@ -49,6 +50,7 @@ public class VSCommonConfigs {
         this.populateWoolArmorColorInTabs = builder.comment("Should the item tabs populate all (dye) colors of wool armor?").define("populateWoolArmorColorInTabs", true);
         this.customFireworkDescriptions = builder.comment("Updates the Firework Rocket & Charge's descriptions.").define("customFireworkDescriptions", true);
         this.customEnchantmentDescriptions = builder.comment("Updates the enchantment description on enchanted items.").define("customEnchantmentDescriptions", true);
+        this.enchantmentTypesOnTooltip = builder.comment("If the \"(Breakable Items)\" or \"(Swords)\" suffix on enchantment should show up.").define("enchantmentTypesOnTooltip", false);
         this.horseArmorArmorPointsOnTooltip = builder.comment("Shows how many armor points each horse armor gives on the item's tooltip.").define("horseArmorArmorPointsOnTooltip", true);
         this.enchantableShears = builder.comment("Allows any Shears to be enchanted at an Enchanting Table.").define("enchantableShears", true);
         this.enchantableFlintAndSteel = builder.comment("Allows any Flint and Steel to be enchanted at an Enchanting Table.").define("enchantableFlintAndSteel", true);

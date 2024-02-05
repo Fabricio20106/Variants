@@ -1,0 +1,33 @@
+{
+  "parent": "variants:variants/drink_poisoning_pot",
+  "display": {
+    "icon": {
+      "item": "variants:glowstone_pot"
+    },
+    "title": {
+      "translate": "advancements.variants.drink_glowstone_pot.title"
+    },
+    "description": {
+      "translate": "advancements.variants.drink_glowstone_pot.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "consume_glowstone_pot": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "variants:glowstone_pot"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "consume_glowstone_pot"
+    ]
+  ]
+}

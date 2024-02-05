@@ -1,0 +1,17 @@
+{
+  "type": "jeed:effect_provider",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "jeed"
+    }
+  ],
+  "effect":{
+    "id": "variants:redstone_poisoning"
+  },
+  "providers": [
+    {
+      "item": "mobarmor:redstone_pot"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "parent": "variants:variants/enter_the_nether",
+  "display": {
+    "icon": {
+      "item": "minecraft:end_stone"
+    },
+    "title": {
+      "translate": "advancements.variants.enter_the_end.title"
+    },
+    "description": {
+      "translate": "advancements.variants.enter_the_end.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "entered_the_end": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "minecraft:the_end"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "entered_the_end"
+    ]
+  ]
+}

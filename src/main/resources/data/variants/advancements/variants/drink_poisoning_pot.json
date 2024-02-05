@@ -1,0 +1,69 @@
+{
+  "parent": "variants:variants/root",
+  "display": {
+    "icon": {
+      "item": "variants:redstone_pot"
+    },
+    "title": {
+      "translate": "advancements.variants.drink_poisoning_pot.title"
+    },
+    "description": {
+      "translate": "advancements.variants.drink_poisoning_pot.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "consume_redstone_pot": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "variants:redstone_pot"
+        }
+      }
+    },
+    "consume_bluestone_pot": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "variants:bluestone_pot"
+        }
+      }
+    },
+    "consume_glowstone_pot": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "variants:glowstone_pot"
+        }
+      }
+    },
+    "consume_gunpowder_pot": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "variants:gunpowder_pot"
+        }
+      }
+    },
+    "consume_explosive_blend_pot": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "variants:creeper_powder_pot"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "consume_redstone_pot",
+      "consume_bluestone_pot",
+      "consume_glowstone_pot",
+      "consume_gunpowder_pot",
+      "consume_explosive_blend_pot"
+    ]
+  ]
+}

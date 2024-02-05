@@ -1,0 +1,35 @@
+{
+  "parent": "variants:variants/find_enderwood_forest",
+  "display": {
+    "icon": {
+      "item": "variants:end_fungi_stew"
+    },
+    "title": {
+      "translate": "advancements.variants.obtain_end_fungi_stew.title"
+    },
+    "description": {
+      "translate": "advancements.variants.obtain_end_fungi_stew.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "obtained_end_fungi_stew": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:end_fungi_stew"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtained_end_fungi_stew"
+    ]
+  ]
+}

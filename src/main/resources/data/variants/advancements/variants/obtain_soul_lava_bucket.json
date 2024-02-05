@@ -1,0 +1,35 @@
+{
+  "parent": "variants:variants/enter_the_nether",
+  "display": {
+    "icon": {
+      "item": "variants:soul_lava_bucket"
+    },
+    "title": {
+      "translate": "advancements.variants.obtain_soul_lava_bucket.title"
+    },
+    "description": {
+      "translate": "advancements.variants.obtain_soul_lava_bucket.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "obtained_soul_lava_bucket": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:soul_lava_bucket"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtained_soul_lava_bucket"
+    ]
+  ]
+}

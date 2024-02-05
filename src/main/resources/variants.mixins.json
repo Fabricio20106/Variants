@@ -6,17 +6,20 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "block.CauldronBlockMixin",
+    "block.ChorusFlowerBlockMixin",
+    "block.ChorusPlantBlockMixin",
     "block.NetherWartBlockMixin",
     "block.StainedGlassBlockMixin",
     "block.StainedGlassPaneBlockMixin",
-    "item.ShearsItemMixin",
-    "item.FlintAndSteelItemMixin",
-    "item.ShieldItemMixin",
-    "item.ItemStackMixin",
     "enchantment.EnchantmentMixin",
     "enchantment.QuickChargeEnchantmentMixin",
     "entity.EntityTameItemMixins$CatEntityMixin",
-    "entity.EntityTameItemMixins$OcelotEntityMixin"
+    "entity.EntityTameItemMixins$OcelotEntityMixin",
+    "item.FlintAndSteelItemMixin",
+    "item.ItemStackMixin",
+    "item.ShearsItemMixin",
+    "item.ShieldItemMixin",
+    "world.DimensionTypeMixin"
   ],
   "client": [
     "item.FireworkRocketItemMixin",

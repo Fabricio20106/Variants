@@ -1,0 +1,123 @@
+{
+  "parent": "variants:variants/obtain_painting_planks",
+  "display": {
+    "icon": {
+      "item": "variants:wanderer_door"
+    },
+    "title": {
+      "translate": "advancements.variants.obtain_painting_doors.title"
+    },
+    "description": {
+      "translate": "advancements.variants.obtain_painting_doors.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "obtained_wanderer_door": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:wanderer_door"
+          }
+        ]
+      }
+    },
+    "obtained_graham_door": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:graham_door"
+          }
+        ]
+      }
+    },
+    "obtained_alban_trapdoor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:alban_trapdoor"
+          }
+        ]
+      }
+    },
+    "obtained_aztec_trapdoor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:aztec_trapdoor"
+          }
+        ]
+      }
+    },
+    "obtained_aztec2_trapdoor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:aztec2_trapdoor"
+          }
+        ]
+      }
+    },
+    "obtained_bomb_trapdoor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:bomb_trapdoor"
+          }
+        ]
+      }
+    },
+    "obtained_kebab_trapdoor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:kebab_trapdoor"
+          }
+        ]
+      }
+    },
+    "obtained_plant_trapdoor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:plant_trapdoor"
+          }
+        ]
+      }
+    },
+    "obtained_wasteland_trapdoor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:wasteland_trapdoor"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtained_wanderer_door",
+      "obtained_graham_door",
+      "obtained_alban_trapdoor",
+      "obtained_aztec_trapdoor",
+      "obtained_aztec2_trapdoor",
+      "obtained_bomb_trapdoor",
+      "obtained_kebab_trapdoor",
+      "obtained_plant_trapdoor",
+      "obtained_wasteland_trapdoor"
+    ]
+  ]
+}

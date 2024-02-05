@@ -1,0 +1,38 @@
+{
+  "parent": "variants:variants/find_enderwood_forest",
+  "display": {
+    "icon": {
+      "item": "variants:ender_farmland"
+    },
+    "title": {
+      "translate": "advancements.variants.till_ender_nylium.title"
+    },
+    "description": {
+      "translate": "advancements.variants.till_ender_nylium.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "till_ender_nylium": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "tag": "forge:tools/hoes"
+        },
+        "location": {
+          "block": {
+            "block": "variants:ender_nylium"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "till_ender_nylium"
+    ]
+  ]
+}

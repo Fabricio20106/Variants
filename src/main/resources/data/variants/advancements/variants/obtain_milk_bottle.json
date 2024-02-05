@@ -2,26 +2,26 @@
   "parent": "variants:variants/root",
   "display": {
     "icon": {
-      "item": "variants:painting_planks"
+      "item": "variants:milk_glass_bottle"
     },
     "title": {
-      "translate": "advancements.variants.obtain_painting_planks.title"
+      "translate": "advancements.variants.obtain_milk_bottle.title"
     },
     "description": {
-      "translate": "advancements.variants.obtain_painting_planks.description"
+      "translate": "advancements.variants.obtain_milk_bottle.description"
     },
-    "frame": "task",
+    "frame": "goal",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
   "criteria": {
-    "obtained_painting_planks": {
+    "obtained_milk_bottle": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "variants:painting_planks"
+            "item": "variants:milk_glass_bottle"
           }
         ]
       }
@@ -29,7 +29,7 @@
   },
   "requirements": [
     [
-      "obtained_painting_planks"
+      "obtained_milk_bottle"
     ]
   ]
 }

@@ -26,7 +26,8 @@ public abstract class EnchantmentMixin {
     public abstract boolean isCurse();
     @Shadow
     public abstract boolean isTreasureOnly();
-    @Shadow @Final
+    @Shadow
+    @Final
     public EnchantmentType category;
 
     @Inject(method = "getFullname", at = @At("HEAD"), cancellable = true)
@@ -47,14 +48,14 @@ public abstract class EnchantmentMixin {
                 component.append(" ").append(new TranslationTextComponent("enchantment.level." + enchLevel));
             }
 
-            component.append(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".enchant.type", new TranslationTextComponent(getIconForEnchantment())));
+            if (VSConfigs.COMMON_CONFIGS.enchantmentTypesOnTooltip.get()) component.append(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".enchant.type", new TranslationTextComponent(getTypeForEnchantment())));
 
             cir.setReturnValue(component);
         }
     }
 
     @Unique
-    private String getIconForEnchantment() {
+    private String getTypeForEnchantment() {
         switch (category) {
             case ARMOR: return "tooltip.variants.enchant_type.armor";
             case ARMOR_HEAD: return "tooltip.variants.enchant_type.helmet";
@@ -70,7 +71,7 @@ public abstract class EnchantmentMixin {
             case CROSSBOW: return "tooltip.variants.enchant_type.crossbow";
             case WEARABLE: return "tooltip.variants.enchant_type.wearable";
             case VANISHABLE: return "tooltip.variants.enchant_type.vanishable";
-            default: return "advancements.nether.all_effects.title";
+            default: return "tooltip.variants.enchant_type.other";
         }
     }
 }

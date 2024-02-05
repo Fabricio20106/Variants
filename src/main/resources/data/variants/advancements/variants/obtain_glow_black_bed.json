@@ -1,14 +1,14 @@
 {
-  "parent": "variants:variants/root",
+  "parent": "variants:variants/obtain_glow_black_dye",
   "display": {
     "icon": {
-      "item": "variants:painting_planks"
+      "item": "variants:glow_black_bed"
     },
     "title": {
-      "translate": "advancements.variants.obtain_painting_planks.title"
+      "translate": "advancements.variants.obtain_glow_black_bed.title"
     },
     "description": {
-      "translate": "advancements.variants.obtain_painting_planks.description"
+      "translate": "advancements.variants.obtain_glow_black_bed.description"
     },
     "frame": "task",
     "show_toast": true,
@@ -16,12 +16,12 @@
     "hidden": false
   },
   "criteria": {
-    "obtained_painting_planks": {
+    "obtained_glow_black_bed": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "variants:painting_planks"
+            "item": "variants:glow_black_bed"
           }
         ]
       }
@@ -29,7 +29,7 @@
   },
   "requirements": [
     [
-      "obtained_painting_planks"
+      "obtained_glow_black_bed"
     ]
   ]
 }

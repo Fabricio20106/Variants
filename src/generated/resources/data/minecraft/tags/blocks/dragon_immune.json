@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "variants:ender_nylium",
     "variants:end_quartz_ore",
     "variants:quartz_bars"
   ]

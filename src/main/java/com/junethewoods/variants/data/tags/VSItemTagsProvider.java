@@ -97,6 +97,8 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(Tags.Items.GEMS).addTag(VSTags.Items.GEMS_ELDER_PRISMARINE);
 
         this.tag(VSTags.Items.ARMORS_BOOTS).add(VSWeaponry.EMPTY_ARMOR_SLOT_BOOTS.get()).add(VSWeaponry.EMERALD_BOOTS.get()).add(VSWeaponry.QUARTZ_BOOTS.get());
+        this.tag(VSTags.Items.TOOLS_HOES).add(Items.WOODEN_HOE).add(Items.STONE_HOE).add(Items.IRON_HOE).add(Items.DIAMOND_HOE).add(Items.GOLDEN_HOE).add(Items.NETHERITE_HOE).add(VSWeaponry.DIORITE_HOE.get()).add(VSWeaponry.GRANITE_HOE.get())
+                .add(VSWeaponry.ANDESITE_HOE.get()).add(VSWeaponry.END_STONE_HOE.get()).add(VSWeaponry.QUARTZ_HOE.get());
 
         // Variants' Tags
         this.tag(VSTags.Items.CM_DIORITE).add(Items.DIORITE);

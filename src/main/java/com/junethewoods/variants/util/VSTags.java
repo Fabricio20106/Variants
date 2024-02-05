@@ -47,6 +47,7 @@ public class VSTags {
         public static final ITag.INamedTag<Item> GEMS_ELDER_PRISMARINE = forge("gems/elder_prismarine");
 
         public static final ITag.INamedTag<Item> ARMORS_BOOTS = forge("armors/boots");
+        public static final ITag.INamedTag<Item> TOOLS_HOES = forge("tools/hoes");
         public static final ITag.INamedTag<Item> BONE_MEALS = forge("bone_meals");
 
         // Variants' Tags
@@ -117,6 +118,8 @@ public class VSTags {
         public static final ITag.INamedTag<Block> ENDER_WART_PLANTABLE_ON = mod("ender_wart_plantable_on");
         public static final ITag.INamedTag<Block> GOLDEN_CARROTS_PLANTABLE_ON = mod("golden_carrots_plantable_on");
         public static final ITag.INamedTag<Block> END_PLANTS_PLANTABLE_ON = mod("end_plants_plantable_on");
+        public static final ITag.INamedTag<Block> WARPING_VINES_CAN_PLACE_ON = mod("warping_vines_feature_can_place_on");
+        public static final ITag.INamedTag<Block> CHORUS_FLOWER_PLANTABLE_ON = mod("chorus_flower_plantable_on");
 
         // Melony (convention) Tags
         public static final ITag.INamedTag<Block> DEEPSLATE_REPLACEABLES = melony("deepslate_replaceables");
