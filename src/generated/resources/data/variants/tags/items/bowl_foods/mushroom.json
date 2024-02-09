@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "minecraft:mushroom_stew"
+    "minecraft:mushroom_stew",
+    "variants:exponential_mushroom_stew"
   ]
 }

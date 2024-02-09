@@ -11,6 +11,7 @@ public class VSCommonConfigs {
     public final ForgeConfigSpec.BooleanValue generateEndCavesAndRavines;
 
     // Items
+    public final ForgeConfigSpec.BooleanValue populateExponentialBowlsInTabs;
     public final ForgeConfigSpec.BooleanValue populateWoolArmorColorInTabs;
     public final ForgeConfigSpec.BooleanValue enableInfinitySweatersTab;
     public final ForgeConfigSpec.IntValue infinitySweatersTabLength;
@@ -50,6 +51,7 @@ public class VSCommonConfigs {
 
         builder.push("items");
         this.populateWoolArmorColorInTabs = builder.comment("Should the item tabs populate all (dye) colors of wool armor?").define("populateWoolArmorColorInTabs", true);
+        this.populateExponentialBowlsInTabs = builder.comment("Should the item tabs populate all different wood types for all bowls?").define("populateExponentialBowlsInTabs", true);
         this.customFireworkDescriptions = builder.comment("Updates the Firework Rocket & Charge's descriptions.").define("customFireworkDescriptions", true);
         this.customEnchantmentDescriptions = builder.comment("Updates the enchantment description on enchanted items.").define("customEnchantmentDescriptions", true);
         this.enchantmentTypesOnTooltip = builder.comment("If the \"(Breakable Items)\" or \"(Swords)\" suffix on enchantment should show up.").define("enchantmentTypesOnTooltip", false);

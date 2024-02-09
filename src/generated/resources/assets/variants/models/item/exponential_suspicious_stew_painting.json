@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "variants:item/painting_bowl",
+    "layer1": "variants:item/stew_suspicious"
+  }
+}

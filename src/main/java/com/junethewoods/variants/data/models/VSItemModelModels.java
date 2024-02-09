@@ -66,17 +66,21 @@ public abstract class VSItemModelModels extends ItemModelProvider {
     public void expoStew(String name, String stewType) {
         String[] bowls = {"oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "painting", "crimson", "warped", "ender"};
 
+        for (String bowl : bowls) {
+            getBuilder(name + "_" + bowl).parent(generated).texture("layer0", modLoc("item/" + bowl + "_bowl")).texture("layer1", modLoc("item/stew_" + stewType));
+        }
+
         getBuilder(name).parent(generated).texture("layer1", modLoc("item/stew_" + stewType))
-                .override().predicate(bowlId(), 0).model(getExistingFile(modLoc("item/oak_bowl"))).end()
-                .override().predicate(bowlId(), 1).model(getExistingFile(modLoc("item/spruce_bowl"))).end()
-                .override().predicate(bowlId(), 2).model(getExistingFile(modLoc("item/birch_bowl"))).end()
-                .override().predicate(bowlId(), 3).model(getExistingFile(modLoc("item/jungle_bowl"))).end()
-                .override().predicate(bowlId(), 4).model(getExistingFile(modLoc("item/acacia_bowl"))).end()
-                .override().predicate(bowlId(), 5).model(getExistingFile(modLoc("item/dark_oak_bowl"))).end()
-                .override().predicate(bowlId(), 6).model(getExistingFile(modLoc("item/painting_bowl"))).end()
-                .override().predicate(bowlId(), 7).model(getExistingFile(modLoc("item/crimson_bowl"))).end()
-                .override().predicate(bowlId(), 8).model(getExistingFile(modLoc("item/warped_bowl"))).end()
-                .override().predicate(bowlId(), 9).model(getExistingFile(modLoc("item/ender_bowl"))).end();
+                .override().predicate(bowlId(), 0).model(getExistingFile(modLoc("item/" + name + "_oak"))).end()
+                .override().predicate(bowlId(), 1).model(getExistingFile(modLoc("item/" + name + "_spruce"))).end()
+                .override().predicate(bowlId(), 2).model(getExistingFile(modLoc("item/" + name + "_birch"))).end()
+                .override().predicate(bowlId(), 3).model(getExistingFile(modLoc("item/" + name + "_jungle"))).end()
+                .override().predicate(bowlId(), 4).model(getExistingFile(modLoc("item/" + name + "_acacia"))).end()
+                .override().predicate(bowlId(), 5).model(getExistingFile(modLoc("item/" + name + "_dark_oak"))).end()
+                .override().predicate(bowlId(), 6).model(getExistingFile(modLoc("item/" + name + "_painting"))).end()
+                .override().predicate(bowlId(), 7).model(getExistingFile(modLoc("item/" + name + "_crimson"))).end()
+                .override().predicate(bowlId(), 8).model(getExistingFile(modLoc("item/" + name + "_warped"))).end()
+                .override().predicate(bowlId(), 9).model(getExistingFile(modLoc("item/" + name + "_ender"))).end();
     }
 
     public void spyglass(String name) {

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "variants:fungi_stew"
+    "variants:fungi_stew",
+    "variants:exponential_fungi_stew"
   ]
 }

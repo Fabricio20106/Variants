@@ -184,6 +184,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(generated, "mushroom_stew_bucket");
         standard(generated, "beetroot_soup_bucket");
         standard(generated, "rabbit_stew_bucket");
+        standard(generated, "suspicious_stew_bucket");
         standard(generated, "fungi_stew_bucket");
         standard(generated, "end_fungi_stew_bucket");
         standard(generated, "milk_glass_bottle");
@@ -222,8 +223,19 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(generated, "quartz_nugget");
         standard(generated, "purple_nugget");
 
-        // Exponential Soups/Stews
+        // Exponential Soups/Stews/Bowls
         expoStew("exponential_mushroom_stew", "mushroom");
+        expoStew("exponential_beetroot_soup", "beetroot");
+        expoStew("exponential_rabbit_stew", "rabbit");
+        expoStew("exponential_suspicious_stew", "suspicious");
+        expoStew("exponential_fungi_stew", "fungi");
+        expoStew("exponential_end_fungi_stew", "end_fungi");
+        expoStew("exponential_aljan_fungi_stew", "aljan_fungi");
+        expoStew("exponential_water_bowl", "water");
+        expoStew("exponential_milk_bowl", "milk");
+        expoStew("exponential_lava_bowl", "lava");
+        expoStew("exponential_soul_lava_bowl", "soul_lava");
+        expoStew("exponential_powder_snow_bowl", "powder_snow");
 
         blockItem("glow_berry_bush", "_stage3");
         blockItem("glow_black_tulip");

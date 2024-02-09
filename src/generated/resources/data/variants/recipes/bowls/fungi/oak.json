@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "fungi_stew",
+  "ingredients": [
+    {
+      "item": "minecraft:crimson_fungus"
+    },
+    {
+      "item": "minecraft:warped_fungus"
+    },
+    {
+      "item": "variants:oak_bowl"
+    }
+  ],
+  "result": {
+    "item": "variants:exponential_fungi_stew",
+    "nbt": {
+      "bowl_type": {
+        "bowl_name": "variants:oak_bowl",
+        "bowl_id": 0
+      }
+    }
+  }
+}

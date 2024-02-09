@@ -14,6 +14,6 @@ public class MilkBottleItem extends DrinkableContainerItem {
     public void bottleFunctionality(ItemStack containerStack, ItemStack stack, World world, LivingEntity livEntity) {
         this.containerItem = new ItemStack(Items.GLASS_BOTTLE);
         // FORGE - move up so stack.shrink does not turn stack into air
-        if (!world.isClientSide) livEntity.curePotionEffects(stack);
+        if (!world.isClientSide) livEntity.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
     }
 }

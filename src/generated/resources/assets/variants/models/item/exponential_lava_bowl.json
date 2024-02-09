@@ -1,0 +1,68 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer1": "variants:item/stew_lava"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "minecraft:bowl_id": 0.0
+      },
+      "model": "variants:item/exponential_lava_bowl_oak"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 1.0
+      },
+      "model": "variants:item/exponential_lava_bowl_spruce"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 2.0
+      },
+      "model": "variants:item/exponential_lava_bowl_birch"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 3.0
+      },
+      "model": "variants:item/exponential_lava_bowl_jungle"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 4.0
+      },
+      "model": "variants:item/exponential_lava_bowl_acacia"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 5.0
+      },
+      "model": "variants:item/exponential_lava_bowl_dark_oak"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 6.0
+      },
+      "model": "variants:item/exponential_lava_bowl_painting"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 7.0
+      },
+      "model": "variants:item/exponential_lava_bowl_crimson"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 8.0
+      },
+      "model": "variants:item/exponential_lava_bowl_warped"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 9.0
+      },
+      "model": "variants:item/exponential_lava_bowl_ender"
+    }
+  ]
+}

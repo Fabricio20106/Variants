@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "variants:item/dark_oak_bowl",
+    "layer1": "variants:item/stew_suspicious"
+  }
+}

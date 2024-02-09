@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "variants:item/jungle_bowl",
+    "layer1": "variants:item/stew_end_fungi"
+  }
+}

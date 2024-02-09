@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "minecraft:rabbit_stew"
+    "minecraft:rabbit_stew",
+    "variants:exponential_rabbit_stew"
   ]
 }

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "minecraft:beetroot_soup"
+    "minecraft:beetroot_soup",
+    "variants:exponential_beetroot_soup"
   ]
 }

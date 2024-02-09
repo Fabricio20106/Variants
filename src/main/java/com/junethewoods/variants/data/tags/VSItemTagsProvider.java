@@ -111,12 +111,12 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.CRAFTING_MATERIALS).addTag(VSTags.Items.CM_DIORITE).addTag(VSTags.Items.CM_GRANITE).addTag(VSTags.Items.CM_ANDESITE).addTag(VSTags.Items.CM_MAGMA_BLOCK).addTag(VSTags.Items.CM_END_STONE);
 
         this.tag(VSTags.Items.PAINTING_DOORS).add(VSItems.PAINTING_DOOR_WANDERER.get()).add(VSItems.PAINTING_DOOR_GRAHAM.get()).add(VSItems.PAINTING_DOOR_FIRST.get());
-        this.tag(VSTags.Items.PAINTING_TRAPDOORS).add(VSItems.PAINTING_TRAPDOOR_ALBAN.get()).add(VSItems.PAINTING_TRAPDOOR_AZTEC.get()).add(VSItems.PAINTING_TRAPDOOR_AZTEC2.get())
-                .add(VSItems.PAINTING_TRAPDOOR_BOMB.get()).add(VSItems.PAINTING_TRAPDOOR_KEBAB.get()).add(VSItems.PAINTING_TRAPDOOR_PLANT.get()).add(VSItems.PAINTING_TRAPDOOR_WASTELAND.get());
+        this.tag(VSTags.Items.PAINTING_TRAPDOORS).add(VSItems.PAINTING_TRAPDOOR_ALBAN.get()).add(VSItems.PAINTING_TRAPDOOR_AZTEC.get()).add(VSItems.PAINTING_TRAPDOOR_AZTEC2.get()).add(VSItems.PAINTING_TRAPDOOR_BOMB.get())
+                .add(VSItems.PAINTING_TRAPDOOR_KEBAB.get()).add(VSItems.PAINTING_TRAPDOOR_PLANT.get()).add(VSItems.PAINTING_TRAPDOOR_WASTELAND.get());
         this.tag(VSTags.Items.CAULDRONS).add(Items.CAULDRON).add(VSItems.GOLDEN_CAULDRON.get());
         this.tag(VSTags.Items.BEACONS).add(Items.BEACON).add(VSItems.GOLDEN_BEACON.get());
-        this.tag(VSTags.Items.POTS).add(VSItems.STYLISED_POT.get()).add(VSItems.REDSTONE_POT.get()).add(VSItems.BLUESTONE_POT.get()).add(VSItems.GLOWSTONE_POT.get())
-                .add(VSItems.GUNPOWDER_POT.get()).add(VSItems.EXPLOSIVE_BLEND_POT.get()).add(VSItems.SUGAR_POT.get()).add(VSItems.SWEET_BERRY_POT.get()).add(VSItems.GLOW_BERRY_POT.get());
+        this.tag(VSTags.Items.POTS).add(VSItems.STYLISED_POT.get()).add(VSItems.REDSTONE_POT.get()).add(VSItems.BLUESTONE_POT.get()).add(VSItems.GLOWSTONE_POT.get()).add(VSItems.GUNPOWDER_POT.get()).add(VSItems.EXPLOSIVE_BLEND_POT.get())
+                .add(VSItems.SUGAR_POT.get()).add(VSItems.SWEET_BERRY_POT.get()).add(VSItems.GLOW_BERRY_POT.get());
         this.tag(VSTags.Items.SPYGLASSES).add(VSWeaponry.IRON_SPYGLASS.get()).add(VSWeaponry.DIAMOND_SPYGLASS.get()).add(VSWeaponry.NETHERITE_SPYGLASS.get());
         this.tag(VSTags.Items.SHULKER_SHELLS).add(Items.SHULKER_SHELL).add(VSItems.WHITE_SHULKER_SHELL.get()).add(VSItems.INNO_SHULKER_SHELL.get())
                 .add(VSItems.ORANGE_SHULKER_SHELL.get()).add(VSItems.MAGENTA_SHULKER_SHELL.get()).add(VSItems.LIGHT_BLUE_SHULKER_SHELL.get()).add(VSItems.GLOW_BLACK_SHULKER_SHELL.get())
@@ -130,12 +130,12 @@ public class VSItemTagsProvider extends ItemTagsProvider {
                 .add(VSItems.POTTED_ENDER_WART.get());
 
         // Bowl/Bucket Foods
-        this.tag(VSTags.Items.BOWL_FOODS_MUSHROOM).add(Items.MUSHROOM_STEW);
-        this.tag(VSTags.Items.BOWL_FOODS_BEETROOT).add(Items.BEETROOT_SOUP);
-        this.tag(VSTags.Items.BOWL_FOODS_RABBIT).add(Items.RABBIT_STEW);
-        this.tag(VSTags.Items.BOWL_FOODS_FUNGI).add(VSItems.FUNGI_STEW.get());
-        this.tag(VSTags.Items.BOWL_FOODS_END_FUNGI).add(VSItems.END_FUNGI_STEW.get());
-        this.tag(VSTags.Items.BOWL_FOODS_ALJAN_FUNGI).addOptional(backMath("aljan_fungi_stew"));
+        this.tag(VSTags.Items.BOWL_FOODS_MUSHROOM).add(Items.MUSHROOM_STEW).add(VSItems.EXPONENTIAL_MUSHROOM_STEW.get());
+        this.tag(VSTags.Items.BOWL_FOODS_BEETROOT).add(Items.BEETROOT_SOUP).add(VSItems.EXPONENTIAL_BEETROOT_SOUP.get());
+        this.tag(VSTags.Items.BOWL_FOODS_RABBIT).add(Items.RABBIT_STEW).add(VSItems.EXPONENTIAL_RABBIT_STEW.get());
+        this.tag(VSTags.Items.BOWL_FOODS_FUNGI).add(VSItems.FUNGI_STEW.get()).add(VSItems.EXPONENTIAL_FUNGI_STEW.get());
+        this.tag(VSTags.Items.BOWL_FOODS_END_FUNGI).add(VSItems.END_FUNGI_STEW.get()).add(VSItems.EXPONENTIAL_END_FUNGI_STEW.get());
+        this.tag(VSTags.Items.BOWL_FOODS_ALJAN_FUNGI).addOptional(backMath("aljan_fungi_stew")).add(VSItems.EXPONENTIAL_ALJAN_FUNGI_STEW.get());
 
         this.tag(VSTags.Items.BOWL_FOODS).addTag(VSTags.Items.BOWL_FOODS_MUSHROOM).addTag(VSTags.Items.BOWL_FOODS_BEETROOT).addTag(VSTags.Items.BOWL_FOODS_RABBIT).addTag(VSTags.Items.BOWL_FOODS_FUNGI)
                 .addTag(VSTags.Items.BOWL_FOODS_END_FUNGI).addTag(VSTags.Items.BOWL_FOODS_ALJAN_FUNGI);

@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "beetroot_soup",
+  "ingredients": [
+    {
+      "item": "variants:oak_bowl"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    }
+  ],
+  "result": {
+    "item": "variants:exponential_beetroot_soup",
+    "nbt": {
+      "bowl_type": {
+        "bowl_name": "variants:oak_bowl",
+        "bowl_id": 0
+      }
+    }
+  }
+}

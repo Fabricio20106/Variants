@@ -4,6 +4,7 @@
     {
       "id": "backmath:aljan_fungi_stew",
       "required": false
-    }
+    },
+    "variants:exponential_aljan_fungi_stew"
   ]
 }

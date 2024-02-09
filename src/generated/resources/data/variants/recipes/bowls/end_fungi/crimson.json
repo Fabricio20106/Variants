@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "end_fungi_stew",
+  "ingredients": [
+    {
+      "item": "variants:ender_fungus"
+    },
+    {
+      "item": "variants:ender_fungus"
+    },
+    {
+      "item": "variants:crimson_bowl"
+    }
+  ],
+  "result": {
+    "item": "variants:exponential_end_fungi_stew",
+    "nbt": {
+      "bowl_type": {
+        "bowl_name": "variants:crimson_bowl",
+        "bowl_id": 7
+      }
+    }
+  }
+}

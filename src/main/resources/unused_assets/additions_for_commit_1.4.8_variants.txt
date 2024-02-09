@@ -36,15 +36,15 @@ New Blocks:
 - Soul Brewing Stand
 
 New Items:
-- Exponential Bowls (Beetroot, Mushroom, Rabbit, Fungi, End Fungi, Suspicious, Water, Lava, Milk & Powder Snow)
+- Exponential Bowls (Beetroot, Mushroom, Rabbit, Fungi, End Fungi, Suspicious, Water, Lava, Milk & Powder Snow) [done]
 - Bowls (Oak, Spruce, Birch, Jungle, Acacia, Dark Oak, Painting, Crimson, Warped & Ender) [done]
-  - Compat Bowls: Glassy Oak, Plain Birch & Wooden (from F10 Blocks) [for Variants Compatibilities]
+  - Compat Bowls: Glassy Oak, Plain Birch, Wooden (from F10 Blocks) & Creeper Bowl [for Variants Compatibilities]
 - Stew/Soup Buckets [done]
 - Copper Chestplate [done]
 - (Corner) Iron Tie, Powered Tie, Detector Plate, Powered Railbed & Wooden Railbed [done]
 - Painting, Crimson & Warped Boats [done]
 - Crystallized Honey
-- Diamond, Emerald & Quartz Nuggets [quartz shard done]
+- Diamond, Emerald & Quartz Nuggets [done]
 - Emerald Armor Set [done]
 - End Fungi Stew [done]
 - End Stone Tool Set [done]

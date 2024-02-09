@@ -1,0 +1,68 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer1": "variants:item/stew_beetroot"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "minecraft:bowl_id": 0.0
+      },
+      "model": "variants:item/exponential_beetroot_soup_oak"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 1.0
+      },
+      "model": "variants:item/exponential_beetroot_soup_spruce"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 2.0
+      },
+      "model": "variants:item/exponential_beetroot_soup_birch"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 3.0
+      },
+      "model": "variants:item/exponential_beetroot_soup_jungle"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 4.0
+      },
+      "model": "variants:item/exponential_beetroot_soup_acacia"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 5.0
+      },
+      "model": "variants:item/exponential_beetroot_soup_dark_oak"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 6.0
+      },
+      "model": "variants:item/exponential_beetroot_soup_painting"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 7.0
+      },
+      "model": "variants:item/exponential_beetroot_soup_crimson"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 8.0
+      },
+      "model": "variants:item/exponential_beetroot_soup_warped"
+    },
+    {
+      "predicate": {
+        "minecraft:bowl_id": 9.0
+      },
+      "model": "variants:item/exponential_beetroot_soup_ender"
+    }
+  ]
+}

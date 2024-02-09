@@ -6,6 +6,7 @@ import com.junethewoods.variants.blockentity.VSBlockEntities;
 import com.junethewoods.variants.blockentity.renderer.VSBedBlockEntityRenderer;
 import com.junethewoods.variants.blockentity.renderer.VSBellBlockEntityRenderer;
 import com.junethewoods.variants.config.VSConfigs;
+import com.junethewoods.variants.crafting.VSRecipeTypes;
 import com.junethewoods.variants.effect.VSEffects;
 import com.junethewoods.variants.entity.VSEntities;
 import com.junethewoods.variants.entity.renderer.FishRenderer;
@@ -17,6 +18,7 @@ import com.junethewoods.variants.sound.VSSounds;
 import com.junethewoods.variants.util.VSClientHelpers;
 import com.junethewoods.variants.util.VSWoodTypes;
 import com.junethewoods.variants.world.biome.VSBiomes;
+import com.junethewoods.variants.world.biome.provider.VSEndBiomeProvider;
 import com.junethewoods.variants.world.carver.VSConfiguredCarvers;
 import com.junethewoods.variants.world.carver.VSWorldCarvers;
 import com.junethewoods.variants.world.surface.VSSurfaceBuilders;
@@ -31,6 +33,7 @@ import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -69,6 +72,7 @@ public class Variants {
         VSSounds.SOUNDS.register(eventBus);
         VSWorldCarvers.CARVERS.register(eventBus);
         VSBiomes.BIOMES.register(eventBus);
+        VSRecipeTypes.RECIPE_TYPES.register(eventBus);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, VSConfigs.COMMON_SPEC, "jtw-mods/variants-common.toml");
     }
@@ -88,6 +92,7 @@ public class Variants {
 
         VSConfiguredCarvers.init();
         VSSurfaceBuilders.init();
+        Registry.register(Registry.BIOME_SOURCE, Variants.resourceLoc("enderwood_end"), VSEndBiomeProvider.CODEC);
 
         VSClientHelpers.compostables();
         VSClientHelpers.tillables();
@@ -103,6 +108,17 @@ public class Variants {
         VSClientHelpers.makeShield(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
         VSClientHelpers.makeCustomWoolSweater(VSWeaponry.WOOL_SWEATER.get());
         VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_MUSHROOM_STEW.get());
+        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_BEETROOT_SOUP.get());
+        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_RABBIT_STEW.get());
+        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_SUSPICIOUS_STEW.get());
+        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_FUNGI_STEW.get());
+        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_END_FUNGI_STEW.get());
+        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_ALJAN_FUNGI_STEW.get());
+        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_WATER_BOWL.get());
+        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_MILK_BOWL.get());
+        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_LAVA_BOWL.get());
+        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_SOUL_LAVA_BOWL.get());
+        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_POWDER_SNOW_BOWL.get());
         setRenderTypesForBlocks();
 
         Atlases.addWoodType(VSWoodTypes.PAINTING);

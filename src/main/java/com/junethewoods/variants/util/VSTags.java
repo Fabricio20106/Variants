@@ -127,6 +127,7 @@ public class VSTags {
         public static final ITag.INamedTag<Block> WARPING_VINES_CAN_PLACE_ON = mod("warping_vines_feature_can_place_on");
         public static final ITag.INamedTag<Block> CHORUS_FLOWER_PLANTABLE_ON = mod("chorus_flower_plantable_on");
         public static final ITag.INamedTag<Block> END_CARVER_REPLACEABLES = mod("end_carver_replaceables");
+        public static final ITag.INamedTag<Block> HAS_ENDER_NYLIUM = mod("has_ender_nylium");
 
         // Melony (convention) Tags
         public static final ITag.INamedTag<Block> DEEPSLATE_REPLACEABLES = melony("deepslate_replaceables");
