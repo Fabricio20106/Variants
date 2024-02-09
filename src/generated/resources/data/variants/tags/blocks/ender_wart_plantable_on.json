@@ -1,9 +1,10 @@
 {
   "replace": false,
   "values": [
+    "#forge:end_stones",
     "variants:ender_nylium",
     "variants:ender_farmland",
-    "minecraft:end_stone",
+    "variants:ender_nylium_quartz_ore",
     "minecraft:obsidian"
   ]
 }

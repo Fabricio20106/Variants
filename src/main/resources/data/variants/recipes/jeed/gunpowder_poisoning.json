@@ -11,7 +11,7 @@
   },
   "providers": [
     {
-      "item": "mobarmor:gunpowder_pot"
+      "item": "variants:gunpowder_pot"
     }
   ]
 }

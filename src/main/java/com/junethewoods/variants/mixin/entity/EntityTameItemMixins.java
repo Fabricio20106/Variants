@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 public class EntityTameItemMixins {
     @Mixin(CatEntity.class)
-    public static class CatEntityMixin {
+    public static class VSCatEntityMixin {
         @Inject(method = "isFood", at = @At("HEAD"), cancellable = true)
         private void isFood(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
             cir.setReturnValue(stack.getItem().is(VSTags.Items.CATLIKE_TAME_ITEMS));
@@ -19,7 +19,7 @@ public class EntityTameItemMixins {
     }
 
     @Mixin(OcelotEntity.class)
-    public static class OcelotEntityMixin {
+    public static class VSOcelotEntityMixin {
         @Inject(method = "isFood", at = @At("HEAD"), cancellable = true)
         private void isFood(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
             cir.setReturnValue(stack.getItem().is(VSTags.Items.CATLIKE_TAME_ITEMS));

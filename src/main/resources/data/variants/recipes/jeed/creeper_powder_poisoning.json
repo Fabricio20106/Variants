@@ -11,7 +11,7 @@
   },
   "providers": [
     {
-      "item": "mobarmor:creeper_powder_pot"
+      "item": "variants:creeper_powder_pot"
     }
   ]
 }

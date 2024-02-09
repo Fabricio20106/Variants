@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "minecraft:end_stone",
+    "#forge:end_stones",
     "variants:ender_nylium",
     "variants:ender_wart_block"
   ]

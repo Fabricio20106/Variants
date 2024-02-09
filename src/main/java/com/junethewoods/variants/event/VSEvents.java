@@ -6,6 +6,7 @@ import com.junethewoods.variants.entity.VSEntities;
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.VSWeaponry;
 import com.junethewoods.variants.item.custom.armor.WoolArmorItem;
+import com.junethewoods.variants.world.carver.VSConfiguredCarvers;
 import com.junethewoods.variants.world.feature.VSFeatures;
 import com.junethewoods.variants.world.feature.VSOreGeneration;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -45,6 +46,10 @@ public class VSEvents {
         if (event.getCategory() == Biome.Category.NETHER && VSConfigs.COMMON_CONFIGS.generateSoulLavaSprings.get()) {
             settings.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, VSFeatures.CLOSED_SOUL_LAVA_SPRING);
             settings.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, VSFeatures.OPEN_SOUL_LAVA_SPRING);
+        }
+        if (event.getCategory() == Biome.Category.THEEND && VSConfigs.COMMON_CONFIGS.generateEndCavesAndRavines.get()) {
+            settings.addCarver(GenerationStage.Carving.AIR, VSConfiguredCarvers.END_CAVE);
+            settings.addCarver(GenerationStage.Carving.AIR, VSConfiguredCarvers.END_RAVINE);
         }
 
         if (VSConfigs.COMMON_CONFIGS.generateQuartzOre.get()) VSOreGeneration.generateQuartzOre(event);

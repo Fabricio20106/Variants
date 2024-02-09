@@ -64,6 +64,8 @@ public abstract class VSItemModelModels extends ItemModelProvider {
 
     // Methods for making specific items (for example, spyglasses)
     public void expoStew(String name, String stewType) {
+        String[] bowls = {"oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "painting", "crimson", "warped", "ender"};
+
         getBuilder(name).parent(generated).texture("layer1", modLoc("item/stew_" + stewType))
                 .override().predicate(bowlId(), 0).model(getExistingFile(modLoc("item/oak_bowl"))).end()
                 .override().predicate(bowlId(), 1).model(getExistingFile(modLoc("item/spruce_bowl"))).end()

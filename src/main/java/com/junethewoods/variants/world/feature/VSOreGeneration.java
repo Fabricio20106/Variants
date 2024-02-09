@@ -13,12 +13,14 @@ import net.minecraft.world.gen.feature.template.RuleTest;
 import net.minecraft.world.gen.feature.template.TagMatchRuleTest;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 public class VSOreGeneration {
-    public static final RuleTest BASE_STONE_END = new BlockMatchRuleTest(Blocks.END_STONE);
+    public static final RuleTest BASE_STONE_END = new TagMatchRuleTest(Tags.Blocks.END_STONES);
     public static final RuleTest DEEPSLATE_REPLACEABLES = new TagMatchRuleTest(VSTags.Blocks.DEEPSLATE_REPLACEABLES);
+    public static final RuleTest ENDER_NYLIUM = new BlockMatchRuleTest(VSBlocks.ENDER_NYLIUM.get());
 
     // Overworld Ores
     public static void generateQuartzOre(final BiomeLoadingEvent event) {
@@ -32,6 +34,7 @@ public class VSOreGeneration {
     public static void generateEndQuartzOre(final BiomeLoadingEvent event) {
         if (event.getCategory().equals(Biome.Category.THEEND)) {
             generateOre(event.getGeneration(), BASE_STONE_END, VSBlocks.END_QUARTZ_ORE.get().defaultBlockState(), 14, 10, 108, 12);
+            generateOre(event.getGeneration(), ENDER_NYLIUM, VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get().defaultBlockState(), 14, 10, 108, 12);
         }
     }
 

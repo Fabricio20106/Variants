@@ -3,6 +3,7 @@
   "values": [
     "variants:quartz_ore",
     "variants:deepslate_quartz_ore",
-    "variants:end_quartz_ore"
+    "variants:end_quartz_ore",
+    "variants:ender_nylium_quartz_ore"
   ]
 }

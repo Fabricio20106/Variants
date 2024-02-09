@@ -1,9 +1,9 @@
 {
-  "parent": "variants:variants/root",
+  "parent": "variants:variants/obtain_debug_bow",
   "display": {
     "icon": {
       "item": "minecraft:enchanted_book",
-      "nbt": "{Enchantments:[{id:\"minecraft:quick_charge,lvl:5\"}]}"
+      "nbt": "{StoredEnchantments:[{lvl:5s,id:\"minecraft:quick_charge\"}]}"
     },
     "title": {
       "translate": "advancements.variants.obtain_quick_charge_five_book.title"
@@ -26,7 +26,18 @@
         "items": [
           {
             "item": "minecraft:enchanted_book",
-            "nbt": "{Enchantments:[{id:\\\"minecraft:quick_charge,lvl:5\\\"}]}"
+            "nbt": "{StoredEnchantments:[{lvl:5s,id:\"minecraft:quick_charge\"}]}"
+          }
+        ]
+      }
+    },
+    "obtained_quick_charge_five_ek_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:enchanted_knowledge_book",
+            "nbt": "{StoredEnchantments:[{lvl:5s,id:\"minecraft:quick_charge\"}]}"
           }
         ]
       }
@@ -34,7 +45,8 @@
   },
   "requirements": [
     [
-      "obtained_quick_charge_five_book"
+      "obtained_quick_charge_five_book",
+      "obtained_quick_charge_five_ek_book"
     ]
   ]
 }

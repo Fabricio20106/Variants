@@ -4,6 +4,7 @@ import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.block.VSBlocks;
 import com.junethewoods.variants.fluid.VSFluids;
 import com.junethewoods.variants.item.VSItems;
+import com.junethewoods.variants.util.VSTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowingFluidBlock;
@@ -139,7 +140,7 @@ public abstract class SoulLavaFluid extends ForgeFlowingFluid {
     }
 
     public boolean isSame(Fluid fluid) {
-        return fluid == VSFluids.SOUL_LAVA.get() || fluid == VSFluids.FLOWING_SOUL_LAVA.get();
+        return fluid.is(VSTags.Fluids.SOUL_LAVA);
     }
 
     public int getDropOff(IWorldReader world) {
@@ -176,7 +177,7 @@ public abstract class SoulLavaFluid extends ForgeFlowingFluid {
             FluidState fluidState = world.getFluidState(pos);
             if (this.is(FluidTags.LAVA) && fluidState.is(FluidTags.WATER)) {
                 if (state.getBlock() instanceof FlowingFluidBlock) {
-                    world.setBlock(pos, ForgeEventFactory.fireFluidPlaceBlockEvent(world, pos, pos, Blocks.STONE.defaultBlockState()), 3);
+                    world.setBlock(pos, ForgeEventFactory.fireFluidPlaceBlockEvent(world, pos, pos, Blocks.BLACKSTONE.defaultBlockState()), 3);
                 }
 
                 this.fizz(world, pos);

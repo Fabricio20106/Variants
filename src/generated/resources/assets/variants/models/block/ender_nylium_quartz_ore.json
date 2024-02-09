@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "variants:block/ender_nylium_quartz_ore_side",
+    "bottom": "variants:block/end_quartz_ore",
+    "top": "variants:block/ender_nylium"
+  }
+}

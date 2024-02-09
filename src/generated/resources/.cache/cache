@@ -26,6 +26,7 @@ e4cd9d9a57dc403962a4ddf9ed7803342b517849 assets/variants/blockstates/ender_fence
 461e74324eb0e2df9ff83d92c5054a4f10747fc4 assets/variants/blockstates/ender_fungus.json
 aa3a32dfeeef18be32424fa1594f67075ab3b652 assets/variants/blockstates/ender_hyphae.json
 117b5c70c75e3fad807867df920b18426baccdab assets/variants/blockstates/ender_nylium.json
+2d7c36a78700a06e933bbff0660ade9d290877f2 assets/variants/blockstates/ender_nylium_quartz_ore.json
 98a8665c263912f3458e5161efc38e39ae84a418 assets/variants/blockstates/ender_planks.json
 37f9848ceec9da1e128f4af3627067066bc94487 assets/variants/blockstates/ender_pressure_plate.json
 d70feeff39c8cd4787fc4d7bc42a204fdd7ccb8f assets/variants/blockstates/ender_roots.json
@@ -150,6 +151,7 @@ f3d03b27a100567b1a0bb2bab2406077a022d460 assets/variants/models/block/ender_fung
 f9b657bf443da4fee2ed27edd1576d8ad37d30d5 assets/variants/models/block/ender_hyphae.json
 f0455eb6b5e7cce96a95dcf124cdd59139bfe959 assets/variants/models/block/ender_hyphae_horizontal.json
 d5824353301f834e4a897cc1cb7c03ba79f11e8f assets/variants/models/block/ender_nylium.json
+3b6324ae63830f06d4360aa496024c0d9642a8f3 assets/variants/models/block/ender_nylium_quartz_ore.json
 955ee15be01943b66d6802c6de0c4f4f01cad8fa assets/variants/models/block/ender_planks.json
 f68feb0312d78d0c464857a1c08391da0b100b8d assets/variants/models/block/ender_pressure_plate.json
 9f88f9bb1ca682cf0db4c7d76e69d38ed5dedc7b assets/variants/models/block/ender_pressure_plate_powered.json
@@ -327,6 +329,7 @@ e010667be8b3d17609d0f4d4ad0ca67597b3a0dd assets/variants/models/item/debug_bow_p
 5f816c761a12bd2a8b6c090a5780544b1481a1ed assets/variants/models/item/diaemerald_shears.json
 f18c9a01936c2acf66e47a01c699a6b4c2f7ca5b assets/variants/models/item/diamond_bell.json
 243de9b921c6da963d3d025a5f6c00780747826b assets/variants/models/item/diamond_chain.json
+15d77dbbbb57900ddd1b4ae3864c548d4e95e78d assets/variants/models/item/diamond_nugget.json
 595b10e88a47e4219193b13a0d672b078563bba1 assets/variants/models/item/diamond_shears.json
 53488a85a85b9b007b5ce7386b3cbe2bb5c458fd assets/variants/models/item/diamond_spyglass.json
 473005e7fa031eac3431ea2a41dd0aa5072c7246 assets/variants/models/item/diorite_axe.json
@@ -349,6 +352,7 @@ d994967dc25ac638c31333647e66bee99d8766d6 assets/variants/models/item/elder_sea_l
 ce125b07c810c563d3e7c98fb9852620e9f0dde9 assets/variants/models/item/emerald_chestplate.json
 9bf016cc32092c96f73f4eefeef35b8ddf8f28fd assets/variants/models/item/emerald_helmet.json
 6d6c26bae92c481f0607133634f7691c682748a9 assets/variants/models/item/emerald_leggings.json
+d3c2525edad4a1ef90ef78c9905cf21b61c1b77d assets/variants/models/item/emerald_nugget.json
 b23fba8ce8182590b70d1760e1aca03742804ab7 assets/variants/models/item/emerald_shears.json
 258d21399491d727a0f5f353054f18c8242a4857 assets/variants/models/item/empty_armor_slot_boots.json
 81f6c473c87cd7cfa639191193e2cbfee29c8a63 assets/variants/models/item/empty_armor_slot_chestplate.json
@@ -376,6 +380,7 @@ b9ccd3b0735f7761db0eed21e80af804b589afde assets/variants/models/item/ender_fence
 483cb5715acb9243969b9a240ec512d63fcf39c8 assets/variants/models/item/ender_fungus.json
 796df021d788779964786a43c5e4106860cf7e7a assets/variants/models/item/ender_hyphae.json
 6785108eee83fa5c759b82c26a0e9147097d13b7 assets/variants/models/item/ender_nylium.json
+f919a0224823aec2eeec4f77d32e7d0c215be8e3 assets/variants/models/item/ender_nylium_quartz_ore.json
 b51dd53bd862584f5ac9ba7567e787a7711737ed assets/variants/models/item/ender_planks.json
 a6953efb1f4da0b3a79828da7c6820398164a1cf assets/variants/models/item/ender_pressure_plate.json
 c163f9a220c4745614212e3798be0c591d9ce56b assets/variants/models/item/ender_roots.json
@@ -523,6 +528,7 @@ fc3b6f4514c8ad03ee25930ddd6b9ffaa5957707 assets/variants/models/item/red_nether_
 58d1bc6ce695c42e5ee711e73ed0450ad5df2adb assets/variants/models/item/redstone_pot.json
 04a8209f41f7f7b196dfb35fc15445546ff9bb4b assets/variants/models/item/redstone_shears.json
 330804c99faa9331ea768259a56b6fb481d4df68 assets/variants/models/item/ruby_shears.json
+a273e4f95a6096beaf39d355d6ee5041d241b935 assets/variants/models/item/shulker_spectrum_icon.json
 45d86e3018ae357dee3a8032270acaa14b2ab69c assets/variants/models/item/soul_charge.json
 60697ee0ed1e128631a6703adeb658ec77e4da31 assets/variants/models/item/soul_lava_bottle.json
 4c65791f964681e25d38ac000f51c836e26e6dfa assets/variants/models/item/soul_lava_bucket.json
@@ -567,7 +573,7 @@ d72f21682d9b0fbab2b8a48b90edd11ef91bbc83 assets/variants/models/item/yellow_shul
 af9aba1e18b7af7f3b15e3c4b547e863944414db data/forge/tags/blocks/glass/glow_black.json
 1b35039e7cd7bfd82754b6ff54b4512acaf0f0c8 data/forge/tags/blocks/glass_panes/colorless.json
 0c4a5e039968bd980e4c5956d3bca72300150798 data/forge/tags/blocks/glass_panes/glow_black.json
-265ee46a46e4cbe12a1c6c40a40afeb33e43f098 data/forge/tags/blocks/ores/quartz.json
+a197b3da3cbf98b18e95c0f3cee9e13556247675 data/forge/tags/blocks/ores/quartz.json
 af9aba1e18b7af7f3b15e3c4b547e863944414db data/forge/tags/blocks/stained_glass.json
 0c4a5e039968bd980e4c5956d3bca72300150798 data/forge/tags/blocks/stained_glass_panes.json
 e27be6569bb078d85fc734584d00dc455e573b85 data/forge/tags/blocks/storage_blocks.json
@@ -601,10 +607,12 @@ f617dd2aa68e1561e928076287176d1c9678a3b3 data/forge/tags/items/ingots/exposed_co
 2c9a13668e3f94c98412b2e48dea44725f79d7a8 data/forge/tags/items/ingots/oxidized_copper.json
 e4ce25ab06e4cb9b05db6fbd0216b1370c77bd2b data/forge/tags/items/ingots/red_nether_brick.json
 c4d26a86e2d086152016e2db24f0f7b035de4d30 data/forge/tags/items/ingots/weathered_copper.json
-e3ee521d012e51c9633b84cb77d6c619336d9f20 data/forge/tags/items/nuggets.json
+dfe43b17312d505b0c4098be00dc89257abe6d89 data/forge/tags/items/nuggets.json
+bef58c48106d855671311e5a6f8094999fe650d5 data/forge/tags/items/nuggets/diamond.json
+5d3bf4530793f6f5bfdf78ba041cb76af601fafe data/forge/tags/items/nuggets/emerald.json
 489ff9bfbd58a66a6738d8d35f090ee5732c1afd data/forge/tags/items/nuggets/purple_iron.json
 4a2184a35aa6fc6fd33349b9bf18e6307751a32d data/forge/tags/items/nuggets/quartz.json
-265ee46a46e4cbe12a1c6c40a40afeb33e43f098 data/forge/tags/items/ores/quartz.json
+a197b3da3cbf98b18e95c0f3cee9e13556247675 data/forge/tags/items/ores/quartz.json
 c12e6adfc6f3eb3e5600b65115bb56045e3147d6 data/forge/tags/items/raw_materials.json
 6638a55711f8b9088cf6b0d81d8ff29fd5781308 data/forge/tags/items/raw_materials/netherite_scrap.json
 082fcf103c646f5e695b81f752d3037bf37b71df data/forge/tags/items/rods.json
@@ -618,6 +626,7 @@ af9aba1e18b7af7f3b15e3c4b547e863944414db data/forge/tags/items/stained_glass.jso
 0c4a5e039968bd980e4c5956d3bca72300150798 data/forge/tags/items/stained_glass_panes.json
 e27be6569bb078d85fc734584d00dc455e573b85 data/forge/tags/items/storage_blocks.json
 af7d5c33dcce6190f5b4c0172a88c603192243e0 data/forge/tags/items/storage_blocks/netherite_scrap.json
+ce09cc7db1a78892a05b439f5c760b71cef67110 data/forge/tags/items/tools/hoes.json
 d74fcf7718ee7b3f37af36ad5743507d623bf9d2 data/melony/tags/blocks/conduit_frame_blocks.json
 b7b6f8f1d6089cbda15c21d6acce4341c604c923 data/melony/tags/blocks/deepslate_replaceables.json
 e23d085bd08cd8687847fb368a0bdaae558a5408 data/melony/tags/blocks/farmland.json
@@ -627,13 +636,15 @@ e23d085bd08cd8687847fb368a0bdaae558a5408 data/melony/tags/blocks/farmland.json
 8ab7d440c65f672ec0ec1ee0c52c15793cc1f31e data/melony/tags/items/bowls/obtainable_through_fishing.json
 dd34e8107b95914e6b94f0acb520c36b45480a06 data/melony/tags/items/bowls/wooden.json
 4d9115ef8b4c92c233e724324962ac62c8e1b6a8 data/melony/tags/items/catlike_tame_items.json
+d85e19923d856700c375c11c43becfd00caf9232 data/melony/tags/items/icon_items.json
+b08a50294206c7ab337f8a80f54e80b2e6ee0354 data/melony/tags/items/nether_stars.json
 eaa7383ac9766c01e3b8a671a811f1b0e2ea68d9 data/melony/tags/items/shields.json
 d0bae256fdd04bdd716188e7694fc138fa904ba1 data/minecraft/tags/blocks/beds.json
 4d15a81e498c9bdedc9ad234f8706ee9e69acec3 data/minecraft/tags/blocks/bee_growables.json
 c9e762314d21e3cd6eaaf4b8e94f666a11c5a371 data/minecraft/tags/blocks/carpets.json
 f50313b31d515c63877c07868e789872d84cae8b data/minecraft/tags/blocks/climbable.json
 11c0984fa362b0c975f93869c87883183bcb55aa data/minecraft/tags/blocks/crops.json
-4211bf4336bb979841fa78a5734bc66eeb7abad8 data/minecraft/tags/blocks/dragon_immune.json
+fe0cf8da4b2d3edb36812597b091bf2d2e9b7c7c data/minecraft/tags/blocks/dragon_immune.json
 6f63dbe879e7c75905073b0f5ba57aab8e61d823 data/minecraft/tags/blocks/fence_gates.json
 4492f1e0128ad6a9a15e7e230b97fcb379000e06 data/minecraft/tags/blocks/fences.json
 45a161891f19155d8d6aff5eac03b78f046fd66b data/minecraft/tags/blocks/flower_pots.json
@@ -641,7 +652,7 @@ f50313b31d515c63877c07868e789872d84cae8b data/minecraft/tags/blocks/climbable.js
 54367d12f26e079ed4f68636b467aa4db2df5646 data/minecraft/tags/blocks/impermeable.json
 55012d0dbc11403e4a47590ffecb0dcb9d136b1f data/minecraft/tags/blocks/leaves.json
 801d840d71e1e102d5fa61d004874bf4e5b3b9a9 data/minecraft/tags/blocks/logs_that_burn.json
-cc186eea41364cd4a797defac919cd23038fdfa5 data/minecraft/tags/blocks/nylium.json
+e6e58d43872a6931bb892fdd05dfe8b84153a9e0 data/minecraft/tags/blocks/nylium.json
 16e8a5625eb897b6abec9bd849306a19818c3620 data/minecraft/tags/blocks/planks.json
 1508344ef52aacaa702da831c9becb7ef6f23fef data/minecraft/tags/blocks/saplings.json
 da5820c33adfb670e3a2a7312e2fe3066433fd2c data/minecraft/tags/blocks/slabs.json
@@ -659,7 +670,7 @@ c15a9d3882e07cb63edd6b8cff07b55c0a870776 data/minecraft/tags/blocks/wooden_fence
 2bb364f7db96796f98b7ce10b4ba792ab952edae data/minecraft/tags/blocks/wooden_stairs.json
 1e6cc54b86170f7d011dccdbea8855b97e69c075 data/minecraft/tags/blocks/wooden_trapdoors.json
 3e77e4d6f65c6bbaee4e1b25812fbcbc39c29fec data/minecraft/tags/blocks/wool.json
-809fbd27390bfa6516052dead7fe1ee172f578bf data/minecraft/tags/fluids/lava.json
+f4a0ba49af58904c1446e03ef249a007cb3cd6b4 data/minecraft/tags/fluids/lava.json
 d0bae256fdd04bdd716188e7694fc138fa904ba1 data/minecraft/tags/items/beds.json
 50b6b2ef1fa88f90d6bca5c6c979f1b55a348d8b data/minecraft/tags/items/boats.json
 c9e762314d21e3cd6eaaf4b8e94f666a11c5a371 data/minecraft/tags/items/carpets.json
@@ -686,16 +697,18 @@ c15a9d3882e07cb63edd6b8cff07b55c0a870776 data/minecraft/tags/items/wooden_fences
 6ebd4cc1d89baa672698040b5759610f4868fa26 data/variants/tags/blocks/beacons.json
 3aaeb88de44811b3a9955501fe0607fe9aefb4bf data/variants/tags/blocks/bookshelves.json
 8459b8738727a0ee656535abf26353c5e6faec51 data/variants/tags/blocks/cauldrons.json
-535009a38983236603446c3bac45bf2c4071c074 data/variants/tags/blocks/chorus_flower_plantable_on.json
-329742d545b0f87b2ed7ed0080cc0b105d017bc4 data/variants/tags/blocks/end_plants_plantable_on.json
-f60862919092ac6ef6607b413796f944f996ee82 data/variants/tags/blocks/ender_wart_plantable_on.json
+10aeea3598e11d14fb9fff8f46b69e25197b5e50 data/variants/tags/blocks/chorus_flower_plantable_on.json
+b79ef03abf1f572d79c352a4683a544d5d13c4a1 data/variants/tags/blocks/end_carver_replaceables.json
+2bc85a32bfeb893fcce99d933c11cc168f381f8f data/variants/tags/blocks/end_plants_plantable_on.json
+f7f3188ed355c32b03e4f4b1458110fb7cb8900a data/variants/tags/blocks/ender_wart_plantable_on.json
 f7b5455739407ddd814c09d0f66ff892f896cea2 data/variants/tags/blocks/enderwood_stems.json
 0c1eb64dab4df4c5771ea8dd2a54b7cf96fc8526 data/variants/tags/blocks/golden_carrots_plantable_on.json
 abe677791f6d916b3b307bd1270f4d6687516251 data/variants/tags/blocks/nether_wart_plantable_on.json
 d49ddc370b30c9b9f0d41c90a69601574a941def data/variants/tags/blocks/painting_doors.json
 59f537833a6d2b59ab763a6e112bbd5a99a1b7aa data/variants/tags/blocks/painting_logs.json
 9d16a8f7f1608b9050bd6b45561652ebedc5563d data/variants/tags/blocks/painting_trapdoors.json
-549d8ac9eb33275440c0490a52497eaf0631f6c3 data/variants/tags/blocks/warping_vines_feature_can_place_on.json
+3a10aedff11f62678f1e21a8112bb7d44d3d972f data/variants/tags/blocks/warping_vines_feature_can_place_on.json
+809fbd27390bfa6516052dead7fe1ee172f578bf data/variants/tags/fluids/soul_lava.json
 6ebd4cc1d89baa672698040b5759610f4868fa26 data/variants/tags/items/beacons.json
 babfa81f45ee8766d1daaff4bddcac7a18d93f84 data/variants/tags/items/bowl_foods.json
 3af5563c008a67189d6680e8418955ac9f05d97e data/variants/tags/items/bowl_foods/aljan_fungi.json

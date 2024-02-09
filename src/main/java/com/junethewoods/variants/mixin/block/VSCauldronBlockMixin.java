@@ -20,13 +20,13 @@ import org.spongepowered.asm.mixin.Unique;
 import javax.annotation.Nullable;
 
 @Mixin(CauldronBlock.class)
-public class CauldronBlockMixin extends Block {
+public class VSCauldronBlockMixin extends Block {
     @Unique
     private static final IntegerProperty LEVEL = CauldronBlock.LEVEL;
     @Unique
     private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    public CauldronBlockMixin(Properties properties) {
+    public VSCauldronBlockMixin(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false).setValue(LEVEL, 0));
     }

@@ -1,5 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "minecraft:glow_berries"
+    }
+  ],
   "ingredients": [
     {
       "item": "variants:stylised_pot"

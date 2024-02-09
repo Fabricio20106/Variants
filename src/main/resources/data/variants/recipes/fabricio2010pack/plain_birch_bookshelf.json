@@ -1,5 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "fabricio2010pack"
+    }
+  ],
   "pattern": [
     "###",
     "BBB",

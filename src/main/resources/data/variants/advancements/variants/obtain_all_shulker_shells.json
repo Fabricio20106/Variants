@@ -2,7 +2,7 @@
   "parent": "variants:variants/enter_the_end",
   "display": {
     "icon": {
-      "item": "minecraft:shulker_shell"
+      "item": "variants:shulker_spectrum_icon"
     },
     "title": {
       "translate": "advancements.variants.obtain_all_shulker_shells.title"
@@ -10,7 +10,7 @@
     "description": {
       "translate": "advancements.variants.obtain_all_shulker_shells.description"
     },
-    "frame": "goal",
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false

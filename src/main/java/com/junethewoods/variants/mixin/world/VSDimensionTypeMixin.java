@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(DimensionType.class)
-public class DimensionTypeMixin {
+public class VSDimensionTypeMixin {
     @Inject(method = "defaultEndGenerator", at = @At("HEAD"), cancellable = true)
     private static void defaultEndGenerator(Registry<Biome> biomeReg, Registry<DimensionSettings> dimensionReg, long seed, CallbackInfoReturnable<ChunkGenerator> cir) {
         cir.setReturnValue(new NoiseChunkGenerator(new VSEndBiomeProvider(biomeReg, seed), seed, () -> dimensionReg.getOrThrow(DimensionSettings.END)));

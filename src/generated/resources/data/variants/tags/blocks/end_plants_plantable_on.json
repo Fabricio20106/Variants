@@ -2,7 +2,7 @@
   "replace": false,
   "values": [
     "#minecraft:nylium",
-    "minecraft:end_stone",
+    "#forge:end_stones",
     "minecraft:obsidian"
   ]
 }

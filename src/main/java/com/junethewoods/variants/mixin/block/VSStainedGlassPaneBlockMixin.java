@@ -2,7 +2,7 @@ package com.junethewoods.variants.mixin.block;
 
 import com.junethewoods.variants.Variants;
 import net.minecraft.block.Block;
-import net.minecraft.block.StainedGlassBlock;
+import net.minecraft.block.StainedGlassPaneBlock;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.DyeColor;
 import net.minecraft.item.ItemStack;
@@ -18,12 +18,12 @@ import org.spongepowered.asm.mixin.Shadow;
 import javax.annotation.Nullable;
 import java.util.List;
 
-@Mixin(StainedGlassBlock.class)
-public class StainedGlassBlockMixin extends Block {
+@Mixin(StainedGlassPaneBlock.class)
+public class VSStainedGlassPaneBlockMixin extends Block {
     @Shadow @Final
     private DyeColor color;
 
-    public StainedGlassBlockMixin(Properties properties) {
+    public VSStainedGlassPaneBlockMixin(Properties properties) {
         super(properties);
     }
 

@@ -1,6 +1,21 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "minecraft:powder_snow_bucket"
+    }
+  ],
   "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    },
     {
       "item": "minecraft:glass_bottle"
     },
@@ -9,6 +24,7 @@
     }
   ],
   "result": {
-    "item": "variants:powder_snow_bottle"
+    "item": "variants:powder_snow_bottle",
+    "count": 4
   }
 }

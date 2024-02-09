@@ -11,7 +11,7 @@
   },
   "providers": [
     {
-      "item": "mobarmor:wither_bone_block"
+      "item": "variants:wither_bone_block"
     }
   ]
 }

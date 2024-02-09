@@ -1,5 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "fabricio2010pack"
+    }
+  ],
   "ingredients": [
     {
       "item": "variants:painting_door"

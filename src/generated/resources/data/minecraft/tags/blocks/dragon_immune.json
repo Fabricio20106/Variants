@@ -3,6 +3,7 @@
   "values": [
     "variants:ender_nylium",
     "variants:end_quartz_ore",
+    "variants:ender_nylium_quartz_ore",
     "variants:quartz_bars"
   ]
 }

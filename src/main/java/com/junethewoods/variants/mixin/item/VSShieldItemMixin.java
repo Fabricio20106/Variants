@@ -10,8 +10,8 @@ import net.minecraft.item.ShieldItem;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(ShieldItem.class)
-public class ShieldItemMixin extends Item {
-    public ShieldItemMixin(Properties properties) {
+public class VSShieldItemMixin extends Item {
+    public VSShieldItemMixin(Properties properties) {
         super(properties);
     }
 

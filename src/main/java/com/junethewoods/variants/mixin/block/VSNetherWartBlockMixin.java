@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(NetherWartBlock.class)
-public class NetherWartBlockMixin {
+public class VSNetherWartBlockMixin {
     @Inject(method = "mayPlaceOn", at = @At("HEAD"), cancellable = true)
     private void mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(state.is(VSTags.Blocks.NETHER_WART_PLACEABLE_ON));

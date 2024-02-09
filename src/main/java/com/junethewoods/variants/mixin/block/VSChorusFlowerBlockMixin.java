@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 import java.util.Random;
 
 @Mixin(ChorusFlowerBlock.class)
-public abstract class ChorusFlowerBlockMixin extends Block {
+public abstract class VSChorusFlowerBlockMixin extends Block {
     @Shadow
     @Final
     private ChorusPlantBlock plant;
@@ -31,7 +31,7 @@ public abstract class ChorusFlowerBlockMixin extends Block {
     @Shadow
     protected abstract void placeDeadFlower(World world, BlockPos pos);
 
-    public ChorusFlowerBlockMixin(Properties properties) {
+    public VSChorusFlowerBlockMixin(Properties properties) {
         super(properties);
     }
 

@@ -10,8 +10,8 @@ import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(FlintAndSteelItem.class)
-public class FlintAndSteelItemMixin extends Item {
-    public FlintAndSteelItemMixin(Properties properties) {
+public class VSFlintAndSteelItemMixin extends Item {
+    public VSFlintAndSteelItemMixin(Properties properties) {
         super(properties);
     }
 

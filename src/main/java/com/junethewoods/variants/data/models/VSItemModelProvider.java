@@ -29,6 +29,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         block("quartz_ore");
         block("deepslate_quartz_ore");
         block("end_quartz_ore");
+        block("ender_nylium_quartz_ore");
         block("wither_bone_block");
         block("raw_debris_block");
         block("glow_black_wool");
@@ -119,6 +120,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(generated, "green_shulker_shell");
         standard(generated, "red_shulker_shell");
         standard(generated, "black_shulker_shell");
+        standard(generated, "shulker_spectrum_icon");
         standard(generated, "music_disc_dog");
         standard(generated, "spawner_minecart");
         standard(generated, "fungi_stew");
@@ -215,6 +217,8 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(generated, "emerald_chain");
         standard(generated, "ender_sprouts");
         standard(generated, "splash_soph_potion");
+        standard(generated, "diamond_nugget");
+        standard(generated, "emerald_nugget");
         standard(generated, "quartz_nugget");
         standard(generated, "purple_nugget");
 

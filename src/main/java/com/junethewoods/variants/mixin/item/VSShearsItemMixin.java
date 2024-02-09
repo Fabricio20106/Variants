@@ -10,8 +10,8 @@ import net.minecraft.item.ShearsItem;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(ShearsItem.class)
-public class ShearsItemMixin extends Item {
-    public ShearsItemMixin(Properties properties) {
+public class VSShearsItemMixin extends Item {
+    public VSShearsItemMixin(Properties properties) {
         super(properties);
     }
 

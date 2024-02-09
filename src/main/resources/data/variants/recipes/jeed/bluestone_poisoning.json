@@ -11,7 +11,7 @@
   },
   "providers": [
     {
-      "item": "mobarmor:bluestone_pot"
+      "item": "variants:bluestone_pot"
     }
   ]
 }

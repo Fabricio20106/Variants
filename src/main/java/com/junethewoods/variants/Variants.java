@@ -17,6 +17,8 @@ import com.junethewoods.variants.sound.VSSounds;
 import com.junethewoods.variants.util.VSClientHelpers;
 import com.junethewoods.variants.util.VSWoodTypes;
 import com.junethewoods.variants.world.biome.VSBiomes;
+import com.junethewoods.variants.world.carver.VSConfiguredCarvers;
+import com.junethewoods.variants.world.carver.VSWorldCarvers;
 import com.junethewoods.variants.world.surface.VSSurfaceBuilders;
 import net.minecraft.block.Block;
 import net.minecraft.block.WoodType;
@@ -65,6 +67,7 @@ public class Variants {
         VSBlockEntities.BLOCK_ENTITIES.register(eventBus);
         VSEffects.EFFECTS.register(eventBus);
         VSSounds.SOUNDS.register(eventBus);
+        VSWorldCarvers.CARVERS.register(eventBus);
         VSBiomes.BIOMES.register(eventBus);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, VSConfigs.COMMON_SPEC, "jtw-mods/variants-common.toml");
@@ -83,6 +86,7 @@ public class Variants {
 
         EntitySpawnPlacementRegistry.register(VSEntities.FISH.get(), EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractFishEntity::checkFishSpawnRules);
 
+        VSConfiguredCarvers.init();
         VSSurfaceBuilders.init();
 
         VSClientHelpers.compostables();

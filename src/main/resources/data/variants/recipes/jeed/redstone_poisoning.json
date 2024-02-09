@@ -11,7 +11,7 @@
   },
   "providers": [
     {
-      "item": "mobarmor:redstone_pot"
+      "item": "variants:redstone_pot"
     }
   ]
 }

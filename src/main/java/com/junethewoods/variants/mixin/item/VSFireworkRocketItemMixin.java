@@ -22,8 +22,8 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 @Mixin(FireworkRocketItem.class)
-public class FireworkRocketItemMixin extends Item {
-    public FireworkRocketItemMixin(Properties properties) {
+public class VSFireworkRocketItemMixin extends Item {
+    public VSFireworkRocketItemMixin(Properties properties) {
         super(properties);
     }
 

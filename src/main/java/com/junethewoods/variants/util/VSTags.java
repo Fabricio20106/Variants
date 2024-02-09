@@ -2,8 +2,10 @@ package com.junethewoods.variants.util;
 
 import com.junethewoods.variants.Variants;
 import net.minecraft.block.Block;
+import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
@@ -25,6 +27,8 @@ public class VSTags {
         public static final ITag.INamedTag<Item> INGOTS_OXIDIZED_COPPER = forge("ingots/oxidized_copper");
         public static final ITag.INamedTag<Item> INGOTS_RED_NETHER_BRICK = forge("ingots/red_nether_brick");
 
+        public static final ITag.INamedTag<Item> NUGGETS_DIAMOND = forge("nuggets/diamond");
+        public static final ITag.INamedTag<Item> NUGGETS_EMERALD = forge("nuggets/emerald");
         public static final ITag.INamedTag<Item> NUGGETS_QUARTZ = forge("nuggets/quartz");
         public static final ITag.INamedTag<Item> NUGGETS_PURPLE_IRON = forge("nuggets/purple_iron");
 
@@ -85,6 +89,8 @@ public class VSTags {
         public static final ITag.INamedTag<Item> FISHING_BOWLS = melony("bowls/obtainable_through_fishing");
         public static final ITag.INamedTag<Item> WOODEN_BOWLS = melony("bowls/wooden");
         public static final ITag.INamedTag<Item> CATLIKE_TAME_ITEMS = melony("catlike_tame_items");
+        public static final ITag.INamedTag<Item> NETHER_STARS = melony("nether_stars");
+        public static final ITag.INamedTag<Item> ICON_ITEMS = melony("icon_items");
 
         public static ITag.INamedTag<Item> forge(String name) {
             return ItemTags.bind(new ResourceLocation("forge", name).toString());
@@ -120,6 +126,7 @@ public class VSTags {
         public static final ITag.INamedTag<Block> END_PLANTS_PLANTABLE_ON = mod("end_plants_plantable_on");
         public static final ITag.INamedTag<Block> WARPING_VINES_CAN_PLACE_ON = mod("warping_vines_feature_can_place_on");
         public static final ITag.INamedTag<Block> CHORUS_FLOWER_PLANTABLE_ON = mod("chorus_flower_plantable_on");
+        public static final ITag.INamedTag<Block> END_CARVER_REPLACEABLES = mod("end_carver_replaceables");
 
         // Melony (convention) Tags
         public static final ITag.INamedTag<Block> DEEPSLATE_REPLACEABLES = melony("deepslate_replaceables");
@@ -136,6 +143,14 @@ public class VSTags {
 
         public static ITag.INamedTag<Block> mod(String name) {
             return BlockTags.bind(Variants.resourceLoc(name).toString());
+        }
+    }
+
+    public static class Fluids {
+        public static final ITag.INamedTag<Fluid> SOUL_LAVA = mod("soul_lava");
+
+        public static ITag.INamedTag<Fluid> mod(String name) {
+            return FluidTags.bind(Variants.resourceLoc(name).toString());
         }
     }
 }

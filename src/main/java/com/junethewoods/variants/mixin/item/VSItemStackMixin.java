@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 @Mixin(ItemStack.class)
-public class ItemStackMixin {
+public class VSItemStackMixin {
     @Inject(method = "appendEnchantmentNames", at = @At("HEAD"), cancellable = true)
     @OnlyIn(Dist.CLIENT)
     private static void appendEnchantmentNames(List<ITextComponent> tooltip, ListNBT tagList, CallbackInfo ci) {

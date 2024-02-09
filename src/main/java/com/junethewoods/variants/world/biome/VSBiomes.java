@@ -5,6 +5,7 @@ import com.junethewoods.variants.world.feature.VSFeatures;
 import com.junethewoods.variants.world.surface.VSSurfaceBuilders;
 import net.minecraft.world.biome.*;
 import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.structure.StructureFeatures;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -19,6 +20,7 @@ public class VSBiomes {
         MobSpawnInfo.Builder spawns = new MobSpawnInfo.Builder();
 
         DefaultBiomeFeatures.endSpawns(spawns);
+        settings.addStructureStart(StructureFeatures.END_CITY);
         settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSFeatures.ENDERWOOD_FUNGI);
         settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSFeatures.ENDERWOOD_FOREST_VEGETATION);
         settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSFeatures.END_SPROUTS);

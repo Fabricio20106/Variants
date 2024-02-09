@@ -2,6 +2,7 @@ package com.junethewoods.variants.data.tags;
 
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.fluid.VSFluids;
+import com.junethewoods.variants.util.VSTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.FluidTagsProvider;
 import net.minecraft.tags.FluidTags;
@@ -21,6 +22,7 @@ public class VSFluidTagsProvider extends FluidTagsProvider {
 
     @Override
     protected void addTags() {
-        this.tag(FluidTags.LAVA).add(VSFluids.SOUL_LAVA.get()).add(VSFluids.FLOWING_SOUL_LAVA.get());
+        this.tag(VSTags.Fluids.SOUL_LAVA).add(VSFluids.SOUL_LAVA.get()).add(VSFluids.FLOWING_SOUL_LAVA.get());
+        this.tag(FluidTags.LAVA).addTag(VSTags.Fluids.SOUL_LAVA);
     }
 }

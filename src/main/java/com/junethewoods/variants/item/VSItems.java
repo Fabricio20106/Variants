@@ -89,6 +89,7 @@ public class VSItems {
     public static final RegistryObject<Item> QUARTZ_ORE = ITEMS.register("quartz_ore", () -> new BlockItem(VSBlocks.QUARTZ_ORE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> DEEPSLATE_QUARTZ_ORE = ITEMS.register("deepslate_quartz_ore", () -> new BlockItem(VSBlocks.DEEPSLATE_QUARTZ_ORE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> END_QUARTZ_ORE = ITEMS.register("end_quartz_ore", () -> new BlockItem(VSBlocks.END_QUARTZ_ORE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> ENDER_NYLIUM_QUARTZ_ORE = ITEMS.register("ender_nylium_quartz_ore", () -> new BlockItem(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> GOLDEN_CAULDRON = ITEMS.register("gold_cauldron", () -> new BlockItem(VSBlocks.GOLDEN_CAULDRON.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> GOLDEN_BEACON = ITEMS.register("gold_beacon", () -> new BlockItem(VSBlocks.GOLDEN_BEACON.get(), new Item.Properties().rarity(Rarity.RARE).tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> DIAMOND_BELL = ITEMS.register("diamond_bell", () -> new BlockItem(VSBlocks.DIAMOND_BELL.get(), new Item.Properties().tab(VSBlockTab.TAB)));
@@ -148,6 +149,7 @@ public class VSItems {
     public static final RegistryObject<Item> GREEN_SHULKER_SHELL = ITEMS.register("green_shulker_shell", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> RED_SHULKER_SHELL = ITEMS.register("red_shulker_shell", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> BLACK_SHULKER_SHELL = ITEMS.register("black_shulker_shell", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> SHULKER_SPECTRUM_ICON = ITEMS.register("shulker_spectrum_icon", () -> new Item(new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
     public static final RegistryObject<Item> MUSIC_DISC_DOG = ITEMS.register("music_disc_dog", () -> new MusicDiscItem(2, VSSounds.MUSIC_DISC_DOG, new Item.Properties().rarity(Rarity.RARE).stacksTo(1).tab(VSTab.TAB)));
     public static final RegistryObject<Item> SPAWNER_MINECART = ITEMS.register("spawner_minecart", () -> new MinecartItem(AbstractMinecartEntity.Type.SPAWNER, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1).tab(VSTab.TAB)));
     public static final RegistryObject<Item> FISH_SPAWN_EGG = ITEMS.register("old_cod_spawn_egg", () -> new ForgeSpawnEggItem(VSEntities.FISH, 0x6B9F93, 0xADBEDB, new Item.Properties().tab(VSTab.TAB)));
@@ -217,6 +219,8 @@ public class VSItems {
     public static final RegistryObject<Item> EXPOSED_COPPER_INGOT = ITEMS.register("exposed_copper_ingot", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> WEATHERED_COPPER_INGOT = ITEMS.register("weathered_copper_ingot", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> OXIDIZED_COPPER_INGOT = ITEMS.register("oxidized_copper_ingot", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> DIAMOND_SHARD = ITEMS.register("diamond_nugget", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> EMERALD_SHARD = ITEMS.register("emerald_nugget", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> QUARTZ_SHARD = ITEMS.register("quartz_nugget", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> PURPLE_IRON_NUGGET = ITEMS.register("purple_nugget", () -> new CompatItem(new Item.Properties().tab(VSTab.TAB), "Edits"));
     public static final RegistryObject<Item> GLOW_BLACK_DYE = ITEMS.register("glow_black_dye", () -> new Item(new Item.Properties().tab(VSTab.TAB)));

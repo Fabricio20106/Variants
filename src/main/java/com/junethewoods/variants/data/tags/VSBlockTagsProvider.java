@@ -28,7 +28,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSTags.Blocks.STORAGE_BLOCKS_NETHERITE_SCRAP).add(VSBlocks.RAW_DEBRIS_BLOCK.get());
         this.tag(Tags.Blocks.STORAGE_BLOCKS).addTag(VSTags.Blocks.STORAGE_BLOCKS_NETHERITE_SCRAP);
 
-        this.tag(Tags.Blocks.ORES_QUARTZ).add(VSBlocks.QUARTZ_ORE.get()).add(VSBlocks.DEEPSLATE_QUARTZ_ORE.get()).add(VSBlocks.END_QUARTZ_ORE.get());
+        this.tag(Tags.Blocks.ORES_QUARTZ).add(VSBlocks.QUARTZ_ORE.get()).add(VSBlocks.DEEPSLATE_QUARTZ_ORE.get()).add(VSBlocks.END_QUARTZ_ORE.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get());
 
         this.tag(Tags.Blocks.FENCE_GATES_WOODEN).add(VSBlocks.PAINTING_FENCE_GATE.get());
 
@@ -44,28 +44,26 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
 
         // Variants' Tags
         this.tag(VSTags.Blocks.PAINTING_DOORS).add(VSBlocks.PAINTING_DOOR_WANDERER.get()).add(VSBlocks.PAINTING_DOOR_GRAHAM.get()).add(VSBlocks.PAINTING_DOOR_FIRST.get());
-        this.tag(VSTags.Blocks.PAINTING_TRAPDOORS).add(VSBlocks.PAINTING_TRAPDOOR_ALBAN.get()).add(VSBlocks.PAINTING_TRAPDOOR_AZTEC.get()).add(VSBlocks.PAINTING_TRAPDOOR_AZTEC2.get())
-                .add(VSBlocks.PAINTING_TRAPDOOR_BOMB.get()).add(VSBlocks.PAINTING_TRAPDOOR_KEBAB.get()).add(VSBlocks.PAINTING_TRAPDOOR_PLANT.get()).add(VSBlocks.PAINTING_TRAPDOOR_WASTELAND.get());;
+        this.tag(VSTags.Blocks.PAINTING_TRAPDOORS).add(VSBlocks.PAINTING_TRAPDOOR_ALBAN.get()).add(VSBlocks.PAINTING_TRAPDOOR_AZTEC.get()).add(VSBlocks.PAINTING_TRAPDOOR_AZTEC2.get()).add(VSBlocks.PAINTING_TRAPDOOR_BOMB.get())
+                .add(VSBlocks.PAINTING_TRAPDOOR_KEBAB.get()).add(VSBlocks.PAINTING_TRAPDOOR_PLANT.get()).add(VSBlocks.PAINTING_TRAPDOOR_WASTELAND.get());
         this.tag(VSTags.Blocks.BOOKSHELVES).add(Blocks.BOOKSHELF).add(VSBlocks.ENDERWOOD_BOOKSHELF.get()).add(VSBlocks.PLAIN_BIRCH_BOOKSHELF.get());
-        this.tag(VSTags.Blocks.PAINTING_LOGS).add(VSBlocks.PAINTING_LOG.get()).add(VSBlocks.PAINTING_WOOD.get()).add(VSBlocks.STRIPPED_PAINTING_LOG.get())
-                .add(VSBlocks.STRIPPED_PAINTING_WOOD.get());
-        this.tag(VSTags.Blocks.ENDERWOOD_STEMS).add(VSBlocks.ENDERWOOD_STEM.get()).add(VSBlocks.ENDERWOOD_HYPHAE.get()).add(VSBlocks.STRIPPED_ENDERWOOD_STEM.get())
-                .add(VSBlocks.STRIPPED_ENDERWOOD_HYPHAE.get());
+        this.tag(VSTags.Blocks.PAINTING_LOGS).add(VSBlocks.PAINTING_LOG.get()).add(VSBlocks.PAINTING_WOOD.get()).add(VSBlocks.STRIPPED_PAINTING_LOG.get()).add(VSBlocks.STRIPPED_PAINTING_WOOD.get());
+        this.tag(VSTags.Blocks.ENDERWOOD_STEMS).add(VSBlocks.ENDERWOOD_STEM.get()).add(VSBlocks.ENDERWOOD_HYPHAE.get()).add(VSBlocks.STRIPPED_ENDERWOOD_STEM.get()).add(VSBlocks.STRIPPED_ENDERWOOD_HYPHAE.get());
         this.tag(VSTags.Blocks.CAULDRONS).add(Blocks.CAULDRON).add(VSBlocks.GOLDEN_CAULDRON.get());
         this.tag(VSTags.Blocks.BEACONS).add(Blocks.BEACON).add(VSBlocks.GOLDEN_BEACON.get());
         this.tag(VSTags.Blocks.NETHER_WART_PLACEABLE_ON).add(Blocks.SOUL_SAND).add(Blocks.SOUL_SOIL);
-        this.tag(VSTags.Blocks.ENDER_WART_PLANTABLE_ON).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_FARMLAND.get()).add(Blocks.END_STONE).add(Blocks.OBSIDIAN);
+        this.tag(VSTags.Blocks.ENDER_WART_PLANTABLE_ON).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_FARMLAND.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get()).add(Blocks.OBSIDIAN);
         this.tag(VSTags.Blocks.GOLDEN_CARROTS_PLANTABLE_ON).addTag(VSTags.Blocks.FARMLAND);
-        this.tag(VSTags.Blocks.END_PLANTS_PLANTABLE_ON).addTag(BlockTags.NYLIUM).add(Blocks.END_STONE).add(Blocks.OBSIDIAN);
-        this.tag(VSTags.Blocks.WARPING_VINES_CAN_PLACE_ON).add(Blocks.END_STONE).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_WART_BLOCK.get());
-        this.tag(VSTags.Blocks.CHORUS_FLOWER_PLANTABLE_ON).add(Blocks.END_STONE).add(VSBlocks.ENDER_NYLIUM.get());
+        this.tag(VSTags.Blocks.END_PLANTS_PLANTABLE_ON).addTag(BlockTags.NYLIUM).addTag(Tags.Blocks.END_STONES).add(Blocks.OBSIDIAN);
+        this.tag(VSTags.Blocks.WARPING_VINES_CAN_PLACE_ON).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_WART_BLOCK.get());
+        this.tag(VSTags.Blocks.CHORUS_FLOWER_PLANTABLE_ON).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get());
+        this.tag(VSTags.Blocks.END_CARVER_REPLACEABLES).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_NYLIUM.get());
 
         // Melony Tags
-        this.tag(VSTags.Blocks.DEEPSLATE_REPLACEABLES).addOptional(new ResourceLocation("minecraft:deepslate")).addOptional(new ResourceLocation("cavesandcliffs:deepslate")).addOptional(new ResourceLocation(
-                "quark:deepslate"));
+        this.tag(VSTags.Blocks.DEEPSLATE_REPLACEABLES).addOptional(new ResourceLocation("minecraft:deepslate")).addOptional(new ResourceLocation("cavesandcliffs:deepslate")).addOptional(new ResourceLocation("quark:deepslate"));
         this.tag(VSTags.Blocks.FARMLAND).add(Blocks.FARMLAND).add(VSBlocks.ENDER_FARMLAND.get()).addOptional(backMath("aljamic_farmland"));
-        this.tag(VSTags.Blocks.CONDUIT_FRAME_BLOCKS).add(Blocks.PRISMARINE).add(Blocks.PRISMARINE_BRICKS).add(Blocks.DARK_PRISMARINE).add(Blocks.SEA_LANTERN)
-                .add(VSBlocks.ELDER_PRISMARINE.get()).add(VSBlocks.ELDER_PRISMARINE_BRICKS.get()).add(VSBlocks.DARK_ELDER_PRISMARINE.get()).add(VSBlocks.ELDER_SEA_LANTERN.get());
+        this.tag(VSTags.Blocks.CONDUIT_FRAME_BLOCKS).add(Blocks.PRISMARINE).add(Blocks.PRISMARINE_BRICKS).add(Blocks.DARK_PRISMARINE).add(Blocks.SEA_LANTERN).add(VSBlocks.ELDER_PRISMARINE.get()).add(VSBlocks.ELDER_PRISMARINE_BRICKS.get())
+                .add(VSBlocks.DARK_ELDER_PRISMARINE.get()).add(VSBlocks.ELDER_SEA_LANTERN.get());
 
         // Minecraft Tags
         this.tag(BlockTags.LOGS_THAT_BURN).addTag(VSTags.Blocks.PAINTING_LOGS).addTag(VSTags.Blocks.ENDERWOOD_STEMS);
@@ -98,9 +96,9 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.WOOL).add(VSBlocks.GLOW_BLACK_WOOL.get());
         this.tag(BlockTags.CARPETS).add(VSBlocks.GLOW_BLACK_CARPET.get());
         this.tag(BlockTags.GUARDED_BY_PIGLINS).add(VSBlocks.GOLDEN_CAULDRON.get()).add(VSBlocks.GOLDEN_BEACON.get()).add(VSBlocks.GOLDEN_CARROTS.get()).add(VSBlocks.GOLDEN_CHAIN.get());
-        this.tag(BlockTags.DRAGON_IMMUNE).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.END_QUARTZ_ORE.get()).add(VSBlocks.QUARTZ_BARS.get());
+        this.tag(BlockTags.DRAGON_IMMUNE).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.END_QUARTZ_ORE.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get()).add(VSBlocks.QUARTZ_BARS.get());
         this.tag(BlockTags.IMPERMEABLE).add(VSBlocks.QUARTZ_GLASS.get()).add(VSBlocks.GLOW_BLACK_STAINED_GLASS.get());
-        this.tag(BlockTags.NYLIUM).add(VSBlocks.ENDER_NYLIUM.get());
+        this.tag(BlockTags.NYLIUM).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get());
         this.tag(BlockTags.CLIMBABLE).add(VSBlocks.WARPING_VINES.get()).add(VSBlocks.WARPING_VINES_PLANT.get());
         this.tag(BlockTags.BEDS).add(VSBlocks.GLOW_BLACK_BED.get());
     }

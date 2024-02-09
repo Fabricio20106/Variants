@@ -8,6 +8,7 @@ public class VSCommonConfigs {
     public final ForgeConfigSpec.BooleanValue generateQuartzOre;
     public final ForgeConfigSpec.BooleanValue generateEndQuartzOre;
     public final ForgeConfigSpec.BooleanValue generateSoulLavaSprings;
+    public final ForgeConfigSpec.BooleanValue generateEndCavesAndRavines;
 
     // Items
     public final ForgeConfigSpec.BooleanValue populateWoolArmorColorInTabs;
@@ -32,10 +33,11 @@ public class VSCommonConfigs {
         builder.comment("Welcome to the Variants config file! This file contains various configs on many aspects of the mod. (Made on 18/11/23)");
 
         builder.push("worldGeneration");
-        this.generateFlowerPatches = builder.comment("Allow Variants' flower patches to generate? (Currently only Glow Black Tulips)").define("generateFlowerPatches", true);
-        this.generateQuartzOre = builder.comment("Allow overworld quartz ore to generate?").define("generateOverworldQuartzOre", true);
-        this.generateEndQuartzOre = builder.comment("Allow end quartz ore to generate?").define("generateEndQuartzOre", true);
+        this.generateFlowerPatches = builder.comment("Allow Variants' flower patches to generate? (Glow Black Tulips and Sunny Flowers)").define("generateFlowerPatches", true);
+        this.generateQuartzOre = builder.comment("Allow Overworld quartz ore to generate?").define("generateOverworldQuartzOre", true);
+        this.generateEndQuartzOre = builder.comment("Allow End quartz ore to generate?").define("generateEndQuartzOre", true);
         this.generateSoulLavaSprings = builder.comment("Allow soul lava springs ore to generate in the Nether?").define("generateSoulLavaSprings", true);
+        this.generateEndCavesAndRavines = builder.comment("Allow caves and ravines to generate in the End?").define("generateEndCavesAndRavines", true);
         builder.pop();
 
         builder.push("entities");
@@ -55,7 +57,7 @@ public class VSCommonConfigs {
         this.enchantableShears = builder.comment("Allows any Shears to be enchanted at an Enchanting Table.").define("enchantableShears", true);
         this.enchantableFlintAndSteel = builder.comment("Allows any Flint and Steel to be enchanted at an Enchanting Table.").define("enchantableFlintAndSteel", true);
         this.enchantableShields = builder.comment("Allows any Shield to be enchanted at an Enchanting Table.").define("enchantableShields", true);
-        this.enableInfinitySweatersTab = builder.comment("Enables the Infinity Sweaters tab (WARNING: This tab is *very* fragile and will most likely crash when you click on any other tab with this one open).").define("infinitySweatersTab.enableInfinitySweatersTab", false);
+        this.enableInfinitySweatersTab = builder.comment("Enables the Infinity Sweaters tab (WARNING: This tab is *very* fragile and will most likely cause issues when at high values).").define("infinitySweatersTab.enableInfinitySweatersTab", false);
         this.infinitySweatersTabLength = builder.comment("How many sweaters should the tab load in. (Def: 4096)").defineInRange("infinitySweatersTab.infinitySweatersTabLength", 4096, 1, 16777215);
         this.infinitySweatersTabSpacing = builder.comment("The spacing between sweater colors. (Def: 16)").defineInRange("infinitySweatersTab.infinitySweatersTabSpacing", 16, 1, 16777215);
         builder.pop();

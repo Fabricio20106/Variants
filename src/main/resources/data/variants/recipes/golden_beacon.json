@@ -7,7 +7,7 @@
   ],
   "key": {
     "S": {
-      "item": "minecraft:nether_star"
+      "tag": "melony:nether_stars"
     },
     "G": {
       "tag": "forge:glass/colorless"

@@ -16,8 +16,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 @Mixin(FireworkStarItem.class)
-public class FireworkStarItemMixin extends Item {
-    public FireworkStarItemMixin(Properties properties) {
+public class VSFireworkStarItemMixin extends Item {
+    public VSFireworkStarItemMixin(Properties properties) {
         super(properties);
     }
 

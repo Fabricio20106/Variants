@@ -37,13 +37,15 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(Tags.Items.INGOTS).addTag(VSTags.Items.INGOTS_RED_NETHER_BRICK).addTag(VSTags.Items.INGOTS_EXPOSED_COPPER).addTag(VSTags.Items.INGOTS_WEATHERED_COPPER).addTag(VSTags.Items.INGOTS_OXIDIZED_COPPER);
 
         this.tag(VSTags.Items.NUGGETS_PURPLE_IRON).add(VSItems.PURPLE_IRON_NUGGET.get());
+        this.tag(VSTags.Items.NUGGETS_DIAMOND).add(VSItems.DIAMOND_SHARD.get());
+        this.tag(VSTags.Items.NUGGETS_EMERALD).add(VSItems.EMERALD_SHARD.get());
         this.tag(VSTags.Items.NUGGETS_QUARTZ).add(VSItems.QUARTZ_SHARD.get());
-        this.tag(Tags.Items.NUGGETS).addTag(VSTags.Items.NUGGETS_QUARTZ).addTag(VSTags.Items.NUGGETS_PURPLE_IRON);
+        this.tag(Tags.Items.NUGGETS).addTag(VSTags.Items.NUGGETS_DIAMOND).addTag(VSTags.Items.NUGGETS_EMERALD).addTag(VSTags.Items.NUGGETS_QUARTZ).addTag(VSTags.Items.NUGGETS_PURPLE_IRON);
 
         this.tag(VSTags.Items.RAW_MATERIALS_NETHERITE_SCRAP).add(VSItems.RAW_DEBRIS.get());
         this.tag(VSTags.Items.RAW_MATERIALS).addTag(VSTags.Items.RAW_MATERIALS_NETHERITE_SCRAP);
 
-        this.tag(Tags.Items.ORES_QUARTZ).add(VSItems.QUARTZ_ORE.get()).add(VSItems.DEEPSLATE_QUARTZ_ORE.get()).add(VSItems.END_QUARTZ_ORE.get());
+        this.tag(Tags.Items.ORES_QUARTZ).add(VSItems.QUARTZ_ORE.get()).add(VSItems.DEEPSLATE_QUARTZ_ORE.get()).add(VSItems.END_QUARTZ_ORE.get()).add(VSItems.ENDER_NYLIUM_QUARTZ_ORE.get());
 
         this.tag(Tags.Items.FENCE_GATES_WOODEN).add(VSItems.PAINTING_FENCE_GATE.get());
 
@@ -155,6 +157,8 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.WOODEN_BOWLS).add(Items.BOWL).add(VSItems.OAK_BOWL.get()).add(VSItems.SPRUCE_BOWL.get()).add(VSItems.BIRCH_BOWL.get()).add(VSItems.JUNGLE_BOWL.get()).add(VSItems.ACACIA_BOWL.get()).add(VSItems.DARK_OAK_BOWL.get())
                 .add(VSItems.PAINTING_BOWL.get()).add(VSItems.CRIMSON_BOWL.get()).add(VSItems.WARPED_BOWL.get()).add(VSItems.ENDERWOOD_BOWL.get());
         this.tag(VSTags.Items.BOWLS).addTag(VSTags.Items.WOODEN_BOWLS).addTag(VSTags.Items.FISHING_BOWLS);
+        this.tag(VSTags.Items.NETHER_STARS).add(Items.NETHER_STAR);
+        this.tag(VSTags.Items.ICON_ITEMS).add(VSWeaponry.INFINITY_SWEATERS_TAB_ICON.get()).add(VSItems.SHULKER_SPECTRUM_ICON.get());
 
         // Minecraft Tags
         this.tag(ItemTags.LOGS_THAT_BURN).addTag(VSTags.Items.PAINTING_LOGS).addTag(VSTags.Items.ENDERWOOD_STEMS);

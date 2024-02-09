@@ -1,5 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "minecraft:amethyst_shard"
+    }
+  ],
   "pattern": [
     "d",
     "d",

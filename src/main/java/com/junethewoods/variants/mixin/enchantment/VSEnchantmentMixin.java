@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Enchantment.class)
-public abstract class EnchantmentMixin {
+public abstract class VSEnchantmentMixin {
     @Shadow
     public abstract int getMaxLevel();
     @Shadow

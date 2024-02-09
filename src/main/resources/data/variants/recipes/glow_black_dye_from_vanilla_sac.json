@@ -1,5 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "minecraft:glow_ink_sac"
+    }
+  ],
   "ingredients": [
     {
       "item": "minecraft:glow_ink_sac"

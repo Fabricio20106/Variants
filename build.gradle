@@ -21,7 +21,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'idea'
 
-version = '1.16.5-v1.6.19-' + new Date().format("dd-MM-yyyy")
+version = '1.16.5-v1.6.19.1-' + new Date().format("dd-MM-yyyy")
 // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 group = 'com.junethewoods.variants'
 archivesBaseName = 'Variants'
@@ -53,7 +53,7 @@ minecraft {
             property "mixin.debug.export", "true"
 
             // Recommended logging data for a user development environment.
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'SCAN,REGISTRIES'
 
             // Recommended logging level for the console.
             property 'forge.logging.console.level', 'debug'
@@ -70,7 +70,7 @@ minecraft {
             workingDirectory project.file('run')
 
             // Recommended logging data for a user development environment.
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'SCAN,REGISTRIES'
 
             // Recommended logging level for the console.
             property 'forge.logging.console.level', 'debug'
@@ -87,7 +87,7 @@ minecraft {
             workingDirectory project.file('run')
 
             // Recommended logging data for a user development environment.
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'SCAN,REGISTRIES'
 
             // Recommended logging level for the console.
             property 'forge.logging.console.level', 'debug'

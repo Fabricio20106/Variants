@@ -11,7 +11,7 @@
   },
   "providers": [
     {
-      "item": "mobarmor:glowstone_pot"
+      "item": "variants:glowstone_pot"
     }
   ]
 }

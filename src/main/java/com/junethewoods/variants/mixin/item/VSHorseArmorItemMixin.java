@@ -17,8 +17,8 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 @Mixin(HorseArmorItem.class)
-public class HorseArmorItemMixin extends Item {
-    public HorseArmorItemMixin(Properties properties) {
+public class VSHorseArmorItemMixin extends Item {
+    public VSHorseArmorItemMixin(Properties properties) {
         super(properties);
     }
 

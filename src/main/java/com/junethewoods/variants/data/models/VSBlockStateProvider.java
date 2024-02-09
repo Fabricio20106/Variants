@@ -117,6 +117,7 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         simpleBlock(VSBlocks.POTTED_WARPED_WART.get(), models().withExistingParent("potted_warped_wart", modLoc("block/inventory_potted_plant")).texture("dirt", mcLoc("block/soul_sand")).texture("plant",
                 "block/warped_wart_pot"));
         simpleBlock(VSBlocks.POTTED_ENDER_WART.get(), models().withExistingParent("potted_ender_wart", modLoc("block/inventory_potted_plant")).texture("dirt", "block/ender_farmland").texture("plant",  "block/ender_wart_pot"));
+        simpleBlock(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get(), models().cubeBottomTop("ender_nylium_quartz_ore", modLoc("block/ender_nylium_quartz_ore_side"), modLoc("block/end_quartz_ore"), modLoc("block/ender_nylium")));
 
         getVariantBuilder(VSBlocks.GOLDEN_CARROTS.get()).forAllStates(state -> {
             int cropAgeIndex = cropAgeToIndexSeven(state.getValue(BlockStateProperties.AGE_7));
