@@ -7,7 +7,7 @@ import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.VSWeaponry;
 import com.junethewoods.variants.item.custom.armor.WoolArmorItem;
 import com.junethewoods.variants.world.carver.VSConfiguredCarvers;
-import com.junethewoods.variants.world.feature.VSFeatures;
+import com.junethewoods.variants.world.feature.VSConfiguredFeatures;
 import com.junethewoods.variants.world.feature.VSOreGeneration;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -41,11 +41,11 @@ public class VSEvents {
 
         // World Generation
         if (event.getCategory() == Biome.Category.PLAINS || event.getCategory() == Biome.Category.FOREST && VSConfigs.COMMON_CONFIGS.generateFlowerPatches.get()) {
-            settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSFeatures.VARIANTS_FLOWER_PATCH);
+            settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.VARIANTS_FLOWER_PATCH);
         }
         if (event.getCategory() == Biome.Category.NETHER && VSConfigs.COMMON_CONFIGS.generateSoulLavaSprings.get()) {
-            settings.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, VSFeatures.CLOSED_SOUL_LAVA_SPRING);
-            settings.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, VSFeatures.OPEN_SOUL_LAVA_SPRING);
+            settings.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, VSConfiguredFeatures.CLOSED_SOUL_LAVA_SPRING);
+            settings.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, VSConfiguredFeatures.OPEN_SOUL_LAVA_SPRING);
         }
         if (event.getCategory() == Biome.Category.THEEND && VSConfigs.COMMON_CONFIGS.generateEndCavesAndRavines.get()) {
             settings.addCarver(GenerationStage.Carving.AIR, VSConfiguredCarvers.END_CAVE);

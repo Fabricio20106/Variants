@@ -1,7 +1,7 @@
 package com.junethewoods.variants.block.custom.end;
 
 import com.junethewoods.variants.block.VSBlocks;
-import com.junethewoods.variants.world.feature.VSFeatures;
+import com.junethewoods.variants.world.feature.VSConfiguredFeatures;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.NyliumBlock;
@@ -38,8 +38,8 @@ public class EnderNyliumBlock extends NyliumBlock {
         BlockState posState = world.getBlockState(pos);
         BlockPos abovePos = pos.above();
          if (posState.is(VSBlocks.ENDER_NYLIUM.get())) {
-            NetherVegetationFeature.place(world, rand, abovePos, VSFeatures.ENDERWOOD_FOREST_CONFIG, 3, 1);
-            NetherVegetationFeature.place(world, rand, abovePos, VSFeatures.END_SPROUTS_CONFIG, 3, 1);
+            NetherVegetationFeature.place(world, rand, abovePos, VSConfiguredFeatures.ENDERWOOD_FOREST_CONFIG, 3, 1);
+            NetherVegetationFeature.place(world, rand, abovePos, VSConfiguredFeatures.END_SPROUTS_CONFIG, 3, 1);
         }
     }
 }

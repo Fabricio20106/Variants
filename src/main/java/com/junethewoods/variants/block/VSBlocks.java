@@ -8,7 +8,7 @@ import com.junethewoods.variants.block.custom.nether.WarpedWartBlock;
 import com.junethewoods.variants.block.custom.nether.WitherBoneBlock;
 import com.junethewoods.variants.fluid.VSFluids;
 import com.junethewoods.variants.util.VSWoodTypes;
-import com.junethewoods.variants.world.feature.VSFeatures;
+import com.junethewoods.variants.world.feature.VSConfiguredFeatures;
 import com.junethewoods.variants.world.tree.PaintingTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -110,7 +110,7 @@ public class VSBlocks {
     public static final RegistryObject<Block> ENDER_FARMLAND = BLOCKS.register("ender_farmland", () -> new EnderFarmlandBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_PURPLE).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NYLIUM).randomTicks().isViewBlocking((state, world, pos) -> true).isSuffocating((state, world, pos) -> true)));
     public static final RegistryObject<Block> ENDER_ROOTS = BLOCKS.register("ender_roots", () -> new EnderRootsBlock(AbstractBlock.Properties.copy(Blocks.CRIMSON_ROOTS)));
     public static final RegistryObject<Block> END_SPROUTS = BLOCKS.register("ender_sprouts", () -> new EndSproutsBlock(AbstractBlock.Properties.copy(Blocks.NETHER_SPROUTS)));
-    public static final RegistryObject<Block> ENDER_FUNGUS = BLOCKS.register("ender_fungus", () -> new EnderFungusBlock(AbstractBlock.Properties.copy(Blocks.CRIMSON_FUNGUS), () -> VSFeatures.PLANTED_ENDERWOOD_FUNGI));
+    public static final RegistryObject<Block> ENDER_FUNGUS = BLOCKS.register("ender_fungus", () -> new EnderFungusBlock(AbstractBlock.Properties.copy(Blocks.CRIMSON_FUNGUS), () -> VSConfiguredFeatures.PLANTED_ENDERWOOD_FUNGI));
     public static final RegistryObject<Block> WARPING_VINES = BLOCKS.register("warping_vines", () -> new WarpingVinesTopBlock(AbstractBlock.Properties.copy(Blocks.WEEPING_VINES)));
     public static final RegistryObject<Block> WARPING_VINES_PLANT = BLOCKS.register("warping_vines_plant", () -> new WarpingVinesBlock(AbstractBlock.Properties.copy(Blocks.WEEPING_VINES_PLANT)));
     public static final RegistryObject<Block> GOLDEN_CARROTS = BLOCKS.register("golden_carrots", () -> new GoldenCarrotsBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));

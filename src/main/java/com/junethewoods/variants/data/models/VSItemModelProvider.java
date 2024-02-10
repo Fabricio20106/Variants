@@ -1,5 +1,6 @@
 package com.junethewoods.variants.data.models;
 
+import com.junethewoods.variants.Variants;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -8,7 +9,7 @@ import javax.annotation.Nonnull;
 
 public class VSItemModelProvider extends VSItemModelModels {
     public VSItemModelProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
-        super(generator, fileHelper);
+        super(generator, Variants.MOD_ID, fileHelper);
     }
 
     @Nonnull

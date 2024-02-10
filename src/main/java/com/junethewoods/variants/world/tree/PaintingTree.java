@@ -1,6 +1,6 @@
 package com.junethewoods.variants.world.tree;
 
-import com.junethewoods.variants.world.feature.VSFeatures;
+import com.junethewoods.variants.world.feature.VSConfiguredFeatures;
 import net.minecraft.block.trees.Tree;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
@@ -13,9 +13,9 @@ public class PaintingTree extends Tree {
     @Override
     protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random rand, boolean beehive) {
         if (rand.nextInt(10) == 0) {
-            return beehive ? VSFeatures.FANCY_PAINTING_TREE_WITH_BEES_005 : VSFeatures.FANCY_PAINTING_TREE;
+            return beehive ? VSConfiguredFeatures.FANCY_PAINTING_TREE_WITH_BEES_005 : VSConfiguredFeatures.FANCY_PAINTING_TREE;
         } else {
-            return beehive ? VSFeatures.PAINTING_TREE_WITH_BEES_005 : VSFeatures.PAINTING_TREE;
+            return beehive ? VSConfiguredFeatures.PAINTING_TREE_WITH_BEES_005 : VSConfiguredFeatures.PAINTING_TREE;
         }
     }
 }

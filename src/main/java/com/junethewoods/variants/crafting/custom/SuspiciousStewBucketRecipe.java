@@ -66,7 +66,7 @@ public class SuspiciousStewBucketRecipe extends SpecialRecipe {
         if (emptyStack.getItem() instanceof BlockItem && ((BlockItem) emptyStack.getItem()).getBlock() instanceof FlowerBlock) {
             FlowerBlock smallFlower = (FlowerBlock) ((BlockItem) emptyStack.getItem()).getBlock();
             Effect stewEffect = smallFlower.getSuspiciousStewEffect();
-            BucketFoodItem.saveEffectToBowl(susStewBucket, stewEffect, smallFlower.getEffectDuration());
+            BucketFoodItem.writeEffectToBucket(susStewBucket, stewEffect, smallFlower.getEffectDuration());
         }
 
         return susStewBucket;

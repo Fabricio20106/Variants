@@ -21,7 +21,6 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
@@ -43,8 +42,7 @@ public class ExponentialSoupItem extends Item {
         this.stewBehavior = behavior;
     }
 
-    // Will be used later in the custom recipes.
-    public static void saveEffectToBowl(ItemStack stack, Effect effect, int duration) {
+    public static void writeEffectToStew(ItemStack stack, Effect effect, int duration) {
         CompoundNBT tag = stack.getOrCreateTag();
         ListNBT effectList = tag.getList("effects", 9);
         CompoundNBT tag1 = new CompoundNBT();
@@ -58,6 +56,10 @@ public class ExponentialSoupItem extends Item {
     public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity livEntity) {
         ItemStack superStack = super.finishUsingItem(stack, world, livEntity);
         boolean flag = livEntity instanceof PlayerEntity && ((PlayerEntity) livEntity).abilities.instabuild;
+
+        // Custom Stew Behavior
+        this.stewBehavior.executeBehavior(stack, world, livEntity);
+        if (this.stewBehavior.getEffects() != null) writeEffectToStew(stack, this.stewBehavior.getEffects().getEffect(), this.stewBehavior.getEffects().getDuration());
 
         // For Suspicious Stew
         CompoundNBT tag = stack.getTag();
@@ -77,10 +79,6 @@ public class ExponentialSoupItem extends Item {
                 }
             }
         }
-
-        // Custom Stew Behavior
-        this.stewBehavior.executeBehavior(stack, world, livEntity);
-        if (this.stewBehavior.getEffects() != null) livEntity.addEffect(this.stewBehavior.getEffects());
 
         return flag ? superStack : getBowlType(stack);
     }
@@ -105,6 +103,7 @@ public class ExponentialSoupItem extends Item {
 
                 bowlTypeTag.putString("bowl_name", "variants:" + bowls + "_bowl");
                 bowlTypeTag.putInt("bowl_id", BOWL_NAME_TO_ID.get(bowls));
+                if (this.stewBehavior.getEffects() != null) writeEffectToStew(stack, this.stewBehavior.getEffects().getEffect(), this.stewBehavior.getEffects().getDuration());
                 list.add(stack);
             }
         }
@@ -118,6 +117,9 @@ public class ExponentialSoupItem extends Item {
         if (bowlTypeTag.contains("bowl_name") && ForgeRegistries.ITEMS.containsKey(containerItem)) {
             ITextComponent bowlName = ForgeRegistries.ITEMS.getValue(containerItem).getName(ForgeRegistries.ITEMS.getValue(containerItem).getDefaultInstance());
             tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".exponential_stew.bowl", bowlName).withStyle(TextFormatting.GRAY));
+        } else {
+            tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".exponential_stew.bowl", ForgeRegistries.ITEMS.getValue(Items.BOWL.getRegistryName()).getName(ForgeRegistries.ITEMS.getValue(Items.BOWL.getRegistryName())
+                    .getDefaultInstance())).withStyle(TextFormatting.GRAY));
         }
         super.appendHoverText(stack, world, tooltip, flag);
     }

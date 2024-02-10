@@ -57,6 +57,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSTags.Blocks.END_PLANTS_PLANTABLE_ON).addTag(BlockTags.NYLIUM).addTag(Tags.Blocks.END_STONES).add(Blocks.OBSIDIAN);
         this.tag(VSTags.Blocks.WARPING_VINES_CAN_PLACE_ON).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_WART_BLOCK.get());
         this.tag(VSTags.Blocks.CHORUS_FLOWER_PLANTABLE_ON).addTag(VSTags.Blocks.HAS_ENDER_NYLIUM).addTag(Tags.Blocks.END_STONES);
+        this.tag(VSTags.Blocks.CHORUS_PLANT_PLANTABLE_ON).add(Blocks.CHORUS_FLOWER).add(Blocks.CHORUS_PLANT);
         this.tag(VSTags.Blocks.END_CARVER_REPLACEABLES).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_NYLIUM.get());
         this.tag(VSTags.Blocks.HAS_ENDER_NYLIUM).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get());
 

@@ -23,7 +23,7 @@ import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 import java.util.OptionalInt;
 import java.util.function.Supplier;
 
-public class VSFeatures {
+public class VSConfiguredFeatures {
     public static final HugeFungusConfig NOT_PLANTED_ENDERWOOD_FUNGI_CONFIG = new HugeFungusConfig(VSBlocks.ENDER_NYLIUM.get().defaultBlockState(), VSBlocks.ENDERWOOD_STEM.get().defaultBlockState(), VSBlocks.ENDER_WART_BLOCK.get()
             .defaultBlockState(), Blocks.SHROOMLIGHT.defaultBlockState(), false);
     public static final HugeFungusConfig PLANTED_ENDERWOOD_FUNGI_CONFIG = new HugeFungusConfig(VSBlocks.ENDER_NYLIUM.get().defaultBlockState(), VSBlocks.ENDERWOOD_STEM.get().defaultBlockState(), VSBlocks.ENDER_WART_BLOCK.get().defaultBlockState(),
@@ -86,4 +86,6 @@ public class VSFeatures {
     public static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String name, ConfiguredFeature<FC, ?> configuredFeature) {
         return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, Variants.resourceLoc(name), configuredFeature);
     }
+
+    public static void init() {}
 }

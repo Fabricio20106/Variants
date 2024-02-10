@@ -1,6 +1,5 @@
 package com.junethewoods.variants.data.models;
 
-import com.junethewoods.variants.Variants;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
@@ -11,8 +10,8 @@ public abstract class VSItemModelModels extends ItemModelProvider {
     private final ModelFile generated = getExistingFile(mcLoc("item/generated"));
     private final ModelFile spyglass = getExistingFile(modLoc("item/template_spyglass"));
 
-    public VSItemModelModels(DataGenerator generator, ExistingFileHelper fileHelper) {
-        super(generator, Variants.MOD_ID, fileHelper);
+    public VSItemModelModels(DataGenerator generator, String modID, ExistingFileHelper fileHelper) {
+        super(generator, modID, fileHelper);
     }
 
     public void standard(ModelFile parent, String name) {

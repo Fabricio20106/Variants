@@ -127,8 +127,8 @@ public class VSClientHelpers {
         });
     }
 
-    public static void makeCustomBowls(Item bowl) {
-        register(bowl, new ResourceLocation("bowl_id"), (stack, world, livEntity) -> {
+    public static void makeExpoStew(Item expoStew) {
+        register(expoStew, new ResourceLocation("bowl_id"), (stack, world, livEntity) -> {
             CompoundNBT tag = stack.getOrCreateTagElement("bowl_type");
             if (tag.contains("bowl_id")) {
                 return tag.getInt("bowl_id");

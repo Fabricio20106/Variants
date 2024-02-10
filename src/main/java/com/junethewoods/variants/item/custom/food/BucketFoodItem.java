@@ -18,7 +18,7 @@ public class BucketFoodItem extends Item {
         super(properties);
     }
 
-    public static void saveEffectToBowl(ItemStack stack, Effect effect, int duration) {
+    public static void writeEffectToBucket(ItemStack stack, Effect effect, int duration) {
         CompoundNBT tag = stack.getOrCreateTag();
         ListNBT effectList = tag.getList("effects", 9);
         CompoundNBT tag1 = new CompoundNBT();

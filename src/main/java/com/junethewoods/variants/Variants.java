@@ -21,6 +21,7 @@ import com.junethewoods.variants.world.biome.VSBiomes;
 import com.junethewoods.variants.world.biome.provider.VSEndBiomeProvider;
 import com.junethewoods.variants.world.carver.VSConfiguredCarvers;
 import com.junethewoods.variants.world.carver.VSWorldCarvers;
+import com.junethewoods.variants.world.feature.VSConfiguredFeatures;
 import com.junethewoods.variants.world.surface.VSSurfaceBuilders;
 import net.minecraft.block.Block;
 import net.minecraft.block.WoodType;
@@ -90,6 +91,7 @@ public class Variants {
 
         EntitySpawnPlacementRegistry.register(VSEntities.FISH.get(), EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractFishEntity::checkFishSpawnRules);
 
+        VSConfiguredFeatures.init();
         VSConfiguredCarvers.init();
         VSSurfaceBuilders.init();
         Registry.register(Registry.BIOME_SOURCE, Variants.resourceLoc("enderwood_end"), VSEndBiomeProvider.CODEC);
@@ -107,18 +109,18 @@ public class Variants {
         VSClientHelpers.makeBow(VSWeaponry.DEBUG_BOW.get());
         VSClientHelpers.makeShield(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
         VSClientHelpers.makeCustomWoolSweater(VSWeaponry.WOOL_SWEATER.get());
-        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_MUSHROOM_STEW.get());
-        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_BEETROOT_SOUP.get());
-        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_RABBIT_STEW.get());
-        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_SUSPICIOUS_STEW.get());
-        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_FUNGI_STEW.get());
-        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_END_FUNGI_STEW.get());
-        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_ALJAN_FUNGI_STEW.get());
-        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_WATER_BOWL.get());
-        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_MILK_BOWL.get());
-        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_LAVA_BOWL.get());
-        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_SOUL_LAVA_BOWL.get());
-        VSClientHelpers.makeCustomBowls(VSItems.EXPONENTIAL_POWDER_SNOW_BOWL.get());
+        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_MUSHROOM_STEW.get());
+        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_BEETROOT_SOUP.get());
+        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_RABBIT_STEW.get());
+        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_SUSPICIOUS_STEW.get());
+        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_FUNGI_STEW.get());
+        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_END_FUNGI_STEW.get());
+        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_ALJAN_FUNGI_STEW.get());
+        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_WATER_BOWL.get());
+        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_MILK_BOWL.get());
+        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_LAVA_BOWL.get());
+        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_SOUL_LAVA_BOWL.get());
+        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_POWDER_SNOW_BOWL.get());
         setRenderTypesForBlocks();
 
         Atlases.addWoodType(VSWoodTypes.PAINTING);
