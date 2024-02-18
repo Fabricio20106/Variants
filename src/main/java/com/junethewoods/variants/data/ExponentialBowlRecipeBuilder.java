@@ -90,7 +90,7 @@ public class ExponentialBowlRecipeBuilder {
     }
 
     private void ensureValid(ResourceLocation name) {
-        if (this.advancement.getCriteria().isEmpty()) throw new IllegalStateException("No way of obtaining recipe " + name);
+        if (this.advancement.getCriteria().isEmpty()) throw new IllegalStateException("Variants: No way of obtaining recipe " + name);
     }
 
     public static class Result implements IFinishedRecipe {

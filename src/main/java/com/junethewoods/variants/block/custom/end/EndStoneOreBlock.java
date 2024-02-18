@@ -1,4 +1,4 @@
-package com.junethewoods.variants.block.custom.nether;
+package com.junethewoods.variants.block.custom.end;
 
 import com.junethewoods.variants.Variants;
 import net.minecraft.block.BlockState;

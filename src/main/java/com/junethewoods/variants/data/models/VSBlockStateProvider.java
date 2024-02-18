@@ -108,6 +108,7 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         simpleBlock(VSBlocks.WARPING_VINES.get(), models().cross("warping_vines", modLoc("block/warping_vines")));
         simpleBlock(VSBlocks.WARPING_VINES_PLANT.get(), models().cross("warping_vines_plant", modLoc("block/warping_vines_plant")));
         simpleBlock(VSBlocks.SOUL_LAVA.get(), models().getBuilder("soul_lava").texture("particle", modLoc("block/soul_lava_still")));
+        simpleBlock(VSBlocks.MUSHROOM_STEW.get(), models().getBuilder("mushroom_stew").texture("particle", modLoc("block/mushroom_stew_still")));
         axisBlock((RotatedPillarBlock) VSBlocks.WITHER_BONE_BLOCK.get(), modLoc("block/wither_bone_block_side"), modLoc("block/wither_bone_block_top"));
         simpleBlock(VSBlocks.POTTED_GRASS.get(), models().withExistingParent("potted_grass", modLoc("block/inventory_tinted_potted_plant")).texture("plant",  "block/grass_pot"));
         simpleBlock(VSBlocks.POTTED_GOLDEN_CARROTS.get(), models().withExistingParent("potted_golden_carrots", modLoc("block/inventory_potted_plant")).texture("dirt", mcLoc("block/farmland")).texture("plant",
@@ -118,6 +119,8 @@ public class VSBlockStateProvider extends VSBlockStateModels {
                 "block/warped_wart_pot"));
         simpleBlock(VSBlocks.POTTED_ENDER_WART.get(), models().withExistingParent("potted_ender_wart", modLoc("block/inventory_potted_plant")).texture("dirt", "block/ender_farmland").texture("plant",  "block/ender_wart_pot"));
         simpleBlock(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get(), models().cubeBottomTop("ender_nylium_quartz_ore", modLoc("block/ender_nylium_quartz_ore_side"), modLoc("block/end_quartz_ore"), modLoc("block/ender_nylium")));
+        simpleBlock(VSBlocks.POTTED_TORCH.get(), models().withExistingParent("potted_torch", modLoc("block/template_potted_torch")).texture("dirt", mcLoc("block/smooth_stone")).texture("torch", mcLoc("block/torch")));
+        simpleBlock(VSBlocks.POTTED_SOUL_TORCH.get(), models().withExistingParent("potted_soul_torch", modLoc("block/template_potted_torch")).texture("dirt", mcLoc("block/smooth_stone")).texture("torch", mcLoc("block/soul_torch")));
 
         getVariantBuilder(VSBlocks.GOLDEN_CARROTS.get()).forAllStates(state -> {
             int cropAgeIndex = cropAgeToIndexSeven(state.getValue(BlockStateProperties.AGE_7));
@@ -139,8 +142,13 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         // Variants Builder for blocks other than plants.
         getVariantBuilder(VSBlocks.ENDER_FARMLAND.get()).forAllStates(state -> {
             String isMoist = moistIndex(state.getValue(BlockStateProperties.MOISTURE));
-            return ConfiguredModel.builder().modelFile(models().getBuilder("ender_farmland" + isMoist).parent(models().getExistingFile(modLoc("block/template_farmland")))
-                    .texture("top", modLoc("block/ender_farmland" + isMoist)).texture("side", modLoc("block/ender_farmland_side" + isMoist)).texture("dirt", mcLoc("block/end_stone"))).build();
+            return ConfiguredModel.builder().modelFile(models().getBuilder("ender_farmland" + isMoist).parent(models().getExistingFile(modLoc("block/template_farmland"))).texture("top", modLoc("block/ender_farmland" + isMoist)).texture("side",
+                    modLoc("block/ender_farmland_side" + isMoist)).texture("dirt", mcLoc("block/end_stone"))).build();
+        });
+        getVariantBuilder(VSBlocks.POTTED_REDSTONE_TORCH.get()).forAllStates(state -> {
+            String isOff = !state.getValue(BlockStateProperties.LIT) ? "_off" : "";
+            return ConfiguredModel.builder().modelFile(models().getBuilder("potted_redstone_torch" + isOff).parent(models().getExistingFile(modLoc("block/template_potted_torch"))).texture("dirt", mcLoc("block/smooth_stone")).texture("torch", mcLoc(
+                    "block/redstone_torch" + isOff))).build();
         });
     }
 }

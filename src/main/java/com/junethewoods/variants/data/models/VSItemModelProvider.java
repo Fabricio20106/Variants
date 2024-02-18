@@ -27,6 +27,8 @@ public class VSItemModelProvider extends VSItemModelModels {
         block("golden_carrots", "_stage3");
         block("gold_cauldron");
         block("gold_beacon");
+        block("quartz_cauldron");
+        block("quartz_beacon");
         block("quartz_ore");
         block("deepslate_quartz_ore");
         block("end_quartz_ore");
@@ -102,6 +104,9 @@ public class VSItemModelProvider extends VSItemModelModels {
         block("potted_grass");
         block("potted_ender_roots");
         block("potted_ender_fungus");
+        block("potted_torch");
+        block("potted_soul_torch");
+        block("potted_redstone_torch");
 
         standard(generated, "white_shulker_shell");
         standard(generated, "inno_shulker_shell");
@@ -131,7 +136,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(generated, "crimson_boat");
         standard(generated, "warped_boat");
         standard(generated, "ender_boat");
-        standard(generated, "variated_instructions");
+        standard(generated, "varied_instructions");
         standard(generated, "splash_experience_bottle");
         standard(generated, "lingering_experience_bottle");
         standard(generated, "splash_dragon_breath");

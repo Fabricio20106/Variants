@@ -13,6 +13,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class VSItemTagsProvider extends ItemTagsProvider {
@@ -21,6 +22,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
     }
 
     @Override
+    @Nonnull
     public String getName() {
         return "Variants - Item Tags";
     }
@@ -113,8 +115,8 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.PAINTING_DOORS).add(VSItems.PAINTING_DOOR_WANDERER.get()).add(VSItems.PAINTING_DOOR_GRAHAM.get()).add(VSItems.PAINTING_DOOR_FIRST.get());
         this.tag(VSTags.Items.PAINTING_TRAPDOORS).add(VSItems.PAINTING_TRAPDOOR_ALBAN.get()).add(VSItems.PAINTING_TRAPDOOR_AZTEC.get()).add(VSItems.PAINTING_TRAPDOOR_AZTEC2.get()).add(VSItems.PAINTING_TRAPDOOR_BOMB.get())
                 .add(VSItems.PAINTING_TRAPDOOR_KEBAB.get()).add(VSItems.PAINTING_TRAPDOOR_PLANT.get()).add(VSItems.PAINTING_TRAPDOOR_WASTELAND.get());
-        this.tag(VSTags.Items.CAULDRONS).add(Items.CAULDRON).add(VSItems.GOLDEN_CAULDRON.get());
-        this.tag(VSTags.Items.BEACONS).add(Items.BEACON).add(VSItems.GOLDEN_BEACON.get());
+        this.tag(VSTags.Items.CAULDRONS).add(Items.CAULDRON).add(VSItems.GOLDEN_CAULDRON.get()).add(VSItems.QUARTZ_CAULDRON.get());
+        this.tag(VSTags.Items.BEACONS).add(Items.BEACON).add(VSItems.GOLDEN_BEACON.get()).add(VSItems.QUARTZ_BEACON.get());
         this.tag(VSTags.Items.POTS).add(VSItems.STYLISED_POT.get()).add(VSItems.REDSTONE_POT.get()).add(VSItems.BLUESTONE_POT.get()).add(VSItems.GLOWSTONE_POT.get()).add(VSItems.GUNPOWDER_POT.get()).add(VSItems.EXPLOSIVE_BLEND_POT.get())
                 .add(VSItems.SUGAR_POT.get()).add(VSItems.SWEET_BERRY_POT.get()).add(VSItems.GLOW_BERRY_POT.get());
         this.tag(VSTags.Items.SPYGLASSES).add(VSWeaponry.IRON_SPYGLASS.get()).add(VSWeaponry.DIAMOND_SPYGLASS.get()).add(VSWeaponry.NETHERITE_SPYGLASS.get());
@@ -127,7 +129,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
 
         this.tag(VSTags.Items.FLOWER_POTS).add(VSItems.POTTED_GLOW_BLACK_TULIP.get()).add(VSItems.POTTED_SUNNY_FLOWER.get()).add(VSItems.POTTED_SUGAR_CANE.get()).add(VSItems.POTTED_GRASS.get()).add(VSItems.POTTED_PAINTING_SAPLING.get())
                 .add(VSItems.POTTED_GOLDEN_CARROTS.get()).add(VSItems.POTTED_ENDER_ROOTS.get()).add(VSItems.POTTED_ENDER_FUNGUS.get()).add(VSItems.POTTED_NETHER_WART.get()).add(VSItems.POTTED_WARPED_WART.get())
-                .add(VSItems.POTTED_ENDER_WART.get());
+                .add(VSItems.POTTED_ENDER_WART.get()).add(VSItems.POTTED_TORCH.get()).add(VSItems.POTTED_SOUL_TORCH.get()).add(VSItems.POTTED_REDSTONE_TORCH.get());
 
         // Bowl/Bucket Foods
         this.tag(VSTags.Items.BOWL_FOODS_MUSHROOM).add(Items.MUSHROOM_STEW).add(VSItems.EXPONENTIAL_MUSHROOM_STEW.get());
@@ -187,6 +189,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(ItemTags.PIGLIN_LOVED).add(VSItems.GOLDEN_CAULDRON.get()).add(VSItems.GOLDEN_BEACON.get()).add(VSItems.POTTED_GOLDEN_CARROTS.get()).add(VSItems.GOLDEN_CARROTS.get()).add(VSItems.GOLDEN_CHAIN.get())
                 .add(VSItems.POWERED_TIE.get()).add(VSWeaponry.GOLDEN_SHEARS.get()).add(VSWeaponry.ALICE_AI_SHEARS.get());
         this.tag(ItemTags.BOATS).add(VSItems.PAINTING_BOAT.get()).add(VSItems.CRIMSON_BOAT.get()).add(VSItems.WARPED_BOAT.get()).add(VSItems.ENDERWOOD_BOAT.get());
+        this.tag(ItemTags.PIGLIN_REPELLENTS).add(VSItems.POTTED_SOUL_TORCH.get());
     }
 
     private static ResourceLocation backMath(String item) {

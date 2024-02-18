@@ -4,7 +4,7 @@ New Features:
 - Variants cauldrons are now waterloggable [done + vanilla cauldron]
 - Painting Trees [done]
 - Soul Lava fluid [done]
-- Mushroom Stew fluid
+- Mushroom Stew fluid [done]
 - Brazilian Portuguese translation [done]
 
 New Blocks:
@@ -15,7 +15,7 @@ New Blocks:
 - Enderwood Set [done]
 - Ender Vegetation (Fungus, Sprouts, Roots & Vines) [done]
 - Mossy Nether Brick, End Stone Brick & Purpur Block
-- Potted Golden Carrots, Warped Wart & Grass
+- Potted Golden Carrots, Warped Wart & Grass [done]
 - Quartz Glass, Pane & Bars [done]
 - Red Nether Brick Fence [done]
 - Smooth Purpur + Slab
@@ -24,11 +24,11 @@ New Blocks:
 - Diamond, Emerald & Quartz Chains [done + golden chain]
 - Netherrack & End Stone Levers [done]
 - Painting & Enderwood Signs [done]
-- Quartz Cauldron & Beacon
+- Quartz Cauldron & Beacon [done]
 - Crimson, Warped & Ender Farmlands [ender farmland done]
 - Ender Nylium [done]
 - Sunny Flowers [done]
-- Potted Torches
+- Potted Torches [done]
 - Painting Sapling [done]
 - Infested Chiseled End Stone & Purpur Blocks [done]
 - Infested Mossy End Stone Bricks, Nether Bricks & Purpur Block

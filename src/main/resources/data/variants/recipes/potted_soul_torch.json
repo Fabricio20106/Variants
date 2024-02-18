@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:flower_pot"
+    },
+    "C": {
+      "item": "minecraft:soul_torch"
+    }
+  },
+  "result": {
+    "item": "variants:potted_soul_torch"
+  }
+}

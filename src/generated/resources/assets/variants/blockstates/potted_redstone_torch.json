@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "variants:block/potted_redstone_torch_off"
+    },
+    "lit=true": {
+      "model": "variants:block/potted_redstone_torch"
+    }
+  }
+}

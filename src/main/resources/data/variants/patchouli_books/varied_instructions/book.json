@@ -1,7 +1,7 @@
 {
-  "name": "Variated Instructions",
+  "name": "Varied Instructions",
   "landing_text": "Variants adds various variants of vanilla items or blocks, ranging from copper armor and tools to potted sugar cane.",
-  "model": "variants:variated_instructions",
+  "model": "variants:varied_instructions",
   "creative_tab": "variants.main",
   "version": 1
 }

@@ -151,6 +151,8 @@ public class Variants {
         RenderTypeLookup.setRenderLayer(VSBlocks.WARPED_WART.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.GOLDEN_BEACON.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.GOLDEN_CAULDRON.get(), RenderType.translucent());
+        RenderTypeLookup.setRenderLayer(VSBlocks.QUARTZ_BEACON.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.QUARTZ_CAULDRON.get(), RenderType.translucent());
         RenderTypeLookup.setRenderLayer(VSBlocks.PAINTING_TRAPDOOR.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.PAINTING_DOOR.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.PAINTING_DOOR_WANDERER.get(), RenderType.cutout());
@@ -178,8 +180,14 @@ public class Variants {
         RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_NETHER_WART.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_WARPED_WART.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_ENDER_WART.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_TORCH.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_SOUL_TORCH.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_REDSTONE_TORCH.get(), RenderType.cutout());
 
         RenderTypeLookup.setRenderLayer(VSBlocks.GLOW_BLACK_STAINED_GLASS.get(), RenderType.translucent());
         RenderTypeLookup.setRenderLayer(VSBlocks.GLOW_BLACK_STAINED_GLASS_PANE.get(), RenderType.translucent());
+
+        RenderTypeLookup.setRenderLayer(VSFluids.MUSHROOM_STEW.get(), RenderType.translucent());
+        RenderTypeLookup.setRenderLayer(VSFluids.FLOWING_MUSHROOM_STEW.get(), RenderType.translucent());
     }
 }

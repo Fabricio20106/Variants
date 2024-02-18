@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GSG",
+    "GUG",
+    "OOO"
+  ],
+  "key": {
+    "S": {
+      "tag": "melony:nether_stars"
+    },
+    "G": {
+      "tag": "forge:glass/colorless"
+    },
+    "O": {
+      "tag": "forge:obsidian"
+    },
+    "U": {
+      "tag": "forge:storage_blocks/quartz"
+    }
+  },
+  "result": {
+    "item": "variants:quartz_beacon"
+  }
+}

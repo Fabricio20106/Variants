@@ -3,7 +3,7 @@ package com.junethewoods.variants.block;
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.block.custom.*;
 import com.junethewoods.variants.block.custom.end.*;
-import com.junethewoods.variants.block.custom.nether.EndStoneOreBlock;
+import com.junethewoods.variants.block.custom.end.EndStoneOreBlock;
 import com.junethewoods.variants.block.custom.nether.WarpedWartBlock;
 import com.junethewoods.variants.block.custom.nether.WitherBoneBlock;
 import com.junethewoods.variants.fluid.VSFluids;
@@ -14,11 +14,16 @@ import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.DyeColor;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.Effects;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.function.ToIntFunction;
+
+@SuppressWarnings("deprecation")
 public class VSBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Variants.MOD_ID);
 
@@ -91,6 +96,8 @@ public class VSBlocks {
     public static final RegistryObject<Block> ENDER_NYLIUM_QUARTZ_ORE = BLOCKS.register("ender_nylium_quartz_ore", () -> new VSOreBlock(2, 5, AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_PURPLE).requiresCorrectToolForDrops().strength(3f, 9f)));
     public static final RegistryObject<Block> GOLDEN_CAULDRON = BLOCKS.register("gold_cauldron", () -> new CauldronBlock(AbstractBlock.Properties.copy(Blocks.GOLD_BLOCK).noOcclusion()));
     public static final RegistryObject<Block> GOLDEN_BEACON = BLOCKS.register("gold_beacon", () -> new VSBeaconBlock(DyeColor.YELLOW, AbstractBlock.Properties.copy(Blocks.BEACON)));
+    public static final RegistryObject<Block> QUARTZ_CAULDRON = BLOCKS.register("quartz_cauldron", () -> new CauldronBlock(AbstractBlock.Properties.copy(Blocks.QUARTZ_BLOCK).noOcclusion()));
+    public static final RegistryObject<Block> QUARTZ_BEACON = BLOCKS.register("quartz_beacon", () -> new VSBeaconBlock(DyeColor.WHITE, AbstractBlock.Properties.copy(Blocks.BEACON)));
     public static final RegistryObject<Block> DIAMOND_BELL = BLOCKS.register("diamond_bell", () -> new VSBellBlock(AbstractBlock.Properties.copy(Blocks.BELL)));
     public static final RegistryObject<Block> NETHERRACK_LEVER = BLOCKS.register("netherrack_lever", () -> new LeverBlock(AbstractBlock.Properties.copy(Blocks.LEVER).sound(SoundType.NETHERRACK)));
     public static final RegistryObject<Block> END_STONE_LEVER = BLOCKS.register("end_stone_lever", () -> new LeverBlock(AbstractBlock.Properties.copy(Blocks.LEVER).sound(SoundType.STONE)));
@@ -130,5 +137,13 @@ public class VSBlocks {
     public static final RegistryObject<Block> POTTED_NETHER_WART = BLOCKS.register("potted_nether_wart", () -> new FlowerPotBlock(Blocks.NETHER_WART, AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
     public static final RegistryObject<Block> POTTED_WARPED_WART = BLOCKS.register("potted_warped_wart", () -> new FlowerPotBlock(VSBlocks.WARPED_WART.get(), AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
     public static final RegistryObject<Block> POTTED_ENDER_WART = BLOCKS.register("potted_ender_wart", () -> new FlowerPotBlock(VSBlocks.ENDER_WART.get(), AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
+    public static final RegistryObject<Block> POTTED_TORCH = BLOCKS.register("potted_torch", () -> new PottedTorchBlock(Blocks.TORCH, ParticleTypes.FLAME, AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion().lightLevel((state) -> 14)));
+    public static final RegistryObject<Block> POTTED_SOUL_TORCH = BLOCKS.register("potted_soul_torch", () -> new PottedTorchBlock(Blocks.SOUL_TORCH, ParticleTypes.SOUL_FIRE_FLAME, AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion().lightLevel((state) -> 10)));
+    public static final RegistryObject<Block> POTTED_REDSTONE_TORCH = BLOCKS.register("potted_redstone_torch", () -> new PottedRedstoneTorchBlock(Blocks.REDSTONE_TORCH, AbstractBlock.Properties.of(Material.DECORATION).instabreak().noOcclusion().lightLevel(emitWhenLit(7))));
     public static final RegistryObject<FlowingFluidBlock> SOUL_LAVA = BLOCKS.register("soul_lava", () -> new FlowingFluidBlock(VSFluids.SOUL_LAVA, AbstractBlock.Properties.of(Material.LAVA, MaterialColor.COLOR_LIGHT_BLUE).noCollission().randomTicks().strength(100).lightLevel((light) -> 15).noDrops()));
+    public static final RegistryObject<FlowingFluidBlock> MUSHROOM_STEW = BLOCKS.register("mushroom_stew", () -> new FlowingFluidBlock(VSFluids.MUSHROOM_STEW, AbstractBlock.Properties.of(Material.WATER, MaterialColor.TERRACOTTA_LIGHT_GRAY).noCollission().randomTicks().strength(100).noDrops()));
+
+    private static ToIntFunction<BlockState> emitWhenLit(int light) {
+        return (state) -> state.getValue(BlockStateProperties.LIT) ? light : 0;
+    }
 }

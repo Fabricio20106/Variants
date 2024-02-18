@@ -150,6 +150,7 @@ public class VSTags {
 
     public static class Fluids {
         public static final ITag.INamedTag<Fluid> SOUL_LAVA = mod("soul_lava");
+        public static final ITag.INamedTag<Fluid> MUSHROOM_STEW = mod("mushroom_stew");
 
         public static ITag.INamedTag<Fluid> mod(String name) {
             return FluidTags.bind(Variants.resourceLoc(name).toString());

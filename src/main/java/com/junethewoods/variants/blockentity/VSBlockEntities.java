@@ -18,7 +18,7 @@ public class VSBlockEntities {
             VSBlocks.DIAMOND_BELL.get()).build(null));
 
     public static final RegistryObject<TileEntityType<VSBeaconBlockEntity>> VS_BEACON = BLOCK_ENTITIES.register("vs_beacon", () -> TileEntityType.Builder.of(VSBeaconBlockEntity::new,
-            VSBlocks.GOLDEN_BEACON.get()).build(null));
+            VSBlocks.GOLDEN_BEACON.get(), VSBlocks.QUARTZ_BEACON.get()).build(null));
 
     public static final RegistryObject<TileEntityType<VSBedBlockEntity>> VS_BED = BLOCK_ENTITIES.register("vs_bed", () -> TileEntityType.Builder.of(VSBedBlockEntity::new,
             VSBlocks.GLOW_BLACK_BED.get()).build(null));

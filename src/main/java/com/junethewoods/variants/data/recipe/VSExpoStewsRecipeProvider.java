@@ -12,6 +12,7 @@ import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
 
+import javax.annotation.Nonnull;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -27,6 +28,7 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
     }
 
     @Override
+    @Nonnull
     public String getName() {
         return "Variants - Exponential Stew Recipes";
     }

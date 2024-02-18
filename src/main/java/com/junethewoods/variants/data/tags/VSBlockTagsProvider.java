@@ -11,6 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class VSBlockTagsProvider extends BlockTagsProvider {
@@ -19,6 +20,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
     }
 
     @Override
+    @Nonnull
     public String getName() {
         return "Variants - Block Tags";
     }
@@ -49,8 +51,8 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSTags.Blocks.BOOKSHELVES).add(Blocks.BOOKSHELF).add(VSBlocks.ENDERWOOD_BOOKSHELF.get()).add(VSBlocks.PLAIN_BIRCH_BOOKSHELF.get());
         this.tag(VSTags.Blocks.PAINTING_LOGS).add(VSBlocks.PAINTING_LOG.get()).add(VSBlocks.PAINTING_WOOD.get()).add(VSBlocks.STRIPPED_PAINTING_LOG.get()).add(VSBlocks.STRIPPED_PAINTING_WOOD.get());
         this.tag(VSTags.Blocks.ENDERWOOD_STEMS).add(VSBlocks.ENDERWOOD_STEM.get()).add(VSBlocks.ENDERWOOD_HYPHAE.get()).add(VSBlocks.STRIPPED_ENDERWOOD_STEM.get()).add(VSBlocks.STRIPPED_ENDERWOOD_HYPHAE.get());
-        this.tag(VSTags.Blocks.CAULDRONS).add(Blocks.CAULDRON).add(VSBlocks.GOLDEN_CAULDRON.get());
-        this.tag(VSTags.Blocks.BEACONS).add(Blocks.BEACON).add(VSBlocks.GOLDEN_BEACON.get());
+        this.tag(VSTags.Blocks.CAULDRONS).add(Blocks.CAULDRON).add(VSBlocks.GOLDEN_CAULDRON.get()).add(VSBlocks.QUARTZ_CAULDRON.get());
+        this.tag(VSTags.Blocks.BEACONS).add(Blocks.BEACON).add(VSBlocks.GOLDEN_BEACON.get()).add(VSBlocks.QUARTZ_BEACON.get());
         this.tag(VSTags.Blocks.NETHER_WART_PLACEABLE_ON).add(Blocks.SOUL_SAND).add(Blocks.SOUL_SOIL);
         this.tag(VSTags.Blocks.ENDER_WART_PLANTABLE_ON).addTag(VSTags.Blocks.HAS_ENDER_NYLIUM).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_FARMLAND.get()).add(Blocks.OBSIDIAN);
         this.tag(VSTags.Blocks.GOLDEN_CARROTS_PLANTABLE_ON).addTag(VSTags.Blocks.FARMLAND);
@@ -94,7 +96,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.SMALL_FLOWERS).add(VSBlocks.GLOW_BLACK_TULIP.get()).add(VSBlocks.SUNNY_FLOWER.get());
         this.tag(BlockTags.FLOWER_POTS).add(VSBlocks.POTTED_GLOW_BLACK_TULIP.get()).add(VSBlocks.POTTED_SUNNY_FLOWER.get()).add(VSBlocks.POTTED_SUGAR_CANE.get()).add(VSBlocks.POTTED_GRASS.get()).add(VSBlocks.POTTED_PAINTING_SAPLING.get())
                 .add(VSBlocks.POTTED_GOLDEN_CARROTS.get()).add(VSBlocks.POTTED_ENDER_ROOTS.get()).add(VSBlocks.POTTED_ENDER_FUNGUS.get()).add(VSBlocks.POTTED_NETHER_WART.get()).add(VSBlocks.POTTED_WARPED_WART.get())
-                .add(VSBlocks.POTTED_ENDER_WART.get());
+                .add(VSBlocks.POTTED_ENDER_WART.get()).add(VSBlocks.POTTED_TORCH.get()).add(VSBlocks.POTTED_SOUL_TORCH.get()).add(VSBlocks.POTTED_REDSTONE_TORCH.get());
         this.tag(BlockTags.WOOL).add(VSBlocks.GLOW_BLACK_WOOL.get());
         this.tag(BlockTags.CARPETS).add(VSBlocks.GLOW_BLACK_CARPET.get());
         this.tag(BlockTags.GUARDED_BY_PIGLINS).add(VSBlocks.GOLDEN_CAULDRON.get()).add(VSBlocks.GOLDEN_BEACON.get()).add(VSBlocks.GOLDEN_CARROTS.get()).add(VSBlocks.GOLDEN_CHAIN.get());
@@ -103,6 +105,8 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.NYLIUM).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get());
         this.tag(BlockTags.CLIMBABLE).add(VSBlocks.WARPING_VINES.get()).add(VSBlocks.WARPING_VINES_PLANT.get());
         this.tag(BlockTags.BEDS).add(VSBlocks.GLOW_BLACK_BED.get());
+        this.tag(BlockTags.PIGLIN_REPELLENTS).add(VSBlocks.POTTED_SOUL_TORCH.get());
+        this.tag(BlockTags.STRIDER_WARM_BLOCKS).add(VSBlocks.SOUL_LAVA.get());
     }
 
     private static ResourceLocation backMath(String block) {

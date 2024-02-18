@@ -84,6 +84,8 @@
   "block.variants.potted_golden_carrots": "Potted Golden Carrots",
   "block.variants.gold_cauldron": "Golden Cauldron",
   "block.variants.gold_beacon": "Golden Beacon",
+  "block.variants.quartz_cauldron": "Quartz Cauldron",
+  "block.variants.quartz_beacon": "Quartz Beacon",
   "block.variants.quartz_ore": "Quartz Ore",
   "block.variants.deepslate_quartz_ore": "Deepslate Quartz Ore",
   "block.variants.wither_bone_block": "Wither Bone Block",
@@ -153,6 +155,9 @@
   "block.variants.warping_vines_plant": "Warping Vines Plant",
   "block.variants.ender_wart": "Ender Wart",
   "block.variants.potted_ender_wart": "Potted Ender Wart",
+  "block.variants.potted_torch": "Potted Torch",
+  "block.variants.potted_soul_torch": "Potted Soul Torch",
+  "block.variants.potted_redstone_torch": "Potted Redstone Torch",
   "block.variants.end_quartz_ore": "End Quartz Ore",
   "block.variants.ender_nylium_quartz_ore": "Ender Nylium Quartz Ore",
   "block.variants.glow_black_wool": "Glow Black Wool",
@@ -189,6 +194,8 @@
 
   "fluid.variants.soul_lava": "Soul Lava",
   "fluid.variants.flowing_soul_lava": "Flowing Soul Lava",
+  "fluid.variants.mushroom_stew": "Mushroom Stew",
+  "fluid.variants.flowing_mushroom_stew": "Flowing Mushroom Stew",
 
   "death.attack.poisoning.redstone": "%1$s died of redstone poisoning",
   "death.attack.poisoning.redstone.player": "%1$s died of redstone poisoning whilst %2$s watched",

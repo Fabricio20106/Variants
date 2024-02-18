@@ -1,4 +1,4 @@
-package com.junethewoods.variants.block.custom.nether;
+package com.junethewoods.variants.block.custom.end;
 
 import com.junethewoods.variants.block.VSBlocks;
 import com.junethewoods.variants.util.VSTags;

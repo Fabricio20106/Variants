@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "variants:item/variated_instructions"
+    "layer0": "variants:item/varied_instructions"
   }
 }

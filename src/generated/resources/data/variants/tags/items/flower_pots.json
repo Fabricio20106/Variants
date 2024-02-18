@@ -11,6 +11,9 @@
     "variants:potted_ender_fungus",
     "variants:potted_nether_wart",
     "variants:potted_warped_wart",
-    "variants:potted_ender_wart"
+    "variants:potted_ender_wart",
+    "variants:potted_torch",
+    "variants:potted_soul_torch",
+    "variants:potted_redstone_torch"
   ]
 }

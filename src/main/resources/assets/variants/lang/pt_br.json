@@ -84,6 +84,8 @@
   "block.variants.potted_golden_carrots": "Cenouras douradas envasadas",
   "block.variants.gold_cauldron": "Caldeirão de ouro",
   "block.variants.gold_beacon": "Sinalizador de ouro",
+  "block.variants.quartz_cauldron": "Caldeirão de quartzo",
+  "block.variants.quartz_beacon": "Sinalizador de quartzo",
   "block.variants.quartz_ore": "Minério de quartzo",
   "block.variants.deepslate_quartz_ore": "Minério de quartzo de ardósia",
   "block.variants.wither_bone_block": "Bloco de ossos murchos",
@@ -153,6 +155,9 @@
   "block.variants.warping_vines_plant": "Planta de trepadeiras deformadas",
   "block.variants.ender_wart": "Fungo do End",
   "block.variants.potted_ender_wart": "Fungo do End envasado",
+  "block.variants.potted_torch": "Tocha envasada",
+  "block.variants.potted_soul_torch": "Tocha das almas envasada",
+  "block.variants.potted_redstone_torch": "Tocha de redstone envasada",
   "block.variants.end_quartz_ore": "Minério de quartzo do End",
   "block.variants.ender_nylium_quartz_ore": "Minério de quartzo de nicélio do End",
   "block.variants.glow_black_wool": "Lã preta brilhante",
@@ -189,6 +194,8 @@
 
   "fluid.variants.soul_lava": "Lava das almas",
   "fluid.variants.flowing_soul_lava": "Lava das almas fluindo",
+  "fluid.variants.mushroom_stew": "Ensopado de cogumelos",
+  "fluid.variants.flowing_mushroom_stew": "Ensopado de cogumelos fluindo",
 
   "death.attack.poisoning.redstone": "%1$s morreu por envenenamento de redstone",
   "death.attack.poisoning.redstone.player": "%1$s morreu por envenenamento de redstone enquanto %2$s assistia",
