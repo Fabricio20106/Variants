@@ -16,7 +16,7 @@ import javax.annotation.Nonnull;
 import java.util.Map;
 import java.util.function.Consumer;
 
-import static com.junethewoods.variants.item.custom.food.ExponentialSoupItem.BOWL_NAME_TO_ID;
+import static com.junethewoods.variants.item.custom.food.ExponentialStewItem.BOWL_NAME_TO_ID;
 
 public class VSExpoStewsRecipeProvider extends RecipeProvider {
     public static Map<Item, String> BOWL_TO_NAME = new ImmutableMap.Builder<Item, String>().put(VSItems.OAK_BOWL.get(), "oak").put(VSItems.SPRUCE_BOWL.get(), "spruce").put(VSItems.BIRCH_BOWL.get(), "birch").put(VSItems.JUNGLE_BOWL.get(), "jungle")

@@ -38,6 +38,7 @@ public class PlaceableBucketFoodItem extends BucketItem {
     }
 
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+        // TODO: Fix Mushroom Stew fluid duplication glitch.
         super.use(world, player, hand);
         return DrinkHelper.useDrink(world, player, hand);
     }

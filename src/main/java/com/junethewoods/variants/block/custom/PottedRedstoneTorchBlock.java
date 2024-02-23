@@ -26,8 +26,8 @@ public class PottedRedstoneTorchBlock extends PottedTorchBlock {
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     private static final Map<IBlockReader, List<Toggle>> RECENT_TOGGLES = new WeakHashMap<>();
 
-    public PottedRedstoneTorchBlock(Block torch, Properties properties) {
-        super(torch, RedstoneParticleData.REDSTONE, properties);
+    public PottedRedstoneTorchBlock(Block torch, float[] particleColor, Properties properties) {
+        super(torch, new RedstoneParticleData(particleColor[0] / 255, particleColor[1] / 255, particleColor[2] / 255, 1), properties);
     }
 
     public void onPlace(BlockState state, World world, BlockPos pos, BlockState state1, boolean bool) {

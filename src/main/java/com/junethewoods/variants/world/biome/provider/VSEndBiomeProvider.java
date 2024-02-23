@@ -17,6 +17,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import static com.junethewoods.variants.config.VSConfigs.COMMON_CONFIGS;
+
 // Replaces the End Midlands biome with the Enderwood Forest.
 public class VSEndBiomeProvider extends BiomeProvider {
     public static final RegistryKey<Biome> ENDERWOOD_FOREST = RegistryKey.create(ForgeRegistries.Keys.BIOMES, VSBiomes.ENDERWOOD_FOREST.getId());
@@ -34,8 +36,8 @@ public class VSEndBiomeProvider extends BiomeProvider {
     private final Biome enderwoodForest;
 
     public VSEndBiomeProvider(Registry<Biome> biomeReg, long seed) {
-        this(biomeReg, seed, biomeReg.getOrThrow(Biomes.THE_END), biomeReg.getOrThrow(Biomes.END_HIGHLANDS), biomeReg.getOrThrow(ENDERWOOD_FOREST), biomeReg.getOrThrow(Biomes.SMALL_END_ISLANDS), biomeReg.getOrThrow(Biomes.END_BARRENS),
-                biomeReg.getOrThrow(ENDERWOOD_FOREST));
+        this(biomeReg, seed, biomeReg.getOrThrow(COMMON_CONFIGS.substituteEndWithEnderwoodForest.get() ? ENDERWOOD_FOREST : Biomes.THE_END), biomeReg.getOrThrow(Biomes.END_HIGHLANDS), biomeReg.getOrThrow(ENDERWOOD_FOREST),
+                biomeReg.getOrThrow(Biomes.SMALL_END_ISLANDS), biomeReg.getOrThrow(Biomes.END_BARRENS), biomeReg.getOrThrow(ENDERWOOD_FOREST));
     }
 
     private VSEndBiomeProvider(Registry<Biome> biomeReg, long seed, Biome mainEnd, Biome highlands, Biome midlands, Biome smallIslands, Biome barrens, Biome enderwoodForest) {

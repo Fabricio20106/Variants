@@ -27,30 +27,24 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
 
-public class ExponentialSoupItem extends Item {
+public class ExponentialStewItem extends Item {
     public static Map<String, Integer> BOWL_NAME_TO_ID = new ImmutableMap.Builder<String, Integer>().put("oak", 0).put("spruce", 1).put("birch", 2).put("jungle", 3).put("acacia", 4).put("dark_oak", 5).put("painting", 6).put("crimson", 7).put("warped", 8).put("ender", 9).build();
     private final IStewBehavior stewBehavior;
-    private final String compatID;
 
-    public ExponentialSoupItem(IStewBehavior behavior, Properties properties) {
-        this(null, behavior, properties);
-    }
-
-    public ExponentialSoupItem(String compatID, IStewBehavior behavior, Properties properties) {
+    public ExponentialStewItem(IStewBehavior behavior, Properties properties) {
         super(properties);
-        this.compatID = compatID;
         this.stewBehavior = behavior;
     }
 
     public static void writeEffectToStew(ItemStack stack, Effect effect, int duration) {
-        CompoundNBT tag = stack.getOrCreateTag();
-        ListNBT effectList = tag.getList("effects", 9);
-        CompoundNBT tag1 = new CompoundNBT();
+        CompoundNBT stackTag = stack.getOrCreateTag();
+        ListNBT effectList = stackTag.getList("effects", 9);
+        CompoundNBT tag = new CompoundNBT();
 
-        tag1.putByte("id", (byte) Effect.getId(effect));
-        tag1.putInt("duration", duration);
-        effectList.add(tag1);
-        tag.put("effects", effectList);
+        tag.putByte("id", (byte) Effect.getId(effect));
+        tag.putInt("duration", duration);
+        effectList.add(tag);
+        stackTag.put("effects", effectList);
     }
 
     public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity livEntity) {

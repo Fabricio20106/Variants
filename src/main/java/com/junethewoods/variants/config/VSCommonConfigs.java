@@ -9,6 +9,7 @@ public class VSCommonConfigs {
     public final ForgeConfigSpec.BooleanValue generateEndQuartzOre;
     public final ForgeConfigSpec.BooleanValue generateSoulLavaSprings;
     public final ForgeConfigSpec.BooleanValue generateEndCavesAndRavines;
+    public final ForgeConfigSpec.BooleanValue substituteEndWithEnderwoodForest;
 
     // Items
     public final ForgeConfigSpec.BooleanValue populateExponentialBowlsInTabs;
@@ -39,6 +40,7 @@ public class VSCommonConfigs {
         this.generateEndQuartzOre = builder.comment("Allow End quartz ore to generate?").define("generateEndQuartzOre", true);
         this.generateSoulLavaSprings = builder.comment("Allow soul lava springs ore to generate in the Nether?").define("generateSoulLavaSprings", true);
         this.generateEndCavesAndRavines = builder.comment("Allow caves and ravines to generate in the End?").define("generateEndCavesAndRavines", true);
+        this.substituteEndWithEnderwoodForest = builder.comment("Should the End generator substitute all \"The End\" biomes with Enderwood Forests?").define("substituteEndWithEnderwoodForest", false);
         builder.pop();
 
         builder.push("entities");
