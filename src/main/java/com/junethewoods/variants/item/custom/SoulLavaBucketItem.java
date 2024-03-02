@@ -1,6 +1,8 @@
 package com.junethewoods.variants.item.custom;
 
+import com.junethewoods.variants.block.dispenser.BucketDispenseBehavior;
 import com.junethewoods.variants.fluid.VSFluids;
+import net.minecraft.block.DispenserBlock;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeType;
@@ -10,6 +12,7 @@ import javax.annotation.Nullable;
 public class SoulLavaBucketItem extends BucketItem {
     public SoulLavaBucketItem(Properties properties) {
         super(VSFluids.SOUL_LAVA, properties);
+        DispenserBlock.registerBehavior(this, new BucketDispenseBehavior());
     }
 
     @Override

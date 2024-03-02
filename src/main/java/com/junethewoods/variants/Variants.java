@@ -9,7 +9,9 @@ import com.junethewoods.variants.config.VSConfigs;
 import com.junethewoods.variants.crafting.VSRecipeTypes;
 import com.junethewoods.variants.effect.VSEffects;
 import com.junethewoods.variants.entity.VSEntities;
+import com.junethewoods.variants.entity.renderer.DragonBreathBottleRenderer;
 import com.junethewoods.variants.entity.renderer.FishRenderer;
+import com.junethewoods.variants.entity.renderer.SmallSoulFireballRenderer;
 import com.junethewoods.variants.entity.renderer.VSBoatRenderer;
 import com.junethewoods.variants.fluid.VSFluids;
 import com.junethewoods.variants.item.VSItems;
@@ -128,6 +130,8 @@ public class Variants {
 
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.FISH.get(), FishRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.VS_BOAT.get(), VSBoatRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(VSEntities.DRAGON_BREATH_BOTTLE.get(), DragonBreathBottleRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(VSEntities.SMALL_SOUL_FIREBALL.get(), SmallSoulFireballRenderer::new);
 
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_BELL.get(), VSBellBlockEntityRenderer::new);
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_BEACON.get(), BeaconTileEntityRenderer::new);
@@ -165,6 +169,7 @@ public class Variants {
         RenderTypeLookup.setRenderLayer(VSBlocks.DIAMOND_CHAIN.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.EMERALD_CHAIN.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.QUARTZ_BARS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.SOUL_BREWING_STAND.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.ENDERWOOD_TRAPDOOR.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.ENDERWOOD_DOOR.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.ENDER_ROOTS.get(), RenderType.cutout());

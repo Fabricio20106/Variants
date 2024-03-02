@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "others"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:end_stone_bricks"
+    },
+    {
+      "item": "others:moss_block"
+    }
+  ],
+  "result": {
+    "item": "variants:mossy_end_stone_bricks"
+  }
+}

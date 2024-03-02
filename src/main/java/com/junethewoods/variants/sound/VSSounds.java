@@ -16,6 +16,7 @@ public class VSSounds {
     public static final RegistryObject<SoundEvent> FISH_FLOP = SOUNDS.register("entity.fish.flop", () -> new SoundEvent(Variants.resourceLoc("entity.fish.flop")));
     public static final RegistryObject<SoundEvent> FISH_HURT = SOUNDS.register("entity.fish.hurt", () -> new SoundEvent(Variants.resourceLoc("entity.fish.hurt")));
     public static final RegistryObject<SoundEvent> FISH_DEATH = SOUNDS.register("entity.fish.death", () -> new SoundEvent(Variants.resourceLoc("entity.fish.death")));
+    public static final RegistryObject<SoundEvent> DRAGON_BREATH_BOTTLE_THROW = SOUNDS.register("entity.dragon_breath_bottle.throw", () -> new SoundEvent(Variants.resourceLoc("entity.dragon_breath_bottle.throw")));
 
     // Items
     public static final RegistryObject<SoundEvent> SPYGLASS_USE = SOUNDS.register("item.spyglass.use", () -> new SoundEvent(Variants.resourceLoc("item.spyglass.use")));

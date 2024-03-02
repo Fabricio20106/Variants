@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "variants:block/azure_bluet_leaves"
+  }
+}

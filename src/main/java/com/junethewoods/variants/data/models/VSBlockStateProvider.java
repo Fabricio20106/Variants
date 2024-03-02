@@ -122,6 +122,28 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         simpleBlock(VSBlocks.POTTED_TORCH.get(), models().withExistingParent("potted_torch", modLoc("block/template_potted_torch")).texture("dirt", mcLoc("block/smooth_stone")).texture("torch", mcLoc("block/torch")));
         simpleBlock(VSBlocks.POTTED_SOUL_TORCH.get(), models().withExistingParent("potted_soul_torch", modLoc("block/template_potted_torch")).texture("dirt", mcLoc("block/smooth_stone")).texture("torch", mcLoc("block/soul_torch")));
 
+        // 1.7.0 Pre-Releases
+        simpleBlock(VSBlocks.AZURE_BLUET_LEAVES.get());
+        simpleBlock(VSBlocks.MOSSY_END_STONE_BRICKS.get());
+        simpleBlock(VSBlocks.INFESTED_MOSSY_END_STONE_BRICKS.get(), models().cubeAll("infested_mossy_end_stone_bricks", modLoc("block/mossy_end_stone_bricks")));
+        stairsBlock((StairsBlock) VSBlocks.MOSSY_END_STONE_BRICK_STAIRS.get(), modLoc("block/mossy_end_stone_bricks"));
+        slabBlock((SlabBlock) VSBlocks.MOSSY_END_STONE_BRICK_SLAB.get(), modLoc("block/mossy_end_stone_bricks"), modLoc("block/mossy_end_stone_bricks"));
+        wallBlock((WallBlock) VSBlocks.MOSSY_END_STONE_BRICK_WALL.get(), modLoc("block/mossy_end_stone_bricks"));
+        axisBlock((RotatedPillarBlock) VSBlocks.END_STONE_PILLAR.get(), modLoc("block/end_stone_pillar"), modLoc("block/end_stone_pillar_top"));
+        simpleBlock(VSBlocks.MOSSY_PURPUR_BLOCK.get());
+        simpleBlock(VSBlocks.INFESTED_MOSSY_PURPUR_BLOCK.get(), models().cubeAll("infested_mossy_purpur_block", modLoc("block/mossy_purpur_block")));
+        stairsBlock((StairsBlock) VSBlocks.MOSSY_PURPUR_BLOCK_STAIRS.get(), modLoc("block/mossy_purpur_block"));
+        slabBlock((SlabBlock) VSBlocks.MOSSY_PURPUR_BLOCK_SLAB.get(), modLoc("block/mossy_purpur_block"), modLoc("block/mossy_purpur_block"));
+        wallBlock((WallBlock) VSBlocks.MOSSY_PURPUR_BLOCK_WALL.get(), modLoc("block/mossy_purpur_block"));
+        simpleBlock(VSBlocks.SMOOTH_PURPUR.get());
+        slabBlock((SlabBlock) VSBlocks.SMOOTH_PURPUR_SLAB.get(), modLoc("block/smooth_purpur_slab_double"), modLoc("block/smooth_purpur"));
+        simpleBlock(VSBlocks.MOSSY_NETHER_BRICKS.get());
+        simpleBlock(VSBlocks.INFESTED_MOSSY_NETHER_BRICKS.get(), models().cubeAll("infested_mossy_nether_bricks", modLoc("block/mossy_nether_bricks")));
+        stairsBlock((StairsBlock) VSBlocks.MOSSY_NETHER_BRICK_STAIRS.get(), modLoc("block/mossy_nether_bricks"));
+        slabBlock((SlabBlock) VSBlocks.MOSSY_NETHER_BRICK_SLAB.get(), modLoc("block/mossy_nether_bricks"), modLoc("block/mossy_nether_bricks"));
+        wallBlock((WallBlock) VSBlocks.MOSSY_NETHER_BRICK_WALL.get(), modLoc("block/mossy_nether_bricks"));
+        axisBlock((RotatedPillarBlock) VSBlocks.NETHER_BRICK_PILLAR.get(), modLoc("block/nether_brick_pillar"), modLoc("block/nether_brick_pillar_top"));
+
         getVariantBuilder(VSBlocks.GOLDEN_CARROTS.get()).forAllStates(state -> {
             int cropAgeIndex = cropAgeToIndexSeven(state.getValue(BlockStateProperties.AGE_7));
             return ConfiguredModel.builder().modelFile(models().withExistingParent("golden_carrots_stage" + cropAgeIndex, modLoc("block/inventory_crop")).texture("crop", "block/golden_carrots_stage" + cropAgeIndex)).build();

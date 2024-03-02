@@ -11,29 +11,29 @@ New Blocks:
 - Painting Trapdoors [done]
 - Chiseled End Stone Bricks & Purpur Blocks [done]
 - Elder Prismarine (Raw, Bricks, Dark & Lantern) [done]
-- Nether Brick & End Stone Pillars
+- Nether Brick & End Stone Pillars [done]
 - Enderwood Set [done]
 - Ender Vegetation (Fungus, Sprouts, Roots & Vines) [done]
-- Mossy Nether Brick, End Stone Brick & Purpur Block
+- Mossy Nether Brick, End Stone Brick & Purpur Block [done]
 - Potted Golden Carrots, Warped Wart & Grass [done]
 - Quartz Glass, Pane & Bars [done]
 - Red Nether Brick Fence [done]
-- Smooth Purpur + Slab
+- Smooth Purpur + Slab [done]
 - Wither Bone Block [done]
-- Azure Bluet Leaves
+- Azure Bluet Leaves [done]
 - Diamond, Emerald & Quartz Chains [done + golden chain]
 - Netherrack & End Stone Levers [done]
 - Painting & Enderwood Signs [done]
 - Quartz Cauldron & Beacon [done]
-- Crimson, Warped & Ender Farmlands [ender farmland done]
+- Crimson, Warped & Ender Farmlands [1 done]
 - Ender Nylium [done]
 - Sunny Flowers [done]
 - Potted Torches [done]
 - Painting Sapling [done]
 - Infested Chiseled End Stone & Purpur Blocks [done]
-- Infested Mossy End Stone Bricks, Nether Bricks & Purpur Block
+- Infested Mossy End Stone Bricks, Nether Bricks & Purpur Block [done]
 - Enderwood Bookshelves [done]
-- Soul Brewing Stand
+- Soul Brewing Stand [done]
 
 New Items:
 - Exponential Bowls (Beetroot, Mushroom, Rabbit, Fungi, End Fungi, Suspicious, Water, Lava, Milk & Powder Snow) [done]
@@ -43,7 +43,7 @@ New Items:
 - Copper Chestplate [done]
 - (Corner) Iron Tie, Powered Tie, Detector Plate, Powered Railbed & Wooden Railbed [done]
 - Painting, Crimson & Warped Boats [done]
-- Crystallized Honey
+- Crystallized Honey [done]
 - Diamond, Emerald & Quartz Nuggets [done]
 - Emerald Armor Set [done]
 - End Fungi Stew [done]

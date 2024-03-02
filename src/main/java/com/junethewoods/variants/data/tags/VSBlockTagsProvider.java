@@ -71,7 +71,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
 
         // Minecraft Tags
         this.tag(BlockTags.LOGS_THAT_BURN).addTag(VSTags.Blocks.PAINTING_LOGS).addTag(VSTags.Blocks.ENDERWOOD_STEMS);
-        this.tag(BlockTags.LEAVES).add(VSBlocks.PAINTING_LEAVES.get());
+        this.tag(BlockTags.LEAVES).add(VSBlocks.AZURE_BLUET_LEAVES.get()).add(VSBlocks.PAINTING_LEAVES.get());
         this.tag(BlockTags.WART_BLOCKS).add(VSBlocks.ENDER_WART_BLOCK.get());
         this.tag(BlockTags.SAPLINGS).add(VSBlocks.PAINTING_SAPLING.get());
         this.tag(BlockTags.PLANKS).add(VSBlocks.PAINTING_PLANKS.get()).add(VSBlocks.ENDERWOOD_PLANKS.get());
@@ -86,13 +86,16 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.STANDING_SIGNS).add(VSBlocks.PAINTING_SIGN.get()).add(VSBlocks.ENDERWOOD_SIGN.get());
         this.tag(BlockTags.WALL_SIGNS).add(VSBlocks.PAINTING_WALL_SIGN.get()).add(VSBlocks.ENDERWOOD_WALL_SIGN.get());
 
-        this.tag(BlockTags.STAIRS).add(VSBlocks.ELDER_PRISMARINE_STAIRS.get()).add(VSBlocks.ELDER_PRISMARINE_BRICK_STAIRS.get()).add(VSBlocks.DARK_ELDER_PRISMARINE_STAIRS.get());
-        this.tag(BlockTags.SLABS).add(VSBlocks.ELDER_PRISMARINE_SLAB.get()).add(VSBlocks.ELDER_PRISMARINE_BRICK_SLAB.get()).add(VSBlocks.DARK_ELDER_PRISMARINE_SLAB.get());
-        this.tag(BlockTags.WALLS).add(VSBlocks.ELDER_PRISMARINE_WALL.get());
+        this.tag(BlockTags.STAIRS).add(VSBlocks.ELDER_PRISMARINE_STAIRS.get()).add(VSBlocks.ELDER_PRISMARINE_BRICK_STAIRS.get()).add(VSBlocks.DARK_ELDER_PRISMARINE_STAIRS.get()).add(VSBlocks.MOSSY_END_STONE_BRICK_STAIRS.get())
+                .add(VSBlocks.MOSSY_PURPUR_BLOCK_STAIRS.get()).add(VSBlocks.MOSSY_NETHER_BRICK_STAIRS.get());
+        this.tag(BlockTags.SLABS).add(VSBlocks.ELDER_PRISMARINE_SLAB.get()).add(VSBlocks.ELDER_PRISMARINE_BRICK_SLAB.get()).add(VSBlocks.DARK_ELDER_PRISMARINE_SLAB.get()).add(VSBlocks.MOSSY_END_STONE_BRICK_SLAB.get())
+                .add(VSBlocks.MOSSY_PURPUR_BLOCK_SLAB.get()).add(VSBlocks.SMOOTH_PURPUR_SLAB.get()).add(VSBlocks.MOSSY_NETHER_BRICK_SLAB.get());
+        this.tag(BlockTags.WALLS).add(VSBlocks.ELDER_PRISMARINE_WALL.get()).add(VSBlocks.MOSSY_END_STONE_BRICK_WALL.get()).add(VSBlocks.MOSSY_PURPUR_BLOCK_WALL.get()).add(VSBlocks.MOSSY_NETHER_BRICK_WALL.get());
         this.tag(BlockTags.FENCES).add(VSBlocks.RED_NETHER_BRICK_FENCE.get());
 
         this.tag(BlockTags.CROPS).add(VSBlocks.GOLDEN_CARROTS.get()).add(Blocks.NETHER_WART).add(VSBlocks.WARPED_WART.get()).add(VSBlocks.ENDER_WART.get());
         this.tag(BlockTags.BEE_GROWABLES).add(VSBlocks.GLOW_BERRY_BUSH.get());
+        this.tag(BlockTags.FLOWERS).add(VSBlocks.AZURE_BLUET_LEAVES.get());
         this.tag(BlockTags.SMALL_FLOWERS).add(VSBlocks.GLOW_BLACK_TULIP.get()).add(VSBlocks.SUNNY_FLOWER.get());
         this.tag(BlockTags.FLOWER_POTS).add(VSBlocks.POTTED_GLOW_BLACK_TULIP.get()).add(VSBlocks.POTTED_SUNNY_FLOWER.get()).add(VSBlocks.POTTED_SUGAR_CANE.get()).add(VSBlocks.POTTED_GRASS.get()).add(VSBlocks.POTTED_PAINTING_SAPLING.get())
                 .add(VSBlocks.POTTED_GOLDEN_CARROTS.get()).add(VSBlocks.POTTED_ENDER_ROOTS.get()).add(VSBlocks.POTTED_ENDER_FUNGUS.get()).add(VSBlocks.POTTED_NETHER_WART.get()).add(VSBlocks.POTTED_WARPED_WART.get())

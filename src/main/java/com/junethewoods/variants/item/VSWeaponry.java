@@ -2,13 +2,14 @@ package com.junethewoods.variants.item;
 
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.item.custom.ColoredNameItem;
-import com.junethewoods.variants.item.custom.tool.*;
 import com.junethewoods.variants.item.custom.armor.WoolArmorItem;
-import com.junethewoods.variants.util.tab.VSWeaponryTab;
+import com.junethewoods.variants.item.custom.tool.*;
 import com.junethewoods.variants.item.tool.VSArmors;
 import com.junethewoods.variants.item.tool.VSTools;
+import com.junethewoods.variants.util.tab.VSWeaponryTab;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -80,7 +81,7 @@ public class VSWeaponry {
     public static final RegistryObject<Item> EMPTY_ARMOR_SLOT_CHESTPLATE = ITEMS.register("empty_armor_slot_chestplate", () -> new ArmorItem(VSArmors.EMPTY_SLOT, EquipmentSlotType.CHEST, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> EMPTY_ARMOR_SLOT_LEGGINGS = ITEMS.register("empty_armor_slot_leggings", () -> new ArmorItem(VSArmors.EMPTY_SLOT, EquipmentSlotType.LEGS, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> EMPTY_ARMOR_SLOT_BOOTS = ITEMS.register("empty_armor_slot_boots", () -> new ArmorItem(VSArmors.EMPTY_SLOT, EquipmentSlotType.FEET, new Item.Properties().tab(VSWeaponryTab.TAB)));
-    public static final RegistryObject<Item> EMPTY_ARMOR_SLOT_SHIELD = ITEMS.register("empty_armor_slot_shield", () -> new VSShieldItem(new Item.Properties().durability(496).tab(VSWeaponryTab.TAB)));
+    public static final RegistryObject<Item> EMPTY_ARMOR_SLOT_SHIELD = ITEMS.register("empty_armor_slot_shield", () -> new VSShieldItem(Tags.Items.INGOTS_IRON, new Item.Properties().durability(496).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> COPPER_CHESTPLATE = ITEMS.register("copper_chestplate", () -> new ArmorItem(VSArmors.COPPER, EquipmentSlotType.CHEST, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> PHANTOM_MEMBRANE_TUNIC = ITEMS.register("phantom_membrane_sweatchest", () -> new ArmorItem(VSArmors.PHANTOM_MEMBRANE, EquipmentSlotType.CHEST, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> RABBIT_HIDE_TUNIC = ITEMS.register("rabbit_hide_sweatchest", () -> new ArmorItem(VSArmors.RABBIT_HIDE, EquipmentSlotType.CHEST, new Item.Properties().tab(VSWeaponryTab.TAB)));

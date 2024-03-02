@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "variants:mossy_nether_bricks"
+  },
+  "result": "variants:mossy_nether_brick_wall",
+  "count": 2
+}

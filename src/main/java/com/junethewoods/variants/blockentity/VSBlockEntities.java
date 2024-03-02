@@ -2,10 +2,7 @@ package com.junethewoods.variants.blockentity;
 
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.block.VSBlocks;
-import com.junethewoods.variants.blockentity.custom.VSBeaconBlockEntity;
-import com.junethewoods.variants.blockentity.custom.VSBedBlockEntity;
-import com.junethewoods.variants.blockentity.custom.VSBellBlockEntity;
-import com.junethewoods.variants.blockentity.custom.VSSignBlockEntity;
+import com.junethewoods.variants.blockentity.custom.*;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -25,4 +22,7 @@ public class VSBlockEntities {
 
     public static final RegistryObject<TileEntityType<VSSignBlockEntity>> VS_SIGN = BLOCK_ENTITIES.register("vs_sign", () -> TileEntityType.Builder.of(VSSignBlockEntity::new,
             VSBlocks.PAINTING_SIGN.get(), VSBlocks.PAINTING_WALL_SIGN.get(), VSBlocks.ENDERWOOD_SIGN.get(), VSBlocks.ENDERWOOD_WALL_SIGN.get()).build(null));
+
+    public static final RegistryObject<TileEntityType<VSBrewingStandBlockEntity>> VS_BREWING_STAND = BLOCK_ENTITIES.register("vs_brewing_stand", () -> TileEntityType.Builder.of(VSBrewingStandBlockEntity::new,
+            VSBlocks.SOUL_BREWING_STAND.get()).build(null));
 }

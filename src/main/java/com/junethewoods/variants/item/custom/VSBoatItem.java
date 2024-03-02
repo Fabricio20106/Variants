@@ -1,6 +1,8 @@
 package com.junethewoods.variants.item.custom;
 
+import com.junethewoods.variants.block.dispenser.DispenseVSBoatBehavior;
 import com.junethewoods.variants.entity.custom.VSBoatEntity;
+import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BoatItem;
@@ -26,6 +28,7 @@ public class VSBoatItem extends BoatItem {
     public VSBoatItem(Item.Properties properties, String woodType) {
         super(null, properties);
         this.woodType = woodType;
+        DispenserBlock.registerBehavior(this, new DispenseVSBoatBehavior(woodType));
     }
 
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {

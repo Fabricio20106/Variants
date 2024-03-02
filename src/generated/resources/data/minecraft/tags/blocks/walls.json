@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "variants:elder_prismarine_wall"
+    "variants:elder_prismarine_wall",
+    "variants:mossy_end_stone_brick_wall",
+    "variants:mossy_purpur_block_wall",
+    "variants:mossy_nether_brick_wall"
   ]
 }

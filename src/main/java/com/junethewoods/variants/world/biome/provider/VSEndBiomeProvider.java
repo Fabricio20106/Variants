@@ -83,19 +83,19 @@ public class VSEndBiomeProvider extends BiomeProvider {
         }
     }
 
-    public static float getHeightValue(SimplexNoiseGenerator generator, int p_235317_1_, int p_235317_2_) {
-        int i = p_235317_1_ / 2;
-        int j = p_235317_2_ / 2;
-        int k = p_235317_1_ % 2;
-        int l = p_235317_2_ % 2;
-        float f = 100 - MathHelper.sqrt((float)(p_235317_1_ * p_235317_1_ + p_235317_2_ * p_235317_2_)) * 8;
+    public static float getHeightValue(SimplexNoiseGenerator generator, int int1, int int2) {
+        int i = int1 / 2;
+        int j = int2 / 2;
+        int k = int1 % 2;
+        int l = int2 % 2;
+        float f = 100 - MathHelper.sqrt((float) (int1 * int1 + int2 * int2)) * 8;
         f = MathHelper.clamp(f, -100, 80);
 
         for(int i1 = -12; i1 <= 12; ++i1) {
             for(int j1 = -12; j1 <= 12; ++j1) {
                 long k1 = i + i1;
                 long l1 = j + j1;
-                if (k1 * k1 + l1 * l1 > 4096L && generator.getValue((double) k1, (double )l1) < (double) -0.9F) {
+                if (k1 * k1 + l1 * l1 > 4096L && generator.getValue((double) k1, (double) l1) < (double) -0.9F) {
                     float f1 = (MathHelper.abs((float) k1) * 3439 + MathHelper.abs((float) l1) * 147) % 13 + 9;
                     float f2 = (float) (k - i1 * 2);
                     float f3 = (float) (l - j1 * 2);

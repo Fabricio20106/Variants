@@ -1,6 +1,5 @@
 package com.junethewoods.variants.mixin.item;
 
-import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.config.VSConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
@@ -23,10 +22,5 @@ public class VSFlintAndSteelItemMixin extends Item {
     @Override
     public int getEnchantmentValue() {
         return VSConfigs.COMMON_CONFIGS.enchantableFlintAndSteel.get() ? 15 : 0;
-    }
-
-    @Override
-    public String getCreatorModId(ItemStack stack) {
-        return VSConfigs.COMMON_CONFIGS.enchantableFlintAndSteel.get() ? Variants.MOD_ID : super.getCreatorModId(stack);
     }
 }

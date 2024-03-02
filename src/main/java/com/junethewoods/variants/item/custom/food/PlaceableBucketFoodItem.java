@@ -1,5 +1,7 @@
 package com.junethewoods.variants.item.custom.food;
 
+import com.junethewoods.variants.block.dispenser.BucketDispenseBehavior;
+import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
@@ -19,6 +21,7 @@ import java.util.function.Supplier;
 public class PlaceableBucketFoodItem extends BucketItem {
     public PlaceableBucketFoodItem(Supplier<? extends Fluid> fluid, Properties properties) {
         super(fluid, properties);
+        DispenserBlock.registerBehavior(this, new BucketDispenseBehavior());
     }
 
     public int getUseDuration(ItemStack stack) {

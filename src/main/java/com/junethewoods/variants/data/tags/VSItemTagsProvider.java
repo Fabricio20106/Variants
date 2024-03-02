@@ -120,6 +120,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.POTS).add(VSItems.STYLISED_POT.get()).add(VSItems.REDSTONE_POT.get()).add(VSItems.BLUESTONE_POT.get()).add(VSItems.GLOWSTONE_POT.get()).add(VSItems.GUNPOWDER_POT.get()).add(VSItems.EXPLOSIVE_BLEND_POT.get())
                 .add(VSItems.SUGAR_POT.get()).add(VSItems.SWEET_BERRY_POT.get()).add(VSItems.GLOW_BERRY_POT.get());
         this.tag(VSTags.Items.SPYGLASSES).add(VSWeaponry.IRON_SPYGLASS.get()).add(VSWeaponry.DIAMOND_SPYGLASS.get()).add(VSWeaponry.NETHERITE_SPYGLASS.get());
+        this.tag(VSTags.Items.PURPUR_SMELTABLES).add(VSItems.MOSSY_PURPUR_BLOCK.get()).add(Items.PURPUR_BLOCK).add(Items.PURPUR_PILLAR);
         this.tag(VSTags.Items.SHULKER_SHELLS).add(Items.SHULKER_SHELL).add(VSItems.WHITE_SHULKER_SHELL.get()).add(VSItems.INNO_SHULKER_SHELL.get())
                 .add(VSItems.ORANGE_SHULKER_SHELL.get()).add(VSItems.MAGENTA_SHULKER_SHELL.get()).add(VSItems.LIGHT_BLUE_SHULKER_SHELL.get()).add(VSItems.GLOW_BLACK_SHULKER_SHELL.get())
                 .add(VSItems.YELLOW_SHULKER_SHELL.get()).add(VSItems.LIME_SHULKER_SHELL.get()).add(VSItems.PINK_SHULKER_SHELL.get())
@@ -164,7 +165,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
 
         // Minecraft Tags
         this.tag(ItemTags.LOGS_THAT_BURN).addTag(VSTags.Items.PAINTING_LOGS).addTag(VSTags.Items.ENDERWOOD_STEMS);
-        this.tag(ItemTags.LEAVES).add(VSItems.PAINTING_LEAVES.get());
+        this.tag(ItemTags.LEAVES).add(VSItems.AZURE_BLUET_LEAVES.get()).add(VSItems.PAINTING_LEAVES.get());
         this.tag(ItemTags.SAPLINGS).add(VSItems.PAINTING_SAPLING.get());
         this.tag(ItemTags.PLANKS).add(VSItems.PAINTING_PLANKS.get()).add(VSItems.ENDERWOOD_PLANKS.get());
         this.tag(ItemTags.WOODEN_STAIRS).add(VSItems.PAINTING_STAIRS.get()).add(VSItems.ENDERWOOD_STAIRS.get());
@@ -176,11 +177,14 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(ItemTags.WOODEN_TRAPDOORS).addTag(VSTags.Items.PAINTING_TRAPDOORS).add(VSItems.PAINTING_TRAPDOOR.get()).add(VSItems.ENDERWOOD_TRAPDOOR.get());
         this.tag(ItemTags.SIGNS).add(VSItems.PAINTING_SIGN.get()).add(VSItems.ENDERWOOD_SIGN.get());
 
-        this.tag(ItemTags.STAIRS).add(VSItems.ELDER_PRISMARINE_STAIRS.get()).add(VSItems.ELDER_PRISMARINE_BRICK_STAIRS.get()).add(VSItems.DARK_ELDER_PRISMARINE_STAIRS.get());
-        this.tag(ItemTags.SLABS).add(VSItems.ELDER_PRISMARINE_SLAB.get()).add(VSItems.ELDER_PRISMARINE_BRICK_SLAB.get()).add(VSItems.DARK_ELDER_PRISMARINE_SLAB.get());
-        this.tag(ItemTags.WALLS).add(VSItems.ELDER_PRISMARINE_WALL.get());
+        this.tag(ItemTags.STAIRS).add(VSItems.ELDER_PRISMARINE_STAIRS.get()).add(VSItems.ELDER_PRISMARINE_BRICK_STAIRS.get()).add(VSItems.DARK_ELDER_PRISMARINE_STAIRS.get()).add(VSItems.MOSSY_END_STONE_BRICK_STAIRS.get())
+                .add(VSItems.MOSSY_PURPUR_BLOCK_STAIRS.get()).add(VSItems.MOSSY_NETHER_BRICK_STAIRS.get());
+        this.tag(ItemTags.SLABS).add(VSItems.ELDER_PRISMARINE_SLAB.get()).add(VSItems.ELDER_PRISMARINE_BRICK_SLAB.get()).add(VSItems.DARK_ELDER_PRISMARINE_SLAB.get()).add(VSItems.MOSSY_END_STONE_BRICK_SLAB.get())
+                .add(VSItems.MOSSY_PURPUR_BLOCK_SLAB.get()).add(VSItems.SMOOTH_PURPUR_SLAB.get()).add(VSItems.MOSSY_NETHER_BRICK_SLAB.get());
+        this.tag(ItemTags.WALLS).add(VSItems.ELDER_PRISMARINE_WALL.get()).add(VSItems.MOSSY_END_STONE_BRICK_WALL.get()).add(VSItems.MOSSY_PURPUR_BLOCK_WALL.get()).add(VSItems.MOSSY_NETHER_BRICK_WALL.get());
         this.tag(ItemTags.FENCES).add(VSItems.RED_NETHER_BRICK_FENCE.get());
 
+        this.tag(ItemTags.FLOWERS).add(VSItems.AZURE_BLUET_LEAVES.get());
         this.tag(ItemTags.SMALL_FLOWERS).add(VSItems.GLOW_BLACK_TULIP.get()).add(VSItems.SUNNY_FLOWER.get());
         this.tag(ItemTags.WOOL).add(VSItems.GLOW_BLACK_WOOL.get());
         this.tag(ItemTags.CARPETS).add(VSItems.GLOW_BLACK_CARPET.get());

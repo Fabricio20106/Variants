@@ -170,5 +170,11 @@
       "item/armor/equip_leather6"
     ],
     "subtitle": "subtitles.item.armor.equip_wool"
+  },
+  "entity.dragon_breath_bottle.throw": {
+    "sounds": [
+      "random/bow"
+    ],
+    "subtitle": "subtitles.entity.potion.throw"
   }
 }

@@ -38,15 +38,15 @@ public class VSBoatEntity extends BoatEntity {
     }
 
     @Override
-    protected void addAdditionalSaveData(CompoundNBT compoundNBT) {
-        super.addAdditionalSaveData(compoundNBT);
-        compoundNBT.putString("Type", this.getWoodType());
+    protected void addAdditionalSaveData(CompoundNBT tag) {
+        super.addAdditionalSaveData(tag);
+        tag.putString("Type", this.getWoodType());
     }
 
     @Override
-    protected void readAdditionalSaveData(CompoundNBT compoundNBT) {
-        super.readAdditionalSaveData(compoundNBT);
-        this.setWoodType(compoundNBT.getString("Type"));
+    protected void readAdditionalSaveData(CompoundNBT tag) {
+        super.readAdditionalSaveData(tag);
+        this.setWoodType(tag.getString("Type"));
     }
 
     @Override

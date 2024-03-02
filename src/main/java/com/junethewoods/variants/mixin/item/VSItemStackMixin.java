@@ -9,6 +9,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.spongepowered.asm.mixin.Mixin;
@@ -28,8 +29,7 @@ public class VSItemStackMixin {
             for (int i = 0; i < tagList.size(); ++i) {
                 CompoundNBT tagListCompound = tagList.getCompound(i);
                 Registry.ENCHANTMENT.getOptional(ResourceLocation.tryParse(tagListCompound.getString("id"))).ifPresent((enchantment) ->
-                        tooltip.add(new StringTextComponent(" > ").withStyle(TextFormatting.GOLD).append(enchantment.getFullname(tagListCompound.getInt("lvl"))))
-                );
+                        tooltip.add(new TranslationTextComponent("tooltip.variants.enchant.arrow").withStyle(TextFormatting.AQUA).append(enchantment.getFullname(tagListCompound.getInt("lvl")))));
             }
         }
     }
