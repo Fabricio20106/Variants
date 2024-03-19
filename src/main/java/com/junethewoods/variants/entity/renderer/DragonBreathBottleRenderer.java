@@ -41,7 +41,7 @@ public class DragonBreathBottleRenderer extends EntityRenderer<DragonBreathBottl
     }
 
     private static void vertex(IVertexBuilder builder, Matrix4f matrix4F, Matrix3f matrix3F, int packedLight, float x, int y, int z, int alpha) {
-        builder.vertex(matrix4F, x - 0.5F, (float)y - 0.25F, 0).color(255, 255, 255, 255).uv((float) z, (float) alpha).overlayCoords(OverlayTexture.NO_OVERLAY)
+        builder.vertex(matrix4F, x - 0.5F, (float) y - 0.25F, 0).color(255, 255, 255, 255).uv((float) z, (float) alpha).overlayCoords(OverlayTexture.NO_OVERLAY)
                 .uv2(packedLight).normal(matrix3F, 0, 1, 0).endVertex();
     }
 

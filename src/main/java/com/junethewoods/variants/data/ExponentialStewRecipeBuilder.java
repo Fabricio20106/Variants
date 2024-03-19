@@ -10,12 +10,10 @@ import net.minecraft.advancements.ICriterionInstance;
 import net.minecraft.advancements.IRequirementsStrategy;
 import net.minecraft.advancements.criterion.RecipeUnlockedTrigger;
 import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tags.ITag;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -25,50 +23,50 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class ExponentialBowlRecipeBuilder {
+public class ExponentialStewRecipeBuilder {
     private final ItemStack result;
     private final int count;
     private final List<Ingredient> ingredients = Lists.newArrayList();
     private final Advancement.Builder advancement = Advancement.Builder.advancement();
     private String group;
 
-    public ExponentialBowlRecipeBuilder(ItemStack result, int count) {
+    public ExponentialStewRecipeBuilder(ItemStack result, int count) {
         this.result = result;
         this.count = count;
     }
 
-    public static ExponentialBowlRecipeBuilder shapeless(ItemStack result) {
-        return new ExponentialBowlRecipeBuilder(result, 1);
+    public static ExponentialStewRecipeBuilder shapeless(ItemStack result) {
+        return new ExponentialStewRecipeBuilder(result, 1);
     }
 
-    public ExponentialBowlRecipeBuilder requires(IItemProvider item) {
+    public ExponentialStewRecipeBuilder requires(IItemProvider item) {
         return this.requires(item, 1);
     }
 
-    public ExponentialBowlRecipeBuilder requires(IItemProvider item, int count) {
+    public ExponentialStewRecipeBuilder requires(IItemProvider item, int count) {
         for(int i = 0; i < count; ++i) {
             this.requires(Ingredient.of(item));
         }
         return this;
     }
 
-    public ExponentialBowlRecipeBuilder requires(Ingredient ingredient) {
+    public ExponentialStewRecipeBuilder requires(Ingredient ingredient) {
         return this.requires(ingredient, 1);
     }
 
-    public ExponentialBowlRecipeBuilder requires(Ingredient ingredient, int count) {
+    public ExponentialStewRecipeBuilder requires(Ingredient ingredient, int count) {
         for(int i = 0; i < count; ++i) {
             this.ingredients.add(ingredient);
         }
         return this;
     }
 
-    public ExponentialBowlRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {
+    public ExponentialStewRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {
         this.advancement.addCriterion(name, criteria);
         return this;
     }
 
-    public ExponentialBowlRecipeBuilder group(String groupName) {
+    public ExponentialStewRecipeBuilder group(String groupName) {
         this.group = groupName;
         return this;
     }

@@ -162,10 +162,14 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.BOWLS).addTag(VSTags.Items.WOODEN_BOWLS).addTag(VSTags.Items.FISHING_BOWLS);
         this.tag(VSTags.Items.NETHER_STARS).add(Items.NETHER_STAR);
         this.tag(VSTags.Items.ICON_ITEMS).add(VSWeaponry.INFINITY_SWEATERS_TAB_ICON.get()).add(VSItems.SHULKER_SPECTRUM_ICON.get());
+        this.tag(VSTags.Items.VILLAGER_PLANTABLE_SEEDS).add(VSItems.GOLDEN_CARROTS.get()).add(Items.WHEAT_SEEDS).add(Items.BEETROOT_SEEDS).add(Items.CARROT).add(Items.POTATO);
+        this.tag(VSTags.Items.VILLAGER_WANTED_ITEMS).addTag(VSTags.Items.VILLAGER_PLANTABLE_SEEDS).add(Items.WHEAT).add(Items.BREAD).add(Items.BEETROOT);
+        this.tag(VSTags.Items.COMPLETES_FIND_TREE_TUTORIAL).addTag(ItemTags.LOGS).addTag(ItemTags.LEAVES).addTag(VSTags.Items.WART_BLOCKS);
 
         // Minecraft Tags
         this.tag(ItemTags.LOGS_THAT_BURN).addTag(VSTags.Items.PAINTING_LOGS).addTag(VSTags.Items.ENDERWOOD_STEMS);
         this.tag(ItemTags.LEAVES).add(VSItems.AZURE_BLUET_LEAVES.get()).add(VSItems.PAINTING_LEAVES.get());
+        this.tag(VSTags.Items.WART_BLOCKS).add(Items.NETHER_WART_BLOCK).add(Items.WARPED_WART_BLOCK).add(VSItems.ENDER_WART_BLOCK.get());
         this.tag(ItemTags.SAPLINGS).add(VSItems.PAINTING_SAPLING.get());
         this.tag(ItemTags.PLANKS).add(VSItems.PAINTING_PLANKS.get()).add(VSItems.ENDERWOOD_PLANKS.get());
         this.tag(ItemTags.WOODEN_STAIRS).add(VSItems.PAINTING_STAIRS.get()).add(VSItems.ENDERWOOD_STAIRS.get());

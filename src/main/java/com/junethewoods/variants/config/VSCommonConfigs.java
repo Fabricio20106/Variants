@@ -14,6 +14,8 @@ public class VSCommonConfigs {
     // Items
     public final ForgeConfigSpec.BooleanValue populateExponentialBowlsInTabs;
     public final ForgeConfigSpec.BooleanValue populateWoolArmorColorInTabs;
+    public final ForgeConfigSpec.BooleanValue populateWoolArmorDesignsInTabs;
+    public final ForgeConfigSpec.IntValue maxInTabWoolArmorDesigns;
     public final ForgeConfigSpec.BooleanValue enableInfinitySweatersTab;
     public final ForgeConfigSpec.IntValue infinitySweatersTabLength;
     public final ForgeConfigSpec.IntValue infinitySweatersTabSpacing;
@@ -53,6 +55,8 @@ public class VSCommonConfigs {
 
         builder.push("items");
         this.populateWoolArmorColorInTabs = builder.comment("Should the item tabs populate all (dye) colors of wool armor?").define("populateWoolArmorColorInTabs", true);
+        this.populateWoolArmorDesignsInTabs = builder.comment("Should the item tabs populate all armor designs of wool armor?").define("populateWoolArmorDesignsInTabs", true);
+        this.maxInTabWoolArmorDesigns = builder.comment("What should the upper limit for populating wool armor designs be?").defineInRange("maxInTabWoolArmorDesigns", 1, 1, Integer.MAX_VALUE);
         this.populateExponentialBowlsInTabs = builder.comment("Should the item tabs populate all different wood types for all bowls?").define("populateExponentialBowlsInTabs", true);
         this.customFireworkDescriptions = builder.comment("Updates the Firework Rocket & Charge's descriptions.").define("customFireworkDescriptions", true);
         this.customEnchantmentDescriptions = builder.comment("Updates the enchantment description on enchanted items.").define("customEnchantmentDescriptions", true);

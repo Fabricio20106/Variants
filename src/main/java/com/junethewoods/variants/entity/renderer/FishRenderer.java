@@ -6,7 +6,6 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.model.CodModel;
-import net.minecraft.entity.passive.fish.CodEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3f;
@@ -16,12 +15,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class FishRenderer extends MobRenderer<FishEntity, CodModel<FishEntity>> {
     public FishRenderer(EntityRendererManager manager) {
-        super(manager, new CodModel<>(), 0.3f);
+        super(manager, new CodModel<>(), 0.3F);
     }
 
     @Override
     public ResourceLocation getTextureLocation(FishEntity entity) {
-        return Variants.resourceLoc("textures/entity/old_cod.png");
+        return Variants.resourceLoc("textures/entity/fish.png");
     }
 
     protected void setupRotations(FishEntity fish, MatrixStack stack, float v, float v1, float v2) {

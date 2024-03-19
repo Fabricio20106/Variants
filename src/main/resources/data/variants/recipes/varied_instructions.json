@@ -22,7 +22,7 @@
   "result": {
     "item": "patchouli:guide_book",
     "nbt": {
-      "patchouli:book": "variants:variated_instructions"
+      "patchouli:book": "variants:varied_instructions"
     }
   }
 }

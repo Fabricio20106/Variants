@@ -62,12 +62,15 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSTags.Blocks.CHORUS_PLANT_PLANTABLE_ON).add(Blocks.CHORUS_FLOWER).add(Blocks.CHORUS_PLANT);
         this.tag(VSTags.Blocks.END_CARVER_REPLACEABLES).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_NYLIUM.get());
         this.tag(VSTags.Blocks.HAS_ENDER_NYLIUM).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get());
+        this.tag(VSTags.Blocks.FARMLAND_TRANSPARENT).addTag(Tags.Blocks.FENCE_GATES).addTag(BlockTags.FENCE_GATES).add(Blocks.MOVING_PISTON);
 
         // Melony Tags
-        this.tag(VSTags.Blocks.DEEPSLATE_REPLACEABLES).addOptional(new ResourceLocation("minecraft:deepslate")).addOptional(new ResourceLocation("cavesandcliffs:deepslate")).addOptional(new ResourceLocation("quark:deepslate"));
+        this.tag(VSTags.Blocks.DEEPSLATE_REPLACEABLES).addOptional(new ResourceLocation("minecraft:deepslate")).addOptional(new ResourceLocation("cavesandcliffs:deepslate")).addOptional(new ResourceLocation("quark:deepslate"))
+                .addOptional(new ResourceLocation("decorativelary:deepslate"));
         this.tag(VSTags.Blocks.FARMLAND).add(Blocks.FARMLAND).add(VSBlocks.ENDER_FARMLAND.get()).addOptional(backMath("aljamic_farmland"));
         this.tag(VSTags.Blocks.CONDUIT_FRAME_BLOCKS).add(Blocks.PRISMARINE).add(Blocks.PRISMARINE_BRICKS).add(Blocks.DARK_PRISMARINE).add(Blocks.SEA_LANTERN).add(VSBlocks.ELDER_PRISMARINE.get()).add(VSBlocks.ELDER_PRISMARINE_BRICKS.get())
                 .add(VSBlocks.DARK_ELDER_PRISMARINE.get()).add(VSBlocks.ELDER_SEA_LANTERN.get());
+        this.tag(VSTags.Blocks.COMPLETES_FIND_TREE_TUTORIAL).addTag(BlockTags.LOGS).addTag(BlockTags.LEAVES).addTag(BlockTags.WART_BLOCKS);
 
         // Minecraft Tags
         this.tag(BlockTags.LOGS_THAT_BURN).addTag(VSTags.Blocks.PAINTING_LOGS).addTag(VSTags.Blocks.ENDERWOOD_STEMS);

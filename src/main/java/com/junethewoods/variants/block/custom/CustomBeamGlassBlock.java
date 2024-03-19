@@ -28,16 +28,13 @@ public class CustomBeamGlassBlock extends AbstractGlassBlock implements IBeaconB
 
     @Nullable
     public float[] getBeaconColorMultiplier(BlockState state, IWorldReader world, BlockPos pos, BlockPos beaconPos) {
-        int i = (beamColor & 16711680) >> 16;
-        int j = (beamColor & '\uff00') >> 8;
-        int k = (beamColor & 255);
+        int red = (beamColor & 16711680) >> 16;
+        int green = (beamColor & '\uff00') >> 8;
+        int blue = (beamColor & 255);
 
-        float[] textureDiffuseColors = new float[] {(float) i / 255f, (float) j / 255f, (float) k / 255f};
+        float[] textureDiffuseColors = new float[] {(float) red / 255F, (float) green / 255F, (float) blue / 255F};
 
-        if (getBlock() instanceof IBeaconBeamColorProvider) {
-            return textureDiffuseColors;
-        }
-
+        if (getBlock() instanceof IBeaconBeamColorProvider) return textureDiffuseColors;
         return null;
     }
 

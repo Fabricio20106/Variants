@@ -69,8 +69,6 @@ public class VSConfiguredFeatures {
 
     public static final ConfiguredFeature<?, ?> CLOSED_SOUL_LAVA_SPRING = register("closed_soul_lava_spring", Feature.SPRING.configured(CLOSED_SOUL_LAVA_SPRING_CONFIG).decorated(Features.Placements.RANGE_10_20_ROOFED)
             .squared().count(16));
-    public static final ConfiguredFeature<?, ?> DOUBLE_CLOSED_SOUL_LAVA_SPRING = register("double_closed_soul_lava_spring", Feature.SPRING.configured(CLOSED_SOUL_LAVA_SPRING_CONFIG).decorated(Features.Placements.RANGE_10_20_ROOFED)
-            .squared().count(32));
     public static final ConfiguredFeature<?, ?> OPEN_SOUL_LAVA_SPRING = register("open_soul_lava_spring", Feature.SPRING.configured(new LiquidsConfig(VSFluids.SOUL_LAVA.get().defaultFluidState(), false, 4, 1,
             ImmutableSet.of(Blocks.NETHERRACK))).decorated(Features.Placements.RANGE_4_8_ROOFED).squared().count(8));
 

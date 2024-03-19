@@ -8,6 +8,7 @@
     "block.VSCauldronBlockMixin",
     "block.VSChorusFlowerBlockMixin",
     "block.VSChorusPlantBlockMixin",
+    "block.VSFarmlandBlockMixin",
     "block.VSNetherWartBlockMixin",
     "block.VSStainedGlassBlockMixin",
     "block.VSStainedGlassPaneBlockMixin",
@@ -15,6 +16,8 @@
     "enchantment.VSQuickChargeEnchantmentMixin",
     "entity.EntityTameItemMixins$VSCatEntityMixin",
     "entity.EntityTameItemMixins$VSOcelotEntityMixin",
+    "entity.VSFarmTaskMixin",
+    "entity.VSVillagerEntityMixin",
     "item.VSFlintAndSteelItemMixin",
     "item.VSItemStackMixin",
     "item.VSShearsItemMixin",
@@ -25,7 +28,8 @@
   "client": [
     "item.VSFireworkRocketItemMixin",
     "item.VSFireworkStarItemMixin",
-    "item.VSHorseArmorItemMixin"
+    "item.VSHorseArmorItemMixin",
+    "tutorial.VSFindTreeStepMixin"
   ],
   "server": [],
   "injectors": {

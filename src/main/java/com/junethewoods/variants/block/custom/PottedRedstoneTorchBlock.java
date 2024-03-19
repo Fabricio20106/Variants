@@ -102,13 +102,13 @@ public class PottedRedstoneTorchBlock extends PottedTorchBlock {
     }
 
     private static boolean isToggledTooFrequently(World world, BlockPos pos, boolean isLit) {
-        List<Toggle> list = RECENT_TOGGLES.computeIfAbsent(world, (reader) -> Lists.newArrayList());
-        if (isLit) list.add(new Toggle(pos.immutable(), world.getGameTime()));
+        List<Toggle> recentToggles = RECENT_TOGGLES.computeIfAbsent(world, (reader) -> Lists.newArrayList());
+        if (isLit) recentToggles.add(new Toggle(pos.immutable(), world.getGameTime()));
 
         int toggles = 0;
 
-        for(int j = 0; j < list.size(); ++j) {
-            Toggle toggleList = list.get(j);
+        for(int j = 0; j < recentToggles.size(); ++j) {
+            Toggle toggleList = recentToggles.get(j);
             if (toggleList.pos.equals(pos)) {
                 ++toggles;
                 if (toggles >= 8) {

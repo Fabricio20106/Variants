@@ -43,20 +43,20 @@ public class VSClientHelpers {
     }
 
     public static void compostables() {
-        compostable(0.3f, VSItems.PAINTING_SAPLING.get());
-        compostable(0.3f, VSItems.PAINTING_LEAVES.get());
-        compostable(0.3f, VSItems.GLOW_BERRY_BUSH.get());
-        compostable(0.5f, VSItems.END_SPROUTS.get());
-        compostable(0.5f, VSItems.WARPING_VINES.get());
-        compostable(0.65f, VSItems.WARPED_WART.get());
-        compostable(0.65f, VSItems.ENDER_WART.get());
-        compostable(0.65f, VSItems.GLOW_BLACK_TULIP.get());
-        compostable(0.65f, VSItems.SUNNY_FLOWER.get());
-        compostable(0.65f, VSItems.GOLDEN_CARROTS.get());
-        compostable(0.65f, VSItems.ENDER_ROOTS.get());
-        compostable(0.65f, VSItems.ENDER_FUNGUS.get());
-        compostable(0.65f, Items.GOLDEN_CARROT);
-        compostable(0.85f, VSItems.ENDER_WART_BLOCK.get());
+        compostable(0.3F, VSItems.PAINTING_SAPLING.get());
+        compostable(0.3F, VSItems.PAINTING_LEAVES.get());
+        compostable(0.3F, VSItems.GLOW_BERRY_BUSH.get());
+        compostable(0.5F, VSItems.END_SPROUTS.get());
+        compostable(0.5F, VSItems.WARPING_VINES.get());
+        compostable(0.65F, VSItems.WARPED_WART.get());
+        compostable(0.65F, VSItems.ENDER_WART.get());
+        compostable(0.65F, VSItems.GLOW_BLACK_TULIP.get());
+        compostable(0.65F, VSItems.SUNNY_FLOWER.get());
+        compostable(0.65F, VSItems.GOLDEN_CARROTS.get());
+        compostable(0.65F, VSItems.ENDER_ROOTS.get());
+        compostable(0.65F, VSItems.ENDER_FUNGUS.get());
+        compostable(0.65F, Items.GOLDEN_CARROT);
+        compostable(0.85F, VSItems.ENDER_WART_BLOCK.get());
     }
 
     public static void tillables() {
@@ -117,7 +117,7 @@ public class VSClientHelpers {
         register(shield, new ResourceLocation("blocking"), (stack, world, livEntity) -> livEntity != null && livEntity.isUsingItem() && livEntity.getUseItem() == stack ? 1 : 0);
     }
 
-    public static void makeCustomWoolSweater(Item sweater) {
+    public static void addArmorDesigns(Item sweater) {
         register(sweater, new ResourceLocation("design"), (stack, world, livEntity) -> {
             CompoundNBT tag = stack.getTag();
             if (tag != null && tag.contains("armor_design")) {

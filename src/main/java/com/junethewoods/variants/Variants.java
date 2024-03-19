@@ -40,7 +40,6 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -48,7 +47,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -108,9 +106,6 @@ public class Variants {
     }
 
     public void clientSetup(final FMLClientSetupEvent event) {
-        VSClientHelpers.makeBow(VSWeaponry.DEBUG_BOW.get());
-        VSClientHelpers.makeShield(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
-        VSClientHelpers.makeCustomWoolSweater(VSWeaponry.WOOL_SWEATER.get());
         VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_MUSHROOM_STEW.get());
         VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_BEETROOT_SOUP.get());
         VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_RABBIT_STEW.get());
@@ -123,6 +118,9 @@ public class Variants {
         VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_LAVA_BOWL.get());
         VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_SOUL_LAVA_BOWL.get());
         VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_POWDER_SNOW_BOWL.get());
+        VSClientHelpers.makeShield(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
+        VSClientHelpers.makeBow(VSWeaponry.DEBUG_BOW.get());
+        VSClientHelpers.addArmorDesigns(VSWeaponry.WOOL_SWEATER.get());
         setRenderTypesForBlocks();
 
         Atlases.addWoodType(VSWoodTypes.PAINTING);
@@ -138,9 +136,6 @@ public class Variants {
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_BED.get(), VSBedBlockEntityRenderer::new);
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_SIGN.get(), SignTileEntityRenderer::new);
     }
-
-    @SubscribeEvent
-    public void serverStarting(FMLServerStartingEvent event) {}
 
     public static void setRenderTypesForBlocks() {
         RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_GLOW_BLACK_TULIP.get(), RenderType.cutout());

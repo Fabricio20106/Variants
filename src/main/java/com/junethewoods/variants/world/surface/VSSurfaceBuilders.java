@@ -16,7 +16,6 @@ public class VSSurfaceBuilders {
     public static final BlockState ENDER_WART_BLOCK = VSBlocks.ENDER_WART_BLOCK.get().defaultBlockState();
 
     public static final SurfaceBuilderConfig ENDERWOOD_FOREST_NYLIUM_CONFIG = new SurfaceBuilderConfig(ENDER_NYLIUM, END_STONE, ENDER_WART_BLOCK);
-    public static final SurfaceBuilderConfig ENDERWOOD_FOREST_WART_BLOCK_CONFIG = new SurfaceBuilderConfig(ENDER_WART_BLOCK, END_STONE, ENDER_WART_BLOCK);
 
     public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> ENDERWOOD_FOREST = register("enderwood_forest_old", SurfaceBuilder.DEFAULT.configured(ENDERWOOD_FOREST_NYLIUM_CONFIG));
 

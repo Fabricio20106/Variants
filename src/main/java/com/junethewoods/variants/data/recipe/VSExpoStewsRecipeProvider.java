@@ -1,7 +1,7 @@
 package com.junethewoods.variants.data.recipe;
 
 import com.google.common.collect.ImmutableMap;
-import com.junethewoods.variants.data.ExponentialBowlRecipeBuilder;
+import com.junethewoods.variants.data.ExponentialStewRecipeBuilder;
 import com.junethewoods.variants.item.VSItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
@@ -50,7 +50,7 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
                 bowlTypeTag.putString("bowl_name", "variants:" + BOWL_TO_NAME.get(bowl) + "_bowl");
                 bowlTypeTag.putInt("bowl_id", BOWL_NAME_TO_ID.get(BOWL_TO_NAME.get(bowl)));
 
-                ExponentialBowlRecipeBuilder.shapeless(resultStew).requires(Items.BROWN_MUSHROOM).requires(Items.RED_MUSHROOM).requires(bowl).group("mushroom_stew").unlockedBy("has_bowl", has(bowl)).save(consumer,
+                ExponentialStewRecipeBuilder.shapeless(resultStew).requires(Items.BROWN_MUSHROOM).requires(Items.RED_MUSHROOM).requires(bowl).group("mushroom_stew").unlockedBy("has_bowl", has(bowl)).save(consumer,
                         "variants:bowls/mushroom/" + BOWL_TO_NAME.get(bowl));
             }
         }
@@ -62,7 +62,7 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
                 bowlTypeTag.putString("bowl_name", "variants:" + BOWL_TO_NAME.get(bowl) + "_bowl");
                 bowlTypeTag.putInt("bowl_id", BOWL_NAME_TO_ID.get(BOWL_TO_NAME.get(bowl)));
 
-                ExponentialBowlRecipeBuilder.shapeless(resultStew).requires(bowl).requires(Items.BEETROOT).requires(Items.BEETROOT).requires(Items.BEETROOT).requires(Items.BEETROOT).requires(Items.BEETROOT).requires(Items.BEETROOT).group("beetroot_soup")
+                ExponentialStewRecipeBuilder.shapeless(resultStew).requires(bowl).requires(Items.BEETROOT).requires(Items.BEETROOT).requires(Items.BEETROOT).requires(Items.BEETROOT).requires(Items.BEETROOT).requires(Items.BEETROOT).group("beetroot_soup")
                         .unlockedBy("has_bowl", has(bowl)).save(consumer, "variants:bowls/beetroot/" + BOWL_TO_NAME.get(bowl));
             }
         }
@@ -74,7 +74,7 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
                 bowlTypeTag.putString("bowl_name", "variants:" + BOWL_TO_NAME.get(bowl) + "_bowl");
                 bowlTypeTag.putInt("bowl_id", BOWL_NAME_TO_ID.get(BOWL_TO_NAME.get(bowl)));
 
-                ExponentialBowlRecipeBuilder.shapeless(resultStew).requires(Items.BAKED_POTATO).requires(Items.COOKED_RABBIT).requires(Items.CARROT).requires(Ingredient.of(Items.RED_MUSHROOM, Items.BROWN_MUSHROOM)).requires(bowl).group("rabbit_stew")
+                ExponentialStewRecipeBuilder.shapeless(resultStew).requires(Items.BAKED_POTATO).requires(Items.COOKED_RABBIT).requires(Items.CARROT).requires(Ingredient.of(Items.RED_MUSHROOM, Items.BROWN_MUSHROOM)).requires(bowl).group("rabbit_stew")
                         .unlockedBy("has_bowl", has(bowl)).save(consumer, "variants:bowls/rabbit/" + BOWL_TO_NAME.get(bowl));
             }
         }
@@ -86,7 +86,7 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
                 bowlTypeTag.putString("bowl_name", "variants:" + BOWL_TO_NAME.get(bowl) + "_bowl");
                 bowlTypeTag.putInt("bowl_id", BOWL_NAME_TO_ID.get(BOWL_TO_NAME.get(bowl)));
 
-                ExponentialBowlRecipeBuilder.shapeless(resultStew).requires(Items.CRIMSON_FUNGUS).requires(Items.WARPED_FUNGUS).requires(bowl).group("fungi_stew").unlockedBy("has_bowl", has(bowl)).save(consumer,
+                ExponentialStewRecipeBuilder.shapeless(resultStew).requires(Items.CRIMSON_FUNGUS).requires(Items.WARPED_FUNGUS).requires(bowl).group("fungi_stew").unlockedBy("has_bowl", has(bowl)).save(consumer,
                         "variants:bowls/fungi/" + BOWL_TO_NAME.get(bowl));
             }
         }
@@ -98,7 +98,7 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
                 bowlTypeTag.putString("bowl_name", "variants:" + BOWL_TO_NAME.get(bowl) + "_bowl");
                 bowlTypeTag.putInt("bowl_id", BOWL_NAME_TO_ID.get(BOWL_TO_NAME.get(bowl)));
 
-                ExponentialBowlRecipeBuilder.shapeless(resultStew).requires(VSItems.ENDER_FUNGUS.get()).requires(VSItems.ENDER_FUNGUS.get()).requires(bowl).group("end_fungi_stew").unlockedBy("has_bowl", has(bowl)).save(consumer,
+                ExponentialStewRecipeBuilder.shapeless(resultStew).requires(VSItems.ENDER_FUNGUS.get()).requires(VSItems.ENDER_FUNGUS.get()).requires(bowl).group("end_fungi_stew").unlockedBy("has_bowl", has(bowl)).save(consumer,
                         "variants:bowls/end_fungi/" + BOWL_TO_NAME.get(bowl));
             }
         }

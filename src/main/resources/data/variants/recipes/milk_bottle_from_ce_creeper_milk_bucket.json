@@ -1,8 +1,14 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "creeperedits"
+    }
+  ],
   "ingredients": [
     {
-      "item": "minecraft:lava_bucket"
+      "item": "creeperedits:creeper_milk_bucket"
     },
     {
       "item": "minecraft:glass_bottle"
@@ -18,7 +24,7 @@
     }
   ],
   "result": {
-    "item": "variants:lava_glass_bottle",
+    "item": "variants:milk_glass_bottle",
     "count": 4
   }
 }

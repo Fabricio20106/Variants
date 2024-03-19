@@ -92,6 +92,12 @@ public class VSTags {
         public static final ITag.INamedTag<Item> CATLIKE_TAME_ITEMS = melony("catlike_tame_items");
         public static final ITag.INamedTag<Item> NETHER_STARS = melony("nether_stars");
         public static final ITag.INamedTag<Item> ICON_ITEMS = melony("icon_items");
+        public static final ITag.INamedTag<Item> VILLAGER_WANTED_ITEMS = melony("villager_wanted_items");
+        public static final ITag.INamedTag<Item> VILLAGER_PLANTABLE_SEEDS = melony("villager_plantable_seeds");
+        public static final ITag.INamedTag<Item> COMPLETES_FIND_TREE_TUTORIAL = melony("completes_find_tree_tutorial");
+
+        // Minecraft Tags
+        public static final ITag.INamedTag<Item> WART_BLOCKS = minecraft("wart_blocks");
 
         public static ITag.INamedTag<Item> forge(String name) {
             return ItemTags.bind(new ResourceLocation("forge", name).toString());
@@ -99,6 +105,10 @@ public class VSTags {
 
         public static ITag.INamedTag<Item> melony(String name) {
             return ItemTags.bind(new ResourceLocation("melony", name).toString());
+        }
+
+        public static ITag.INamedTag<Item> minecraft(String name) {
+            return ItemTags.bind(new ResourceLocation("minecraft", name).toString());
         }
 
         public static ITag.INamedTag<Item> mod(String name) {
@@ -135,6 +145,8 @@ public class VSTags {
         public static final ITag.INamedTag<Block> DEEPSLATE_REPLACEABLES = melony("deepslate_replaceables");
         public static final ITag.INamedTag<Block> FARMLAND = melony("farmland");
         public static final ITag.INamedTag<Block> CONDUIT_FRAME_BLOCKS = melony("conduit_frame_blocks");
+        public static final ITag.INamedTag<Block> FARMLAND_TRANSPARENT = melony("farmland_transparent");
+        public static final ITag.INamedTag<Block> COMPLETES_FIND_TREE_TUTORIAL = melony("completes_find_tree_tutorial");
 
         public static ITag.INamedTag<Block> forge(String name) {
             return BlockTags.bind(new ResourceLocation("forge", name).toString());

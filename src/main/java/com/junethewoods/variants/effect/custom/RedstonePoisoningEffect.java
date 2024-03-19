@@ -7,7 +7,7 @@ import net.minecraft.potion.EffectType;
 
 public class RedstonePoisoningEffect extends Effect {
     public RedstonePoisoningEffect() {
-        super(EffectType.HARMFUL, 0xaa0f01);
+        super(EffectType.HARMFUL, 0xAA0F01);
     }
 
     @Override

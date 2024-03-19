@@ -11,7 +11,7 @@
       "item": "edits:soph_potion"
     },
     {
-      "item": "minecraft:gunpowder"
+      "tag": "forge:dusts/gunpowder"
     }
   ],
   "result": {

@@ -5,7 +5,7 @@
       "item": "minecraft:dragon_breath"
     },
     {
-      "item": "minecraft:gunpowder"
+      "tag": "forge:dusts/gunpowder"
     }
   ],
   "result": {

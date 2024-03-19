@@ -1,7 +1,7 @@
 ![Variants 1.6.X Logo](src/main/resources/variants.png)
 
 # <center> - Variants - </center>
-<sup> For Variants 1.16.5 — 1.6.X </sup>
+<sup> For Variants 1.16.5 — 1.7.X </sup>
 
 Variants adds various variants of items, blocks, and features from Minecraft.
 

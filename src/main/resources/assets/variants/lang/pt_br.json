@@ -466,10 +466,18 @@
   "null": "núla",
 
   "error.variants.enchanted_knowledge_book.invalid_recipe": "Variants: Receita inválida para uma enciclopédia encantada: %s",
+  "error.variants.enchanted_knowledge_book.invalid_tag": "Variants: Tag inválida para uma enciclopédia encantada: %s",
+  "error.variants.anvil_repair_recipe_maker.failed": "Variants: Não conseguiu criar receitas de reparo de bigornas.",
+  "error.variants.anvil_repair_recipe_maker.successful": "Variants: Registrou as receitas de reparo de bigornas do Variants em %s",
+  "error.variants.expo_stew_recipe_builder.remove_save_argument": "Variants: Receita sem formato de ensopado %s deve remover seu argumento 'save'.",
+  "error.variants.expo_stew_recipe_builder.recipe_unobtainable": "Variants: Nenhum jeito de obter receita %s",
+
+  "armor_design.variants.1": "núla",
 
   "tooltip.variants.compat_item_from": "Compatibilidade de item entre: %s.",
   "tooltip.variants.compat_block_from": "Compatibilidade de bloco entre: %s.",
   "tooltip.variants.exponential_stew.bowl": "Tigela: %s",
+  "tooltip.variants.wool_armor_design.1": "§7Design da armadura:§d Bugado",
   "tooltip.variants.bookshelf_enchanting_power": "§7Poder de encantamento:§r %s",
   "tooltip.variants.ore_experience_drops": "Solta entre %s-%s de experiência.",
   "tooltip.variants.glass_beam_color": "§7Cor: %s",

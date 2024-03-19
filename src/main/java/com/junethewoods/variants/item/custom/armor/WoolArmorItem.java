@@ -1,8 +1,11 @@
 package com.junethewoods.variants.item.custom.armor;
 
 import com.google.common.collect.ImmutableMap;
+import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.config.VSConfigs;
 import com.junethewoods.variants.util.tab.VSSweaterTab;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.IArmorMaterial;
@@ -11,8 +14,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Map;
 
 public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
@@ -35,6 +42,15 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
         super(material, slot, properties);
     }
 
+    @Nullable
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlotType slot, String type) {
+        if (stack.getTag() != null && stack.getTag().getInt("armor_design") > 0) {
+            return Variants.resourceLoc("textures/models/armor/wool_layer_" + (slot == EquipmentSlotType.LEGS ? 2 : 1) + "_" + stack.getTag().getInt("armor_design") + ".png").toString();
+        }
+        return super.getArmorTexture(stack, entity, slot, type);
+    }
+
     @Override
     public ITextComponent getName(ItemStack stack) {
         if (stack.hasTag() && !stack.getTag().getString("color_name").isEmpty()) {
@@ -45,8 +61,16 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
     }
 
     @Override
-    public void fillItemCategory(ItemGroup itemTab, NonNullList<ItemStack> list) {
-        if (this.allowdedIn(itemTab)) {
+    public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
+        if (stack.getTag() != null && stack.getTag().getInt("armor_design") > 0) {
+            tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".wool_armor_design." + stack.getTag().getInt("armor_design")).withStyle(TextFormatting.DARK_GRAY));
+        }
+        super.appendHoverText(stack, world, tooltip, flag);
+    }
+
+    @Override
+    public void fillItemCategory(ItemGroup tab, NonNullList<ItemStack> list) {
+        if (this.allowdedIn(tab)) {
             list.add(new ItemStack(this));
 
             if (VSConfigs.COMMON_CONFIGS.populateWoolArmorColorInTabs.get()) {
@@ -61,7 +85,16 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
                 }
             }
         }
-        if (itemTab == VSSweaterTab.TAB && VSConfigs.COMMON_CONFIGS.enableInfinitySweatersTab.get()) {
+        if (this.allowdedIn(tab) && VSConfigs.COMMON_CONFIGS.populateWoolArmorDesignsInTabs.get()) {
+            for (int designsCount = 0; designsCount < VSConfigs.COMMON_CONFIGS.maxInTabWoolArmorDesigns.get(); designsCount++) {
+                ItemStack stack = new ItemStack(this);
+                CompoundNBT tag = stack.getOrCreateTag();
+                tag.putInt("armor_design", designsCount + 1);
+                tag.putString("color_name", new TranslationTextComponent("armor_design." + Variants.MOD_ID + "." + (designsCount + 1)).getKey());
+                list.add(stack);
+            }
+        }
+        if (tab == VSSweaterTab.TAB && VSConfigs.COMMON_CONFIGS.enableInfinitySweatersTab.get()) {
             for (int i = 0; i < VSConfigs.COMMON_CONFIGS.infinitySweatersTabLength.get();  i = i + VSConfigs.COMMON_CONFIGS.infinitySweatersTabSpacing.get())  {
                 ItemStack stack = new ItemStack(this);
                 CompoundNBT displayTag = stack.getOrCreateTagElement("display");

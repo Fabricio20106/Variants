@@ -1,5 +1,6 @@
 package com.junethewoods.variants.block.custom.end;
 
+import com.junethewoods.variants.util.VSTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.BlockItemUseContext;
@@ -42,7 +43,7 @@ public class EnderFarmlandBlock extends Block {
 
     public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos) {
         BlockState aboveState = world.getBlockState(pos.above());
-        return !aboveState.getMaterial().isSolid() || aboveState.getBlock() instanceof FenceGateBlock || aboveState.getBlock() instanceof MovingPistonBlock;
+        return !aboveState.getMaterial().isSolid() || aboveState.is(VSTags.Blocks.FARMLAND_TRANSPARENT);
     }
 
     public BlockState getStateForPlacement(BlockItemUseContext context) {
@@ -76,13 +77,13 @@ public class EnderFarmlandBlock extends Block {
         }
     }
 
-    public void fallOn(World world, BlockPos pos, Entity entity, float f) {
-        // Forge: Move logic to Entity#canTrample
-        if (!world.isClientSide && ForgeHooks.onFarmlandTrample(world, pos, Blocks.END_STONE.defaultBlockState(), f, entity)) {
+    public void fallOn(World world, BlockPos pos, Entity entity, float distance) {
+        // Forge: Move logic to IForgeEntity#canTrample
+        if (!world.isClientSide && ForgeHooks.onFarmlandTrample(world, pos, Blocks.END_STONE.defaultBlockState(), distance, entity)) {
             turnToEndStone(world.getBlockState(pos), world, pos);
         }
 
-        super.fallOn(world, pos, entity, f);
+        super.fallOn(world, pos, entity, distance);
     }
 
     public static void turnToEndStone(BlockState state, World world, BlockPos pos) {

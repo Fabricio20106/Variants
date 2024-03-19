@@ -13,14 +13,14 @@ import net.minecraft.world.IBlockReader;
 
 public class GoldenCarrotsBlock extends CropsBlock {
     private static final VoxelShape[] SHAPES = new VoxelShape[] {
-            Block.box(0d, 0d, 0d, 16d, 2d, 16d),
-            Block.box(0d, 0d, 0d, 16d, 3d, 16d),
-            Block.box(0d, 0d, 0d, 16d, 4d, 16d),
-            Block.box(0d, 0d, 0d, 16d, 5d, 16d),
-            Block.box(0d, 0d, 0d, 16d, 6d, 16d),
-            Block.box(0d, 0d, 0d, 16d, 7d, 16d),
-            Block.box(0d, 0d, 0d, 16d, 8d, 16d),
-            Block.box(0d, 0d, 0d, 16d, 9d, 16d)};
+            Block.box(0, 0, 0, 16, 2, 16),
+            Block.box(0, 0, 0, 16, 3, 16),
+            Block.box(0, 0, 0, 16, 4, 16),
+            Block.box(0, 0, 0, 16, 5, 16),
+            Block.box(0, 0, 0, 16, 6, 16),
+            Block.box(0, 0, 0, 16, 7, 16),
+            Block.box(0, 0, 0, 16, 8, 16),
+            Block.box(0, 0, 0, 16, 9, 16)};
 
     public GoldenCarrotsBlock(Properties properties) {
         super(properties);

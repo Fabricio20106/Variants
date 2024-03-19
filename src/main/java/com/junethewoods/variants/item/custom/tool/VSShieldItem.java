@@ -18,12 +18,12 @@ public class VSShieldItem extends ShieldItem {
     }
 
     @Override
-    public boolean isValidRepairItem(ItemStack stack, ItemStack stack1) {
-        return stack1.getItem().is(this.repairTag);
+    public boolean isValidRepairItem(ItemStack stack, ItemStack repairItem) {
+        return repairItem.getItem().is(this.repairTag);
     }
 
     @Override
-    public boolean isShield(ItemStack stack, @Nullable LivingEntity entity) {
+    public boolean isShield(ItemStack stack, @Nullable LivingEntity livEntity) {
         return stack.getItem().is(VSTags.Items.SHIELDS);
     }
 }

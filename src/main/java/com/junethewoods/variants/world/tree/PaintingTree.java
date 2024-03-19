@@ -11,11 +11,11 @@ import java.util.Random;
 public class PaintingTree extends Tree {
     @Nullable
     @Override
-    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random rand, boolean beehive) {
+    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random rand, boolean hasBeehive) {
         if (rand.nextInt(10) == 0) {
-            return beehive ? VSConfiguredFeatures.FANCY_PAINTING_TREE_WITH_BEES_005 : VSConfiguredFeatures.FANCY_PAINTING_TREE;
+            return hasBeehive ? VSConfiguredFeatures.FANCY_PAINTING_TREE_WITH_BEES_005 : VSConfiguredFeatures.FANCY_PAINTING_TREE;
         } else {
-            return beehive ? VSConfiguredFeatures.PAINTING_TREE_WITH_BEES_005 : VSConfiguredFeatures.PAINTING_TREE;
+            return hasBeehive ? VSConfiguredFeatures.PAINTING_TREE_WITH_BEES_005 : VSConfiguredFeatures.PAINTING_TREE;
         }
     }
 }

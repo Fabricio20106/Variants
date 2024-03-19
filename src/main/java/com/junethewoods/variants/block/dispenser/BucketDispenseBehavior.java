@@ -9,7 +9,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BucketDispenseBehavior extends DefaultDispenseItemBehavior {
-    private final DefaultDispenseItemBehavior dispenseItemBehavior = new DefaultDispenseItemBehavior();
+    private final DefaultDispenseItemBehavior dispenseBehavior = new DefaultDispenseItemBehavior();
 
     public ItemStack execute(IBlockSource source, ItemStack stack) {
         BucketItem bucket = (BucketItem) stack.getItem();
@@ -19,7 +19,7 @@ public class BucketDispenseBehavior extends DefaultDispenseItemBehavior {
             bucket.checkExtraContent(world, stack, pos);
             return stack.getContainerItem();
         } else {
-            return this.dispenseItemBehavior.dispense(source, stack);
+            return this.dispenseBehavior.dispense(source, stack);
         }
     }
 }

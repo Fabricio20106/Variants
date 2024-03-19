@@ -21,10 +21,10 @@ import java.util.Random;
 public class EnderWartBlock extends BushBlock {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
     private static final VoxelShape[] SHAPES = new VoxelShape[] {
-            Block.box(0d, 0d, 0d, 16d, 5d, 16d),
-            Block.box(0d, 0d, 0d, 16d, 8d, 16d),
-            Block.box(0d, 0d, 0d, 16d, 11d, 16d),
-            Block.box(0d, 0d, 0d, 16d, 14d, 16d)};
+            Block.box(0, 0, 0, 16, 5, 16),
+            Block.box(0, 0, 0, 16, 8, 16),
+            Block.box(0, 0, 0, 16, 11, 16),
+            Block.box(0, 0, 0, 16, 14, 16)};
 
     public EnderWartBlock(Properties properties) {
         super(properties);

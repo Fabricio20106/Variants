@@ -7,8 +7,8 @@ import net.minecraft.world.gen.carver.ICarverConfig;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
 
 public class VSConfiguredCarvers {
-    public static final ConfiguredCarver<ProbabilityConfig> END_CAVE = register("end_cave", VSWorldCarvers.END_CAVE.get().configured(new ProbabilityConfig(0.14285715f))); // 14.285715%
-    public static final ConfiguredCarver<ProbabilityConfig> END_RAVINE = register("end_ravine", VSWorldCarvers.END_RAVINE.get().configured(new ProbabilityConfig(0.02f))); // 2%
+    public static final ConfiguredCarver<ProbabilityConfig> END_CAVE = register("end_cave", VSWorldCarvers.END_CAVE.get().configured(new ProbabilityConfig(0.14285715F))); // 14.285715%
+    public static final ConfiguredCarver<ProbabilityConfig> END_RAVINE = register("end_ravine", VSWorldCarvers.END_RAVINE.get().configured(new ProbabilityConfig(0.02F))); // 2%
 
     private static <WC extends ICarverConfig> ConfiguredCarver<WC> register(String name, ConfiguredCarver<WC> carver) {
         return WorldGenRegistries.register(WorldGenRegistries.CONFIGURED_CARVER, Variants.resourceLoc(name), carver);

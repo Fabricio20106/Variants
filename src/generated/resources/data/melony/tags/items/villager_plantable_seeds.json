@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "variants:golden_carrots",
+    "minecraft:wheat_seeds",
+    "minecraft:beetroot_seeds",
+    "minecraft:carrot",
+    "minecraft:potato"
+  ]
+}

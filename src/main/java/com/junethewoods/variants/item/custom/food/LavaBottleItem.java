@@ -16,7 +16,6 @@ public class LavaBottleItem extends DrinkableContainerItem {
     @Override
     public void bottleFunctionality(ItemStack containerStack, ItemStack stack, World world, LivingEntity livEntity) {
         this.containerItem = new ItemStack(Items.GLASS_BOTTLE);
-        // FORGE - Move up so stack.shrink doesn't turn stack into air.
         if (!world.isClientSide) livEntity.setSecondsOnFire(containsSoulLava ? 10 : 5);
     }
 }

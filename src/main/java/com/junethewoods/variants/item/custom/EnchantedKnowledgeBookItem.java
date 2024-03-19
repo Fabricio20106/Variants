@@ -33,28 +33,26 @@ public class EnchantedKnowledgeBookItem extends EnchantedBookItem {
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         ItemStack handStack = player.getItemInHand(hand);
         CompoundNBT handStackTag = handStack.getTag();
-        if (!player.abilities.instabuild) {
-            player.setItemInHand(hand, ItemStack.EMPTY);
-        }
+        if (!player.abilities.instabuild) player.setItemInHand(hand, ItemStack.EMPTY);
 
         if (handStackTag != null && handStackTag.contains("Recipes", 9)) {
             if (!world.isClientSide) {
-                ListNBT nbtList = handStackTag.getList("Recipes", 8);
-                List<IRecipe<?>> recipesList = Lists.newArrayList();
+                ListNBT recipeList = handStackTag.getList("Recipes", 8);
+                List<IRecipe<?>> iRecipesList = Lists.newArrayList();
                 RecipeManager recipeManager = world.getServer().getRecipeManager();
 
-                for(int listString = 0; listString < nbtList.size(); ++listString) {
-                    String nbtListString = nbtList.getString(listString);
+                for(int listString = 0; listString < recipeList.size(); ++listString) {
+                    String nbtListString = recipeList.getString(listString);
                     Optional<? extends IRecipe<?>> optionalRecipe = recipeManager.byKey(new ResourceLocation(nbtListString));
                     if (!optionalRecipe.isPresent()) {
                         Variants.LOGGER.error("Variants: Invalid recipe for Enchanted Knowledge Book: {}", nbtListString);
                         return ActionResult.fail(handStack);
                     }
 
-                    recipesList.add(optionalRecipe.get());
+                    iRecipesList.add(optionalRecipe.get());
                 }
 
-                player.awardRecipes(recipesList);
+                player.awardRecipes(iRecipesList);
                 player.awardStat(Stats.ITEM_USED.get(this));
             }
 
@@ -72,18 +70,18 @@ public class EnchantedKnowledgeBookItem extends EnchantedBookItem {
     }
 
     @Override
-    public void fillItemCategory(ItemGroup itemTab, NonNullList<ItemStack> stackList) {
-        if (itemTab == ItemGroup.TAB_SEARCH) {
+    public void fillItemCategory(ItemGroup tab, NonNullList<ItemStack> list) {
+        if (tab == ItemGroup.TAB_SEARCH) {
             for(Enchantment enchantments : Registry.ENCHANTMENT) {
                 if (enchantments.category != null) {
                     for(int i = enchantments.getMinLevel(); i <= enchantments.getMaxLevel(); ++i) {
-                        stackList.add(createForEnchantment(new EnchantmentData(enchantments, i)));
+                        list.add(createForEnchantment(new EnchantmentData(enchantments, i)));
                     }
                 }
             }
-        } else if (itemTab == VSTab.TAB) {
+        } else if (tab == VSTab.TAB) {
             for(Enchantment enchantments : Registry.ENCHANTMENT) {
-                stackList.add(createForEnchantment(new EnchantmentData(enchantments, enchantments.getMaxLevel())));
+                list.add(createForEnchantment(new EnchantmentData(enchantments, enchantments.getMaxLevel())));
             }
         }
     }

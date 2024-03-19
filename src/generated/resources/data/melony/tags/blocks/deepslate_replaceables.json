@@ -12,6 +12,10 @@
     {
       "id": "quark:deepslate",
       "required": false
+    },
+    {
+      "id": "decorativelary:deepslate",
+      "required": false
     }
   ]
 }

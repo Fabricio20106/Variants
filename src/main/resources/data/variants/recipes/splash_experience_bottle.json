@@ -5,7 +5,7 @@
       "item": "minecraft:experience_bottle"
     },
     {
-      "item": "minecraft:gunpowder"
+      "tag": "forge:dusts/gunpowder"
     }
   ],
   "result": {
