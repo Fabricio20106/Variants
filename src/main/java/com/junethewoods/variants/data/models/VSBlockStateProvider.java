@@ -132,9 +132,9 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         axisBlock((RotatedPillarBlock) VSBlocks.END_STONE_PILLAR.get(), modLoc("block/end_stone_pillar"), modLoc("block/end_stone_pillar_top"));
         simpleBlock(VSBlocks.MOSSY_PURPUR_BLOCK.get());
         simpleBlock(VSBlocks.INFESTED_MOSSY_PURPUR_BLOCK.get(), models().cubeAll("infested_mossy_purpur_block", modLoc("block/mossy_purpur_block")));
-        stairsBlock((StairsBlock) VSBlocks.MOSSY_PURPUR_BLOCK_STAIRS.get(), modLoc("block/mossy_purpur_block"));
-        slabBlock((SlabBlock) VSBlocks.MOSSY_PURPUR_BLOCK_SLAB.get(), modLoc("block/mossy_purpur_block"), modLoc("block/mossy_purpur_block"));
-        wallBlock((WallBlock) VSBlocks.MOSSY_PURPUR_BLOCK_WALL.get(), modLoc("block/mossy_purpur_block"));
+        stairsBlock((StairsBlock) VSBlocks.MOSSY_PURPUR_STAIRS.get(), modLoc("block/mossy_purpur_block"));
+        slabBlock((SlabBlock) VSBlocks.MOSSY_PURPUR_SLAB.get(), modLoc("block/mossy_purpur_block"), modLoc("block/mossy_purpur_block"));
+        wallBlock((WallBlock) VSBlocks.MOSSY_PURPUR_WALL.get(), modLoc("block/mossy_purpur_block"));
         simpleBlock(VSBlocks.SMOOTH_PURPUR.get());
         slabBlock((SlabBlock) VSBlocks.SMOOTH_PURPUR_SLAB.get(), modLoc("block/smooth_purpur_slab_double"), modLoc("block/smooth_purpur"));
         simpleBlock(VSBlocks.MOSSY_NETHER_BRICKS.get());

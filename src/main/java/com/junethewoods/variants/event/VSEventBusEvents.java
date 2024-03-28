@@ -5,6 +5,7 @@ import com.junethewoods.variants.data.models.VSBlockStateProvider;
 import com.junethewoods.variants.data.models.VSItemModelProvider;
 import com.junethewoods.variants.data.recipe.VSExpoStewsRecipeProvider;
 import com.junethewoods.variants.data.tags.VSBlockTagsProvider;
+import com.junethewoods.variants.data.tags.VSEntityTypeTagsProvider;
 import com.junethewoods.variants.data.tags.VSFluidTagsProvider;
 import com.junethewoods.variants.data.tags.VSItemTagsProvider;
 import com.junethewoods.variants.entity.VSEntities;
@@ -30,6 +31,7 @@ public class VSEventBusEvents {
         generator.addProvider(vsBlockStateProvider);
         generator.addProvider(new VSItemTagsProvider(generator, vsBlockStateProvider, fileHelper));
         generator.addProvider(new VSFluidTagsProvider(generator, fileHelper));
+        generator.addProvider(new VSEntityTypeTagsProvider(generator, fileHelper));
         generator.addProvider(new VSExpoStewsRecipeProvider(generator));
     }
 

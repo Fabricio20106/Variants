@@ -2,12 +2,10 @@ package com.junethewoods.variants.util;
 
 import com.junethewoods.variants.Variants;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityType;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.tags.ITag;
-import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.*;
 import net.minecraft.util.ResourceLocation;
 
 public class VSTags {
@@ -167,6 +165,14 @@ public class VSTags {
 
         public static ITag.INamedTag<Fluid> mod(String name) {
             return FluidTags.bind(Variants.resourceLoc(name).toString());
+        }
+    }
+
+    public static class EntityTypes {
+        public static final ITag.INamedTag<EntityType<?>> CAN_SPAWN_ON_LEAVES = melony("can_spawn_on_leaves");
+
+        public static ITag.INamedTag<EntityType<?>> melony(String name) {
+            return EntityTypeTags.bind(new ResourceLocation("melony", name).toString());
         }
     }
 }

@@ -1,3 +1,4 @@
 1.7.0 Pre-Releases: To-Do:
 
-- Update map colors for all blocks.
+- Update map colors for all blocks. [done]
+- Add Crimson and Warped Farmland.

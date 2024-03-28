@@ -90,10 +90,10 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.WALL_SIGNS).add(VSBlocks.PAINTING_WALL_SIGN.get()).add(VSBlocks.ENDERWOOD_WALL_SIGN.get());
 
         this.tag(BlockTags.STAIRS).add(VSBlocks.ELDER_PRISMARINE_STAIRS.get()).add(VSBlocks.ELDER_PRISMARINE_BRICK_STAIRS.get()).add(VSBlocks.DARK_ELDER_PRISMARINE_STAIRS.get()).add(VSBlocks.MOSSY_END_STONE_BRICK_STAIRS.get())
-                .add(VSBlocks.MOSSY_PURPUR_BLOCK_STAIRS.get()).add(VSBlocks.MOSSY_NETHER_BRICK_STAIRS.get());
+                .add(VSBlocks.MOSSY_PURPUR_STAIRS.get()).add(VSBlocks.MOSSY_NETHER_BRICK_STAIRS.get());
         this.tag(BlockTags.SLABS).add(VSBlocks.ELDER_PRISMARINE_SLAB.get()).add(VSBlocks.ELDER_PRISMARINE_BRICK_SLAB.get()).add(VSBlocks.DARK_ELDER_PRISMARINE_SLAB.get()).add(VSBlocks.MOSSY_END_STONE_BRICK_SLAB.get())
-                .add(VSBlocks.MOSSY_PURPUR_BLOCK_SLAB.get()).add(VSBlocks.SMOOTH_PURPUR_SLAB.get()).add(VSBlocks.MOSSY_NETHER_BRICK_SLAB.get());
-        this.tag(BlockTags.WALLS).add(VSBlocks.ELDER_PRISMARINE_WALL.get()).add(VSBlocks.MOSSY_END_STONE_BRICK_WALL.get()).add(VSBlocks.MOSSY_PURPUR_BLOCK_WALL.get()).add(VSBlocks.MOSSY_NETHER_BRICK_WALL.get());
+                .add(VSBlocks.MOSSY_PURPUR_SLAB.get()).add(VSBlocks.SMOOTH_PURPUR_SLAB.get()).add(VSBlocks.MOSSY_NETHER_BRICK_SLAB.get());
+        this.tag(BlockTags.WALLS).add(VSBlocks.ELDER_PRISMARINE_WALL.get()).add(VSBlocks.MOSSY_END_STONE_BRICK_WALL.get()).add(VSBlocks.MOSSY_PURPUR_WALL.get()).add(VSBlocks.MOSSY_NETHER_BRICK_WALL.get());
         this.tag(BlockTags.FENCES).add(VSBlocks.RED_NETHER_BRICK_FENCE.get());
 
         this.tag(BlockTags.CROPS).add(VSBlocks.GOLDEN_CARROTS.get()).add(Blocks.NETHER_WART).add(VSBlocks.WARPED_WART.get()).add(VSBlocks.ENDER_WART.get());

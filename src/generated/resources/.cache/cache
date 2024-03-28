@@ -858,6 +858,7 @@ d74fcf7718ee7b3f37af36ad5743507d623bf9d2 data/melony/tags/blocks/conduit_frame_b
 c5793f90128c571e6b804b35eef39e723c560bd2 data/melony/tags/blocks/deepslate_replaceables.json
 e23d085bd08cd8687847fb368a0bdaae558a5408 data/melony/tags/blocks/farmland.json
 63daba55a4194e1cc26833364eca188d56b22511 data/melony/tags/blocks/farmland_transparent.json
+b692a0c80fc4a4804beca7cb8aefd967145713d4 data/melony/tags/entity_types/can_spawn_on_leaves.json
 63860ef20b1bd0ea7520cf52b18040ec1e1dac6b data/melony/tags/items/books.json
 3aaeb88de44811b3a9955501fe0607fe9aefb4bf data/melony/tags/items/bookshelves.json
 9032e5ca50bf6db372a7dba9bce500591f3cedc3 data/melony/tags/items/bowls.json
