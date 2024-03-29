@@ -56,6 +56,9 @@ public class VSAnvilRecipeMaker {
         items.put(VSArmors.EMPTY_SLOT.getRepairIngredient(), Lists.newArrayList(new ItemStack(VSWeaponry.EMPTY_ARMOR_SLOT_HELMET.get()), new ItemStack(VSWeaponry.EMPTY_ARMOR_SLOT_CHESTPLATE.get()),
                 new ItemStack(VSWeaponry.EMPTY_ARMOR_SLOT_LEGGINGS.get()), new ItemStack(VSWeaponry.EMPTY_ARMOR_SLOT_BOOTS.get()), new ItemStack(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get())));
 
+        items.put(VSArmors.EMERALD.getRepairIngredient(), Lists.newArrayList(new ItemStack(VSWeaponry.EMERALD_HELMET.get()), new ItemStack(VSWeaponry.EMERALD_CHESTPLATE.get()), new ItemStack(VSWeaponry.EMERALD_LEGGINGS.get()),
+                new ItemStack(VSWeaponry.EMERALD_BOOTS.get())));
+
         items.put(VSArmors.PHANTOM_MEMBRANE.getRepairIngredient(), Lists.newArrayList(new ItemStack(VSWeaponry.PHANTOM_MEMBRANE_TUNIC.get())));
         items.put(VSArmors.RABBIT_HIDE.getRepairIngredient(), Lists.newArrayList(new ItemStack(VSWeaponry.RABBIT_HIDE_TUNIC.get())));
         items.put(VSArmors.WOOL.getRepairIngredient(), Lists.newArrayList(new ItemStack(VSWeaponry.WOOL_SWEATER.get())));
@@ -65,10 +68,7 @@ public class VSAnvilRecipeMaker {
         items.put(VSTools.COPPER.getRepairIngredient(), Lists.newArrayList(new ItemStack(VSWeaponry.COPPER_SWORD.get()), new ItemStack(VSWeaponry.COPPER_CHESTPLATE.get())));
 
         for (Map.Entry<Ingredient, List<ItemStack>> entry : items.entrySet()) {
-
-            List<ItemStack> repairMaterials = Lists.newArrayList(
-                    entry.getKey().getItems()
-            );
+            List<ItemStack> repairMaterials = Lists.newArrayList(entry.getKey().getItems());
 
             for (ItemStack repairIngredients : entry.getValue()) {
                 ItemStack damagedStack1 = repairIngredients.copy();

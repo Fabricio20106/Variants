@@ -3,6 +3,7 @@ package com.junethewoods.variants.item.custom.armor;
 import com.google.common.collect.ImmutableMap;
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.config.VSConfigs;
+import com.junethewoods.variants.util.NBTUtils;
 import com.junethewoods.variants.util.tab.VSSweaterTab;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -22,6 +23,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
 
+// TODO: Make this class more compatibility-friendly.
 public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
     // If you add an item to this list through the method used in Back Math, it will brick the order of the colors in the creative menu! Which is the whole point I wrote this thing.
 
@@ -42,6 +44,11 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
         super(material, slot, properties);
     }
 
+    @Override
+    public int getDefaultColor() {
+        return 16777215;
+    }
+
     @Nullable
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlotType slot, String type) {
@@ -53,7 +60,7 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
 
     @Override
     public ITextComponent getName(ItemStack stack) {
-        if (stack.hasTag() && !stack.getTag().getString("color_name").isEmpty()) {
+        if (stack.getTag() != null && stack.hasTag() && !stack.getTag().getString("color_name").isEmpty()) {
             return new TranslationTextComponent(this.getDescriptionId() + ".colored", new TranslationTextComponent(stack.getTag().getString("color_name")));
         } else {
             return new TranslationTextComponent(this.getDescriptionId());
@@ -62,7 +69,7 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        if (stack.getTag() != null && stack.getTag().getInt("armor_design") > 0) {
+        if (stack.getTag() != null && stack.getTag().getInt("armor_design") > 0 && NBTUtils.shouldHideTooltip("hide_armor_design", stack)) {
             tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".wool_armor_design." + stack.getTag().getInt("armor_design")).withStyle(TextFormatting.DARK_GRAY));
         }
         super.appendHoverText(stack, world, tooltip, flag);

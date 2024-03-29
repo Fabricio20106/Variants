@@ -18,6 +18,7 @@ import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.VSWeaponry;
 import com.junethewoods.variants.sound.VSSounds;
 import com.junethewoods.variants.util.VSClientHelpers;
+import com.junethewoods.variants.util.VSStats;
 import com.junethewoods.variants.util.VSWoodTypes;
 import com.junethewoods.variants.world.biome.VSBiomes;
 import com.junethewoods.variants.world.biome.provider.VSEndBiomeProvider;
@@ -74,6 +75,7 @@ public class Variants {
         VSWorldCarvers.CARVERS.register(eventBus);
         VSBiomes.BIOMES.register(eventBus);
         VSRecipeTypes.RECIPE_TYPES.register(eventBus);
+        VSStats.init();
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, VSConfigs.COMMON_SPEC, "jtw-mods/variants-common.toml");
     }

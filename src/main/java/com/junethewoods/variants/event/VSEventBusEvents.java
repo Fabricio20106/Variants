@@ -4,6 +4,7 @@ import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.data.models.VSBlockStateProvider;
 import com.junethewoods.variants.data.models.VSItemModelProvider;
 import com.junethewoods.variants.data.recipe.VSExpoStewsRecipeProvider;
+import com.junethewoods.variants.data.reports.VSBiomeReportsProvider;
 import com.junethewoods.variants.data.tags.VSBlockTagsProvider;
 import com.junethewoods.variants.data.tags.VSEntityTypeTagsProvider;
 import com.junethewoods.variants.data.tags.VSFluidTagsProvider;
@@ -33,6 +34,8 @@ public class VSEventBusEvents {
         generator.addProvider(new VSFluidTagsProvider(generator, fileHelper));
         generator.addProvider(new VSEntityTypeTagsProvider(generator, fileHelper));
         generator.addProvider(new VSExpoStewsRecipeProvider(generator));
+
+        generator.addProvider(new VSBiomeReportsProvider(generator));
     }
 
     @SubscribeEvent

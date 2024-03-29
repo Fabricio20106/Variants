@@ -22,24 +22,22 @@ public abstract class DrinkableContainerItem extends Item {
     }
 
     public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity livEntity) {
-        setContainerItem(containerItem);
-
         if (livEntity instanceof ServerPlayerEntity) {
             ServerPlayerEntity serverPlayer = (ServerPlayerEntity) livEntity;
             CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
 
-        bottleFunctionality(containerItem, stack, world, livEntity);
+        bottleFunctionality(this.containerItem, stack, world, livEntity);
 
         if (stack.isEmpty()) {
-            return containerItem;
+            return this.containerItem;
         } else {
             if (livEntity instanceof PlayerEntity && !((PlayerEntity) livEntity).abilities.instabuild) {
                 PlayerEntity player = (PlayerEntity) livEntity;
                 stack.shrink(1);
-                if (!player.inventory.add(containerItem)) {
-                    player.drop(containerItem, false);
+                if (!player.inventory.add(this.containerItem)) {
+                    player.drop(this.containerItem, false);
                 }
             }
 
@@ -61,12 +59,8 @@ public abstract class DrinkableContainerItem extends Item {
 
     @Override
     public ItemStack getContainerItem(ItemStack itemStack) {
-        return containerItem;
+        return this.containerItem;
     }
-
-    public ItemStack setContainerItem(ItemStack stack) {
-        return this.containerItem = stack;
-    };
 
     public abstract void bottleFunctionality(ItemStack containerStack, ItemStack stack, World world, LivingEntity livEntity);
 }

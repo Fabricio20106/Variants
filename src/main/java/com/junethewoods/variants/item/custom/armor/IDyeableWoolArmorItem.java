@@ -8,6 +8,8 @@ public interface IDyeableWoolArmorItem extends IDyeableArmorItem {
     @Override
     default int getColor(ItemStack stack) {
         CompoundNBT nbt = stack.getTagElement("display");
-        return nbt != null && nbt.contains("color", 99) ? nbt.getInt("color") : 16777215;
+        return nbt != null && nbt.contains("color", 99) ? nbt.getInt("color") : getDefaultColor();
     }
+
+    int getDefaultColor();
 }

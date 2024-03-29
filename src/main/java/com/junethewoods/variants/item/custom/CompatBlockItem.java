@@ -1,5 +1,6 @@
 package com.junethewoods.variants.item.custom;
 
+import com.junethewoods.variants.util.NBTUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.BlockItem;
@@ -22,7 +23,7 @@ public class CompatBlockItem extends BlockItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        tooltip.add(new TranslationTextComponent("tooltip.variants.compat_block_from", compatMod).withStyle(TextFormatting.GRAY).withStyle(TextFormatting.ITALIC));
+        if (NBTUtils.shouldHideTooltip("hide_compat_mod", stack)) tooltip.add(new TranslationTextComponent("tooltip.variants.compat_block_from", compatMod).withStyle(TextFormatting.GRAY).withStyle(TextFormatting.ITALIC));
         super.appendHoverText(stack, world, tooltip, flag);
     }
 }

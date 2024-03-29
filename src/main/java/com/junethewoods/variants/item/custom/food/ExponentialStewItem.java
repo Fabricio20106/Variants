@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.config.VSConfigs;
 import com.junethewoods.variants.item.custom.stew.IStewBehavior;
+import com.junethewoods.variants.util.NBTUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -108,12 +109,14 @@ public class ExponentialStewItem extends Item {
         CompoundNBT bowlTypeTag = stack.getOrCreateTagElement("bowl_type");
         ResourceLocation containerItem = new ResourceLocation(bowlTypeTag.getString("bowl_name"));
 
-        if (bowlTypeTag.contains("bowl_name") && ForgeRegistries.ITEMS.containsKey(containerItem)) {
-            ITextComponent bowlName = ForgeRegistries.ITEMS.getValue(containerItem).getName(ForgeRegistries.ITEMS.getValue(containerItem).getDefaultInstance());
-            tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".exponential_stew.bowl", bowlName).withStyle(TextFormatting.GRAY));
-        } else {
-            tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".exponential_stew.bowl", ForgeRegistries.ITEMS.getValue(Items.BOWL.getRegistryName()).getName(ForgeRegistries.ITEMS.getValue(Items.BOWL.getRegistryName())
-                    .getDefaultInstance())).withStyle(TextFormatting.GRAY));
+        if (NBTUtils.shouldHideTooltip("hide_bowl_name", stack)) {
+            if (bowlTypeTag.contains("bowl_name") && ForgeRegistries.ITEMS.containsKey(containerItem)) {
+                ITextComponent bowlName = ForgeRegistries.ITEMS.getValue(containerItem).getName(ForgeRegistries.ITEMS.getValue(containerItem).getDefaultInstance());
+                tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".exponential_stew.bowl", bowlName).withStyle(TextFormatting.GRAY));
+            } else {
+                tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".exponential_stew.bowl", ForgeRegistries.ITEMS.getValue(Items.BOWL.getRegistryName()).getName(ForgeRegistries.ITEMS.getValue(Items.BOWL.getRegistryName())
+                        .getDefaultInstance())).withStyle(TextFormatting.GRAY));
+            }
         }
         super.appendHoverText(stack, world, tooltip, flag);
     }

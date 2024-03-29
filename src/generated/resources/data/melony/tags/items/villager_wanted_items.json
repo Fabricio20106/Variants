@@ -4,6 +4,7 @@
     "#melony:villager_plantable_seeds",
     "minecraft:wheat",
     "minecraft:bread",
+    "minecraft:golden_carrot",
     "minecraft:beetroot"
   ]
 }

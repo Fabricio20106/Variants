@@ -1,6 +1,7 @@
 package com.junethewoods.variants.mixin.item;
 
 import com.junethewoods.variants.config.VSConfigs;
+import com.junethewoods.variants.util.NBTUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.HorseArmorItem;
 import net.minecraft.item.Item;
@@ -24,7 +25,7 @@ public class VSHorseArmorItemMixin extends Item {
 
     @Unique
     public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        if (VSConfigs.COMMON_CONFIGS.horseArmorArmorPointsOnTooltip.get()) {
+        if (VSConfigs.COMMON_CONFIGS.horseArmorArmorPointsOnTooltip.get() && NBTUtils.shouldHideTooltip("hide_horse_armor_armor_points", stack)) {
             HorseArmorItem horseArmor = ((HorseArmorItem) stack.getItem());
 
             tooltip.add(new StringTextComponent(""));

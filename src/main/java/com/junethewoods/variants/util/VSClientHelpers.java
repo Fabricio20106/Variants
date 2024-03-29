@@ -6,6 +6,7 @@ import com.junethewoods.variants.block.VSBlocks;
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.custom.armor.WoolArmorItem;
 import net.minecraft.block.*;
+import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -21,6 +22,10 @@ public class VSClientHelpers {
     public static void woolArmorColor(String colorName, int colorCode) {
         WoolArmorItem.COLOR_NAME_TO_CODE = Maps.newHashMap(WoolArmorItem.COLOR_NAME_TO_CODE);
         WoolArmorItem.COLOR_NAME_TO_CODE.put(colorName, colorCode);
+    }
+
+    public static void addVillagerFoodItem(Item item, int foodPoints) {
+        VillagerEntity.FOOD_POINTS.put(item, foodPoints);
     }
 
     public static void compostable(float chance, Item item) {

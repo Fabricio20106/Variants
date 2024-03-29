@@ -19,6 +19,7 @@
     "entity.VSFarmTaskMixin",
     "entity.VSVillagerEntityMixin",
     "item.VSFlintAndSteelItemMixin",
+    "item.VSItemMixin",
     "item.VSItemStackMixin",
     "item.VSShearsItemMixin",
     "item.VSShieldItemMixin",

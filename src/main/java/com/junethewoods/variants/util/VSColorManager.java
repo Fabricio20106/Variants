@@ -18,12 +18,12 @@ public class VSColorManager {
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public static void registerBlockColorHandlers(final ColorHandlerEvent.Block event) {
-        event.getBlockColors().register((x, reader, pos, u) -> reader != null && pos != null ? BiomeColors.getAverageWaterColor(reader, pos) : -1, VSBlocks.GOLDEN_CAULDRON.get(), VSBlocks.QUARTZ_CAULDRON.get());
+        event.getBlockColors().register((state, reader, pos, u) -> reader != null && pos != null ? BiomeColors.getAverageWaterColor(reader, pos) : -1, VSBlocks.GOLDEN_CAULDRON.get(), VSBlocks.QUARTZ_CAULDRON.get());
 
         //                                                                                                                                                                                                                                              |- Default color for leaf blocks.
-        event.getBlockColors().register((x, reader, pos, u) -> reader != null && pos != null ? BiomeColors.getAverageFoliageColor(reader, pos) : 0x48B518, VSBlocks.PAINTING_LEAVES.get());
+        event.getBlockColors().register((state, reader, pos, u) -> reader != null && pos != null ? BiomeColors.getAverageFoliageColor(reader, pos) : 0x48B518, VSBlocks.PAINTING_LEAVES.get());
 
-        event.getBlockColors().register((x, reader, pos, u) -> reader != null && pos != null ? BiomeColors.getAverageGrassColor(reader, pos) : -1, VSBlocks.POTTED_GRASS.get(), VSBlocks.POTTED_SUGAR_CANE.get());
+        event.getBlockColors().register((state, reader, pos, u) -> reader != null && pos != null ? BiomeColors.getAverageGrassColor(reader, pos) : -1, VSBlocks.POTTED_GRASS.get(), VSBlocks.POTTED_SUGAR_CANE.get());
     }
 
     @OnlyIn(Dist.CLIENT)

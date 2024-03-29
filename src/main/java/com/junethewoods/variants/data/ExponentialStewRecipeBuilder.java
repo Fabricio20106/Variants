@@ -74,7 +74,7 @@ public class ExponentialStewRecipeBuilder {
     public void save(Consumer<IFinishedRecipe> consumer, String name) {
         ResourceLocation itemLocation = Registry.ITEM.getKey(this.result.getItem());
         if (new ResourceLocation(name).equals(itemLocation)) {
-            throw new IllegalStateException("Variants: Bowl Shapeless Recipe " + name + " should remove its 'save' argument.");
+            throw new IllegalStateException("Variants: Stew Shapeless Recipe " + name + " should remove its 'save' argument.");
         } else {
             this.save(consumer, new ResourceLocation(name));
         }

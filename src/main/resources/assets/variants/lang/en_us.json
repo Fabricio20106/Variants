@@ -474,6 +474,9 @@
 
   "armor_design.variants.1": "Null",
 
+  "tooltip.variants.hold_alt": "§8Hold <§7Alt§8> for NBT",
+  "tooltip.variants.hold_alt.held": "§8Hold <§fAlt§8> for NBT",
+  "tooltip.variants.tags": "Tags:§r %s",
   "tooltip.variants.compat_item_from": "Item compatibility between: %s.",
   "tooltip.variants.compat_block_from": "Block compatibility between: %s.",
   "tooltip.variants.exponential_stew.bowl": "Bowl: %s",

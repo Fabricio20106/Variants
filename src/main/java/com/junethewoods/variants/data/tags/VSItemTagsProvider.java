@@ -163,7 +163,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.NETHER_STARS).add(Items.NETHER_STAR);
         this.tag(VSTags.Items.ICON_ITEMS).add(VSWeaponry.INFINITY_SWEATERS_TAB_ICON.get()).add(VSItems.SHULKER_SPECTRUM_ICON.get());
         this.tag(VSTags.Items.VILLAGER_PLANTABLE_SEEDS).add(VSItems.GOLDEN_CARROTS.get()).add(Items.WHEAT_SEEDS).add(Items.BEETROOT_SEEDS).add(Items.CARROT).add(Items.POTATO);
-        this.tag(VSTags.Items.VILLAGER_WANTED_ITEMS).addTag(VSTags.Items.VILLAGER_PLANTABLE_SEEDS).add(Items.WHEAT).add(Items.BREAD).add(Items.BEETROOT);
+        this.tag(VSTags.Items.VILLAGER_WANTED_ITEMS).addTag(VSTags.Items.VILLAGER_PLANTABLE_SEEDS).add(Items.WHEAT).add(Items.BREAD).add(Items.GOLDEN_CARROT).add(Items.BEETROOT);
         this.tag(VSTags.Items.COMPLETES_FIND_TREE_TUTORIAL).addTag(ItemTags.LOGS).addTag(ItemTags.LEAVES).addTag(VSTags.Items.WART_BLOCKS);
 
         // Minecraft Tags

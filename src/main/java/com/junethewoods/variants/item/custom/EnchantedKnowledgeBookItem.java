@@ -3,6 +3,7 @@ package com.junethewoods.variants.item.custom;
 import com.google.common.collect.Lists;
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.item.VSItems;
+import com.junethewoods.variants.util.VSStats;
 import com.junethewoods.variants.util.tab.VSTab;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
@@ -54,6 +55,7 @@ public class EnchantedKnowledgeBookItem extends EnchantedBookItem {
 
                 player.awardRecipes(iRecipesList);
                 player.awardStat(Stats.ITEM_USED.get(this));
+                player.awardStat(VSStats.KNOWLEDGE_BOOKS_USED);
             }
 
             return ActionResult.sidedSuccess(handStack, world.isClientSide());

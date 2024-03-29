@@ -26,6 +26,7 @@ public class VSCommonConfigs {
     public final ForgeConfigSpec.BooleanValue enchantableShears;
     public final ForgeConfigSpec.BooleanValue enchantableFlintAndSteel;
     public final ForgeConfigSpec.BooleanValue enchantableShields;
+    public final ForgeConfigSpec.BooleanValue showTagsWithAlt;
 
     // Entities
     public final ForgeConfigSpec.BooleanValue fishSpawning;
@@ -65,6 +66,7 @@ public class VSCommonConfigs {
         this.enchantableShears = builder.comment("Allows any Shears to be enchanted at an Enchanting Table.").define("enchantableShears", true);
         this.enchantableFlintAndSteel = builder.comment("Allows any Flint and Steel to be enchanted at an Enchanting Table.").define("enchantableFlintAndSteel", true);
         this.enchantableShields = builder.comment("Allows any Shield to be enchanted at an Enchanting Table.").define("enchantableShields", true);
+        this.showTagsWithAlt = builder.comment("Allows item tags (NBT) to be shown when Alt is held down.").define("showTagsWithAlt", false);
         this.enableInfinitySweatersTab = builder.comment("Enables the Infinity Sweaters tab (WARNING: This tab is *very* fragile and will most likely cause issues when at high values).").define("infinitySweatersTab.enableInfinitySweatersTab", false);
         this.infinitySweatersTabLength = builder.comment("How many sweaters should the tab load in. (Def: 4096)").defineInRange("infinitySweatersTab.infinitySweatersTabLength", 4096, 1, 16777215);
         this.infinitySweatersTabSpacing = builder.comment("The spacing between sweater colors. (Def: 16)").defineInRange("infinitySweatersTab.infinitySweatersTabSpacing", 16, 1, 16777215);

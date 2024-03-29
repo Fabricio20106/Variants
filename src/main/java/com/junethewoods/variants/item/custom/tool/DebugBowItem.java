@@ -36,9 +36,7 @@ public class DebugBowItem extends BowItem {
     }
 
     public boolean canAttackBlock(BlockState state, World world, BlockPos pos, PlayerEntity player) {
-        if (!world.isClientSide) {
-            this.handleInteraction(player, state, world, pos, false, player.getItemInHand(Hand.MAIN_HAND));
-        }
+        if (!world.isClientSide) this.handleInteraction(player, state, world, pos, false, player.getItemInHand(Hand.MAIN_HAND));
         return false;
     }
 
@@ -91,7 +89,7 @@ public class DebugBowItem extends BowItem {
     }
 
     private static <T> T getRelative(Iterable<T> allowedValues, @Nullable T currentValue, boolean backwards) {
-        return (T)(backwards ? Util.findPreviousInIterable(allowedValues, currentValue) : Util.findNextInIterable(allowedValues, currentValue));
+        return backwards ? Util.findPreviousInIterable(allowedValues, currentValue) : Util.findNextInIterable(allowedValues, currentValue);
     }
 
     private static void sendMessage(PlayerEntity player, ITextComponent text) {
