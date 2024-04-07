@@ -88,6 +88,8 @@
   "block.variants.quartz_beacon": "Sinalizador de quartzo",
   "block.variants.quartz_ore": "Minério de quartzo",
   "block.variants.deepslate_quartz_ore": "Minério de quartzo de ardósia",
+  "block.variants.crimson_farmland": "Nicélio carmesim arado",
+  "block.variants.warped_farmland": "Nicélio distorcido arado",
   "block.variants.wither_bone_block": "Bloco de ossos murchos",
   "block.variants.raw_debris_block": "Bloco de detrito bruto",
   "block.variants.glow_black_tulip": "Tulipa preta brilhante",
@@ -474,6 +476,9 @@
 
   "armor_design.variants.1": "núla",
 
+  "tooltip.variants.hold_alt": "§8Segure <§7Alt§8> para ver NBT",
+  "tooltip.variants.hold_alt.held": "§8Segure <§fAlt§8> para ver NBT",
+  "tooltip.variants.tags": "Tags:§r %s",
   "tooltip.variants.compat_item_from": "Compatibilidade de item entre: %s.",
   "tooltip.variants.compat_block_from": "Compatibilidade de bloco entre: %s.",
   "tooltip.variants.exponential_stew.bowl": "Tigela: %s",

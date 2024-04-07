@@ -53,7 +53,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSTags.Blocks.ENDERWOOD_STEMS).add(VSBlocks.ENDERWOOD_STEM.get()).add(VSBlocks.ENDERWOOD_HYPHAE.get()).add(VSBlocks.STRIPPED_ENDERWOOD_STEM.get()).add(VSBlocks.STRIPPED_ENDERWOOD_HYPHAE.get());
         this.tag(VSTags.Blocks.CAULDRONS).add(Blocks.CAULDRON).add(VSBlocks.GOLDEN_CAULDRON.get()).add(VSBlocks.QUARTZ_CAULDRON.get());
         this.tag(VSTags.Blocks.BEACONS).add(Blocks.BEACON).add(VSBlocks.GOLDEN_BEACON.get()).add(VSBlocks.QUARTZ_BEACON.get());
-        this.tag(VSTags.Blocks.NETHER_WART_PLACEABLE_ON).add(Blocks.SOUL_SAND).add(Blocks.SOUL_SOIL);
+        this.tag(VSTags.Blocks.NETHER_WART_PLACEABLE_ON).add(VSBlocks.CRIMSON_FARMLAND.get()).add(VSBlocks.WARPED_FARMLAND.get()).add(Blocks.SOUL_SAND).add(Blocks.SOUL_SOIL);
         this.tag(VSTags.Blocks.ENDER_WART_PLANTABLE_ON).addTag(VSTags.Blocks.HAS_ENDER_NYLIUM).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_FARMLAND.get()).add(Blocks.OBSIDIAN);
         this.tag(VSTags.Blocks.GOLDEN_CARROTS_PLANTABLE_ON).addTag(VSTags.Blocks.FARMLAND);
         this.tag(VSTags.Blocks.END_PLANTS_PLANTABLE_ON).addTag(BlockTags.NYLIUM).addTag(Tags.Blocks.END_STONES).add(Blocks.OBSIDIAN);
@@ -67,7 +67,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         // Melony Tags
         this.tag(VSTags.Blocks.DEEPSLATE_REPLACEABLES).addOptional(new ResourceLocation("minecraft:deepslate")).addOptional(new ResourceLocation("cavesandcliffs:deepslate")).addOptional(new ResourceLocation("quark:deepslate"))
                 .addOptional(new ResourceLocation("decorativelary:deepslate"));
-        this.tag(VSTags.Blocks.FARMLAND).add(Blocks.FARMLAND).add(VSBlocks.ENDER_FARMLAND.get()).addOptional(backMath("aljamic_farmland"));
+        this.tag(VSTags.Blocks.FARMLAND).add(Blocks.FARMLAND).add(VSBlocks.CRIMSON_FARMLAND.get()).add(VSBlocks.WARPED_FARMLAND.get()).add(VSBlocks.ENDER_FARMLAND.get()).addOptional(backMath("aljamic_farmland"));
         this.tag(VSTags.Blocks.CONDUIT_FRAME_BLOCKS).add(Blocks.PRISMARINE).add(Blocks.PRISMARINE_BRICKS).add(Blocks.DARK_PRISMARINE).add(Blocks.SEA_LANTERN).add(VSBlocks.ELDER_PRISMARINE.get()).add(VSBlocks.ELDER_PRISMARINE_BRICKS.get())
                 .add(VSBlocks.DARK_ELDER_PRISMARINE.get()).add(VSBlocks.ELDER_SEA_LANTERN.get());
         this.tag(VSTags.Blocks.COMPLETES_FIND_TREE_TUTORIAL).addTag(BlockTags.LOGS).addTag(BlockTags.LEAVES).addTag(BlockTags.WART_BLOCKS);

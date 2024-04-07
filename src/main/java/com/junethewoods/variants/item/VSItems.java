@@ -113,6 +113,8 @@ public class VSItems {
     public static final RegistryObject<Item> MOSSY_NETHER_BRICK_WALL = ITEMS.register("mossy_nether_brick_wall", () -> new BlockItem(VSBlocks.MOSSY_NETHER_BRICK_WALL.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> NETHER_BRICK_PILLAR = ITEMS.register("nether_brick_pillar", () -> new BlockItem(VSBlocks.NETHER_BRICK_PILLAR.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> RED_NETHER_BRICK_FENCE = ITEMS.register("red_nether_brick_fence", () -> new BlockItem(VSBlocks.RED_NETHER_BRICK_FENCE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> CRIMSON_FARMLAND = ITEMS.register("crimson_farmland", () -> new BlockItem(VSBlocks.CRIMSON_FARMLAND.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> WARPED_FARMLAND = ITEMS.register("warped_farmland", () -> new BlockItem(VSBlocks.WARPED_FARMLAND.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> WITHER_BONE_BLOCK = ITEMS.register("wither_bone_block", () -> new BlockItem(VSBlocks.WITHER_BONE_BLOCK.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> RAW_DEBRIS_BLOCK = ITEMS.register("raw_debris_block", () -> new BlockItem(VSBlocks.RAW_DEBRIS_BLOCK.get(), new Item.Properties().fireResistant().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> QUARTZ_ORE = ITEMS.register("quartz_ore", () -> new BlockItem(VSBlocks.QUARTZ_ORE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
@@ -190,7 +192,7 @@ public class VSItems {
     public static final RegistryObject<Item> FISH_SPAWN_EGG = ITEMS.register("old_cod_spawn_egg", () -> new ForgeSpawnEggItem(VSEntities.FISH, 0x6B9F93, 0xADBEDB, new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> FISH_BUCKET = ITEMS.register("old_cod_bucket", () -> new VSFishBucketItem(VSEntities.FISH, () -> Fluids.WATER, new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).tab(VSTab.TAB)));
     public static final RegistryObject<Item> SOUL_LAVA_BUCKET = ITEMS.register("soul_lava_bucket", () -> new SoulLavaBucketItem(new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).tab(VSTab.TAB)));
-    public static final RegistryObject<Item> MUSHROOM_STEW_BUCKET = ITEMS.register("mushroom_stew_bucket", () -> new PlaceableBucketFoodItem(VSFluids.MUSHROOM_STEW, new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).food(Foods.MUSHROOM_STEW).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> MUSHROOM_STEW_BUCKET = ITEMS.register("mushroom_stew_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).food(Foods.MUSHROOM_STEW).tab(VSTab.TAB)));
     public static final RegistryObject<Item> BEETROOT_SOUP_BUCKET = ITEMS.register("beetroot_soup_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).food(Foods.BEETROOT_SOUP).tab(VSTab.TAB)));
     public static final RegistryObject<Item> RABBIT_STEW_BUCKET = ITEMS.register("rabbit_stew_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).food(Foods.RABBIT_STEW).tab(VSTab.TAB)));
     public static final RegistryObject<Item> SUSPICIOUS_STEW_BUCKET = ITEMS.register("suspicious_stew_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).food(Foods.SUSPICIOUS_STEW).tab(VSTab.TAB)));

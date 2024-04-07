@@ -4,6 +4,7 @@ import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.block.custom.*;
 import com.junethewoods.variants.block.custom.end.*;
 import com.junethewoods.variants.block.custom.end.EndStoneOreBlock;
+import com.junethewoods.variants.block.custom.nether.NetherFarmlandBlock;
 import com.junethewoods.variants.block.custom.nether.SoulBrewingStandBlock;
 import com.junethewoods.variants.block.custom.nether.WarpedWartBlock;
 import com.junethewoods.variants.block.custom.nether.WitherBoneBlock;
@@ -143,6 +144,8 @@ public class VSBlocks {
     public static final RegistryObject<Block> GOLDEN_CHAIN = BLOCKS.register("golden_chain", () -> new ChainBlock(AbstractBlock.Properties.copy(Blocks.CHAIN)));
     public static final RegistryObject<Block> DIAMOND_CHAIN = BLOCKS.register("diamond_chain", () -> new ChainBlock(AbstractBlock.Properties.copy(Blocks.CHAIN)));
     public static final RegistryObject<Block> EMERALD_CHAIN = BLOCKS.register("emerald_chain", () -> new ChainBlock(AbstractBlock.Properties.copy(Blocks.CHAIN)));
+    public static final RegistryObject<Block> CRIMSON_FARMLAND = BLOCKS.register("crimson_farmland", () -> new NetherFarmlandBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.CRIMSON_NYLIUM).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NYLIUM).randomTicks().isViewBlocking(VSBlocks::always).isSuffocating(VSBlocks::always)));
+    public static final RegistryObject<Block> WARPED_FARMLAND = BLOCKS.register("warped_farmland", () -> new NetherFarmlandBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.WARPED_NYLIUM).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NYLIUM).randomTicks().isViewBlocking(VSBlocks::always).isSuffocating(VSBlocks::always)));
     public static final RegistryObject<Block> ENDER_NYLIUM = BLOCKS.register("ender_nylium", () -> new EnderNyliumBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_PURPLE).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NYLIUM).randomTicks()));
     public static final RegistryObject<Block> ENDER_FARMLAND = BLOCKS.register("ender_farmland", () -> new EnderFarmlandBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_PURPLE).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NYLIUM).randomTicks().isViewBlocking(VSBlocks::always).isSuffocating(VSBlocks::always)));
     public static final RegistryObject<Block> ENDER_ROOTS = BLOCKS.register("ender_roots", () -> new EnderRootsBlock(AbstractBlock.Properties.of(Material.REPLACEABLE_FIREPROOF_PLANT, MaterialColor.COLOR_PURPLE).noCollission().instabreak().sound(SoundType.ROOTS)));

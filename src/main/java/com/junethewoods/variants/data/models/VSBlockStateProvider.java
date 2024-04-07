@@ -162,6 +162,16 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         });
 
         // Variants Builder for blocks other than plants.
+        getVariantBuilder(VSBlocks.CRIMSON_FARMLAND.get()).forAllStates(state -> {
+            String isMoist = moistIndex(state.getValue(BlockStateProperties.MOISTURE));
+            return ConfiguredModel.builder().modelFile(models().getBuilder("crimson_farmland" + isMoist).parent(models().getExistingFile(modLoc("block/template_farmland"))).texture("top", modLoc("block/crimson_farmland" + isMoist)).texture("side",
+                    modLoc("block/crimson_farmland_side" + isMoist)).texture("dirt", mcLoc("block/netherrack"))).build();
+        });
+        getVariantBuilder(VSBlocks.WARPED_FARMLAND.get()).forAllStates(state -> {
+            String isMoist = moistIndex(state.getValue(BlockStateProperties.MOISTURE));
+            return ConfiguredModel.builder().modelFile(models().getBuilder("warped_farmland" + isMoist).parent(models().getExistingFile(modLoc("block/template_farmland"))).texture("top", modLoc("block/warped_farmland" + isMoist)).texture("side",
+                    modLoc("block/warped_farmland_side" + isMoist)).texture("dirt", mcLoc("block/netherrack"))).build();
+        });
         getVariantBuilder(VSBlocks.ENDER_FARMLAND.get()).forAllStates(state -> {
             String isMoist = moistIndex(state.getValue(BlockStateProperties.MOISTURE));
             return ConfiguredModel.builder().modelFile(models().getBuilder("ender_farmland" + isMoist).parent(models().getExistingFile(modLoc("block/template_farmland"))).texture("top", modLoc("block/ender_farmland" + isMoist)).texture("side",
@@ -169,8 +179,8 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         });
         getVariantBuilder(VSBlocks.POTTED_REDSTONE_TORCH.get()).forAllStates(state -> {
             String isOff = !state.getValue(BlockStateProperties.LIT) ? "_off" : "";
-            return ConfiguredModel.builder().modelFile(models().getBuilder("potted_redstone_torch" + isOff).parent(models().getExistingFile(modLoc("block/template_potted_torch"))).texture("dirt", mcLoc("block/smooth_stone")).texture("torch", mcLoc(
-                    "block/redstone_torch" + isOff))).build();
+            return ConfiguredModel.builder().modelFile(models().getBuilder("potted_redstone_torch" + isOff).parent(models().getExistingFile(modLoc("block/template_potted_torch"))).texture("dirt", mcLoc("block/smooth_stone")).texture("torch",
+                    mcLoc("block/redstone_torch" + isOff))).build();
         });
     }
 }

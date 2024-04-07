@@ -1,0 +1,8 @@
+{
+  "parent": "variants:block/template_farmland",
+  "textures": {
+    "top": "variants:block/warped_farmland",
+    "side": "variants:block/warped_farmland_side",
+    "dirt": "minecraft:block/netherrack"
+  }
+}

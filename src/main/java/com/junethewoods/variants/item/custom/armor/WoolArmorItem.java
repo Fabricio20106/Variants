@@ -25,6 +25,7 @@ import java.util.Map;
 
 // TODO: Make this class more compatibility-friendly.
 public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
+    private final String armorName;
     // If you add an item to this list through the method used in Back Math, it will brick the order of the colors in the creative menu! Which is the whole point I wrote this thing.
 
     // Upsides to this method:
@@ -42,6 +43,7 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
 
     public WoolArmorItem(IArmorMaterial material, EquipmentSlotType slot, Properties properties) {
         super(material, slot, properties);
+        this.armorName = material.getName();
     }
 
     @Override
@@ -53,9 +55,16 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlotType slot, String type) {
         if (stack.getTag() != null && stack.getTag().getInt("armor_design") > 0) {
-            return Variants.resourceLoc("textures/models/armor/wool_layer_" + (slot == EquipmentSlotType.LEGS ? 2 : 1) + "_" + stack.getTag().getInt("armor_design") + ".png").toString();
+            return Variants.resourceLoc("textures/models/armor/" + getArmorLocation() + "_layer_" + (slot == EquipmentSlotType.LEGS ? 2 : 1) + "_" + stack.getTag().getInt("armor_design") + ".png").toString();
         }
         return super.getArmorTexture(stack, entity, slot, type);
+    }
+
+    // Essentially copied from BipedArmorLayer#getArmorResource() (Forge version).
+    public String getArmorLocation() {
+        int index = this.armorName.indexOf(':');
+        if (index != -1) return this.armorName.substring(index + 1);
+        return "wool";
     }
 
     @Override

@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "minecraft:farmland",
+    "variants:crimson_farmland",
+    "variants:warped_farmland",
     "variants:ender_farmland",
     {
       "id": "backmath:aljamic_farmland",

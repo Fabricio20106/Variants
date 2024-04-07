@@ -1,0 +1,46 @@
+{
+  "homepage": "https://github.com/Fabricio20106/Variants/tree/forge-1.16.5",
+  "1.20.2": {
+    "1.20.2-3.0.15": "Updated to NeoForge, Chest Boats & Broken Features"
+  },
+  "1.16.5": {
+    "1.16.5-1.7.0-pre2": "New Mixin Tags & Refactors",
+    "1.16.5-1.7.0-pre1": "New (Mossy) Blocks & Dispenser Functionalities",
+    "1.16.5-1.6.20.3": "[BROKEN] Added substituteEndWithEnderwoodForest config",
+    "1.16.5-1.6.20.2": "Potted Torches & Mushroom Stew Fluid",
+    "1.16.5-1.6.20.1": "Bug Fixes & Renames (+ Infinity Sweaters Tab Name Change)",
+    "1.16.5-1.6.20": "All Exponential Stews & Seeds Not Saving Bug Fixed",
+    "1.16.5-1.6.19.1": "Advancement Fixes & New Emerald & Diamond Shards",
+    "1.16.5-1.6.19": "Enderwood Forest to The End & 23 New Advancements",
+    "1.16.5-1.6.18": "Potted Plants & Dog Disc Fix (#2)",
+    "1.16.5-1.6.17.2": "Updated Some Variants Tags to Use the \"melony\" Namespace",
+    "1.16.5-1.6.17.1": "Hotfix Update & Start of Advancements",
+    "1.16.5-1.6.17": "[BROKEN] Bottle Containers Fix & Enderwood Boat",
+    "1.16.5-1.6.16": "Stew Buckets & Rail-Related Items & Tooltips",
+    "1.16.5-1.6.15.1": "Small Changes to Fix Old Bugs",
+    "1.16.5-1.6.15": "New Blocks & Items & Start of Patchouli Integration",
+    "1.16.5-1.6.14": "Bug Fixes & New Tags",
+    "1.16.5-1.6.13.2": "Fix Crash When Loading Using the Mod Jar File",
+    "1.16.5-1.6.13.1": "[BROKEN] Fix Crash When Loading Using the Mod Jar File",
+    "1.16.5-1.6.13": "[BROKEN] Signs, Boats, Old Cod & Flammable Blocks",
+    "1.16.5-1.6.12": "[BROKEN?] Custom Sweaters, Vanilla Texture Updates & New items",
+    "1.16.5-1.6.11": "[BROKEN?] Enderwood, Soul Lava Springs & Chain Texture Changes",
+    "1.16.5-1.6.10": "[BROKEN?] Painting Trapdoors, Soul Lava & Chains",
+    "1.16.5-1.6.9": "[BROKEN?] Spyglass \"Usage\" & Variants Villager Trades",
+    "1.16.5-1.6.8.1": "[BROKEN?] Image File Size Decrease using GIMP",
+    "1.16.5-1.6.8": "[BROKEN?] Working G.B. Bed & Diamond Bell & Miscellaneous Changes",
+    "1.16.5-1.6.7": "[BROKEN?] New Configs & Quick Charge V",
+    "1.16.5-1.6.6": "[BROKEN?] Updated Firework Rocket/Star Descriptions & Enchantable Items",
+    "1.16.5-1.6.5": "Elder Prismarine Blocks & New Block Tags",
+    "1.16.5-1.6.4": "Copper Shears, Painting Sapling, Waterloggable Golden Cauldron, Populated Wool Sweaters, Brazilian Portuguese Translation & Renames + New Tags",
+    "1.16.5-1.6.3": "Non-Existent",
+    "1.16.5-1.6.2": "Many New Blocks & Items, Block Entities, Bottle Classes & New Tags (+ Glow Berry Bush Loot Table)",
+    "1.16.5-1.6.1": "Graham & First Doors, Plain Birch Bookshelf, Shulker Shells & Painting Stick (+ New Tags)",
+    "1.16.5-1.6.0": "Initial Port/Total Rewrite, New Tags & Dissolved Compatibility Classes"
+  },
+  "promos": {
+    "1.20.2-latest": "1.20.2-3.0.15",
+    "1.16.5-latest": "1.16.5-1.7.0-pre3",
+    "1.16.5-recommended": "1.16.5-1.7.0-pre2"
+  }
+}

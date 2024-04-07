@@ -25,7 +25,7 @@ New Blocks:
 - Netherrack & End Stone Levers [done]
 - Painting & Enderwood Signs [done]
 - Quartz Cauldron & Beacon [done]
-- Crimson, Warped & Ender Farmlands [1 done]
+- Crimson, Warped & Ender Farmlands [done]
 - Ender Nylium [done]
 - Sunny Flowers [done]
 - Potted Torches [done]

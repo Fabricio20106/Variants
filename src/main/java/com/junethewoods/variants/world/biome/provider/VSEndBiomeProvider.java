@@ -55,7 +55,7 @@ public class VSEndBiomeProvider extends BiomeProvider {
         this.islandNoise = new SimplexNoiseGenerator(seedRandom);
     }
 
-    protected Codec<? extends BiomeProvider> codec() {
+    public Codec<? extends BiomeProvider> codec() {
         return CODEC;
     }
 

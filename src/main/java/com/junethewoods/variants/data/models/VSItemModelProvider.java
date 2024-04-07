@@ -33,6 +33,8 @@ public class VSItemModelProvider extends VSItemModelModels {
         block("deepslate_quartz_ore");
         block("end_quartz_ore");
         block("ender_nylium_quartz_ore");
+        block("crimson_farmland");
+        block("warped_farmland");
         block("wither_bone_block");
         block("raw_debris_block");
         block("glow_black_wool");

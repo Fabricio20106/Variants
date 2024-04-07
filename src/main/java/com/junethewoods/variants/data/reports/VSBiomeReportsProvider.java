@@ -41,7 +41,7 @@ public class VSBiomeReportsProvider implements IDataProvider {
     }
 
     private static Path createPath(Path path, ResourceLocation biomeLoc) {
-        return path.resolve("reports/biomes/" + biomeLoc.getPath() + ".json");
+        return path.resolve("reports/worldgen/biome/" + biomeLoc.getPath() + ".json");
     }
 
     @Override
@@ -49,7 +49,6 @@ public class VSBiomeReportsProvider implements IDataProvider {
         Path path = this.generator.getOutputFolder();
 
         for (Map.Entry<RegistryKey<Biome>, Biome> entry : WorldGenRegistries.BIOME.entrySet()) {
-            // boolean isVSBiome = WorldGenRegistries.BIOME.entrySet().stream().filter((a) -> a.getValue().getRegistryName().getNamespace().equals(Variants.MOD_ID));
             boolean isVSBiome = Objects.requireNonNull(entry.getValue().getRegistryName()).getNamespace().equals(Variants.MOD_ID);
             if (isVSBiome) {
                 Path path1 = createPath(path, entry.getKey().location());

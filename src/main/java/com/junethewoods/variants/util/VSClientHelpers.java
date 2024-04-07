@@ -65,6 +65,8 @@ public class VSClientHelpers {
     }
 
     public static void tillables() {
+        tillable(Blocks.CRIMSON_NYLIUM, VSBlocks.CRIMSON_FARMLAND.get().defaultBlockState());
+        tillable(Blocks.WARPED_NYLIUM, VSBlocks.WARPED_FARMLAND.get().defaultBlockState());
         tillable(VSBlocks.ENDER_NYLIUM.get(), VSBlocks.ENDER_FARMLAND.get().defaultBlockState());
     }
 
