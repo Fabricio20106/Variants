@@ -28,9 +28,10 @@ public class SmallSoulFireballRenderer extends EntityRenderer<SmallSoulFireballE
         stack.pushPose();
         stack.mulPose(this.entityRenderDispatcher.cameraOrientation());
         stack.mulPose(Vector3f.YP.rotationDegrees(180));
-        MatrixStack.Entry matrixstack$entry = stack.last();
-        Matrix4f matrix4f = matrixstack$entry.pose();
-        Matrix3f matrix3f = matrixstack$entry.normal();
+        stack.scale(0.75F, 0.75F, 0.75F);
+        MatrixStack.Entry entry = stack.last();
+        Matrix4f matrix4f = entry.pose();
+        Matrix3f matrix3f = entry.normal();
         IVertexBuilder ivertexbuilder = buffer.getBuffer(CUTOUT_NO_CULL);
         vertex(ivertexbuilder, matrix4f, matrix3f, packedLight, 0, 0, 0, 1);
         vertex(ivertexbuilder, matrix4f, matrix3f, packedLight, 1, 0, 1, 1);
