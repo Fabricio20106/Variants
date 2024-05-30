@@ -46,6 +46,7 @@ public class VSWeaponry {
     public static final RegistryObject<Item> AMETHYST_SWORD = ITEMS.register("amethyst_sword", () -> new SwordItem(VSTools.AMETHYST, 3, -2.4F, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> COPPER_SWORD = ITEMS.register("copper_sword", () -> new SwordItem(VSTools.COPPER, 3, -2.4F, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> DEBUG_BOW = ITEMS.register("debug_bow", () -> new DebugBowItem(new Item.Properties().durability(3840).tab(VSWeaponryTab.TAB)));
+    public static final RegistryObject<Item> DEBUG_ARROW = ITEMS.register("debug_arrow", () -> new DebugArrowItem(new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> REDSTONE_SHEARS = ITEMS.register("redstone_shears", () -> new ShearsItem(new Item.Properties().durability(250).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> COAL_SHEARS = ITEMS.register("coal_shears", () -> new CoalShearsItem(new Item.Properties().durability(32).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> COPPER_SHEARS = ITEMS.register("copper_shears", () -> new ShearsItem(new Item.Properties().durability(131).tab(VSWeaponryTab.TAB)));

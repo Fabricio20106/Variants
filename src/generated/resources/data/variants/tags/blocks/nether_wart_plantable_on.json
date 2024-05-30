@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "variants:crimson_farmland",
+    "variants:warped_farmland",
     "minecraft:soul_sand",
     "minecraft:soul_soil"
   ]

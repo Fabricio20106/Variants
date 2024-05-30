@@ -1,10 +1,17 @@
 {
   "homepage": "https://github.com/Fabricio20106/Variants/tree/forge-1.16.5",
+  "promos": {
+    "1.20.2-latest": "1.20.2-3.0.15",
+    "1.16.5-latest": "1.16.5-1.7.0-pre4",
+    "1.16.5-recommended": "1.16.5-1.7.0-pre4"
+  },
   "1.20.2": {
     "1.20.2-3.0.15": "Updated to NeoForge, Chest Boats & Broken Features"
   },
   "1.16.5": {
-    "1.16.5-1.7.0-pre2": "New Mixin Tags & Refactors",
+    "1.16.5-1.7.0-pre4": "Moog City 1 & Downgrade Gradle Workspace, Stew Behavior & Poisoning Type Registries & Debug Arrows",
+    "1.16.5-1.7.0-pre3": "[BROKEN] Farmland, Updated Map Colors & Biome Reports Data Generator",
+    "1.16.5-1.7.0-pre2": "[BROKEN] New Mixin Tags & Refactors",
     "1.16.5-1.7.0-pre1": "New (Mossy) Blocks & Dispenser Functionalities",
     "1.16.5-1.6.20.3": "[BROKEN] Added substituteEndWithEnderwoodForest config",
     "1.16.5-1.6.20.2": "Potted Torches & Mushroom Stew Fluid",
@@ -37,10 +44,5 @@
     "1.16.5-1.6.2": "Many New Blocks & Items, Block Entities, Bottle Classes & New Tags (+ Glow Berry Bush Loot Table)",
     "1.16.5-1.6.1": "Graham & First Doors, Plain Birch Bookshelf, Shulker Shells & Painting Stick (+ New Tags)",
     "1.16.5-1.6.0": "Initial Port/Total Rewrite, New Tags & Dissolved Compatibility Classes"
-  },
-  "promos": {
-    "1.20.2-latest": "1.20.2-3.0.15",
-    "1.16.5-latest": "1.16.5-1.7.0-pre3",
-    "1.16.5-recommended": "1.16.5-1.7.0-pre2"
   }
 }

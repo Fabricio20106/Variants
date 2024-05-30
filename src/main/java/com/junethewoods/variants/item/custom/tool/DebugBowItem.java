@@ -15,13 +15,13 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.ChatType;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
 import java.util.Collection;
@@ -47,18 +47,17 @@ public class DebugBowItem extends BowItem {
             BlockPos pos = context.getClickedPos();
             this.handleInteraction(player, world.getBlockState(pos), world, pos, true, context.getItemInHand());
         }
-
         return ActionResultType.sidedSuccess(world.isClientSide);
     }
 
-    private void handleInteraction(PlayerEntity player, BlockState state, IWorld world, BlockPos pos, boolean rightClick, ItemStack stack) {
+    public void handleInteraction(PlayerEntity player, BlockState state, IWorld world, BlockPos pos, boolean rightClick, ItemStack stack) {
         if (player.canUseGameMasterBlocks()) {
             Block block = state.getBlock();
             StateContainer<Block, BlockState> stateDefinition = block.getStateDefinition();
             Collection<Property<?>> collection = stateDefinition.getProperties();
-            String blockRegistryKey = Registry.BLOCK.getKey(block).toString();
+            String blockRegistryKey = ForgeRegistries.BLOCKS.getKey(block).toString();
             if (collection.isEmpty()) {
-                sendMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.empty", blockRegistryKey));
+                sendBowMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.empty", blockRegistryKey));
             } else {
                 CompoundNBT debugProperty = stack.getOrCreateTagElement("debug_property");
                 String s1 = debugProperty.getString(blockRegistryKey);
@@ -70,33 +69,33 @@ public class DebugBowItem extends BowItem {
 
                     BlockState state1 = cycleState(state, property, player.isSecondaryUseActive());
                     world.setBlock(pos, state1, 18);
-                    sendMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.update", property.getName(), getNameHelper(state1, property)));
+                    sendBowMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.update", property.getName(), getNameHelper(state1, property)));
                 } else {
                     property = getRelative(collection, property, player.isSecondaryUseActive());
                     String s2 = property.getName();
                     debugProperty.putString(blockRegistryKey, s2);
-                    sendMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.select", s2, getNameHelper(state, property)));
+                    sendBowMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.select", s2, getNameHelper(state, property)));
                 }
             }
         }
-        if (!player.abilities.mayfly) sendMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.survival").withStyle(TextFormatting.RED));
-        if (!player.abilities.mayBuild) sendMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.adventure").withStyle(TextFormatting.RED));
-        if (player.isSpectator()) sendMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.spectator").withStyle(TextFormatting.RED));
+        if (!player.abilities.mayfly) sendBowMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.survival").withStyle(TextFormatting.RED));
+        if (!player.abilities.mayBuild) sendBowMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.adventure").withStyle(TextFormatting.RED));
+        if (player.isSpectator()) sendBowMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.spectator").withStyle(TextFormatting.RED));
     }
 
-    private static <T extends Comparable<T>> BlockState cycleState(BlockState state, Property<T> property, boolean backwards) {
+    public static <T extends Comparable<T>> BlockState cycleState(BlockState state, Property<T> property, boolean backwards) {
         return state.setValue(property, getRelative(property.getPossibleValues(), state.getValue(property), backwards));
     }
 
-    private static <T> T getRelative(Iterable<T> allowedValues, @Nullable T currentValue, boolean backwards) {
+    public static <T> T getRelative(Iterable<T> allowedValues, @Nullable T currentValue, boolean backwards) {
         return backwards ? Util.findPreviousInIterable(allowedValues, currentValue) : Util.findNextInIterable(allowedValues, currentValue);
     }
 
-    private static void sendMessage(PlayerEntity player, ITextComponent text) {
+    public static void sendBowMessage(PlayerEntity player, ITextComponent text) {
         ((ServerPlayerEntity) player).sendMessage(text, ChatType.GAME_INFO, Util.NIL_UUID);
     }
 
-    private static <T extends Comparable<T>> String getNameHelper(BlockState state, Property<T> property) {
+    public static <T extends Comparable<T>> String getNameHelper(BlockState state, Property<T> property) {
         return property.getName(state.getValue(property));
     }
 }

@@ -397,6 +397,7 @@ b9aba862759234f8021923f707a0e33bf144f5ce assets/variants/models/item/crimson_sti
 afd55935846ec5b77e0d8fbf7223ffee6f12f58e assets/variants/models/item/dark_elder_prismarine_stairs.json
 d81ef6a1c6b20dfeab8f71ceee285a5ac9253b74 assets/variants/models/item/dark_oak_bowl.json
 c4421afba92d918919f147d80a8b5da7140997a5 assets/variants/models/item/dark_oak_stick.json
+5f50ebcd233aab078e5fe1545d7f8b27773b646f assets/variants/models/item/debug_arrow.json
 854b5bc982d1101e43918db90e05586ac59b74c3 assets/variants/models/item/debug_bow_pulling_0.json
 e010667be8b3d17609d0f4d4ad0ca67597b3a0dd assets/variants/models/item/debug_bow_pulling_1.json
 45749a11eddc2610bb06c9fb68d6ead2c9ebd758 assets/variants/models/item/debug_bow_pulling_2.json
@@ -867,6 +868,8 @@ c5793f90128c571e6b804b35eef39e723c560bd2 data/melony/tags/blocks/deepslate_repla
 9f938ae6fe2f7e63dcf22e41fd0db35ccd2114b1 data/melony/tags/blocks/farmland.json
 63daba55a4194e1cc26833364eca188d56b22511 data/melony/tags/blocks/farmland_transparent.json
 b692a0c80fc4a4804beca7cb8aefd967145713d4 data/melony/tags/entity_types/can_spawn_on_leaves.json
+497f525d89d3b207fb0735e1c2734a11b8521721 data/melony/tags/fluids/hydrates_farmland/lava.json
+67d54d52dd971ccf1038461ec0f9052d4df0b92b data/melony/tags/fluids/hydrates_farmland/water.json
 63860ef20b1bd0ea7520cf52b18040ec1e1dac6b data/melony/tags/items/books.json
 3aaeb88de44811b3a9955501fe0607fe9aefb4bf data/melony/tags/items/bookshelves.json
 9032e5ca50bf6db372a7dba9bce500591f3cedc3 data/melony/tags/items/bowls.json
@@ -913,8 +916,10 @@ c15a9d3882e07cb63edd6b8cff07b55c0a870776 data/minecraft/tags/blocks/wooden_fence
 2bb364f7db96796f98b7ce10b4ba792ab952edae data/minecraft/tags/blocks/wooden_stairs.json
 1e6cc54b86170f7d011dccdbea8855b97e69c075 data/minecraft/tags/blocks/wooden_trapdoors.json
 3e77e4d6f65c6bbaee4e1b25812fbcbc39c29fec data/minecraft/tags/blocks/wool.json
+6ebeb2cbfffa213af0708437e0b42d5551116a69 data/minecraft/tags/entity_types/arrows.json
 f4a0ba49af58904c1446e03ef249a007cb3cd6b4 data/minecraft/tags/fluids/lava.json
 dbc2c2347cd4d0280a4080eaece21e1a4b00b211 data/minecraft/tags/fluids/water.json
+6ebeb2cbfffa213af0708437e0b42d5551116a69 data/minecraft/tags/items/arrows.json
 d0bae256fdd04bdd716188e7694fc138fa904ba1 data/minecraft/tags/items/beds.json
 50b6b2ef1fa88f90d6bca5c6c979f1b55a348d8b data/minecraft/tags/items/boats.json
 c9e762314d21e3cd6eaaf4b8e94f666a11c5a371 data/minecraft/tags/items/carpets.json
@@ -1052,7 +1057,7 @@ a74b654370a66ffc58d0ba3e3f22f01514d2e8a7 data/variants/tags/blocks/ender_wart_pl
 f7b5455739407ddd814c09d0f66ff892f896cea2 data/variants/tags/blocks/enderwood_stems.json
 0c1eb64dab4df4c5771ea8dd2a54b7cf96fc8526 data/variants/tags/blocks/golden_carrots_plantable_on.json
 e6e58d43872a6931bb892fdd05dfe8b84153a9e0 data/variants/tags/blocks/has_ender_nylium.json
-abe677791f6d916b3b307bd1270f4d6687516251 data/variants/tags/blocks/nether_wart_plantable_on.json
+4eb9907c5b487cfc38c78909fb25c5bfa92be784 data/variants/tags/blocks/nether_wart_plantable_on.json
 d49ddc370b30c9b9f0d41c90a69601574a941def data/variants/tags/blocks/painting_doors.json
 59f537833a6d2b59ab763a6e112bbd5a99a1b7aa data/variants/tags/blocks/painting_logs.json
 9d16a8f7f1608b9050bd6b45561652ebedc5563d data/variants/tags/blocks/painting_trapdoors.json

@@ -9,16 +9,17 @@ import com.junethewoods.variants.config.VSConfigs;
 import com.junethewoods.variants.crafting.VSRecipeTypes;
 import com.junethewoods.variants.effect.VSEffects;
 import com.junethewoods.variants.entity.VSEntities;
-import com.junethewoods.variants.entity.renderer.DragonBreathBottleRenderer;
-import com.junethewoods.variants.entity.renderer.FishRenderer;
-import com.junethewoods.variants.entity.renderer.SmallSoulFireballRenderer;
-import com.junethewoods.variants.entity.renderer.VSBoatRenderer;
+import com.junethewoods.variants.entity.renderer.*;
 import com.junethewoods.variants.fluid.VSFluids;
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.VSWeaponry;
+import com.junethewoods.variants.item.custom.poisoning.VSPoisoningTypes;
+import com.junethewoods.variants.item.custom.stew.VSStewBehaviors;
+import com.junethewoods.variants.util.VSRegistries;
 import com.junethewoods.variants.sound.VSSounds;
-import com.junethewoods.variants.util.VSClientHelpers;
+import com.junethewoods.variants.util.VSUtils;
 import com.junethewoods.variants.util.VSStats;
+import com.junethewoods.variants.util.VSVanillaCompatibility;
 import com.junethewoods.variants.util.VSWoodTypes;
 import com.junethewoods.variants.world.biome.VSBiomes;
 import com.junethewoods.variants.world.biome.provider.VSEndBiomeProvider;
@@ -75,6 +76,9 @@ public class Variants {
         VSWorldCarvers.CARVERS.register(eventBus);
         VSBiomes.BIOMES.register(eventBus);
         VSRecipeTypes.RECIPE_TYPES.register(eventBus);
+        VSStewBehaviors.BEHAVIORS.register(eventBus);
+        VSPoisoningTypes.POISONING_TYPES.register(eventBus);
+        VSRegistries.init();
         VSStats.init();
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, VSConfigs.COMMON_SPEC, "jtw-mods/variants-common.toml");
@@ -98,31 +102,31 @@ public class Variants {
         VSSurfaceBuilders.init();
         Registry.register(Registry.BIOME_SOURCE, Variants.resourceLoc("enderwood_end"), VSEndBiomeProvider.CODEC);
 
-        VSClientHelpers.compostables();
-        VSClientHelpers.tillables();
-        VSClientHelpers.flammables();
-        VSClientHelpers.addBed(VSBlocks.GLOW_BLACK_BED.get());
+        VSVanillaCompatibility.compostables();
+        VSVanillaCompatibility.tillables();
+        VSVanillaCompatibility.flammables();
+        VSVanillaCompatibility.addBed(VSBlocks.GLOW_BLACK_BED.get());
 
         WoodType.register(VSWoodTypes.PAINTING);
         WoodType.register(VSWoodTypes.ENDERWOOD);
     }
 
     public void clientSetup(final FMLClientSetupEvent event) {
-        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_MUSHROOM_STEW.get());
-        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_BEETROOT_SOUP.get());
-        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_RABBIT_STEW.get());
-        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_SUSPICIOUS_STEW.get());
-        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_FUNGI_STEW.get());
-        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_END_FUNGI_STEW.get());
-        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_ALJAN_FUNGI_STEW.get());
-        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_WATER_BOWL.get());
-        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_MILK_BOWL.get());
-        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_LAVA_BOWL.get());
-        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_SOUL_LAVA_BOWL.get());
-        VSClientHelpers.makeExpoStew(VSItems.EXPONENTIAL_POWDER_SNOW_BOWL.get());
-        VSClientHelpers.makeShield(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
-        VSClientHelpers.makeBow(VSWeaponry.DEBUG_BOW.get());
-        VSClientHelpers.addArmorDesigns(VSWeaponry.WOOL_SWEATER.get());
+        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_MUSHROOM_STEW.get());
+        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_BEETROOT_SOUP.get());
+        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_RABBIT_STEW.get());
+        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_SUSPICIOUS_STEW.get());
+        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_FUNGI_STEW.get());
+        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_END_FUNGI_STEW.get());
+        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_ALJAN_FUNGI_STEW.get());
+        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_WATER_BOWL.get());
+        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_MILK_BOWL.get());
+        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_LAVA_BOWL.get());
+        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_SOUL_LAVA_BOWL.get());
+        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_POWDER_SNOW_BOWL.get());
+        VSUtils.makeShield(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
+        VSUtils.makeBow(VSWeaponry.DEBUG_BOW.get());
+        VSUtils.addArmorDesigns(VSWeaponry.WOOL_SWEATER.get());
         setRenderTypesForBlocks();
 
         Atlases.addWoodType(VSWoodTypes.PAINTING);
@@ -130,8 +134,9 @@ public class Variants {
 
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.FISH.get(), FishRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.VS_BOAT.get(), VSBoatRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(VSEntities.DRAGON_BREATH_BOTTLE.get(), DragonBreathBottleRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(VSEntities.SMALL_SOUL_FIREBALL.get(), SmallSoulFireballRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(VSEntities.DRAGON_BREATH_BOTTLE.get(), VSSpriteRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(VSEntities.SMALL_SOUL_FIREBALL.get(), VSSpriteRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(VSEntities.DEBUG_ARROW.get(), DebugArrowRenderer::new);
 
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_BELL.get(), VSBellBlockEntityRenderer::new);
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_BEACON.get(), BeaconTileEntityRenderer::new);

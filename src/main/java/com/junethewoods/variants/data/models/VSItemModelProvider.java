@@ -301,6 +301,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(debugBow, "debug_bow_pulling_0");
         standard(debugBow, "debug_bow_pulling_1");
         standard(debugBow, "debug_bow_pulling_2");
+        standard(generated, "debug_arrow");
 
         // Shears
         standard(generated, "coal_shears");

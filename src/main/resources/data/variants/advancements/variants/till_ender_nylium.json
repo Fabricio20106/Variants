@@ -19,13 +19,13 @@
     "till_ender_nylium": {
       "trigger": "minecraft:item_used_on_block",
       "conditions": {
-        "item": {
-          "tag": "forge:tools/hoes"
-        },
         "location": {
           "block": {
             "block": "variants:ender_nylium"
           }
+        },
+        "item": {
+          "tag": "forge:tools/hoes"
         }
       }
     }

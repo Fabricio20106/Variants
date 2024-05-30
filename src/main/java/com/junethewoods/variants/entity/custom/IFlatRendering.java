@@ -1,2 +1,4 @@
-package com.junethewoods.variants.entity.custom;public interface IFlatRendering {
+package com.junethewoods.variants.entity.custom;
+
+public interface IFlatRendering {
 }

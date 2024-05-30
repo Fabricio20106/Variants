@@ -235,6 +235,7 @@
   "entity.variants.old_cod": "Peixe",
   "entity.variants.dragon_breath_bottle": "Frasco de bafo de dragão",
   "entity.variants.small_soul_fireball": "Bola de fogo das almas pequena",
+  "entity.variants.debug_arrow": "Flecha de depuração",
 
   "effect.variants.redstone_poisoning": "Env. por redstone",
   "effect.variants.redstone_poisoning.description": "Dá 2 de dano/seg por que você está comendo redstone.",
@@ -362,6 +363,7 @@
   "item.variants.exponential_soul_lava_bowl": "Tigela de lava das almas",
   "item.variants.exponential_powder_snow_bowl": "Tigela de neve fofa",
   "item.variants.debug_bow": "Arco de depuração",
+  "item.variants.debug_arrow": "Flecha de depuração",
   "item.variants.music_disc_dog": "Disco musical",
   "item.variants.music_disc_dog.desc": "C418 - dog",
   "item.variants.spawner_minecart": "Carrinho de mina com gerador",
@@ -467,6 +469,7 @@
   "color.variants.glow_black": "preta brilhante",
   "null": "núla",
 
+  "console.variants.villager_food.item_not_in_tag": "Variants: Item '%s' não está na tag de item '%s'; Ainda irá ser adicionado como comida para aldeões, no entanto.",
   "error.variants.enchanted_knowledge_book.invalid_recipe": "Variants: Receita inválida para uma enciclopédia encantada: %s",
   "error.variants.enchanted_knowledge_book.invalid_tag": "Variants: Tag inválida para uma enciclopédia encantada: %s",
   "error.variants.anvil_repair_recipe_maker.failed": "Variants: Não conseguiu criar receitas de reparo de bigornas.",
@@ -475,6 +478,8 @@
   "error.variants.expo_stew_recipe_builder.recipe_unobtainable": "Variants: Nenhum jeito de obter receita %s",
 
   "armor_design.variants.1": "núla",
+
+  "stat.variants.knowledge_books_used": "Enciclopédias usadas",
 
   "tooltip.variants.hold_alt": "§8Segure <§7Alt§8> para ver NBT",
   "tooltip.variants.hold_alt.held": "§8Segure <§fAlt§8> para ver NBT",

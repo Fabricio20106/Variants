@@ -27,6 +27,8 @@ public class VSFluidTagsProvider extends FluidTagsProvider {
     protected void addTags() {
         this.tag(VSTags.Fluids.SOUL_LAVA).add(VSFluids.SOUL_LAVA.get()).add(VSFluids.FLOWING_SOUL_LAVA.get());
         this.tag(VSTags.Fluids.MUSHROOM_STEW).add(VSFluids.MUSHROOM_STEW.get()).add(VSFluids.FLOWING_MUSHROOM_STEW.get());
+        this.tag(VSTags.Fluids.HYDRATES_WATER_BASED_FARMLAND).addTag(FluidTags.WATER);
+        this.tag(VSTags.Fluids.HYDRATES_LAVA_BASED_FARMLAND).addTag(FluidTags.LAVA);
         this.tag(FluidTags.LAVA).addTag(VSTags.Fluids.SOUL_LAVA);
         this.tag(FluidTags.WATER).addTag(VSTags.Fluids.MUSHROOM_STEW);
     }

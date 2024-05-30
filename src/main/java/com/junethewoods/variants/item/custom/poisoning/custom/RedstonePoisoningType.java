@@ -1,10 +1,10 @@
-package com.junethewoods.variants.item.custom.poisoning;
+package com.junethewoods.variants.item.custom.poisoning.custom;
 
-import net.minecraft.potion.Effect;
-import net.minecraftforge.fml.RegistryObject;
+import com.junethewoods.variants.effect.VSEffects;
+import com.junethewoods.variants.item.custom.poisoning.PoisoningType;
 
-public class DefaultPoisoningType extends PoisoningType {
-    public DefaultPoisoningType(RegistryObject<Effect> poisoningEffect) {
-        super(poisoningEffect);
+public class RedstonePoisoningType extends PoisoningType {
+    public RedstonePoisoningType() {
+        super(VSEffects.REDSTONE_POISONING);
     }
 }

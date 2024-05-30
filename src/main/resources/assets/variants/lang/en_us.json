@@ -235,6 +235,7 @@
   "entity.variants.old_cod": "Fish",
   "entity.variants.dragon_breath_bottle": "Dragon Breath Bottle",
   "entity.variants.small_soul_fireball": "Small Soul Fireball",
+  "entity.variants.debug_arrow": "Debug Arrow",
 
   "effect.variants.redstone_poisoning": "Redstone Poisoning",
   "effect.variants.redstone_poisoning.description": "Deals 2 damage/sec because you are eating redstone.",
@@ -362,6 +363,7 @@
   "item.variants.exponential_soul_lava_bowl": "Soul Lava Bowl",
   "item.variants.exponential_powder_snow_bowl": "Powder Snow Bowl",
   "item.variants.debug_bow": "Debug Bow",
+  "item.variants.debug_arrow": "Debug Arrow",
   "item.variants.music_disc_dog": "Music Disc",
   "item.variants.music_disc_dog.desc": "C418 - dog",
   "item.variants.spawner_minecart": "Minecart with Spawner",
@@ -467,6 +469,7 @@
   "color.variants.glow_black": "Glow Black",
   "null": "Null",
 
+  "console.variants.villager_food.item_not_in_tag": "Variants: Item '%s' is not in item tag '%s'; Will still be added as a villager food, however.",
   "error.variants.enchanted_knowledge_book.invalid_recipe": "Variants: Invalid recipe for Enchanted Knowledge Book: %s",
   "error.variants.enchanted_knowledge_book.invalid_tag": "Variants: Enchanted Knowledge Book tag not valid: %s",
   "error.variants.anvil_repair_recipe_maker.failed": "Variants: Failed to create anvil repair recipes.",
@@ -475,6 +478,8 @@
   "error.variants.expo_stew_recipe_builder.recipe_unobtainable": "Variants: No way of obtaining recipe %s",
 
   "armor_design.variants.1": "Null",
+
+  "stat.variants.knowledge_books_used": "Knowledge Books Used",
 
   "tooltip.variants.hold_alt": "§8Hold <§7Alt§8> for NBT",
   "tooltip.variants.hold_alt.held": "§8Hold <§fAlt§8> for NBT",

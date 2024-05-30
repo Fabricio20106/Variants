@@ -8,6 +8,8 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.network.IPacket;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
@@ -15,10 +17,11 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 import java.util.List;
 
-public class DragonBreathBottleEntity extends ProjectileItemEntity {
+public class DragonBreathBottleEntity extends ProjectileItemEntity implements IFlatRendering {
     public DragonBreathBottleEntity(EntityType<? extends DragonBreathBottleEntity> breathBottle, World world) {
         super(breathBottle, world);
     }
@@ -29,6 +32,12 @@ public class DragonBreathBottleEntity extends ProjectileItemEntity {
 
     public DragonBreathBottleEntity(World world, double x, double y, double z) {
         super(VSEntities.DRAGON_BREATH_BOTTLE.get(), x, y, z, world);
+    }
+
+    @Override
+    public ItemStack getItem() {
+        ItemStack rawStack = this.getItemRaw();
+        return rawStack.isEmpty() ? new ItemStack(VSItems.SPLASH_DRAGON_BREATH.get()) : rawStack;
     }
 
     @Override
@@ -81,5 +90,10 @@ public class DragonBreathBottleEntity extends ProjectileItemEntity {
         effectCloud.setDuration(600);
         effectCloud.setRadiusPerTick((7 - effectCloud.getRadius()) / (float) effectCloud.getDuration());
         return effectCloud;
+    }
+
+    @Override
+    public IPacket<?> getAddEntityPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

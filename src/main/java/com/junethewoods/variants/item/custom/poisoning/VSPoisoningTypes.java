@@ -6,7 +6,7 @@ import com.junethewoods.variants.util.VSRegistries;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 
-public class PoisoningTypes  {
+public class VSPoisoningTypes {
     public static final DeferredRegister<PoisoningType> POISONING_TYPES = DeferredRegister.create(VSRegistries.POISONING_TYPE, Variants.MOD_ID);
 
     public static final RegistryObject<PoisoningType> REDSTONE = POISONING_TYPES.register("redstone", () -> new PoisoningType(VSEffects.REDSTONE_POISONING));

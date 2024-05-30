@@ -10,6 +10,7 @@ import mezz.jei.api.recipe.vanilla.IVanillaRecipeFactory;
 import mezz.jei.api.runtime.IIngredientManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.text.TranslationTextComponent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,10 +28,10 @@ public class VSAnvilRecipeMaker {
         try {
             getVSRepairRecipes(recipes, recipeFactory);
         } catch (RuntimeException exception) {
-            LOGGER.error("Variants: Failed to create anvil repair recipes.", exception);
+            LOGGER.error(new TranslationTextComponent("error.variants.anvil_repair_recipe_maker.failed").getString(), exception);
         }
         stopwatch.stop();
-        LOGGER.debug("Variants: Registered Variants' anvil repair recipes in {}", stopwatch);
+        LOGGER.debug(new TranslationTextComponent("error.variants.anvil_repair_recipe_maker.successful", stopwatch).getString());
         return recipes;
     }
 

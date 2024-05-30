@@ -8,6 +8,7 @@
     "block.VSCauldronBlockMixin",
     "block.VSChorusFlowerBlockMixin",
     "block.VSChorusPlantBlockMixin",
+    "block.VSDispenserBlockMixin",
     "block.VSFarmlandBlockMixin",
     "block.VSNetherWartBlockMixin",
     "block.VSStainedGlassBlockMixin",

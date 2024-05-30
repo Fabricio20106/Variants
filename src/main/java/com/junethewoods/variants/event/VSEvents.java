@@ -83,7 +83,7 @@ public class VSEvents {
     @SubscribeEvent
     public static void addVillagerTrades(VillagerTradesEvent event) {
         // Todo: Armorer Trades
-        if(event.getType() == VillagerProfession.ARMORER) {
+        if (event.getType() == VillagerProfession.ARMORER) {
             Int2ObjectMap<List<VillagerTrades.ITrade>> trades = event.getTrades();
 
             // Level 2 "Apprentice"
@@ -106,7 +106,7 @@ public class VSEvents {
         }
 
         // Todo: Cartographer Trades
-        if(event.getType() == VillagerProfession.CARTOGRAPHER) {
+        if (event.getType() == VillagerProfession.CARTOGRAPHER) {
             Int2ObjectMap<List<VillagerTrades.ITrade>> trades = event.getTrades();
 
             // Level 2 "Apprentice"
@@ -115,7 +115,7 @@ public class VSEvents {
         }
 
         // Todo: Cleric Trades
-        if(event.getType() == VillagerProfession.CLERIC) {
+        if (event.getType() == VillagerProfession.CLERIC) {
             Int2ObjectMap<List<VillagerTrades.ITrade>> trades = event.getTrades();
 
             // Level 5 "Master"
@@ -124,7 +124,7 @@ public class VSEvents {
         }
 
         // Todo: Fisherman Trades
-        if(event.getType() == VillagerProfession.FISHERMAN) {
+        if (event.getType() == VillagerProfession.FISHERMAN) {
             Int2ObjectMap<List<VillagerTrades.ITrade>> trades = event.getTrades();
 
             // Level 1 "Novice"
@@ -137,7 +137,7 @@ public class VSEvents {
         }
 
         // Todo: Fletcher Trades
-        if(event.getType() == VillagerProfession.FLETCHER) {
+        if (event.getType() == VillagerProfession.FLETCHER) {
             Int2ObjectMap<List<VillagerTrades.ITrade>> trades = event.getTrades();
 
             // Level 1 "Novice"
@@ -172,7 +172,7 @@ public class VSEvents {
         }
 
         // Todo: Librarian Trades
-        if(event.getType() == VillagerProfession.LIBRARIAN) {
+        if (event.getType() == VillagerProfession.LIBRARIAN) {
             Int2ObjectMap<List<VillagerTrades.ITrade>> trades = event.getTrades();
 
             // Level 1 "Novice"
@@ -185,7 +185,7 @@ public class VSEvents {
         }
 
         // Todo: Shepherd Trades
-        if(event.getType() == VillagerProfession.SHEPHERD) {
+        if (event.getType() == VillagerProfession.SHEPHERD) {
             Int2ObjectMap<List<VillagerTrades.ITrade>> trades = event.getTrades();
 
             // Level 2 "Apprentice"
@@ -216,7 +216,7 @@ public class VSEvents {
         }
 
          // Todo: Toolsmith Trades
-        if(event.getType() == VillagerProfession.TOOLSMITH) {
+        if (event.getType() == VillagerProfession.TOOLSMITH) {
             Int2ObjectMap<List<VillagerTrades.ITrade>> trades = event.getTrades();
 
             // Level 1 "Novice"
@@ -241,17 +241,17 @@ public class VSEvents {
             // Level 2 "Apprentice"
             trades.get(2).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 36), new ItemStack(VSItems.DIAMOND_BELL.get(), 1),
                     12, 5, 0.2F));
-            trades.get(2).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 3), new ItemStack(VSWeaponry.MAGMA_SWORD.get(), 1),
-                    10, 2, 0.2F));
         }
 
         // Todo: Weaponsmith Trades
-        if(event.getType() == VillagerProfession.WEAPONSMITH) {
+        if (event.getType() == VillagerProfession.WEAPONSMITH) {
             Int2ObjectMap<List<VillagerTrades.ITrade>> trades = event.getTrades();
 
             // Level 2 "Apprentice"
             trades.get(2).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 36), new ItemStack(VSItems.DIAMOND_BELL.get(), 1),
                     12, 5, 0.2F));
+            trades.get(2).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 3), new ItemStack(VSWeaponry.MAGMA_SWORD.get(), 1),
+                    10, 2, 0.2F));
 
             // Level 3 "Journeyman"
             trades.get(3).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 12), new ItemStack(VSWeaponry.IRON_SPYGLASS.get(), 1),

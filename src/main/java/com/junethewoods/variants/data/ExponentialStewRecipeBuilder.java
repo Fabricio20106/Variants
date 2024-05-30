@@ -17,6 +17,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
@@ -74,7 +75,7 @@ public class ExponentialStewRecipeBuilder {
     public void save(Consumer<IFinishedRecipe> consumer, String name) {
         ResourceLocation itemLocation = Registry.ITEM.getKey(this.result.getItem());
         if (new ResourceLocation(name).equals(itemLocation)) {
-            throw new IllegalStateException("Variants: Stew Shapeless Recipe " + name + " should remove its 'save' argument.");
+            throw new IllegalStateException(new TranslationTextComponent("error.variants.expo_stew_recipe_builder.remove_save_argument", name).getString());
         } else {
             this.save(consumer, new ResourceLocation(name));
         }
@@ -88,7 +89,7 @@ public class ExponentialStewRecipeBuilder {
     }
 
     private void ensureValid(ResourceLocation name) {
-        if (this.advancement.getCriteria().isEmpty()) throw new IllegalStateException("Variants: No way of obtaining recipe " + name);
+        if (this.advancement.getCriteria().isEmpty()) throw new IllegalStateException(new TranslationTextComponent("error.variants.expo_stew_recipe_builder.recipe_unobtainable", name).getString());
     }
 
     public static class Result implements IFinishedRecipe {

@@ -7,48 +7,48 @@
 modLoader="javafml" #mandatory
 # The license for you mod. This is mandatory metadata and allows for easier comprehension of your redistributive properties.
 # Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
-license="${mod_license}"
+license="MIT License"
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version.
-loaderVersion="${loader_version_range}" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+loaderVersion="[35,36,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
 # A URL to refer people to when problems occur with this mod.
 issueTrackerURL="https://github.com/Fabricio20106/Variants/issues" #optional
 # A list of mods - how many allowed here is determined by the individual mod loader.
 [[mods]] #mandatory
 # The mod id of the mod.
-modId="${mod_id}" #mandatory
+modId="variants" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it.
-version="${minecraft_version}-${mod_version}" #mandatory
+version="1.16.5-1.7.0-pre4" #mandatory
  # A display name for the mod.
-displayName="${mod_name}" #mandatory
+displayName="Variants" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>.
-updateJSONURL="https://github.com/Fabricio20106/Variants/blob/forge-1.16.5/src/main/resources/META-INF/update_checker.json" #optional
+updateJSONURL="https://raw.githubusercontent.com/Fabricio20106/Variants/forge-1.16.5/update_checker.json" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI.
 displayURL="https://github.com/Fabricio20106/Variants/tree/forge-1.16.5" #optional
 # A file name (in the root of the mod JAR) containing a logo for display.
-logoFile="${mod_id}.png" #optional
+logoFile="variants.png" #optional
 # A text field displayed in the mod UI.
 credits="Other Mods" #optional
 # A text field displayed in the mod UI.
-authors="${mod_authors}" #optional
+authors="JuneTheWoods" #optional
 # The description text for the mod (multi line!) (#mandatory)
-description="${mod_description}"
+description="Variants adds various variants of vanilla items or blocks, ranging from copper armor and tools to potted sugar cane.\n\nChangelogs for versions of Variants can be seen here: https://github.com/Fabricio20106/Informational-Mod-Features/tree/main/Variants/Changelogs"
 
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.${mod_id}]] #optional
+[[dependencies.variants]] #optional
     # The mod id of the dependency.
     modId="forge" #mandatory
     # Does this dependency have to exist - if not, ordering below must be specified.
     mandatory=true #mandatory
     # The version range of the dependency.
-    versionRange="${forge_version_range}" #mandatory
+    versionRange="[35,36,)" #mandatory
     # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory.
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER.
     side="BOTH"
 # Here's another dependency:
-[[dependencies.${mod_id}]]
+[[dependencies.variants]]
     modId="minecraft"
     mandatory=true
-    versionRange="${minecraft_version_range}"
+    versionRange="[1.16.4,1.16.5)"
     ordering="NONE"
     side="BOTH"

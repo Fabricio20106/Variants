@@ -1,17 +1,16 @@
 package com.junethewoods.variants.item.custom.poisoning.custom;
 
+import com.junethewoods.variants.effect.VSEffects;
 import com.junethewoods.variants.item.custom.poisoning.PoisoningType;
 import com.junethewoods.variants.item.custom.poisoning.VSPoisoningTypes;
-import net.minecraft.potion.Effect;
-import net.minecraftforge.fml.RegistryObject;
 
-public class BluestonePoisoningType extends PoisoningType {
-    public BluestonePoisoningType(RegistryObject<Effect> poisoningEffect) {
-        super(poisoningEffect);
+public class GunpowderPoisoningType extends PoisoningType {
+    public GunpowderPoisoningType() {
+        super(VSEffects.GUNPOWDER_POISONING);
     }
 
     @Override
     public PoisoningType getTypeRegistry() {
-        return VSPoisoningTypes.BLUESTONE.get();
+        return VSPoisoningTypes.GUNPOWDER.get();
     }
 }

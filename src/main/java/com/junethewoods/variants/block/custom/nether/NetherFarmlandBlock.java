@@ -1,10 +1,10 @@
 package com.junethewoods.variants.block.custom.nether;
 
 import com.junethewoods.variants.block.custom.AbstractFarmlandBlock;
+import com.junethewoods.variants.util.VSTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluid;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ITag;
 
 public class NetherFarmlandBlock extends AbstractFarmlandBlock {
@@ -19,6 +19,6 @@ public class NetherFarmlandBlock extends AbstractFarmlandBlock {
 
     @Override
     public ITag<Fluid> getHydrationFluid() {
-        return FluidTags.LAVA;
+        return VSTags.Fluids.HYDRATES_LAVA_BASED_FARMLAND;
     }
 }

@@ -198,6 +198,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
                 .add(VSItems.POWERED_TIE.get()).add(VSWeaponry.GOLDEN_SHEARS.get()).add(VSWeaponry.ALICE_AI_SHEARS.get());
         this.tag(ItemTags.BOATS).add(VSItems.PAINTING_BOAT.get()).add(VSItems.CRIMSON_BOAT.get()).add(VSItems.WARPED_BOAT.get()).add(VSItems.ENDERWOOD_BOAT.get());
         this.tag(ItemTags.PIGLIN_REPELLENTS).add(VSItems.POTTED_SOUL_TORCH.get());
+        this.tag(ItemTags.ARROWS).add(VSWeaponry.DEBUG_ARROW.get());
     }
 
     private static ResourceLocation backMath(String item) {

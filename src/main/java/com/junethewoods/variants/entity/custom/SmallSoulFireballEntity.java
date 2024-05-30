@@ -1,12 +1,13 @@
 package com.junethewoods.variants.entity.custom;
 
 import com.junethewoods.variants.entity.VSEntities;
+import com.junethewoods.variants.item.VSItems;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.projectile.AbstractFireballEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.network.IPacket;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -14,18 +15,21 @@ import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.fml.network.NetworkHooks;
 
-public class SmallSoulFireballEntity extends AbstractFireballEntity {
+public class SmallSoulFireballEntity extends AbstractFireballEntity implements IRendersAsItem {
     public SmallSoulFireballEntity(EntityType<? extends SmallSoulFireballEntity> soulFireball, World world) {
         super(soulFireball, world);
     }
 
-    public SmallSoulFireballEntity(World world, LivingEntity livEntity, double x, double y, double z) {
-        super(VSEntities.SMALL_SOUL_FIREBALL.get(), livEntity, x, y, z, world);
+    public SmallSoulFireballEntity(World world, double x, double y, double z, double xPower, double yPower, double zPower) {
+        super(VSEntities.SMALL_SOUL_FIREBALL.get(), x, y, z, xPower, yPower, zPower, world);
     }
 
-    public SmallSoulFireballEntity(World p_i1772_1_, double x, double y, double z, double xPower, double yPower, double zPower) {
-        super(VSEntities.SMALL_SOUL_FIREBALL.get(), x, y, z, xPower, yPower, zPower, p_i1772_1_);
+    @Override
+    public ItemStack getItem() {
+        ItemStack rawStack = this.getItemRaw();
+        return rawStack.isEmpty() ? new ItemStack(VSItems.SOUL_O_CHARGE.get()) : rawStack;
     }
 
     protected void onHitEntity(EntityRayTraceResult hitResult) {
@@ -72,5 +76,10 @@ public class SmallSoulFireballEntity extends AbstractFireballEntity {
 
     public boolean hurt(DamageSource source, float amount) {
         return false;
+    }
+
+    @Override
+    public IPacket<?> getAddEntityPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

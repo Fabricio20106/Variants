@@ -1,0 +1,10 @@
+{
+  "music.menu": {
+    "sounds": [
+      {
+        "name": "variants:music/menu/moog_city",
+        "stream": true
+      }
+    ]
+  }
+}

@@ -21,6 +21,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -46,7 +47,7 @@ public class EnchantedKnowledgeBookItem extends EnchantedBookItem {
                     String nbtListString = recipeList.getString(listString);
                     Optional<? extends IRecipe<?>> optionalRecipe = recipeManager.byKey(new ResourceLocation(nbtListString));
                     if (!optionalRecipe.isPresent()) {
-                        Variants.LOGGER.error("Variants: Invalid recipe for Enchanted Knowledge Book: {}", nbtListString);
+                        Variants.LOGGER.error(new TranslationTextComponent("error.variants.enchanted_knowledge_book.invalid_recipe", nbtListString).getString(), nbtListString);
                         return ActionResult.fail(handStack);
                     }
 
@@ -60,7 +61,7 @@ public class EnchantedKnowledgeBookItem extends EnchantedBookItem {
 
             return ActionResult.sidedSuccess(handStack, world.isClientSide());
         } else {
-            Variants.LOGGER.error("Variants: Enchanted Knowledge Book tag not valid: {}", handStackTag);
+            Variants.LOGGER.error(new TranslationTextComponent("error.variants.enchanted_knowledge_book.invalid_tag", handStackTag).getString());
             return ActionResult.fail(handStack);
         }
     }

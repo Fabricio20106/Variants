@@ -1,10 +1,7 @@
 package com.junethewoods.variants.entity;
 
 import com.junethewoods.variants.Variants;
-import com.junethewoods.variants.entity.custom.DragonBreathBottleEntity;
-import com.junethewoods.variants.entity.custom.FishEntity;
-import com.junethewoods.variants.entity.custom.SmallSoulFireballEntity;
-import com.junethewoods.variants.entity.custom.VSBoatEntity;
+import com.junethewoods.variants.entity.custom.*;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraftforge.fml.RegistryObject;
@@ -25,4 +22,7 @@ public class VSEntities {
 
     public static final RegistryObject<EntityType<SmallSoulFireballEntity>> SMALL_SOUL_FIREBALL = ENTITIES.register("small_soul_fireball", () -> EntityType.Builder.<SmallSoulFireballEntity>of(SmallSoulFireballEntity::new, EntityClassification.MISC)
             .sized(0.3125F, 0.3125F).clientTrackingRange(4).updateInterval(10).build(Variants.resourceLoc("small_soul_fireball").toString()));
+
+    public static final RegistryObject<EntityType<DebugArrowEntity>> DEBUG_ARROW = ENTITIES.register("debug_arrow", () -> EntityType.Builder.<DebugArrowEntity>of(DebugArrowEntity::new, EntityClassification.MISC)
+            .sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build(Variants.resourceLoc("debug_arrow").toString()));
 }

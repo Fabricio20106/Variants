@@ -3,8 +3,9 @@ package com.junethewoods.variants.item.custom.food;
 import com.google.common.collect.ImmutableMap;
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.config.VSConfigs;
-import com.junethewoods.variants.item.custom.stew.IStewBehavior;
+import com.junethewoods.variants.item.custom.stew.StewBehavior;
 import com.junethewoods.variants.util.NBTUtils;
+import com.junethewoods.variants.util.VSRegistries;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -30,11 +31,32 @@ import java.util.Map;
 
 public class ExponentialStewItem extends Item {
     public static Map<String, Integer> BOWL_NAME_TO_ID = new ImmutableMap.Builder<String, Integer>().put("oak", 0).put("spruce", 1).put("birch", 2).put("jungle", 3).put("acacia", 4).put("dark_oak", 5).put("painting", 6).put("crimson", 7).put("warped", 8).put("ender", 9).build();
-    private final IStewBehavior stewBehavior;
+    private final StewBehavior stewBehavior;
 
-    public ExponentialStewItem(IStewBehavior behavior, Properties properties) {
+    public ExponentialStewItem(StewBehavior behavior, Properties properties) {
         super(properties);
         this.stewBehavior = behavior;
+    }
+
+    @Override
+    public ItemStack getDefaultInstance() {
+        ItemStack stewStack = new ItemStack(this);
+        stewStack.getOrCreateTag().putString("stew_behavior", getBehaviorFromNBT(stewStack).getRegistryName().toString());
+        return stewStack;
+    }
+
+    public boolean hasBehaviorInNBT(ItemStack stewStack) {
+        return stewStack.getTag() != null && stewStack.getTag().contains("stew_behavior");
+    }
+
+    public StewBehavior getBehaviorFromNBT(ItemStack stewStack) {
+        if (hasBehaviorInNBT(stewStack)) {
+            ResourceLocation behavior = ResourceLocation.tryParse(stewStack.getTag().getString("stew_behavior"));
+            if (VSRegistries.STEW_BEHAVIOR.containsKey(behavior)) return VSRegistries.STEW_BEHAVIOR.getValue(behavior);
+        } else {
+            return this.stewBehavior.getBehaviorRegistry();
+        }
+        return this.stewBehavior;
     }
 
     public static void writeEffectToStew(ItemStack stack, Effect effect, int duration) {
@@ -51,10 +73,11 @@ public class ExponentialStewItem extends Item {
     public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity livEntity) {
         ItemStack superStack = super.finishUsingItem(stack, world, livEntity);
         boolean flag = livEntity instanceof PlayerEntity && ((PlayerEntity) livEntity).abilities.instabuild;
+        StewBehavior behavior = getBehaviorFromNBT(stack);
 
         // Custom Stew Behavior
-        this.stewBehavior.executeBehavior(stack, world, livEntity);
-        if (this.stewBehavior.getEffects() != null) writeEffectToStew(stack, this.stewBehavior.getEffects().getEffect(), this.stewBehavior.getEffects().getDuration());
+        behavior.executeBehavior(stack, world, livEntity);
+        if (behavior.getEffects() != null) writeEffectToStew(stack, behavior.getEffects().getEffect(), behavior.getEffects().getDuration());
 
         // For Suspicious Stew
         CompoundNBT tag = stack.getTag();
@@ -94,11 +117,14 @@ public class ExponentialStewItem extends Item {
         if (this.allowdedIn(itemTab) && VSConfigs.COMMON_CONFIGS.populateExponentialBowlsInTabs.get()) {
             for (String bowls : BOWL_NAME_TO_ID.keySet()) {
                 ItemStack stack = new ItemStack(this);
+                StewBehavior behavior = getBehaviorFromNBT(stack);
+                CompoundNBT tag = stack.getOrCreateTag();
                 CompoundNBT bowlTypeTag = stack.getOrCreateTagElement("bowl_type");
 
                 bowlTypeTag.putString("bowl_name", "variants:" + bowls + "_bowl");
                 bowlTypeTag.putInt("bowl_id", BOWL_NAME_TO_ID.get(bowls));
-                if (this.stewBehavior.getEffects() != null) writeEffectToStew(stack, this.stewBehavior.getEffects().getEffect(), this.stewBehavior.getEffects().getDuration());
+                if (stack.getTag() != null) tag.putString("stew_behavior", behavior.getBehaviorRegistry().getRegistryName().toString());
+                if (behavior.getEffects() != null) writeEffectToStew(stack, behavior.getEffects().getEffect(), behavior.getEffects().getDuration());
                 list.add(stack);
             }
         }

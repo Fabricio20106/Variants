@@ -9,7 +9,6 @@ import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ITag;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -35,7 +34,7 @@ public abstract class AbstractFarmlandBlock extends Block {
     }
 
     public ITag<Fluid> getHydrationFluid() {
-        return FluidTags.WATER;
+        return VSTags.Fluids.HYDRATES_WATER_BASED_FARMLAND;
     }
 
     public AbstractFarmlandBlock(Properties properties) {
