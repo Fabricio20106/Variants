@@ -2,10 +2,7 @@ package com.junethewoods.variants.entity.custom;
 
 import com.junethewoods.variants.entity.VSEntities;
 import com.junethewoods.variants.item.VSItems;
-import net.minecraft.entity.AreaEffectCloudEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -21,7 +18,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 import java.util.List;
 
-public class DragonBreathBottleEntity extends ProjectileItemEntity implements IFlatRendering {
+public class DragonBreathBottleEntity extends ProjectileItemEntity implements IRendersAsItem {
     public DragonBreathBottleEntity(EntityType<? extends DragonBreathBottleEntity> breathBottle, World world) {
         super(breathBottle, world);
     }

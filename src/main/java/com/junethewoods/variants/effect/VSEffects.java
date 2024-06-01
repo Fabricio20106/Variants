@@ -10,6 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class VSEffects {
     public static final DeferredRegister<Effect> EFFECTS = DeferredRegister.create(ForgeRegistries.POTIONS, Variants.MOD_ID);
 
+    public static final RegistryObject<Effect> SUGAR_POT_SPEED = EFFECTS.register("sugar_pot_speed", SugarPotSpeedEffect::new);
     public static final RegistryObject<Effect> REDSTONE_POISONING = EFFECTS.register("redstone_poisoning", RedstonePoisoningEffect::new);
     public static final RegistryObject<Effect> BLUESTONE_POISONING = EFFECTS.register("bluestone_poisoning", BluestonePoisoningEffect::new);
     public static final RegistryObject<Effect> GLOWSTONE_POISONING = EFFECTS.register("glowstone_poisoning", GlowstonePoisoningEffect::new);

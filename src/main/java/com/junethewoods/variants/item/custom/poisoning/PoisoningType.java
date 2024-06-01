@@ -1,21 +1,36 @@
 package com.junethewoods.variants.item.custom.poisoning;
 
+import com.junethewoods.variants.util.VSRegistries;
 import net.minecraft.potion.Effect;
+import net.minecraft.util.Util;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class PoisoningType extends ForgeRegistryEntry<PoisoningType> {
-    private final RegistryObject<Effect> poisoningEffect;
+import javax.annotation.Nullable;
 
-    public PoisoningType(RegistryObject<Effect> poisoningEffect) {
-        this.poisoningEffect = poisoningEffect;
+public class PoisoningType extends ForgeRegistryEntry<PoisoningType> {
+    private final RegistryObject<Effect> poisoning;
+    @Nullable
+    private String descriptionId;
+
+    public PoisoningType(RegistryObject<Effect> poisoning) {
+        this.poisoning = poisoning;
     }
 
     public RegistryObject<Effect> getPoisoningEffect() {
-        return this.poisoningEffect;
+        return this.poisoning;
     }
 
     public PoisoningType getTypeRegistry() {
         return VSPoisoningTypes.REDSTONE.get();
+    }
+
+    protected String getOrCreateDescriptionId() {
+        if (this.descriptionId == null) this.descriptionId = Util.makeDescriptionId("poisoning_type", VSRegistries.POISONING_TYPE.getKey(this));
+        return this.descriptionId;
+    }
+
+    public String getDescriptionId() {
+        return this.getOrCreateDescriptionId();
     }
 }

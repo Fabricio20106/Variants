@@ -105,7 +105,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
                 .add(VSBlocks.POTTED_ENDER_WART.get()).add(VSBlocks.POTTED_TORCH.get()).add(VSBlocks.POTTED_SOUL_TORCH.get()).add(VSBlocks.POTTED_REDSTONE_TORCH.get());
         this.tag(BlockTags.WOOL).add(VSBlocks.GLOW_BLACK_WOOL.get());
         this.tag(BlockTags.CARPETS).add(VSBlocks.GLOW_BLACK_CARPET.get());
-        this.tag(BlockTags.GUARDED_BY_PIGLINS).add(VSBlocks.GOLDEN_CAULDRON.get()).add(VSBlocks.GOLDEN_BEACON.get()).add(VSBlocks.GOLDEN_CARROTS.get()).add(VSBlocks.GOLDEN_CHAIN.get());
+        this.tag(BlockTags.GUARDED_BY_PIGLINS).add(VSBlocks.GOLDEN_CAULDRON.get()).add(VSBlocks.GOLDEN_BEACON.get()).add(VSBlocks.GOLDEN_CARROTS.get()).add(VSBlocks.GOLDEN_CHAIN.get()).add(Blocks.BELL);
         this.tag(BlockTags.DRAGON_IMMUNE).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.END_QUARTZ_ORE.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get()).add(VSBlocks.QUARTZ_BARS.get());
         this.tag(BlockTags.IMPERMEABLE).add(VSBlocks.QUARTZ_GLASS.get()).add(VSBlocks.GLOW_BLACK_STAINED_GLASS.get());
         this.tag(BlockTags.NYLIUM).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get());
