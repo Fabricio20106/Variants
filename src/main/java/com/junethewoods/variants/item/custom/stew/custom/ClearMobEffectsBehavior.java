@@ -38,6 +38,6 @@ public class ClearMobEffectsBehavior extends StewBehavior {
 
     @Override
     public StewBehavior getBehaviorRegistry() {
-        return VSStewBehaviors.MILK.get();
+        return VSStewBehaviors.CLEAR_MOB_EFFECTS.get();
     }
 }

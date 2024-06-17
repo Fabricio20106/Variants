@@ -4,7 +4,9 @@ import com.google.common.collect.ImmutableMap;
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.config.VSConfigs;
 import com.junethewoods.variants.item.custom.stew.StewBehavior;
+import com.junethewoods.variants.item.custom.stew.custom.*;
 import com.junethewoods.variants.util.NBTUtils;
+import com.junethewoods.variants.util.VSRegistries;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,14 +20,19 @@ import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class ExponentialStewItem extends Item {
@@ -70,15 +77,15 @@ public class ExponentialStewItem extends Item {
         propertiesTag.put("effects", effectList);
     }
 
-    public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity livEntity) {
-        ItemStack superStack = super.finishUsingItem(stack, world, livEntity);
+    public ItemStack finishUsingItem(ItemStack stewStack, World world, LivingEntity livEntity) {
+        ItemStack superStack = super.finishUsingItem(stewStack, world, livEntity);
         boolean flag = livEntity instanceof PlayerEntity && ((PlayerEntity) livEntity).abilities.instabuild;
 
         // Custom Stew Behavior
-        this.stewBehavior.executeBehavior(stack, world, livEntity);
+        executeBehavior(stewStack, world, livEntity);
 
         // For Suspicious Stew & "Apply Mob Effects" behavior
-        CompoundNBT behaviorTag = stack.getOrCreateTagElement("behavior");
+        CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
         CompoundNBT propertiesTag = behaviorTag.getCompound("properties");
         if (propertiesTag.contains("effects", 9)) {
             ListNBT effectList = propertiesTag.getList("effects", 10);
@@ -100,11 +107,11 @@ public class ExponentialStewItem extends Item {
                 if (effect != null) livEntity.addEffect(new EffectInstance(effect, duration, amplifier, ambient, showParticles, showIcon));
             }
         }
-        return flag ? superStack : getBowlType(stack);
+        return flag ? superStack : getBowlType(stewStack);
     }
 
-    public static ItemStack getBowlType(ItemStack stack) {
-        CompoundNBT bowlTypeTag = stack.getOrCreateTagElement("bowl_type");
+    public static ItemStack getBowlType(ItemStack stewStack) {
+        CompoundNBT bowlTypeTag = stewStack.getOrCreateTagElement("bowl_type");
         ResourceLocation containerItem = new ResourceLocation(bowlTypeTag.getString("bowl_name"));
 
         if (bowlTypeTag.contains("bowl_name") && ForgeRegistries.ITEMS.containsKey(containerItem)) {
@@ -112,6 +119,41 @@ public class ExponentialStewItem extends Item {
         }
 
         return new ItemStack(Items.BOWL);
+    }
+
+    public void executeBehavior(ItemStack stewStack, World world, LivingEntity livEntity) {
+        CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
+        if (behaviorTag.contains("id")) {
+            StewBehavior behavior = VSRegistries.STEW_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
+            if (behavior != null) {
+                CompoundNBT propertiesTag = behavior.getBehaviorProperties(stewStack);
+                if (behavior instanceof DamageEntityBehavior) {
+                    DamageEntityBehavior damageBehavior = new DamageEntityBehavior(NBTUtils.fromMessageID(propertiesTag.getString("source")), propertiesTag.getFloat("amount"));
+                    damageBehavior.executeBehavior(stewStack, world, livEntity);
+                } else if (behavior instanceof ClearMobEffectsBehavior) {
+                    ClearMobEffectsBehavior clearEffectsBehavior = new ClearMobEffectsBehavior(ItemStack.of(propertiesTag.getCompound("curative_item")));
+                    clearEffectsBehavior.executeBehavior(stewStack, world, livEntity);
+                } else if (behavior instanceof IgniteBehavior) {
+                    IgniteBehavior igniteBehavior = new IgniteBehavior(propertiesTag.getInt("ticks_on_fire"));
+                    igniteBehavior.executeBehavior(stewStack, world, livEntity);
+                } else if (behavior instanceof ExplodeBehavior) {
+                    BlockPos pos = propertiesTag.contains("pos") ? NBTUtils.readBlockPos(propertiesTag) : livEntity.blockPosition();
+                    ExplodeBehavior explodeBehavior = new ExplodeBehavior(propertiesTag.getInt("radius"), propertiesTag.getBoolean("create_fire"), pos, NBTUtils.fromMessageID(propertiesTag.getString("source")),
+                            Explosion.Mode.valueOf(propertiesTag.getString("mode").toUpperCase(Locale.ROOT)));
+                    explodeBehavior.executeBehavior(stewStack, world, livEntity);
+                } else if (behavior instanceof PlaySoundBehavior) {
+                    SoundEvent sound = ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.tryParse(propertiesTag.getString("id")));
+                    SoundCategory category1 = SoundCategory.valueOf(propertiesTag.getString("category").toUpperCase(Locale.ROOT));
+                    BlockPos pos = propertiesTag.contains("pos") ? NBTUtils.readBlockPos(propertiesTag) : livEntity.blockPosition();
+                    PlaySoundBehavior playSoundBehavior = new PlaySoundBehavior(sound, category1, pos, propertiesTag.getBoolean("play_at_player"), propertiesTag.getFloat("volume"), propertiesTag.getFloat("pitch"));
+                    playSoundBehavior.executeBehavior(stewStack, world, livEntity);
+                }
+            } else {
+                this.stewBehavior.executeBehavior(stewStack, world, livEntity);
+            }
+        } else {
+            this.stewBehavior.executeBehavior(stewStack, world, livEntity);
+        }
     }
 
     @Override

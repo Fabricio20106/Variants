@@ -4,6 +4,13 @@
   "itemGroup.variants.weapons": "Variants: Weapons",
   "itemGroup.variants.infinity_sweaters": "▷ ᴠᴀʀɪᴀɴᴛꜱ: ɪɴꜰɪɴɪᴛʏ ꜱᴡᴇᴀᴛᴇʀꜱ ◁",
 
+  "argument.stew_behavior.id.invalid": "Unknown stew behavior '%s'",
+  "argument.stew_behavior.properties.invalid": "Invalid stew behavior properties '%s'",
+
+  "commands.setbehavior.fail.not_an_expo_stew": "%s is not an exponential stew; Cannot have stew behaviors",
+  "commands.setbehavior.success.single": "Set exponential stew behavior of %s to %s",
+  "commands.setbehavior.success.multiple": "Set exponential stew behavior of %s players to %s",
+
   "advancements.variants.root.title": "Variants",
   "advancements.variants.root.description": "Many variations of existing things! See if you can notice them all.",
   "advancements.variants.obtain_painting_planks.title": "Recycling Textures",
@@ -473,10 +480,21 @@
   "poisoning_type.unregistered_sadface": "404 Poisoning Not Found",
 
   "stew_behavior.variants.default": "Default (None)",
-  "stew_behavior.variants.effect": "Effect",
-  "stew_behavior.variants.lava": "Lava",
-  "stew_behavior.variants.milk": "Milk",
+  "stew_behavior.variants.apply_mob_effects": "Apply Effects",
+  "stew_behavior.variants.clear_mob_effects": "Clear Effects",
+  "stew_behavior.variants.damage_entity": "Damage Entity",
+  "stew_behavior.variants.explode": "Explode",
+  "stew_behavior.variants.ignite": "Ignite",
+  "stew_behavior.variants.play_sound": "Play Sound",
   "stew_behavior.unregistered_sadface": "404 Behavior Not Found",
+
+  "stew_behavior.variants.default.desc": "Does nothing.",
+  "stew_behavior.variants.apply_mob_effects.desc": "Applies effects from its 'effects' tag. Effects are applied separately from this behavior.",
+  "stew_behavior.variants.clear_mob_effects.desc": "Clears any effects the entity may have.",
+  "stew_behavior.variants.damage_entity.desc": "Damages the entity eating with a specified damage source and amount.",
+  "stew_behavior.variants.explode.desc": "Creates an explosion on the entity eating. It has a configurable radius, set fire and damage source.",
+  "stew_behavior.variants.ignite.desc": "Ignites the entity eating on fire for a specified amount of ticks.",
+  "stew_behavior.variants.play_sound.desc": "Plays any sound in the game. Has a configurable volume, pitch, sound category and even if it comes from the player.",
 
   "color.f10elements.inno": "Inno",
   "color.backmath.aljan_light_blue": "Aljan Light Blue",

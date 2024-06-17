@@ -1,32 +1,8 @@
 package com.junethewoods.variants.mixin.tutorial;
 
-import com.junethewoods.variants.util.VSTags;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.client.entity.player.ClientPlayerEntity;
-import net.minecraft.client.gui.toasts.TutorialToast;
-import net.minecraft.client.tutorial.FindTreeStep;
-import net.minecraft.client.tutorial.Tutorial;
-import net.minecraft.client.tutorial.TutorialSteps;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.item.ItemStack;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.GameType;
-import net.minecraftforge.registries.ForgeRegistries;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-@Mixin(FindTreeStep.class)
+//@Mixin(FindTreeStep.class)
 public class VSFindTreeStepMixin {
-    @Unique
+    /*@Unique
     private static final ITextComponent TITLE = new TranslationTextComponent("tutorial.find_tree.title");
     @Unique
     private static final ITextComponent DESCRIPTION = new TranslationTextComponent("tutorial.find_tree.description");
@@ -105,5 +81,5 @@ public class VSFindTreeStepMixin {
     @Unique
     private static boolean completesFindTreeTutorial() {
         return ForgeRegistries.BLOCKS.getValues().stream().anyMatch((block1 -> block1.is(VSTags.Blocks.COMPLETES_FIND_TREE_TUTORIAL)));
-    }
+    }*/
 }

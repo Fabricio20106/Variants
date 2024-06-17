@@ -1,6 +1,7 @@
 package com.junethewoods.variants.event;
 
 import com.junethewoods.variants.Variants;
+import com.junethewoods.variants.command.SetBehaviorCommand;
 import com.junethewoods.variants.config.VSConfigs;
 import com.junethewoods.variants.entity.VSEntities;
 import com.junethewoods.variants.item.VSItems;
@@ -22,6 +23,7 @@ import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.common.world.MobSpawnInfoBuilder;
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
@@ -34,6 +36,11 @@ import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = Variants.MOD_ID)
 public class VSEvents {
+    @SubscribeEvent
+    public static void onCommandsRegister(RegisterCommandsEvent event) {
+        SetBehaviorCommand.register(event.getDispatcher());
+    }
+
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onBiomeLoading(final BiomeLoadingEvent event) {
         BiomeGenerationSettingsBuilder settings = event.getGeneration();

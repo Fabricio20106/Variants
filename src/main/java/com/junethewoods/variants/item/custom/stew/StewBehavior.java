@@ -7,8 +7,8 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.*;
+import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
@@ -43,6 +43,14 @@ public abstract class StewBehavior extends ForgeRegistryEntry<StewBehavior> {
         return new TranslationTextComponent(this.getDescriptionId());
     }
 
+    public ITextComponent getDisplayNameForCommand() {
+        IFormattableTextComponent component = TextComponentUtils.wrapInSquareBrackets(new TranslationTextComponent(this.getDescriptionId())).withStyle(TextFormatting.LIGHT_PURPLE);
+        component.withStyle(style -> style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent("")
+                .append(new TranslationTextComponent(this.getDescriptionId()).withStyle(TextFormatting.LIGHT_PURPLE).withStyle(TextFormatting.BOLD)).append("\n")
+                .append(new TranslationTextComponent(this.getDescriptionId() + ".desc").withStyle(TextFormatting.GRAY)))));
+        return component;
+    }
+
     public CompoundNBT writeBehaviorToNBT(ItemStack stewStack) {
         CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
         behaviorTag.putString("id", getBehaviorFromNBT(stewStack).getRegistryName().toString());
@@ -50,17 +58,24 @@ public abstract class StewBehavior extends ForgeRegistryEntry<StewBehavior> {
         return behaviorTag;
     }
 
-    public boolean hasBehaviorInNBT(ItemStack stewStack) {
-        return stewStack.getTag() != null && stewStack.getTag().contains("stew_behavior");
+    public boolean hasBehaviorIDInNBT(ItemStack stewStack) {
+        CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
+        return behaviorTag.contains("id");
     }
 
     public StewBehavior getBehaviorFromNBT(ItemStack stewStack) {
-        if (hasBehaviorInNBT(stewStack)) {
-            ResourceLocation behavior = ResourceLocation.tryParse(stewStack.getTag().getString("stew_behavior"));
+        if (hasBehaviorIDInNBT(stewStack)) {
+            ResourceLocation behavior = ResourceLocation.tryParse(stewStack.getTagElement("behavior").getString("id"));
             if (VSRegistries.STEW_BEHAVIOR.containsKey(behavior)) return VSRegistries.STEW_BEHAVIOR.getValue(behavior);
         } else {
             return getBehaviorRegistry();
         }
         return this;
+    }
+
+    public CompoundNBT getBehaviorProperties(ItemStack stewStack) {
+        CompoundNBT tag = stewStack.getTagElement("behavior");
+        if (tag != null && tag.contains("properties")) return tag.getCompound("properties");
+        return null;
     }
 }

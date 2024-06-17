@@ -11,7 +11,7 @@ import com.junethewoods.variants.item.custom.food.ExponentialStewItem;
 import com.junethewoods.variants.item.custom.poisoning.custom.*;
 import com.junethewoods.variants.item.custom.stew.custom.DefaultStewBehavior;
 import com.junethewoods.variants.item.custom.stew.custom.ApplyMobEffectsBehavior;
-import com.junethewoods.variants.item.custom.stew.custom.SetOnFireBehavior;
+import com.junethewoods.variants.item.custom.stew.custom.IgniteBehavior;
 import com.junethewoods.variants.item.custom.stew.custom.ClearMobEffectsBehavior;
 import com.junethewoods.variants.sound.VSSounds;
 import com.junethewoods.variants.util.tab.VSBlockTab;
@@ -281,8 +281,8 @@ public class VSItems {
     public static final RegistryObject<Item> EXPONENTIAL_ALJAN_FUNGI_STEW = ITEMS.register("exponential_aljan_fungi_stew", () -> new ExponentialStewItem(new DefaultStewBehavior(), new Item.Properties().stacksTo(1).food(Foods.MUSHROOM_STEW).tab(VSTab.TAB)));
     public static final RegistryObject<Item> EXPONENTIAL_WATER_BOWL = ITEMS.register("exponential_water_bowl", () -> new ExponentialStewItem(new ApplyMobEffectsBehavior(new EffectInstance[] {new EffectInstance(Effects.WATER_BREATHING, 100)}), new Item.Properties().stacksTo(1).food(VSFoods.FLUID_BOWL).tab(VSTab.TAB)));
     public static final RegistryObject<Item> EXPONENTIAL_MILK_BOWL = ITEMS.register("exponential_milk_bowl", () -> new ExponentialStewItem(new ClearMobEffectsBehavior(new ItemStack(Items.MILK_BUCKET)), new Item.Properties().stacksTo(1).food(VSFoods.MILK_BOWL).tab(VSTab.TAB)));
-    public static final RegistryObject<Item> EXPONENTIAL_LAVA_BOWL = ITEMS.register("exponential_lava_bowl", () -> new ExponentialStewItem(new SetOnFireBehavior(100), new Item.Properties().stacksTo(1).food(VSFoods.FLUID_BOWL).tab(VSTab.TAB)));
-    public static final RegistryObject<Item> EXPONENTIAL_SOUL_LAVA_BOWL = ITEMS.register("exponential_soul_lava_bowl", () -> new ExponentialStewItem(new SetOnFireBehavior(200), new Item.Properties().stacksTo(1).food(Foods.MUSHROOM_STEW).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> EXPONENTIAL_LAVA_BOWL = ITEMS.register("exponential_lava_bowl", () -> new ExponentialStewItem(new IgniteBehavior(100), new Item.Properties().stacksTo(1).food(VSFoods.FLUID_BOWL).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> EXPONENTIAL_SOUL_LAVA_BOWL = ITEMS.register("exponential_soul_lava_bowl", () -> new ExponentialStewItem(new IgniteBehavior(200), new Item.Properties().stacksTo(1).food(Foods.MUSHROOM_STEW).tab(VSTab.TAB)));
     public static final RegistryObject<Item> EXPONENTIAL_POWDER_SNOW_BOWL = ITEMS.register("exponential_powder_snow_bowl", () -> new ExponentialStewItem(new DefaultStewBehavior(), new Item.Properties().stacksTo(1).food(Foods.APPLE).tab(VSTab.TAB)));
     public static final RegistryObject<Item> ENCHANTED_KNOWLEDGE_BOOK = ITEMS.register("enchanted_knowledge_book", () -> new EnchantedKnowledgeBookItem(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1)));
 

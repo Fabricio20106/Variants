@@ -892,7 +892,7 @@ fe0cf8da4b2d3edb36812597b091bf2d2e9b7c7c data/minecraft/tags/blocks/dragon_immun
 4492f1e0128ad6a9a15e7e230b97fcb379000e06 data/minecraft/tags/blocks/fences.json
 6bf6b3e6da213426f3a4bc464b58086368330cae data/minecraft/tags/blocks/flower_pots.json
 2dae297de46ff9d50ab7f721eb764e3cd6d10894 data/minecraft/tags/blocks/flowers.json
-13f9eda762b2ba3375e4fe82ec2623e24eb9ac2b data/minecraft/tags/blocks/guarded_by_piglins.json
+91ac5890920e022f892bede9ac1ddbd0f0ba6629 data/minecraft/tags/blocks/guarded_by_piglins.json
 54367d12f26e079ed4f68636b467aa4db2df5646 data/minecraft/tags/blocks/impermeable.json
 42e702e67b50c9c5fa95e565dac01f38c77f695e data/minecraft/tags/blocks/leaves.json
 801d840d71e1e102d5fa61d004874bf4e5b3b9a9 data/minecraft/tags/blocks/logs_that_burn.json

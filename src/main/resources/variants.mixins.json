@@ -30,8 +30,7 @@
   "client": [
     "item.VSFireworkRocketItemMixin",
     "item.VSFireworkStarItemMixin",
-    "item.VSHorseArmorItemMixin",
-    "tutorial.VSFindTreeStepMixin"
+    "item.VSHorseArmorItemMixin"
   ],
   "server": [],
   "injectors": {

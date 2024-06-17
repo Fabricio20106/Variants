@@ -4,6 +4,13 @@
   "itemGroup.variants.weapons": "Variants: Ferramentas",
   "itemGroup.variants.infinity_sweaters": "▷ ᴠᴀʀɪᴀɴᴛꜱ: ꜱᴜᴇᴛᴇʀᴇꜱ ɪɴꜰɪɴɪᴛᴏꜱ ◁",
 
+  "argument.stew_behavior.id.invalid": "Funcionamento de ensopado inválido '%s'",
+  "argument.stew_behavior.properties.invalid": "Propriedades inválidas para um funcionamento de ensopado '%s'",
+
+  "commands.setbehavior.fail.not_an_expo_stew": "%s não é um ensopado exponencial; Não pode ter funcionamentos",
+  "commands.setbehavior.success.single": "Funcionamento de ensopado de %s agora é %s",
+  "commands.setbehavior.success.multiple": "Funcionamento de ensopado de %s jogadores agora é %s",
+
   "advancements.variants.root.title": "Variants",
   "advancements.variants.root.description": "Muitas variações de coisas existentes! Veja se você consegue notar todas.",
   "advancements.variants.obtain_painting_planks.title": "Reciclando Texturas",
@@ -473,10 +480,21 @@
   "poisoning_type.unregistered_sadface": "404 Envenenamento não encontrado",
 
   "stew_behavior.variants.default": "Padrão (Nenhum)",
-  "stew_behavior.variants.effect": "Efeito",
-  "stew_behavior.variants.lava": "Lava",
-  "stew_behavior.variants.milk": "Leite",
+  "stew_behavior.variants.apply_mob_effects": "Aplicar efeitos",
+  "stew_behavior.variants.clear_mob_effects": "Limpar efeitos",
+  "stew_behavior.variants.damage_entity": "Dar dano",
+  "stew_behavior.variants.explode": "Explodir",
+  "stew_behavior.variants.ignite": "Fogo",
+  "stew_behavior.variants.play_sound": "Tocar som",
   "stew_behavior.unregistered_sadface": "404 Funcionamento não encontrado",
+
+  "stew_behavior.variants.default.desc": "Faz nada.",
+  "stew_behavior.variants.apply_mob_effects.desc": "Aplica efeitos de sua tag 'effects'. Os efeitos são aplicados separadamente da tag..",
+  "stew_behavior.variants.clear_mob_effects.desc": "Limpa qualquer efeito que a entidade tenha.",
+  "stew_behavior.variants.damage_entity.desc": "Dá dano na entidade comendo com uma fonte e quantidade de dano configurável.",
+  "stew_behavior.variants.explode.desc": "Cria uma explosão na entidade comendo. Tem raio, atear fogo e fonte de dano configurável.",
+  "stew_behavior.variants.ignite.desc": "Ateia fogo a entidade comendo a sopa por uma tempo configurável em ticks.",
+  "stew_behavior.variants.play_sound.desc": "Toca qualquer som no jogo. Tem volume, tom, categoria de som configuráveis e até se vem do jogador ou não.",
 
   "color.f10elements.inno": "inno",
   "color.backmath.aljan_light_blue": "azul-aljân",

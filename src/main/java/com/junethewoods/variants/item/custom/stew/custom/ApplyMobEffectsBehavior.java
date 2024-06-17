@@ -40,6 +40,6 @@ public class ApplyMobEffectsBehavior extends StewBehavior {
 
     @Override
     public StewBehavior getBehaviorRegistry() {
-        return VSStewBehaviors.EFFECT.get();
+        return VSStewBehaviors.APPLY_MOB_EFFECTS.get();
     }
 }

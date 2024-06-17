@@ -7,14 +7,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.world.World;
 
-public class SetOnFireBehavior extends StewBehavior {
+public class IgniteBehavior extends StewBehavior {
     private final int ticksOnFire;
 
-    public SetOnFireBehavior(int ticksOnFire) {
+    public IgniteBehavior(int ticksOnFire) {
         this.ticksOnFire = ticksOnFire;
     }
 
-    public SetOnFireBehavior() {
+    public IgniteBehavior() {
         this(200);
     }
 
@@ -32,6 +32,6 @@ public class SetOnFireBehavior extends StewBehavior {
 
     @Override
     public StewBehavior getBehaviorRegistry() {
-        return VSStewBehaviors.LAVA.get();
+        return VSStewBehaviors.IGNITE.get();
     }
 }
