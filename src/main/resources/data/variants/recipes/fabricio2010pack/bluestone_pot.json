@@ -15,6 +15,12 @@
     }
   ],
   "result": {
-    "item": "variants:bluestone_pot"
+    "item": "variants:bluestone_pot",
+    "nbt": {
+      "poisoning_type": "variants:bluestone",
+      "effect": {
+        "duration": 200
+      }
+    }
   }
 }

@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "rabbit_stew",
+  "ingredients": [
+    {
+      "item": "minecraft:baked_potato"
+    },
+    {
+      "item": "minecraft:cooked_rabbit"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    [
+      {
+        "item": "minecraft:red_mushroom"
+      },
+      {
+        "item": "minecraft:brown_mushroom"
+      }
+    ],
+    {
+      "item": "variants:spruce_bowl"
+    }
+  ],
+  "result": {
+    "item": "variants:exponential_rabbit_stew",
+    "nbt": {
+      "bowl": {
+        "name": "variants:spruce_bowl",
+        "texture_id": 1
+      },
+      "behavior": {
+        "id": "variants:default",
+        "properties": {}
+      }
+    }
+  }
+}

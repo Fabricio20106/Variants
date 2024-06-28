@@ -23,6 +23,7 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Collection;
 
@@ -31,15 +32,19 @@ public class DebugBowItem extends BowItem {
         super(properties);
     }
 
+    @Override
     public boolean isFoil(ItemStack stack) {
         return true;
     }
 
+    @Override
     public boolean canAttackBlock(BlockState state, World world, BlockPos pos, PlayerEntity player) {
         if (!world.isClientSide) this.handleInteraction(player, state, world, pos, false, player.getItemInHand(Hand.MAIN_HAND));
         return false;
     }
 
+    @Override
+    @Nonnull
     public ActionResultType useOn(ItemUseContext context) {
         PlayerEntity player = context.getPlayer();
         World world = context.getLevel();

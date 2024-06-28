@@ -15,6 +15,8 @@ import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.VSWeaponry;
 import com.junethewoods.variants.item.custom.poisoning.VSPoisoningTypes;
 import com.junethewoods.variants.item.custom.stew.VSStewBehaviors;
+import com.junethewoods.variants.loot.VSLootFunctions;
+import com.junethewoods.variants.loot.rand.BowlIDValueRange;
 import com.junethewoods.variants.util.VSRegistries;
 import com.junethewoods.variants.sound.VSSounds;
 import com.junethewoods.variants.util.VSUtils;
@@ -37,6 +39,7 @@ import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.item.AxeItem;
+import net.minecraft.loot.RandomRanges;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.Heightmap;
@@ -78,6 +81,7 @@ public class Variants {
         VSRecipeTypes.RECIPE_TYPES.register(eventBus);
         VSStewBehaviors.BEHAVIORS.register(eventBus);
         VSPoisoningTypes.POISONING_TYPES.register(eventBus);
+        VSLootFunctions.init();
         VSRegistries.init();
         VSStats.init();
 
@@ -106,6 +110,8 @@ public class Variants {
         VSVanillaCompatibility.tillables();
         VSVanillaCompatibility.flammables();
         VSVanillaCompatibility.addBed(VSBlocks.GLOW_BLACK_BED.get());
+
+        RandomRanges.GENERATORS.put(Variants.resourceLoc("texture_id"), BowlIDValueRange.class);
 
         WoodType.register(VSWoodTypes.PAINTING);
         WoodType.register(VSWoodTypes.ENDERWOOD);

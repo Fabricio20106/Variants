@@ -3,6 +3,8 @@ package com.junethewoods.variants.mixin.item;
 import com.google.common.collect.Lists;
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.config.VSConfigs;
+import com.junethewoods.variants.util.NBTUtils;
+import com.junethewoods.variants.util.VSKeys;
 import com.junethewoods.variants.util.VSStyles;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.FireworkRocketItem;
@@ -29,32 +31,38 @@ public class VSFireworkRocketItemMixin extends Item {
 
     @Inject(method = "appendHoverText", at = @At("HEAD"), cancellable = true)
     public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag, CallbackInfo ci) {
+        if (flag.isAdvanced() && stack.getTag() != null && VSConfigs.COMMON_CONFIGS.showTagsWithAlt.get()) {
+            boolean shouldHideTooltip = NBTUtils.shouldNotHideTooltip("hide_item_tags", stack);
+            if (shouldHideTooltip && !VSKeys.isAltDown()) tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".hold_alt"));
+            if (shouldHideTooltip && VSKeys.isAltDown()) tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".hold_alt.held"));
+            if (shouldHideTooltip && VSKeys.isAltDown()) NBTUtils.addItemTagsTooltip(stack, tooltip, flag);
+        }
         if (VSConfigs.COMMON_CONFIGS.customFireworkDescriptions.get()) {
             ci.cancel();
             CompoundNBT fireworksTag = stack.getTagElement("Fireworks");
 
             if (fireworksTag == null) {
                 TranslationTextComponent unknownFlightDuration = new TranslationTextComponent("tooltip.variants.firework_rocket.flight_duration.unknown");
-                tooltip.add(new TranslationTextComponent("tooltip.variants.firework_rocket.flight_duration", unknownFlightDuration).withStyle(TextFormatting.DARK_GRAY));
+                tooltip.add(new TranslationTextComponent("tooltip.variants.firework_rocket.flight_duration", unknownFlightDuration).withStyle(TextFormatting.GRAY));
             }
             if (fireworksTag != null) {
-                if (fireworksTag.contains("Flight", 99)) {
+                if (fireworksTag.contains("Flight", NBTUtils.WILDCARD)) {
                     TextFormatting flightDurationColor = TextFormatting.DARK_RED;
                     if (fireworksTag.getByte("Flight") == 2) flightDurationColor = TextFormatting.GOLD;
                     if (fireworksTag.getByte("Flight") == 3) flightDurationColor = TextFormatting.GREEN;
                     if (fireworksTag.getByte("Flight") >= 4) flightDurationColor = TextFormatting.WHITE;
 
-                    tooltip.add(new TranslationTextComponent("tooltip.variants.firework_rocket.flight_duration", fireworksTag.getByte("Flight")).withStyle(flightDurationColor));
+                    tooltip.add(new TranslationTextComponent("tooltip.variants.firework_rocket.flight_duration", new StringTextComponent("" + fireworksTag.getByte("Flight")).withStyle(flightDurationColor)).withStyle(TextFormatting.GRAY));
 
-                    ListNBT explosionsNBTList = fireworksTag.getList("Explosions", 10);
-                    if (!explosionsNBTList.isEmpty()) {
+                    ListNBT explosions = fireworksTag.getList("Explosions", NBTUtils.COMPOUND);
+                    if (!explosions.isEmpty()) {
                         tooltip.add(new StringTextComponent(""));
                         tooltip.add(new TranslationTextComponent("tooltip.variants.firework_rocket.explosions").withStyle(VSStyles.FIREWORK_TITLES));
 
-                        for (int i = 0; i < explosionsNBTList.size(); ++i) {
-                            CompoundNBT nbt = explosionsNBTList.getCompound(i);
+                        for (int i = 0; i < explosions.size(); ++i) {
+                            CompoundNBT explosion = explosions.getCompound(i);
                             List<ITextComponent> componentList = Lists.newArrayList();
-                            FireworkStarItem.appendHoverText(nbt, componentList);
+                            FireworkStarItem.appendHoverText(explosion, componentList);
                             if (!componentList.isEmpty()) {
                                 for (int j = 1; j < componentList.size(); ++j) {
                                     componentList.set(j, new StringTextComponent("").append(componentList.get(j)).withStyle(TextFormatting.GRAY));
@@ -67,10 +75,5 @@ public class VSFireworkRocketItemMixin extends Item {
                 }
             }
         }
-    }
-
-    @Override
-    public String getCreatorModId(ItemStack stack) {
-        return VSConfigs.COMMON_CONFIGS.customFireworkDescriptions.get() ? Variants.MOD_ID : super.getCreatorModId(stack);
     }
 }

@@ -1,5 +1,6 @@
 package com.junethewoods.variants.data.models;
 
+import com.junethewoods.variants.Variants;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
@@ -42,23 +43,23 @@ public abstract class VSItemModelModels extends ItemModelProvider {
     }
 
     public void blockItem(String name) {
-        getBuilder(name).parent(generated).texture("layer0", "block/" + name);
+        getBuilder(name).parent(this.generated).texture("layer0", "block/" + name);
     }
 
     public void blockItem(String name, String extras) {
-        getBuilder(name).parent(generated).texture("layer0", "block/" + name + extras);
+        getBuilder(name).parent(this.generated).texture("layer0", "block/" + name + extras);
     }
 
     public void glassPane(String name) {
-        getBuilder(name + "_pane").parent(generated).texture("layer0", "block/" + name);
+        getBuilder(name + "_pane").parent(this.generated).texture("layer0", "block/" + name);
     }
 
-    public ResourceLocation bowlId() {
-        return new ResourceLocation("bowl_id");
+    public ResourceLocation textureID() {
+        return Variants.resourceLoc("texture_id");
     }
 
     public ResourceLocation armorDesign() {
-        return new ResourceLocation("design");
+        return Variants.resourceLoc("design");
     }
 
     // Methods for making specific items (for example, spyglasses)
@@ -66,23 +67,23 @@ public abstract class VSItemModelModels extends ItemModelProvider {
         String[] bowls = {"oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "painting", "crimson", "warped", "ender"};
 
         for (String bowl : bowls) {
-            getBuilder(name + "_" + bowl).parent(generated).texture("layer0", modLoc("item/" + bowl + "_bowl")).texture("layer1", modLoc("item/stew_" + stewType));
+            getBuilder(name + "_" + bowl).parent(this.generated).texture("layer0", modLoc("item/" + bowl + "_bowl")).texture("layer1", modLoc("item/stew_" + stewType));
         }
 
-        getBuilder(name).parent(generated).texture("layer1", modLoc("item/stew_" + stewType))
-                .override().predicate(bowlId(), 0).model(getExistingFile(modLoc("item/" + name + "_oak"))).end()
-                .override().predicate(bowlId(), 1).model(getExistingFile(modLoc("item/" + name + "_spruce"))).end()
-                .override().predicate(bowlId(), 2).model(getExistingFile(modLoc("item/" + name + "_birch"))).end()
-                .override().predicate(bowlId(), 3).model(getExistingFile(modLoc("item/" + name + "_jungle"))).end()
-                .override().predicate(bowlId(), 4).model(getExistingFile(modLoc("item/" + name + "_acacia"))).end()
-                .override().predicate(bowlId(), 5).model(getExistingFile(modLoc("item/" + name + "_dark_oak"))).end()
-                .override().predicate(bowlId(), 6).model(getExistingFile(modLoc("item/" + name + "_painting"))).end()
-                .override().predicate(bowlId(), 7).model(getExistingFile(modLoc("item/" + name + "_crimson"))).end()
-                .override().predicate(bowlId(), 8).model(getExistingFile(modLoc("item/" + name + "_warped"))).end()
-                .override().predicate(bowlId(), 9).model(getExistingFile(modLoc("item/" + name + "_ender"))).end();
+        getBuilder(name).parent(this.generated).texture("layer1", modLoc("item/stew_" + stewType))
+                .override().predicate(textureID(), 0).model(getExistingFile(modLoc("item/" + name + "_oak"))).end()
+                .override().predicate(textureID(), 1).model(getExistingFile(modLoc("item/" + name + "_spruce"))).end()
+                .override().predicate(textureID(), 2).model(getExistingFile(modLoc("item/" + name + "_birch"))).end()
+                .override().predicate(textureID(), 3).model(getExistingFile(modLoc("item/" + name + "_jungle"))).end()
+                .override().predicate(textureID(), 4).model(getExistingFile(modLoc("item/" + name + "_acacia"))).end()
+                .override().predicate(textureID(), 5).model(getExistingFile(modLoc("item/" + name + "_dark_oak"))).end()
+                .override().predicate(textureID(), 6).model(getExistingFile(modLoc("item/" + name + "_painting"))).end()
+                .override().predicate(textureID(), 7).model(getExistingFile(modLoc("item/" + name + "_crimson"))).end()
+                .override().predicate(textureID(), 8).model(getExistingFile(modLoc("item/" + name + "_warped"))).end()
+                .override().predicate(textureID(), 9).model(getExistingFile(modLoc("item/" + name + "_ender"))).end();
     }
 
     public void spyglass(String name) {
-        getBuilder(name).parent(spyglass).texture("spyglass", "item/" + name);
+        getBuilder(name).parent(this.spyglass).texture("spyglass", "item/" + name);
     }
 }

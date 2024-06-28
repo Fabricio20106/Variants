@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.config.VSConfigs;
 import com.junethewoods.variants.item.custom.stew.StewBehavior;
-import com.junethewoods.variants.item.custom.stew.custom.*;
+import com.junethewoods.variants.item.custom.stew.VSStewBehaviors;
 import com.junethewoods.variants.util.NBTUtils;
 import com.junethewoods.variants.util.VSRegistries;
 import net.minecraft.client.util.ITooltipFlag;
@@ -14,25 +14,22 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.loot.IRandomRange;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 public class ExponentialStewItem extends Item {
@@ -51,8 +48,12 @@ public class ExponentialStewItem extends Item {
         return stewStack;
     }
 
+    public StewBehavior getBehavior() {
+        return this.stewBehavior;
+    }
+
     public boolean hasBehaviorInNBT(ItemStack stewStack) {
-        return stewStack.getTag() != null && stewStack.getTag().contains("behavior");
+        return stewStack.getTag() != null && stewStack.getTag().contains("behavior", NBTUtils.COMPOUND);
     }
 
     public ITextComponent getBehaviorTranslation(ItemStack stewStack) {
@@ -65,120 +66,123 @@ public class ExponentialStewItem extends Item {
         return this.stewBehavior.getDisplayName();
     }
 
-    public static void writeEffectToStew(ItemStack stack, Effect effect, int duration) {
-        CompoundNBT behaviorTag = stack.getOrCreateTagElement("behavior");
+    public static void writeEffectToStew(ItemStack stewStack, Effect effect, int duration) {
+        CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
         CompoundNBT propertiesTag = behaviorTag.getCompound("properties");
-        ListNBT effectList = propertiesTag.getList("effects", 9);
+        ListNBT effectList = propertiesTag.getList("effects", NBTUtils.LIST);
         CompoundNBT tag = new CompoundNBT();
 
+        behaviorTag.putString("id", VSStewBehaviors.APPLY_MOB_EFFECTS.get().getRegistryName().toString());
         tag.putString("id", effect.getRegistryName().toString());
         tag.putInt("duration", duration);
         effectList.add(tag);
         propertiesTag.put("effects", effectList);
+        behaviorTag.put("properties", propertiesTag);
     }
 
+    public static void writeBowl(ItemStack stewStack, Item bowlStack) {
+        CompoundNBT bowlTag = stewStack.getOrCreateTagElement("bowl");
+        bowlTag.putString("name", bowlStack.getRegistryName().toString());
+        for (String bowlWood : BOWL_NAME_TO_ID.keySet()) {
+            if (bowlStack.getRegistryName().toString().contains(bowlWood)) bowlTag.putInt("texture_id", BOWL_NAME_TO_ID.get(bowlWood));
+        }
+    }
+
+    public static void writeBowlWithTextureID(ItemStack stewStack, Item bowlStack, IRandomRange textureID) {
+        CompoundNBT bowlTag = stewStack.getOrCreateTagElement("bowl");
+        bowlTag.putString("name", bowlStack.getRegistryName().toString());
+        bowlTag.putInt("texture_id", textureID.getInt(random));
+    }
+
+    public static  void writeBehaviorToStew(ItemStack stewStack, StewBehavior behavior, CompoundNBT properties) {
+        CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
+        behaviorTag.putString("id", behavior.getRegistryName().toString());
+        behaviorTag.put("properties", properties);
+    }
+
+    @Override
+    @Nonnull
     public ItemStack finishUsingItem(ItemStack stewStack, World world, LivingEntity livEntity) {
         ItemStack superStack = super.finishUsingItem(stewStack, world, livEntity);
-        boolean flag = livEntity instanceof PlayerEntity && ((PlayerEntity) livEntity).abilities.instabuild;
+        boolean isPlayerInCreative = livEntity instanceof PlayerEntity && ((PlayerEntity) livEntity).abilities.instabuild;
 
         // Custom Stew Behavior
-        executeBehavior(stewStack, world, livEntity);
+        CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
+        if (behaviorTag.contains("id", NBTUtils.STRING)) {
+            StewBehavior behavior = VSRegistries.STEW_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
+            if (behavior != null) behavior.executeFromStewNBT(stewStack, world, livEntity, behavior.getBehaviorProperties(stewStack));
+        } else {
+            this.stewBehavior.executeFromStewNBT(stewStack, world, livEntity, this.stewBehavior.getBehaviorProperties(stewStack));
+        }
 
         // For Suspicious Stew & "Apply Mob Effects" behavior
-        CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
         CompoundNBT propertiesTag = behaviorTag.getCompound("properties");
-        if (propertiesTag.contains("effects", 9)) {
-            ListNBT effectList = propertiesTag.getList("effects", 10);
+        if (propertiesTag.contains("effects", NBTUtils.LIST)) {
+            ListNBT effectList = propertiesTag.getList("effects", NBTUtils.COMPOUND);
 
-            for(int i = 0; i < effectList.size(); ++i) {
-                int duration = 160; // Default of 8 seconds.
+            for (int i = 0; i < effectList.size(); ++i) {
+                int duration = 160; // Default of 8 seconds from Suspicious Stew.
                 int amplifier = 0;
                 boolean ambient = false;
                 boolean showParticles = true;
                 boolean showIcon = true;
-                CompoundNBT tag1 = effectList.getCompound(i);
-                if (tag1.contains("duration", 3)) duration = tag1.getInt("duration");
-                if (tag1.contains("amplifier", 3)) amplifier = tag1.getInt("amplifier");
-                if (tag1.contains("ambient")) ambient = tag1.getBoolean("ambient");
-                if (tag1.contains("show_particles")) showParticles = tag1.getBoolean("show_particles");
-                if (tag1.contains("show_icon")) showIcon = tag1.getBoolean("show_icon");
+                boolean noCounter = true;
+                CompoundNBT effectTag = effectList.getCompound(i);
+                if (effectTag.contains("duration", NBTUtils.INTEGER)) duration = effectTag.getInt("duration");
+                if (effectTag.contains("amplifier", NBTUtils.INTEGER)) amplifier = effectTag.getInt("amplifier");
+                if (effectTag.contains("ambient", NBTUtils.BYTE)) ambient = effectTag.getBoolean("ambient");
+                if (effectTag.contains("show_particles", NBTUtils.BYTE)) showParticles = effectTag.getBoolean("show_particles");
+                if (effectTag.contains("show_icon", NBTUtils.BYTE)) showIcon = effectTag.getBoolean("show_icon");
+                if (effectTag.contains("no_counter", NBTUtils.BYTE)) noCounter = effectTag.getBoolean("no_counter");
 
-                Effect effect = ForgeRegistries.POTIONS.getValue(ResourceLocation.tryParse(tag1.getString("id")));
-                if (effect != null) livEntity.addEffect(new EffectInstance(effect, duration, amplifier, ambient, showParticles, showIcon));
+                Effect effect = ForgeRegistries.POTIONS.getValue(ResourceLocation.tryParse(effectTag.getString("id")));
+                if (effect != null) {
+                    EffectInstance instance = new EffectInstance(effect, duration, amplifier, ambient, showParticles, showIcon);
+                    if (world.isClientSide) instance.setNoCounter(noCounter);
+                    livEntity.addEffect(instance);
+                }
             }
         }
-        return flag ? superStack : getBowlType(stewStack);
+        return isPlayerInCreative ? superStack : getBowlType(stewStack, livEntity);
     }
 
-    public static ItemStack getBowlType(ItemStack stewStack) {
-        CompoundNBT bowlTypeTag = stewStack.getOrCreateTagElement("bowl_type");
-        ResourceLocation containerItem = new ResourceLocation(bowlTypeTag.getString("bowl_name"));
+    public static ItemStack getBowlType(ItemStack stewStack, LivingEntity livEntity) {
+        CompoundNBT bowlTypeTag = stewStack.getOrCreateTagElement("bowl");
+        ResourceLocation containerItem = ResourceLocation.tryParse(bowlTypeTag.getString("name"));
+        livEntity.eat(livEntity.level, stewStack);
 
-        if (bowlTypeTag.contains("bowl_name") && ForgeRegistries.ITEMS.containsKey(containerItem)) {
+        if (bowlTypeTag.contains("name", NBTUtils.STRING) && ForgeRegistries.ITEMS.containsKey(containerItem)) {
             return new ItemStack(ForgeRegistries.ITEMS.getValue(containerItem));
         }
 
         return new ItemStack(Items.BOWL);
     }
 
-    public void executeBehavior(ItemStack stewStack, World world, LivingEntity livEntity) {
-        CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
-        if (behaviorTag.contains("id")) {
-            StewBehavior behavior = VSRegistries.STEW_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
-            if (behavior != null) {
-                CompoundNBT propertiesTag = behavior.getBehaviorProperties(stewStack);
-                if (behavior instanceof DamageEntityBehavior) {
-                    DamageEntityBehavior damageBehavior = new DamageEntityBehavior(NBTUtils.fromMessageID(propertiesTag.getString("source")), propertiesTag.getFloat("amount"));
-                    damageBehavior.executeBehavior(stewStack, world, livEntity);
-                } else if (behavior instanceof ClearMobEffectsBehavior) {
-                    ClearMobEffectsBehavior clearEffectsBehavior = new ClearMobEffectsBehavior(ItemStack.of(propertiesTag.getCompound("curative_item")));
-                    clearEffectsBehavior.executeBehavior(stewStack, world, livEntity);
-                } else if (behavior instanceof IgniteBehavior) {
-                    IgniteBehavior igniteBehavior = new IgniteBehavior(propertiesTag.getInt("ticks_on_fire"));
-                    igniteBehavior.executeBehavior(stewStack, world, livEntity);
-                } else if (behavior instanceof ExplodeBehavior) {
-                    BlockPos pos = propertiesTag.contains("pos") ? NBTUtils.readBlockPos(propertiesTag) : livEntity.blockPosition();
-                    ExplodeBehavior explodeBehavior = new ExplodeBehavior(propertiesTag.getInt("radius"), propertiesTag.getBoolean("create_fire"), pos, NBTUtils.fromMessageID(propertiesTag.getString("source")),
-                            Explosion.Mode.valueOf(propertiesTag.getString("mode").toUpperCase(Locale.ROOT)));
-                    explodeBehavior.executeBehavior(stewStack, world, livEntity);
-                } else if (behavior instanceof PlaySoundBehavior) {
-                    SoundEvent sound = ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.tryParse(propertiesTag.getString("id")));
-                    SoundCategory category1 = SoundCategory.valueOf(propertiesTag.getString("category").toUpperCase(Locale.ROOT));
-                    BlockPos pos = propertiesTag.contains("pos") ? NBTUtils.readBlockPos(propertiesTag) : livEntity.blockPosition();
-                    PlaySoundBehavior playSoundBehavior = new PlaySoundBehavior(sound, category1, pos, propertiesTag.getBoolean("play_at_player"), propertiesTag.getFloat("volume"), propertiesTag.getFloat("pitch"));
-                    playSoundBehavior.executeBehavior(stewStack, world, livEntity);
-                }
-            } else {
-                this.stewBehavior.executeBehavior(stewStack, world, livEntity);
-            }
-        } else {
-            this.stewBehavior.executeBehavior(stewStack, world, livEntity);
-        }
-    }
-
     @Override
-    public void fillItemCategory(ItemGroup itemTab, NonNullList<ItemStack> list) {
-        if (this.allowdedIn(itemTab) && VSConfigs.COMMON_CONFIGS.populateExponentialBowlsInTabs.get()) {
+    public void fillItemCategory(ItemGroup tab, NonNullList<ItemStack> list) {
+        if ((this.allowdedIn(tab) || tab == ItemGroup.TAB_SEARCH) && VSConfigs.COMMON_CONFIGS.populateExponentialBowlsInTabs.get()) {
             for (String bowls : BOWL_NAME_TO_ID.keySet()) {
                 ItemStack stack = new ItemStack(this);
                 CompoundNBT tag = stack.getOrCreateTag();
-                CompoundNBT bowlTypeTag = stack.getOrCreateTagElement("bowl_type");
+                CompoundNBT bowlTypeTag = stack.getOrCreateTagElement("bowl");
 
-                bowlTypeTag.putString("bowl_name", "variants:" + bowls + "_bowl");
-                bowlTypeTag.putInt("bowl_id", BOWL_NAME_TO_ID.get(bowls));
+                bowlTypeTag.putString("name", "variants:" + bowls + "_bowl");
+                bowlTypeTag.putInt("texture_id", BOWL_NAME_TO_ID.get(bowls));
                 if (stack.getTag() != null) tag.put("behavior", this.stewBehavior.writeBehaviorToNBT(stack));
                 list.add(stack);
             }
+        } else {
+            super.fillItemCategory(tab, list);
         }
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        CompoundNBT bowlTypeTag = stack.getOrCreateTagElement("bowl_type");
-        ResourceLocation containerItem = new ResourceLocation(bowlTypeTag.getString("bowl_name"));
+        CompoundNBT bowlTypeTag = stack.getOrCreateTagElement("bowl");
+        ResourceLocation containerItem = new ResourceLocation(bowlTypeTag.getString("name"));
 
-        if (NBTUtils.shouldHideTooltip("hide_bowl_name", stack)) {
-            if (bowlTypeTag.contains("bowl_name") && ForgeRegistries.ITEMS.containsKey(containerItem)) {
+        if (NBTUtils.shouldNotHideTooltip("hide_bowl_name", stack)) {
+            if (bowlTypeTag.contains("name", NBTUtils.STRING) && ForgeRegistries.ITEMS.containsKey(containerItem)) {
                 ITextComponent bowlName = ForgeRegistries.ITEMS.getValue(containerItem).getName(ForgeRegistries.ITEMS.getValue(containerItem).getDefaultInstance());
                 tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".exponential_stew.bowl", bowlName).withStyle(TextFormatting.GRAY));
             } else {
@@ -186,7 +190,7 @@ public class ExponentialStewItem extends Item {
                         .getDefaultInstance())).withStyle(TextFormatting.GRAY));
             }
         }
-        if (NBTUtils.shouldHideTooltip("hide_stew_behavior", stack)) {
+        if (NBTUtils.shouldNotHideTooltip("hide_stew_behavior", stack)) {
             tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".exponential_stew.behavior",
                     getBehaviorTranslation(stack)).withStyle(TextFormatting.GRAY));
         }

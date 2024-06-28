@@ -5,7 +5,6 @@ import com.junethewoods.variants.item.VSItems;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaRecipeCategoryUid;
-import mezz.jei.api.recipe.vanilla.IVanillaRecipeFactory;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.ISubtypeRegistration;
@@ -50,9 +49,7 @@ public class VSJEIPlugin implements IModPlugin {
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
         IIngredientManager manager = registration.getIngredientManager();
-        IVanillaRecipeFactory recipeFactory = registration.getVanillaRecipeFactory();
-
-        registration.addRecipes(VSAnvilRecipeMaker.getAnvilRecipes(recipeFactory, manager), VanillaRecipeCategoryUid.ANVIL);
+        registration.addRecipes(VSAnvilRecipeMaker.getAnvilRecipes(registration.getVanillaRecipeFactory(), manager), VanillaRecipeCategoryUid.ANVIL);
     }
 
     @Override

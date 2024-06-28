@@ -62,14 +62,16 @@ public class DebugArrowEntity extends AbstractArrowEntity {
         super.addAdditionalSaveData(tag);
         CompoundNBT arrowTag = new CompoundNBT();
         CompoundNBT itemTag = new CompoundNBT();
-        itemTag.put("debug_arrow_state", this.getPropertyTag());
+        itemTag.put("debug_arrow_state", this.entityData.get(DEBUG_PROPERTY));
         arrowTag.put("tag", itemTag);
         tag.put("item", this.arrowItem.save(arrowTag));
+        tag.put("debug_arrow_state", this.entityData.get(DEBUG_PROPERTY));
     }
 
     @Override
     public void readAdditionalSaveData(CompoundNBT tag) {
         super.readAdditionalSaveData(tag);
+        this.entityData.set(DEBUG_PROPERTY, tag.getCompound("debug_arrow_state"));
         if (tag.contains("item", 10)) this.arrowItem = ItemStack.of(tag.getCompound("item"));
     }
 
@@ -84,10 +86,6 @@ public class DebugArrowEntity extends AbstractArrowEntity {
                 this.handleInteractionsByLivingNonPlayer(this.level.getBlockState(hitResult.getBlockPos()), this.level, hitResult.getBlockPos(), true, this.arrowItem);
             }
         }
-    }
-
-    public CompoundNBT getPropertyTag() {
-        return this.entityData.get(DEBUG_PROPERTY);
     }
 
     public void setPropertyTag(CompoundNBT propertyTag) {
@@ -105,7 +103,7 @@ public class DebugArrowEntity extends AbstractArrowEntity {
             } else {
                 CompoundNBT debugArrowState = arrowStack.getOrCreateTagElement("debug_arrow_state");
                 String propertyKey = debugArrowState.getString(blockRegistryKey);
-                this.setPropertyTag(debugArrowState);
+                setPropertyTag(debugArrowState);
                 Property<?> property = stateDefinition.getProperty(propertyKey);
                 if (rightClick) {
                     if (property == null) property = properties.iterator().next();
@@ -116,7 +114,7 @@ public class DebugArrowEntity extends AbstractArrowEntity {
                     property = getRelative(properties, property, shooter.isSecondaryUseActive());
                     String propertyName = property.getName();
                     debugArrowState.putString(blockRegistryKey, propertyName);
-                    this.setPropertyTag(debugArrowState);
+                    setPropertyTag(debugArrowState);
                     sendBowMessage(shooter, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.select", propertyName, getNameHelper(state, property)));
                 }
             }
@@ -134,7 +132,7 @@ public class DebugArrowEntity extends AbstractArrowEntity {
         if (!properties.isEmpty()) {
             CompoundNBT debugArrowState = arrowStack.getOrCreateTagElement("debug_arrow_state");
             String propertyKey = debugArrowState.getString(blockRegistryKey);
-            this.setPropertyTag(debugArrowState);
+            setPropertyTag(debugArrowState);
             Property<?> property = stateDefinition.getProperty(propertyKey);
             if (rightClick) {
                 if (property == null) property = properties.iterator().next();
@@ -144,7 +142,7 @@ public class DebugArrowEntity extends AbstractArrowEntity {
                 property = getRelative(properties, property, false);
                 String propertyName = property.getName();
                 debugArrowState.putString(blockRegistryKey, propertyName);
-                this.setPropertyTag(debugArrowState);
+                setPropertyTag(debugArrowState);
             }
         }
     }

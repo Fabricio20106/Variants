@@ -6,16 +6,16 @@ import net.minecraft.item.Items;
 import net.minecraft.world.World;
 
 public class LavaBottleItem extends DrinkableContainerItem {
-    private final boolean containsSoulLava;
+    private final int secondsOnFire;
 
-    public LavaBottleItem(boolean containsSoulLava, Properties properties) {
+    public LavaBottleItem(int secondsOnFire, Properties properties) {
         super(properties);
-        this.containsSoulLava = containsSoulLava;
+        this.secondsOnFire = secondsOnFire;
     }
 
     @Override
-    public void bottleFunctionality(ItemStack containerStack, ItemStack stack, World world, LivingEntity livEntity) {
+    public void executeFunctionality(ItemStack containerStack, ItemStack bottleStack, World world, LivingEntity livEntity) {
         this.containerItem = new ItemStack(Items.GLASS_BOTTLE);
-        if (!world.isClientSide) livEntity.setSecondsOnFire(containsSoulLava ? 10 : 5);
+        if (!world.isClientSide) livEntity.setSecondsOnFire(this.secondsOnFire);
     }
 }

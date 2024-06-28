@@ -15,6 +15,12 @@
     }
   ],
   "result": {
-    "item": "variants:sweet_berry_pot"
+    "item": "variants:sweet_berry_pot",
+    "nbt": {
+      "poisoning_type": "variants:none",
+      "effect": {
+        "duration": 0
+      }
+    }
   }
 }

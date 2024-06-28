@@ -12,7 +12,7 @@ public class ExplosiveBlendPoisoningEffect extends Effect {
 
     @Override
     public void applyEffectTick(LivingEntity livEntity, int potency) {
-        livEntity.hurt(VSDamageSources.EXPLOSIVE_POWDER_POISONING, potency == 0 ? 1 : potency);
+        livEntity.hurt(VSDamageSources.EXPLOSIVE_BLEND_POISONING, potency == 0 ? 1 : potency);
     }
 
     @Override

@@ -9,6 +9,12 @@
     }
   ],
   "result": {
-    "item": "variants:glowstone_pot"
+    "item": "variants:glowstone_pot",
+    "nbt": {
+      "poisoning_type": "variants:glowstone",
+      "effect": {
+        "duration": 200
+      }
+    }
   }
 }

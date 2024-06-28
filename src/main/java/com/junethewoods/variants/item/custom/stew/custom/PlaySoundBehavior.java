@@ -2,20 +2,25 @@ package com.junethewoods.variants.item.custom.stew.custom;
 
 import com.junethewoods.variants.item.custom.stew.StewBehavior;
 import com.junethewoods.variants.item.custom.stew.VSStewBehaviors;
+import com.junethewoods.variants.sound.VSSounds;
+import com.junethewoods.variants.util.NBTUtils;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.Locale;
 
 public class PlaySoundBehavior extends StewBehavior {
-    private final SoundEvent id;
-    private final SoundCategory category;
+    private SoundEvent id;
+    private SoundCategory category;
     private final BlockPos pos;
     private final boolean playAtPlayer;
     private final float volume;
@@ -31,13 +36,16 @@ public class PlaySoundBehavior extends StewBehavior {
     }
 
     public PlaySoundBehavior() {
-        this(SoundEvents.COD_AMBIENT, SoundCategory.MASTER, BlockPos.ZERO, false, 0, 0);
+        this(VSSounds.PLAY_SOUND_BEHAVIOR_DEFAULT.get(), SoundCategory.MASTER, BlockPos.ZERO, false, 0, 0);
     }
 
     @Override
     public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity) {
         float volume = MathHelper.clamp(this.volume, 0, Float.MAX_VALUE);
         float pitch = MathHelper.clamp(this.volume, 0, 2);
+        if (this.id == null) this.id = VSSounds.PLAY_SOUND_BEHAVIOR_DEFAULT.get();
+        if (this.category == null) this.category = SoundCategory.MASTER;
+
         if (this.playAtPlayer && livEntity instanceof PlayerEntity) {
             world.playSound((PlayerEntity) livEntity, this.pos, this.id, this.category, volume, pitch);
         } else {
@@ -46,7 +54,16 @@ public class PlaySoundBehavior extends StewBehavior {
     }
 
     @Override
-    public CompoundNBT writePropertiesToNBT(ItemStack stewStack) {
+    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
+        SoundEvent sound = ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.tryParse(propertiesTag.getString("id")));
+        SoundCategory category1 = SoundCategory.valueOf(propertiesTag.getString("category").toUpperCase(Locale.ROOT));
+        BlockPos pos = propertiesTag.contains("pos") ? NBTUtils.readBlockPos(propertiesTag) : livEntity.blockPosition();
+        PlaySoundBehavior playSoundBehavior = new PlaySoundBehavior(sound, category1, pos, propertiesTag.getBoolean("play_at_player"), propertiesTag.getFloat("volume"), propertiesTag.getFloat("pitch"));
+        playSoundBehavior.executeBehavior(stewStack, world, livEntity);
+    }
+
+    @Override
+    public CompoundNBT writePropertiesToNBT() {
         CompoundNBT properties = new CompoundNBT();
         properties.putString("id", this.id.getRegistryName().toString());
         properties.putString("category", this.category.getName());

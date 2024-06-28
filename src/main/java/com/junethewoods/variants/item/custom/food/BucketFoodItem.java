@@ -1,5 +1,6 @@
 package com.junethewoods.variants.item.custom.food;
 
+import com.junethewoods.variants.util.NBTUtils;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -12,6 +13,9 @@ import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
+import net.minecraftforge.registries.ForgeRegistries;
+
+import javax.annotation.Nonnull;
 
 public class BucketFoodItem extends Item {
     public BucketFoodItem(Properties properties) {
@@ -20,12 +24,12 @@ public class BucketFoodItem extends Item {
 
     public static void writeEffectToBucket(ItemStack stack, Effect effect, int duration) {
         CompoundNBT tag = stack.getOrCreateTag();
-        ListNBT effectList = tag.getList("effects", 9);
-        CompoundNBT tag1 = new CompoundNBT();
+        ListNBT effectList = tag.getList("effects", NBTUtils.LIST);
+        CompoundNBT effectTag = new CompoundNBT();
 
-        tag1.putByte("id", (byte) Effect.getId(effect));
-        tag1.putInt("duration", duration);
-        effectList.add(tag1);
+        effectTag.putString("id", effect.getRegistryName().toString());
+        effectTag.putInt("duration", duration);
+        effectList.add(effectTag);
         tag.put("effects", effectList);
     }
 
@@ -33,44 +37,60 @@ public class BucketFoodItem extends Item {
         return 32;
     }
 
+    @Nonnull
     public UseAction getUseAnimation(ItemStack stack) {
         return UseAction.DRINK;
     }
 
+    @Nonnull
     public SoundEvent getDrinkingSound() {
         return SoundEvents.GENERIC_DRINK;
     }
 
+    @Nonnull
     public SoundEvent getEatingSound() {
         return SoundEvents.GENERIC_DRINK;
     }
 
+    @Nonnull
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         return DrinkHelper.useDrink(world, player, hand);
     }
 
+    @Nonnull
     public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity livEntity) {
         ItemStack superStack = super.finishUsingItem(stack, world, livEntity);
+        boolean isPlayerInCreative = livEntity instanceof PlayerEntity && ((PlayerEntity) livEntity).abilities.instabuild;
 
         // For Suspicious Stew
         CompoundNBT tag = stack.getTag();
-        if (tag != null && tag.contains("effects", 9)) {
-            ListNBT effectList = tag.getList("effects", 10);
+        if (tag != null && tag.contains("effects", NBTUtils.LIST)) {
+            ListNBT effectList = tag.getList("effects", NBTUtils.COMPOUND);
 
-            for(int i = 0; i < effectList.size(); ++i) {
-                int duration = 160; // Default of 8 seconds.
-                CompoundNBT tag1 = effectList.getCompound(i);
-                if (tag1.contains("duration", 3)) {
-                    duration = tag1.getInt("duration");
-                }
+            for (int i = 0; i < effectList.size(); ++i) {
+                int duration = 160; // Default of 8 seconds from Suspicious Stew.
+                int amplifier = 0;
+                boolean ambient = false;
+                boolean showParticles = true;
+                boolean showIcon = true;
+                boolean noCounter = true;
+                CompoundNBT effectTag = effectList.getCompound(i);
+                if (effectTag.contains("duration", NBTUtils.INTEGER)) duration = effectTag.getInt("duration");
+                if (effectTag.contains("amplifier", NBTUtils.INTEGER)) amplifier = effectTag.getInt("amplifier");
+                if (effectTag.contains("ambient", NBTUtils.BYTE)) ambient = effectTag.getBoolean("ambient");
+                if (effectTag.contains("show_particles", NBTUtils.BYTE)) showParticles = effectTag.getBoolean("show_particles");
+                if (effectTag.contains("show_icon", NBTUtils.BYTE)) showIcon = effectTag.getBoolean("show_icon");
+                if (effectTag.contains("no_counter", NBTUtils.BYTE)) noCounter = effectTag.getBoolean("no_counter");
 
-                Effect effect = Effect.byId(tag1.getByte("id"));
+                Effect effect = ForgeRegistries.POTIONS.getValue(ResourceLocation.tryParse(effectTag.getString("id")));
                 if (effect != null) {
-                    livEntity.addEffect(new EffectInstance(effect, duration));
+                    EffectInstance instance = new EffectInstance(effect, duration, amplifier, ambient, showParticles, showIcon);
+                    if (world.isClientSide) instance.setNoCounter(noCounter);
+                    livEntity.addEffect(instance);
                 }
             }
         }
 
-        return livEntity instanceof PlayerEntity && ((PlayerEntity) livEntity).abilities.instabuild ? superStack : new ItemStack(Items.BUCKET);
+        return isPlayerInCreative ? superStack : new ItemStack(Items.BUCKET);
     }
 }

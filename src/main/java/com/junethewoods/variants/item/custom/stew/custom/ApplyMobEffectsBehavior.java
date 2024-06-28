@@ -5,7 +5,6 @@ import com.junethewoods.variants.item.custom.stew.VSStewBehaviors;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.ListNBT;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.world.World;
 
@@ -14,22 +13,22 @@ import static com.junethewoods.variants.util.NBTUtils.writeEffectsOntoNBT;
 public class ApplyMobEffectsBehavior extends StewBehavior {
     private final EffectInstance[] effects;
 
-    public ApplyMobEffectsBehavior(EffectInstance[] effects) {
+    public ApplyMobEffectsBehavior(EffectInstance... effects) {
         this.effects = effects;
-    }
-
-    public ApplyMobEffectsBehavior() {
-        this(null);
     }
 
     @Override
     public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity) {}
 
     @Override
-    public CompoundNBT writePropertiesToNBT(ItemStack stewStack) {
+    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
+        executeBehavior(stewStack, world, livEntity);
+    }
+
+    @Override
+    public CompoundNBT writePropertiesToNBT() {
         CompoundNBT properties = new CompoundNBT();
-        ListNBT effects = writeEffectsOntoNBT(this.effects);
-        properties.put("effects", effects);
+        properties.put("effects", writeEffectsOntoNBT(this.effects));
         return properties;
     }
 

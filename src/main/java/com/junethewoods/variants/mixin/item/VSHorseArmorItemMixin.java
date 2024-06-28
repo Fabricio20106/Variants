@@ -25,7 +25,7 @@ public class VSHorseArmorItemMixin extends Item {
 
     @Unique
     public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        if (VSConfigs.COMMON_CONFIGS.horseArmorArmorPointsOnTooltip.get() && NBTUtils.shouldHideTooltip("hide_horse_armor_armor_points", stack)) {
+        if (VSConfigs.COMMON_CONFIGS.horseArmorArmorPointsOnTooltip.get() && NBTUtils.shouldNotHideTooltip("hide_horse_armor_armor_points", stack)) {
             HorseArmorItem horseArmor = ((HorseArmorItem) stack.getItem());
 
             tooltip.add(new StringTextComponent(""));

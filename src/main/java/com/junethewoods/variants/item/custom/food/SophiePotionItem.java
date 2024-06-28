@@ -12,6 +12,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -23,25 +24,29 @@ public class SophiePotionItem extends Item {
         this.compatMod = compatMod;
     }
 
+    @Nonnull
     public UseAction getUseAnimation(ItemStack stack) {
         return UseAction.DRINK;
     }
 
+    @Nonnull
     public SoundEvent getDrinkingSound() {
         return SoundEvents.GENERIC_DRINK;
     }
 
+    @Nonnull
     public SoundEvent getEatingSound() {
         return SoundEvents.GENERIC_DRINK;
     }
 
+    @Nonnull
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         return DrinkHelper.useDrink(world, player, hand);
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        if (NBTUtils.shouldHideTooltip("hide_compat_mod", stack)) tooltip.add(new TranslationTextComponent("tooltip.variants.compat_item_from", compatMod).withStyle(TextFormatting.GRAY).withStyle(TextFormatting.ITALIC));
+        if (NBTUtils.shouldNotHideTooltip("hide_compat_mod", stack)) tooltip.add(new TranslationTextComponent("tooltip.variants.compat_item_from", compatMod).withStyle(TextFormatting.GRAY).withStyle(TextFormatting.ITALIC));
         super.appendHoverText(stack, world, tooltip, flag);
     }
 }

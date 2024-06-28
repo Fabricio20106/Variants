@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "milk_bowl",
+  "ingredients": [
+    {
+      "item": "variants:milk_glass_bottle"
+    },
+    {
+      "item": "variants:milk_glass_bottle"
+    },
+    {
+      "item": "variants:warped_bowl"
+    }
+  ],
+  "result": {
+    "item": "variants:exponential_milk_bowl",
+    "nbt": {
+      "bowl": {
+        "name": "variants:warped_bowl",
+        "texture_id": 8
+      },
+      "behavior": {
+        "id": "variants:clear_mob_effects",
+        "properties": {
+          "curative_item": {
+            "id": "minecraft:milk_bucket",
+            "Count": 1
+          }
+        }
+      }
+    }
+  }
+}

@@ -70,11 +70,11 @@ public class StylisedPotItem extends DrinkableContainerItem {
     }
 
     @Override
-    public void bottleFunctionality(ItemStack containerStack, ItemStack stack, World world, LivingEntity livEntity) {
-        PoisoningType type = getTypeFromNBT(stack);
+    public void executeFunctionality(ItemStack containerStack, ItemStack bottleStack, World world, LivingEntity livEntity) {
+        PoisoningType type = getTypeFromNBT(bottleStack);
         this.containerItem = new ItemStack(VSItems.STYLISED_POT.get());
-        if (hasEffectsInNBT(stack)) {
-            addEffectsFromNBT(stack, livEntity);
+        if (hasEffectsInNBT(bottleStack)) {
+            addEffectsFromNBT(bottleStack, livEntity);
         } else if (type != null && type.getPoisoningEffect() != null) {
             if (!world.isClientSide) {
                 livEntity.addEffect(new EffectInstance(this.poisoningType.getPoisoningEffect().get(), this.poisoningDuration));
@@ -104,7 +104,7 @@ public class StylisedPotItem extends DrinkableContainerItem {
     @Override
     public void appendHoverText(ItemStack potStack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
         PoisoningType type = getTypeFromNBT(potStack);
-        if (this.compatMod != null && NBTUtils.shouldHideTooltip("hide_compat_mod", potStack)) {
+        if (this.compatMod != null && NBTUtils.shouldNotHideTooltip("hide_compat_mod", potStack)) {
             tooltip.add(new TranslationTextComponent("tooltip.variants.compat_item_from", this.compatMod).withStyle(TextFormatting.GRAY).withStyle(TextFormatting.ITALIC));
         }
         if (hasEffectsInNBT(potStack)) {

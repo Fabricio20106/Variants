@@ -1,6 +1,7 @@
 package com.junethewoods.variants.util;
 
 import com.google.common.collect.Maps;
+import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.item.custom.armor.WoolArmorItem;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.item.Item;
@@ -43,7 +44,7 @@ public class VSUtils {
 
     // Adds properties for armor designs.
     public static void addArmorDesigns(Item sweater) {
-        register(sweater, new ResourceLocation("design"), (stack, world, livEntity) -> {
+        register(sweater, Variants.resourceLoc("design"), (stack, world, livEntity) -> {
             CompoundNBT tag = stack.getTag();
             if (tag != null && tag.contains("armor_design")) {
                 return tag.getInt("armor_design");
@@ -54,10 +55,10 @@ public class VSUtils {
 
     // Adds properties for exponential stews.
     public static void makeExpoStew(Item expoStew) {
-        register(expoStew, new ResourceLocation("bowl_id"), (stack, world, livEntity) -> {
-            CompoundNBT tag = stack.getOrCreateTagElement("bowl_type");
-            if (tag.contains("bowl_id")) {
-                return tag.getInt("bowl_id");
+        register(expoStew, Variants.resourceLoc("texture_id"), (stack, world, livEntity) -> {
+            CompoundNBT tag = stack.getOrCreateTagElement("bowl");
+            if (tag.contains("texture_id")) {
+                return tag.getInt("texture_id");
             }
             return 0;
         });

@@ -5,6 +5,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.EffectInstance;
+import net.minecraft.tags.ITag;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
 import net.minecraft.util.text.*;
@@ -20,7 +21,9 @@ public abstract class StewBehavior extends ForgeRegistryEntry<StewBehavior> {
 
     public abstract void executeBehavior(ItemStack stack, World world, LivingEntity livEntity);
 
-    public abstract CompoundNBT writePropertiesToNBT(ItemStack stewStack);
+    public abstract void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag);
+
+    public abstract CompoundNBT writePropertiesToNBT();
 
     public EffectInstance[] getEffects() {
         return null;
@@ -28,6 +31,10 @@ public abstract class StewBehavior extends ForgeRegistryEntry<StewBehavior> {
 
     public StewBehavior getBehaviorRegistry() {
         return VSStewBehaviors.DEFAULT.get();
+    }
+
+    public boolean is(ITag<StewBehavior> behaviorTag) {
+        return behaviorTag.contains(this);
     }
 
     protected String getOrCreateDescriptionId() {
@@ -54,7 +61,7 @@ public abstract class StewBehavior extends ForgeRegistryEntry<StewBehavior> {
     public CompoundNBT writeBehaviorToNBT(ItemStack stewStack) {
         CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
         behaviorTag.putString("id", getBehaviorFromNBT(stewStack).getRegistryName().toString());
-        behaviorTag.put("properties", writePropertiesToNBT(stewStack));
+        behaviorTag.put("properties", writePropertiesToNBT());
         return behaviorTag;
     }
 

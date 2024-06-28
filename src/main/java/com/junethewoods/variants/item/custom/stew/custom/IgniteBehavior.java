@@ -18,13 +18,23 @@ public class IgniteBehavior extends StewBehavior {
         this(200);
     }
 
+    public int getTicksOnFire() {
+        return this.ticksOnFire;
+    }
+
     @Override
     public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity) {
         if (!world.isClientSide) livEntity.setSecondsOnFire(this.ticksOnFire * 20);
     }
 
     @Override
-    public CompoundNBT writePropertiesToNBT(ItemStack stewStack) {
+    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
+        IgniteBehavior igniteBehavior = new IgniteBehavior(propertiesTag.getInt("ticks_on_fire"));
+        igniteBehavior.executeBehavior(stewStack, world, livEntity);
+    }
+
+    @Override
+    public CompoundNBT writePropertiesToNBT() {
         CompoundNBT properties = new CompoundNBT();
         properties.putInt("ticks_on_fire", this.ticksOnFire);
         return properties;

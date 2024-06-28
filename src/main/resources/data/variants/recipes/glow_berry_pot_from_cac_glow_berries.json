@@ -21,6 +21,12 @@
     }
   ],
   "result": {
-    "item": "variants:glow_berry_pot"
+    "item": "variants:glow_berry_pot",
+    "nbt": {
+      "poisoning_type": "variants:none",
+      "effect": {
+        "duration": 0
+      }
+    }
   }
 }

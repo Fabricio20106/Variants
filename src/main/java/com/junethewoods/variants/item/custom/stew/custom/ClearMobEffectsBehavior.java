@@ -30,7 +30,13 @@ public class ClearMobEffectsBehavior extends StewBehavior {
     }
 
     @Override
-    public CompoundNBT writePropertiesToNBT(ItemStack stewStack) {
+    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
+        ClearMobEffectsBehavior clearEffectsBehavior = new ClearMobEffectsBehavior(ItemStack.of(propertiesTag.getCompound("curative_item")));
+        clearEffectsBehavior.executeBehavior(stewStack, world, livEntity);
+    }
+
+    @Override
+    public CompoundNBT writePropertiesToNBT() {
         CompoundNBT properties = new CompoundNBT();
         properties.put("curative_item", this.curativeStack.save(new CompoundNBT()));
         return properties;

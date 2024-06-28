@@ -176,5 +176,8 @@
       "random/bow"
     ],
     "subtitle": "subtitles.entity.potion.throw"
+  },
+  "stew_behavior.play_sound.default": {
+    "sounds": []
   }
 }

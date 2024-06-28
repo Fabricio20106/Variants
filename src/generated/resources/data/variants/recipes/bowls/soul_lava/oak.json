@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "soul_lava_bowl",
+  "ingredients": [
+    {
+      "item": "variants:soul_lava_bottle"
+    },
+    {
+      "item": "variants:soul_lava_bottle"
+    },
+    {
+      "item": "variants:oak_bowl"
+    }
+  ],
+  "result": {
+    "item": "variants:exponential_soul_lava_bowl",
+    "nbt": {
+      "bowl": {
+        "name": "variants:oak_bowl",
+        "texture_id": 0
+      },
+      "behavior": {
+        "id": "variants:ignite",
+        "properties": {
+          "ticks_on_fire": 200
+        }
+      }
+    }
+  }
+}

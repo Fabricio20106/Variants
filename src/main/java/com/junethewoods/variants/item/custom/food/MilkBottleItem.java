@@ -11,7 +11,7 @@ public class MilkBottleItem extends DrinkableContainerItem {
     }
 
     @Override
-    public void bottleFunctionality(ItemStack containerStack, ItemStack stack, World world, LivingEntity livEntity) {
+    public void executeFunctionality(ItemStack containerStack, ItemStack bottleStack, World world, LivingEntity livEntity) {
         this.containerItem = new ItemStack(Items.GLASS_BOTTLE);
         if (!world.isClientSide) livEntity.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
     }

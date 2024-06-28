@@ -18,6 +18,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -31,22 +32,21 @@ public class VSBoatItem extends BoatItem {
         DispenserBlock.registerBehavior(this, new DispenseVSBoatBehavior(woodType));
     }
 
+    @Nonnull
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
-        ItemStack heldItem = player.getItemInHand(hand);
+        ItemStack handStack = player.getItemInHand(hand);
         RayTraceResult fluidRayTrace = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.ANY);
         if (fluidRayTrace.getType() == RayTraceResult.Type.MISS) {
-            return ActionResult.pass(heldItem);
+            return ActionResult.pass(handStack);
         } else {
-            Vector3d vector3D = player.getViewVector(1);
-            List<Entity> list = world.getEntities(player, player.getBoundingBox().expandTowards(vector3D.scale(5)).inflate(1), SPECTATORS_PREDICATE);
-            if (!list.isEmpty()) {
-                Vector3d vector3D1 = player.getEyePosition(1);
+            Vector3d viewVector = player.getViewVector(1);
+            List<Entity> entitiesAroundPossiblePlacement = world.getEntities(player, player.getBoundingBox().expandTowards(viewVector.scale(5)).inflate(1), SPECTATORS_PREDICATE);
+            if (!entitiesAroundPossiblePlacement.isEmpty()) {
+                Vector3d eyePosition = player.getEyePosition(1);
 
-                for(Entity entity : list) {
+                for(Entity entity : entitiesAroundPossiblePlacement) {
                     AxisAlignedBB axisAlignedBB = entity.getBoundingBox().inflate(entity.getPickRadius());
-                    if (axisAlignedBB.contains(vector3D1)) {
-                        return ActionResult.pass(heldItem);
-                    }
+                    if (axisAlignedBB.contains(eyePosition)) return ActionResult.pass(handStack);
                 }
             }
 
@@ -55,20 +55,18 @@ public class VSBoatItem extends BoatItem {
                 variantsBoat.setWoodType(woodType);
                 variantsBoat.yRot = player.yRot;
                 if (!world.noCollision(variantsBoat, variantsBoat.getBoundingBox().inflate(-0.1D))) {
-                    return ActionResult.fail(heldItem);
+                    return ActionResult.fail(handStack);
                 } else {
                     if (!world.isClientSide) {
                         world.addFreshEntity(variantsBoat);
-                        if (!player.abilities.instabuild) {
-                            heldItem.shrink(1);
-                        }
+                        if (!player.abilities.instabuild) handStack.shrink(1);
                     }
 
                     player.awardStat(Stats.ITEM_USED.get(this));
-                    return ActionResult.sidedSuccess(heldItem, world.isClientSide());
+                    return ActionResult.sidedSuccess(handStack, world.isClientSide());
                 }
             } else {
-                return ActionResult.pass(heldItem);
+                return ActionResult.pass(handStack);
             }
         }
     }

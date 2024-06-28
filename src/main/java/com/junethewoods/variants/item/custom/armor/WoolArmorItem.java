@@ -19,6 +19,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
@@ -68,8 +69,9 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
     }
 
     @Override
+    @Nonnull
     public ITextComponent getName(ItemStack stack) {
-        if (stack.getTag() != null && stack.hasTag() && !stack.getTag().getString("color_name").isEmpty()) {
+        if (stack.getTag() != null && stack.getTag().contains("color_name", NBTUtils.STRING)) {
             return new TranslationTextComponent(this.getDescriptionId() + ".colored", new TranslationTextComponent(stack.getTag().getString("color_name")));
         } else {
             return new TranslationTextComponent(this.getDescriptionId());
@@ -78,8 +80,9 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        if (stack.getTag() != null && stack.getTag().getInt("armor_design") > 0 && NBTUtils.shouldHideTooltip("hide_armor_design", stack)) {
-            tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".wool_armor_design." + stack.getTag().getInt("armor_design")).withStyle(TextFormatting.DARK_GRAY));
+        if (stack.getTag() != null && stack.getTag().getInt("armor_design") > 0 && NBTUtils.shouldNotHideTooltip("hide_armor_design", stack)) {
+            String translation = "tooltip." + Variants.MOD_ID + ".wool_armor_design";
+            tooltip.add(new TranslationTextComponent(translation, new TranslationTextComponent(translation + "." + stack.getTag().getInt("armor_design"))).withStyle(TextFormatting.GRAY));
         }
         super.appendHoverText(stack, world, tooltip, flag);
     }

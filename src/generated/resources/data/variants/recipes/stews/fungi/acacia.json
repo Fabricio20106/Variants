@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "fungi_stew",
+  "ingredients": [
+    {
+      "item": "minecraft:crimson_fungus"
+    },
+    {
+      "item": "minecraft:warped_fungus"
+    },
+    {
+      "item": "variants:acacia_bowl"
+    }
+  ],
+  "result": {
+    "item": "variants:exponential_fungi_stew",
+    "nbt": {
+      "bowl": {
+        "name": "variants:acacia_bowl",
+        "texture_id": 4
+      },
+      "behavior": {
+        "id": "variants:default",
+        "properties": {}
+      }
+    }
+  }
+}

@@ -12,11 +12,14 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
+
 public class HoneyBallItem extends Item {
     public HoneyBallItem(Properties properties) {
         super(properties);
     }
 
+    @Nonnull
     public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity livEntity) {
         super.finishUsingItem(stack, world, livEntity);
         if (livEntity instanceof ServerPlayerEntity) {
@@ -35,14 +38,17 @@ public class HoneyBallItem extends Item {
         return 40;
     }
 
+    @Nonnull
     public UseAction getUseAnimation(ItemStack stack) {
         return UseAction.EAT;
     }
 
+    @Nonnull
     public SoundEvent getEatingSound() {
         return SoundEvents.HONEY_DRINK;
     }
 
+    @Nonnull
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         return DrinkHelper.useDrink(world, player, hand);
     }

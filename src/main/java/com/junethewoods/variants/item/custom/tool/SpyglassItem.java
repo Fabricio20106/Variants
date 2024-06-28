@@ -1,6 +1,7 @@
 package com.junethewoods.variants.item.custom.tool;
 
 import com.junethewoods.variants.sound.VSSounds;
+import com.junethewoods.variants.util.VSTags;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -10,6 +11,8 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.DrinkHelper;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
+
+import javax.annotation.Nonnull;
 
 public class SpyglassItem extends Item {
     public SpyglassItem(Properties properties) {
@@ -22,6 +25,7 @@ public class SpyglassItem extends Item {
     }
 
     @Override
+    @Nonnull
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         player.playSound(VSSounds.SPYGLASS_USE.get(), 1, 1);
         player.awardStat(Stats.ITEM_USED.get(this));
@@ -29,17 +33,22 @@ public class SpyglassItem extends Item {
     }
 
     @Override
+    @Nonnull
     public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity livEntity) {
         this.stopUsing(livEntity);
         return stack;
     }
 
     @Override
-    public void releaseUsing(ItemStack stack, World world, LivingEntity livEntity, int i) {
+    public void releaseUsing(ItemStack stack, World world, LivingEntity livEntity, int remainingTicks) {
         this.stopUsing(livEntity);
     }
 
     private void stopUsing(LivingEntity livEntity) {
         livEntity.playSound(VSSounds.SPYGLASS_STOP_USING.get(), 1, 1);
+    }
+
+    public static boolean isUsingSpyglass(LivingEntity livEntity) {
+        return livEntity.isUsingItem() && livEntity.getUseItem().getItem().is(VSTags.Items.SPYGLASSES);
     }
 }

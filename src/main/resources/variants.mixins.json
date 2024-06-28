@@ -24,10 +24,19 @@
     "item.VSItemStackMixin",
     "item.VSShearsItemMixin",
     "item.VSShieldItemMixin",
+    "item.VSSuspiciousStewItemMixin",
+    "item.nbt.VSBannerItemMixin",
+    "item.nbt.VSCrossbowItemMixin",
+    "item.nbt.VSLingeringPotionItemMixin",
+    "item.nbt.VSPotionItemMixin",
+    "item.nbt.VSTippedArrowItemMixin",
+    "loot.VSSetStewEffectMixin",
     "world.VSChorusPlantFeatureMixin",
     "world.VSDimensionTypeMixin"
   ],
   "client": [
+    "entity.VSBipedModelMixin",
+    "entity.VSHeldItemLayerMixin",
     "item.VSFireworkRocketItemMixin",
     "item.VSFireworkStarItemMixin",
     "item.VSHorseArmorItemMixin"

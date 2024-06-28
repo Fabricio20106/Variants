@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "end_fungi_stew",
+  "ingredients": [
+    {
+      "item": "variants:ender_fungus"
+    },
+    {
+      "item": "variants:ender_fungus"
+    },
+    {
+      "item": "variants:birch_bowl"
+    }
+  ],
+  "result": {
+    "item": "variants:exponential_end_fungi_stew",
+    "nbt": {
+      "bowl": {
+        "name": "variants:birch_bowl",
+        "texture_id": 2
+      },
+      "behavior": {
+        "id": "variants:default",
+        "properties": {}
+      }
+    }
+  }
+}

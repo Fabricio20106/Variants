@@ -11,7 +11,12 @@ public class DefaultStewBehavior extends StewBehavior {
     public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity) {}
 
     @Override
-    public CompoundNBT writePropertiesToNBT(ItemStack stewStack) {
+    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
+        executeBehavior(stewStack, world, livEntity);
+    }
+
+    @Override
+    public CompoundNBT writePropertiesToNBT() {
         return new CompoundNBT();
     }
 }

@@ -7,6 +7,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TranslationTextComponent;
 
+import javax.annotation.Nonnull;
+
 public class ColoredNameItem extends Item {
     private final int nameColor;
 
@@ -16,6 +18,7 @@ public class ColoredNameItem extends Item {
     }
 
     @Override
+    @Nonnull
     public ITextComponent getName(ItemStack stack) {
         return new TranslationTextComponent(this.getDescriptionId()).withStyle(Style.EMPTY.withColor(Color.fromRgb(this.nameColor)));
     }

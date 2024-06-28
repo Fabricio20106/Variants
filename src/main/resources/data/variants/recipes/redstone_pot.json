@@ -9,6 +9,12 @@
     }
   ],
   "result": {
-    "item": "variants:redstone_pot"
+    "item": "variants:redstone_pot",
+    "nbt": {
+      "poisoning_type": "variants:redstone",
+      "effect": {
+        "duration": 200
+      }
+    }
   }
 }

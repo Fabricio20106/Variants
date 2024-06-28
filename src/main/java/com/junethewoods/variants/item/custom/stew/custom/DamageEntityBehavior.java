@@ -1,7 +1,9 @@
 package com.junethewoods.variants.item.custom.stew.custom;
 
+import com.junethewoods.variants.effect.source.DamageBehaviorSource;
 import com.junethewoods.variants.item.custom.stew.StewBehavior;
 import com.junethewoods.variants.item.custom.stew.VSStewBehaviors;
+import com.junethewoods.variants.util.NBTUtils;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -26,19 +28,30 @@ public class DamageEntityBehavior extends StewBehavior {
 
     @Override
     public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity) {
-        livEntity.hurt(fromMessageID(toMessageID(this.source.msgId)), this.amount);
-        // /give @p variants:exponential_aljan_fungi_stew{behavior:{id:"variants:damage_entity",properties:{source:"out_of_world",amount:3.0f}}}
-//        CompoundNBT propertiesTag = getBehaviorProperties(stack);
-//        if (propertiesTag != null && !propertiesTag.getCompound("source").isEmpty()) {
-//            CompoundNBT sourceTag = propertiesTag.getCompound("source");
-//            livEntity.hurt(new DamageBehaviorSource(sourceTag, livEntity), this.amount);
-//        }
+        CompoundNBT propertiesTag = getBehaviorProperties(stack);
+        if (propertiesTag != null && propertiesTag.contains("source", NBTUtils.COMPOUND)) {
+            CompoundNBT sourceTag = propertiesTag.getCompound("source");
+            livEntity.hurt(new DamageBehaviorSource(sourceTag, livEntity), this.amount);
+        } else if (propertiesTag != null && propertiesTag.contains("source", NBTUtils.STRING)) {
+            livEntity.hurt(fromMessageID(livEntity, toMessageID(this.source.msgId)), this.amount);
+        }
     }
 
     @Override
-    public CompoundNBT writePropertiesToNBT(ItemStack stewStack) {
+    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
+        if (propertiesTag.contains("source", NBTUtils.COMPOUND)) {
+            DamageEntityBehavior damageBehavior = new DamageEntityBehavior(new DamageBehaviorSource(propertiesTag, livEntity), propertiesTag.getFloat("amount"));
+            damageBehavior.executeBehavior(stewStack, world, livEntity);
+        } else if (propertiesTag.contains("source", NBTUtils.STRING)) {
+            DamageEntityBehavior damageBehavior = new DamageEntityBehavior(NBTUtils.fromMessageID(livEntity, propertiesTag.getString("source")), propertiesTag.getFloat("amount"));
+            damageBehavior.executeBehavior(stewStack, world, livEntity);
+        }
+    }
+
+    @Override
+    public CompoundNBT writePropertiesToNBT() {
         CompoundNBT properties = new CompoundNBT();
-        properties.putString("source", toMessageID(this.source.msgId));
+        NBTUtils.writeDamageSourceOntoNBT(properties, this.source);
         properties.putFloat("amount", this.amount);
         return properties;
     }

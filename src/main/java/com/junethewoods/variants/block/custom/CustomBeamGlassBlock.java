@@ -8,13 +8,11 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.DyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.Color;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.*;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -28,9 +26,9 @@ public class CustomBeamGlassBlock extends AbstractGlassBlock implements IBeaconB
 
     @Nullable
     public float[] getBeaconColorMultiplier(BlockState state, IWorldReader world, BlockPos pos, BlockPos beaconPos) {
-        int red = (beamColor & 16711680) >> 16;
-        int green = (beamColor & '\uff00') >> 8;
-        int blue = (beamColor & 255);
+        int red = (this.beamColor & 16711680) >> 16;
+        int green = (this.beamColor & '\uff00') >> 8;
+        int blue = (this.beamColor & 255);
 
         float[] textureDiffuseColors = new float[] {(float) red / 255F, (float) green / 255F, (float) blue / 255F};
 
@@ -39,13 +37,15 @@ public class CustomBeamGlassBlock extends AbstractGlassBlock implements IBeaconB
     }
 
     @Override
+    @Nonnull
     public DyeColor getColor() {
         return DyeColor.WHITE;
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable IBlockReader world, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".glass_beam_color", String.format("#%06X", beamColor)).withStyle(Style.EMPTY.withColor(Color.fromRgb(beamColor))));
+        tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".glass_beam_color", new StringTextComponent(String.format("#%06X", this.beamColor)).withStyle(Style.EMPTY.withColor(Color.fromRgb(this.beamColor))))
+                .withStyle(TextFormatting.GRAY));
         super.appendHoverText(stack, world, tooltip, flag);
     }
 }

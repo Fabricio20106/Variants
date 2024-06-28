@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "lava_bowl",
+  "ingredients": [
+    {
+      "item": "variants:lava_glass_bottle"
+    },
+    {
+      "item": "variants:lava_glass_bottle"
+    },
+    {
+      "item": "variants:warped_bowl"
+    }
+  ],
+  "result": {
+    "item": "variants:exponential_lava_bowl",
+    "nbt": {
+      "bowl": {
+        "name": "variants:warped_bowl",
+        "texture_id": 8
+      },
+      "behavior": {
+        "id": "variants:ignite",
+        "properties": {
+          "ticks_on_fire": 100
+        }
+      }
+    }
+  }
+}

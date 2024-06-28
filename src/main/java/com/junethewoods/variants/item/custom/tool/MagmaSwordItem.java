@@ -21,7 +21,6 @@ public class MagmaSwordItem extends SwordItem {
                 livEntity.setSecondsOnFire(10);
             }
         }
-
         return super.onLeftClickEntity(stack, player, entity);
     }
 }

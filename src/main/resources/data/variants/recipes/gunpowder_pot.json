@@ -9,6 +9,12 @@
     }
   ],
   "result": {
-    "item": "variants:gunpowder_pot"
+    "item": "variants:gunpowder_pot",
+    "nbt": {
+      "poisoning_type": "variants:gunpowder",
+      "effect": {
+        "duration": 200
+      }
+    }
   }
 }

@@ -2,6 +2,7 @@ package com.junethewoods.variants.item.custom.poisoning;
 
 import com.junethewoods.variants.util.VSRegistries;
 import net.minecraft.potion.Effect;
+import net.minecraft.tags.ITag;
 import net.minecraft.util.Util;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistryEntry;
@@ -15,6 +16,10 @@ public class PoisoningType extends ForgeRegistryEntry<PoisoningType> {
 
     public PoisoningType(RegistryObject<Effect> poisoning) {
         this.poisoning = poisoning;
+    }
+
+    public boolean is(ITag<PoisoningType> poisoningTag) {
+        return poisoningTag.contains(this);
     }
 
     public RegistryObject<Effect> getPoisoningEffect() {

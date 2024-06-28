@@ -6,10 +6,7 @@ import net.minecraft.block.StainedGlassPaneBlock;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.DyeColor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.Color;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.*;
 import net.minecraft.world.IBlockReader;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -20,7 +17,8 @@ import java.util.List;
 
 @Mixin(StainedGlassPaneBlock.class)
 public class VSStainedGlassPaneBlockMixin extends Block {
-    @Shadow @Final
+    @Shadow
+    @Final
     private DyeColor color;
 
     public VSStainedGlassPaneBlockMixin(Properties properties) {
@@ -29,7 +27,8 @@ public class VSStainedGlassPaneBlockMixin extends Block {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable IBlockReader world, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".glass_beam_color", String.format("#%06X", color.getColorValue())).withStyle(Style.EMPTY.withColor(Color.fromRgb(color.getColorValue()))));
+        tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".glass_beam_color", new StringTextComponent(String.format("#%06X", this.color.getColorValue())).withStyle(Style.EMPTY.withColor(Color.fromRgb(this.color.getColorValue()))))
+                .withStyle(TextFormatting.GRAY));
         super.appendHoverText(stack, world, tooltip, flag);
     }
 }

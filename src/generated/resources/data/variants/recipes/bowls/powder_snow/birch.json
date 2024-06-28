@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "powder_snow_bowl",
+  "ingredients": [
+    {
+      "item": "variants:powder_snow_bottle"
+    },
+    {
+      "item": "variants:powder_snow_bottle"
+    },
+    {
+      "item": "variants:birch_bowl"
+    }
+  ],
+  "result": {
+    "item": "variants:exponential_powder_snow_bowl",
+    "nbt": {
+      "bowl": {
+        "name": "variants:birch_bowl",
+        "texture_id": 2
+      },
+      "behavior": {
+        "id": "variants:default",
+        "properties": {}
+      }
+    }
+  }
+}

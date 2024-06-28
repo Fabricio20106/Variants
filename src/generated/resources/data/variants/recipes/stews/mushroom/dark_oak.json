@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "mushroom_stew",
+  "ingredients": [
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "item": "minecraft:red_mushroom"
+    },
+    {
+      "item": "variants:dark_oak_bowl"
+    }
+  ],
+  "result": {
+    "item": "variants:exponential_mushroom_stew",
+    "nbt": {
+      "bowl": {
+        "name": "variants:dark_oak_bowl",
+        "texture_id": 5
+      },
+      "behavior": {
+        "id": "variants:default",
+        "properties": {}
+      }
+    }
+  }
+}

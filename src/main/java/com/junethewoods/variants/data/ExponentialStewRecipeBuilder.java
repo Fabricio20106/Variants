@@ -4,6 +4,12 @@ import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.junethewoods.variants.item.custom.food.ExponentialStewItem;
+import com.junethewoods.variants.item.custom.stew.StewBehavior;
+import com.junethewoods.variants.item.custom.stew.custom.*;
+import com.junethewoods.variants.util.JSONUtils;
+import com.junethewoods.variants.util.NBTUtils;
+import com.junethewoods.variants.util.VSRegistries;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.ICriterionInstance;
@@ -14,12 +20,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Consumer;
@@ -113,23 +121,21 @@ public class ExponentialStewRecipeBuilder {
 
         @Override
         public void serializeRecipeData(JsonObject object) {
-            if (!this.group.isEmpty()) {
-                object.addProperty("group", this.group);
-            }
+            if (!this.group.isEmpty()) object.addProperty("group", this.group);
 
-            JsonArray jsonArray = new JsonArray();
+            JsonArray array = new JsonArray();
 
             for(Ingredient ingredient : this.ingredients) {
-                jsonArray.add(ingredient.toJson());
+                array.add(ingredient.toJson());
             }
 
-            object.add("ingredients", jsonArray);
+            object.add("ingredients", array);
             JsonObject result = new JsonObject();
             result.addProperty("item", Registry.ITEM.getKey(this.result.getItem()).toString());
             if (this.count > 1) {
                 result.addProperty("count", this.count);
             }
-            if (this.result.hasTag() && this.result.getTagElement("bowl_type") != null) {
+            if (this.result.hasTag() && this.result.getTagElement("bowl") != null) {
                 result.add("nbt", this.serializeNBT());
             }
 
@@ -137,26 +143,69 @@ public class ExponentialStewRecipeBuilder {
         }
 
         public JsonElement serializeNBT() {
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.add("bowl_type", this.serializeBowlType());
-            return jsonObject;
+            JsonObject object = new JsonObject();
+            object.add("bowl", this.serializeBowlType());
+            object.add("behavior", this.serializeStewBehavior());
+            return object;
         }
 
         private JsonObject serializeBowlType() {
-            CompoundNBT bowlTypeTag = this.result.getOrCreateTagElement("bowl_type");
-            ResourceLocation containerItem = new ResourceLocation(bowlTypeTag.getString("bowl_name"));
-            int containerID = bowlTypeTag.getInt("bowl_id");
+            CompoundNBT bowlTypeTag = this.result.getOrCreateTagElement("bowl");
+            ResourceLocation containerItem = new ResourceLocation(bowlTypeTag.getString("name"));
+            int containerID = bowlTypeTag.getInt("texture_id");
 
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("bowl_name", ForgeRegistries.ITEMS.getValue(containerItem).getRegistryName().toString());
-            jsonObject.addProperty("bowl_id", containerID);
+            jsonObject.addProperty("name", ForgeRegistries.ITEMS.getValue(containerItem).getRegistryName().toString());
+            jsonObject.addProperty("texture_id", containerID);
             return jsonObject;
         }
 
+        private JsonObject serializeStewBehavior() {
+            CompoundNBT behaviorTag = this.result.getOrCreateTagElement("behavior");
+            CompoundNBT propertiesTag = behaviorTag.getCompound("properties");
+            StewBehavior behavior = VSRegistries.STEW_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
+
+            JsonObject behaviorObj = new JsonObject();
+            JsonObject propertiesObj = new JsonObject();
+
+            behaviorObj.addProperty("id", behaviorTag.getString("id"));
+
+            if (this.result.getItem() instanceof ExponentialStewItem) {
+                ExponentialStewItem expoStew = (ExponentialStewItem) this.result.getItem();
+
+                // Behaviors
+                if (behavior instanceof ApplyMobEffectsBehavior) {
+                    ApplyMobEffectsBehavior behavior1 = (ApplyMobEffectsBehavior) expoStew.getBehavior();
+                    JsonArray effectsList = new JsonArray();
+                    for (EffectInstance instance : behavior1.getEffects()) {
+                        JsonObject effectObj = new JsonObject();
+                        effectObj.addProperty("id", instance.getEffect().getRegistryName().toString());
+                        effectObj.addProperty("duration", instance.getDuration());
+                        effectObj.addProperty("amplifier", instance.getAmplifier());
+                        effectsList.add(effectObj);
+                    }
+                    propertiesObj.add("effects", effectsList);
+                } else if (behavior instanceof ClearMobEffectsBehavior) {
+                    JSONUtils.writeItemFromNBT("curative_item", propertiesTag, propertiesObj);
+                } else if (behavior instanceof DamageEntityBehavior) {
+                    JSONUtils.writeDamageSourceFromNBT(propertiesTag, propertiesObj);
+                } else if (behavior instanceof ExplodeBehavior) {
+                    JSONUtils.writeExplosionFromNBT(propertiesTag, propertiesObj);
+                } else if (behavior instanceof IgniteBehavior && this.result.getItem() instanceof ExponentialStewItem) {
+                    IgniteBehavior igniteBehavior = (IgniteBehavior) expoStew.getBehavior();
+                    propertiesObj.addProperty("ticks_on_fire", igniteBehavior.getTicksOnFire());
+                }
+            }
+            behaviorObj.add("properties", propertiesObj);
+            return behaviorObj;
+        }
+
+        @Nonnull
         public IRecipeSerializer<?> getType() {
             return IRecipeSerializer.SHAPELESS_RECIPE;
         }
 
+        @Nonnull
         public ResourceLocation getId() {
             return this.id;
         }

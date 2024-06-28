@@ -15,6 +15,12 @@
     }
   ],
   "result": {
-    "item": "variants:creeper_powder_pot"
+    "item": "variants:creeper_powder_pot",
+    "nbt": {
+      "poisoning_type": "variants:explosive_blend",
+      "effect": {
+        "duration": 200
+      }
+    }
   }
 }

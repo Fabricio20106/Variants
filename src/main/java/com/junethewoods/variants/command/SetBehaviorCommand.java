@@ -11,7 +11,8 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Hand;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.*;
+import net.minecraft.util.text.event.HoverEvent;
 
 import java.util.Collection;
 
@@ -37,9 +38,17 @@ public class SetBehaviorCommand {
                     source.sendSuccess(new TranslationTextComponent("commands.setbehavior.success.multiple", players.size(), behavior.behavior.getDisplayNameForCommand()), true);
                 }
             } else {
-                source.sendFailure(new TranslationTextComponent("commands.setbehavior.fail.not_an_expo_stew", handStack.getDisplayName()));
+                source.sendFailure(new TranslationTextComponent("commands.setbehavior.fail.not_an_expo_stew", getItemDisplayName(handStack)));
             }
         }
         return players.size();
+    }
+
+    private static ITextComponent getItemDisplayName(ItemStack stack) {
+        IFormattableTextComponent component = stack.getHoverName().copy().withStyle(TextFormatting.RED);
+        if (stack.hasCustomHoverName()) component.withStyle(TextFormatting.ITALIC);
+        IFormattableTextComponent wrappedComponent = TextComponentUtils.wrapInSquareBrackets(component);
+        wrappedComponent.withStyle(style -> style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, new HoverEvent.ItemHover(stack))));
+        return wrappedComponent;
     }
 }

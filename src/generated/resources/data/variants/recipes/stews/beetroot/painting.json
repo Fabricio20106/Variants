@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "beetroot_soup",
+  "ingredients": [
+    {
+      "item": "variants:painting_bowl"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    }
+  ],
+  "result": {
+    "item": "variants:exponential_beetroot_soup",
+    "nbt": {
+      "bowl": {
+        "name": "variants:painting_bowl",
+        "texture_id": 6
+      },
+      "behavior": {
+        "id": "variants:default",
+        "properties": {}
+      }
+    }
+  }
+}

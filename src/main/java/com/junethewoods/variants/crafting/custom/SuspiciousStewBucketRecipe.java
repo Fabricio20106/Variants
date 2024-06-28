@@ -16,6 +16,8 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
+
 public class SuspiciousStewBucketRecipe extends SpecialRecipe {
     public SuspiciousStewBucketRecipe(ResourceLocation name) {
         super(name);
@@ -51,6 +53,7 @@ public class SuspiciousStewBucketRecipe extends SpecialRecipe {
     }
 
     @Override
+    @Nonnull
     public ItemStack assemble(CraftingInventory inventory) {
         ItemStack emptyStack = ItemStack.EMPTY;
 
@@ -78,6 +81,7 @@ public class SuspiciousStewBucketRecipe extends SpecialRecipe {
     }
 
     @Override
+    @Nonnull
     public IRecipeSerializer<?> getSerializer() {
         return VSRecipeTypes.SUSPICIOUS_STEW_BUCKET.get();
     }

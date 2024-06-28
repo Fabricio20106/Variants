@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "variants:exponential_rabbit_stew",
+          "functions": [
+            {
+              "function": "variants:set_stew_behavior",
+              "behavior": "variants:explode",
+              "properties": "{mode:\"none\",radius:5,create_fire:1b,source:\"out_of_world\"}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

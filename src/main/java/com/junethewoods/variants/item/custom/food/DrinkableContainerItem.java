@@ -14,6 +14,8 @@ import net.minecraft.util.DrinkHelper;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
+
 public abstract class DrinkableContainerItem extends Item {
     public ItemStack containerItem = new ItemStack(Items.GLASS_BOTTLE);
 
@@ -21,27 +23,27 @@ public abstract class DrinkableContainerItem extends Item {
         super(properties);
     }
 
-    public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity livEntity) {
+    @Nonnull
+    public ItemStack finishUsingItem(ItemStack bottleStack, World world, LivingEntity livEntity) {
         if (livEntity instanceof ServerPlayerEntity) {
             ServerPlayerEntity serverPlayer = (ServerPlayerEntity) livEntity;
-            CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
+            CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, bottleStack);
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
 
-        bottleFunctionality(this.containerItem, stack, world, livEntity);
+        executeFunctionality(this.containerItem, bottleStack, world, livEntity);
 
-        if (stack.isEmpty()) {
+        if (bottleStack.isEmpty()) {
             return this.containerItem;
         } else {
             if (livEntity instanceof PlayerEntity && !((PlayerEntity) livEntity).abilities.instabuild) {
                 PlayerEntity player = (PlayerEntity) livEntity;
-                stack.shrink(1);
+                bottleStack.shrink(1);
                 if (!player.inventory.add(this.containerItem)) {
                     player.drop(this.containerItem, false);
                 }
             }
-
-            return stack;
+            return bottleStack;
         }
     }
 
@@ -49,10 +51,12 @@ public abstract class DrinkableContainerItem extends Item {
         return 32;
     }
 
+    @Nonnull
     public UseAction getUseAnimation(ItemStack stack) {
         return UseAction.DRINK;
     }
 
+    @Nonnull
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         return DrinkHelper.useDrink(world, player, hand);
     }
@@ -62,5 +66,5 @@ public abstract class DrinkableContainerItem extends Item {
         return this.containerItem;
     }
 
-    public abstract void bottleFunctionality(ItemStack containerStack, ItemStack stack, World world, LivingEntity livEntity);
+    public abstract void executeFunctionality(ItemStack containerStack, ItemStack bottleStack, World world, LivingEntity livEntity);
 }

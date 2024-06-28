@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "water_bowl",
+  "ingredients": [
+    {
+      "item": "minecraft:potion"
+    },
+    {
+      "item": "minecraft:potion"
+    },
+    {
+      "item": "variants:spruce_bowl"
+    }
+  ],
+  "result": {
+    "item": "variants:exponential_water_bowl",
+    "nbt": {
+      "bowl": {
+        "name": "variants:spruce_bowl",
+        "texture_id": 1
+      },
+      "behavior": {
+        "id": "variants:apply_mob_effects",
+        "properties": {
+          "effects": [
+            {
+              "id": "minecraft:water_breathing",
+              "duration": 100,
+              "amplifier": 0
+            }
+          ]
+        }
+      }
+    }
+  }
+}
