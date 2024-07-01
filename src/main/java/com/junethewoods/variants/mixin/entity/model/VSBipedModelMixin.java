@@ -1,4 +1,4 @@
-package com.junethewoods.variants.mixin.entity;
+package com.junethewoods.variants.mixin.entity.model;
 
 import com.junethewoods.variants.item.custom.tool.SpyglassItem;
 import net.minecraft.client.renderer.entity.model.AgeableModel;

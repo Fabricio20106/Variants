@@ -7,7 +7,7 @@
     }
   ],
   "effect":{
-    "id": "variants:creeper_powder_poisoning"
+    "id": "variants:explosive_blend_poisoning"
   },
   "providers": [
     {

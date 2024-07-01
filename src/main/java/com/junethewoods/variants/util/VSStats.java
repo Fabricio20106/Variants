@@ -7,12 +7,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 
 public class VSStats {
-    public static final ResourceLocation KNOWLEDGE_BOOKS_USED = register("knowledge_books_used", IStatFormatter.DEFAULT);
+    public static final ResourceLocation KNOWLEDGE_BOOKS_USED = register("knowledge_books_used");
+    public static final ResourceLocation SPAWNERS_PICKED_UP = register("spawners_picked_up");
 
-    private static ResourceLocation register(String name, IStatFormatter statFormatter) {
+    private static ResourceLocation register(String name) {
         ResourceLocation registryName = Variants.resourceLoc(name);
         Registry.register(Registry.CUSTOM_STAT, name, registryName);
-        Stats.CUSTOM.get(registryName, statFormatter);
+        Stats.CUSTOM.get(registryName, IStatFormatter.DEFAULT);
         return registryName;
     }
 

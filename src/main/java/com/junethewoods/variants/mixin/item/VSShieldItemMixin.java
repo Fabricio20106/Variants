@@ -28,9 +28,9 @@ public class VSShieldItemMixin extends Item {
     }
 
     @Override
-    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchamentment) {
-        return VSConfigs.COMMON_CONFIGS.enchantableShields.get() ? super.canApplyAtEnchantingTable(stack, enchamentment) || enchamentment == Enchantments.UNBREAKING :
-                super.canApplyAtEnchantingTable(stack, enchamentment);
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) { // ah yes, enchamentment (June 30/6/24)
+        return VSConfigs.COMMON_CONFIGS.enchantableShields.get() ? super.canApplyAtEnchantingTable(stack, enchantment) || enchantment == Enchantments.UNBREAKING :
+                super.canApplyAtEnchantingTable(stack, enchantment);
     }
 
     @Override

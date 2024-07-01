@@ -133,6 +133,8 @@ public class VSTags {
         public static final ITag.INamedTag<Block> BOOKSHELVES = mod("bookshelves");
         public static final ITag.INamedTag<Block> CAULDRONS = mod("cauldrons");
         public static final ITag.INamedTag<Block> BEACONS = mod("beacons");
+        public static final ITag.INamedTag<Block> SPAWNERS = mod("spawners");
+        public static final ITag.INamedTag<Block> SPAWNER_MINECART_CANNOT_REPLACE = mod("spawner_minecart_cannot_replace");
         public static final ITag.INamedTag<Block> NETHER_WART_PLACEABLE_ON = mod("nether_wart_plantable_on");
         public static final ITag.INamedTag<Block> ENDER_WART_PLANTABLE_ON = mod("ender_wart_plantable_on");
         public static final ITag.INamedTag<Block> GOLDEN_CARROTS_PLANTABLE_ON = mod("golden_carrots_plantable_on");

@@ -3,13 +3,14 @@
   "promos": {
     "1.20.2-latest": "1.20.2-3.0.15",
     "1.20.2-recommended": "1.20.2-3.0.15",
-    "1.16.5-latest": "1.16.5-1.7.0-pre5",
-    "1.16.5-recommended": "1.16.5-1.7.0-pre5"
+    "1.16.5-latest": "1.16.5-1.7.0-rc1",
+    "1.16.5-recommended": "1.16.5-1.7.0-rc1"
   },
   "1.20.2": {
     "1.20.2-3.0.15": "Updated to NeoForge, Chest Boats & Broken Features"
   },
   "1.16.5": {
+    "1.16.5-1.7.0-rc1": "Fixed Spyglasses, Armor Swapping & Spawner Pickup with Minecarts",
     "1.16.5-1.7.0-pre5": "Complete Overhaul of Stew Behaviors & Exponential Stews & /setbehavior Command",
     "1.16.5-1.7.0-pre4": "Moog City 1 & Downgrade Gradle Workspace, Stew Behavior & Poisoning Type Registries & Debug Arrows",
     "1.16.5-1.7.0-pre3": "[BROKEN] Farmland, Updated Map Colors & Biome Reports Data Generator",

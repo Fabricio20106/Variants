@@ -1,0 +1,6 @@
+{
+  "parent": "variants:item/template_spyglass_in_hand",
+  "textures": {
+    "spyglass": "variants:item/netherite_spyglass_model"
+  }
+}

@@ -42,10 +42,8 @@ public class VSFireworkRocketItemMixin extends Item {
             CompoundNBT fireworksTag = stack.getTagElement("Fireworks");
 
             if (fireworksTag == null) {
-                TranslationTextComponent unknownFlightDuration = new TranslationTextComponent("tooltip.variants.firework_rocket.flight_duration.unknown");
-                tooltip.add(new TranslationTextComponent("tooltip.variants.firework_rocket.flight_duration", unknownFlightDuration).withStyle(TextFormatting.GRAY));
-            }
-            if (fireworksTag != null) {
+                tooltip.add(new TranslationTextComponent("tooltip.variants.firework_rocket.flight_duration", new TranslationTextComponent("tooltip.variants.firework_rocket.flight_duration.unknown").withStyle(TextFormatting.DARK_GRAY)).withStyle(TextFormatting.GRAY));
+            } else {
                 if (fireworksTag.contains("Flight", NBTUtils.WILDCARD)) {
                     TextFormatting flightDurationColor = TextFormatting.DARK_RED;
                     if (fireworksTag.getByte("Flight") == 2) flightDurationColor = TextFormatting.GOLD;

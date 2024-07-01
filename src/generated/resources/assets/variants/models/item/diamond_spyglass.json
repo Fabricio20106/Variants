@@ -1,6 +1,15 @@
 {
-  "parent": "variants:item/template_spyglass",
-  "textures": {
-    "spyglass": "variants:item/diamond_spyglass"
+  "parent": "minecraft:item/generated",
+  "loader": "forge:separate-perspective",
+  "base": {
+    "parent": "variants:item/diamond_spyglass_in_hand"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "variants:item/diamond_spyglass_inventory"
+    },
+    "ground": {
+      "parent": "variants:item/diamond_spyglass_inventory"
+    }
   }
 }

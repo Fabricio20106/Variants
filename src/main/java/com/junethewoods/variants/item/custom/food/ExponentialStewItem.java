@@ -178,6 +178,7 @@ public class ExponentialStewItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
+        super.appendHoverText(stack, world, tooltip, flag);
         CompoundNBT bowlTypeTag = stack.getOrCreateTagElement("bowl");
         ResourceLocation containerItem = new ResourceLocation(bowlTypeTag.getString("name"));
 
@@ -194,6 +195,5 @@ public class ExponentialStewItem extends Item {
             tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".exponential_stew.behavior",
                     getBehaviorTranslation(stack)).withStyle(TextFormatting.GRAY));
         }
-        super.appendHoverText(stack, world, tooltip, flag);
     }
 }

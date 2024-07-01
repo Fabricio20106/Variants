@@ -18,7 +18,6 @@ import com.junethewoods.variants.sound.VSSounds;
 import com.junethewoods.variants.util.tab.VSBlockTab;
 import com.junethewoods.variants.util.tab.VSTab;
 import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
-import net.minecraft.entity.item.minecart.AbstractMinecartEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
@@ -189,7 +188,7 @@ public class VSItems {
     public static final RegistryObject<Item> BLACK_SHULKER_SHELL = ITEMS.register("black_shulker_shell", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> SHULKER_SPECTRUM_ICON = ITEMS.register("shulker_spectrum_icon", () -> new Item(new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
     public static final RegistryObject<Item> MUSIC_DISC_DOG = ITEMS.register("music_disc_dog", () -> new MusicDiscItem(2, VSSounds.MUSIC_DISC_DOG, new Item.Properties().rarity(Rarity.RARE).stacksTo(1).tab(VSTab.TAB)));
-    public static final RegistryObject<Item> SPAWNER_MINECART = ITEMS.register("spawner_minecart", () -> new MinecartItem(AbstractMinecartEntity.Type.SPAWNER, new Item.Properties().stacksTo(1).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> SPAWNER_MINECART = ITEMS.register("spawner_minecart", () -> new SpawnerMinecartItem(new Item.Properties().stacksTo(1).tab(VSTab.TAB)));
     public static final RegistryObject<Item> FISH_SPAWN_EGG = ITEMS.register("old_cod_spawn_egg", () -> new ForgeSpawnEggItem(VSEntities.FISH, 0x6B9F93, 0xADBEDB, new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> FISH_BUCKET = ITEMS.register("old_cod_bucket", () -> new VSFishBucketItem(VSEntities.FISH, () -> Fluids.WATER, new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).tab(VSTab.TAB)));
     public static final RegistryObject<Item> SOUL_LAVA_BUCKET = ITEMS.register("soul_lava_bucket", () -> new SoulLavaBucketItem(new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).tab(VSTab.TAB)));

@@ -1,15 +1,17 @@
 package com.junethewoods.variants.data.models;
 
 import com.junethewoods.variants.Variants;
+import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.loaders.SeparatePerspectiveModelBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public abstract class VSItemModelModels extends ItemModelProvider {
     private final ModelFile generated = getExistingFile(mcLoc("item/generated"));
-    private final ModelFile spyglass = getExistingFile(modLoc("item/template_spyglass"));
+    private final ModelFile spyglass = getExistingFile(modLoc("item/template_spyglass_in_hand"));
 
     public VSItemModelModels(DataGenerator generator, String modID, ExistingFileHelper fileHelper) {
         super(generator, modID, fileHelper);
@@ -84,6 +86,11 @@ public abstract class VSItemModelModels extends ItemModelProvider {
     }
 
     public void spyglass(String name) {
-        getBuilder(name).parent(this.spyglass).texture("spyglass", "item/" + name);
+        getBuilder(name + "_inventory").parent(this.generated).texture("layer0", "item/" + name);
+        getBuilder(name + "_in_hand").parent(this.spyglass).texture("spyglass", "item/" + name + "_model");
+
+        withExistingParent(name, this.generated.getLocation()).customLoader(SeparatePerspectiveModelBuilder::begin).base((nested()).parent(getExistingFile(modLoc("item/" + name + "_in_hand"))))
+                .perspective(ItemCameraTransforms.TransformType.GUI, (this.nested()).parent(getExistingFile(modLoc("item/" + name + "_inventory"))))
+                .perspective(ItemCameraTransforms.TransformType.GROUND, (this.nested()).parent(getExistingFile(modLoc("item/" + name + "_inventory")))).end();
     }
 }

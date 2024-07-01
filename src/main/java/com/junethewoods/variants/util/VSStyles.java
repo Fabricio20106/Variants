@@ -12,6 +12,6 @@ public class VSStyles {
     public static final Style EXPERIENCE = Style.EMPTY.withColor(Color.fromRgb(8453920));
 
     public static Style getFromTextColor(DyeColor dyeColor) {
-        return Style.EMPTY.withColor(Color.fromRgb(dyeColor.getTextColor()));
+        return Style.EMPTY.withColor(Color.fromRgb(dyeColor.getColorValue()));
     }
 }

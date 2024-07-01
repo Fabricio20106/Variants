@@ -80,11 +80,11 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
+        super.appendHoverText(stack, world, tooltip, flag);
         if (stack.getTag() != null && stack.getTag().getInt("armor_design") > 0 && NBTUtils.shouldNotHideTooltip("hide_armor_design", stack)) {
             String translation = "tooltip." + Variants.MOD_ID + ".wool_armor_design";
             tooltip.add(new TranslationTextComponent(translation, new TranslationTextComponent(translation + "." + stack.getTag().getInt("armor_design"))).withStyle(TextFormatting.GRAY));
         }
-        super.appendHoverText(stack, world, tooltip, flag);
     }
 
     @Override

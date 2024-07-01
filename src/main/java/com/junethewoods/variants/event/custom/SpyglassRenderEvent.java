@@ -1,6 +1,7 @@
 package com.junethewoods.variants.event.custom;
 
 import com.junethewoods.variants.Variants;
+import com.junethewoods.variants.config.VSConfigs;
 import com.junethewoods.variants.item.custom.tool.SpyglassItem;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.GameSettings;
@@ -24,7 +25,7 @@ import net.minecraftforge.fml.common.Mod;
 public class SpyglassRenderEvent {
     private static final ResourceLocation SPYGLASS_SCOPE = Variants.resourceLoc("textures/misc/spyglass_scope.png");
     private static final Minecraft INSTANCE = Minecraft.getInstance();
-    private static final double DEFAULT_LEVEL = 5;
+    private static final double DEFAULT_ZOOM_LEVEL = VSConfigs.COMMON_CONFIGS.defaultSpyglassZoomLevel.get();
     private static float SPYGLASS_SCALE;
     private static Double currentLevel;
     private static Double defaultMouseSensitivity;
@@ -113,11 +114,11 @@ public class SpyglassRenderEvent {
     public static double changeFOV(PlayerEntity player, double fov) {
         GameSettings options = Minecraft.getInstance().options;
         if (currentLevel == null) {
-            currentLevel = DEFAULT_LEVEL;
+            currentLevel = DEFAULT_ZOOM_LEVEL;
         }
 
         if (!SpyglassItem.isUsingSpyglass(player)) {
-            currentLevel = DEFAULT_LEVEL;
+            currentLevel = DEFAULT_ZOOM_LEVEL;
             if (defaultMouseSensitivity != null) {
                 options.sensitivity = defaultMouseSensitivity;
                 defaultMouseSensitivity = null;

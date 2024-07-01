@@ -103,7 +103,9 @@ public class StylisedPotItem extends DrinkableContainerItem {
 
     @Override
     public void appendHoverText(ItemStack potStack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
+        super.appendHoverText(potStack, world, tooltip, flag);
         PoisoningType type = getTypeFromNBT(potStack);
+
         if (this.compatMod != null && NBTUtils.shouldNotHideTooltip("hide_compat_mod", potStack)) {
             tooltip.add(new TranslationTextComponent("tooltip.variants.compat_item_from", this.compatMod).withStyle(TextFormatting.GRAY).withStyle(TextFormatting.ITALIC));
         }
@@ -121,7 +123,6 @@ public class StylisedPotItem extends DrinkableContainerItem {
                     type.getDescriptionId()).withStyle(Style.EMPTY.withColor(Color.fromRgb(type.getPoisoningEffect().get().getColor()))))
                     .withStyle(TextFormatting.GRAY));
         }
-        super.appendHoverText(potStack, world, tooltip, flag);
     }
 
     @Override

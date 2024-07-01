@@ -23,7 +23,7 @@ public class CompatBlockItem extends BlockItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        if (NBTUtils.shouldNotHideTooltip("hide_compat_mod", stack)) tooltip.add(new TranslationTextComponent("tooltip.variants.compat_block_from", compatMod).withStyle(TextFormatting.GRAY).withStyle(TextFormatting.ITALIC));
         super.appendHoverText(stack, world, tooltip, flag);
+        if (NBTUtils.shouldNotHideTooltip("hide_compat_mod", stack)) tooltip.add(new TranslationTextComponent("tooltip.variants.compat_block_from", compatMod).withStyle(TextFormatting.GRAY).withStyle(TextFormatting.ITALIC));
     }
 }

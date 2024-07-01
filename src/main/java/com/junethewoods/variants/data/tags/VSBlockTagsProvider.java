@@ -53,6 +53,9 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSTags.Blocks.ENDERWOOD_STEMS).add(VSBlocks.ENDERWOOD_STEM.get()).add(VSBlocks.ENDERWOOD_HYPHAE.get()).add(VSBlocks.STRIPPED_ENDERWOOD_STEM.get()).add(VSBlocks.STRIPPED_ENDERWOOD_HYPHAE.get());
         this.tag(VSTags.Blocks.CAULDRONS).add(Blocks.CAULDRON).add(VSBlocks.GOLDEN_CAULDRON.get()).add(VSBlocks.QUARTZ_CAULDRON.get());
         this.tag(VSTags.Blocks.BEACONS).add(Blocks.BEACON).add(VSBlocks.GOLDEN_BEACON.get()).add(VSBlocks.QUARTZ_BEACON.get());
+        this.tag(VSTags.Blocks.SPAWNERS).add(Blocks.SPAWNER);
+        this.tag(VSTags.Blocks.SPAWNER_MINECART_CANNOT_REPLACE).add(Blocks.BEDROCK, Blocks.COMMAND_BLOCK, Blocks.CHAIN_COMMAND_BLOCK, Blocks.REPEATING_COMMAND_BLOCK, Blocks.STRUCTURE_BLOCK, Blocks.JIGSAW, Blocks.BARRIER,
+                Blocks.MOVING_PISTON, Blocks.END_PORTAL_FRAME, Blocks.END_PORTAL, Blocks.END_GATEWAY, Blocks.NETHER_PORTAL, Blocks.SPAWNER);
         this.tag(VSTags.Blocks.NETHER_WART_PLACEABLE_ON).add(VSBlocks.CRIMSON_FARMLAND.get()).add(VSBlocks.WARPED_FARMLAND.get()).add(Blocks.SOUL_SAND).add(Blocks.SOUL_SOIL);
         this.tag(VSTags.Blocks.ENDER_WART_PLANTABLE_ON).addTag(VSTags.Blocks.HAS_ENDER_NYLIUM).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_FARMLAND.get()).add(Blocks.OBSIDIAN);
         this.tag(VSTags.Blocks.GOLDEN_CARROTS_PLANTABLE_ON).addTag(VSTags.Blocks.FARMLAND);

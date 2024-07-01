@@ -4,8 +4,12 @@ import com.google.common.collect.Maps;
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.item.custom.armor.WoolArmorItem;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
 import org.apache.logging.log4j.LogManager;
@@ -13,6 +17,27 @@ import org.apache.logging.log4j.LogManager;
 import static net.minecraft.item.ItemModelsProperties.register;
 
 public class VSUtils {
+    // Puts an item in the player's hands without playing the "Gear equips" sound.
+    public static void setItemInHand(PlayerEntity player, Hand hand, ItemStack stack) {
+        if (hand == Hand.MAIN_HAND) {
+            setItemSlot(player, EquipmentSlotType.MAINHAND, stack);
+        } else {
+            if (hand != Hand.OFF_HAND) throw new IllegalArgumentException("Invalid hand: " + hand);
+            setItemSlot(player, EquipmentSlotType.OFFHAND, stack);
+        }
+    }
+
+    // Puts an item any of the player's slots without playing the "Gear equips" sound.
+    public static void setItemSlot(PlayerEntity player, EquipmentSlotType slot, ItemStack stack) {
+        if (slot == EquipmentSlotType.MAINHAND) {
+            player.inventory.items.set(player.inventory.selected, stack);
+        } else if (slot == EquipmentSlotType.OFFHAND) {
+            player.inventory.offhand.set(0, stack);
+        } else if (slot.getType() == EquipmentSlotType.Group.ARMOR) {
+            player.inventory.armor.set(slot.getIndex(), stack);
+        }
+    }
+
     // Can be used to add new wool armor (currently only sweater) colors.
     public static void woolArmorColor(String colorName, int colorCode) {
         WoolArmorItem.COLOR_NAME_TO_CODE = Maps.newHashMap(WoolArmorItem.COLOR_NAME_TO_CODE);
