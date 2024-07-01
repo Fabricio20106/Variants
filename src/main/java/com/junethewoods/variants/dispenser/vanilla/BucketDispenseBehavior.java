@@ -1,4 +1,4 @@
-package com.junethewoods.variants.block.dispenser;
+package com.junethewoods.variants.dispenser.vanilla;
 
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.dispenser.DefaultDispenseItemBehavior;

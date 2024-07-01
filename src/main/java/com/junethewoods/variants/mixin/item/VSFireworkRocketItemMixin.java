@@ -54,7 +54,7 @@ public class VSFireworkRocketItemMixin extends Item {
 
                     ListNBT explosions = fireworksTag.getList("Explosions", NBTUtils.COMPOUND);
                     if (!explosions.isEmpty()) {
-                        tooltip.add(new StringTextComponent(""));
+                        tooltip.add(new StringTextComponent(" "));
                         tooltip.add(new TranslationTextComponent("tooltip.variants.firework_rocket.explosions").withStyle(VSStyles.FIREWORK_TITLES));
 
                         for (int i = 0; i < explosions.size(); ++i) {

@@ -1,6 +1,6 @@
 package com.junethewoods.variants.item.custom.dispenser;
 
-import com.junethewoods.variants.block.dispenser.BucketDispenseBehavior;
+import com.junethewoods.variants.dispenser.vanilla.BucketDispenseBehavior;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.EntityType;
 import net.minecraft.fluid.Fluid;

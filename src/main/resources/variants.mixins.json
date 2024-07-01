@@ -32,6 +32,7 @@
     "item.nbt.VSBannerItemMixin",
     "item.nbt.VSCrossbowItemMixin",
     "item.nbt.VSFilledMapItem",
+    "item.nbt.VSFishBucketItemMixin",
     "item.nbt.VSLingeringPotionItemMixin",
     "item.nbt.VSPotionItemMixin",
     "item.nbt.VSTippedArrowItemMixin",

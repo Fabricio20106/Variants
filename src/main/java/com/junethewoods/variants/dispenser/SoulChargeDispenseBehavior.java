@@ -1,4 +1,4 @@
-package com.junethewoods.variants.block.dispenser;
+package com.junethewoods.variants.dispenser;
 
 import com.junethewoods.variants.entity.custom.SmallSoulFireballEntity;
 import net.minecraft.block.DispenserBlock;

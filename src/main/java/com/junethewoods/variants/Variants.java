@@ -134,6 +134,7 @@ public class Variants {
         VSUtils.makeShield(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
         VSUtils.makeBow(VSWeaponry.DEBUG_BOW.get());
         VSUtils.addArmorDesigns(VSWeaponry.WOOL_SWEATER.get());
+        VSUtils.addSpawnerMinecartMobs(VSItems.SPAWNER_MINECART.get());
         setRenderTypesForBlocks();
 
         Atlases.addWoodType(VSWoodTypes.PAINTING);

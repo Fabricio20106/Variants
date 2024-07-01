@@ -1,6 +1,6 @@
 package com.junethewoods.variants.item.custom.tool;
 
-import com.junethewoods.variants.block.dispenser.DebugArrowDispenseBehavior;
+import com.junethewoods.variants.dispenser.DebugArrowDispenseBehavior;
 import com.junethewoods.variants.entity.custom.DebugArrowEntity;
 import com.junethewoods.variants.item.VSWeaponry;
 import net.minecraft.block.DispenserBlock;

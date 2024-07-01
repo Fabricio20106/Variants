@@ -1,8 +1,10 @@
 package com.junethewoods.variants.item.custom;
 
 import com.junethewoods.variants.config.VSConfigs;
+import com.junethewoods.variants.dispenser.SpawnerMinecartDispenseBehavior;
 import net.minecraft.block.AbstractRailBlock;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.minecart.AbstractMinecartEntity;
 import net.minecraft.entity.item.minecart.SpawnerMinecartEntity;
@@ -25,6 +27,7 @@ import javax.annotation.Nullable;
 public class SpawnerMinecartItem extends MinecartItem {
     public SpawnerMinecartItem(Properties properties) {
         super(AbstractMinecartEntity.Type.SPAWNER, properties);
+        DispenserBlock.registerBehavior(this, new SpawnerMinecartDispenseBehavior());
     }
 
     @Override

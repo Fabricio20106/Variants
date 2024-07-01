@@ -1,13 +1,17 @@
 package com.junethewoods.variants.data.models;
 
+import com.google.common.collect.ImmutableMap;
 import com.junethewoods.variants.Variants;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nonnull;
+import java.util.Map;
 
 public class VSItemModelProvider extends VSItemModelModels {
+    public static Map<String, Integer> DEFAULT_MOB_MAP = new ImmutableMap.Builder<String, Integer>().put("zombie", 1).put("skeleton", 2).put("spider", 3).put("cave_spider", 4).put("silverfish", 5).put("blaze", 6).put("magma_cube", 7).build();
+
     public VSItemModelProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
         super(generator, Variants.MOD_ID, fileHelper);
     }
@@ -150,7 +154,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(generated, "black_shulker_shell");
         standard(generated, "shulker_spectrum_icon");
         standard(generated, "music_disc_dog");
-        standard(generated, "spawner_minecart");
+        spawnerMinecart("spawner_minecart", DEFAULT_MOB_MAP);
         standard(generated, "fungi_stew");
         standard(generated, "end_fungi_stew");
         standard(generated, "enchanted_knowledge_book");

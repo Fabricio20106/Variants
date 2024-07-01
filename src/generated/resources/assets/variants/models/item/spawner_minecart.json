@@ -2,5 +2,49 @@
   "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "variants:item/spawner_minecart"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "variants:mob_id": 1.0
+      },
+      "model": "variants:item/spawner_minecart_zombie"
+    },
+    {
+      "predicate": {
+        "variants:mob_id": 2.0
+      },
+      "model": "variants:item/spawner_minecart_skeleton"
+    },
+    {
+      "predicate": {
+        "variants:mob_id": 3.0
+      },
+      "model": "variants:item/spawner_minecart_spider"
+    },
+    {
+      "predicate": {
+        "variants:mob_id": 4.0
+      },
+      "model": "variants:item/spawner_minecart_cave_spider"
+    },
+    {
+      "predicate": {
+        "variants:mob_id": 5.0
+      },
+      "model": "variants:item/spawner_minecart_silverfish"
+    },
+    {
+      "predicate": {
+        "variants:mob_id": 6.0
+      },
+      "model": "variants:item/spawner_minecart_blaze"
+    },
+    {
+      "predicate": {
+        "variants:mob_id": 7.0
+      },
+      "model": "variants:item/spawner_minecart_magma_cube"
+    }
+  ]
 }

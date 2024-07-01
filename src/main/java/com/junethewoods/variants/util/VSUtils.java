@@ -71,8 +71,29 @@ public class VSUtils {
     public static void addArmorDesigns(Item sweater) {
         register(sweater, Variants.resourceLoc("design"), (stack, world, livEntity) -> {
             CompoundNBT tag = stack.getTag();
-            if (tag != null && tag.contains("armor_design")) {
-                return tag.getInt("armor_design");
+            if (tag != null && tag.contains("armor_design", NBTUtils.INTEGER)) return tag.getInt("armor_design");
+            return 0;
+        });
+    }
+
+    // Add properties for mob ids for spawner minecarts.
+    public static void addSpawnerMinecartMobs(Item spawnerMinecart) {
+        register(spawnerMinecart, Variants.resourceLoc("mob_id"), (stack, world, livEntity) -> {
+            CompoundNBT spawnData = stack.getTagElement("spawn_data");
+            if (spawnData != null && spawnData.contains("SpawnData", NBTUtils.COMPOUND)) {
+                CompoundNBT subSpawnData = spawnData.getCompound("SpawnData");
+                if (subSpawnData.contains("id", NBTUtils.STRING)) {
+                    switch (subSpawnData.getString("id")) {
+                        case "minecraft:zombie": return 1;
+                        case "minecraft:skeleton": return 2;
+                        case "minecraft:spider": return 3;
+                        case "minecraft:cave_spider": return 4;
+                        case "minecraft:silverfish": return 5;
+                        case "minecraft:blaze": return 6;
+                        case "minecraft:magma_cube": return 7;
+                        default: return 0;
+                    }
+                }
             }
             return 0;
         });
@@ -81,10 +102,8 @@ public class VSUtils {
     // Adds properties for exponential stews.
     public static void makeExpoStew(Item expoStew) {
         register(expoStew, Variants.resourceLoc("texture_id"), (stack, world, livEntity) -> {
-            CompoundNBT tag = stack.getOrCreateTagElement("bowl");
-            if (tag.contains("texture_id")) {
-                return tag.getInt("texture_id");
-            }
+            CompoundNBT bowlTag = stack.getTagElement("bowl");
+            if (bowlTag != null && bowlTag.contains("texture_id", NBTUtils.INTEGER)) return bowlTag.getInt("texture_id");
             return 0;
         });
     }

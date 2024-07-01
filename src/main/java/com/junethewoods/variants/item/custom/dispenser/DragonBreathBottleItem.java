@@ -1,6 +1,6 @@
 package com.junethewoods.variants.item.custom.dispenser;
 
-import com.junethewoods.variants.block.dispenser.DragonBreathBottleDispenseBehavior;
+import com.junethewoods.variants.dispenser.DragonBreathBottleDispenseBehavior;
 import com.junethewoods.variants.entity.custom.DragonBreathBottleEntity;
 import com.junethewoods.variants.sound.VSSounds;
 import net.minecraft.block.DispenserBlock;

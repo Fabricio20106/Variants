@@ -3,13 +3,14 @@
   "promos": {
     "1.20.2-latest": "1.20.2-3.0.15",
     "1.20.2-recommended": "1.20.2-3.0.15",
-    "1.16.5-latest": "1.16.5-1.7.0-rc1",
-    "1.16.5-recommended": "1.16.5-1.7.0-rc1"
+    "1.16.5-latest": "1.16.5-1.7.0-rc2",
+    "1.16.5-recommended": "1.16.5-1.7.0-rc2"
   },
   "1.20.2": {
     "1.20.2-3.0.15": "Updated to NeoForge, Chest Boats & Broken Features"
   },
   "1.16.5": {
+    "1.16.5-1.7.0-rc2": "Visual Spawner Minecarts & Moved Dispense Behaviors",
     "1.16.5-1.7.0-rc1": "Fixed Spyglasses, Armor Swapping & Spawner Pickup with Minecarts",
     "1.16.5-1.7.0-pre5": "Complete Overhaul of Stew Behaviors & Exponential Stews & /setbehavior Command",
     "1.16.5-1.7.0-pre4": "Moog City 1 & Downgrade Gradle Workspace, Stew Behavior & Poisoning Type Registries & Debug Arrows",
@@ -43,7 +44,6 @@
     "1.16.5-1.6.6": "[BROKEN?] Updated Firework Rocket/Star Descriptions & Enchantable Items",
     "1.16.5-1.6.5": "Elder Prismarine Blocks & New Block Tags",
     "1.16.5-1.6.4": "Copper Shears, Painting Sapling, Waterloggable Golden Cauldron, Populated Wool Sweaters, Brazilian Portuguese Translation & Renames + New Tags",
-    "1.16.5-1.6.3": "Non-Existent",
     "1.16.5-1.6.2": "Many New Blocks & Items, Block Entities, Bottle Classes & New Tags (+ Glow Berry Bush Loot Table)",
     "1.16.5-1.6.1": "Graham & First Doors, Plain Birch Bookshelf, Shulker Shells & Painting Stick (+ New Tags)",
     "1.16.5-1.6.0": "Initial Port/Total Rewrite, New Tags & Dissolved Compatibility Classes"

@@ -76,6 +76,6 @@ public class VSFireworkStarItemMixin extends Item {
     private static ITextComponent getColorNameVS(int color) {
         DyeColor dyeColor = DyeColor.byFireworkColor(color);
         return dyeColor == null ? new TranslationTextComponent("tooltip.variants.firework_star.custom_color", color).withStyle(TextFormatting.DARK_AQUA).withStyle(TextFormatting.UNDERLINE) : new TranslationTextComponent("tooltip.variants.firework_star.color." + dyeColor.getName())
-                .withStyle(VSStyles.getFromTextColor(dyeColor));
+                .withStyle(VSStyles.getFromBeaconBeamColor(dyeColor));
     }
 }

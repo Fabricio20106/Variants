@@ -1,6 +1,6 @@
 package com.junethewoods.variants.item.custom.dispenser;
 
-import com.junethewoods.variants.block.dispenser.SoulChargeDispenseBehavior;
+import com.junethewoods.variants.dispenser.SoulChargeDispenseBehavior;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.item.FireChargeItem;
 

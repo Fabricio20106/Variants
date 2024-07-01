@@ -11,7 +11,7 @@ public class VSStyles {
     public static final Style GLOWSTONE_DUST = Style.EMPTY.withColor(Color.fromRgb(0xFFBC5E));
     public static final Style EXPERIENCE = Style.EMPTY.withColor(Color.fromRgb(8453920));
 
-    public static Style getFromTextColor(DyeColor dyeColor) {
+    public static Style getFromBeaconBeamColor(DyeColor dyeColor) {
         return Style.EMPTY.withColor(Color.fromRgb(dyeColor.getColorValue()));
     }
 }

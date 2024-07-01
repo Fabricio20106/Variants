@@ -4,10 +4,13 @@ import com.junethewoods.variants.Variants;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.loaders.SeparatePerspectiveModelBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
+
+import java.util.Map;
 
 public abstract class VSItemModelModels extends ItemModelProvider {
     private final ModelFile generated = getExistingFile(mcLoc("item/generated"));
@@ -64,13 +67,15 @@ public abstract class VSItemModelModels extends ItemModelProvider {
         return Variants.resourceLoc("design");
     }
 
+    public ResourceLocation mobID() {
+        return Variants.resourceLoc("mob_id");
+    }
+
     // Methods for making specific items (for example, spyglasses)
     public void expoStew(String name, String stewType) {
         String[] bowls = {"oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "painting", "crimson", "warped", "ender"};
 
-        for (String bowl : bowls) {
-            getBuilder(name + "_" + bowl).parent(this.generated).texture("layer0", modLoc("item/" + bowl + "_bowl")).texture("layer1", modLoc("item/stew_" + stewType));
-        }
+        for (String bowl : bowls) getBuilder(name + "_" + bowl).parent(this.generated).texture("layer0", modLoc("item/" + bowl + "_bowl")).texture("layer1", modLoc("item/stew_" + stewType));
 
         getBuilder(name).parent(this.generated).texture("layer1", modLoc("item/stew_" + stewType))
                 .override().predicate(textureID(), 0).model(getExistingFile(modLoc("item/" + name + "_oak"))).end()
@@ -92,5 +97,12 @@ public abstract class VSItemModelModels extends ItemModelProvider {
         withExistingParent(name, this.generated.getLocation()).customLoader(SeparatePerspectiveModelBuilder::begin).base((nested()).parent(getExistingFile(modLoc("item/" + name + "_in_hand"))))
                 .perspective(ItemCameraTransforms.TransformType.GUI, (this.nested()).parent(getExistingFile(modLoc("item/" + name + "_inventory"))))
                 .perspective(ItemCameraTransforms.TransformType.GROUND, (this.nested()).parent(getExistingFile(modLoc("item/" + name + "_inventory")))).end();
+    }
+
+    public void spawnerMinecart(String name, Map<String, Integer> mobToIDMap) {
+        for (String mob : mobToIDMap.keySet()) getBuilder(name + "_" + mob).parent(this.generated).texture("layer0", modLoc("item/" + name + "_" + mob));
+
+        ItemModelBuilder spawnerMinecart = getBuilder(name).parent(this.generated).texture("layer0", "item/" + name);
+        for (String mob : mobToIDMap.keySet()) spawnerMinecart.override().predicate(mobID(), mobToIDMap.get(mob)).model(getExistingFile(modLoc("item/" + name + "_" + mob))).end();
     }
 }

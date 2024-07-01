@@ -1,5 +1,6 @@
-package com.junethewoods.variants.block.dispenser;
+package com.junethewoods.variants.dispenser;
 
+import com.junethewoods.variants.entity.custom.DragonBreathBottleEntity;
 import net.minecraft.dispenser.IPosition;
 import net.minecraft.dispenser.ProjectileDispenseBehavior;
 import net.minecraft.entity.item.ExperienceBottleEntity;
@@ -8,10 +9,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Util;
 import net.minecraft.world.World;
 
-public class VSExperienceBottleDispenseBehavior extends ProjectileDispenseBehavior {
+public class DragonBreathBottleDispenseBehavior extends ProjectileDispenseBehavior {
     @Override
     protected ProjectileEntity getProjectile(World world, IPosition pos, ItemStack stack) {
-        return Util.make(new ExperienceBottleEntity(world, pos.x(), pos.y(), pos.z()), (bottle) -> bottle.setItem(stack));
+        return Util.make(new DragonBreathBottleEntity(world, pos.x(), pos.y(), pos.z()), (bottle) -> bottle.setItem(stack));
     }
 
     protected float getUncertainty() {

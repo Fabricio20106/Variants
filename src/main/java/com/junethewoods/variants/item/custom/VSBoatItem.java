@@ -1,6 +1,6 @@
 package com.junethewoods.variants.item.custom;
 
-import com.junethewoods.variants.block.dispenser.DispenseVSBoatBehavior;
+import com.junethewoods.variants.dispenser.DispenseVSBoatBehavior;
 import com.junethewoods.variants.entity.custom.VSBoatEntity;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.Entity;
