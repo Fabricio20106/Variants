@@ -36,6 +36,7 @@
     "item.nbt.VSLingeringPotionItemMixin",
     "item.nbt.VSPotionItemMixin",
     "item.nbt.VSTippedArrowItemMixin",
+    "item.nbt.VSWrittenBookItem",
     "loot.VSSetStewEffectMixin",
     "world.VSChorusPlantFeatureMixin",
     "world.VSDimensionTypeMixin"

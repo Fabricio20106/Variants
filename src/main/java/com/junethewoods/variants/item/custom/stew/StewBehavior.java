@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 
 public abstract class StewBehavior extends ForgeRegistryEntry<StewBehavior> {
     @Nullable
-    private String descriptionId;
+    private String descriptionID;
 
     public abstract void executeBehavior(ItemStack stack, World world, LivingEntity livEntity);
 
@@ -38,23 +38,19 @@ public abstract class StewBehavior extends ForgeRegistryEntry<StewBehavior> {
     }
 
     protected String getOrCreateDescriptionId() {
-        if (this.descriptionId == null) this.descriptionId = Util.makeDescriptionId("stew_behavior", VSRegistries.STEW_BEHAVIOR.getKey(this));
-        return this.descriptionId;
+        if (this.descriptionID == null) this.descriptionID = Util.makeDescriptionId("stew_behavior", VSRegistries.STEW_BEHAVIOR.getKey(this));
+        return this.descriptionID;
     }
 
-    public String getDescriptionId() {
+    public String getDescriptionID() {
         return this.getOrCreateDescriptionId();
     }
 
-    public ITextComponent getDisplayName() {
-        return new TranslationTextComponent(this.getDescriptionId());
-    }
-
-    public ITextComponent getDisplayNameForCommand() {
-        IFormattableTextComponent component = TextComponentUtils.wrapInSquareBrackets(new TranslationTextComponent(this.getDescriptionId())).withStyle(TextFormatting.LIGHT_PURPLE);
+    public ITextComponent getCommandDisplayName() {
+        IFormattableTextComponent component = TextComponentUtils.wrapInSquareBrackets(new TranslationTextComponent(this.getDescriptionID())).withStyle(TextFormatting.LIGHT_PURPLE);
         component.withStyle(style -> style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent("")
-                .append(new TranslationTextComponent(this.getDescriptionId()).withStyle(TextFormatting.LIGHT_PURPLE).withStyle(TextFormatting.BOLD)).append("\n")
-                .append(new TranslationTextComponent(this.getDescriptionId() + ".desc").withStyle(TextFormatting.GRAY)))));
+                .append(new TranslationTextComponent(this.getDescriptionID()).withStyle(TextFormatting.LIGHT_PURPLE).withStyle(TextFormatting.BOLD)).append("\n")
+                .append(new TranslationTextComponent(this.getDescriptionID() + ".desc").withStyle(TextFormatting.GRAY)))));
         return component;
     }
 

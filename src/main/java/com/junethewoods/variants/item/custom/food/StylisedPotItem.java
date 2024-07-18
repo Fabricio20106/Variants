@@ -14,6 +14,7 @@ import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Util;
 import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -41,40 +42,40 @@ public class StylisedPotItem extends DrinkableContainerItem {
         this(poisoningType, duration, null, properties);
     }
 
-    @Override
-    public ItemStack getDefaultInstance() {
-        ItemStack potStack = new ItemStack(this);
-        CompoundNBT tag = potStack.getOrCreateTag();
-        CompoundNBT effectTag = new CompoundNBT();
-        tag.putString("poisoning_type", getTypeFromNBT(potStack).getRegistryName().toString());
-        effectTag.putString("id", this.poisoningType.getPoisoningEffect().get().getRegistryName().toString());
-        effectTag.putInt("duration", this.poisoningDuration);
-        tag.put("effect", effectTag);
-        return potStack;
-    }
-
     public boolean hasTypeInNBT(ItemStack potStack) {
-        return potStack.getTag() != null && potStack.getTag().contains("poisoning_type");
+        return potStack.getTag() != null && potStack.getTag().contains("poisoning_type", NBTUtils.STRING);
     }
 
     public boolean hasEffectsInNBT(ItemStack potStack) {
-        return potStack.getTag() != null && potStack.getTag().contains("effect");
+        return potStack.getTag() != null && potStack.getTag().contains("effect", NBTUtils.COMPOUND);
     }
 
     public PoisoningType getTypeFromNBT(ItemStack potStack) {
         if (hasTypeInNBT(potStack)) {
             ResourceLocation type = ResourceLocation.tryParse(potStack.getTag().getString("poisoning_type"));
-            if (VSRegistries.POISONING_TYPE.containsKey(type)) return VSRegistries.POISONING_TYPE.getValue(type);
+            if (type != null && VSRegistries.POISONING_TYPE.containsKey(type)) return VSRegistries.POISONING_TYPE.getValue(type);
         }
         return this.poisoningType;
     }
 
+    public TranslationTextComponent getPoisoningTranslation(ItemStack potStack) {
+        TranslationTextComponent fromConstructor = new TranslationTextComponent("poisoning_type." + this.poisoningType.getTypeRegistry().getRegistryName().getNamespace() + "." + this.poisoningType.getTypeRegistry().getRegistryName().getPath());
+        if (hasTypeInNBT(potStack)) {
+            ResourceLocation poisoningType = ResourceLocation.tryParse(potStack.getTag().getString("poisoning_type"));
+            assert poisoningType != null;
+            if (!potStack.getTag().contains("poisoning_type", NBTUtils.STRING) || potStack.getTag().getString("poisoning_type").isEmpty()) return fromConstructor;
+            return new TranslationTextComponent("poisoning_type." + poisoningType.getNamespace() + "." + poisoningType.getPath());
+        } else {
+            return fromConstructor;
+        }
+    }
+
     @Override
-    public void executeFunctionality(ItemStack containerStack, ItemStack bottleStack, World world, LivingEntity livEntity) {
-        PoisoningType type = getTypeFromNBT(bottleStack);
+    public void executeFunctionality(ItemStack containerStack, ItemStack potStack, World world, LivingEntity livEntity) {
+        PoisoningType type = getTypeFromNBT(potStack);
         this.containerItem = new ItemStack(VSItems.STYLISED_POT.get());
-        if (hasEffectsInNBT(bottleStack)) {
-            addEffectsFromNBT(bottleStack, livEntity);
+        if (hasEffectsInNBT(potStack)) {
+            addEffectsFromNBT(potStack, world, livEntity);
         } else if (type != null && type.getPoisoningEffect() != null) {
             if (!world.isClientSide) {
                 livEntity.addEffect(new EffectInstance(this.poisoningType.getPoisoningEffect().get(), this.poisoningDuration));
@@ -82,22 +83,27 @@ public class StylisedPotItem extends DrinkableContainerItem {
         }
     }
 
-    public void addEffectsFromNBT(ItemStack potStack, LivingEntity livEntity) {
-        CompoundNBT tag = potStack.getOrCreateTagElement("effect");
-        int duration = 160; // Default of 8 seconds.
+    public void addEffectsFromNBT(ItemStack potStack, World world, LivingEntity livEntity) {
+        CompoundNBT effectTag = potStack.getOrCreateTagElement("effect");
+        int duration = 160; // Default of 8 seconds from Suspicious Stew.
         int amplifier = 0;
         boolean ambient = false;
         boolean showParticles = true;
         boolean showIcon = true;
-        if (tag.contains("duration", 3)) duration = tag.getInt("duration");
-        if (tag.contains("amplifier", 3)) amplifier = tag.getInt("amplifier");
-        if (tag.contains("ambient")) ambient = tag.getBoolean("ambient");
-        if (tag.contains("show_particles")) showParticles = tag.getBoolean("show_particles");
-        if (tag.contains("show_icon")) showIcon = tag.getBoolean("show_icon");
+        boolean noCounter = true;
 
-        Effect effect = ForgeRegistries.POTIONS.getValue(ResourceLocation.tryParse(tag.getString("id")));
+        if (effectTag.contains("duration", NBTUtils.INTEGER)) duration = effectTag.getInt("duration");
+        if (effectTag.contains("amplifier", NBTUtils.INTEGER)) amplifier = effectTag.getInt("amplifier");
+        if (effectTag.contains("ambient", NBTUtils.BYTE)) ambient = effectTag.getBoolean("ambient");
+        if (effectTag.contains("show_particles", NBTUtils.BYTE)) showParticles = effectTag.getBoolean("show_particles");
+        if (effectTag.contains("show_icon", NBTUtils.BYTE)) showIcon = effectTag.getBoolean("show_icon");
+        if (effectTag.contains("no_counter", NBTUtils.BYTE)) noCounter = effectTag.getBoolean("no_counter");
+
+        Effect effect = ForgeRegistries.POTIONS.getValue(ResourceLocation.tryParse(effectTag.getString("id")));
         if (effect != null) {
-            livEntity.addEffect(new EffectInstance(effect, duration, amplifier, ambient, showParticles, showIcon));
+            EffectInstance instance = new EffectInstance(effect, duration, amplifier, ambient, showParticles, showIcon);
+            if (world.isClientSide) instance.setNoCounter(noCounter);
+            livEntity.addEffect(instance);
         }
     }
 
@@ -113,15 +119,13 @@ public class StylisedPotItem extends DrinkableContainerItem {
             CompoundNBT effectTag = potStack.getOrCreateTagElement("effect");
             Effect effect = ForgeRegistries.POTIONS.getValue(ResourceLocation.tryParse(effectTag.getString("id")));
             if (effect != null) {
-                tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".stylised_pot.poisoning_or_effect", new
-                        TranslationTextComponent("effect." + effect.getRegistryName().getNamespace() + "." + effect.getRegistryName()
-                        .getPath()).withStyle(Style.EMPTY.withColor(Color.fromRgb(effect.getColor())))).withStyle(TextFormatting.GRAY));
+                tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".stylised_pot.poisoning_or_effect", new TranslationTextComponent(Util.makeDescriptionId("effect", effect.getRegistryName())).withStyle(Style.EMPTY.withColor(
+                        Color.fromRgb(effect.getColor())))).withStyle(TextFormatting.GRAY));
             }
         }
         if (type != null && type.getPoisoningEffect() != null) {
-            tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".stylised_pot.poisoning", new TranslationTextComponent(
-                    type.getDescriptionId()).withStyle(Style.EMPTY.withColor(Color.fromRgb(type.getPoisoningEffect().get().getColor()))))
-                    .withStyle(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".stylised_pot.poisoning", getPoisoningTranslation(potStack).withStyle(Style.EMPTY.withColor(Color.fromRgb(type.getPoisoningEffect().get().getColor())))).withStyle(
+                    TextFormatting.GRAY));
         }
     }
 

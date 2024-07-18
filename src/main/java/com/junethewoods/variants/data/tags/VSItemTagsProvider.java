@@ -152,6 +152,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSTags.Items.BOOKS).addTag(ItemTags.LECTERN_BOOKS).add(Items.BOOK).add(Items.ENCHANTED_BOOK).add(Items.KNOWLEDGE_BOOK).add(VSItems.ENCHANTED_KNOWLEDGE_BOOK.get())
                 .addOptional(backMath("regular_molds_book")).addOptional(backMath("advanced_molds_book")).addOptional(new ResourceLocation("ftbquests:book"));
         this.tag(VSTags.Items.BOOKSHELVES).add(Items.BOOKSHELF).add(VSItems.ENDERWOOD_BOOKSHELF.get()).add(VSItems.PLAIN_BIRCH_BOOKSHELF.get());
+        this.tag(VSTags.Items.BOWS).add(VSWeaponry.DEBUG_BOW.get());
         this.tag(VSTags.Items.SHIELDS).add(Items.SHIELD).add(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get()).addOptional(backMath("devil_shield")).addOptional(backMath("angelic_shield")).addOptional(backMath("mid_term_shield"))
                 .addOptional(backMath("aljameed_shield")).addOptional(backMath("moonering_shield"));
         this.tag(VSTags.Items.CATLIKE_TAME_ITEMS).add(Items.COD).add(Items.SALMON).add(Items.TROPICAL_FISH).add(VSItems.RAW_FISH.get());

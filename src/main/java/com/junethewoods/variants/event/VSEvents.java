@@ -1,8 +1,10 @@
 package com.junethewoods.variants.event;
 
 import com.junethewoods.variants.Variants;
-import com.junethewoods.variants.command.SetBehaviorCommand;
+import com.junethewoods.variants.command.DamageCommand;
+import com.junethewoods.variants.command.StewBehaviorCommand;
 import com.junethewoods.variants.config.VSConfigs;
+import com.junethewoods.variants.effect.source.manager.DamageSourceManager;
 import com.junethewoods.variants.entity.VSEntities;
 import com.junethewoods.variants.item.VSItems;
 import com.junethewoods.variants.item.VSWeaponry;
@@ -23,6 +25,7 @@ import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.common.world.MobSpawnInfoBuilder;
+import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
@@ -38,7 +41,13 @@ import java.util.Random;
 public class VSEvents {
     @SubscribeEvent
     public static void onCommandsRegister(RegisterCommandsEvent event) {
-        SetBehaviorCommand.register(event.getDispatcher());
+        StewBehaviorCommand.register(event.getDispatcher());
+        DamageCommand.register(event.getDispatcher());
+    }
+
+    @SubscribeEvent
+    public static void onResourceReload(AddReloadListenerEvent event) {
+        event.addListener(new DamageSourceManager());
     }
 
     @SubscribeEvent(priority = EventPriority.HIGH)

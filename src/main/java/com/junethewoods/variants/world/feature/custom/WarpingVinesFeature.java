@@ -5,7 +5,6 @@ import com.junethewoods.variants.util.VSTags;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.AbstractTopPlantBlock;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -17,10 +16,10 @@ import net.minecraft.world.gen.feature.NoFeatureConfig;
 
 import java.util.Random;
 
-public class WarpingVineFeature extends Feature<NoFeatureConfig> {
+public class WarpingVinesFeature extends Feature<NoFeatureConfig> {
     private static final Direction[] DIRECTIONS = Direction.values();
 
-    public WarpingVineFeature(Codec<NoFeatureConfig> codec) {
+    public WarpingVinesFeature(Codec<NoFeatureConfig> codec) {
         super(codec);
     }
 
@@ -44,15 +43,12 @@ public class WarpingVineFeature extends Feature<NoFeatureConfig> {
         BlockPos.Mutable mutablePos = new BlockPos.Mutable();
         BlockPos.Mutable mutablePos1 = new BlockPos.Mutable();
 
-        for(int i = 0; i < 200; ++i) {
+        for (int i = 0; i < 200; ++i) {
             mutablePos.setWithOffset(pos, rand.nextInt(6) - rand.nextInt(6), rand.nextInt(2) - rand.nextInt(5), rand.nextInt(6) - rand.nextInt(6));
             if (world.isEmptyBlock(mutablePos)) {
                 int i2 = 0;
-                Direction[] directions = DIRECTIONS;
-                int directionsLength = directions.length;
 
-                for(int i1 = 0; i1 < directionsLength; ++i1) {
-                    Direction direction = directions[i1];
+                for (Direction direction : DIRECTIONS) {
                     BlockState state = world.getBlockState(mutablePos1.setWithOffset(mutablePos, direction));
                     if (state.is(VSTags.Blocks.WARPING_VINES_CAN_PLACE_ON)) {
                         ++i2;
@@ -73,7 +69,7 @@ public class WarpingVineFeature extends Feature<NoFeatureConfig> {
     private void placeRoofWarpingVines(IWorld world, Random rand, BlockPos pos) {
         BlockPos.Mutable mutablePos = new BlockPos.Mutable();
 
-        for(int i = 0; i < 100; ++i) {
+        for (int i = 0; i < 100; ++i) {
             mutablePos.setWithOffset(pos, rand.nextInt(8) - rand.nextInt(8), rand.nextInt(2) - rand.nextInt(7), rand.nextInt(8) - rand.nextInt(8));
             if (world.isEmptyBlock(mutablePos)) {
                 BlockState aboveState = world.getBlockState(mutablePos.above());
@@ -94,7 +90,7 @@ public class WarpingVineFeature extends Feature<NoFeatureConfig> {
     }
 
     public static void placeWarpingVinesColumn(IWorld world, Random rand, BlockPos.Mutable mutablePos, int range, int min, int max) {
-        for(int i = 0; i <= range; ++i) {
+        for (int i = 0; i <= range; ++i) {
             if (world.isEmptyBlock(mutablePos)) {
                 if (i == range || !world.isEmptyBlock(mutablePos.below())) {
                     world.setBlock(mutablePos, VSBlocks.WARPING_VINES.get().defaultBlockState().setValue(AbstractTopPlantBlock.AGE, MathHelper.nextInt(rand, min, max)), 2);

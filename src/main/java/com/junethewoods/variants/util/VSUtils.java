@@ -2,6 +2,7 @@ package com.junethewoods.variants.util;
 
 import com.google.common.collect.Maps;
 import com.junethewoods.variants.Variants;
+import com.junethewoods.variants.crafting.custom.WoolArmorDyeingRecipe;
 import com.junethewoods.variants.item.custom.armor.WoolArmorItem;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,6 +13,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.fml.ModList;
 import org.apache.logging.log4j.LogManager;
 
 import static net.minecraft.item.ItemModelsProperties.register;
@@ -44,10 +46,20 @@ public class VSUtils {
         WoolArmorItem.COLOR_NAME_TO_CODE.put(colorName, colorCode);
     }
 
+    // Can be used to add items as a valid dye for dyeing wool armor (currently only sweater).
+    public static void woolArmorDyeingColor(Item dyeItem, int color, String loadedMod) {
+        WoolArmorDyeingRecipe.DYE_COLORS_MAP = Maps.newHashMap(WoolArmorDyeingRecipe.DYE_COLORS_MAP);
+        if (ModList.get().isLoaded(loadedMod)) WoolArmorDyeingRecipe.DYE_COLORS_MAP.put(dyeItem, color);
+    }
+
     // Adds an item as a villager food (needs to be in #melony:villager_wanted_items item tag).
     public static void addVillagerFoodItem(Item item, int foodPoints) {
         if (!item.is(VSTags.Items.VILLAGER_WANTED_ITEMS)) LogManager.getLogger().info(new TranslationTextComponent("console.variants.villager_food.item_not_in_tag", new TranslationTextComponent(item.getDescriptionId()), VSTags.Items.VILLAGER_WANTED_ITEMS.getName()).getString());
         VillagerEntity.FOOD_POINTS.put(item, foodPoints);
+    }
+
+    public static ResourceLocation minecraft(String name) {
+        return new ResourceLocation(name);
     }
 
     // Adds properties for a bow.

@@ -3,6 +3,7 @@ package com.junethewoods.variants.item.custom.stew.custom;
 import com.junethewoods.variants.effect.source.DamageBehaviorSource;
 import com.junethewoods.variants.item.custom.stew.StewBehavior;
 import com.junethewoods.variants.item.custom.stew.VSStewBehaviors;
+import com.junethewoods.variants.util.DamageSourceUtils;
 import com.junethewoods.variants.util.NBTUtils;
 import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.LivingEntity;
@@ -10,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.EntityExplosionContext;
@@ -18,6 +20,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
 
 import java.util.*;
+
+import static com.junethewoods.variants.util.NBTUtils.*;
 
 public class ExplodeBehavior extends StewBehavior {
     private final float radius;
@@ -36,6 +40,10 @@ public class ExplodeBehavior extends StewBehavior {
         this.blockInteraction = blockInteraction;
     }
 
+    public ExplodeBehavior(float radius, boolean createFire, boolean spawnEffectCloud, DamageSource source, Explosion.Mode blockInteraction) {
+        this(radius, createFire, spawnEffectCloud, BlockPos.ZERO, source, blockInteraction);
+    }
+
     public ExplodeBehavior() {
         this(0, false, true, BlockPos.ZERO, DamageSource.GENERIC, Explosion.Mode.NONE);
     }
@@ -43,11 +51,12 @@ public class ExplodeBehavior extends StewBehavior {
     @Override
     public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity) {
         CompoundNBT propertiesTag = getBehaviorProperties(stack);
-        DamageSource trueSource;
+        DamageSource trueSource = DamageSource.GENERIC;
         if (propertiesTag.contains("source", NBTUtils.COMPOUND)) {
             trueSource = new DamageBehaviorSource(propertiesTag, livEntity);
         } else if (propertiesTag.contains("source", NBTUtils.STRING)) {
-            trueSource = NBTUtils.fromMessageID(livEntity, NBTUtils.toMessageID(propertiesTag.getString("message_id")));
+            DamageSource source1 = DamageSourceUtils.fromLocationWithKiller(livEntity, ResourceLocation.tryParse(stringOrDefault("source", propertiesTag, "minecraft:generic")));
+            if (source1 != null) trueSource = source1;
         } else {
             trueSource = this.source;
         }
@@ -64,8 +73,9 @@ public class ExplodeBehavior extends StewBehavior {
     @Override
     public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
         BlockPos pos = propertiesTag.contains("pos", NBTUtils.COMPOUND) ? NBTUtils.readBlockPos(propertiesTag) : livEntity.blockPosition();
-        ExplodeBehavior explodeBehavior = new ExplodeBehavior(propertiesTag.getInt("radius"), propertiesTag.getBoolean("create_fire"), propertiesTag.getBoolean("spawn_effect_cloud"), pos,
-                NBTUtils.fromMessageID(livEntity, propertiesTag.getString("source")), Explosion.Mode.valueOf(propertiesTag.getString("mode").toUpperCase(Locale.ROOT)));
+        DamageSource source1 = DamageSourceUtils.fromLocationWithKiller(livEntity, ResourceLocation.tryParse(stringOrDefault("source", propertiesTag, "minecraft:generic")));
+        ExplodeBehavior explodeBehavior = new ExplodeBehavior(floatOrDefault("radius", propertiesTag, 0), booleanOrDefault("create_fire", propertiesTag, false), booleanOrDefault("spawn_effect_cloud", propertiesTag, true),
+                pos, source1, Explosion.Mode.valueOf(stringOrDefault("mode", propertiesTag, "none").toUpperCase(Locale.ROOT)));
         explodeBehavior.executeBehavior(stewStack, world, livEntity);
     }
 

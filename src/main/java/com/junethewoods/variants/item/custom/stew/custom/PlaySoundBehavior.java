@@ -18,6 +18,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Locale;
 
+import static com.junethewoods.variants.util.NBTUtils.*;
+
 public class PlaySoundBehavior extends StewBehavior {
     private SoundEvent id;
     private SoundCategory category;
@@ -33,6 +35,10 @@ public class PlaySoundBehavior extends StewBehavior {
         this.playAtPlayer = playAtPlayer;
         this.volume = volume;
         this.pitch = pitch;
+    }
+
+    public PlaySoundBehavior(SoundEvent sound, SoundCategory category, boolean playAtPlayer, float volume, float pitch) {
+        this(sound, category, BlockPos.ZERO, playAtPlayer, volume, pitch);
     }
 
     public PlaySoundBehavior() {
@@ -55,10 +61,11 @@ public class PlaySoundBehavior extends StewBehavior {
 
     @Override
     public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
-        SoundEvent sound = ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.tryParse(propertiesTag.getString("id")));
-        SoundCategory category1 = SoundCategory.valueOf(propertiesTag.getString("category").toUpperCase(Locale.ROOT));
+        SoundEvent sound = ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.tryParse(stringOrDefault("id", propertiesTag, VSSounds.PLAY_SOUND_BEHAVIOR_DEFAULT.get().getRegistryName().toString())));
+        SoundCategory category1 = SoundCategory.valueOf(stringOrDefault("category", propertiesTag, "master").toUpperCase(Locale.ROOT));
         BlockPos pos = propertiesTag.contains("pos") ? NBTUtils.readBlockPos(propertiesTag) : livEntity.blockPosition();
-        PlaySoundBehavior playSoundBehavior = new PlaySoundBehavior(sound, category1, pos, propertiesTag.getBoolean("play_at_player"), propertiesTag.getFloat("volume"), propertiesTag.getFloat("pitch"));
+        PlaySoundBehavior playSoundBehavior = new PlaySoundBehavior(sound, category1, pos, booleanOrDefault("play_at_player", propertiesTag, false), floatOrDefault("volume", propertiesTag, 0), floatOrDefault("pitch",
+                propertiesTag, 0));
         playSoundBehavior.executeBehavior(stewStack, world, livEntity);
     }
 

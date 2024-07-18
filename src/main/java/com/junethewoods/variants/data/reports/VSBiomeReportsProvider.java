@@ -12,6 +12,7 @@ import net.minecraft.data.IDataProvider;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.biome.Biome;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -60,10 +61,10 @@ public class VSBiomeReportsProvider implements IDataProvider {
                     if (opJsonElement.isPresent()) {
                         IDataProvider.save(GSON, directoryCache, opJsonElement.get(), path1);
                     } else {
-                        LOGGER.error("Variants: Could not serialize Variants biome {}", path1);
+                        LOGGER.error(new TranslationTextComponent("error." + Variants.MOD_ID + ".biome_reports.serialization", path1).getString());
                     }
                 } catch (IOException exception) {
-                    LOGGER.error("Variants: Could not save Variants biome {}", path1, exception);
+                    LOGGER.error(new TranslationTextComponent("error." + Variants.MOD_ID + ".biome_reports.saving", path1).getString(), exception);
                 }
             }
         }

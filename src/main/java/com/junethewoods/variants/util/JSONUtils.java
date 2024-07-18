@@ -1,9 +1,6 @@
 package com.junethewoods.variants.util;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
+import com.google.gson.*;
 import com.junethewoods.variants.Variants;
 import com.junethewoods.variants.item.custom.stew.StewBehavior;
 import net.minecraft.item.ItemStack;
@@ -11,9 +8,9 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.apache.commons.lang3.StringUtils;
 
 import static com.junethewoods.variants.util.NBTUtils.*;
-import static net.minecraft.util.JSONUtils.getType;
 
 public class JSONUtils {
     public static void writeItemFromNBT(String compoundName, CompoundNBT propertiesTag, JsonObject propertiesObj) {
@@ -34,17 +31,18 @@ public class JSONUtils {
             JsonObject sourceObject = new JsonObject();
             sourceObject.addProperty("message_id", stringOrDefault("message_id", sourceTag, "generic"));
             sourceObject.addProperty("food_exhaustion", floatOrDefault("food_exhaustion", sourceTag, 0));
+            sourceObject.addProperty("scaling", stringOrDefault("scaling", sourceTag, "when_caused_by_living_non_player"));
+            sourceObject.addProperty("death_message_type", stringOrDefault("death_message_type", sourceTag, "default"));
             sourceObject.addProperty("is_explosion", booleanOrDefault("is_explosion", sourceTag, false));
             sourceObject.addProperty("is_projectile", booleanOrDefault("is_projectile", sourceTag, false));
             sourceObject.addProperty("is_magic", booleanOrDefault("is_magic", sourceTag, false));
             sourceObject.addProperty("is_fire", booleanOrDefault("is_fire", sourceTag, false));
-            sourceObject.addProperty("scales_with_difficulty", booleanOrDefault("scales_with_difficulty", sourceTag, false));
             sourceObject.addProperty("bypasses_armor", booleanOrDefault("bypasses_armor", sourceTag, false));
             sourceObject.addProperty("bypasses_invulnerability", booleanOrDefault("bypasses_invulnerability", sourceTag, false));
             sourceObject.addProperty("bypasses_magic", booleanOrDefault("bypasses_magic", sourceTag, false));
             propertiesObj.add("source", sourceObject);
         } else if (propertiesTag.contains("source", STRING)) {
-            propertiesObj.addProperty("source", stringOrDefault("source", propertiesTag, "generic"));
+            propertiesObj.addProperty("source", stringOrDefault("source", propertiesTag, "minecraft:generic"));
         }
         propertiesObj.addProperty("amount", floatOrDefault("amount", propertiesTag, 1));
     }
@@ -84,7 +82,7 @@ public class JSONUtils {
                 throw new JsonSyntaxException(new TranslationTextComponent("exception." + Variants.MOD_ID + ".unknown_string_not_behavior", objectName, behaviorID).getString());
             }
         } else {
-            throw new JsonSyntaxException(new TranslationTextComponent("exception." + Variants.MOD_ID + ".json_primitive_not_behavior", objectName, getType(element)).getString());
+            throw new JsonSyntaxException(new TranslationTextComponent("exception." + Variants.MOD_ID + ".json_primitive_not_behavior", objectName, getTranslatedType(element)).getString());
         }
     }
 
@@ -93,6 +91,29 @@ public class JSONUtils {
             return convertToBehavior(object.get(objectName), objectName);
         } else {
             throw new JsonSyntaxException(new TranslationTextComponent("exception." + Variants.MOD_ID + ".behavior_object_not_found", objectName).getString());
+        }
+    }
+
+    public static TranslationTextComponent getTranslatedType(JsonElement element) {
+        String abbreviation = StringUtils.abbreviateMiddle(String.valueOf(element), "...", 10);
+        String template = "exception.variants.json_primitive.";
+
+        if (element == null) {
+            return new TranslationTextComponent(template + "null");
+        } else if (element.isJsonNull()) {
+            return new TranslationTextComponent(template + "json_null");
+        } else if (element.isJsonArray()) {
+            return new TranslationTextComponent(template + "array", abbreviation);
+        } else if (element.isJsonObject()) {
+            return new TranslationTextComponent(template + "object", abbreviation);
+        } else {
+            if (element.isJsonPrimitive()) {
+                JsonPrimitive primitive = element.getAsJsonPrimitive();
+                if (primitive.isNumber()) return new TranslationTextComponent(template + "number", abbreviation);
+                if (primitive.isBoolean()) return new TranslationTextComponent(template + "boolean", abbreviation);
+            }
+
+            return new TranslationTextComponent(template + "entire_object", element);
         }
     }
 }

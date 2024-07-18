@@ -12,6 +12,7 @@ import com.junethewoods.variants.entity.VSEntities;
 import com.junethewoods.variants.entity.renderer.*;
 import com.junethewoods.variants.fluid.VSFluids;
 import com.junethewoods.variants.item.VSItems;
+import com.junethewoods.variants.item.VSModdedItems;
 import com.junethewoods.variants.item.VSWeaponry;
 import com.junethewoods.variants.item.custom.poisoning.VSPoisoningTypes;
 import com.junethewoods.variants.item.custom.stew.VSStewBehaviors;
@@ -28,6 +29,7 @@ import com.junethewoods.variants.world.biome.provider.VSEndBiomeProvider;
 import com.junethewoods.variants.world.carver.VSConfiguredCarvers;
 import com.junethewoods.variants.world.carver.VSWorldCarvers;
 import com.junethewoods.variants.world.feature.VSConfiguredFeatures;
+import com.junethewoods.variants.world.feature.VSFeatures;
 import com.junethewoods.variants.world.surface.VSSurfaceBuilders;
 import net.minecraft.block.Block;
 import net.minecraft.block.WoodType;
@@ -78,6 +80,7 @@ public class Variants {
         VSEffects.EFFECTS.register(eventBus);
         VSSounds.SOUNDS.register(eventBus);
         VSWorldCarvers.CARVERS.register(eventBus);
+        VSFeatures.FEATURES.register(eventBus);
         VSBiomes.BIOMES.register(eventBus);
         VSRecipeTypes.RECIPE_TYPES.register(eventBus);
         VSStewBehaviors.BEHAVIORS.register(eventBus);
@@ -135,6 +138,11 @@ public class Variants {
         VSUtils.makeBow(VSWeaponry.DEBUG_BOW.get());
         VSUtils.addArmorDesigns(VSWeaponry.WOOL_SWEATER.get());
         VSUtils.addSpawnerMinecartMobs(VSItems.SPAWNER_MINECART.get());
+        VSUtils.woolArmorDyeingColor(VSModdedItems.RED_YELLOW_DYE, 15731456, "backmath");
+        VSUtils.woolArmorDyeingColor(VSModdedItems.ALJAN_LIGHT_BLUE_DYE, 13429739, "backmath");
+        VSUtils.woolArmorDyeingColor(VSModdedItems.POISON_BROWN_DYE, 8921856, "backmath");
+        VSUtils.woolArmorDyeingColor(VSModdedItems.INSOMNIAN_DYE, 4418465, "backmath");
+        VSUtils.woolArmorDyeingColor(VSModdedItems.INNO_DYE, 15457757, "f10elements");
         setRenderTypesForBlocks();
 
         Atlases.addWoodType(VSWoodTypes.PAINTING);

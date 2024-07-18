@@ -7,6 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.world.World;
 
+import static com.junethewoods.variants.util.NBTUtils.integerOrDefault;
+
 public class IgniteBehavior extends StewBehavior {
     private final int ticksOnFire;
 
@@ -15,7 +17,7 @@ public class IgniteBehavior extends StewBehavior {
     }
 
     public IgniteBehavior() {
-        this(200);
+        this(100);
     }
 
     public int getTicksOnFire() {
@@ -29,7 +31,7 @@ public class IgniteBehavior extends StewBehavior {
 
     @Override
     public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
-        IgniteBehavior igniteBehavior = new IgniteBehavior(propertiesTag.getInt("ticks_on_fire"));
+        IgniteBehavior igniteBehavior = new IgniteBehavior(integerOrDefault("ticks_on_fire", propertiesTag, 100));
         igniteBehavior.executeBehavior(stewStack, world, livEntity);
     }
 

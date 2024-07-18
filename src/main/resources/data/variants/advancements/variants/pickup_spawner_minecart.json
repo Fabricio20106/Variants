@@ -10,10 +10,13 @@
     "description": {
       "translate": "advancements.variants.obtain_spawner_minecart.description"
     },
-    "frame": "challenge",
+    "frame": "goal",
     "show_toast": true,
     "announce_to_chat": true,
-    "hidden": false
+    "hidden": false,
+    "rewards": {
+      "experience": 50
+    }
   },
   "criteria": {
     "obtained_spawner_minecart": {

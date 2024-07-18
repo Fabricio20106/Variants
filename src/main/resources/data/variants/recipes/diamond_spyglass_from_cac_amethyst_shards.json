@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cavesandcliffs"
+    }
+  ],
+  "pattern": [
+    "D",
+    "I",
+    "I"
+  ],
+  "key": {
+    "D": {
+      "item": "cavesandcliffs:amethyst_shard"
+    },
+    "I": {
+      "tag": "forge:gems/diamond"
+    }
+  },
+  "result": {
+    "item": "variants:diamond_spyglass"
+  }
+}

@@ -17,7 +17,7 @@ public class VSSurfaceBuilders {
 
     public static final SurfaceBuilderConfig ENDERWOOD_FOREST_NYLIUM_CONFIG = new SurfaceBuilderConfig(ENDER_NYLIUM, END_STONE, ENDER_WART_BLOCK);
 
-    public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> ENDERWOOD_FOREST = register("enderwood_forest_old", SurfaceBuilder.DEFAULT.configured(ENDERWOOD_FOREST_NYLIUM_CONFIG));
+    public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> ENDERWOOD_FOREST = register("enderwood_forest", SurfaceBuilder.DEFAULT.configured(ENDERWOOD_FOREST_NYLIUM_CONFIG));
 
     private static <SC extends ISurfaceBuilderConfig> ConfiguredSurfaceBuilder<SC> register(String name, ConfiguredSurfaceBuilder<SC> csb) {
         return WorldGenRegistries.register(WorldGenRegistries.CONFIGURED_SURFACE_BUILDER, Variants.resourceLoc(name), csb);

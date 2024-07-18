@@ -41,13 +41,6 @@ public class ExponentialStewItem extends Item {
         this.stewBehavior = behavior;
     }
 
-    @Override
-    public ItemStack getDefaultInstance() {
-        ItemStack stewStack = new ItemStack(this);
-        stewStack.getOrCreateTag().put("behavior", this.stewBehavior.writeBehaviorToNBT(stewStack));
-        return stewStack;
-    }
-
     public StewBehavior getBehavior() {
         return this.stewBehavior;
     }
@@ -56,14 +49,17 @@ public class ExponentialStewItem extends Item {
         return stewStack.getTag() != null && stewStack.getTag().contains("behavior", NBTUtils.COMPOUND);
     }
 
-    public ITextComponent getBehaviorTranslation(ItemStack stewStack) {
+    public TranslationTextComponent getBehaviorTranslation(ItemStack stewStack) {
+        TranslationTextComponent fromConstructor = new TranslationTextComponent("stew_behavior." + this.stewBehavior.getBehaviorRegistry().getRegistryName().getNamespace() + "." + this.stewBehavior.getBehaviorRegistry().getRegistryName().getPath());
         if (hasBehaviorInNBT(stewStack)) {
             CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
             ResourceLocation behaviorID = ResourceLocation.tryParse(behaviorTag.getString("id"));
             assert behaviorID != null;
+            if (!behaviorTag.contains("id", NBTUtils.STRING)) return fromConstructor;
             return new TranslationTextComponent("stew_behavior." + behaviorID.getNamespace() + "." + behaviorID.getPath());
+        } else {
+            return fromConstructor;
         }
-        return this.stewBehavior.getDisplayName();
     }
 
     public static void writeEffectToStew(ItemStack stewStack, Effect effect, int duration) {
@@ -80,21 +76,21 @@ public class ExponentialStewItem extends Item {
         behaviorTag.put("properties", propertiesTag);
     }
 
-    public static void writeBowl(ItemStack stewStack, Item bowlStack) {
+    public static void writeBowl(ItemStack stewStack, Item bowlItem) {
         CompoundNBT bowlTag = stewStack.getOrCreateTagElement("bowl");
-        bowlTag.putString("name", bowlStack.getRegistryName().toString());
+        bowlTag.putString("name", bowlItem.getRegistryName().toString());
         for (String bowlWood : BOWL_NAME_TO_ID.keySet()) {
-            if (bowlStack.getRegistryName().toString().contains(bowlWood)) bowlTag.putInt("texture_id", BOWL_NAME_TO_ID.get(bowlWood));
+            if (bowlItem.getRegistryName().toString().contains(bowlWood)) bowlTag.putInt("texture_id", BOWL_NAME_TO_ID.get(bowlWood));
         }
     }
 
-    public static void writeBowlWithTextureID(ItemStack stewStack, Item bowlStack, IRandomRange textureID) {
+    public static void writeBowlWithTextureID(ItemStack stewStack, Item bowlItem, IRandomRange textureID) {
         CompoundNBT bowlTag = stewStack.getOrCreateTagElement("bowl");
-        bowlTag.putString("name", bowlStack.getRegistryName().toString());
+        bowlTag.putString("name", bowlItem.getRegistryName().toString());
         bowlTag.putInt("texture_id", textureID.getInt(random));
     }
 
-    public static  void writeBehaviorToStew(ItemStack stewStack, StewBehavior behavior, CompoundNBT properties) {
+    public static void writeBehaviorToStew(ItemStack stewStack, StewBehavior behavior, CompoundNBT properties) {
         CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
         behaviorTag.putString("id", behavior.getRegistryName().toString());
         behaviorTag.put("properties", properties);
@@ -117,7 +113,7 @@ public class ExponentialStewItem extends Item {
 
         // For Suspicious Stew & "Apply Mob Effects" behavior
         CompoundNBT propertiesTag = behaviorTag.getCompound("properties");
-        if (propertiesTag.contains("effects", NBTUtils.LIST)) {
+        if (propertiesTag.contains("effects", NBTUtils.LIST) && !behaviorTag.isEmpty()) {
             ListNBT effectList = propertiesTag.getList("effects", NBTUtils.COMPOUND);
 
             for (int i = 0; i < effectList.size(); ++i) {
@@ -141,6 +137,10 @@ public class ExponentialStewItem extends Item {
                     if (world.isClientSide) instance.setNoCounter(noCounter);
                     livEntity.addEffect(instance);
                 }
+            }
+        } else {
+            if (this.stewBehavior.getEffects() != null) {
+                for (EffectInstance instance : this.stewBehavior.getEffects()) livEntity.addEffect(instance);
             }
         }
         return isPlayerInCreative ? superStack : getBowlType(stewStack, livEntity);

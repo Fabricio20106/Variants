@@ -2,6 +2,7 @@ package com.junethewoods.variants.item.custom.stew.custom;
 
 import com.junethewoods.variants.item.custom.stew.StewBehavior;
 import com.junethewoods.variants.item.custom.stew.VSStewBehaviors;
+import com.junethewoods.variants.util.NBTUtils;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -31,7 +32,7 @@ public class ClearMobEffectsBehavior extends StewBehavior {
 
     @Override
     public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
-        ClearMobEffectsBehavior clearEffectsBehavior = new ClearMobEffectsBehavior(ItemStack.of(propertiesTag.getCompound("curative_item")));
+        ClearMobEffectsBehavior clearEffectsBehavior = new ClearMobEffectsBehavior(ItemStack.of(NBTUtils.compoundOrDefault("curative_item", propertiesTag, milkBucket())));
         clearEffectsBehavior.executeBehavior(stewStack, world, livEntity);
     }
 
@@ -45,5 +46,10 @@ public class ClearMobEffectsBehavior extends StewBehavior {
     @Override
     public StewBehavior getBehaviorRegistry() {
         return VSStewBehaviors.CLEAR_MOB_EFFECTS.get();
+    }
+
+    private static CompoundNBT milkBucket() {
+        ItemStack milkBucket = new ItemStack(Items.MILK_BUCKET);
+        return milkBucket.save(new CompoundNBT());
     }
 }

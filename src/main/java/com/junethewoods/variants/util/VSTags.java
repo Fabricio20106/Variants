@@ -83,6 +83,7 @@ public class VSTags {
         // Melony (convention) Tags
         public static final ITag.INamedTag<Item> BOOKS = melony("books");
         public static final ITag.INamedTag<Item> BOOKSHELVES = melony("bookshelves");
+        public static final ITag.INamedTag<Item> BOWS = melony("bows");
         public static final ITag.INamedTag<Item> SHIELDS = melony("shields");
         public static final ITag.INamedTag<Item> BOWLS = melony("bowls");
         public static final ITag.INamedTag<Item> FISHING_BOWLS = melony("bowls/obtainable_through_fishing");
