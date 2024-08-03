@@ -33,7 +33,7 @@ This release includes builds 2.0.2, .3 and .4. This changelog will only describe
 > The numbers of Quartz Ore generation are slightly lower than regular Nether Quartz.
 > 
 > The other two have the same generation parameters as their vanilla counterparts.
-- Added ```#variants:crafting_tables``` block tag.
+- Added `#variants:crafting_tables` block tag.
   - Contains all new crafting tables added in this version.
 - Painting Leaves are now affected by biome-tinting.
 - Glow Berry Bushes were supposed to generate in Lush Caves, but it runs into the same issues as the Sunny Flowers in Sunflower Plains.

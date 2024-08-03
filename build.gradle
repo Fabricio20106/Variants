@@ -15,7 +15,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'idea'
 
-version = '1.18.2-2.0.5.1-' + new Date().format("dd-MM-yyyy")
+version = '1.18.2-2.0.5.2-' + new Date().format("dd-MM-yyyy")
 // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 group = 'com.junethewoods.variants'
 archivesBaseName = 'Variants'
