@@ -3,13 +3,27 @@
   "promos": {
     "1.20.2-latest": "1.20.2-3.0.15",
     "1.20.2-recommended": "1.20.2-3.0.15",
-    "1.16.5-latest": "1.16.5-1.7.0-rc3",
-    "1.16.5-recommended": "1.16.5-1.7.0-rc3"
+    "1.18.2-latest": "1.18.2-2.0.5.1",
+    "1.18.2-recommended": "1.18.2-2.0.5.1",
+    "1.16.5-latest": "1.16.5-1.7.0",
+    "1.16.5-recommended": "1.16.5-1.7.0",
+    "1.16.4-latest": "v1.5.3",
+    "1.16.4-recommended": "v1.5.3"
   },
   "1.20.2": {
     "1.20.2-3.0.15": "Updated to NeoForge, Chest Boats & Broken Features"
   },
+  "1.18.2": {
+    "1.18.2-2.0.5.1": "Code Renaming & Colored Wool Armor in the Inventory",
+    "1.18.2-2.0.5": "Added Biome Tinting for Poppies, Oak Saplings & Sweet Berry Bushes",
+    "1.18.2-2.0.4": "Flower Pot Fixes & 'dog' Disc Now Plays (& Added Potted Grass)",
+    "1.18.2-2.0.3": "Working* World Generation, New Crafting Tables & Tags (Biomes don't spawn naturally)",
+    "1.18.2-2.0.2": "Removed Compatibility Items, Added New Tools & Updated Lowercase Names",
+    "1.18.2-2.0.1": "Added Crimson Bread Recipe & Updated Changelog",
+    "1.18.2-2.0.0": "First Update for 1.18, New Tools & Tag Changes"
+  },
   "1.16.5": {
+    "1.16.5-1.7.0": "Full Release of 1.7.0",
     "1.16.5-1.7.0-rc3": "Backported /damage, Added /stewbehavior and Revamped Damage Sources",
     "1.16.5-1.7.0-rc2": "Visual Spawner Minecarts & Moved Dispense Behaviors",
     "1.16.5-1.7.0-rc1": "Fixed Spyglasses, Armor Swapping & Spawner Pickup with Minecarts",
@@ -47,6 +61,16 @@
     "1.16.5-1.6.4": "Copper Shears, Painting Sapling, Waterloggable Golden Cauldron, Populated Wool Sweaters, Brazilian Portuguese Translation & Renames + New Tags",
     "1.16.5-1.6.2": "Many New Blocks & Items, Block Entities, Bottle Classes & New Tags (+ Glow Berry Bush Loot Table)",
     "1.16.5-1.6.1": "Graham & First Doors, Plain Birch Bookshelf, Shulker Shells & Painting Stick (+ New Tags)",
-    "1.16.5-1.6.0": "Initial Port/Total Rewrite, New Tags & Dissolved Compatibility Classes"
+    "1.16.5-1.6.0": "Initial Port/Total Rewrite, New Tags & Dissolved Compatibility Classes",
+    "1.0.6": "Initial Release"
+  },
+  "1.16.4": {
+    "v1.5.3": "\"Literally 1,102 Files & 27 Universioned Ones\" (Build 1.4.8)",
+    "1.4.8": "Added Glow Black Wool, Magma Swords, 'dog' Disc, and More",
+    "1.4.7": "\"30 Million Items\" (Colored Shulker Shells, Graham & First Doors, Plain Birch Bookshelf, etc.)",
+    "1.4.6": "Moved to 'junethewoods' Package, Added End Quartz Ore & Added Door Models",
+    "1.4.5": "Added Other Painting Wood Blocks (Including Tags and Recipes)",
+    "1.4.4": "Added Many Things (Painting Wood, Warped Wart, Glow Berry Bushes, etc.)",
+    "1.1.2": "Downgraded to 1.16.4, Renamed Everything"
   }
 }
