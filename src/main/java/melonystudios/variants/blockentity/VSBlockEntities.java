@@ -1,0 +1,28 @@
+package melonystudios.variants.blockentity;
+
+import melonystudios.variants.Variants;
+import melonystudios.variants.block.VSBlocks;
+import melonystudios.variants.blockentity.custom.*;
+import net.minecraft.tileentity.TileEntityType;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+
+public class VSBlockEntities {
+    public static final DeferredRegister<TileEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, Variants.MOD_ID);
+
+    public static final RegistryObject<TileEntityType<VSBellBlockEntity>> VS_BELL = BLOCK_ENTITIES.register("vs_bell", () -> TileEntityType.Builder.of(VSBellBlockEntity::new,
+            VSBlocks.DIAMOND_BELL.get()).build(null));
+
+    public static final RegistryObject<TileEntityType<VSBeaconBlockEntity>> VS_BEACON = BLOCK_ENTITIES.register("vs_beacon", () -> TileEntityType.Builder.of(VSBeaconBlockEntity::new,
+            VSBlocks.GOLDEN_BEACON.get(), VSBlocks.QUARTZ_BEACON.get()).build(null));
+
+    public static final RegistryObject<TileEntityType<VSBedBlockEntity>> VS_BED = BLOCK_ENTITIES.register("vs_bed", () -> TileEntityType.Builder.of(VSBedBlockEntity::new,
+            VSBlocks.GLOW_BLACK_BED.get()).build(null));
+
+    public static final RegistryObject<TileEntityType<VSSignBlockEntity>> VS_SIGN = BLOCK_ENTITIES.register("vs_sign", () -> TileEntityType.Builder.of(VSSignBlockEntity::new,
+            VSBlocks.PAINTING_SIGN.get(), VSBlocks.PAINTING_WALL_SIGN.get(), VSBlocks.ENDERWOOD_SIGN.get(), VSBlocks.ENDERWOOD_WALL_SIGN.get()).build(null));
+
+    public static final RegistryObject<TileEntityType<VSBrewingStandBlockEntity>> VS_BREWING_STAND = BLOCK_ENTITIES.register("vs_brewing_stand", () -> TileEntityType.Builder.of(VSBrewingStandBlockEntity::new,
+            VSBlocks.SOUL_BREWING_STAND.get()).build(null));
+}

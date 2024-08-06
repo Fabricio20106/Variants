@@ -1,0 +1,17 @@
+package melonystudios.variants.block.custom.nether;
+
+import melonystudios.variants.blockentity.custom.VSBrewingStandBlockEntity;
+import net.minecraft.block.BrewingStandBlock;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.IBlockReader;
+
+public class SoulBrewingStandBlock extends BrewingStandBlock {
+    public SoulBrewingStandBlock(Properties properties) {
+        super(properties);
+    }
+
+    @Override
+    public TileEntity newBlockEntity(IBlockReader world) {
+        return new VSBrewingStandBlockEntity();
+    }
+}

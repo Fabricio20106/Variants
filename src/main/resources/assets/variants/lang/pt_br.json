@@ -551,6 +551,8 @@
   "tooltip.variants.hold_alt": "§8Segure <§7Alt§8> para ver NBT",
   "tooltip.variants.hold_alt.held": "§8Segure <§fAlt§8> para ver NBT",
   "tooltip.variants.tags": "Tags: %s",
+  "tooltip.variants.food_effects.when_eaten": "Quando consumido:",
+  "tooltip.variants.food_effects.when_drank": "Quando bebido:",
   "tooltip.variants.compat_item_from": "Compatibilidade de item entre: %s.",
   "tooltip.variants.compat_block_from": "Compatibilidade de bloco entre: %s.",
   "tooltip.variants.exponential_stew.bowl": "Tigela: %s",

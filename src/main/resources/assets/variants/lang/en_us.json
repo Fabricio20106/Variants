@@ -551,6 +551,8 @@
   "tooltip.variants.hold_alt": "§8Hold <§7Alt§8> for NBT",
   "tooltip.variants.hold_alt.held": "§8Hold <§fAlt§8> for NBT",
   "tooltip.variants.tags": "Tags: %s",
+  "tooltip.variants.food_effects.when_eaten": "When eaten:",
+  "tooltip.variants.food_effects.when_drank": "When drank:",
   "tooltip.variants.compat_item_from": "Item compatibility between: %s.",
   "tooltip.variants.compat_block_from": "Block compatibility between: %s.",
   "tooltip.variants.exponential_stew.bowl": "Bowl: %s",
