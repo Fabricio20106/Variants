@@ -19,8 +19,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class VSBoatRenderer extends EntityRenderer<VSBoatEntity> {
-    private static final ResourceLocation[] BOAT_TEXTURES = new ResourceLocation[] {Variants.resourceLoc("textures/entity/boat/painting.png"),Variants.resourceLoc("textures/entity/boat/crimson.png"),
-            Variants.resourceLoc("textures/entity/boat/warped.png"), Variants.resourceLoc("textures/entity/boat/ender.png")};
+    private static final ResourceLocation[] BOAT_TEXTURES = new ResourceLocation[] {Variants.variants("textures/entity/boat/painting.png"),Variants.variants("textures/entity/boat/crimson.png"),
+            Variants.variants("textures/entity/boat/warped.png"), Variants.variants("textures/entity/boat/ender.png")};
     protected final BoatModel model = new BoatModel();
 
     public VSBoatRenderer(EntityRendererManager manager) {

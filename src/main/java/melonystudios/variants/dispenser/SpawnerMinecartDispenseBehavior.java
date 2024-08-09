@@ -13,6 +13,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants;
 
 import javax.annotation.Nonnull;
 
@@ -61,6 +62,6 @@ public class SpawnerMinecartDispenseBehavior extends DefaultDispenseItemBehavior
 
     @Override
     protected void playSound(IBlockSource source) {
-        source.getLevel().levelEvent(1000, source.getPos(), 0);
+        source.getLevel().levelEvent(Constants.WorldEvents.DISPENSER_DISPENSE_SOUND, source.getPos(), 0);
     }
 }

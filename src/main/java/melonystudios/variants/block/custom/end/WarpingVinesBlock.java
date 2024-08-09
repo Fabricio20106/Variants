@@ -7,6 +7,8 @@ import net.minecraft.block.Block;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.shapes.VoxelShape;
 
+import javax.annotation.Nonnull;
+
 public class WarpingVinesBlock extends AbstractBodyPlantBlock {
     public static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 16, 15);
 
@@ -15,6 +17,7 @@ public class WarpingVinesBlock extends AbstractBodyPlantBlock {
     }
 
     @Override
+    @Nonnull
     protected AbstractTopPlantBlock getHeadBlock() {
         return (AbstractTopPlantBlock) VSBlocks.WARPING_VINES.get();
     }

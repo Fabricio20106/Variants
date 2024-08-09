@@ -49,6 +49,6 @@ public class VSBlockTags {
     }
 
     public static ITag.INamedTag<Block> mod(String name) {
-        return BlockTags.bind(Variants.resourceLoc(name).toString());
+        return BlockTags.bind(Variants.variants(name).toString());
     }
 }

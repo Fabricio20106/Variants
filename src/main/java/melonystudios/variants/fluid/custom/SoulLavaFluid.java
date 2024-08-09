@@ -23,6 +23,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
@@ -30,10 +31,12 @@ import net.minecraftforge.fluids.ForgeFlowingFluid;
 import javax.annotation.Nullable;
 import java.util.Random;
 
+import static melonystudios.variants.util.Constants.BlockFlags.DEFAULT_FLAG;
+
 public abstract class SoulLavaFluid extends ForgeFlowingFluid {
     public static final ForgeFlowingFluid.Properties SOUL_LAVA_PROPERTIES = new ForgeFlowingFluid.Properties(VSFluids.SOUL_LAVA, VSFluids.FLOWING_SOUL_LAVA,
-            FluidAttributes.builder(Variants.resourceLoc("block/soul_lava_still"), Variants.resourceLoc("block/soul_lava_flowing")).rarity(Rarity.UNCOMMON).sound(SoundEvents.BUCKET_EMPTY_LAVA)
-                    .overlay(Variants.resourceLoc("block/soul_lava_overlay"))).levelDecreasePerBlock(2).slopeFindDistance(2).block(VSBlocks.SOUL_LAVA).tickRate(40).bucket(VSItems.SOUL_LAVA_BUCKET);
+            FluidAttributes.builder(Variants.variants("block/soul_lava_still"), Variants.variants("block/soul_lava_flowing")).rarity(Rarity.UNCOMMON).sound(SoundEvents.BUCKET_EMPTY_LAVA)
+                    .overlay(Variants.variants("block/soul_lava_overlay"))).levelDecreasePerBlock(2).slopeFindDistance(2).block(VSBlocks.SOUL_LAVA).tickRate(40).bucket(VSItems.SOUL_LAVA_BUCKET);
 
     public SoulLavaFluid(Properties properties) {
         super(properties);
@@ -165,7 +168,7 @@ public abstract class SoulLavaFluid extends ForgeFlowingFluid {
     }
 
     private void fizz(IWorld world, BlockPos pos) {
-        world.levelEvent(1501, pos, 0);
+        world.levelEvent(Constants.WorldEvents.LAVA_EXTINGUISH, pos, 0);
     }
 
     protected boolean canConvertToSource() {
@@ -177,7 +180,7 @@ public abstract class SoulLavaFluid extends ForgeFlowingFluid {
             FluidState fluidState = world.getFluidState(pos);
             if (this.is(FluidTags.LAVA) && fluidState.is(FluidTags.WATER)) {
                 if (state.getBlock() instanceof FlowingFluidBlock) {
-                    world.setBlock(pos, ForgeEventFactory.fireFluidPlaceBlockEvent(world, pos, pos, Blocks.BLACKSTONE.defaultBlockState()), 3);
+                    world.setBlock(pos, ForgeEventFactory.fireFluidPlaceBlockEvent(world, pos, pos, Blocks.BLACKSTONE.defaultBlockState()), DEFAULT_FLAG);
                 }
 
                 this.fizz(world, pos);

@@ -1,5 +1,6 @@
 package melonystudios.variants.util;
 
+import com.google.common.collect.Lists;
 import melonystudios.variants.Variants;
 import melonystudios.variants.util.damage.DamageSourceUtils;
 import melonystudios.variants.util.damage.custom.DamageBehaviorSource;
@@ -18,6 +19,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import javax.annotation.Nullable;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -32,7 +34,7 @@ public class NBTUtils {
     public static void addItemTagsTooltip(ItemStack stack, List<ITextComponent> tooltip, ITooltipFlag flag) {
         if (flag.isAdvanced()) {
             CompoundNBT tagTag = stack.getTag();
-            if (tagTag != null) tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".tags", tagTag.getPrettyDisplay()).withStyle(TextFormatting.GRAY));
+            if (tagTag != null) tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".tags", tagTag.getPrettyDisplay(" ", 0)).withStyle(TextFormatting.GRAY));
         }
     }
 
@@ -63,10 +65,11 @@ public class NBTUtils {
         return effectsList;
     }
 
-    public static Collection<EffectInstance> getEffectsFromNBT(World world, ItemStack stewStack) {
+    @Nullable
+    public static List<EffectInstance> getEffectsFromNBT(@Nullable World world, ItemStack stewStack) {
         CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
         CompoundNBT propertiesTag = behaviorTag.getCompound("properties");
-        Collection<EffectInstance> effects = new ArrayList<>();
+        List<EffectInstance> effects = Lists.newArrayList();
 
         if (propertiesTag.contains("effects", Constants.TagTypes.LIST)) {
             ListNBT effectList = propertiesTag.getList("effects", Constants.TagTypes.COMPOUND);
@@ -77,7 +80,7 @@ public class NBTUtils {
                 boolean ambient = false;
                 boolean showParticles = true;
                 boolean showIcon = true;
-                boolean noCounter = true;
+                boolean noCounter = false; // Finally found out what no_counter does, it just hides the effect duration (shows up as **:**).
                 CompoundNBT effectTag = effectList.getCompound(i);
                 if (effectTag.contains("duration", Constants.TagTypes.INTEGER)) duration = effectTag.getInt("duration");
                 if (effectTag.contains("amplifier", Constants.TagTypes.INTEGER)) amplifier = effectTag.getInt("amplifier");
@@ -89,7 +92,7 @@ public class NBTUtils {
                 Effect effect = ForgeRegistries.POTIONS.getValue(ResourceLocation.tryParse(effectTag.getString("id")));
                 if (effect != null) {
                     EffectInstance instance = new EffectInstance(effect, duration, amplifier, ambient, showParticles, showIcon);
-                    if (world.isClientSide) instance.setNoCounter(noCounter);
+                    if (world != null && world.isClientSide) instance.setNoCounter(noCounter);
                     effects.add(instance);
                 }
             }
@@ -143,8 +146,18 @@ public class NBTUtils {
         return fallback;
     }
 
+    public static int anyNumericOrIntDefault(String name, CompoundNBT tag, int fallback) {
+        if (tag != null && tag.contains(name, Constants.TagTypes.ANY_NUMERIC)) return tag.getInt(name);
+        return fallback;
+    }
+
     public static float floatOrDefault(String name, CompoundNBT tag, float fallback) {
         if (tag != null && tag.contains(name, Constants.TagTypes.FLOAT)) return tag.getFloat(name);
+        return fallback;
+    }
+
+    public static float anyNumericOrFloatDefault(String name, CompoundNBT tag, float fallback) {
+        if (tag != null && tag.contains(name, Constants.TagTypes.ANY_NUMERIC)) return tag.getFloat(name);
         return fallback;
     }
 

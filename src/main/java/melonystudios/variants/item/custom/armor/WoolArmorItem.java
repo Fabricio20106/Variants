@@ -57,7 +57,7 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlotType slot, String type) {
         if (stack.getTag() != null && stack.getTag().getInt("armor_design") > 0) {
-            return Variants.resourceLoc("textures/models/armor/" + getArmorLocation() + "_layer_" + (slot == EquipmentSlotType.LEGS ? 2 : 1) + "_" + stack.getTag().getInt("armor_design") + ".png").toString();
+            return Variants.variants("textures/models/armor/" + getArmorLocation() + "_layer_" + (slot == EquipmentSlotType.LEGS ? 2 : 1) + "_" + stack.getTag().getInt("armor_design") + ".png").toString();
         }
         return super.getArmorTexture(stack, entity, slot, type);
     }

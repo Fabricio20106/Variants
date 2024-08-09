@@ -20,6 +20,10 @@ public class ClearMobEffectsBehavior extends StewBehavior {
         this(new ItemStack(Items.MILK_BUCKET));
     }
 
+    public ItemStack getCurativeItem() {
+        return this.curativeStack;
+    }
+
     @Override
     public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity) {
         if (!world.isClientSide) {

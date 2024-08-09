@@ -1,0 +1,9 @@
+{
+  "asset_id": "variants:birch",
+  "bowl": {
+    "id": "variants:birch_bowl",
+    "count": 1
+  },
+  "name": "birch",
+  "texture_id": 2
+}

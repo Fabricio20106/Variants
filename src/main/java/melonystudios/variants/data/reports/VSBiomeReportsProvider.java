@@ -46,7 +46,7 @@ public class VSBiomeReportsProvider implements IDataProvider {
     }
 
     @Override
-    public void run(DirectoryCache directoryCache) {
+    public void run(DirectoryCache cache) {
         Path path = this.generator.getOutputFolder();
 
         for (Map.Entry<RegistryKey<Biome>, Biome> entry : WorldGenRegistries.BIOME.entrySet()) {
@@ -59,7 +59,7 @@ public class VSBiomeReportsProvider implements IDataProvider {
                 try {
                     Optional<JsonElement> opJsonElement = function.apply(() -> biome).result();
                     if (opJsonElement.isPresent()) {
-                        IDataProvider.save(GSON, directoryCache, opJsonElement.get(), path1);
+                        IDataProvider.save(GSON, cache, opJsonElement.get(), path1);
                     } else {
                         LOGGER.error(new TranslationTextComponent("error." + Variants.MOD_ID + ".biome_reports.serialization", path1).getString());
                     }

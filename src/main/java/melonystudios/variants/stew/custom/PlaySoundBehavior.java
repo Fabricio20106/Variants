@@ -1,5 +1,6 @@
 package melonystudios.variants.stew.custom;
 
+import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.sound.VSSounds;
 import melonystudios.variants.stew.StewBehavior;
 import melonystudios.variants.stew.VSStewBehaviors;
@@ -37,6 +38,30 @@ public class PlaySoundBehavior extends StewBehavior {
         this.pitch = pitch;
     }
 
+    public SoundEvent getSound() {
+        return this.id;
+    }
+
+    public SoundCategory getCategory() {
+        return this.category;
+    }
+
+    public BlockPos getPlayPosition() {
+        return this.pos;
+    }
+
+    public boolean playsAtPlayer() {
+        return this.playAtPlayer;
+    }
+
+    public float getVolume() {
+        return this.volume;
+    }
+
+    public float getPitch() {
+        return this.pitch;
+    }
+
     public PlaySoundBehavior(SoundEvent sound, SoundCategory category, boolean playAtPlayer, float volume, float pitch) {
         this(sound, category, BlockPos.ZERO, playAtPlayer, volume, pitch);
     }
@@ -64,8 +89,8 @@ public class PlaySoundBehavior extends StewBehavior {
         SoundEvent sound = ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.tryParse(stringOrDefault("id", propertiesTag, VSSounds.PLAY_SOUND_BEHAVIOR_DEFAULT.get().getRegistryName().toString())));
         SoundCategory category1 = SoundCategory.valueOf(stringOrDefault("category", propertiesTag, "master").toUpperCase(Locale.ROOT));
         BlockPos pos = propertiesTag.contains("pos") ? NBTUtils.readBlockPos(propertiesTag) : livEntity.blockPosition();
-        PlaySoundBehavior playSoundBehavior = new PlaySoundBehavior(sound, category1, pos, booleanOrDefault("play_at_player", propertiesTag, false), floatOrDefault("volume", propertiesTag, 0), floatOrDefault("pitch",
-                propertiesTag, 0));
+        PlaySoundBehavior playSoundBehavior = new PlaySoundBehavior(sound, category1, pos, booleanOrDefault("play_at_player", propertiesTag, false), anyNumericOrFloatDefault("volume", propertiesTag, 0), anyNumericOrFloatDefault(
+                "pitch", propertiesTag, 0));
         playSoundBehavior.executeBehavior(stewStack, world, livEntity);
     }
 
@@ -75,9 +100,9 @@ public class PlaySoundBehavior extends StewBehavior {
         properties.putString("id", this.id.getRegistryName().toString());
         properties.putString("category", this.category.getName());
         properties.putIntArray("pos", new int[] {this.pos.getX(), this.pos.getY(), this.pos.getZ()});
-        properties.putBoolean("play_at_player", this.playAtPlayer);
+        if (this.playAtPlayer) properties.putBoolean("play_at_player", true);
         properties.putFloat("volume", MathHelper.clamp(this.volume, 0, Float.MAX_VALUE));
-        properties.putFloat("pitch", MathHelper.clamp(this.pitch, 0, 2));
+        properties.putFloat("pitch", (float) MathHelper.clamp(this.pitch, 0, VSConfigs.COMMON_CONFIGS.soundPitchUpperLimit.get()));
         return properties;
     }
 

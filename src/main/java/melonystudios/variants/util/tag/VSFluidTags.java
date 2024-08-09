@@ -16,7 +16,7 @@ public class VSFluidTags {
     public static final ITag.INamedTag<Fluid> HYDRATES_LAVA_BASED_FARMLAND = melony("hydrates_farmland/lava");
 
     public static ITag.INamedTag<Fluid> mod(String name) {
-        return FluidTags.bind(Variants.resourceLoc(name).toString());
+        return FluidTags.bind(Variants.variants(name).toString());
     }
 
     public static ITag.INamedTag<Fluid> melony(String name) {

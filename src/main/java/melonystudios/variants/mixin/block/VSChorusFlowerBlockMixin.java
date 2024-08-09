@@ -1,5 +1,6 @@
 package melonystudios.variants.mixin.block;
 
+import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.tag.VSBlockTags;
 import net.minecraft.block.*;
 import net.minecraft.util.Direction;
@@ -70,7 +71,7 @@ public abstract class VSChorusFlowerBlockMixin extends Block {
                 }
 
                 if (flag && allNeighborsEmpty(world, abovePos, null) && world.isEmptyBlock(pos.above(2))) {
-                    world.setBlock(pos, this.plant.getStateForPlacement(world, pos), 2);
+                    world.setBlock(pos, this.plant.getStateForPlacement(world, pos), Constants.BlockFlags.BLOCK_UPDATE);
                     this.placeGrownFlower(world, abovePos, age);
                 } else if (age < 4) {
                     int l = rand.nextInt(4);
@@ -90,7 +91,7 @@ public abstract class VSChorusFlowerBlockMixin extends Block {
                     }
 
                     if (flag2) {
-                        world.setBlock(pos, this.plant.getStateForPlacement(world, pos), 2);
+                        world.setBlock(pos, this.plant.getStateForPlacement(world, pos), Constants.BlockFlags.BLOCK_UPDATE);
                     } else {
                         this.placeDeadFlower(world, pos);
                     }

@@ -1,6 +1,7 @@
 package melonystudios.variants.block.custom.nether;
 
 import melonystudios.variants.item.VSItems;
+import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.tag.VSBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -47,7 +48,7 @@ public class WarpedWartBlock extends BushBlock {
         int age = state.getValue(AGE);
         if (age < 3 && ForgeHooks.onCropsGrowPre(world, pos, state, rand.nextInt(10) == 0)) {
             state = state.setValue(AGE, age + 1);
-            world.setBlock(pos, state, 2);
+            world.setBlock(pos, state, Constants.BlockFlags.BLOCK_UPDATE);
             ForgeHooks.onCropsGrowPost(world, pos, state);
         }
     }

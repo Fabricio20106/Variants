@@ -1,0 +1,9 @@
+{
+  "asset_id": "variants:enderwood",
+  "bowl": {
+    "id": "variants:ender_bowl",
+    "count": 1
+  },
+  "name": "enderwood",
+  "texture_id": 9
+}

@@ -112,6 +112,6 @@ public class VSItemTags {
     }
 
     public static ITag.INamedTag<Item> mod(String name) {
-        return ItemTags.bind(Variants.resourceLoc(name).toString());
+        return ItemTags.bind(Variants.variants(name).toString());
     }
 }

@@ -8,12 +8,14 @@ import net.minecraft.tags.TagRegistryManager;
 import net.minecraftforge.common.ForgeTagHandler;
 
 public class StewBehaviorTags {
-    public static ITag.INamedTag<StewBehavior> mod(String name) {
-        return ForgeTagHandler.makeWrapperTag(Variants.resourceLoc("stew_behavior"), Variants.resourceLoc(name));
+    public static final ITag.INamedTag<StewBehavior> CANNOT_RUN_WITHOUT_NBT = variants("cannot_run_without_nbt");
+
+    public static ITag.INamedTag<StewBehavior> variants(String name) {
+        return ForgeTagHandler.makeWrapperTag(Variants.variants("stew_behavior"), Variants.variants(name));
     }
 
     @SuppressWarnings("unchecked")
     public static ITagCollection<StewBehavior> getAllTags() {
-        return (ITagCollection<StewBehavior>) TagRegistryManager.get(Variants.resourceLoc("stew_behavior")).getAllTags();
+        return (ITagCollection<StewBehavior>) TagRegistryManager.get(Variants.variants("stew_behavior")).getAllTags();
     }
 }

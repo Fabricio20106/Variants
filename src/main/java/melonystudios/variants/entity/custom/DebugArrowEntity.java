@@ -3,6 +3,7 @@ package melonystudios.variants.entity.custom;
 import melonystudios.variants.Variants;
 import melonystudios.variants.entity.VSEntities;
 import melonystudios.variants.item.VSWeaponry;
+import melonystudios.variants.util.Constants;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
@@ -108,7 +109,7 @@ public class DebugArrowEntity extends AbstractArrowEntity {
                 if (rightClick) {
                     if (property == null) property = properties.iterator().next();
                     BlockState cycledState = cycleState(state, property, shooter.isSecondaryUseActive());
-                    world.setBlock(pos, cycledState, 18);
+                    world.setBlock(pos, cycledState, Constants.BlockFlags.UPDATE_DEBUG_STATE);
                     sendBowMessage(shooter, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.update", property.getName(), getNameHelper(cycledState, property)));
                 } else {
                     property = getRelative(properties, property, shooter.isSecondaryUseActive());
@@ -137,7 +138,7 @@ public class DebugArrowEntity extends AbstractArrowEntity {
             if (rightClick) {
                 if (property == null) property = properties.iterator().next();
                 BlockState cycledState = cycleState(state, property, false);
-                world.setBlock(pos, cycledState, 18);
+                world.setBlock(pos, cycledState, Constants.BlockFlags.UPDATE_DEBUG_STATE);
             } else {
                 property = getRelative(properties, property, false);
                 String propertyName = property.getName();

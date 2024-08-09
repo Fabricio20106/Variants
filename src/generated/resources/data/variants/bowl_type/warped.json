@@ -1,0 +1,9 @@
+{
+  "asset_id": "variants:warped",
+  "bowl": {
+    "id": "variants:warped_bowl",
+    "count": 1
+  },
+  "name": "warped",
+  "texture_id": 8
+}

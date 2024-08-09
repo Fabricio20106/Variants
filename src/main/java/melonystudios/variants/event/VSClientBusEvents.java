@@ -11,10 +11,10 @@ public class VSClientBusEvents {
     @SubscribeEvent
     public static void stitchTextures(final TextureStitchEvent.Pre event) {
         if (event.getMap().location().getPath().contains("blocks")) {
-            event.addSprite(Variants.resourceLoc("entity/bell/diamond_bell_body"));
+            event.addSprite(Variants.variants("entity/bell/diamond_bell_body"));
         }
         if (event.getMap().location().getPath().contains("beds")) {
-            event.addSprite(Variants.resourceLoc("entity/bed/glow_black"));
+            event.addSprite(Variants.variants("entity/bed/glow_black"));
         }
     }
 }

@@ -1,6 +1,7 @@
 package melonystudios.variants.block.custom.end;
 
 import melonystudios.variants.block.VSBlocks;
+import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.tag.VSBlockTags;
 import net.minecraft.block.*;
 import net.minecraft.tags.BlockTags;
@@ -43,9 +44,9 @@ public class EndStoneBlock extends Block implements IGrowable {
         }
 
         if (state.is(Blocks.END_STONE) && hasEnderNylium) {
-            world.setBlock(pos, VSBlocks.ENDER_NYLIUM.get().defaultBlockState(), 3);
+            world.setBlock(pos, VSBlocks.ENDER_NYLIUM.get().defaultBlockState(), Constants.BlockFlags.DEFAULT_FLAG);
         } else if (state.is(VSBlocks.END_QUARTZ_ORE.get()) && hasEnderNylium) {
-            world.setBlock(pos, VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get().defaultBlockState(), 3);
+            world.setBlock(pos, VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get().defaultBlockState(), Constants.BlockFlags.DEFAULT_FLAG);
         }
     }
 }

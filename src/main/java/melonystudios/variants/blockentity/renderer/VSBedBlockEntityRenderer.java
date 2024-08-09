@@ -54,7 +54,7 @@ public class VSBedBlockEntityRenderer extends TileEntityRenderer<VSBedBlockEntit
 
     @Override
     public void render(VSBedBlockEntity bed, float partialTicks, MatrixStack stack, IRenderTypeBuffer buffer, int combinedLight, int combinedOverlay) {
-        RenderMaterial glowBlackBedMaterial = new RenderMaterial(BED_SHEET, Variants.resourceLoc("entity/bed/glow_black"));
+        RenderMaterial glowBlackBedMaterial = new RenderMaterial(BED_SHEET, Variants.variants("entity/bed/glow_black"));
         World world = bed.getLevel();
         if (world != null) {
             BlockState bedState = bed.getBlockState();

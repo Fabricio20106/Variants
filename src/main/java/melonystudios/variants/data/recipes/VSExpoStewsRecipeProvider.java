@@ -1,7 +1,6 @@
-package melonystudios.variants.data.recipe;
+package melonystudios.variants.data.recipes;
 
 import com.google.common.collect.ImmutableMap;
-import melonystudios.variants.data.ExponentialStewRecipeBuilder;
 import melonystudios.variants.item.VSItems;
 import melonystudios.variants.stew.StewBehavior;
 import melonystudios.variants.stew.VSStewBehaviors;

@@ -1,5 +1,6 @@
 package melonystudios.variants.stew.custom;
 
+import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.damage.custom.DamageBehaviorSource;
 import melonystudios.variants.stew.StewBehavior;
@@ -49,6 +50,30 @@ public class ExplodeBehavior extends StewBehavior {
         this(0, false, true, BlockPos.ZERO, DamageSource.GENERIC, Explosion.Mode.NONE);
     }
 
+    public float getExplosionRadius() {
+        return this.radius;
+    }
+
+    public boolean createsFire() {
+        return this.createFire;
+    }
+
+    public boolean spawnsEffectCloud() {
+        return this.spawnEffectCloud;
+    }
+
+    public BlockPos getExplosionPos() {
+        return this.explosionPos;
+    }
+
+    public DamageSource getSource() {
+        return this.source;
+    }
+
+    public Explosion.Mode getExplosionMode() {
+        return this.blockInteraction;
+    }
+
     @Override
     public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity) {
         CompoundNBT propertiesTag = getBehaviorProperties(stack);
@@ -75,17 +100,17 @@ public class ExplodeBehavior extends StewBehavior {
     public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
         BlockPos pos = propertiesTag.contains("pos", Constants.TagTypes.COMPOUND) ? NBTUtils.readBlockPos(propertiesTag) : livEntity.blockPosition();
         DamageSource source1 = DamageSourceUtils.fromLocationWithKiller(livEntity, ResourceLocation.tryParse(stringOrDefault("source", propertiesTag, "minecraft:generic")));
-        ExplodeBehavior explodeBehavior = new ExplodeBehavior(floatOrDefault("radius", propertiesTag, 0), booleanOrDefault("create_fire", propertiesTag, false), booleanOrDefault("spawn_effect_cloud", propertiesTag, true),
-                pos, source1, Explosion.Mode.valueOf(stringOrDefault("mode", propertiesTag, "none").toUpperCase(Locale.ROOT)));
+        ExplodeBehavior explodeBehavior = new ExplodeBehavior(anyNumericOrFloatDefault("radius", propertiesTag, 0), booleanOrDefault("create_fire", propertiesTag, false), booleanOrDefault("spawn_effect_cloud", propertiesTag,
+                true), pos, source1, Explosion.Mode.valueOf(stringOrDefault("mode", propertiesTag, "none").toUpperCase(Locale.ROOT)));
         explodeBehavior.executeBehavior(stewStack, world, livEntity);
     }
 
     @Override
     public CompoundNBT writePropertiesToNBT() {
         CompoundNBT properties = new CompoundNBT();
-        properties.putFloat("radius", MathHelper.clamp(this.radius, 0, 128));
-        properties.putBoolean("create_fire", this.createFire);
-        properties.putBoolean("spawn_effect_cloud", this.spawnEffectCloud);
+        properties.putFloat("radius", (float) MathHelper.clamp(this.radius, 0, VSConfigs.COMMON_CONFIGS.explosionRadiusUpperLimit.get()));
+        if (this.createFire) properties.putBoolean("create_fire", true);
+        if (this.spawnEffectCloud) properties.putBoolean("spawn_effect_cloud", true);
         NBTUtils.writeDamageSourceOntoNBT(properties, this.source);
         properties.putString("mode", this.blockInteraction.toString().toLowerCase(Locale.ROOT));
         properties.putIntArray("pos", new int[] {this.explosionPos.getX(), this.explosionPos.getY(), this.explosionPos.getZ()});

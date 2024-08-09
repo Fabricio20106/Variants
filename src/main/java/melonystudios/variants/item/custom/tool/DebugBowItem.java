@@ -1,6 +1,7 @@
 package melonystudios.variants.item.custom.tool;
 
 import melonystudios.variants.Variants;
+import melonystudios.variants.util.Constants;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -73,7 +74,7 @@ public class DebugBowItem extends BowItem {
                     }
 
                     BlockState state1 = cycleState(state, property, player.isSecondaryUseActive());
-                    world.setBlock(pos, state1, 18);
+                    world.setBlock(pos, state1, Constants.BlockFlags.UPDATE_DEBUG_STATE);
                     sendBowMessage(player, new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".debug.update", property.getName(), getNameHelper(state1, property)));
                 } else {
                     property = getRelative(collection, property, player.isSecondaryUseActive());

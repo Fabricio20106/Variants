@@ -14,8 +14,10 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.network.NetworkHooks;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 public class DragonBreathBottleEntity extends ProjectileItemEntity implements IRendersAsItem {
@@ -32,12 +34,14 @@ public class DragonBreathBottleEntity extends ProjectileItemEntity implements IR
     }
 
     @Override
+    @Nonnull
     public ItemStack getItem() {
         ItemStack rawStack = this.getItemRaw();
         return rawStack.isEmpty() ? new ItemStack(VSItems.SPLASH_DRAGON_BREATH.get()) : rawStack;
     }
 
     @Override
+    @Nonnull
     protected Item getDefaultItem() {
         return VSItems.SPLASH_DRAGON_BREATH.get();
     }
@@ -56,13 +60,15 @@ public class DragonBreathBottleEntity extends ProjectileItemEntity implements IR
     protected void onHit(RayTraceResult hitResult) {
         super.onHit(hitResult);
         Entity owner = this.getOwner();
+        assert owner != null;
+
         if (hitResult.getType() != RayTraceResult.Type.ENTITY || !((EntityRayTraceResult) hitResult).getEntity().is(owner)) {
             if (!this.level.isClientSide) {
                 List<LivingEntity> livEntitiesWithin = this.level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(4, 2, 4));
                 AreaEffectCloudEntity breathCloud = getBreathCloud(owner);
                 breathCloud.addEffect(new EffectInstance(Effects.HARM, 1, 1));
                 if (!livEntitiesWithin.isEmpty()) {
-                    for(LivingEntity livEntity : livEntitiesWithin) {
+                    for (LivingEntity livEntity : livEntitiesWithin) {
                         double distanceToLivEntity = this.distanceToSqr(livEntity);
                         if (distanceToLivEntity < 16) {
                             breathCloud.setPos(livEntity.getX(), livEntity.getY(), livEntity.getZ());
@@ -71,7 +77,7 @@ public class DragonBreathBottleEntity extends ProjectileItemEntity implements IR
                     }
                 }
 
-                this.level.levelEvent(2006, this.blockPosition(), this.isSilent() ? -1 : 1);
+                this.level.levelEvent(Constants.WorldEvents.DRAGON_FIREBALL_HIT, this.blockPosition(), this.isSilent() ? -1 : 1);
                 this.level.addFreshEntity(breathCloud);
                 this.remove();
             }
@@ -90,6 +96,7 @@ public class DragonBreathBottleEntity extends ProjectileItemEntity implements IR
     }
 
     @Override
+    @Nonnull
     public IPacket<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }

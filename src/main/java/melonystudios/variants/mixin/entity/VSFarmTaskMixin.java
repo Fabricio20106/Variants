@@ -1,6 +1,7 @@
 package melonystudios.variants.mixin.entity;
 
 import com.google.common.collect.Lists;
+import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.tag.VSBlockTags;
 import melonystudios.variants.util.tag.VSItemTags;
 import net.minecraft.block.Block;
@@ -84,7 +85,7 @@ public abstract class VSFarmTaskMixin {
                                 plantedCrop = true;
                             } else if (stack.getItem() instanceof IPlantable) {
                                 if (((IPlantable) stack.getItem()).getPlantType(world, this.aboveFarmlandPos) == PlantType.CROP) {
-                                    world.setBlock(this.aboveFarmlandPos, ((IPlantable) stack.getItem()).getPlant(world, this.aboveFarmlandPos), 3);
+                                    world.setBlock(this.aboveFarmlandPos, ((IPlantable) stack.getItem()).getPlant(world, this.aboveFarmlandPos), Constants.BlockFlags.DEFAULT_FLAG);
                                     plantedCrop = true;
                                 }
                             }

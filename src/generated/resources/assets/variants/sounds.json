@@ -1,0 +1,176 @@
+{
+  "music_disc.dog": {
+    "sounds": [
+      {
+        "name": "variants:music/disc/dog",
+        "stream": true
+      }
+    ]
+  },
+  "entity.fish.flop": {
+    "subtitle": "subtitles.entity.fish.flop",
+    "sounds": [
+      {
+        "name": "entity/fish/flop1",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop2",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop3",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop4",
+        "volume": 0.3
+      }
+    ]
+  },
+  "entity.fish.hurt": {
+    "subtitle": "subtitles.entity.fish.hurt",
+    "sounds": [
+      "entity/fish/hurt1",
+      "entity/fish/hurt2",
+      "entity/fish/hurt3",
+      "entity/fish/hurt4"
+    ]
+  },
+  "entity.fish.death": {
+    "subtitle": "subtitles.entity.fish.death",
+    "sounds": [
+      "entity/fish/hurt1",
+      "entity/fish/hurt2",
+      "entity/fish/hurt3",
+      "entity/fish/hurt4"
+    ]
+  },
+  "entity.dragon_breath_bottle.throw": {
+    "subtitle": "subtitles.entity.potion.throw",
+    "sounds": [
+      "random/bow"
+    ]
+  },
+  "item.spyglass.use": {
+    "subtitle": "subtitles.item.spyglass.use",
+    "sounds": [
+      {
+        "name": "variants:item/spyglass/use",
+        "volume": 0.5,
+        "pitch": 1.15
+      },
+      {
+        "name": "variants:item/spyglass/use",
+        "volume": 0.5,
+        "pitch": 1.33
+      },
+      {
+        "name": "variants:item/spyglass/use",
+        "volume": 0.5,
+        "pitch": 1.4
+      },
+      {
+        "name": "variants:item/spyglass/use",
+        "volume": 0.5,
+        "pitch": 1.55
+      }
+    ]
+  },
+  "item.spyglass.stop_using": {
+    "subtitle": "subtitles.item.spyglass.stop_using",
+    "sounds": [
+      {
+        "name": "variants:item/spyglass/stop",
+        "volume": 0.5
+      },
+      {
+        "name": "variants:item/spyglass/stop",
+        "volume": 0.5,
+        "pitch": 0.8
+      },
+      {
+        "name": "variants:item/spyglass/stop",
+        "volume": 0.5,
+        "pitch": 0.9
+      }
+    ]
+  },
+  "item.armor.equip_empty_slot": {
+    "subtitle": "subtitles.item.armor.equip_empty_slot",
+    "sounds": [
+      "item/armor/equip_iron1",
+      "item/armor/equip_iron2",
+      "item/armor/equip_iron3",
+      "item/armor/equip_iron4",
+      "item/armor/equip_iron5",
+      "item/armor/equip_iron6"
+    ]
+  },
+  "item.armor.equip_emerald": {
+    "subtitle": "subtitles.item.armor.equip_emerald",
+    "sounds": [
+      "item/armor/equip_diamond1",
+      "item/armor/equip_diamond2",
+      "item/armor/equip_diamond3",
+      "item/armor/equip_diamond4",
+      "item/armor/equip_diamond5",
+      "item/armor/equip_diamond6"
+    ]
+  },
+  "item.armor.equip_quartz": {
+    "subtitle": "subtitles.item.armor.equip_quartz",
+    "sounds": [
+      "item/armor/equip_iron1",
+      "item/armor/equip_iron2",
+      "item/armor/equip_iron3",
+      "item/armor/equip_iron4",
+      "item/armor/equip_iron5",
+      "item/armor/equip_iron6"
+    ]
+  },
+  "item.armor.equip_copper": {
+    "subtitle": "subtitles.item.armor.equip_copper",
+    "sounds": [
+      "item/armor/equip_iron1",
+      "item/armor/equip_iron2",
+      "item/armor/equip_iron3",
+      "item/armor/equip_iron4",
+      "item/armor/equip_iron5",
+      "item/armor/equip_iron6"
+    ]
+  },
+  "item.armor.equip_phantom_membrane": {
+    "subtitle": "subtitles.item.armor.equip_phantom_membrane",
+    "sounds": [
+      "item/armor/equip_leather1",
+      "item/armor/equip_leather2",
+      "item/armor/equip_leather3",
+      "item/armor/equip_leather4",
+      "item/armor/equip_leather5",
+      "item/armor/equip_leather6"
+    ]
+  },
+  "item.armor.equip_rabbit_hide": {
+    "subtitle": "subtitles.item.armor.equip_rabbit_hide",
+    "sounds": [
+      "item/armor/equip_leather1",
+      "item/armor/equip_leather2",
+      "item/armor/equip_leather3",
+      "item/armor/equip_leather4",
+      "item/armor/equip_leather5",
+      "item/armor/equip_leather6"
+    ]
+  },
+  "item.armor.equip_wool": {
+    "subtitle": "subtitles.item.armor.equip_wool",
+    "sounds": [
+      "item/armor/equip_leather1",
+      "item/armor/equip_leather2",
+      "item/armor/equip_leather3",
+      "item/armor/equip_leather4",
+      "item/armor/equip_leather5",
+      "item/armor/equip_leather6"
+    ]
+  }
+}

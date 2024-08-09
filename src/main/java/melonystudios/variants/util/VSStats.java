@@ -11,7 +11,7 @@ public class VSStats {
     public static final ResourceLocation SPAWNERS_PICKED_UP = register("spawners_picked_up");
 
     private static ResourceLocation register(String name) {
-        ResourceLocation registryName = Variants.resourceLoc(name);
+        ResourceLocation registryName = Variants.variants(name);
         Registry.register(Registry.CUSTOM_STAT, name, registryName);
         Stats.CUSTOM.get(registryName, IStatFormatter.DEFAULT);
         return registryName;

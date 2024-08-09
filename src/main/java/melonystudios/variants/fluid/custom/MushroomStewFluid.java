@@ -22,8 +22,8 @@ import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 
 public abstract class MushroomStewFluid extends ForgeFlowingFluid {
-    public static final ForgeFlowingFluid.Properties MUSHROOM_STEW_PROPERTIES = new ForgeFlowingFluid.Properties(VSFluids.MUSHROOM_STEW, VSFluids.FLOWING_MUSHROOM_STEW, FluidAttributes.builder(Variants.resourceLoc("block/mushroom_stew_still"),
-            Variants.resourceLoc("block/mushroom_stew_flowing")).rarity(Rarity.UNCOMMON).sound(SoundEvents.BUCKET_EMPTY).overlay(Variants.resourceLoc("block/mushroom_stew_overlay"))).block(VSBlocks.MUSHROOM_STEW)
+    public static final ForgeFlowingFluid.Properties MUSHROOM_STEW_PROPERTIES = new ForgeFlowingFluid.Properties(VSFluids.MUSHROOM_STEW, VSFluids.FLOWING_MUSHROOM_STEW, FluidAttributes.builder(Variants.variants("block/mushroom_stew_still"),
+            Variants.variants("block/mushroom_stew_flowing")).rarity(Rarity.UNCOMMON).sound(SoundEvents.BUCKET_EMPTY).overlay(Variants.variants("block/mushroom_stew_overlay"))).block(VSBlocks.MUSHROOM_STEW)
             .bucket(VSItems.MUSHROOM_STEW_BUCKET);
 
     public MushroomStewFluid(Properties properties) {

@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class DamageSourceArgument implements ArgumentType<ResourceLocation> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("out_of_world", "minecraft:thrown", "variants:redstone_poisoning", "backmath:mid_term_armor_instability");
+    private static final Collection<String> EXAMPLES = Arrays.asList("out_of_world", "minecraft:thrown", "variants:redstone_poisoning");
     private static final DynamicCommandExceptionType INVALID_SOURCE_ERROR = new DynamicCommandExceptionType(location -> new TranslationTextComponent("argument.damage_source.invalid", location));
 
     @Override

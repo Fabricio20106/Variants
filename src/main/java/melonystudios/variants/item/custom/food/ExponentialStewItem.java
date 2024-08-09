@@ -8,6 +8,7 @@ import melonystudios.variants.stew.VSStewBehaviors;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.NBTUtils;
 import melonystudios.variants.util.VSRegistries;
+import melonystudios.variants.util.tag.StewBehaviorTags;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -97,6 +98,10 @@ public class ExponentialStewItem extends Item {
         behaviorTag.put("properties", properties);
     }
 
+    public static boolean canRunBehavior(CompoundNBT behaviorTag, StewBehavior behavior) {
+        return behaviorTag.contains("properties", Constants.TagTypes.COMPOUND) || !behavior.is(StewBehaviorTags.CANNOT_RUN_WITHOUT_NBT);
+    }
+
     @Override
     @Nonnull
     public ItemStack finishUsingItem(ItemStack stewStack, World world, LivingEntity livEntity) {
@@ -107,9 +112,9 @@ public class ExponentialStewItem extends Item {
         CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
         if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
             StewBehavior behavior = VSRegistries.STEW_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
-            if (behavior != null) behavior.executeFromStewNBT(stewStack, world, livEntity, behavior.getBehaviorProperties(stewStack));
+            if (behavior != null && canRunBehavior(behaviorTag, behavior)) behavior.executeFromStewNBT(stewStack, world, livEntity, behavior.getBehaviorProperties(stewStack));
         } else {
-            this.stewBehavior.executeFromStewNBT(stewStack, world, livEntity, this.stewBehavior.getBehaviorProperties(stewStack));
+            if (canRunBehavior(behaviorTag, this.stewBehavior)) this.stewBehavior.executeFromStewNBT(stewStack, world, livEntity, this.stewBehavior.getBehaviorProperties(stewStack));
         }
 
         // For Suspicious Stew & "Apply Mob Effects" behavior
@@ -123,7 +128,7 @@ public class ExponentialStewItem extends Item {
                 boolean ambient = false;
                 boolean showParticles = true;
                 boolean showIcon = true;
-                boolean noCounter = true;
+                boolean noCounter = false;
                 CompoundNBT effectTag = effectList.getCompound(i);
                 if (effectTag.contains("duration", Constants.TagTypes.INTEGER)) duration = effectTag.getInt("duration");
                 if (effectTag.contains("amplifier", Constants.TagTypes.INTEGER)) amplifier = effectTag.getInt("amplifier");
@@ -195,6 +200,15 @@ public class ExponentialStewItem extends Item {
         if (NBTUtils.shouldNotHideTooltip("hide_stew_behavior", stack)) {
             tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".exponential_stew.behavior",
                     getBehaviorTranslation(stack)).withStyle(TextFormatting.GRAY));
+        }
+        if (NBTUtils.shouldNotHideTooltip("hide_behavior_tooltips", stack)) {
+            CompoundNBT behaviorTag = stack.getOrCreateTagElement("behavior");
+            if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
+                StewBehavior behavior = VSRegistries.STEW_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
+                if (behavior != null) tooltip.addAll(behavior.addToStewTooltip(stack, world, flag));
+            } else {
+                tooltip.addAll(this.stewBehavior.addToStewTooltip(stack, world, flag));
+            }
         }
     }
 }

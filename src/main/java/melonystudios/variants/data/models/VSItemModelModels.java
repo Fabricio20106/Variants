@@ -1,6 +1,8 @@
 package melonystudios.variants.data.models;
 
 import melonystudios.variants.Variants;
+import melonystudios.variants.stew.bowl.BowlType;
+import melonystudios.variants.stew.bowl.BowlTypes;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
@@ -11,6 +13,8 @@ import net.minecraftforge.client.model.generators.loaders.SeparatePerspectiveMod
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.Map;
+
+import static melonystudios.variants.util.VSUtils.namespace;
 
 public abstract class VSItemModelModels extends ItemModelProvider {
     private final ModelFile generated = getExistingFile(mcLoc("item/generated"));
@@ -60,15 +64,15 @@ public abstract class VSItemModelModels extends ItemModelProvider {
     }
 
     public ResourceLocation textureID() {
-        return Variants.resourceLoc("texture_id");
+        return Variants.variants("texture_id");
     }
 
     public ResourceLocation armorDesign() {
-        return Variants.resourceLoc("design");
+        return Variants.variants("design");
     }
 
     public ResourceLocation mobID() {
-        return Variants.resourceLoc("mob_id");
+        return Variants.variants("mob_id");
     }
 
     // Methods for making specific items (for example, spyglasses)
@@ -88,6 +92,21 @@ public abstract class VSItemModelModels extends ItemModelProvider {
                 .override().predicate(textureID(), 7).model(getExistingFile(modLoc("item/" + name + "_crimson"))).end()
                 .override().predicate(textureID(), 8).model(getExistingFile(modLoc("item/" + name + "_warped"))).end()
                 .override().predicate(textureID(), 9).model(getExistingFile(modLoc("item/" + name + "_ender"))).end();
+    }
+
+    public ItemModelBuilder expoStewV2(String name, String stewType) {
+        BowlType.DATA_DRIVEN_TYPES.put(Variants.variants("oak"), BowlTypes.OAK);
+        ItemModelBuilder model = new ItemModelBuilder(Variants.variants("assets/variants/models/item"), this.existingFileHelper).parent(this.generated).texture("layer1", modLoc("item/stew_" + stewType));
+        for (ResourceLocation typeLocation : BowlType.DATA_DRIVEN_TYPES.keySet()) {
+            BowlType type = BowlType.DATA_DRIVEN_TYPES.get(typeLocation);
+            getBuilder(name + "_" + type.getWoodName()).parent(this.generated).texture("layer0", namespace(type.getAssetID().getNamespace(), "item/" + type.getBowlStack().getItem().getRegistryName().getPath()))
+                    .texture("layer1", modLoc("item/stew_" + stewType));
+        }
+        for (ResourceLocation typeLocation : BowlType.DATA_DRIVEN_TYPES.keySet()) {
+            BowlType type = BowlType.DATA_DRIVEN_TYPES.get(typeLocation);
+            model.override().predicate(textureID(), type.getTextureID()).model(getExistingFile(namespace(type.getAssetID().getNamespace(), "item/" + name + "_" + type.getWoodName()))).end();
+        }
+        return model;
     }
 
     public void spyglass(String name) {

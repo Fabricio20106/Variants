@@ -1,4 +1,4 @@
-package melonystudios.variants.data;
+package melonystudios.variants.data.recipes;
 
 import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
@@ -130,7 +130,7 @@ public class ExponentialStewRecipeBuilder {
 
             object.add("ingredients", array);
             JsonObject result = new JsonObject();
-            result.addProperty("item", Registry.ITEM.getKey(this.result.getItem()).toString());
+            result.addProperty("item", ForgeRegistries.ITEMS.getKey(this.result.getItem()).toString());
             if (this.count > 1) {
                 result.addProperty("count", this.count);
             }
@@ -193,6 +193,10 @@ public class ExponentialStewRecipeBuilder {
                 } else if (behavior instanceof IgniteBehavior && this.result.getItem() instanceof ExponentialStewItem) {
                     IgniteBehavior igniteBehavior = (IgniteBehavior) expoStew.getBehavior();
                     propertiesObj.addProperty("ticks_on_fire", igniteBehavior.getTicksOnFire());
+                } else if (behavior instanceof AddExperienceBehavior && this.result.getItem() instanceof ExponentialStewItem) {
+                    AddExperienceBehavior addExperienceBehavior = (AddExperienceBehavior) expoStew.getBehavior();
+                    propertiesObj.addProperty("amount", addExperienceBehavior.getExperienceAmount());
+                    propertiesObj.addProperty("levels", addExperienceBehavior.addsLevels());
                 }
             }
             behaviorObj.add("properties", propertiesObj);

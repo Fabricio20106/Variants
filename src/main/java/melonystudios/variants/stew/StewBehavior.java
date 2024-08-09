@@ -1,6 +1,8 @@
 package melonystudios.variants.stew;
 
+import com.google.common.collect.Lists;
 import melonystudios.variants.util.VSRegistries;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -14,6 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public abstract class StewBehavior extends ForgeRegistryEntry<StewBehavior> {
     @Nullable
@@ -59,6 +62,10 @@ public abstract class StewBehavior extends ForgeRegistryEntry<StewBehavior> {
         behaviorTag.putString("id", getBehaviorFromNBT(stewStack).getRegistryName().toString());
         behaviorTag.put("properties", writePropertiesToNBT());
         return behaviorTag;
+    }
+
+    public List<ITextComponent> addToStewTooltip(ItemStack stack, @Nullable World world, ITooltipFlag flag) {
+        return Lists.newArrayList();
     }
 
     public boolean hasBehaviorIDInNBT(ItemStack stewStack) {

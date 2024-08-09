@@ -88,7 +88,7 @@ public class Variants {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, VSConfigs.COMMON_SPEC, "jtw-mods/variants-common.toml");
     }
 
-    public static ResourceLocation resourceLoc(String name) {
+    public static ResourceLocation variants(String name) {
         return new ResourceLocation(MOD_ID, name);
     }
 
@@ -104,14 +104,14 @@ public class Variants {
         VSConfiguredFeatures.init();
         VSConfiguredCarvers.init();
         VSSurfaceBuilders.init();
-        Registry.register(Registry.BIOME_SOURCE, Variants.resourceLoc("enderwood_end"), VSEndBiomeProvider.CODEC);
+        Registry.register(Registry.BIOME_SOURCE, variants("enderwood_end"), VSEndBiomeProvider.CODEC);
 
         VSVanillaCompatibility.compostables();
         VSVanillaCompatibility.tillables();
         VSVanillaCompatibility.flammables();
         VSVanillaCompatibility.addBed(VSBlocks.GLOW_BLACK_BED.get());
 
-        RandomRanges.GENERATORS.put(Variants.resourceLoc("texture_id"), BowlIDValueRange.class);
+        RandomRanges.GENERATORS.put(variants("texture_id"), BowlIDValueRange.class);
 
         WoodType.register(VSWoodTypes.PAINTING);
         WoodType.register(VSWoodTypes.ENDERWOOD);

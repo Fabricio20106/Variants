@@ -14,11 +14,14 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.util.Constants;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.WeakHashMap;
+
+import static melonystudios.variants.util.Constants.BlockFlags.DEFAULT_FLAG;
 
 public class PottedRedstoneTorchBlock extends PottedTorchBlock {
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
@@ -28,15 +31,15 @@ public class PottedRedstoneTorchBlock extends PottedTorchBlock {
         super(torch, new RedstoneParticleData(particleColor[0] / 255, particleColor[1] / 255, particleColor[2] / 255, 1), properties);
     }
 
-    public void onPlace(BlockState state, World world, BlockPos pos, BlockState state1, boolean bool) {
-        for(Direction direction : Direction.values()) {
+    public void onPlace(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving) {
+        for (Direction direction : Direction.values()) {
             world.updateNeighborsAt(pos.relative(direction), this);
         }
     }
 
-    public void onRemove(BlockState state, World world, BlockPos pos, BlockState state1, boolean bool) {
-        if (!bool) {
-            for(Direction direction : Direction.values()) {
+    public void onRemove(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (!isMoving) {
+            for (Direction direction : Direction.values()) {
                 world.updateNeighborsAt(pos.relative(direction), this);
             }
         }
@@ -46,33 +49,33 @@ public class PottedRedstoneTorchBlock extends PottedTorchBlock {
         return state.getValue(LIT) && Direction.UP != direction ? 15 : 0;
     }
 
-    protected boolean hasNeighborSignal(World world, BlockPos pos, BlockState state) {
+    protected boolean hasNeighborSignal(World world, BlockPos pos) {
         return world.hasSignal(pos.below(), Direction.DOWN);
     }
 
     public void tick(BlockState state, ServerWorld world, BlockPos pos, Random rand) {
-        boolean hasNeighborSignal = this.hasNeighborSignal(world, pos, state);
+        boolean hasNeighborSignal = this.hasNeighborSignal(world, pos);
         List<Toggle> recentToggles = RECENT_TOGGLES.get(world);
 
-        while(recentToggles != null && !recentToggles.isEmpty() && world.getGameTime() - (recentToggles.get(0)).when > 60L) {
+        while (recentToggles != null && !recentToggles.isEmpty() && world.getGameTime() - (recentToggles.get(0)).when > 60L) {
             recentToggles.remove(0);
         }
 
         if (state.getValue(LIT)) {
             if (hasNeighborSignal) {
-                world.setBlock(pos, state.setValue(LIT, false), 3);
+                world.setBlock(pos, state.setValue(LIT, false), DEFAULT_FLAG);
                 if (isToggledTooFrequently(world, pos, true)) {
-                    world.levelEvent(1502, pos, 0);
+                    world.levelEvent(Constants.WorldEvents.REDSTONE_TORCH_BURNOUT, pos, 0);
                     world.getBlockTicks().scheduleTick(pos, world.getBlockState(pos).getBlock(), 160);
                 }
             }
         } else if (!hasNeighborSignal && !isToggledTooFrequently(world, pos, false)) {
-            world.setBlock(pos, state.setValue(LIT, true), 3);
+            world.setBlock(pos, state.setValue(LIT, true), DEFAULT_FLAG);
         }
     }
 
     public void neighborChanged(BlockState state, World world, BlockPos pos, Block block, BlockPos pos1, boolean bool) {
-        if (state.getValue(LIT) == this.hasNeighborSignal(world, pos, state) && !world.getBlockTicks().willTickThisTick(pos, this)) {
+        if (state.getValue(LIT) == this.hasNeighborSignal(world, pos) && !world.getBlockTicks().willTickThisTick(pos, this)) {
             world.getBlockTicks().scheduleTick(pos, this, 2);
         }
     }
@@ -100,13 +103,12 @@ public class PottedRedstoneTorchBlock extends PottedTorchBlock {
     }
 
     private static boolean isToggledTooFrequently(World world, BlockPos pos, boolean isLit) {
-        List<Toggle> recentToggles = RECENT_TOGGLES.computeIfAbsent(world, (reader) -> Lists.newArrayList());
+        List<Toggle> recentToggles = RECENT_TOGGLES.computeIfAbsent(world, reader -> Lists.newArrayList());
         if (isLit) recentToggles.add(new Toggle(pos.immutable(), world.getGameTime()));
 
         int toggles = 0;
 
-        for(int j = 0; j < recentToggles.size(); ++j) {
-            Toggle toggleList = recentToggles.get(j);
+        for (Toggle toggleList : recentToggles) {
             if (toggleList.pos.equals(pos)) {
                 ++toggles;
                 if (toggles >= 8) {

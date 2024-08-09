@@ -20,7 +20,7 @@ public class VSSurfaceBuilders {
     public static final ConfiguredSurfaceBuilder<SurfaceBuilderConfig> ENDERWOOD_FOREST = register("enderwood_forest", SurfaceBuilder.DEFAULT.configured(ENDERWOOD_FOREST_NYLIUM_CONFIG));
 
     private static <SC extends ISurfaceBuilderConfig> ConfiguredSurfaceBuilder<SC> register(String name, ConfiguredSurfaceBuilder<SC> csb) {
-        return WorldGenRegistries.register(WorldGenRegistries.CONFIGURED_SURFACE_BUILDER, Variants.resourceLoc(name), csb);
+        return WorldGenRegistries.register(WorldGenRegistries.CONFIGURED_SURFACE_BUILDER, Variants.variants(name), csb);
     }
 
     public static void init() {}

@@ -25,6 +25,7 @@ import net.minecraft.util.text.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.ModList;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 
 import java.util.List;
@@ -76,6 +77,23 @@ public class VSUtils {
         return new ResourceLocation(name);
     }
 
+    public static ResourceLocation namespace(String namespace, String name) {
+        String[] location = decompose(namespace, name);
+        if (StringUtils.isEmpty(location[0])) {
+            return new ResourceLocation(namespace, location[1]);
+        } else return new ResourceLocation(location[0], location[1]);
+    }
+
+    protected static String[] decompose(String namespace, String location) {
+        String[] stringArray = new String[] {namespace, location};
+        int separatorIndex = location.indexOf(':');
+        if (separatorIndex >= 0) {
+            stringArray[1] = location.substring(separatorIndex + 1);
+            if (separatorIndex >= 1) stringArray[0] = location.substring(0, separatorIndex);
+        }
+        return stringArray;
+    }
+
     // Adds properties for a bow.
     public static void makeBow(Item bow) {
         register(bow, new ResourceLocation("pull"), (stack, world, livEntity) -> {
@@ -95,7 +113,7 @@ public class VSUtils {
 
     // Adds properties for armor designs.
     public static void addArmorDesigns(Item sweater) {
-        register(sweater, Variants.resourceLoc("design"), (stack, world, livEntity) -> {
+        register(sweater, Variants.variants("design"), (stack, world, livEntity) -> {
             CompoundNBT tag = stack.getTag();
             if (tag != null && tag.contains("armor_design", Constants.TagTypes.INTEGER)) return tag.getInt("armor_design");
             return 0;
@@ -104,7 +122,7 @@ public class VSUtils {
 
     // Add properties for mob ids for spawner minecarts.
     public static void addSpawnerMinecartMobs(Item spawnerMinecart) {
-        register(spawnerMinecart, Variants.resourceLoc("mob_id"), (stack, world, livEntity) -> {
+        register(spawnerMinecart, Variants.variants("mob_id"), (stack, world, livEntity) -> {
             CompoundNBT spawnData = stack.getTagElement("spawn_data");
             if (spawnData != null && spawnData.contains("SpawnData", Constants.TagTypes.COMPOUND)) {
                 CompoundNBT subSpawnData = spawnData.getCompound("SpawnData");
@@ -127,7 +145,7 @@ public class VSUtils {
 
     // Adds properties for exponential stews.
     public static void makeExpoStew(Item expoStew) {
-        register(expoStew, Variants.resourceLoc("texture_id"), (stack, world, livEntity) -> {
+        register(expoStew, Variants.variants("texture_id"), (stack, world, livEntity) -> {
             CompoundNBT bowlTag = stack.getTagElement("bowl");
             if (bowlTag != null && bowlTag.contains("texture_id", Constants.TagTypes.INTEGER)) return bowlTag.getInt("texture_id");
             return 0;

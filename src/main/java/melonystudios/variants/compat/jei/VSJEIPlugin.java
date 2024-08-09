@@ -24,7 +24,7 @@ import java.util.List;
 public class VSJEIPlugin implements IModPlugin {
     @Override
     public ResourceLocation getPluginUid() {
-        return Variants.resourceLoc("jei_plugin");
+        return Variants.variants("jei_plugin");
     }
 
     @Override

@@ -1,5 +1,6 @@
 package melonystudios.variants.block.custom;
 
+import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.tag.VSBlockTags;
 import melonystudios.variants.util.tag.VSFluidTags;
 import net.minecraft.block.*;
@@ -24,16 +25,19 @@ import net.minecraftforge.common.FarmlandWaterManager;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.IPlantable;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 
 public abstract class AbstractFarmlandBlock extends Block {
     public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE;
     protected static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 15, 16);
 
+    @Nonnull
     public BlockState getDirtLikeBlock() {
         return Blocks.DIRT.defaultBlockState();
     }
 
+    @Nonnull
     public ITag<Fluid> getHydrationFluid() {
         return VSFluidTags.HYDRATES_WATER_BASED_FARMLAND;
     }
@@ -43,12 +47,12 @@ public abstract class AbstractFarmlandBlock extends Block {
         this.registerDefaultState(this.stateDefinition.any().setValue(MOISTURE, 0));
     }
 
-    public BlockState updateShape(BlockState state, Direction direction, BlockState state1, IWorld world, BlockPos pos, BlockPos pos1) {
-        if (direction == Direction.UP && !state.canSurvive(world, pos)) {
-            world.getBlockTicks().scheduleTick(pos, this, 1);
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, IWorld world, BlockPos currentPos, BlockPos neighborPos) {
+        if (direction == Direction.UP && !state.canSurvive(world, currentPos)) {
+            world.getBlockTicks().scheduleTick(currentPos, this, 1);
         }
 
-        return super.updateShape(state, direction, state1, world, pos, pos1);
+        return super.updateShape(state, direction, neighborState, world, currentPos, neighborPos);
     }
 
     public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos) {
@@ -78,12 +82,12 @@ public abstract class AbstractFarmlandBlock extends Block {
         int moisture = state.getValue(MOISTURE);
         if (!isNearWater(world, pos) && !world.isRainingAt(pos.above())) {
             if (moisture > 0) {
-                world.setBlock(pos, state.setValue(MOISTURE, moisture - 1), 2);
+                world.setBlock(pos, state.setValue(MOISTURE, moisture - 1), Constants.BlockFlags.BLOCK_UPDATE);
             } else if (!isUnderCrops(world, pos)) {
                 turnToDirtLike(state, world, pos);
             }
         } else if (moisture < 7) {
-            world.setBlock(pos, state.setValue(MOISTURE, 7), 2);
+            world.setBlock(pos, state.setValue(MOISTURE, 7), Constants.BlockFlags.BLOCK_UPDATE);
         }
     }
 

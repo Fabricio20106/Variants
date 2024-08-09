@@ -82,7 +82,7 @@ public class VSConfiguredFeatures {
     public static final ConfiguredFeature<?, ?> END_SPROUTS = register("end_sprouts", Feature.NETHER_FOREST_VEGETATION.configured(END_SPROUTS_CONFIG).decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(4))));
 
     public static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String name, ConfiguredFeature<FC, ?> configuredFeature) {
-        return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, Variants.resourceLoc(name), configuredFeature);
+        return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, Variants.variants(name), configuredFeature);
     }
 
     public static void init() {}

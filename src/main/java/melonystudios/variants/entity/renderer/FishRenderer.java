@@ -20,7 +20,7 @@ public class FishRenderer extends MobRenderer<FishEntity, CodModel<FishEntity>> 
 
     @Override
     public ResourceLocation getTextureLocation(FishEntity entity) {
-        return Variants.resourceLoc("textures/entity/fish.png");
+        return Variants.variants("textures/entity/fish.png");
     }
 
     @Override

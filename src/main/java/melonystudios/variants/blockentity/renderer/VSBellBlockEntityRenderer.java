@@ -18,7 +18,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class VSBellBlockEntityRenderer extends TileEntityRenderer<VSBellBlockEntity> {
-    public static final RenderMaterial DIAMOND_BELL_RENDER_MATERIAL = new RenderMaterial(AtlasTexture.LOCATION_BLOCKS, Variants.resourceLoc("entity/bell/diamond_bell_body"));
+    public static final RenderMaterial DIAMOND_BELL_RENDER_MATERIAL = new RenderMaterial(AtlasTexture.LOCATION_BLOCKS, Variants.variants("entity/bell/diamond_bell_body"));
     private final ModelRenderer bellBody = new ModelRenderer(32, 32, 0, 0);
 
     public VSBellBlockEntityRenderer(TileEntityRendererDispatcher dispatcher) {

@@ -1,0 +1,9 @@
+{
+  "asset_id": "variants:jungle",
+  "bowl": {
+    "id": "variants:jungle_bowl",
+    "count": 1
+  },
+  "name": "jungle",
+  "texture_id": 3
+}

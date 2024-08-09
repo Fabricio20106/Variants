@@ -2,6 +2,7 @@ package melonystudios.variants.loot.function;
 
 import com.google.gson.*;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import melonystudios.variants.Variants;
 import melonystudios.variants.item.custom.food.ExponentialStewItem;
 import melonystudios.variants.loot.VSLootFunctions;
 import melonystudios.variants.stew.StewBehavior;
@@ -13,6 +14,7 @@ import net.minecraft.loot.LootFunctionType;
 import net.minecraft.loot.conditions.ILootCondition;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.JsonToNBT;
+import net.minecraft.util.text.TranslationTextComponent;
 
 import javax.annotation.Nonnull;
 
@@ -64,7 +66,7 @@ public class SetStewBehavior extends LootFunction {
             if (element.isJsonPrimitive()) {
                 return element.getAsString();
             } else {
-                throw new JsonSyntaxException("Expected " + objectName + " to be a string, was an object (" + element + ")");
+                throw new JsonSyntaxException(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".string_conversion.not_primitive", objectName).getString());
             }
         }
     }

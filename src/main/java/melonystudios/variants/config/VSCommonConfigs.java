@@ -38,6 +38,10 @@ public class VSCommonConfigs {
     // Enchantments
     public final ForgeConfigSpec.BooleanValue enableQuickChargeFive;
 
+    // Stew Behaviors
+    public final ForgeConfigSpec.DoubleValue explosionRadiusUpperLimit;
+    public final ForgeConfigSpec.DoubleValue soundPitchUpperLimit;
+
     public VSCommonConfigs(ForgeConfigSpec.Builder builder) {
         builder.comment("Welcome to the Variants config file! This file contains various configs on many aspects of the mod. (Made on 18/11/23)");
 
@@ -78,6 +82,11 @@ public class VSCommonConfigs {
         this.enableInfinitySweatersTab = builder.comment("Enables the Infinity Sweaters tab (WARNING: This tab is *very* fragile and will most likely cause issues when at high values).").define("infinitySweatersTab.enableInfinitySweatersTab", false);
         this.infinitySweatersTabLength = builder.comment("How many sweaters should the tab load in. (Def: 4096)").defineInRange("infinitySweatersTab.infinitySweatersTabLength", 4096, 1, 16777215);
         this.infinitySweatersTabSpacing = builder.comment("The spacing between sweater colors. (Def: 16)").defineInRange("infinitySweatersTab.infinitySweatersTabSpacing", 16, 1, 16777215);
+        builder.pop();
+
+        builder.push("stewBehaviors");
+        this.explosionRadiusUpperLimit = builder.comment("What should the upper limit of the explosion radius in Explode behaviors be?").defineInRange("explosionRadiusUpperLimit", 128, 0, Float.MAX_VALUE);
+        this.soundPitchUpperLimit = builder.comment("What should the upper limit of the pitch in Play Sound behaviors be?").defineInRange("soundPitchUpperLimit", 2, 0, Float.MAX_VALUE);
         builder.pop();
     }
 }

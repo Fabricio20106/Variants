@@ -11,7 +11,7 @@ public class VSConfiguredCarvers {
     public static final ConfiguredCarver<ProbabilityConfig> END_RAVINE = register("end_ravine", VSWorldCarvers.END_RAVINE.get().configured(new ProbabilityConfig(0.02F))); // 2%
 
     private static <WC extends ICarverConfig> ConfiguredCarver<WC> register(String name, ConfiguredCarver<WC> carver) {
-        return WorldGenRegistries.register(WorldGenRegistries.CONFIGURED_CARVER, Variants.resourceLoc(name), carver);
+        return WorldGenRegistries.register(WorldGenRegistries.CONFIGURED_CARVER, Variants.variants(name), carver);
     }
 
     public static void init() {}

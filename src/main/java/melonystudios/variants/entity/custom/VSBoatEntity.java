@@ -80,7 +80,7 @@ public class VSBoatEntity extends BoatEntity {
 
     @Override
     public ItemStack getPickedResult(RayTraceResult target) {
-        return new ItemStack(ForgeRegistries.ITEMS.getValue(Variants.resourceLoc(this.getWoodType() + "_boat")));
+        return new ItemStack(ForgeRegistries.ITEMS.getValue(Variants.variants(this.getWoodType() + "_boat")));
     }
 
     @Nonnull

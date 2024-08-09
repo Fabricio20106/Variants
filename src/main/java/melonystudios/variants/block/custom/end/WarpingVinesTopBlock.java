@@ -5,6 +5,7 @@ import net.minecraft.block.*;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.shapes.VoxelShape;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 
 public class WarpingVinesTopBlock extends AbstractTopPlantBlock {
@@ -18,6 +19,7 @@ public class WarpingVinesTopBlock extends AbstractTopPlantBlock {
         return PlantBlockHelper.getBlocksToGrowWhenBonemealed(rand);
     }
 
+    @Nonnull
     protected Block getBodyBlock() {
         return VSBlocks.WARPING_VINES_PLANT.get();
     }

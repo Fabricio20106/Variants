@@ -9,6 +9,9 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants;
+
+import javax.annotation.Nonnull;
 
 public class DispenseVSBoatBehavior extends DefaultDispenseItemBehavior {
     private final DefaultDispenseItemBehavior defaultDispenseBehavior = new DefaultDispenseItemBehavior();
@@ -18,6 +21,8 @@ public class DispenseVSBoatBehavior extends DefaultDispenseItemBehavior {
         this.type = type;
     }
 
+    @Override
+    @Nonnull
     public ItemStack execute(IBlockSource source, ItemStack stack) {
         Direction direction = source.getBlockState().getValue(DispenserBlock.FACING);
         World world = source.getLevel();
@@ -42,6 +47,6 @@ public class DispenseVSBoatBehavior extends DefaultDispenseItemBehavior {
     }
 
     protected void playSound(IBlockSource source) {
-        source.getLevel().levelEvent(1000, source.getPos(), 0);
+        source.getLevel().levelEvent(Constants.WorldEvents.DISPENSER_DISPENSE_SOUND, source.getPos(), 0);
     }
 }

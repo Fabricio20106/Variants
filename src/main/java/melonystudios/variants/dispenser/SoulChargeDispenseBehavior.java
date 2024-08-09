@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Util;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants;
 
 import java.util.Random;
 
@@ -31,6 +32,6 @@ public class SoulChargeDispenseBehavior extends DefaultDispenseItemBehavior {
     }
 
     protected void playSound(IBlockSource source) {
-        source.getLevel().levelEvent(1018, source.getPos(), 0);
+        source.getLevel().levelEvent(Constants.WorldEvents.BLAZE_SHOOT_SOUND, source.getPos(), 0);
     }
 }

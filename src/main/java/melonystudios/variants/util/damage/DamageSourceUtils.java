@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static melonystudios.variants.Variants.resourceLoc;
+import static melonystudios.variants.Variants.variants;
 import static melonystudios.variants.util.VSUtils.minecraft;
 
 public class DamageSourceUtils {
@@ -23,7 +23,7 @@ public class DamageSourceUtils {
             minecraft("hot_floor"), minecraft("in_wall"), minecraft("fly_into_wall"), minecraft("cramming"), minecraft("drown"), minecraft("starve"), minecraft("fall"), minecraft("magic"), minecraft("wither"),
             minecraft("falling_anvil"), minecraft("out_of_world"), minecraft("falling_block"), minecraft("dragon_breath"), minecraft("dry_out"), minecraft("sweet_berry_bush"), minecraft("bad_respawn_point"),
             minecraft("wither_skull"), minecraft("fireball"), minecraft("firework_rocket"), minecraft("arrow"), minecraft("player_attack"), minecraft("thorns"), minecraft("even_more_magic"), minecraft("message_too_long"),
-            minecraft("indirect_magic"), resourceLoc("redstone_poisoning"), resourceLoc("bluestone_poisoning"), resourceLoc("glowstone_poisoning"), resourceLoc("gunpowder_poisoning"), resourceLoc("explosive_blend_poisoning"))
+            minecraft("indirect_magic"), variants("redstone_poisoning"), variants("bluestone_poisoning"), variants("glowstone_poisoning"), variants("gunpowder_poisoning"), variants("explosive_blend_poisoning"))
             .build();
 
     public static DamageSource fromLocation(LivingEntity target, ResourceLocation sourceLocation) {

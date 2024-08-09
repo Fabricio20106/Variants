@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.world.World;
 
-import static melonystudios.variants.util.NBTUtils.integerOrDefault;
+import static melonystudios.variants.util.NBTUtils.anyNumericOrIntDefault;
 
 public class IgniteBehavior extends StewBehavior {
     private final int ticksOnFire;
@@ -31,7 +31,7 @@ public class IgniteBehavior extends StewBehavior {
 
     @Override
     public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
-        IgniteBehavior igniteBehavior = new IgniteBehavior(integerOrDefault("ticks_on_fire", propertiesTag, 100));
+        IgniteBehavior igniteBehavior = new IgniteBehavior(anyNumericOrIntDefault("ticks_on_fire", propertiesTag, 100));
         igniteBehavior.executeBehavior(stewStack, world, livEntity);
     }
 

@@ -2,6 +2,7 @@ package melonystudios.variants.world.feature.custom;
 
 import com.mojang.serialization.Codec;
 import melonystudios.variants.block.VSBlocks;
+import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.tag.VSBlockTags;
 import net.minecraft.block.AbstractTopPlantBlock;
 import net.minecraft.block.BlockState;
@@ -39,7 +40,7 @@ public class WarpingVinesFeature extends Feature<NoFeatureConfig> {
     }
 
     private void placeRoofEnderWartBlock(IWorld world, Random rand, BlockPos pos) {
-        world.setBlock(pos, VSBlocks.ENDER_WART_BLOCK.get().defaultBlockState(), 2);
+        world.setBlock(pos, VSBlocks.ENDER_WART_BLOCK.get().defaultBlockState(), Constants.BlockFlags.BLOCK_UPDATE);
         BlockPos.Mutable mutablePos = new BlockPos.Mutable();
         BlockPos.Mutable mutablePos1 = new BlockPos.Mutable();
 
@@ -60,7 +61,7 @@ public class WarpingVinesFeature extends Feature<NoFeatureConfig> {
                 }
 
                 if (i2 == 1) {
-                    world.setBlock(mutablePos, VSBlocks.ENDER_WART_BLOCK.get().defaultBlockState(), 2);
+                    world.setBlock(mutablePos, VSBlocks.ENDER_WART_BLOCK.get().defaultBlockState(), Constants.BlockFlags.BLOCK_UPDATE);
                 }
             }
         }
@@ -93,13 +94,11 @@ public class WarpingVinesFeature extends Feature<NoFeatureConfig> {
         for (int i = 0; i <= range; ++i) {
             if (world.isEmptyBlock(mutablePos)) {
                 if (i == range || !world.isEmptyBlock(mutablePos.below())) {
-                    world.setBlock(mutablePos, VSBlocks.WARPING_VINES.get().defaultBlockState().setValue(AbstractTopPlantBlock.AGE, MathHelper.nextInt(rand, min, max)), 2);
+                    world.setBlock(mutablePos, VSBlocks.WARPING_VINES.get().defaultBlockState().setValue(AbstractTopPlantBlock.AGE, MathHelper.nextInt(rand, min, max)), Constants.BlockFlags.BLOCK_UPDATE);
                     break;
                 }
-
-                world.setBlock(mutablePos, VSBlocks.WARPING_VINES_PLANT.get().defaultBlockState(), 2);
+                world.setBlock(mutablePos, VSBlocks.WARPING_VINES_PLANT.get().defaultBlockState(), Constants.BlockFlags.BLOCK_UPDATE);
             }
-
             mutablePos.move(Direction.DOWN);
         }
     }

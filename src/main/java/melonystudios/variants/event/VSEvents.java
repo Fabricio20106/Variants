@@ -5,6 +5,7 @@ import melonystudios.variants.Variants;
 import melonystudios.variants.command.DamageCommand;
 import melonystudios.variants.command.StewBehaviorCommand;
 import melonystudios.variants.config.VSConfigs;
+import melonystudios.variants.stew.bowl.BowlTypeManager;
 import melonystudios.variants.util.damage.DamageSourceManager;
 import melonystudios.variants.entity.VSEntities;
 import melonystudios.variants.item.VSItems;
@@ -48,6 +49,7 @@ public class VSEvents {
     @SubscribeEvent
     public static void onResourceReload(AddReloadListenerEvent event) {
         event.addListener(new DamageSourceManager());
+        event.addListener(new BowlTypeManager());
     }
 
     @SubscribeEvent(priority = EventPriority.HIGH)

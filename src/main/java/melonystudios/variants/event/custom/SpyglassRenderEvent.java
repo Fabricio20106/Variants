@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.Mod;
 // Copied from Caves & Cliffs Backport (by blackgear27)
 @Mod.EventBusSubscriber(modid = Variants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class SpyglassRenderEvent {
-    private static final ResourceLocation SPYGLASS_SCOPE = Variants.resourceLoc("textures/misc/spyglass_scope.png");
+    private static final ResourceLocation SPYGLASS_SCOPE = Variants.variants("textures/misc/spyglass_scope.png");
     private static final Minecraft INSTANCE = Minecraft.getInstance();
     private static final double DEFAULT_ZOOM_LEVEL = VSConfigs.COMMON_CONFIGS.defaultSpyglassZoomLevel.get();
     private static float SPYGLASS_SCALE;

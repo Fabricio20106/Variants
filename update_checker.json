@@ -5,7 +5,7 @@
     "1.20.2-recommended": "1.20.2-3.0.15",
     "1.18.2-latest": "1.18.2-2.0.5.1",
     "1.18.2-recommended": "1.18.2-2.0.5.1",
-    "1.16.5-latest": "1.16.5-1.7.0",
+    "1.16.5-latest": "1.16.5-1.8.0.2",
     "1.16.5-recommended": "1.16.5-1.7.0",
     "1.16.4-latest": "v1.5.3",
     "1.16.4-recommended": "v1.5.3"
@@ -23,6 +23,8 @@
     "1.18.2-2.0.0": "First Update for 1.18, New Tools & Tag Changes"
   },
   "1.16.5": {
+    "1.16.5-1.8.0.2": "",
+    "1.16.5-1.8.0.1": "Moved Everything to \"melonystudios.variants\" Package",
     "1.16.5-1.7.0": "Full Release of 1.7.0",
     "1.16.5-1.7.0-rc3": "Backported /damage, Added /stewbehavior and Revamped Damage Sources",
     "1.16.5-1.7.0-rc2": "Visual Spawner Minecarts & Moved Dispense Behaviors",

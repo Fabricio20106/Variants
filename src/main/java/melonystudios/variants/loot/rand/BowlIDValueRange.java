@@ -26,7 +26,7 @@ public class BowlIDValueRange implements IRandomRange {
     @Override
     @Nonnull
     public ResourceLocation getType() {
-        return Variants.resourceLoc("texture_id");
+        return Variants.variants("texture_id");
     }
 
     public static BowlIDValueRange range(int value) {
