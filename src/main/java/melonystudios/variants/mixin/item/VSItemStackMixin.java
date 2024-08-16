@@ -19,7 +19,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 @Mixin(ItemStack.class)
-public class VSItemStackMixin {
+public class VSItemStackMixin /*extends CapabilityProvider<ItemStack>*/ {
+    /*public VSItemStackMixin(Class<ItemStack> stackClass) {
+        super(stackClass);
+    }
+
+    @Shadow
+    public abstract Item getItem();
+    @Shadow
+    private int count;
+    @Shadow
+    private CompoundNBT tag;*/
+
     @Inject(method = "appendEnchantmentNames", at = @At("HEAD"), cancellable = true)
     @OnlyIn(Dist.CLIENT)
     private static void appendEnchantmentNames(List<ITextComponent> tooltip, ListNBT tagList, CallbackInfo ci) {
@@ -32,4 +43,40 @@ public class VSItemStackMixin {
             }
         }
     }
+
+    /*@Inject(method = "save", at = @At("HEAD"), cancellable = true)
+    private void save(CompoundNBT tag, CallbackInfoReturnable<CompoundNBT> cir) {
+        ResourceLocation location = ForgeRegistries.ITEMS.getKey(this.getItem());
+        tag.putString("id", location == null ? "minecraft:air" : location.toString());
+        tag.putInt("count", this.count);
+        if (this.tag != null) tag.put("components", this.tag.copy());
+        CompoundNBT capabilitiesTag = this.serializeCaps();
+        if (capabilitiesTag != null && !capabilitiesTag.isEmpty()) tag.put("forge_capabilities", capabilitiesTag);
+        cir.setReturnValue(tag);
+    }
+
+    @Inject(method = "of", at = @At("HEAD"), cancellable = true)
+    private static void of(CompoundNBT tag, CallbackInfoReturnable<ItemStack> cir) {
+        try {
+            Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(tag.getString("id")));
+            int count;
+            if (tag.contains("Count", Constants.TagTypes.BYTE)) {
+                count = tag.getByte("Count");
+                tag.remove("Count");
+            } else {
+                count = tag.getInt("count");
+            }
+            ItemStack stack = new ItemStack(item, count);
+
+            if (tag.contains("components", Constants.TagTypes.COMPOUND)) {
+                stack.setTag(tag.getCompound("components"));
+                stack.getItem().verifyTagAfterLoad(tag);
+            }
+            if (stack.getItem().isDamageable(stack)) stack.setDamageValue(stack.getDamageValue());
+            cir.setReturnValue(stack);
+        } catch (RuntimeException exception) {
+            LogManager.getLogger().debug("Tried to load invalid item: {}", tag, exception);
+            cir.setReturnValue(new ItemStack(null));
+        }
+    }*/
 }

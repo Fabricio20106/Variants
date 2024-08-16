@@ -12,7 +12,7 @@
         {
           "type": "minecraft:item",
           "weight": 30,
-          "name": "variants:old_cod"
+          "name": "variants:fish"
         },
         {
           "type": "minecraft:item",

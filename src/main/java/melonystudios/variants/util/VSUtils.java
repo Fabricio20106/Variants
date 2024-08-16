@@ -14,6 +14,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.UseAction;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.Effect;
@@ -25,6 +26,7 @@ import net.minecraft.util.text.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 
@@ -200,5 +202,39 @@ public class VSUtils {
                 }
             }
         }
+    }
+
+    public static CompoundNBT saveStack(ItemStack stack, CompoundNBT tag) {
+        tag.putString("id", stack.getItem().getRegistryName().toString());
+        if (stack.getCount() != 1) tag.putInt("count", stack.getCount());
+        if (stack.getTag() != null) tag.put("components", stack.getTag().copy());
+        return tag;
+    }
+
+    public static ItemStack loadStack(CompoundNBT tag) {
+        Item item;
+        if (tag.contains("id", Constants.TagTypes.STRING)) {
+            item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(tag.getString("id")));
+        } else {
+            item = Items.AIR;
+        }
+        int count;
+        if (tag.contains("count", Constants.TagTypes.ANY_NUMERIC)) {
+            count = tag.getInt("count");
+        } else {
+            count = 1;
+        }
+        ItemStack stack = new ItemStack(item, count);
+
+        if (tag.contains("components", Constants.TagTypes.COMPOUND)) {
+            stack.setTag(tag.getCompound("components"));
+            stack.getItem().verifyTagAfterLoad(tag);
+        } else if (tag.contains("tag", Constants.TagTypes.COMPOUND)) {
+            stack.setTag(tag.getCompound("tag"));
+            stack.getItem().verifyTagAfterLoad(tag);
+        }
+
+        if (stack.getItem().isDamageable(stack)) stack.setDamageValue(stack.getDamageValue());
+        return stack;
     }
 }

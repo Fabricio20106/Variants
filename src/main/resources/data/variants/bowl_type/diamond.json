@@ -1,9 +1,0 @@
-{
-  "asset_id": "variants:oak",
-  "bowl": {
-    "id": "minecraft:diamond",
-    "count": 1
-  },
-  "name": "diamond",
-  "texture_id": 10
-}

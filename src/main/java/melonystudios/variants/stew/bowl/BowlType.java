@@ -2,12 +2,10 @@ package melonystudios.variants.stew.bowl;
 
 import com.google.common.collect.Lists;
 import com.google.gson.*;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import melonystudios.variants.Variants;
-import melonystudios.variants.loot.function.SetStewBehavior;
+import melonystudios.variants.util.VSUtils;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.JsonToNBT;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -15,14 +13,14 @@ import org.apache.logging.log4j.LogManager;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.Type;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import static melonystudios.variants.util.VSUtils.namespace;
 
 public class BowlType {
-    public static Map<ResourceLocation, BowlType> DATA_DRIVEN_TYPES = new HashMap<>();
+    public static Map<ResourceLocation, BowlType> DATA_DRIVEN_TYPES = new LinkedHashMap<>();
     public static final List<Integer> TEXTURE_IDENTIFIERS = Lists.newArrayList();
     private final ItemStack bowlStack;
     private final ResourceLocation assetID;
@@ -35,7 +33,7 @@ public class BowlType {
         this.woodName = woodName;
         this.textureID = textureID;
         if (TEXTURE_IDENTIFIERS.contains(textureID)) {
-            LogManager.getLogger().warn(new TranslationTextComponent("error." + Variants.MOD_ID + ".bowl_type.duplicate_texture_id", woodName));
+            LogManager.getLogger().warn(new TranslationTextComponent("error." + Variants.MOD_ID + ".bowl_type.duplicate_texture_id", woodName).getString());
         } else {
             TEXTURE_IDENTIFIERS.add(textureID);
         }
@@ -116,19 +114,19 @@ public class BowlType {
         public BowlType deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
             if (element.isJsonObject()) {
                 JsonObject object = element.getAsJsonObject();
-                JsonObject bowlObject = object.get("bowl").getAsJsonObject();
+                /*JsonObject bowlObject = object.get("bowl").getAsJsonObject();
                 CompoundNBT tagTag;
                 try {
                     tagTag = JsonToNBT.parseTag(SetStewBehavior.Serializer.convertToString(bowlObject.get("tag"), "tag"));
                 } catch (CommandSyntaxException exception) {
                     tagTag = new CompoundNBT();
                 }
+                if (!tagTag.isEmpty()) stackTag.put("tag", tagTag);*/
                 CompoundNBT stackTag = new CompoundNBT();
-                if (!tagTag.isEmpty()) stackTag.put("tag", tagTag);
                 stackTag.putString("id", object.get("bowl").getAsJsonObject().get("id").getAsString());
-                stackTag.putByte("Count", object.get("bowl").getAsJsonObject().get("count").getAsByte());
+                stackTag.putInt("count", object.get("bowl").getAsJsonObject().get("count").getAsInt());
 
-                ItemStack bowlStack = ItemStack.of(stackTag);
+                ItemStack bowlStack = VSUtils.loadStack(stackTag);
                 String woodName = JSONUtils.getAsString(object, "name");
                 ResourceLocation assetID = new ResourceLocation(JSONUtils.getAsString(object, "asset_id"));
                 int textureID = JSONUtils.getAsInt(object, "texture_id");

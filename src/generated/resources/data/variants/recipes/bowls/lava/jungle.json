@@ -3,10 +3,10 @@
   "group": "lava_bowl",
   "ingredients": [
     {
-      "item": "variants:lava_glass_bottle"
+      "item": "variants:lava_bottle"
     },
     {
-      "item": "variants:lava_glass_bottle"
+      "item": "variants:lava_bottle"
     },
     {
       "item": "variants:jungle_bowl"
@@ -16,7 +16,9 @@
     "item": "variants:exponential_lava_bowl",
     "nbt": {
       "bowl": {
-        "name": "variants:jungle_bowl",
+        "item": {
+          "id": "variants:jungle_bowl"
+        },
         "texture_id": 3
       },
       "behavior": {

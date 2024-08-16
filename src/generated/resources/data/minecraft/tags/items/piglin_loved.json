@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "variants:gold_cauldron",
-    "variants:gold_beacon",
+    "variants:golden_cauldron",
+    "variants:golden_beacon",
     "variants:potted_golden_carrots",
     "variants:golden_carrots",
     "variants:golden_chain",

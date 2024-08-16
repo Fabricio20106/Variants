@@ -23,12 +23,67 @@ public class FixBehaviorCommand {
                 .then(Commands.literal("exponential_stew").executes(dispatcher -> fixExponentialStew(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target"))))
                 .then(Commands.literal("exponential_stew_effects").executes(dispatcher -> fixExponentialStewEffects(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target"))))
                 .then(Commands.literal("suspicious_stew_effects").executes(dispatcher -> fixSuspiciousStewEffects(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target"))))
-                .then(Commands.literal("bowl_name_tag").executes(dispatcher -> fixBowlNameTag(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target")))));
+                .then(Commands.literal("correct_ender_bowl").executes(dispatcher -> fixEnderBowlItem(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target"))))
+                .then(Commands.literal("old_stew_behavior_names").executes(dispatcher -> fixOldStewBehaviorNames(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target"))))
+                .then(Commands.literal("bowl_type_tag").executes(dispatcher -> fixBowlTypeTag(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target")))));
+    }
+
+    private static int fixOldStewBehaviorNames(CommandSource source, ServerPlayerEntity player) {
+        ItemStack handStack = player.getItemInHand(Hand.MAIN_HAND);
+        if (handStack.getItem() instanceof ExponentialStewItem) {
+            CompoundNBT tag = handStack.getTag();
+            if (tag != null && tag.contains("behavior", Constants.TagTypes.COMPOUND)) {
+                CompoundNBT behaviorTag = tag.getCompound("behavior");
+                if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
+                    switch (behaviorTag.getString("id")) {
+                        case "variants:effect": {
+                            behaviorTag.remove("id");
+                            behaviorTag.putString("id", "variants:apply_mob_effects");
+                            source.sendSuccess(new TranslationTextComponent("commands.stewbehavior.fix_old_behavior_names.success", behaviorTag.getString("id"), "variants:apply_mob_effects"), true);
+                            return 1;
+                        }
+                        case "variants:milk": {
+                            behaviorTag.remove("id");
+                            behaviorTag.putString("id", "variants:clear_mob_effects");
+                            source.sendSuccess(new TranslationTextComponent("commands.stewbehavior.fix_old_behavior_names.success", behaviorTag.getString("id"), "variants:clear_mob_effects"), true);
+                            return 1;
+                        }
+                        case "variants:lava": {
+                            behaviorTag.remove("id");
+                            behaviorTag.putString("id", "variants:ignite");
+                            source.sendSuccess(new TranslationTextComponent("commands.stewbehavior.fix_old_behavior_names.success", behaviorTag.getString("id"), "variants:ignite"), true);
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
+        source.sendSuccess(new TranslationTextComponent("commands.stewbehavior.fix_old_behavior_names.no_fixes_success"), true);
+        return 0;
+    }
+
+    private static int fixEnderBowlItem(CommandSource source, ServerPlayerEntity player) {
+        ItemStack handStack = player.getItemInHand(Hand.MAIN_HAND);
+        if (handStack.getItem() instanceof ExponentialStewItem) {
+            CompoundNBT tag = handStack.getTag();
+            if (tag != null && tag.contains("bowl", Constants.TagTypes.COMPOUND)) {
+                CompoundNBT bowlTag = tag.getCompound("bowl");
+                if (bowlTag.contains("name", Constants.TagTypes.STRING) && bowlTag.getString("name").equals("variants:ender_bowl")) {
+                    bowlTag.remove("name");
+                    bowlTag.putString("name", VSItems.ENDERWOOD_BOWL.get().getRegistryName().toString());
+                    source.sendSuccess(new TranslationTextComponent("commands.stewbehavior.fix_ender_bowl.success"), true);
+                    return 1;
+                }
+            }
+        } else {
+            source.sendFailure(new TranslationTextComponent("commands.stewbehavior.fix_ender_bowl.not_an_expo_stew", SetBehaviorCommand.getItemDisplayName(handStack)));
+        }
+        return 0;
     }
 
     private static int fixExponentialStew(CommandSource source, ServerPlayerEntity player) {
         fixExponentialStewEffects(source, player);
-        fixBowlNameTag(source, player);
+        fixBowlTypeTag(source, player);
         return 1;
     }
 
@@ -106,7 +161,7 @@ public class FixBehaviorCommand {
         return 0;
     }
 
-    private static int fixBowlNameTag(CommandSource source, ServerPlayerEntity player) {
+    private static int fixBowlTypeTag(CommandSource source, ServerPlayerEntity player) {
         ItemStack handStack = player.getItemInHand(Hand.MAIN_HAND);
         if (handStack.getItem() instanceof ExponentialStewItem) {
             CompoundNBT tag = handStack.getOrCreateTag();

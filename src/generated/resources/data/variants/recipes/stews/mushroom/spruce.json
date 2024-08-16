@@ -16,7 +16,9 @@
     "item": "variants:exponential_mushroom_stew",
     "nbt": {
       "bowl": {
-        "name": "variants:spruce_bowl",
+        "item": {
+          "id": "variants:spruce_bowl"
+        },
         "texture_id": 1
       },
       "behavior": {

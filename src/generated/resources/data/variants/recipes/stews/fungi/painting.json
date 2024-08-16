@@ -16,7 +16,9 @@
     "item": "variants:exponential_fungi_stew",
     "nbt": {
       "bowl": {
-        "name": "variants:painting_bowl",
+        "item": {
+          "id": "variants:painting_bowl"
+        },
         "texture_id": 6
       },
       "behavior": {

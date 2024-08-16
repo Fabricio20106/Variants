@@ -3,6 +3,7 @@ package melonystudios.variants.stew.custom;
 import melonystudios.variants.stew.StewBehavior;
 import melonystudios.variants.stew.VSStewBehaviors;
 import melonystudios.variants.util.NBTUtils;
+import melonystudios.variants.util.VSUtils;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -29,21 +30,21 @@ public class ClearMobEffectsBehavior extends StewBehavior {
         if (!world.isClientSide) {
             CompoundNBT behaviorTag = stack.getOrCreateTagElement("behavior");
             CompoundNBT propertiesTag = behaviorTag.getCompound("properties");
-            ItemStack curativeStack = ItemStack.of(propertiesTag.getCompound("curative_item"));
+            ItemStack curativeStack = VSUtils.loadStack(propertiesTag.getCompound("curative_item"));
             livEntity.curePotionEffects(curativeStack);
         }
     }
 
     @Override
     public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
-        ClearMobEffectsBehavior clearEffectsBehavior = new ClearMobEffectsBehavior(ItemStack.of(NBTUtils.compoundOrDefault("curative_item", propertiesTag, milkBucket())));
+        ClearMobEffectsBehavior clearEffectsBehavior = new ClearMobEffectsBehavior(VSUtils.loadStack(NBTUtils.compoundOrDefault("curative_item", propertiesTag, milkBucket())));
         clearEffectsBehavior.executeBehavior(stewStack, world, livEntity);
     }
 
     @Override
     public CompoundNBT writePropertiesToNBT() {
         CompoundNBT properties = new CompoundNBT();
-        properties.put("curative_item", this.curativeStack.save(new CompoundNBT()));
+        properties.put("curative_item", VSUtils.saveStack(this.curativeStack, new CompoundNBT()));
         return properties;
     }
 
@@ -54,6 +55,6 @@ public class ClearMobEffectsBehavior extends StewBehavior {
 
     private static CompoundNBT milkBucket() {
         ItemStack milkBucket = new ItemStack(Items.MILK_BUCKET);
-        return milkBucket.save(new CompoundNBT());
+        return VSUtils.saveStack(milkBucket, new CompoundNBT());
     }
 }

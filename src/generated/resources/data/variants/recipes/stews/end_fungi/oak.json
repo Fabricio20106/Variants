@@ -16,7 +16,9 @@
     "item": "variants:exponential_end_fungi_stew",
     "nbt": {
       "bowl": {
-        "name": "variants:oak_bowl",
+        "item": {
+          "id": "variants:oak_bowl"
+        },
         "texture_id": 0
       },
       "behavior": {

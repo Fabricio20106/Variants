@@ -16,7 +16,9 @@
     "item": "variants:exponential_soul_lava_bowl",
     "nbt": {
       "bowl": {
-        "name": "variants:jungle_bowl",
+        "item": {
+          "id": "variants:jungle_bowl"
+        },
         "texture_id": 3
       },
       "behavior": {

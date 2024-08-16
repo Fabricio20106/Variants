@@ -6,10 +6,10 @@
   ],
   "key": {
     "#": {
-      "item": "variants:ender_planks"
+      "item": "variants:enderwood_planks"
     }
   },
   "result": {
-    "item": "variants:ender_pressure_plate"
+    "item": "variants:enderwood_pressure_plate"
   }
 }

@@ -2,7 +2,7 @@
   "parent": "variants:variants/find_enderwood_forest",
   "display": {
     "icon": {
-      "item": "variants:ender_bookshelf"
+      "item": "variants:enderwood_bookshelf"
     },
     "title": {
       "translate": "advancements.variants.obtain_enderwood_bookshelf.title"
@@ -21,7 +21,7 @@
       "conditions": {
         "items": [
           {
-            "item": "variants:ender_bookshelf"
+            "item": "variants:enderwood_bookshelf"
           }
         ]
       }

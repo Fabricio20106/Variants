@@ -11,7 +11,7 @@
   },
   "providers": [
     {
-      "item": "variants:creeper_powder_pot"
+      "item": "variants:explosive_blend_pot"
     }
   ]
 }

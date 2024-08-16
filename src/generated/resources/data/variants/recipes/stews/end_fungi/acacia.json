@@ -16,7 +16,9 @@
     "item": "variants:exponential_end_fungi_stew",
     "nbt": {
       "bowl": {
-        "name": "variants:acacia_bowl",
+        "item": {
+          "id": "variants:acacia_bowl"
+        },
         "texture_id": 4
       },
       "behavior": {

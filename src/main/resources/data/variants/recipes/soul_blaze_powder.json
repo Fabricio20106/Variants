@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "variants:soul_rod"
+      "tag": "forge:rods/soul_blaze"
     }
   ],
   "result": {
-    "item": "variants:soul_powder",
+    "item": "variants:soul_blaze_powder",
     "count": 2
   }
 }

@@ -16,7 +16,9 @@
     "item": "variants:exponential_powder_snow_bowl",
     "nbt": {
       "bowl": {
-        "name": "variants:warped_bowl",
+        "item": {
+          "id": "variants:warped_bowl"
+        },
         "texture_id": 8
       },
       "behavior": {

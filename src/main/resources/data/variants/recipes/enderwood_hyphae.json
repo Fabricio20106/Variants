@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "variants:ender_stem"
+      "item": "variants:enderwood_stem"
     }
   },
   "result": {
-    "item": "variants:ender_hyphae",
+    "item": "variants:enderwood_hyphae",
     "count": 3
   }
 }

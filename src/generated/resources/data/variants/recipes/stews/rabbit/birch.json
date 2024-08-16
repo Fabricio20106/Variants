@@ -27,7 +27,9 @@
     "item": "variants:exponential_rabbit_stew",
     "nbt": {
       "bowl": {
-        "name": "variants:birch_bowl",
+        "item": {
+          "id": "variants:birch_bowl"
+        },
         "texture_id": 2
       },
       "behavior": {

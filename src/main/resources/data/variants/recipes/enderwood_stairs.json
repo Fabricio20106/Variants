@@ -8,11 +8,11 @@
   ],
   "key": {
     "#": {
-      "item": "variants:ender_planks"
+      "item": "variants:enderwood_planks"
     }
   },
   "result": {
-    "item": "variants:ender_stairs",
+    "item": "variants:enderwood_stairs",
     "count": 6
   }
 }

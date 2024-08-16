@@ -15,7 +15,7 @@
     }
   ],
   "result": {
-    "item": "variants:creeper_powder_pot",
+    "item": "variants:explosive_blend_pot",
     "nbt": {
       "poisoning_type": "variants:explosive_blend",
       "effect": {

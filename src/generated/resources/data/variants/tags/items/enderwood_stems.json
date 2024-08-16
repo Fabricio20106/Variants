@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "variants:ender_stem",
-    "variants:ender_hyphae",
-    "variants:stripped_ender_stem",
-    "variants:stripped_ender_hyphae"
+    "variants:enderwood_stem",
+    "variants:enderwood_hyphae",
+    "variants:stripped_enderwood_stem",
+    "variants:stripped_enderwood_hyphae"
   ]
 }

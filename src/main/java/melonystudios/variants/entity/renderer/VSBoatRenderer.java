@@ -17,10 +17,12 @@ import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import javax.annotation.Nonnull;
+
 @OnlyIn(Dist.CLIENT)
 public class VSBoatRenderer extends EntityRenderer<VSBoatEntity> {
     private static final ResourceLocation[] BOAT_TEXTURES = new ResourceLocation[] {Variants.variants("textures/entity/boat/painting.png"),Variants.variants("textures/entity/boat/crimson.png"),
-            Variants.variants("textures/entity/boat/warped.png"), Variants.variants("textures/entity/boat/ender.png")};
+            Variants.variants("textures/entity/boat/warped.png"), Variants.variants("textures/entity/boat/enderwood.png")};
     protected final BoatModel model = new BoatModel();
 
     public VSBoatRenderer(EntityRendererManager manager) {
@@ -63,17 +65,19 @@ public class VSBoatRenderer extends EntityRenderer<VSBoatEntity> {
     }
 
     @Override
+    @Nonnull
     public ResourceLocation getTextureLocation(VSBoatEntity entity) {
         switch (entity.getWoodType()) {
-            case "painting":
-            default:
-                return BOAT_TEXTURES[0];
             case "crimson":
                 return BOAT_TEXTURES[1];
             case "warped":
                 return BOAT_TEXTURES[2];
             case "ender":
+            case "enderwood":
                 return BOAT_TEXTURES[3];
+            case "painting":
+            default:
+                return BOAT_TEXTURES[0];
         }
     }
 }

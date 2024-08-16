@@ -6,11 +6,11 @@
   ],
   "key": {
     "#": {
-      "item": "variants:ender_planks"
+      "item": "variants:enderwood_planks"
     }
   },
   "result": {
-    "item": "variants:ender_slab",
+    "item": "variants:enderwood_slab",
     "count": 6
   }
 }

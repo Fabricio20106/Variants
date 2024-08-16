@@ -14,7 +14,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class VSBiomes {
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, Variants.MOD_ID);
 
-    public static final RegistryObject<Biome> ENDERWOOD_FOREST = BIOMES.register("ender_forest", VSBiomes::enderwoodForest);
+    public static final RegistryObject<Biome> ENDERWOOD_FOREST = BIOMES.register("enderwood_forest", VSBiomes::enderwoodForest);
 
     private static Biome enderwoodForest() {
         BiomeGenerationSettings.Builder settings = new BiomeGenerationSettings.Builder().surfaceBuilder(VSSurfaceBuilders.ENDERWOOD_FOREST);

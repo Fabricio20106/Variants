@@ -3,10 +3,10 @@
   "group": "wooden_button",
   "ingredients": [
     {
-      "item": "variants:ender_planks"
+      "item": "variants:enderwood_planks"
     }
   ],
   "result": {
-    "item": "variants:ender_button"
+    "item": "variants:enderwood_button"
   }
 }

@@ -8,14 +8,14 @@
   ],
   "key": {
     "#": {
-      "item": "variants:ender_planks"
+      "item": "variants:enderwood_planks"
     },
     "X": {
       "tag": "forge:rods/wooden"
     }
   },
   "result": {
-    "item": "variants:ender_sign",
+    "item": "variants:enderwood_sign",
     "count": 3
   }
 }

@@ -3,10 +3,10 @@
   "group": "lava_bowl",
   "ingredients": [
     {
-      "item": "variants:lava_glass_bottle"
+      "item": "variants:lava_bottle"
     },
     {
-      "item": "variants:lava_glass_bottle"
+      "item": "variants:lava_bottle"
     },
     {
       "item": "variants:acacia_bowl"
@@ -16,7 +16,9 @@
     "item": "variants:exponential_lava_bowl",
     "nbt": {
       "bowl": {
-        "name": "variants:acacia_bowl",
+        "item": {
+          "id": "variants:acacia_bowl"
+        },
         "texture_id": 4
       },
       "behavior": {

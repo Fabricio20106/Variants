@@ -62,7 +62,7 @@
       "predicate": {
         "variants:texture_id": 9.0
       },
-      "model": "variants:item/exponential_milk_bowl_ender"
+      "model": "variants:item/exponential_milk_bowl_enderwood"
     }
   ]
 }

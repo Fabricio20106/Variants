@@ -1,6 +1,7 @@
 package melonystudios.variants.item.custom.food;
 
 import melonystudios.variants.util.Constants;
+import melonystudios.variants.util.VSUtils;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -18,7 +19,7 @@ public class MilkBottleItem extends DrinkableContainerItem {
         if (!world.isClientSide) {
             CompoundNBT tag = bottleStack.getTag();
             if (tag != null && tag.contains("curative_item", Constants.TagTypes.COMPOUND)) {
-                livEntity.curePotionEffects(ItemStack.of(tag.getCompound("curative_item")));
+                livEntity.curePotionEffects(VSUtils.loadStack(tag.getCompound("curative_item")));
             } else {
                 livEntity.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
             }

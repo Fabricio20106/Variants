@@ -2,7 +2,7 @@
   "parent": "variants:variants/obtain_soul_lava_bucket",
   "display": {
     "icon": {
-      "item": "variants:soul_rod"
+      "item": "variants:soul_blaze_rod"
     },
     "title": {
       "translate": "advancements.variants.kill_soul_blaze.title"

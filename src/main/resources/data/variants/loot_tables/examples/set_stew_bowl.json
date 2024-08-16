@@ -10,7 +10,7 @@
           "functions": [
             {
               "function": "variants:set_stew_bowl",
-              "bowl": "variants:ender_bowl",
+              "bowl": "variants:enderwood_bowl",
               "texture_id": {
                 "type": "variants:texture_id",
                 "value": 10

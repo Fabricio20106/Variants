@@ -10,10 +10,10 @@
       "tag": "forge:rods/wooden"
     },
     "W": {
-      "item": "variants:ender_planks"
+      "item": "variants:enderwood_planks"
     }
   },
   "result": {
-    "item": "variants:ender_fence_gate"
+    "item": "variants:enderwood_fence_gate"
   }
 }

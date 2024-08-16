@@ -7,13 +7,13 @@
   ],
   "key": {
     "#": {
-      "item": "variants:ender_planks"
+      "item": "variants:enderwood_planks"
     },
     "B": {
       "tag": "melony:books"
     }
   },
   "result": {
-    "item": "variants:ender_bookshelf"
+    "item": "variants:enderwood_bookshelf"
   }
 }

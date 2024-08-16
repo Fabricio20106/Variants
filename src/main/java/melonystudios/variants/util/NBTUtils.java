@@ -6,6 +6,7 @@ import melonystudios.variants.util.damage.DamageSourceUtils;
 import melonystudios.variants.util.damage.custom.DamageBehaviorSource;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.potion.Effect;
@@ -43,6 +44,7 @@ public class NBTUtils {
         if (instances != null) {
             for (EffectInstance instance : instances) {
                 CompoundNBT effectTag = new CompoundNBT();
+                List<ItemStack> curativeItemsTemplate = Lists.newArrayList(new ItemStack(Items.MILK_BUCKET));
 
                 effectTag.putString("id", instance.getEffect().getRegistryName().toString());
                 effectTag.putInt("duration", instance.getDuration());
@@ -51,7 +53,7 @@ public class NBTUtils {
                 if (!instance.isVisible()) effectTag.putBoolean("show_particles", instance.isVisible());
                 if (!instance.showIcon()) effectTag.putBoolean("show_icon", instance.showIcon());
                 if (instance.isNoCounter()) effectTag.putBoolean("no_counter", instance.isNoCounter());
-                if (instance.getCurativeItems().size() > 1) {
+                if (!instance.getCurativeItems().equals(curativeItemsTemplate)) {
                     ListNBT curativeItems = new ListNBT();
                     for (ItemStack curativeStack : instance.getCurativeItems()) {
                         CompoundNBT savedStack = curativeStack.save(new CompoundNBT());
@@ -75,24 +77,32 @@ public class NBTUtils {
             ListNBT effectList = propertiesTag.getList("effects", Constants.TagTypes.COMPOUND);
 
             for (int i = 0; i < effectList.size(); ++i) {
+                List<ItemStack> curativeItemsTemplate = Lists.newArrayList(new ItemStack(Items.MILK_BUCKET));
+
                 int duration = 160; // Default of 8 seconds from Suspicious Stew.
                 int amplifier = 0;
                 boolean ambient = false;
                 boolean showParticles = true;
                 boolean showIcon = true;
                 boolean noCounter = false; // Finally found out what no_counter does, it just hides the effect duration (shows up as **:**).
+                List<ItemStack> curativeItems = Lists.newArrayList();
                 CompoundNBT effectTag = effectList.getCompound(i);
                 if (effectTag.contains("duration", Constants.TagTypes.INTEGER)) duration = effectTag.getInt("duration");
                 if (effectTag.contains("amplifier", Constants.TagTypes.INTEGER)) amplifier = effectTag.getInt("amplifier");
-                if (effectTag.contains("ambient")) ambient = effectTag.getBoolean("ambient");
-                if (effectTag.contains("show_particles")) showParticles = effectTag.getBoolean("show_particles");
-                if (effectTag.contains("show_icon")) showIcon = effectTag.getBoolean("show_icon");
-                if (effectTag.contains("no_counter")) noCounter = effectTag.getBoolean("no_counter");
+                if (effectTag.contains("ambient", Constants.TagTypes.ANY_NUMERIC)) ambient = effectTag.getBoolean("ambient");
+                if (effectTag.contains("show_particles", Constants.TagTypes.ANY_NUMERIC)) showParticles = effectTag.getBoolean("show_particles");
+                if (effectTag.contains("show_icon", Constants.TagTypes.ANY_NUMERIC)) showIcon = effectTag.getBoolean("show_icon");
+                if (effectTag.contains("no_counter", Constants.TagTypes.ANY_NUMERIC)) noCounter = effectTag.getBoolean("no_counter");
+                if (effectTag.contains("curative_items", Constants.TagTypes.LIST)) {
+                    ListNBT curativeList = effectTag.getList("curative_items", Constants.TagTypes.COMPOUND);
+                    for (int c = 0; c < curativeList.size(); c++) curativeItems.add(ItemStack.of(curativeList.getCompound(c)));
+                }
 
                 Effect effect = ForgeRegistries.POTIONS.getValue(ResourceLocation.tryParse(effectTag.getString("id")));
                 if (effect != null) {
                     EffectInstance instance = new EffectInstance(effect, duration, amplifier, ambient, showParticles, showIcon);
                     if (world != null && world.isClientSide) instance.setNoCounter(noCounter);
+                    if (!curativeItems.isEmpty() && !curativeItems.equals(curativeItemsTemplate)) instance.setCurativeItems(curativeItems);
                     effects.add(instance);
                 }
             }

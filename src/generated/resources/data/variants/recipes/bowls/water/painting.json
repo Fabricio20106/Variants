@@ -16,7 +16,9 @@
     "item": "variants:exponential_water_bowl",
     "nbt": {
       "bowl": {
-        "name": "variants:painting_bowl",
+        "item": {
+          "id": "variants:painting_bowl"
+        },
         "texture_id": 6
       },
       "behavior": {
@@ -25,8 +27,7 @@
           "effects": [
             {
               "id": "minecraft:water_breathing",
-              "duration": 100,
-              "amplifier": 0
+              "duration": 100
             }
           ]
         }

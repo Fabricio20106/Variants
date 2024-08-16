@@ -2,7 +2,7 @@
   "parent": "variants:variants/drink_poisoning_pot",
   "display": {
     "icon": {
-      "item": "variants:creeper_powder_pot"
+      "item": "variants:explosive_blend_pot"
     },
     "title": {
       "translate": "advancements.variants.drink_explosive_blend_pot.title"
@@ -20,7 +20,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "variants:creeper_powder_pot"
+          "item": "variants:explosive_blend_pot"
         }
       }
     }

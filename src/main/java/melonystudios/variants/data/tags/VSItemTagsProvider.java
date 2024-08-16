@@ -78,8 +78,8 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(Tags.Items.SHEARS).add(VSWeaponry.COAL_SHEARS.get()).add(VSWeaponry.GOLDEN_SHEARS.get()).add(VSWeaponry.COPPER_SHEARS.get()).add(VSWeaponry.EXPOSED_COPPER_SHEARS.get())
                 .add(VSWeaponry.WEATHERED_COPPER_SHEARS.get()).add(VSWeaponry.OXIDIZED_COPPER_SHEARS.get()).add(VSWeaponry.AMETHYST_SHEARS.get()).add(VSWeaponry.DIAMOND_SHEARS.get())
                 .add(VSWeaponry.NETHERITE_SHEARS.get()).add(VSWeaponry.REDSTONE_SHEARS.get()).add(VSWeaponry.LAPIS_LAZULI_SHEARS.get()).add(VSWeaponry.EMERALD_SHEARS.get())
-                .add(VSWeaponry.QUARTZ_SHEARS.get()).add(VSWeaponry.RUBY_SHEARS.get()).add(VSWeaponry.DIAEMERALD_SHEARS.get()).add(VSWeaponry.CRYSTAL_SHEARS.get())
-                .add(VSWeaponry.PLASTEEL_SHEARS.get()).add(VSWeaponry.LIGHT_MAGENTA_SHEARS.get()).add(VSWeaponry.ALAN_AI_SHEARS.get()).add(VSWeaponry.ALICE_AI_SHEARS.get())
+                .add(VSWeaponry.QUARTZ_SHEARS.get()).add(VSWeaponry.RUBY_SHEARS.get()).add(VSWeaponry.DIAEMERALD_SHEARS.get()).add(VSWeaponry.MAGENTIC_CRYSTAL_SHEARS.get())
+                .add(VSWeaponry.PLASTEEL_SHEARS.get()).add(VSWeaponry.MAGENTIC_SHEARS.get()).add(VSWeaponry.ALAN_AI_SHEARS.get()).add(VSWeaponry.ALICE_AI_SHEARS.get())
                 .add(VSWeaponry.INNO_AI_SHEARS.get()).add(VSWeaponry.NICOLAS_AI_SHEARS.get());
 
         this.tag(Tags.Items.BOOKSHELVES).add(VSItems.ENDERWOOD_BOOKSHELF.get()).add(VSItems.PLAIN_BIRCH_BOOKSHELF.get());
@@ -183,10 +183,10 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(ItemTags.SIGNS).add(VSItems.PAINTING_SIGN.get()).add(VSItems.ENDERWOOD_SIGN.get());
 
         this.tag(ItemTags.STAIRS).add(VSItems.ELDER_PRISMARINE_STAIRS.get()).add(VSItems.ELDER_PRISMARINE_BRICK_STAIRS.get()).add(VSItems.DARK_ELDER_PRISMARINE_STAIRS.get()).add(VSItems.MOSSY_END_STONE_BRICK_STAIRS.get())
-                .add(VSItems.MOSSY_PURPUR_BLOCK_STAIRS.get()).add(VSItems.MOSSY_NETHER_BRICK_STAIRS.get());
+                .add(VSItems.MOSSY_PURPUR_STAIRS.get()).add(VSItems.MOSSY_NETHER_BRICK_STAIRS.get());
         this.tag(ItemTags.SLABS).add(VSItems.ELDER_PRISMARINE_SLAB.get()).add(VSItems.ELDER_PRISMARINE_BRICK_SLAB.get()).add(VSItems.DARK_ELDER_PRISMARINE_SLAB.get()).add(VSItems.MOSSY_END_STONE_BRICK_SLAB.get())
-                .add(VSItems.MOSSY_PURPUR_BLOCK_SLAB.get()).add(VSItems.SMOOTH_PURPUR_SLAB.get()).add(VSItems.MOSSY_NETHER_BRICK_SLAB.get());
-        this.tag(ItemTags.WALLS).add(VSItems.ELDER_PRISMARINE_WALL.get()).add(VSItems.MOSSY_END_STONE_BRICK_WALL.get()).add(VSItems.MOSSY_PURPUR_BLOCK_WALL.get()).add(VSItems.MOSSY_NETHER_BRICK_WALL.get());
+                .add(VSItems.MOSSY_PURPUR_SLAB.get()).add(VSItems.SMOOTH_PURPUR_SLAB.get()).add(VSItems.MOSSY_NETHER_BRICK_SLAB.get());
+        this.tag(ItemTags.WALLS).add(VSItems.ELDER_PRISMARINE_WALL.get()).add(VSItems.MOSSY_END_STONE_BRICK_WALL.get()).add(VSItems.MOSSY_PURPUR_WALL.get()).add(VSItems.MOSSY_NETHER_BRICK_WALL.get());
         this.tag(ItemTags.FENCES).add(VSItems.RED_NETHER_BRICK_FENCE.get());
 
         this.tag(ItemTags.FLOWERS).add(VSItems.AZURE_BLUET_LEAVES.get());

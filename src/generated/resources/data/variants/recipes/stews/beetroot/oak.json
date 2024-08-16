@@ -3,32 +3,34 @@
   "group": "beetroot_soup",
   "ingredients": [
     {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
       "item": "variants:oak_bowl"
-    },
-    {
-      "item": "minecraft:beetroot"
-    },
-    {
-      "item": "minecraft:beetroot"
-    },
-    {
-      "item": "minecraft:beetroot"
-    },
-    {
-      "item": "minecraft:beetroot"
-    },
-    {
-      "item": "minecraft:beetroot"
-    },
-    {
-      "item": "minecraft:beetroot"
     }
   ],
   "result": {
     "item": "variants:exponential_beetroot_soup",
     "nbt": {
       "bowl": {
-        "name": "variants:oak_bowl",
+        "item": {
+          "id": "variants:oak_bowl"
+        },
         "texture_id": 0
       },
       "behavior": {

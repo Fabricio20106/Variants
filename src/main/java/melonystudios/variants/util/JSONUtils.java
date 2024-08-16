@@ -18,7 +18,7 @@ public class JSONUtils {
         JsonObject object = new JsonObject();
         CompoundNBT curativeTag = propertiesTag.getCompound(compoundName);
         object.addProperty("id", curativeTag.getString("id"));
-        object.addProperty("Count", curativeTag.getByte("Count"));
+        if (curativeTag.getInt("count") != 1) object.addProperty("count", curativeTag.getInt("count"));
         if (ForgeRegistries.ITEMS.containsKey(ResourceLocation.tryParse(curativeTag.getString("id")))) {
             CompoundNBT curativeItemTag = new ItemStack(ForgeRegistries.ITEMS.getValue(ResourceLocation.tryParse(curativeTag.getString("id")))).getTag();
             if (curativeItemTag != null) object.addProperty("tag", curativeItemTag.toString());

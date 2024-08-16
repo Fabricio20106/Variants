@@ -4,6 +4,7 @@ import melonystudios.variants.Variants;
 import melonystudios.variants.entity.VSEntities;
 import melonystudios.variants.item.VSWeaponry;
 import melonystudios.variants.util.Constants;
+import melonystudios.variants.util.VSUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
@@ -27,6 +28,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import javax.annotation.Nonnull;
 import java.util.Collection;
 
 import static melonystudios.variants.item.custom.tool.DebugBowItem.*;
@@ -54,6 +56,7 @@ public class DebugArrowEntity extends AbstractArrowEntity {
     }
 
     @Override
+    @Nonnull
     protected ItemStack getPickupItem() {
         return this.arrowItem.copy();
     }
@@ -64,8 +67,7 @@ public class DebugArrowEntity extends AbstractArrowEntity {
         CompoundNBT arrowTag = new CompoundNBT();
         CompoundNBT itemTag = new CompoundNBT();
         itemTag.put("debug_arrow_state", this.entityData.get(DEBUG_PROPERTY));
-        arrowTag.put("tag", itemTag);
-        tag.put("item", this.arrowItem.save(arrowTag));
+        tag.put("item", VSUtils.saveStack(this.arrowItem, arrowTag));
         tag.put("debug_arrow_state", this.entityData.get(DEBUG_PROPERTY));
     }
 
@@ -73,7 +75,7 @@ public class DebugArrowEntity extends AbstractArrowEntity {
     public void readAdditionalSaveData(CompoundNBT tag) {
         super.readAdditionalSaveData(tag);
         this.entityData.set(DEBUG_PROPERTY, tag.getCompound("debug_arrow_state"));
-        if (tag.contains("item", 10)) this.arrowItem = ItemStack.of(tag.getCompound("item"));
+        if (tag.contains("item", Constants.TagTypes.COMPOUND)) this.arrowItem = VSUtils.loadStack(tag.getCompound("item"));
     }
 
     @Override

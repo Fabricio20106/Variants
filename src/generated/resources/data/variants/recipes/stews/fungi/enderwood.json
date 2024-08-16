@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "fungi_stew",
+  "ingredients": [
+    {
+      "item": "minecraft:crimson_fungus"
+    },
+    {
+      "item": "minecraft:warped_fungus"
+    },
+    {
+      "item": "variants:enderwood_bowl"
+    }
+  ],
+  "result": {
+    "item": "variants:exponential_fungi_stew",
+    "nbt": {
+      "bowl": {
+        "item": {
+          "id": "variants:enderwood_bowl"
+        },
+        "texture_id": 9
+      },
+      "behavior": {
+        "id": "variants:default",
+        "properties": {}
+      }
+    }
+  }
+}

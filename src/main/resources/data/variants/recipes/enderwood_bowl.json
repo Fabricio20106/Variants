@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "variants:ender_planks"
+      "item": "variants:enderwood_planks"
     }
   },
   "result": {
-    "item": "variants:ender_bowl",
+    "item": "variants:enderwood_bowl",
     "count": 4
   }
 }

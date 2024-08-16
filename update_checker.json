@@ -23,7 +23,7 @@
     "1.18.2-2.0.0": "First Update for 1.18, New Tools & Tag Changes"
   },
   "1.16.5": {
-    "1.16.5-1.8.0.2": "",
+    "1.16.5-1.8.0.2": "Data-Driven Bowl Types, Block & Item Renames & New Fixing Subcommands",
     "1.16.5-1.8.0.1": "Moved Everything to \"melonystudios.variants\" Package",
     "1.16.5-1.7.0": "Full Release of 1.7.0",
     "1.16.5-1.7.0-rc3": "Backported /damage, Added /stewbehavior and Revamped Damage Sources",

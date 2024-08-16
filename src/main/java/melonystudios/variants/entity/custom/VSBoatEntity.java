@@ -64,6 +64,7 @@ public class VSBoatEntity extends BoatEntity {
     }
 
     @Override
+    @Nonnull
     public Item getDropItem() {
         switch(this.getWoodType()) {
             case "crimson":
@@ -71,6 +72,7 @@ public class VSBoatEntity extends BoatEntity {
             case "warped":
                 return VSItems.WARPED_BOAT.get();
             case "ender":
+            case "enderwood":
                 return VSItems.ENDERWOOD_BOAT.get();
             case "painting":
             default:

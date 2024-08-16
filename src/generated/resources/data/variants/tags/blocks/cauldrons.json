@@ -2,7 +2,7 @@
   "replace": false,
   "values": [
     "minecraft:cauldron",
-    "variants:gold_cauldron",
+    "variants:golden_cauldron",
     "variants:quartz_cauldron"
   ]
 }

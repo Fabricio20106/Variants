@@ -1,0 +1,234 @@
+{
+  "effects": {
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "sky_color": 0,
+    "fog_color": 10518688,
+    "water_color": 6443678,
+    "water_fog_color": 5194368
+  },
+  "surface_builder": {
+    "config": {
+      "top_material": {
+        "Name": "variants:ender_nylium"
+      },
+      "under_material": {
+        "Name": "minecraft:end_stone"
+      },
+      "underwater_material": {
+        "Name": "variants:ender_wart_block"
+      }
+    },
+    "type": "minecraft:default"
+  },
+  "carvers": {},
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [
+      {
+        "config": {
+          "feature": {
+            "config": {
+              "exit": [
+                100,
+                50,
+                0
+              ],
+              "exact": true
+            },
+            "type": "minecraft:end_gateway"
+          },
+          "decorator": {
+            "config": {},
+            "type": "minecraft:end_gateway"
+          }
+        },
+        "type": "minecraft:decorated"
+      },
+      {
+        "config": {
+          "crystal_invulnerable": false,
+          "spikes": []
+        },
+        "type": "minecraft:end_spike"
+      }
+    ],
+    [],
+    [],
+    [],
+    [
+      {
+        "config": {
+          "feature": {
+            "config": {
+              "feature": {
+                "config": {},
+                "type": "minecraft:chorus_plant"
+              },
+              "decorator": {
+                "config": {
+                  "outer": {
+                    "config": {},
+                    "type": "minecraft:square"
+                  },
+                  "inner": {
+                    "config": {},
+                    "type": "minecraft:heightmap"
+                  }
+                },
+                "type": "minecraft:decorated"
+              }
+            },
+            "type": "minecraft:decorated"
+          },
+          "decorator": {
+            "config": {
+              "count": {
+                "base": 0,
+                "spread": 4
+              }
+            },
+            "type": "minecraft:count"
+          }
+        },
+        "type": "minecraft:decorated"
+      },
+      {
+        "config": {
+          "feature": {
+            "config": {
+              "hat_state": {
+                "Name": "variants:ender_wart_block"
+              },
+              "decor_state": {
+                "Name": "minecraft:shroomlight"
+              },
+              "planted": false,
+              "valid_base_block": {
+                "Name": "variants:ender_nylium"
+              },
+              "stem_state": {
+                "Properties": {
+                  "axis": "y"
+                },
+                "Name": "variants:enderwood_stem"
+              }
+            },
+            "type": "minecraft:huge_fungus"
+          },
+          "decorator": {
+            "config": {
+              "count": 8
+            },
+            "type": "minecraft:count_multilayer"
+          }
+        },
+        "type": "minecraft:decorated"
+      },
+      {
+        "config": {
+          "feature": {
+            "config": {
+              "state_provider": {
+                "entries": [
+                  {
+                    "weight": 85,
+                    "data": {
+                      "Name": "variants:ender_roots"
+                    }
+                  },
+                  {
+                    "weight": 1,
+                    "data": {
+                      "Name": "variants:ender_roots"
+                    }
+                  },
+                  {
+                    "weight": 13,
+                    "data": {
+                      "Name": "variants:ender_fungus"
+                    }
+                  },
+                  {
+                    "weight": 1,
+                    "data": {
+                      "Name": "variants:ender_fungus"
+                    }
+                  }
+                ],
+                "type": "minecraft:weighted_state_provider"
+              }
+            },
+            "type": "minecraft:nether_forest_vegetation"
+          },
+          "decorator": {
+            "config": {
+              "count": 5
+            },
+            "type": "minecraft:count_multilayer"
+          }
+        },
+        "type": "minecraft:decorated"
+      },
+      {
+        "config": {
+          "feature": {
+            "config": {
+              "state_provider": {
+                "state": {
+                  "Name": "variants:end_sprouts"
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "minecraft:nether_forest_vegetation"
+          },
+          "decorator": {
+            "config": {
+              "count": 4
+            },
+            "type": "minecraft:count_multilayer"
+          }
+        },
+        "type": "minecraft:decorated"
+      }
+    ]
+  ],
+  "starts": [
+    {
+      "config": {},
+      "type": "minecraft:endcity"
+    }
+  ],
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:enderman",
+        "weight": 10,
+        "minCount": 4,
+        "maxCount": 4
+      }
+    ],
+    "creature": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "player_spawn_friendly": false,
+  "forge:registry_name": "variants:enderwood_forest",
+  "precipitation": "none",
+  "temperature": 0.5,
+  "downfall": 0.5,
+  "category": "the_end",
+  "depth": 0.1,
+  "scale": 0.2
+}

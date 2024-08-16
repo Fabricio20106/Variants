@@ -77,7 +77,7 @@ public abstract class VSItemModelModels extends ItemModelProvider {
 
     // Methods for making specific items (for example, spyglasses)
     public void expoStew(String name, String stewType) {
-        String[] bowls = {"oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "painting", "crimson", "warped", "ender"};
+        String[] bowls = {"oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "painting", "crimson", "warped", "enderwood"};
 
         for (String bowl : bowls) getBuilder(name + "_" + bowl).parent(this.generated).texture("layer0", modLoc("item/" + bowl + "_bowl")).texture("layer1", modLoc("item/stew_" + stewType));
 
@@ -91,7 +91,7 @@ public abstract class VSItemModelModels extends ItemModelProvider {
                 .override().predicate(textureID(), 6).model(getExistingFile(modLoc("item/" + name + "_painting"))).end()
                 .override().predicate(textureID(), 7).model(getExistingFile(modLoc("item/" + name + "_crimson"))).end()
                 .override().predicate(textureID(), 8).model(getExistingFile(modLoc("item/" + name + "_warped"))).end()
-                .override().predicate(textureID(), 9).model(getExistingFile(modLoc("item/" + name + "_ender"))).end();
+                .override().predicate(textureID(), 9).model(getExistingFile(modLoc("item/" + name + "_enderwood"))).end();
     }
 
     public ItemModelBuilder expoStewV2(String name, String stewType) {

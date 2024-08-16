@@ -2,7 +2,7 @@
   "parent": "variants:variants/enter_the_end",
   "display": {
     "icon": {
-      "item": "variants:ender_stem"
+      "item": "variants:enderwood_stem"
     },
     "title": {
       "translate": "advancements.variants.find_enderwood_forest.title"
@@ -20,7 +20,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "variants:ender_forest"
+          "biome": "variants:enderwood_forest"
         }
       }
     }

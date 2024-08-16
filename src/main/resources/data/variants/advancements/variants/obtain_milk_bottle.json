@@ -2,7 +2,7 @@
   "parent": "variants:variants/root",
   "display": {
     "icon": {
-      "item": "variants:milk_glass_bottle"
+      "item": "variants:milk_bottle"
     },
     "title": {
       "translate": "advancements.variants.obtain_milk_bottle.title"
@@ -21,7 +21,7 @@
       "conditions": {
         "items": [
           {
-            "item": "variants:milk_glass_bottle"
+            "item": "variants:milk_bottle"
           }
         ]
       }

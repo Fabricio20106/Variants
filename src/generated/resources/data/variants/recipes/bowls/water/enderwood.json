@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "water_bowl",
+  "ingredients": [
+    {
+      "item": "minecraft:potion"
+    },
+    {
+      "item": "minecraft:potion"
+    },
+    {
+      "item": "variants:enderwood_bowl"
+    }
+  ],
+  "result": {
+    "item": "variants:exponential_water_bowl",
+    "nbt": {
+      "bowl": {
+        "item": {
+          "id": "variants:enderwood_bowl"
+        },
+        "texture_id": 9
+      },
+      "behavior": {
+        "id": "variants:apply_mob_effects",
+        "properties": {
+          "effects": [
+            {
+              "id": "minecraft:water_breathing",
+              "duration": 100
+            }
+          ]
+        }
+      }
+    }
+  }
+}

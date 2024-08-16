@@ -16,7 +16,9 @@
     "item": "variants:exponential_powder_snow_bowl",
     "nbt": {
       "bowl": {
-        "name": "variants:dark_oak_bowl",
+        "item": {
+          "id": "variants:dark_oak_bowl"
+        },
         "texture_id": 5
       },
       "behavior": {

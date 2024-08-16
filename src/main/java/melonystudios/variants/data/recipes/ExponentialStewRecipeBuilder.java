@@ -143,20 +143,23 @@ public class ExponentialStewRecipeBuilder {
 
         public JsonElement serializeNBT() {
             JsonObject object = new JsonObject();
-            object.add("bowl", this.serializeBowlType());
+            object.add("bowl", this.serializeBowl());
             object.add("behavior", this.serializeStewBehavior());
             return object;
         }
 
-        private JsonObject serializeBowlType() {
-            CompoundNBT bowlTypeTag = this.result.getOrCreateTagElement("bowl");
-            ResourceLocation containerItem = new ResourceLocation(bowlTypeTag.getString("name"));
-            int containerID = bowlTypeTag.getInt("texture_id");
+        private JsonObject serializeBowl() {
+            CompoundNBT bowlTag = this.result.getOrCreateTagElement("bowl");
+            CompoundNBT itemTag = bowlTag.getCompound("item");
+            JsonObject object = new JsonObject();
 
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("name", ForgeRegistries.ITEMS.getValue(containerItem).getRegistryName().toString());
-            jsonObject.addProperty("texture_id", containerID);
-            return jsonObject;
+            JsonObject bowlObject = new JsonObject();
+            bowlObject.addProperty("id", itemTag.getString("id"));
+            if (itemTag.getInt("count") > 1) bowlObject.addProperty("count", itemTag.getInt("count"));
+            object.add("item", bowlObject);
+
+            object.addProperty("texture_id", bowlTag.getInt("texture_id"));
+            return object;
         }
 
         private JsonObject serializeStewBehavior() {
@@ -180,20 +183,24 @@ public class ExponentialStewRecipeBuilder {
                         JsonObject effectObj = new JsonObject();
                         effectObj.addProperty("id", instance.getEffect().getRegistryName().toString());
                         effectObj.addProperty("duration", instance.getDuration());
-                        effectObj.addProperty("amplifier", instance.getAmplifier());
+                        if (instance.getAmplifier() > 0) effectObj.addProperty("amplifier", instance.getAmplifier());
                         effectsList.add(effectObj);
                     }
                     propertiesObj.add("effects", effectsList);
                 } else if (behavior instanceof ClearMobEffectsBehavior) {
-                    JSONUtils.writeItemFromNBT("curative_item", propertiesTag, propertiesObj);
+                    ClearMobEffectsBehavior clearEffectsBehavior = (ClearMobEffectsBehavior) expoStew.getBehavior();
+                    JsonObject curativeObject = new JsonObject();
+                    curativeObject.addProperty("id", clearEffectsBehavior.getCurativeItem().getItem().getRegistryName().toString());
+                    if (clearEffectsBehavior.getCurativeItem().getCount() != 1) curativeObject.addProperty("count", clearEffectsBehavior.getCurativeItem().getCount());
+                    propertiesObj.add("curative_item", curativeObject);
                 } else if (behavior instanceof DamageEntityBehavior) {
                     JSONUtils.writeDamageSourceFromNBT(propertiesTag, propertiesObj);
                 } else if (behavior instanceof ExplodeBehavior) {
                     JSONUtils.writeExplosionFromNBT(propertiesTag, propertiesObj);
-                } else if (behavior instanceof IgniteBehavior && this.result.getItem() instanceof ExponentialStewItem) {
+                } else if (behavior instanceof IgniteBehavior) {
                     IgniteBehavior igniteBehavior = (IgniteBehavior) expoStew.getBehavior();
                     propertiesObj.addProperty("ticks_on_fire", igniteBehavior.getTicksOnFire());
-                } else if (behavior instanceof AddExperienceBehavior && this.result.getItem() instanceof ExponentialStewItem) {
+                } else if (behavior instanceof AddExperienceBehavior) {
                     AddExperienceBehavior addExperienceBehavior = (AddExperienceBehavior) expoStew.getBehavior();
                     propertiesObj.addProperty("amount", addExperienceBehavior.getExperienceAmount());
                     propertiesObj.addProperty("levels", addExperienceBehavior.addsLevels());

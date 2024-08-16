@@ -2,7 +2,7 @@
   "parent": "variants:variants/root",
   "display": {
     "icon": {
-      "item": "variants:old_cod"
+      "item": "variants:fish"
     },
     "title": {
       "translate": "advancements.variants.obtain_fish.title"
@@ -21,7 +21,7 @@
       "conditions": {
         "items": [
           {
-            "item": "variants:old_cod"
+            "item": "variants:fish"
           }
         ]
       }
@@ -33,7 +33,7 @@
           {
             "condition": "minecraft:entity_properties",
             "predicate": {
-              "type": "variants:old_cod"
+              "type": "variants:fish"
             },
             "entity": "this"
           }
