@@ -56,7 +56,7 @@ public class NBTUtils {
                 if (!instance.getCurativeItems().equals(curativeItemsTemplate)) {
                     ListNBT curativeItems = new ListNBT();
                     for (ItemStack curativeStack : instance.getCurativeItems()) {
-                        CompoundNBT savedStack = curativeStack.save(new CompoundNBT());
+                        CompoundNBT savedStack = VSUtils.saveStack(curativeStack, new CompoundNBT());
                         curativeItems.add(savedStack);
                     }
                     effectTag.put("curative_items", curativeItems);
@@ -87,15 +87,15 @@ public class NBTUtils {
                 boolean noCounter = false; // Finally found out what no_counter does, it just hides the effect duration (shows up as **:**).
                 List<ItemStack> curativeItems = Lists.newArrayList();
                 CompoundNBT effectTag = effectList.getCompound(i);
-                if (effectTag.contains("duration", Constants.TagTypes.INTEGER)) duration = effectTag.getInt("duration");
-                if (effectTag.contains("amplifier", Constants.TagTypes.INTEGER)) amplifier = effectTag.getInt("amplifier");
+                if (effectTag.contains("duration", Constants.TagTypes.ANY_NUMERIC)) duration = effectTag.getInt("duration");
+                if (effectTag.contains("amplifier", Constants.TagTypes.ANY_NUMERIC)) amplifier = effectTag.getInt("amplifier");
                 if (effectTag.contains("ambient", Constants.TagTypes.ANY_NUMERIC)) ambient = effectTag.getBoolean("ambient");
                 if (effectTag.contains("show_particles", Constants.TagTypes.ANY_NUMERIC)) showParticles = effectTag.getBoolean("show_particles");
                 if (effectTag.contains("show_icon", Constants.TagTypes.ANY_NUMERIC)) showIcon = effectTag.getBoolean("show_icon");
                 if (effectTag.contains("no_counter", Constants.TagTypes.ANY_NUMERIC)) noCounter = effectTag.getBoolean("no_counter");
                 if (effectTag.contains("curative_items", Constants.TagTypes.LIST)) {
                     ListNBT curativeList = effectTag.getList("curative_items", Constants.TagTypes.COMPOUND);
-                    for (int c = 0; c < curativeList.size(); c++) curativeItems.add(ItemStack.of(curativeList.getCompound(c)));
+                    for (int c = 0; c < curativeList.size(); c++) curativeItems.add(VSUtils.loadStack(curativeList.getCompound(c)));
                 }
 
                 Effect effect = ForgeRegistries.POTIONS.getValue(ResourceLocation.tryParse(effectTag.getString("id")));

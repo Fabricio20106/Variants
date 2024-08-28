@@ -278,6 +278,8 @@
   "effect.variants.explosive_blend_poisoning": "Env. por mistura explosiva",
   "effect.variants.explosive_blend_poisoning.description": "Dá 2 de dano/seg por que você está comendo uma mistura explosiva.",
 
+  "enchantment.variants.magic_protection": "Proteção contra magia",
+
   "item.variants.diorite_sword": "Espada de diorito",
   "item.variants.diorite_pickaxe": "Picareta de diorito",
   "item.variants.diorite_shovel": "Pá de diorito",

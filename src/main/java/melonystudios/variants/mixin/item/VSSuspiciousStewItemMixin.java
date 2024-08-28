@@ -55,14 +55,14 @@ public class VSSuspiciousStewItemMixin extends Item {
                 boolean ambient = false;
                 boolean showParticles = true;
                 boolean showIcon = true;
-                boolean noCounter = true;
+                boolean noCounter = false;
                 CompoundNBT effectTag = effectList.getCompound(i);
-                if (effectTag.contains("duration", Constants.TagTypes.INTEGER)) duration = effectTag.getInt("duration");
-                if (effectTag.contains("amplifier", Constants.TagTypes.INTEGER)) amplifier = effectTag.getInt("amplifier");
-                if (effectTag.contains("ambient", Constants.TagTypes.BYTE)) ambient = effectTag.getBoolean("ambient");
-                if (effectTag.contains("show_particles", Constants.TagTypes.BYTE)) showParticles = effectTag.getBoolean("show_particles");
-                if (effectTag.contains("show_icon", Constants.TagTypes.BYTE)) showIcon = effectTag.getBoolean("show_icon");
-                if (effectTag.contains("no_counter", Constants.TagTypes.BYTE)) noCounter = effectTag.getBoolean("no_counter");
+                if (effectTag.contains("duration", Constants.TagTypes.ANY_NUMERIC)) duration = effectTag.getInt("duration");
+                if (effectTag.contains("amplifier", Constants.TagTypes.ANY_NUMERIC)) amplifier = effectTag.getInt("amplifier");
+                if (effectTag.contains("ambient", Constants.TagTypes.ANY_NUMERIC)) ambient = effectTag.getBoolean("ambient");
+                if (effectTag.contains("show_particles", Constants.TagTypes.ANY_NUMERIC)) showParticles = effectTag.getBoolean("show_particles");
+                if (effectTag.contains("show_icon", Constants.TagTypes.ANY_NUMERIC)) showIcon = effectTag.getBoolean("show_icon");
+                if (effectTag.contains("no_counter", Constants.TagTypes.ANY_NUMERIC)) noCounter = effectTag.getBoolean("no_counter");
 
                 Effect effect = ForgeRegistries.POTIONS.getValue(ResourceLocation.tryParse(effectTag.getString("id")));
                 if (effect != null) {

@@ -1,6 +1,6 @@
 package melonystudios.variants.util.tag;
 
-import melonystudios.registryless.tag.INamedRegistrylessTag;
+/*import melonystudios.registryless.tag.INamedRegistrylessTag;
 import melonystudios.registryless.tag.RegistrylessTagManager;
 import melonystudios.registryless.tag.entry.RegistrylessEntry;
 import melonystudios.variants.Variants;
@@ -24,3 +24,4 @@ public class DamageSourceTags extends RegistrylessEntry<DamageSource> {
         return null;
     }
 }
+*/

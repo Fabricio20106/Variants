@@ -278,6 +278,8 @@
   "effect.variants.explosive_blend_poisoning": "Ex. Blend Poisoning",
   "effect.variants.explosive_blend_poisoning.description": "Deals 2 damage/sec because you are eating an explosive blend.",
 
+  "enchantment.variants.magic_protection": "Magic Protection",
+
   "item.variants.diorite_sword": "Diorite Sword",
   "item.variants.diorite_pickaxe": "Diorite Pickaxe",
   "item.variants.diorite_shovel": "Diorite Shovel",

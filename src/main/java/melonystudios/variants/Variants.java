@@ -8,6 +8,7 @@ import melonystudios.variants.blockentity.renderer.VSBellBlockEntityRenderer;
 import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.crafting.VSRecipeTypes;
 import melonystudios.variants.effect.VSEffects;
+import melonystudios.variants.enchantment.VSEnchantments;
 import melonystudios.variants.entity.VSEntities;
 import melonystudios.variants.entity.renderer.*;
 import melonystudios.variants.fluid.VSFluids;
@@ -74,6 +75,7 @@ public class Variants {
         VSEntities.ENTITIES.register(eventBus);
         VSBlockEntities.BLOCK_ENTITIES.register(eventBus);
         VSEffects.EFFECTS.register(eventBus);
+        VSEnchantments.ENCHANTMENTS.register(eventBus);
         VSSounds.SOUNDS.register(eventBus);
         VSWorldCarvers.CARVERS.register(eventBus);
         VSFeatures.FEATURES.register(eventBus);
