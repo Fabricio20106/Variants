@@ -88,7 +88,9 @@ public class VSForgeBusEvents {
         manager.remap("purple_nugget", VSItems.PURPLE_IRON_NUGGET.get());
 
         manager.remap("phantom_membrane_sweatchest", VSWeaponry.PHANTOM_MEMBRANE_TUNIC.get());
+        manager.remap("phantom_membrane_sweater", VSWeaponry.PHANTOM_MEMBRANE_TUNIC.get());
         manager.remap("rabbit_hide_sweatchest", VSWeaponry.RABBIT_HIDE_TUNIC.get());
+        manager.remap("rabbit_hide_sweater", VSWeaponry.RABBIT_HIDE_TUNIC.get());
         manager.remap("wool_sweatchest", VSWeaponry.WOOL_SWEATER.get());
         manager.remap("crystal_shears", VSWeaponry.MAGENTIC_CRYSTAL_SHEARS.get());
         manager.remap("light_magenta_shears", VSWeaponry.MAGENTIC_SHEARS.get());

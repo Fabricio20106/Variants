@@ -178,7 +178,7 @@ jar {
         attributes([
                 'Specification-Title': mod_name,
                 'Specification-Vendor': mod_authors,
-                // We are version one of ourselves.
+                // We are version 1 of ourselves.
                 'Specification-Version': '1',
                 'Implementation-Title': project.name,
                 'Implementation-Version': project.jar.archiveVersion,

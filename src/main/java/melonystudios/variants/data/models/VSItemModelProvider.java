@@ -289,8 +289,8 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(handheld, "copper_sword");
         standard(handheld, "magma_sword");
         standard(generated, "copper_chestplate");
-        standard(generated, "phantom_membrane_sweater");
-        standard(generated, "rabbit_hide_sweater");
+        standard(generated, "phantom_membrane_tunic");
+        standard(generated, "rabbit_hide_tunic");
         standard(generated, "quartz_horse_armor");
         standard(generated, "empty_armor_slot_shield");
         spyglass("iron_spyglass");

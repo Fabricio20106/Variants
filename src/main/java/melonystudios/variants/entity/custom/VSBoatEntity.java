@@ -14,6 +14,8 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -46,13 +48,19 @@ public class VSBoatEntity extends BoatEntity {
     @Override
     protected void readAdditionalSaveData(CompoundNBT tag) {
         super.readAdditionalSaveData(tag);
-        this.setWoodType(tag.getString("Type"));
+        this.setWoodType(tag.getString("Type").equals("ender") ? "enderwood" : tag.getString("Type"));
     }
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(WOOD_TYPE, "painting");
+    }
+
+    @Override
+    @Nonnull
+    public ITextComponent getDisplayName() {
+        return new TranslationTextComponent("entity." + Variants.MOD_ID + ".vs_boat." + this.getWoodType());
     }
 
     public String getWoodType() {

@@ -251,7 +251,7 @@ public class VSItems {
     public static final RegistryObject<Item> CRYSTALLIZED_HONEY = ITEMS.register("crystallized_honey", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> SOUL_BLAZE_ROD = ITEMS.register("soul_blaze_rod", () -> new FlammableItem(4800, new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> SOUL_BLAZE_POWDER = ITEMS.register("soul_blaze_powder", () -> new FlammableItem(2400, new Item.Properties().tab(VSTab.TAB)));
-    public static final RegistryObject<Item> SOUL_O_CHARGE = ITEMS.register("soul_charge", () -> new SoulChargeItem(new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> SOUL_CHARGE = ITEMS.register("soul_charge", () -> new SoulChargeItem(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> RED_NETHER_BRICK = ITEMS.register("red_nether_brick", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> EXPOSED_COPPER_INGOT = ITEMS.register("exposed_copper_ingot", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> WEATHERED_COPPER_INGOT = ITEMS.register("weathered_copper_ingot", () -> new Item(new Item.Properties().tab(VSTab.TAB)));

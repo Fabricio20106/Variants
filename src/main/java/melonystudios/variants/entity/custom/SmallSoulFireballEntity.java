@@ -28,7 +28,7 @@ public class SmallSoulFireballEntity extends AbstractFireballEntity implements I
     @Override
     public ItemStack getItem() {
         ItemStack rawStack = this.getItemRaw();
-        return rawStack.isEmpty() ? new ItemStack(VSItems.SOUL_O_CHARGE.get()) : rawStack;
+        return rawStack.isEmpty() ? new ItemStack(VSItems.SOUL_CHARGE.get()) : rawStack;
     }
 
     protected void onHitEntity(EntityRayTraceResult hitResult) {
