@@ -1,6 +1,5 @@
 package melonystudios.variants.data.recipes;
 
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import melonystudios.variants.item.VSItems;
 import melonystudios.variants.stew.StewBehavior;
@@ -11,24 +10,16 @@ import melonystudios.variants.util.VSUtils;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Consumer;
 
-import static melonystudios.variants.item.custom.food.ExponentialStewItem.BOWL_NAME_TO_ID;
-
 public class VSExpoStewsRecipeProvider extends RecipeProvider {
-    public static Map<Item, String> BOWL_TO_NAME = new ImmutableMap.Builder<Item, String>().put(VSItems.OAK_BOWL.get(), "oak").put(VSItems.SPRUCE_BOWL.get(), "spruce").put(VSItems.BIRCH_BOWL.get(), "birch").put(VSItems.JUNGLE_BOWL.get(), "jungle")
-            .put(VSItems.ACACIA_BOWL.get(), "acacia").put(VSItems.DARK_OAK_BOWL.get(), "dark_oak").put(VSItems.PAINTING_BOWL.get(), "painting").put(VSItems.CRIMSON_BOWL.get(), "crimson").put(VSItems.WARPED_BOWL.get(), "warped").put(VSItems.ENDERWOOD_BOWL.get(),
-                    "enderwood").build();
     public static List<BowlType> DEFAULT_BOWLS = Lists.newArrayList(BowlTypes.OAK, BowlTypes.SPRUCE, BowlTypes.BIRCH, BowlTypes.JUNGLE, BowlTypes.ACACIA, BowlTypes.DARK_OAK, BowlTypes.PAINTING, BowlTypes.CRIMSON, BowlTypes.WARPED,
             BowlTypes.ENDERWOOD);
 
@@ -137,13 +128,15 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
     }
 
     private ItemStack getResultStack(ItemStack resultStack, BowlType type, StewBehavior behavior) {
-        CompoundNBT bowlTag = resultStack.getOrCreateTagElement("bowl");
-        bowlTag.put("item", VSUtils.saveStack(type.getBowlStack(), new CompoundNBT()));
-        bowlTag.putInt("texture_id", type.getTextureID());
+        CompoundNBT consumableTag = resultStack.getOrCreateTagElement("consumable");
 
-        CompoundNBT behaviorTag = resultStack.getOrCreateTagElement("behavior");
+        consumableTag.put("use_remainder", VSUtils.saveStack(type.getBowlStack(), new CompoundNBT()));
+
+        CompoundNBT behaviorTag = behavior.writePropertiesToNBT();
         behaviorTag.putString("id", behavior.getBehaviorRegistry().getRegistryName().toString());
-        behaviorTag.put("properties", behavior.writePropertiesToNBT());
+        consumableTag.put("behavior", behaviorTag);
+
+        resultStack.getOrCreateTag().putInt("texture_id", type.getTextureID());
         return resultStack;
     }
 }

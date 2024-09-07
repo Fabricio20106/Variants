@@ -17,6 +17,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import javax.annotation.Nullable;
 import java.util.Locale;
 
 import static melonystudios.variants.util.NBTUtils.*;
@@ -71,7 +72,7 @@ public class PlaySoundBehavior extends StewBehavior {
     }
 
     @Override
-    public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity) {
+    public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
         float volume = MathHelper.clamp(this.volume, 0, Float.MAX_VALUE);
         float pitch = MathHelper.clamp(this.volume, 0, 2);
         if (this.id == null) this.id = VSSounds.PLAY_SOUND_BEHAVIOR_DEFAULT.get();
@@ -85,19 +86,19 @@ public class PlaySoundBehavior extends StewBehavior {
     }
 
     @Override
-    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
-        SoundEvent sound = ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.tryParse(stringOrDefault("id", propertiesTag, VSSounds.PLAY_SOUND_BEHAVIOR_DEFAULT.get().getRegistryName().toString())));
+    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
+        SoundEvent sound = ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.tryParse(stringOrDefault("sound_id", propertiesTag, VSSounds.PLAY_SOUND_BEHAVIOR_DEFAULT.get().getRegistryName().toString())));
         SoundCategory category1 = SoundCategory.valueOf(stringOrDefault("category", propertiesTag, "master").toUpperCase(Locale.ROOT));
-        BlockPos pos = propertiesTag.contains("pos") ? NBTUtils.readBlockPos(propertiesTag) : livEntity.blockPosition();
+        BlockPos pos = (propertiesTag != null && propertiesTag.contains("pos")) ? NBTUtils.readBlockPos(propertiesTag) : livEntity.blockPosition();
         PlaySoundBehavior playSoundBehavior = new PlaySoundBehavior(sound, category1, pos, booleanOrDefault("play_at_player", propertiesTag, false), anyNumericOrFloatDefault("volume", propertiesTag, 0), anyNumericOrFloatDefault(
                 "pitch", propertiesTag, 0));
-        playSoundBehavior.executeBehavior(stewStack, world, livEntity);
+        playSoundBehavior.executeBehavior(stewStack, world, livEntity, propertiesTag);
     }
 
     @Override
     public CompoundNBT writePropertiesToNBT() {
         CompoundNBT properties = new CompoundNBT();
-        properties.putString("id", this.id.getRegistryName().toString());
+        properties.putString("sound_id", this.id.getRegistryName().toString());
         properties.putString("category", this.category.getName());
         properties.putIntArray("pos", new int[] {this.pos.getX(), this.pos.getY(), this.pos.getZ()});
         if (this.playAtPlayer) properties.putBoolean("play_at_player", true);

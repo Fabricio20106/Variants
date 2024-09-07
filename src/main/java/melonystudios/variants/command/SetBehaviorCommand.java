@@ -4,6 +4,7 @@ import com.mojang.brigadier.builder.ArgumentBuilder;
 import melonystudios.variants.command.argument.BehaviorArgument;
 import melonystudios.variants.command.argument.BehaviorInput;
 import melonystudios.variants.item.custom.food.ExponentialStewItem;
+import melonystudios.variants.item.custom.food.TagConfigurableFood;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
 import net.minecraft.command.arguments.EntityArgument;
@@ -38,6 +39,18 @@ public class SetBehaviorCommand {
                         source.sendSuccess(new TranslationTextComponent("commands.stewbehavior.set.success.single", players.iterator().next().getDisplayName(), behavior.behavior.getCommandDisplayName()), true);
                     } else {
                         source.sendSuccess(new TranslationTextComponent("commands.stewbehavior.set.success.multiple", players.size(), behavior.behavior.getCommandDisplayName()), true);
+                    }
+                } else if (handStack.getItem() instanceof TagConfigurableFood) {
+                    handStack.getOrCreateTag().getCompound("consumable").remove("behavior");
+                    CompoundNBT consumableTag = handStack.getOrCreateTagElement("consumable");
+                    CompoundNBT behaviorTag = behavior.properties;
+                    behaviorTag.putString("id", behavior.behavior.getRegistryName().toString());
+                    consumableTag.put("behavior", behaviorTag);
+                    handStack.getOrCreateTag().put("consumable", consumableTag);
+                    if (players.size() == 1) {
+                        source.sendSuccess(new TranslationTextComponent("commands.stewbehavior.set.success.tcf.single", players.iterator().next().getDisplayName(), behavior.behavior.getCommandDisplayName()), true);
+                    } else {
+                        source.sendSuccess(new TranslationTextComponent("commands.stewbehavior.set.success.tcf.multiple", players.size(), behavior.behavior.getCommandDisplayName()), true);
                     }
                 } else {
                     source.sendFailure(new TranslationTextComponent("commands.stewbehavior.set.fail.not_an_expo_stew", getItemDisplayName(handStack)));

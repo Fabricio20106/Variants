@@ -243,5 +243,39 @@
     "food_exhaustion": 0.0,
     "bypasses_armor": true,
     "bypasses_magic": true
+  },
+  "3d_shareware:nightmare": {
+    "death_message_type": "default",
+    "scaling": "never",
+    "message_id": "nightmare",
+    "food_exhaustion": 0.0,
+    "bypasses_armor": true,
+    "bypasses_magic": true
+  },
+  "vote_update:on_moon": {
+    "death_message_type": "default",
+    "scaling": "never",
+    "message_id": "on_moon",
+    "food_exhaustion": 0.1
+  },
+  "vote_update:midas_touch": {
+    "death_message_type": "default",
+    "scaling": "never",
+    "message_id": "turned_to_gold",
+    "food_exhaustion": 0.1
+  },
+  "poisonous_potato_update:potato_heat": {
+    "death_message_type": "default",
+    "scaling": "never",
+    "message_id": "potato_heat",
+    "food_exhaustion": 0.1,
+    "is_fire": true
+  },
+  "poisonous_potato_update:potato_magic": {
+    "death_message_type": "default",
+    "scaling": "never",
+    "message_id": "potato_magic",
+    "food_exhaustion": 0.1,
+    "is_magic": true
   }
 }

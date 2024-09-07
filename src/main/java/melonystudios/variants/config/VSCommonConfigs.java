@@ -16,7 +16,8 @@ public class VSCommonConfigs {
     public final ForgeConfigSpec.BooleanValue populateSpawnerMinecartsInTabs;
     public final ForgeConfigSpec.BooleanValue populateWoolArmorColorInTabs;
     public final ForgeConfigSpec.BooleanValue populateWoolArmorDesignsInTabs;
-    public final ForgeConfigSpec.IntValue maxInTabWoolArmorDesigns;
+    public final ForgeConfigSpec.BooleanValue populateTagConfigurableFoodTags;
+//    public final ForgeConfigSpec.IntValue maxInTabWoolArmorDesigns;
     public final ForgeConfigSpec.BooleanValue enableInfinitySweatersTab;
     public final ForgeConfigSpec.IntValue infinitySweatersTabLength;
     public final ForgeConfigSpec.IntValue infinitySweatersTabSpacing;
@@ -29,6 +30,7 @@ public class VSCommonConfigs {
     public final ForgeConfigSpec.BooleanValue enchantableFlintAndSteel;
     public final ForgeConfigSpec.BooleanValue enchantableShields;
     public final ForgeConfigSpec.IntValue defaultSpyglassZoomLevel;
+    public final ForgeConfigSpec.BooleanValue lineBreaksOnAltTags;
     public final ForgeConfigSpec.BooleanValue showTagsWithAlt;
     public final ForgeConfigSpec.BooleanValue showFoodEffects;
 
@@ -65,10 +67,11 @@ public class VSCommonConfigs {
         builder.push("items");
         this.populateWoolArmorColorInTabs = builder.comment("Should the item tabs populate all (dye) colors of wool armor?").define("populateWoolArmorColorInTabs", true);
         this.populateWoolArmorDesignsInTabs = builder.comment("Should the item tabs populate all armor designs of wool armor?").define("populateWoolArmorDesignsInTabs", true);
-        this.maxInTabWoolArmorDesigns = builder.comment("What should the upper limit for populating wool armor designs be?").defineInRange("maxInTabWoolArmorDesigns", 1, 1, Integer.MAX_VALUE);
+//        this.maxInTabWoolArmorDesigns = builder.comment("What should the upper limit for populating wool armor designs be?").defineInRange("maxInTabWoolArmorDesigns", 1, 1, Integer.MAX_VALUE);
         this.populateExponentialBowlsInTabs = builder.comment("Should the item tabs populate all different wood types for all bowls?").define("populateExponentialBowlsInTabs", true);
         this.populateSpawnerMinecartsInTabs = builder.comment("Should the item tabs populate a Spawner Minecart for every mob in the game?").define("populateSpawnerMinecartsInTabs", false);
         this.placeSpawnerWhenBreakingMinecart = builder.comment("Should the Spawner inside Spawner Minecarts place itself when the minecart is broken?").define("placeSpawnerWhenBreakingMinecart", true);
+        this.populateTagConfigurableFoodTags = builder.comment("Should the item tabs populate the NBT data of tag-configurable foods?").define("populateTagConfigurableFoodTags", false);
         this.customFireworkDescriptions = builder.comment("Updates the Firework Rocket & Charge's descriptions.").define("customFireworkDescriptions", true);
         this.customEnchantmentDescriptions = builder.comment("Updates the enchantment description on enchanted items.").define("customEnchantmentDescriptions", true);
         this.enchantmentTypesOnTooltip = builder.comment("If the \"(Breakable Items)\" or \"(Swords)\" suffix on enchantment should show up.").define("enchantmentTypesOnTooltip", false);
@@ -78,6 +81,7 @@ public class VSCommonConfigs {
         this.enchantableShields = builder.comment("Allows any Shield to be enchanted at an Enchanting Table.").define("enchantableShields", true);
         this.defaultSpyglassZoomLevel = builder.comment("Defines the default zoom level for Variants' spyglasses.").defineInRange("defaultSpyglassZoomLevel", 5, 0, Integer.MAX_VALUE);
         this.showTagsWithAlt = builder.comment("Allows item tags (NBT) to be shown when Alt is held down.").define("showTagsWithAlt", false);
+        this.lineBreaksOnAltTags = builder.comment("Whether tags shown with Alt should have line breaks. If a tag it too short, the line break characters might appear.").define("lineBreaksOnAltTags", true);
         this.showFoodEffects = builder.comment("Allows a food's effects to be shown in its tooltip.").define("showFoodEffects", true);
         this.enableInfinitySweatersTab = builder.comment("Enables the Infinity Sweaters tab (WARNING: This tab is *very* fragile and will most likely cause issues when at high values).").define("infinitySweatersTab.enableInfinitySweatersTab", false);
         this.infinitySweatersTabLength = builder.comment("How many sweaters should the tab load in. (Def: 4096)").defineInRange("infinitySweatersTab.infinitySweatersTabLength", 4096, 1, 16777215);

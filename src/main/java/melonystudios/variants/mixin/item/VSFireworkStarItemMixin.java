@@ -59,7 +59,7 @@ public class VSFireworkStarItemMixin extends Item {
     @Unique
     @OnlyIn(Dist.CLIENT)
     private static ITextComponent appendColorsVS(IFormattableTextComponent component, int[] colors) {
-        for(int i = 0; i < colors.length; ++i) {
+        for (int i = 0; i < colors.length; ++i) {
             if (i > 0) {
                 TranslationTextComponent separatorComponent = new TranslationTextComponent("tooltip.variants.firework_star.comma_color_separator");
                 if (i == colors.length - 1) separatorComponent = new TranslationTextComponent("tooltip.variants.firework_star.and_color_separator");

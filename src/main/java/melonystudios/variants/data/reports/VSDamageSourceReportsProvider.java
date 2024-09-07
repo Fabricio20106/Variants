@@ -134,6 +134,11 @@ public class VSDamageSourceReportsProvider implements IDataProvider {
             case "variants:glowstone_poisoning": return VSDamageSources.GLOWSTONE_POISONING;
             case "variants:gunpowder_poisoning": return VSDamageSources.GUNPOWDER_POISONING;
             case "variants:explosive_blend_poisoning": return VSDamageSources.EXPLOSIVE_BLEND_POISONING;
+            case "3d_shareware:nightmare": return VSDamageSources.TOO_SOFT;
+            case "vote_update:on_moon": return VSDamageSources.ON_MOON;
+            case "vote_update:midas_touch": return VSDamageSources.MIDAS_TOUCH;
+            case "poisonous_potato_update:potato_heat": return VSDamageSources.HOT_POTATO;
+            case "poisonous_potato_update:potato_magic": return VSDamageSources.POTATO_BATTERY;
             default: return null;
         }
     }

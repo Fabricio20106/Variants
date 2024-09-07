@@ -1,5 +1,6 @@
 package melonystudios.variants.item.custom.tool;
 
+import melonystudios.variants.util.Constants;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,7 +19,8 @@ public class MagmaSwordItem extends SwordItem {
         if (entity instanceof LivingEntity) {
             LivingEntity livEntity = (LivingEntity) entity;
             if (!livEntity.isInvulnerableTo(DamageSource.IN_FIRE) || !livEntity.isInvulnerableTo(DamageSource.ON_FIRE)) {
-                livEntity.setSecondsOnFire(10);
+                if (stack.getTag() != null && stack.getTag().contains("seconds_on_fire", Constants.TagTypes.ANY_NUMERIC)) livEntity.setSecondsOnFire(stack.getTag().getInt("seconds_on_fire"));
+                else livEntity.setSecondsOnFire(10);
             }
         }
         return super.onLeftClickEntity(stack, player, entity);

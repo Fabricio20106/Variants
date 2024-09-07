@@ -12,6 +12,13 @@
     }
   ],
   "result": {
-    "item": "variants:fungi_stew"
+    "item": "variants:fungi_stew",
+    "nbt": {
+      "bowl": {
+        "item": {
+          "id": "minecraft:bowl"
+        }
+      }
+    }
   }
 }

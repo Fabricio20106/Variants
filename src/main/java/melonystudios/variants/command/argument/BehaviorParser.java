@@ -42,8 +42,8 @@ public class BehaviorParser {
     public void readBehavior() throws CommandSyntaxException {
         int cursor = this.reader.getCursor();
         ResourceLocation location = ResourceLocation.read(this.reader);
-        if (VSRegistries.STEW_BEHAVIOR.containsKey(location)) {
-            this.behavior = VSRegistries.STEW_BEHAVIOR.getValue(location);
+        if (VSRegistries.CONSUME_BEHAVIOR.containsKey(location)) {
+            this.behavior = VSRegistries.CONSUME_BEHAVIOR.getValue(location);
         } else {
             this.reader.setCursor(cursor);
             throw UNKNOWN_BEHAVIOR_ERROR.createWithContext(this.reader, location.toString());
@@ -87,7 +87,7 @@ public class BehaviorParser {
     }
 
     private CompletableFuture<Suggestions> suggestBehaviorOrProperties(SuggestionsBuilder builder, ITagCollection<StewBehavior> tagCollection) {
-        return ISuggestionProvider.suggestResource(VSRegistries.STEW_BEHAVIOR.getKeys(), builder);
+        return ISuggestionProvider.suggestResource(VSRegistries.CONSUME_BEHAVIOR.getKeys(), builder);
     }
 
     public CompletableFuture<Suggestions> fillSuggestions(SuggestionsBuilder builder, ITagCollection<StewBehavior> tagCollection) {

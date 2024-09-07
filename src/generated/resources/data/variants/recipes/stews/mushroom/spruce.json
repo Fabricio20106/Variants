@@ -15,16 +15,15 @@
   "result": {
     "item": "variants:exponential_mushroom_stew",
     "nbt": {
-      "bowl": {
-        "item": {
+      "consumable": {
+        "use_remainder": {
           "id": "variants:spruce_bowl"
         },
-        "texture_id": 1
+        "behavior": {
+          "id": "variants:default"
+        }
       },
-      "behavior": {
-        "id": "variants:default",
-        "properties": {}
-      }
+      "texture_id": 1
     }
   }
 }

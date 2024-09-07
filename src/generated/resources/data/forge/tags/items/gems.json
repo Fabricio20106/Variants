@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#forge:gems/elder_prismarine"
+    "#forge:gems/elder_prismarine",
+    "#forge:gems/amethyst"
   ]
 }

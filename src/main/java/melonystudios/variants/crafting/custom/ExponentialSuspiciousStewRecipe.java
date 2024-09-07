@@ -65,11 +65,12 @@ public class ExponentialSuspiciousStewRecipe extends SpecialRecipe {
             }
         }
 
-        ItemStack expoSusStew = new ItemStack(VSItems.EXPONENTIAL_SUSPICIOUS_STEW.get(), 1);
+        ItemStack expoSusStew = new ItemStack(VSItems.EXPONENTIAL_SUSPICIOUS_STEW.get());
         if (emptyStack.getItem() instanceof BlockItem && ((BlockItem) emptyStack.getItem()).getBlock() instanceof FlowerBlock) {
             FlowerBlock smallFlower = (FlowerBlock) ((BlockItem) emptyStack.getItem()).getBlock();
             ExponentialStewItem.writeEffectToStew(expoSusStew, smallFlower.getSuspiciousStewEffect(), smallFlower.getEffectDuration());
-            ExponentialStewItem.writeBowl(expoSusStew, this.bowl.getItem());
+            ItemStack bowlStack = this.bowl.copy();
+            ExponentialStewItem.writeBowl(expoSusStew, bowlStack.split(1));
         }
 
         return expoSusStew;

@@ -10,6 +10,8 @@ import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 public class ClearMobEffectsBehavior extends StewBehavior {
     private final ItemStack curativeStack;
 
@@ -26,19 +28,19 @@ public class ClearMobEffectsBehavior extends StewBehavior {
     }
 
     @Override
-    public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity) {
-        if (!world.isClientSide) {
-            CompoundNBT behaviorTag = stack.getOrCreateTagElement("behavior");
-            CompoundNBT propertiesTag = behaviorTag.getCompound("properties");
+    public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
+        if (!world.isClientSide && propertiesTag != null) {
             ItemStack curativeStack = VSUtils.loadStack(propertiesTag.getCompound("curative_item"));
             livEntity.curePotionEffects(curativeStack);
+        } else if (!world.isClientSide && this.curativeStack != null) {
+            livEntity.curePotionEffects(this.curativeStack);
         }
     }
 
     @Override
-    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
+    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
         ClearMobEffectsBehavior clearEffectsBehavior = new ClearMobEffectsBehavior(VSUtils.loadStack(NBTUtils.compoundOrDefault("curative_item", propertiesTag, milkBucket())));
-        clearEffectsBehavior.executeBehavior(stewStack, world, livEntity);
+        clearEffectsBehavior.executeBehavior(stewStack, world, livEntity, propertiesTag);
     }
 
     @Override

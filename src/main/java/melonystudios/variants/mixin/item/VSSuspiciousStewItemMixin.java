@@ -1,6 +1,7 @@
 package melonystudios.variants.mixin.item;
 
 import melonystudios.variants.util.Constants;
+import melonystudios.variants.util.NBTUtils;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -10,10 +11,7 @@ import net.minecraft.item.SuspiciousStewItem;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -49,28 +47,7 @@ public class VSSuspiciousStewItemMixin extends Item {
         if (tag != null && tag.contains("effects", Constants.TagTypes.LIST)) {
             ListNBT effectList = tag.getList("effects", Constants.TagTypes.COMPOUND);
 
-            for (int i = 0; i < effectList.size(); ++i) {
-                int duration = 160; // Default of 8 seconds from Suspicious Stew.
-                int amplifier = 0;
-                boolean ambient = false;
-                boolean showParticles = true;
-                boolean showIcon = true;
-                boolean noCounter = false;
-                CompoundNBT effectTag = effectList.getCompound(i);
-                if (effectTag.contains("duration", Constants.TagTypes.ANY_NUMERIC)) duration = effectTag.getInt("duration");
-                if (effectTag.contains("amplifier", Constants.TagTypes.ANY_NUMERIC)) amplifier = effectTag.getInt("amplifier");
-                if (effectTag.contains("ambient", Constants.TagTypes.ANY_NUMERIC)) ambient = effectTag.getBoolean("ambient");
-                if (effectTag.contains("show_particles", Constants.TagTypes.ANY_NUMERIC)) showParticles = effectTag.getBoolean("show_particles");
-                if (effectTag.contains("show_icon", Constants.TagTypes.ANY_NUMERIC)) showIcon = effectTag.getBoolean("show_icon");
-                if (effectTag.contains("no_counter", Constants.TagTypes.ANY_NUMERIC)) noCounter = effectTag.getBoolean("no_counter");
-
-                Effect effect = ForgeRegistries.POTIONS.getValue(ResourceLocation.tryParse(effectTag.getString("id")));
-                if (effect != null) {
-                    EffectInstance instance = new EffectInstance(effect, duration, amplifier, ambient, showParticles, showIcon);
-                    if (world.isClientSide) instance.setNoCounter(noCounter);
-                    livEntity.addEffect(instance);
-                }
-            }
+            for (int i = 0; i < effectList.size(); ++i) NBTUtils.addEffectsFromNBT(effectList.getCompound(i), world, livEntity);
         }
         cir.setReturnValue(isPlayerInCreative ? superStack : new ItemStack(Items.BOWL));
     }

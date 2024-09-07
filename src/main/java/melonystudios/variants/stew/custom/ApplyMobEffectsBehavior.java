@@ -6,11 +6,13 @@ import melonystudios.variants.Variants;
 import melonystudios.variants.stew.StewBehavior;
 import melonystudios.variants.stew.VSStewBehaviors;
 import melonystudios.variants.util.NBTUtils;
+import melonystudios.variants.util.VSStyles;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.UseAction;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
@@ -32,12 +34,11 @@ public class ApplyMobEffectsBehavior extends StewBehavior {
     }
 
     @Override
-    public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity) {
-    }
+    public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {}
 
     @Override
-    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
-        executeBehavior(stewStack, world, livEntity);
+    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
+        executeBehavior(stewStack, world, livEntity, propertiesTag);
     }
 
     @Override
@@ -83,13 +84,13 @@ public class ApplyMobEffectsBehavior extends StewBehavior {
 
                 if (instance.getAmplifier() > 0) component = new TranslationTextComponent("potion.withAmplifier", component, new TranslationTextComponent("potion.potency." + instance.getAmplifier()));
                 if (instance.getDuration() > 20) component = new TranslationTextComponent("potion.withDuration", component, EffectUtils.formatDuration(instance, durationFactor));
-                tooltip.add(component.withStyle(effect.getCategory().getTooltipFormatting()));
+                tooltip.add(component.withStyle(VSStyles.getFromRGB(effect.getColor())));
             }
         }
 
         if (!attributesList.isEmpty()) {
             tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".exponential_stew.newline"));
-            tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".exponential_stew.effects").withStyle(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".food_effects.when_" + (stack.getItem().getUseAnimation(stack) == UseAction.DRINK ? "drank" : "eaten")).withStyle(TextFormatting.GRAY));
 
             for (Pair<Attribute, AttributeModifier> attributePair : attributesList) {
                 AttributeModifier modifier = attributePair.getSecond();

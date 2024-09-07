@@ -17,6 +17,7 @@ public class VSItemTags {
     public static final ITag.INamedTag<Item> CROPS_WARPED_WART = forge("crops/warped_wart");
     public static final ITag.INamedTag<Item> CROPS_ENDER_WART = forge("crops/ender_wart");
 
+    public static final ITag.INamedTag<Item> INGOTS_COPPER = forge("ingots/copper");
     public static final ITag.INamedTag<Item> INGOTS_EXPOSED_COPPER = forge("ingots/exposed_copper");
     public static final ITag.INamedTag<Item> INGOTS_WEATHERED_COPPER = forge("ingots/weathered_copper");
     public static final ITag.INamedTag<Item> INGOTS_OXIDIZED_COPPER = forge("ingots/oxidized_copper");
@@ -44,6 +45,7 @@ public class VSItemTags {
     public static final ITag.INamedTag<Item> DUSTS_ELDER_PRISMARINE = forge("dusts/elder_prismarine");
 
     public static final ITag.INamedTag<Item> GEMS_ELDER_PRISMARINE = forge("gems/elder_prismarine");
+    public static final ITag.INamedTag<Item> GEMS_AMETHYST = forge("gems/amethyst");
 
     public static final ITag.INamedTag<Item> ARMORS_BOOTS = forge("armors/boots");
     public static final ITag.INamedTag<Item> TOOLS_HOES = forge("tools/hoes");

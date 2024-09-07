@@ -1,6 +1,7 @@
 package melonystudios.variants.dispenser;
 
 import melonystudios.variants.entity.custom.VSBoatEntity;
+import melonystudios.variants.util.VSUtils;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.dispenser.IBlockSource;
@@ -15,10 +16,10 @@ import javax.annotation.Nonnull;
 
 public class DispenseVSBoatBehavior extends DefaultDispenseItemBehavior {
     private final DefaultDispenseItemBehavior defaultDispenseBehavior = new DefaultDispenseItemBehavior();
-    private final String type;
+    private final String woodType;
 
-    public DispenseVSBoatBehavior(String type) {
-        this.type = type;
+    public DispenseVSBoatBehavior(String woodType) {
+        this.woodType = woodType;
     }
 
     @Override
@@ -39,13 +40,14 @@ public class DispenseVSBoatBehavior extends DefaultDispenseItemBehavior {
         }
 
         VSBoatEntity vsBoat = new VSBoatEntity(world, x, y + boatHeight, z);
-        vsBoat.setWoodType(this.type);
+        vsBoat.setWoodType(VSUtils.getBoatType(stack, this.woodType));
         vsBoat.yRot = direction.toYRot();
         world.addFreshEntity(vsBoat);
         stack.shrink(1);
         return stack;
     }
 
+    @Override
     protected void playSound(IBlockSource source) {
         source.getLevel().levelEvent(Constants.WorldEvents.DISPENSER_DISPENSE_SOUND, source.getPos(), 0);
     }

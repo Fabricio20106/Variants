@@ -1,9 +1,9 @@
 package melonystudios.variants.item.custom.food;
 
+import melonystudios.variants.stew.custom.DefaultStewBehavior;
 import melonystudios.variants.util.NBTUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.UseAction;
 import net.minecraft.util.*;
@@ -16,17 +16,22 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class SophiePotionItem extends Item {
+public class SophiePotionItem extends TagConfigurableFoodItem {
     private final String compatMod;
 
     public SophiePotionItem(Properties properties, String compatMod) {
-        super(properties);
+        super(true, new DefaultStewBehavior(), properties);
         this.compatMod = compatMod;
     }
 
     @Nonnull
     public UseAction getUseAnimation(ItemStack stack) {
-        return UseAction.DRINK;
+        return getConsumeAnimation(stack, UseAction.DRINK);
+    }
+
+    @Override
+    public SoundEvent getDefaultConsumeSound() {
+        return SoundEvents.GENERIC_DRINK;
     }
 
     @Nonnull

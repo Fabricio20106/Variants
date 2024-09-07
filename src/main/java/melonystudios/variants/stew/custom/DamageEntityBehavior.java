@@ -13,6 +13,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 import static melonystudios.variants.util.NBTUtils.*;
 import static melonystudios.variants.util.VSUtils.namespace;
 
@@ -38,8 +40,7 @@ public class DamageEntityBehavior extends StewBehavior {
     }
 
     @Override
-    public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity) {
-        CompoundNBT propertiesTag = getBehaviorProperties(stack);
+    public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
         if (propertiesTag != null && propertiesTag.contains("source", Constants.TagTypes.COMPOUND)) {
             CompoundNBT sourceTag = propertiesTag.getCompound("source");
             DamageBehaviorSource behaviorSource = new DamageBehaviorSource(sourceTag, livEntity);
@@ -52,14 +53,15 @@ public class DamageEntityBehavior extends StewBehavior {
     }
 
     @Override
-    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
+    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
+        assert propertiesTag != null;
         if (propertiesTag.contains("source", Constants.TagTypes.COMPOUND)) {
             DamageEntityBehavior damageBehavior = new DamageEntityBehavior(new DamageBehaviorSource(propertiesTag, livEntity), anyNumericOrFloatDefault("amount", propertiesTag, 0));
-            damageBehavior.executeBehavior(stewStack, world, livEntity);
+            damageBehavior.executeBehavior(stewStack, world, livEntity, propertiesTag);
         } else if (propertiesTag.contains("source", Constants.TagTypes.STRING)) {
             DamageSource source1 = DamageSourceUtils.fromLocationWithKiller(livEntity, ResourceLocation.tryParse(stringOrDefault("source", propertiesTag, "minecraft:generic")));
             DamageEntityBehavior damageBehavior = new DamageEntityBehavior(source1, anyNumericOrFloatDefault("amount", propertiesTag, 0));
-            damageBehavior.executeBehavior(stewStack, world, livEntity);
+            damageBehavior.executeBehavior(stewStack, world, livEntity, propertiesTag);
         }
     }
 

@@ -1,11 +1,13 @@
 package melonystudios.variants.item.custom.tool;
 
 import melonystudios.variants.sound.VSSounds;
+import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.tag.VSItemTags;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DrinkHelper;
@@ -21,6 +23,8 @@ public class SpyglassItem extends Item {
 
     @Override
     public int getUseDuration(ItemStack stack) {
+        CompoundNBT tag = stack.getTag();
+        if (tag != null && tag.contains("use_duration", Constants.TagTypes.ANY_NUMERIC)) return tag.getInt("use_duration");
         return 1200;
     }
 

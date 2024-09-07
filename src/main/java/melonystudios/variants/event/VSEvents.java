@@ -2,15 +2,17 @@ package melonystudios.variants.event;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import melonystudios.variants.Variants;
+import melonystudios.variants.command.ConsumableCommand;
 import melonystudios.variants.command.DamageCommand;
 import melonystudios.variants.command.StewBehaviorCommand;
 import melonystudios.variants.config.VSConfigs;
-import melonystudios.variants.stew.bowl.BowlTypeManager;
-import melonystudios.variants.util.damage.DamageSourceManager;
 import melonystudios.variants.entity.VSEntities;
 import melonystudios.variants.item.VSItems;
 import melonystudios.variants.item.VSWeaponry;
 import melonystudios.variants.item.custom.armor.WoolArmorItem;
+import melonystudios.variants.item.custom.armor.color.WoolArmorColorManager;
+import melonystudios.variants.stew.bowl.BowlTypeManager;
+import melonystudios.variants.util.damage.DamageSourceManager;
 import melonystudios.variants.world.carver.VSConfiguredCarvers;
 import melonystudios.variants.world.feature.VSConfiguredFeatures;
 import melonystudios.variants.world.feature.VSOreGeneration;
@@ -42,6 +44,7 @@ import java.util.Random;
 public class VSEvents {
     @SubscribeEvent
     public static void onCommandsRegister(RegisterCommandsEvent event) {
+        ConsumableCommand.register(event.getDispatcher());
         StewBehaviorCommand.register(event.getDispatcher());
         DamageCommand.register(event.getDispatcher());
     }
@@ -50,6 +53,7 @@ public class VSEvents {
     public static void onResourceReload(AddReloadListenerEvent event) {
         event.addListener(new DamageSourceManager());
         event.addListener(new BowlTypeManager());
+        event.addListener(new WoolArmorColorManager());
     }
 
     @SubscribeEvent(priority = EventPriority.HIGH)

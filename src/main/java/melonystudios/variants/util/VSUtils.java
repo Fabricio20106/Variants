@@ -2,14 +2,19 @@ package melonystudios.variants.util;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.datafixers.util.Pair;
 import melonystudios.variants.Variants;
 import melonystudios.variants.crafting.custom.WoolArmorDyeingRecipe;
+import melonystudios.variants.event.custom.ConsumableTeleportEvent;
 import melonystudios.variants.item.custom.armor.WoolArmorItem;
+import melonystudios.variants.item.custom.food.TagConfigurableFood;
 import melonystudios.variants.util.tag.VSItemTags;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
+import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
@@ -17,14 +22,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.UseAction;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.JsonToNBT;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.EffectUtils;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.*;
+import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.StringUtils;
@@ -117,7 +125,7 @@ public class VSUtils {
     public static void addArmorDesigns(Item sweater) {
         register(sweater, Variants.variants("design"), (stack, world, livEntity) -> {
             CompoundNBT tag = stack.getTag();
-            if (tag != null && tag.contains("armor_design", Constants.TagTypes.INTEGER)) return tag.getInt("armor_design");
+            if (tag != null && tag.contains("armor_design", Constants.TagTypes.ANY_NUMERIC)) return tag.getInt("armor_design");
             return 0;
         });
     }
@@ -148,10 +156,47 @@ public class VSUtils {
     // Adds properties for exponential stews.
     public static void makeExpoStew(Item expoStew) {
         register(expoStew, Variants.variants("texture_id"), (stack, world, livEntity) -> {
-            CompoundNBT bowlTag = stack.getTagElement("bowl");
-            if (bowlTag != null && bowlTag.contains("texture_id", Constants.TagTypes.INTEGER)) return bowlTag.getInt("texture_id");
+            if (stack.getTag() != null && stack.getTag().contains("texture_id", Constants.TagTypes.ANY_NUMERIC)) return stack.getTag().getInt("texture_id");
             return 0;
         });
+    }
+
+    public static ConsumableTeleportEvent onConsumableTeleport(LivingEntity livEntity, float teleportDiameter, double targetX, double targetY, double targetZ) {
+        ConsumableTeleportEvent event = new ConsumableTeleportEvent(livEntity, teleportDiameter, targetX, targetY, targetZ);
+        MinecraftForge.EVENT_BUS.post(event);
+        return event;
+    }
+
+    public static void teleportToRandomPosition(ItemStack stack, World world, LivingEntity livEntity, float teleportDiameter) {
+        if (!world.isClientSide) {
+            double x = livEntity.getX();
+            double y = livEntity.getY();
+            double z = livEntity.getZ();
+
+            for (int i = 0; i < teleportDiameter; ++i) {
+                double newX = livEntity.getX() + (livEntity.getRandom().nextDouble() - 0.5) * teleportDiameter;
+                double newY = MathHelper.clamp(livEntity.getY() + (double) (livEntity.getRandom().nextInt((int) teleportDiameter) - (teleportDiameter / 2)), 0, world.getHeight() - 1);
+                double newZ = livEntity.getZ() + (livEntity.getRandom().nextDouble() - 0.5) * teleportDiameter;
+                if (livEntity.isPassenger()) livEntity.stopRiding();
+
+                ConsumableTeleportEvent teleportEvent = onConsumableTeleport(livEntity, teleportDiameter, newX, newY, newZ);
+                if (livEntity.randomTeleport(teleportEvent.getTargetX(), teleportEvent.getTargetY(), teleportEvent.getTargetZ(), true) && !teleportEvent.isCanceled()) {
+                    SoundEvent teleportSound = livEntity instanceof FoxEntity ? SoundEvents.FOX_TELEPORT : SoundEvents.CHORUS_FRUIT_TELEPORT;
+                    world.playSound(null, x, y, z, teleportSound, SoundCategory.PLAYERS, 1, 1);
+                    livEntity.playSound(teleportSound, 1, 1);
+                    break;
+                }
+            }
+
+            if (livEntity instanceof PlayerEntity) {
+                if (stack.getItem() instanceof TagConfigurableFood) {
+                    TagConfigurableFood configurableFood = (TagConfigurableFood) stack.getItem();
+                    ((PlayerEntity) livEntity).getCooldowns().addCooldown(stack.getItem(), configurableFood.getCooldown(stack, 20));
+                } else {
+                    ((PlayerEntity) livEntity).getCooldowns().addCooldown(stack.getItem(), 20);
+                }
+            }
+        }
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -226,6 +271,15 @@ public class VSUtils {
         }
         ItemStack stack = new ItemStack(item, count);
 
+        if (tag.contains("components", Constants.TagTypes.STRING)) {
+            try {
+                CompoundNBT componentsTag = JsonToNBT.parseTag(tag.getString("components"));
+                tag.put("components", componentsTag);
+            } catch (CommandSyntaxException exception) {
+                LogManager.getLogger().error("Could not parse item tags from {}: {}", tag.getString("components"), exception.getMessage());
+            }
+        }
+
         if (tag.contains("components", Constants.TagTypes.COMPOUND)) {
             stack.setTag(tag.getCompound("components"));
             stack.getItem().verifyTagAfterLoad(tag);
@@ -236,5 +290,17 @@ public class VSUtils {
 
         if (stack.getItem().isDamageable(stack)) stack.setDamageValue(stack.getDamageValue());
         return stack;
+    }
+
+    public static String getBoatType(ItemStack stack, String woodType) {
+        CompoundNBT tag = stack.getTag();
+        if (tag != null && tag.contains("wood_type", Constants.TagTypes.STRING)) {
+            if (isValidWoodType(tag.getString("wood_type"))) return tag.getString("wood_type");
+        }
+        return woodType;
+    }
+
+    private static boolean isValidWoodType(String woodType) {
+        return woodType.equals("crimson") || woodType.equals("warped") || woodType.equals("painting") || woodType.equals("enderwood");
     }
 }

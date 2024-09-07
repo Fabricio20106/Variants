@@ -15,18 +15,16 @@
   "result": {
     "item": "variants:exponential_soul_lava_bowl",
     "nbt": {
-      "bowl": {
-        "item": {
+      "consumable": {
+        "use_remainder": {
           "id": "variants:painting_bowl"
         },
-        "texture_id": 6
-      },
-      "behavior": {
-        "id": "variants:ignite",
-        "properties": {
+        "behavior": {
+          "id": "variants:ignite",
           "ticks_on_fire": 200
         }
-      }
+      },
+      "texture_id": 6
     }
   }
 }

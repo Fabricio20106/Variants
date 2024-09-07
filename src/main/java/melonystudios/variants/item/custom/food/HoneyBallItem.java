@@ -1,24 +1,29 @@
 package melonystudios.variants.item.custom.food;
 
+import melonystudios.variants.stew.StewBehavior;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.UseAction;
-import net.minecraft.potion.Effects;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class HoneyBallItem extends Item {
-    public HoneyBallItem(Properties properties) {
-        super(properties);
+public class HoneyBallItem extends TagConfigurableFoodItem {
+    public HoneyBallItem(StewBehavior behavior, Properties properties) {
+        super(false, behavior, properties);
     }
 
+    @Override
+    @Nonnull
+    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+        return DrinkHelper.useDrink(world, player, hand);
+    }
+
+    @Override
     @Nonnull
     public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity livEntity) {
         super.finishUsingItem(stack, world, livEntity);
@@ -28,28 +33,23 @@ public class HoneyBallItem extends Item {
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
 
-        if (!world.isClientSide) {
-            livEntity.removeEffect(Effects.POISON);
-        }
+        if (!world.isClientSide) executeConsumeBehavior(stack, world, livEntity, this.behavior);
         return stack;
     }
 
+    @Override
     public int getUseDuration(ItemStack stack) {
-        return 40;
+        return getConsumeTicks(stack, 40);
     }
 
-    @Nonnull
-    public UseAction getUseAnimation(ItemStack stack) {
-        return UseAction.EAT;
-    }
-
-    @Nonnull
-    public SoundEvent getEatingSound() {
+    @Override
+    public SoundEvent getDefaultConsumeSound() {
         return SoundEvents.HONEY_DRINK;
     }
 
+    @Override
     @Nonnull
-    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
-        return DrinkHelper.useDrink(world, player, hand);
+    public SoundEvent getEatingSound() {
+        return SoundEvents.HONEY_DRINK;
     }
 }

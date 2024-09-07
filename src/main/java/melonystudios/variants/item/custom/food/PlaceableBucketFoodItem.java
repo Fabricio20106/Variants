@@ -1,39 +1,52 @@
 package melonystudios.variants.item.custom.food;
 
 import melonystudios.variants.dispenser.vanilla.BucketDispenseBehavior;
+import melonystudios.variants.stew.StewBehavior;
+import melonystudios.variants.stew.custom.DefaultStewBehavior;
 import melonystudios.variants.util.Constants;
+import melonystudios.variants.util.NBTUtils;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
-import net.minecraft.item.BucketItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.UseAction;
+import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
 import java.util.function.Supplier;
 
-public class PlaceableBucketFoodItem extends BucketItem {
-    public PlaceableBucketFoodItem(Supplier<? extends Fluid> fluid, Properties properties) {
+public class PlaceableBucketFoodItem extends BucketItem implements TagConfigurableFood {
+    private final StewBehavior behavior;
+
+    public PlaceableBucketFoodItem(Supplier<? extends Fluid> fluid, StewBehavior behavior, Properties properties) {
         super(fluid, properties);
+        this.behavior = behavior;
         DispenserBlock.registerBehavior(this, new BucketDispenseBehavior());
     }
 
+    public PlaceableBucketFoodItem(Supplier<? extends Fluid> fluid, Properties properties) {
+        this(fluid, new DefaultStewBehavior(), properties);
+    }
+
     public int getUseDuration(ItemStack stack) {
-        return 32;
+        Food foodProperties = stack.getItem().getFoodProperties();
+        if (foodProperties != null && foodProperties.isFastFood()) {
+            return getConsumeTicks(stack, 16);
+        }
+        return getConsumeTicks(stack);
     }
 
     @Nonnull
     public UseAction getUseAnimation(ItemStack stack) {
-        return UseAction.DRINK;
+        return getConsumeAnimation(stack, UseAction.DRINK);
+    }
+
+    @Override
+    public SoundEvent getDefaultConsumeSound() {
+        return SoundEvents.GENERIC_DRINK;
     }
 
     @Nonnull
@@ -44,6 +57,11 @@ public class PlaceableBucketFoodItem extends BucketItem {
     @Nonnull
     public SoundEvent getEatingSound() {
         return SoundEvents.GENERIC_DRINK;
+    }
+
+    @Override
+    public ItemStack getDefaultUseRemainder() {
+        return new ItemStack(Items.BUCKET);
     }
 
     @Nonnull
@@ -57,35 +75,16 @@ public class PlaceableBucketFoodItem extends BucketItem {
         ItemStack superStack = super.finishUsingItem(stack, world, livEntity);
         boolean isPlayerInCreative = livEntity instanceof PlayerEntity && ((PlayerEntity) livEntity).abilities.instabuild;
 
+        executeConsumeBehavior(stack, world, livEntity, this.behavior);
+
         // For Suspicious Stew
         CompoundNBT tag = stack.getTag();
         if (tag != null && tag.contains("effects", Constants.TagTypes.LIST)) {
             ListNBT effectList = tag.getList("effects", Constants.TagTypes.COMPOUND);
 
-            for (int i = 0; i < effectList.size(); ++i) {
-                int duration = 160; // Default of 8 seconds from Suspicious Stew.
-                int amplifier = 0;
-                boolean ambient = false;
-                boolean showParticles = true;
-                boolean showIcon = true;
-                boolean noCounter = false;
-                CompoundNBT effectTag = effectList.getCompound(i);
-                if (effectTag.contains("duration", Constants.TagTypes.ANY_NUMERIC)) duration = effectTag.getInt("duration");
-                if (effectTag.contains("amplifier", Constants.TagTypes.ANY_NUMERIC)) amplifier = effectTag.getInt("amplifier");
-                if (effectTag.contains("ambient", Constants.TagTypes.ANY_NUMERIC)) ambient = effectTag.getBoolean("ambient");
-                if (effectTag.contains("show_particles", Constants.TagTypes.ANY_NUMERIC)) showParticles = effectTag.getBoolean("show_particles");
-                if (effectTag.contains("show_icon", Constants.TagTypes.ANY_NUMERIC)) showIcon = effectTag.getBoolean("show_icon");
-                if (effectTag.contains("no_counter", Constants.TagTypes.ANY_NUMERIC)) noCounter = effectTag.getBoolean("no_counter");
-
-                Effect effect = ForgeRegistries.POTIONS.getValue(ResourceLocation.tryParse(effectTag.getString("id")));
-                if (effect != null) {
-                    EffectInstance instance = new EffectInstance(effect, duration, amplifier, ambient, showParticles, showIcon);
-                    if (world.isClientSide) instance.setNoCounter(noCounter);
-                    livEntity.addEffect(instance);
-                }
-            }
+            for (int i = 0; i < effectList.size(); ++i) NBTUtils.addEffectsFromNBT(effectList.getCompound(i), world, livEntity);
         }
 
-        return isPlayerInCreative ? superStack : new ItemStack(Items.BUCKET);
+        return isPlayerInCreative ? superStack : getUseRemainder(stack);
     }
 }

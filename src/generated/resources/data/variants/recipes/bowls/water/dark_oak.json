@@ -15,23 +15,23 @@
   "result": {
     "item": "variants:exponential_water_bowl",
     "nbt": {
-      "bowl": {
-        "item": {
+      "consumable": {
+        "use_remainder": {
           "id": "variants:dark_oak_bowl"
         },
-        "texture_id": 5
-      },
-      "behavior": {
-        "id": "variants:apply_mob_effects",
-        "properties": {
+        "behavior": {
+          "id": "variants:apply_mob_effects",
           "effects": [
             {
               "id": "minecraft:water_breathing",
-              "duration": 100
+              "duration": 100,
+              "show_particle": true,
+              "show_icon": true
             }
           ]
         }
-      }
+      },
+      "texture_id": 5
     }
   }
 }

@@ -1,6 +1,5 @@
 package melonystudios.variants.item.custom.food;
 
-import com.google.common.collect.ImmutableMap;
 import melonystudios.variants.Variants;
 import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.stew.StewBehavior;
@@ -14,7 +13,6 @@ import melonystudios.variants.util.tag.StewBehaviorTags;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -34,15 +32,14 @@ import net.minecraftforge.registries.ForgeRegistries;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Map;
 
-public class ExponentialStewItem extends Item {
-    public static Map<String, Integer> BOWL_NAME_TO_ID = new ImmutableMap.Builder<String, Integer>().put("oak", 0).put("spruce", 1).put("birch", 2).put("jungle", 3).put("acacia", 4).put("dark_oak", 5).put("painting", 6).put("crimson", 7).put("warped", 8).put("enderwood", 9).build();
+public class ExponentialStewItem extends TagConfigurableFoodItem {
     private final StewBehavior stewBehavior;
 
     public ExponentialStewItem(StewBehavior behavior, Properties properties) {
-        super(properties);
+        super(false, behavior, properties);
         this.stewBehavior = behavior;
+        this.useDefaultBehaviorTooltips = false;
     }
 
     public StewBehavior getBehavior() {
@@ -50,13 +47,15 @@ public class ExponentialStewItem extends Item {
     }
 
     public boolean hasBehaviorInNBT(ItemStack stewStack) {
-        return stewStack.getTag() != null && stewStack.getTag().contains("behavior", Constants.TagTypes.COMPOUND);
+        CompoundNBT consumableTag = stewStack.getTagElement("consumable");
+        return consumableTag != null && consumableTag.contains("behavior", Constants.TagTypes.COMPOUND);
     }
 
     public TranslationTextComponent getBehaviorTranslation(ItemStack stewStack) {
         TranslationTextComponent fromConstructor = new TranslationTextComponent("stew_behavior." + this.stewBehavior.getBehaviorRegistry().getRegistryName().getNamespace() + "." + this.stewBehavior.getBehaviorRegistry().getRegistryName().getPath());
         if (hasBehaviorInNBT(stewStack)) {
-            CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
+            CompoundNBT consumableTag = stewStack.getOrCreateTagElement("consumable");
+            CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
             ResourceLocation behaviorID = ResourceLocation.tryParse(behaviorTag.getString("id"));
             assert behaviorID != null;
             if (!behaviorTag.contains("id", Constants.TagTypes.STRING)) return fromConstructor;
@@ -67,41 +66,55 @@ public class ExponentialStewItem extends Item {
     }
 
     public static void writeEffectToStew(ItemStack stewStack, Effect effect, int duration) {
-        CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
-        CompoundNBT propertiesTag = behaviorTag.getCompound("properties");
-        ListNBT effectList = propertiesTag.getList("effects", Constants.TagTypes.LIST);
-        CompoundNBT tag = new CompoundNBT();
+        CompoundNBT consumableTag = stewStack.getOrCreateTagElement("consumable");
+        CompoundNBT behaviorTag = new CompoundNBT();
+        ListNBT effectList = new ListNBT();
+        CompoundNBT effectTag = new CompoundNBT();
 
+        effectTag.putString("id", effect.getRegistryName().toString());
+        effectTag.putInt("duration", duration);
+        effectList.add(effectTag);
+
+        behaviorTag.put("effects", effectList);
         behaviorTag.putString("id", VSStewBehaviors.APPLY_MOB_EFFECTS.get().getRegistryName().toString());
-        tag.putString("id", effect.getRegistryName().toString());
-        tag.putInt("duration", duration);
-        effectList.add(tag);
-        propertiesTag.put("effects", effectList);
-        behaviorTag.put("properties", propertiesTag);
+
+        consumableTag.put("behavior", behaviorTag);
     }
 
-    public static void writeBowl(ItemStack stewStack, Item bowlItem) {
-        CompoundNBT bowlTag = stewStack.getOrCreateTagElement("bowl");
-        bowlTag.putString("name", bowlItem.getRegistryName().toString());
-        for (String bowlWood : BOWL_NAME_TO_ID.keySet()) {
-            if (bowlItem.getRegistryName().toString().contains(bowlWood)) bowlTag.putInt("texture_id", BOWL_NAME_TO_ID.get(bowlWood));
+    public static void writeBowl(ItemStack stewStack, ItemStack bowlStack) {
+        CompoundNBT tag = stewStack.getOrCreateTag();
+        CompoundNBT consumableTag = stewStack.getOrCreateTagElement("consumable");
+        CompoundNBT remainderTag = new CompoundNBT();
+        remainderTag.putString("id", bowlStack.getItem().getRegistryName().toString());
+        if (bowlStack.getCount() != 1) remainderTag.putInt("count", bowlStack.getCount());
+        if (bowlStack.getTag() != null) remainderTag.put("components", bowlStack.getTag());
+        consumableTag.put("use_remainder", remainderTag);
+
+        for (ResourceLocation bowlLocation : BowlType.DATA_DRIVEN_TYPES.keySet()) {
+            BowlType bowlType = BowlType.DATA_DRIVEN_TYPES.get(bowlLocation);
+            if (bowlType.getBowlStack().equals(bowlStack, false)) tag.putInt("texture_id", bowlType.getTextureID());
         }
     }
 
-    public static void writeBowlWithTextureID(ItemStack stewStack, Item bowlItem, IRandomRange textureID) {
-        CompoundNBT bowlTag = stewStack.getOrCreateTagElement("bowl");
-        bowlTag.putString("name", bowlItem.getRegistryName().toString());
-        bowlTag.putInt("texture_id", textureID.getInt(random));
+    public static void writeBowlWithTextureID(ItemStack stewStack, ItemStack bowlStack, IRandomRange textureID) {
+        CompoundNBT consumableTag = stewStack.getOrCreateTagElement("consumable");
+        CompoundNBT remainderTag = new CompoundNBT();
+        remainderTag.putString("id", bowlStack.getItem().getRegistryName().toString());
+        if (bowlStack.getCount() != 1) remainderTag.putInt("count", bowlStack.getCount());
+        if (bowlStack.getTag() != null) remainderTag.put("components", bowlStack.getTag());
+        consumableTag.put("use_remainder", remainderTag);
+
+        stewStack.getOrCreateTag().putInt("texture_id", textureID.getInt(random));
     }
 
     public static void writeBehaviorToStew(ItemStack stewStack, StewBehavior behavior, CompoundNBT properties) {
-        CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
-        behaviorTag.putString("id", behavior.getRegistryName().toString());
-        behaviorTag.put("properties", properties);
+        CompoundNBT consumableTag = stewStack.getOrCreateTagElement("consumable");
+        properties.putString("id", behavior.getBehaviorRegistry().getRegistryName().toString());
+        consumableTag.put("behavior", properties);
     }
 
-    public static boolean canRunBehavior(CompoundNBT behaviorTag, StewBehavior behavior) {
-        return behaviorTag.contains("properties", Constants.TagTypes.COMPOUND) || !behavior.is(StewBehaviorTags.CANNOT_RUN_WITHOUT_NBT);
+    public static boolean canRunBehavior(CompoundNBT consumableTag, StewBehavior behavior) {
+        return consumableTag.contains("behavior", Constants.TagTypes.COMPOUND) || !behavior.is(StewBehaviorTags.CANNOT_RUN_WITHOUT_NBT);
     }
 
     @Override
@@ -111,41 +124,19 @@ public class ExponentialStewItem extends Item {
         boolean isPlayerInCreative = livEntity instanceof PlayerEntity && ((PlayerEntity) livEntity).abilities.instabuild;
 
         // Custom Stew Behavior
-        CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
+        CompoundNBT consumableTag = stewStack.getOrCreateTagElement("consumable");
+        CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
         if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
-            StewBehavior behavior = VSRegistries.STEW_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
-            if (behavior != null && canRunBehavior(behaviorTag, behavior)) behavior.executeFromStewNBT(stewStack, world, livEntity, behavior.getBehaviorProperties(stewStack));
+            StewBehavior behavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
+            if (behavior != null && canRunBehavior(consumableTag, behavior)) behavior.executeFromStewNBT(stewStack, world, livEntity, behavior.getBehaviorProperties(stewStack));
         } else {
-            if (canRunBehavior(behaviorTag, this.stewBehavior)) this.stewBehavior.executeFromStewNBT(stewStack, world, livEntity, this.stewBehavior.getBehaviorProperties(stewStack));
+            if (canRunBehavior(consumableTag, this.stewBehavior)) this.stewBehavior.executeFromStewNBT(stewStack, world, livEntity, this.stewBehavior.getBehaviorProperties(stewStack));
         }
 
         // For Suspicious Stew & "Apply Mob Effects" behavior
-        CompoundNBT propertiesTag = behaviorTag.getCompound("properties");
-        if (propertiesTag.contains("effects", Constants.TagTypes.LIST) && !behaviorTag.isEmpty()) {
-            ListNBT effectList = propertiesTag.getList("effects", Constants.TagTypes.COMPOUND);
-
-            for (int i = 0; i < effectList.size(); ++i) {
-                int duration = 160; // Default of 8 seconds from Suspicious Stew.
-                int amplifier = 0;
-                boolean ambient = false;
-                boolean showParticles = true;
-                boolean showIcon = true;
-                boolean noCounter = false;
-                CompoundNBT effectTag = effectList.getCompound(i);
-                if (effectTag.contains("duration", Constants.TagTypes.ANY_NUMERIC)) duration = effectTag.getInt("duration");
-                if (effectTag.contains("amplifier", Constants.TagTypes.ANY_NUMERIC)) amplifier = effectTag.getInt("amplifier");
-                if (effectTag.contains("ambient", Constants.TagTypes.ANY_NUMERIC)) ambient = effectTag.getBoolean("ambient");
-                if (effectTag.contains("show_particles", Constants.TagTypes.ANY_NUMERIC)) showParticles = effectTag.getBoolean("show_particles");
-                if (effectTag.contains("show_icon", Constants.TagTypes.ANY_NUMERIC)) showIcon = effectTag.getBoolean("show_icon");
-                if (effectTag.contains("no_counter", Constants.TagTypes.ANY_NUMERIC)) noCounter = effectTag.getBoolean("no_counter");
-
-                Effect effect = ForgeRegistries.POTIONS.getValue(ResourceLocation.tryParse(effectTag.getString("id")));
-                if (effect != null) {
-                    EffectInstance instance = new EffectInstance(effect, duration, amplifier, ambient, showParticles, showIcon);
-                    if (world.isClientSide) instance.setNoCounter(noCounter);
-                    livEntity.addEffect(instance);
-                }
-            }
+        if (behaviorTag.contains("effects", Constants.TagTypes.LIST) && !behaviorTag.isEmpty()) {
+            ListNBT effectList = behaviorTag.getList("effects", Constants.TagTypes.COMPOUND);
+            for (int i = 0; i < effectList.size(); ++i) NBTUtils.addEffectsFromNBT(effectList.getCompound(i), world, livEntity);
         } else {
             if (this.stewBehavior.getEffects() != null) {
                 for (EffectInstance instance : this.stewBehavior.getEffects()) livEntity.addEffect(instance);
@@ -154,44 +145,37 @@ public class ExponentialStewItem extends Item {
         return isPlayerInCreative ? superStack : getBowlType(stewStack, livEntity);
     }
 
-    public static ItemStack getBowlType(ItemStack stewStack, @Nullable LivingEntity livEntity) {
-        CompoundNBT bowlTag = stewStack.getTagElement("bowl");
-        if (livEntity != null) livEntity.eat(livEntity.level, stewStack);
+    @Override
+    public ItemStack getDefaultUseRemainder() {
+        return new ItemStack(Items.BOWL);
+    }
 
-        if (bowlTag != null && bowlTag.contains("item", Constants.TagTypes.COMPOUND)) {
-            CompoundNBT itemTag = bowlTag.getCompound("item");
-            if (itemTag.contains("id", Constants.TagTypes.STRING) && ForgeRegistries.ITEMS.containsKey(new ResourceLocation(itemTag.getString("id")))) return VSUtils.loadStack(itemTag);
+    public ItemStack getBowlType(ItemStack stewStack, @Nullable LivingEntity livEntity) {
+        if (livEntity != null) livEntity.eat(livEntity.level, stewStack);
+        CompoundNBT consumableTag = stewStack.getTagElement("consumable");
+
+        if (consumableTag != null && consumableTag.contains("use_remainder", Constants.TagTypes.COMPOUND)) {
+            CompoundNBT remainderTag = consumableTag.getCompound("use_remainder");
+            if (remainderTag.contains("id", Constants.TagTypes.STRING) && ForgeRegistries.ITEMS.containsKey(new ResourceLocation(remainderTag.getString("id")))) return VSUtils.loadStack(remainderTag);
         }
 
-        return new ItemStack(Items.BOWL);
+        return this.getDefaultUseRemainder();
     }
 
     @Override
     public void fillItemCategory(ItemGroup tab, NonNullList<ItemStack> list) {
         if ((this.allowdedIn(tab) || tab == ItemGroup.TAB_SEARCH) && VSConfigs.COMMON_CONFIGS.populateExponentialBowlsInTabs.get()) {
-            // Old hardcoded way of adding all bowls.
-            /*
-            for (String bowls : BOWL_NAME_TO_ID.keySet()) {
-                ItemStack stack = new ItemStack(this);
-                CompoundNBT tag = stack.getOrCreateTag();
-                CompoundNBT bowlTypeTag = stack.getOrCreateTagElement("bowl");
-
-                bowlTypeTag.putString("name", "variants:" + bowls + "_bowl");
-                bowlTypeTag.putInt("texture_id", BOWL_NAME_TO_ID.get(bowls));
-                if (stack.getTag() != null) tag.put("behavior", this.stewBehavior.writeBehaviorToNBT(stack));
-                list.add(stack);
-            }*/
-
             // New data-driven way of adding the bowls.
             for (ResourceLocation location : BowlType.DATA_DRIVEN_TYPES.keySet()) {
                 BowlType type = BowlType.DATA_DRIVEN_TYPES.get(location);
                 ItemStack stack = new ItemStack(this);
                 CompoundNBT tag = stack.getOrCreateTag();
-                CompoundNBT bowlTag = stack.getOrCreateTagElement("bowl");
+                CompoundNBT consumableTag = stack.getOrCreateTagElement("consumable");
 
-                bowlTag.put("item", VSUtils.saveStack(type.getBowlStack(), new CompoundNBT()));
-                bowlTag.putInt("texture_id", type.getTextureID());
-                if (stack.getTag() != null) tag.put("behavior", this.stewBehavior.writeBehaviorToNBT(stack));
+                consumableTag.put("use_remainder", VSUtils.saveStack(type.getBowlStack(), new CompoundNBT()));
+                tag.putInt("texture_id", type.getTextureID());
+
+                consumableTag.put("behavior", this.stewBehavior.writeBehaviorToNBT(stack));
                 list.add(stack);
             }
         } else {
@@ -207,8 +191,6 @@ public class ExponentialStewItem extends Item {
             ItemStack bowlStack = getBowlType(stack, null);
             ITextComponent bowlName = bowlStack.getItem().getName(bowlStack.getItem().getDefaultInstance());
             tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".exponential_stew.bowl", bowlName).withStyle(TextFormatting.GRAY));
-
-            // tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".exponential_stew.bowl", ForgeRegistries.ITEMS.getValue(Items.BOWL.getRegistryName()).getName(ForgeRegistries.ITEMS.getValue(Items.BOWL.getRegistryName()).getDefaultInstance())).withStyle(TextFormatting.GRAY));
         }
 
         if (NBTUtils.shouldNotHideTooltip("hide_stew_behavior", stack)) {
@@ -217,10 +199,13 @@ public class ExponentialStewItem extends Item {
         }
 
         if (NBTUtils.shouldNotHideTooltip("hide_behavior_tooltips", stack)) {
-            CompoundNBT behaviorTag = stack.getTagElement("behavior");
-            if (behaviorTag != null && behaviorTag.contains("id", Constants.TagTypes.STRING)) {
-                StewBehavior behavior = VSRegistries.STEW_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
-                if (behavior != null) tooltip.addAll(behavior.addToStewTooltip(stack, world, flag));
+            CompoundNBT consumableTag = stack.getTagElement("consumable");
+            if (consumableTag != null && consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) {
+                CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
+                if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
+                    StewBehavior behavior = VSRegistries.CONSUME_BEHAVIOR.getValue(new ResourceLocation(behaviorTag.getString("id")));
+                    if (behavior != null) tooltip.addAll(behavior.addToStewTooltip(stack, world, flag));
+                }
             } else {
                 tooltip.addAll(this.stewBehavior.addToStewTooltip(stack, world, flag));
             }

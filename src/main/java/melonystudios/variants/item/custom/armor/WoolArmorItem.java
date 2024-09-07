@@ -1,8 +1,10 @@
 package melonystudios.variants.item.custom.armor;
 
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 import melonystudios.variants.Variants;
 import melonystudios.variants.config.VSConfigs;
+import melonystudios.variants.item.custom.armor.color.WoolArmorColor;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.NBTUtils;
 import melonystudios.variants.util.tab.VSSweaterTab;
@@ -15,6 +17,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -26,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 // TODO: Make this class more compatibility-friendly.
-public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
+public class WoolArmorItem extends ArmorItem implements DyeableArmorItem {
     private final String armorName;
     // If you add an item to this list through the method used in Back Math, it will brick the order of the colors in the creative menu! Which is the whole point I wrote this thing.
 
@@ -94,25 +97,40 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
             list.add(new ItemStack(this));
 
             if (VSConfigs.COMMON_CONFIGS.populateWoolArmorColorInTabs.get()) {
-                for (String i : COLOR_NAME_TO_CODE.keySet()) {
-                    ItemStack stack = new ItemStack(this);
-                    CompoundNBT displayTag = stack.getOrCreateTagElement("display");
-                    CompoundNBT tag = stack.getOrCreateTag();
+                List<ResourceLocation> sortedColors = Lists.newArrayList();
+                sortedColors.addAll(WoolArmorColor.DATA_DRIVEN_COLORS.keySet());
+                sortedColors.sort(null);
+                for (ResourceLocation location : sortedColors) {
+                    WoolArmorColor armorColor = WoolArmorColor.DATA_DRIVEN_COLORS.get(location);
+                    if (!armorColor.getArmorDesign().isPresent()) {
+                        ItemStack stack = new ItemStack(this);
+                        CompoundNBT displayTag = stack.getOrCreateTagElement("display");
+                        CompoundNBT tag = stack.getOrCreateTag();
 
-                    displayTag.putInt("color", COLOR_NAME_TO_CODE.get(i));
-                    tag.putString("color_name", i);
-                    list.add(stack);
+                        displayTag.putInt("color", armorColor.getColor());
+                        tag.putString("color_name", armorColor.getColorName());
+                        list.add(stack);
+                    }
                 }
+                sortedColors.clear();
             }
         }
         if (this.allowdedIn(tab) && VSConfigs.COMMON_CONFIGS.populateWoolArmorDesignsInTabs.get()) {
-            for (int designsCount = 0; designsCount < VSConfigs.COMMON_CONFIGS.maxInTabWoolArmorDesigns.get(); designsCount++) {
-                ItemStack stack = new ItemStack(this);
-                CompoundNBT tag = stack.getOrCreateTag();
-                tag.putInt("armor_design", designsCount + 1);
-                tag.putString("color_name", new TranslationTextComponent("armor_design." + Variants.MOD_ID + "." + (designsCount + 1)).getKey());
-                list.add(stack);
+            List<ResourceLocation> sortedColors = Lists.newArrayList();
+            sortedColors.addAll(WoolArmorColor.DATA_DRIVEN_COLORS.keySet());
+            sortedColors.sort(null);
+            for (ResourceLocation location : sortedColors) {
+                WoolArmorColor armorColor = WoolArmorColor.DATA_DRIVEN_COLORS.get(location);
+                if (armorColor.getArmorDesign().isPresent()) {
+                    ItemStack stack = new ItemStack(this);
+                    CompoundNBT tag = stack.getOrCreateTag();
+
+                    tag.putInt("armor_design", armorColor.getArmorDesign().getAsInt());
+                    tag.putString("color_name", armorColor.getOrCreateDescriptionID());
+                    list.add(stack);
+                }
             }
+            sortedColors.clear();
         }
         if (tab == VSSweaterTab.TAB && VSConfigs.COMMON_CONFIGS.enableInfinitySweatersTab.get()) {
             for (int i = 0; i < VSConfigs.COMMON_CONFIGS.infinitySweatersTabLength.get();  i = i + VSConfigs.COMMON_CONFIGS.infinitySweatersTabSpacing.get())  {
@@ -140,6 +158,21 @@ public class WoolArmorItem extends ArmorItem implements IDyeableWoolArmorItem {
         displayTag.putInt("color", randomCode);
         tag.putString("color_name", randomName);
 
+        return stack;
+    }
+
+    public static ItemStack setColorAndName(ItemStack stack, int color, String colorName) {
+        CompoundNBT tag = stack.getOrCreateTag();
+        CompoundNBT displayTag = stack.getOrCreateTagElement("display");
+        displayTag.putInt("color", color);
+        tag.putString("color_name", colorName);
+        return stack;
+    }
+
+    public static ItemStack setArmorDesign(ItemStack stack, int armorDesign) {
+        CompoundNBT tag = stack.getOrCreateTag();
+        tag.putInt("armor_design", armorDesign);
+        tag.putString("color_name", "armor_design." + Variants.MOD_ID + "." + armorDesign);
         return stack;
     }
 }

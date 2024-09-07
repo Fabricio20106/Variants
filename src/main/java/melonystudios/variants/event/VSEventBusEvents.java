@@ -1,6 +1,7 @@
 package melonystudios.variants.event;
 
 import melonystudios.variants.Variants;
+import melonystudios.variants.data.armorcolor.VSWoolArmorColorProvider;
 import melonystudios.variants.data.bowltype.VSBowlTypesProvider;
 import melonystudios.variants.data.models.VSBlockStateProvider;
 import melonystudios.variants.data.models.VSItemModelProvider;
@@ -45,6 +46,10 @@ public class VSEventBusEvents {
         // Miscellaneous
         generator.addProvider(new VSExpoStewsRecipeProvider(generator));
         generator.addProvider(new VSBowlTypesProvider(generator));
+        generator.addProvider(new VSWoolArmorColorProvider(generator));
+        generator.addProvider(new VSWoolArmorColorProvider.VanillaWACProvider(generator));
+        generator.addProvider(new VSWoolArmorColorProvider.BackMathWACProvider(generator));
+        generator.addProvider(new VSWoolArmorColorProvider.F10ElementsWACProvider(generator));
         generator.addProvider(new VSSoundDefinitionsProvider(generator, fileHelper));
         generator.addProvider(new VSVanillaSoundDefinitionsProvider(generator, fileHelper));
     }

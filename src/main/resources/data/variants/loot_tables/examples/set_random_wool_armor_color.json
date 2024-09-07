@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "variants:wool_sweater",
+          "functions": [
+            {
+              "function": "variants:set_wool_armor_color",
+              "pick_random_color": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

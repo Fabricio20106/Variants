@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import melonystudios.variants.crafting.VSRecipeTypes;
 import melonystudios.variants.item.VSItems;
-import melonystudios.variants.item.custom.armor.IDyeableWoolArmorItem;
+import melonystudios.variants.item.custom.armor.DyeableArmorItem;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.DyeItem;
 import net.minecraft.item.Item;
@@ -34,7 +34,7 @@ public class WoolArmorDyeingRecipe extends SpecialRecipe {
         for (int i = 0; i < inventory.getContainerSize(); ++i) {
             ItemStack stack = inventory.getItem(i);
             if (!stack.isEmpty()) {
-                if (stack.getItem() instanceof IDyeableWoolArmorItem) {
+                if (stack.getItem() instanceof DyeableArmorItem) {
                     if (!emptyStack.isEmpty()) return false;
 
                     emptyStack = stack;
@@ -59,7 +59,7 @@ public class WoolArmorDyeingRecipe extends SpecialRecipe {
             ItemStack stack = inventory.getItem(i);
             if (!stack.isEmpty()) {
                 Item item = stack.getItem();
-                if (item instanceof IDyeableWoolArmorItem) {
+                if (item instanceof DyeableArmorItem) {
                     if (!emptyStack.isEmpty()) return ItemStack.EMPTY;
 
                     emptyStack = stack.copy();
@@ -77,7 +77,7 @@ public class WoolArmorDyeingRecipe extends SpecialRecipe {
             }
         }
 
-        return !emptyStack.isEmpty() && !dyeStacks.isEmpty() ? IDyeableWoolArmorItem.dyeArmor(emptyStack, dyeStacks) : ItemStack.EMPTY;
+        return !emptyStack.isEmpty() && !dyeStacks.isEmpty() ? DyeableArmorItem.dyeArmor(emptyStack, dyeStacks) : ItemStack.EMPTY;
     }
 
     @Override

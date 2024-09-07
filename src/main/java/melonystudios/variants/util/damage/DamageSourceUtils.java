@@ -23,8 +23,17 @@ public class DamageSourceUtils {
             minecraft("hot_floor"), minecraft("in_wall"), minecraft("fly_into_wall"), minecraft("cramming"), minecraft("drown"), minecraft("starve"), minecraft("fall"), minecraft("magic"), minecraft("wither"),
             minecraft("falling_anvil"), minecraft("out_of_world"), minecraft("falling_block"), minecraft("dragon_breath"), minecraft("dry_out"), minecraft("sweet_berry_bush"), minecraft("bad_respawn_point"),
             minecraft("wither_skull"), minecraft("fireball"), minecraft("firework_rocket"), minecraft("arrow"), minecraft("player_attack"), minecraft("thorns"), minecraft("even_more_magic"), minecraft("message_too_long"),
-            minecraft("indirect_magic"), variants("redstone_poisoning"), variants("bluestone_poisoning"), variants("glowstone_poisoning"), variants("gunpowder_poisoning"), variants("explosive_blend_poisoning"))
-            .build();
+            minecraft("indirect_magic"), variants("redstone_poisoning"), variants("bluestone_poisoning"), variants("glowstone_poisoning"), variants("gunpowder_poisoning"), variants("explosive_blend_poisoning"),
+            new ResourceLocation("3d_shareware:nightmare"), new ResourceLocation("vote_update:on_moon"), new ResourceLocation("vote_update:midas_touch"), new ResourceLocation("poisonous_potato_update:potato_heat"),
+            new ResourceLocation("poisonous_potato_update:potato_magic")).build();
+
+    public static DamageSource getSourceFromMap(ResourceLocation name) {
+        return getSourceFromMap(name, DamageSource.GENERIC);
+    }
+
+    public static DamageSource getSourceFromMap(ResourceLocation name, DamageSource fallbackSource) {
+        return DATA_DRIVEN_SOURCES.getOrDefault(name, fallbackSource);
+    }
 
     public static DamageSource fromLocation(LivingEntity target, ResourceLocation sourceLocation) {
         if (DATA_DRIVEN_SOURCES.containsKey(sourceLocation)) return DATA_DRIVEN_SOURCES.get(sourceLocation);
@@ -71,6 +80,11 @@ public class DamageSourceUtils {
             case "variants:glowstone_poisoning": return VSDamageSources.GLOWSTONE_POISONING;
             case "variants:gunpowder_poisoning": return VSDamageSources.GUNPOWDER_POISONING;
             case "variants:explosive_blend_poisoning": return VSDamageSources.EXPLOSIVE_BLEND_POISONING;
+            case "3d_shareware:nightmare": return VSDamageSources.TOO_SOFT;
+            case "vote_update:on_moon": return VSDamageSources.ON_MOON;
+            case "vote_update:midas_touch": return VSDamageSources.MIDAS_TOUCH;
+            case "poisonous_potato_update:potato_heat": return VSDamageSources.HOT_POTATO;
+            case "poisonous_potato_update:potato_magic": return VSDamageSources.POTATO_BATTERY;
             default: return null;
         }
     }
@@ -162,6 +176,16 @@ public class DamageSourceUtils {
             return VSDamageSources.GUNPOWDER_POISONING;
         } else if (sourceLocation.toString().equals("variants:explosive_blend_poisoning")) {
             return VSDamageSources.EXPLOSIVE_BLEND_POISONING;
+        } else if (sourceLocation.toString().equals("3d_shareware:nightmare")) {
+            return VSDamageSources.TOO_SOFT;
+        } else if (sourceLocation.toString().equals("vote_update:on_moon")) {
+            return VSDamageSources.ON_MOON;
+        } else if (sourceLocation.toString().equals("vote_update:midas_touch")) {
+            return VSDamageSources.MIDAS_TOUCH;
+        } else if (sourceLocation.toString().equals("poisonous_potato_update:potato_heat")) {
+            return VSDamageSources.HOT_POTATO;
+        } else if (sourceLocation.toString().equals("poisonous_potato_update:potato_magic")) {
+            return VSDamageSources.POTATO_BATTERY;
         }
         return null;
     }

@@ -15,20 +15,18 @@
   "result": {
     "item": "variants:exponential_milk_bowl",
     "nbt": {
-      "bowl": {
-        "item": {
+      "consumable": {
+        "use_remainder": {
           "id": "variants:enderwood_bowl"
         },
-        "texture_id": 9
-      },
-      "behavior": {
-        "id": "variants:clear_mob_effects",
-        "properties": {
+        "behavior": {
+          "id": "variants:clear_mob_effects",
           "curative_item": {
             "id": "minecraft:milk_bucket"
           }
         }
-      }
+      },
+      "texture_id": 9
     }
   }
 }

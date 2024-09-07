@@ -7,6 +7,7 @@ import com.google.gson.JsonObject;
 import melonystudios.variants.item.custom.food.ExponentialStewItem;
 import melonystudios.variants.stew.StewBehavior;
 import melonystudios.variants.stew.custom.*;
+import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.JSONUtils;
 import melonystudios.variants.util.VSRegistries;
 import net.minecraft.advancements.Advancement;
@@ -19,10 +20,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -52,9 +53,7 @@ public class ExponentialStewRecipeBuilder {
     }
 
     public ExponentialStewRecipeBuilder requires(IItemProvider item, int count) {
-        for (int i = 0; i < count; ++i) {
-            this.requires(Ingredient.of(item));
-        }
+        for (int i = 0; i < count; ++i) this.requires(Ingredient.of(item));
         return this;
     }
 
@@ -63,9 +62,7 @@ public class ExponentialStewRecipeBuilder {
     }
 
     public ExponentialStewRecipeBuilder requires(Ingredient ingredient, int count) {
-        for (int i = 0; i < count; ++i) {
-            this.ingredients.add(ingredient);
-        }
+        for (int i = 0; i < count; ++i) this.ingredients.add(ingredient);
         return this;
     }
 
@@ -79,8 +76,8 @@ public class ExponentialStewRecipeBuilder {
         return this;
     }
 
-    public void save(Consumer<IFinishedRecipe> consumer, String name) {
-        ResourceLocation itemLocation = Registry.ITEM.getKey(this.result.getItem());
+    public void save(Consumer<IFinishedRecipe> consumer, String name) throws IllegalStateException {
+        ResourceLocation itemLocation = ForgeRegistries.ITEMS.getKey(this.result.getItem());
         if (new ResourceLocation(name).equals(itemLocation)) {
             throw new IllegalStateException(new TranslationTextComponent("error.variants.expo_stew_recipe_builder.remove_save_argument", name).getString());
         } else {
@@ -123,52 +120,52 @@ public class ExponentialStewRecipeBuilder {
             if (!this.group.isEmpty()) object.addProperty("group", this.group);
 
             JsonArray array = new JsonArray();
-
-            for(Ingredient ingredient : this.ingredients) {
-                array.add(ingredient.toJson());
-            }
+            for (Ingredient ingredient : this.ingredients) array.add(ingredient.toJson());
 
             object.add("ingredients", array);
             JsonObject result = new JsonObject();
             result.addProperty("item", ForgeRegistries.ITEMS.getKey(this.result.getItem()).toString());
-            if (this.count > 1) {
-                result.addProperty("count", this.count);
-            }
-            if (this.result.hasTag() && this.result.getTagElement("bowl") != null) {
-                result.add("nbt", this.serializeNBT());
-            }
+            if (this.count > 1) result.addProperty("count", this.count);
+            if (this.result.getTag() != null) result.add("nbt", this.serializeNBT());
 
             object.add("result", result);
         }
 
         public JsonElement serializeNBT() {
-            JsonObject object = new JsonObject();
-            object.add("bowl", this.serializeBowl());
-            object.add("behavior", this.serializeStewBehavior());
-            return object;
+            JsonObject rootObj = new JsonObject();
+            JsonObject consumableObj = new JsonObject();
+            consumableObj.add("use_remainder", this.serializeBowl());
+            consumableObj.add("behavior", this.serializeConsumeBehavior());
+            rootObj.add("consumable", consumableObj);
+            CompoundNBT tag = this.result.getTag();
+            if (tag != null && tag.contains("texture_id", Constants.TagTypes.ANY_NUMERIC)) {
+                rootObj.addProperty("texture_id", tag.getInt("texture_id"));
+            }
+            return rootObj;
         }
 
         private JsonObject serializeBowl() {
-            CompoundNBT bowlTag = this.result.getOrCreateTagElement("bowl");
-            CompoundNBT itemTag = bowlTag.getCompound("item");
+            CompoundNBT consumableTag = this.result.getOrCreateTagElement("consumable");
+            CompoundNBT remainderTag = consumableTag.getCompound("use_remainder");
             JsonObject object = new JsonObject();
+            JsonObject consumableObj = new JsonObject();
+            JsonObject remainderObj = new JsonObject();
 
-            JsonObject bowlObject = new JsonObject();
-            bowlObject.addProperty("id", itemTag.getString("id"));
-            if (itemTag.getInt("count") > 1) bowlObject.addProperty("count", itemTag.getInt("count"));
-            object.add("item", bowlObject);
+            remainderObj.addProperty("id", remainderTag.getString("id"));
+            if (remainderTag.getInt("count") > 1) remainderObj.addProperty("count", remainderTag.getInt("count"));
+            consumableObj.add("use_remainder", remainderObj);
 
-            object.addProperty("texture_id", bowlTag.getInt("texture_id"));
-            return object;
+            object.add("consumable", consumableObj);
+            object.addProperty("texture_id", this.result.getOrCreateTag().getInt("texture_id"));
+            return remainderObj;
         }
 
-        private JsonObject serializeStewBehavior() {
-            CompoundNBT behaviorTag = this.result.getOrCreateTagElement("behavior");
-            CompoundNBT propertiesTag = behaviorTag.getCompound("properties");
-            StewBehavior behavior = VSRegistries.STEW_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
+        private JsonObject serializeConsumeBehavior() {
+            CompoundNBT consumableTag = this.result.getOrCreateTagElement("consumable");
+            CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
+            StewBehavior behavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
 
             JsonObject behaviorObj = new JsonObject();
-            JsonObject propertiesObj = new JsonObject();
 
             behaviorObj.addProperty("id", behaviorTag.getString("id"));
 
@@ -177,36 +174,58 @@ public class ExponentialStewRecipeBuilder {
 
                 // Behaviors
                 if (behavior instanceof ApplyMobEffectsBehavior) {
-                    ApplyMobEffectsBehavior behavior1 = (ApplyMobEffectsBehavior) expoStew.getBehavior();
+                    ApplyMobEffectsBehavior applyEffectsBehavior = (ApplyMobEffectsBehavior) expoStew.getBehavior();
                     JsonArray effectsList = new JsonArray();
-                    for (EffectInstance instance : behavior1.getEffects()) {
+                    for (EffectInstance instance : applyEffectsBehavior.getEffects()) {
                         JsonObject effectObj = new JsonObject();
                         effectObj.addProperty("id", instance.getEffect().getRegistryName().toString());
                         effectObj.addProperty("duration", instance.getDuration());
                         if (instance.getAmplifier() > 0) effectObj.addProperty("amplifier", instance.getAmplifier());
+                        if (instance.isAmbient()) effectObj.addProperty("ambient", true);
+                        if (!instance.isVisible()) effectObj.addProperty("show_particle", true);
+                        if (!instance.showIcon()) effectObj.addProperty("show_icon", true);
+                        if (instance.isNoCounter()) effectObj.addProperty("no_counter", true);
                         effectsList.add(effectObj);
                     }
-                    propertiesObj.add("effects", effectsList);
+                    behaviorObj.add("effects", effectsList);
                 } else if (behavior instanceof ClearMobEffectsBehavior) {
                     ClearMobEffectsBehavior clearEffectsBehavior = (ClearMobEffectsBehavior) expoStew.getBehavior();
                     JsonObject curativeObject = new JsonObject();
                     curativeObject.addProperty("id", clearEffectsBehavior.getCurativeItem().getItem().getRegistryName().toString());
                     if (clearEffectsBehavior.getCurativeItem().getCount() != 1) curativeObject.addProperty("count", clearEffectsBehavior.getCurativeItem().getCount());
-                    propertiesObj.add("curative_item", curativeObject);
+                    if (clearEffectsBehavior.getCurativeItem().getTag() != null) curativeObject.addProperty("components", clearEffectsBehavior.getCurativeItem().getTag().toString());
+                    behaviorObj.add("curative_item", curativeObject);
                 } else if (behavior instanceof DamageEntityBehavior) {
-                    JSONUtils.writeDamageSourceFromNBT(propertiesTag, propertiesObj);
+                    JSONUtils.writeDamageSourceFromNBT(behaviorTag, behaviorObj);
                 } else if (behavior instanceof ExplodeBehavior) {
-                    JSONUtils.writeExplosionFromNBT(propertiesTag, propertiesObj);
+                    JSONUtils.writeExplosionFromNBT(behaviorTag, behaviorObj);
                 } else if (behavior instanceof IgniteBehavior) {
                     IgniteBehavior igniteBehavior = (IgniteBehavior) expoStew.getBehavior();
-                    propertiesObj.addProperty("ticks_on_fire", igniteBehavior.getTicksOnFire());
+                    behaviorObj.addProperty("ticks_on_fire", igniteBehavior.getTicksOnFire());
                 } else if (behavior instanceof AddExperienceBehavior) {
                     AddExperienceBehavior addExperienceBehavior = (AddExperienceBehavior) expoStew.getBehavior();
-                    propertiesObj.addProperty("amount", addExperienceBehavior.getExperienceAmount());
-                    propertiesObj.addProperty("levels", addExperienceBehavior.addsLevels());
+                    behaviorObj.addProperty("amount", addExperienceBehavior.getExperienceAmount());
+                    behaviorObj.addProperty("levels", addExperienceBehavior.addsLevels());
+                } else if (behavior instanceof TeleportEntityBehavior) {
+                    TeleportEntityBehavior teleportBehavior = (TeleportEntityBehavior) expoStew.getBehavior();
+                    if (teleportBehavior.randomlyTeleports()) {
+                        behaviorObj.addProperty("random_teleport", true);
+                        behaviorObj.addProperty("teleport_diameter", teleportBehavior.getTeleportDiameter());
+                    } else {
+                        behaviorObj.addProperty("random_teleport", false);
+                        JsonArray posArray = new JsonArray();
+                        posArray.add(teleportBehavior.getTeleportPosition().getX());
+                        posArray.add(teleportBehavior.getTeleportPosition().getY());
+                        posArray.add(teleportBehavior.getTeleportPosition().getZ());
+                        behaviorObj.add("teleport_position", posArray);
+                    }
+                } else if (behavior instanceof RemoveEffectsBehavior) {
+                    RemoveEffectsBehavior removeEffectsBehavior = (RemoveEffectsBehavior) expoStew.getBehavior();
+                    JsonArray effectArray = new JsonArray();
+                    for (Effect effect : removeEffectsBehavior.getEffectsToRemove()) effectArray.add(effect.getRegistryName().toString());
+                    behaviorObj.add("effects", effectArray);
                 }
             }
-            behaviorObj.add("properties", propertiesObj);
             return behaviorObj;
         }
 

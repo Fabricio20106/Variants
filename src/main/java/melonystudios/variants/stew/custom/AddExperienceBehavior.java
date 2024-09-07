@@ -8,6 +8,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 import static melonystudios.variants.util.NBTUtils.anyNumericOrIntDefault;
 import static melonystudios.variants.util.NBTUtils.booleanOrDefault;
 
@@ -33,7 +35,7 @@ public class AddExperienceBehavior extends StewBehavior {
     }
 
     @Override
-    public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity) {
+    public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
         if (livEntity instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) livEntity;
             if (this.levels) player.giveExperienceLevels(this.amount);
@@ -42,9 +44,9 @@ public class AddExperienceBehavior extends StewBehavior {
     }
 
     @Override
-    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
+    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
         AddExperienceBehavior behavior = new AddExperienceBehavior(anyNumericOrIntDefault("amount", propertiesTag, 0), booleanOrDefault("levels", propertiesTag, false));
-        behavior.executeBehavior(stewStack, world, livEntity);
+        behavior.executeBehavior(stewStack, world, livEntity, propertiesTag);
     }
 
     @Override

@@ -1,0 +1,40 @@
+    private final StewBehavior[] behaviors;
+
+    public MultiBehavior(StewBehavior... behaviors) {
+        this.behaviors = behaviors;
+    }
+
+    public StewBehavior[] getBehaviors() {
+        return this.behaviors;
+    }
+
+    @Override
+    public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity) {}
+
+    @Override
+    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
+        for (String tagKey : propertiesTag.getAllKeys()) {
+            LogManager.getLogger().debug("Using tag key '{}'", tagKey);
+            ResourceLocation behaviorLocation = ResourceLocation.tryParse(tagKey);
+            if (behaviorLocation != null) {
+                LogManager.getLogger().debug("Behavior location is {}", behaviorLocation);
+                StewBehavior behavior = VSRegistries.STEW_BEHAVIOR.getValue(behaviorLocation);
+                behavior.executeFromStewNBT(stewStack, world, livEntity, propertiesTag.getCompound(tagKey));
+                LogManager.getLogger().debug("Tag key '{}'s compound is {}", tagKey, propertiesTag.getCompound(tagKey).getPrettyDisplay().getString());
+            }
+        }
+    }
+
+    @Override
+    public CompoundNBT writePropertiesToNBT() {
+        CompoundNBT properties = new CompoundNBT();
+        for (StewBehavior behavior : this.behaviors) {
+            properties.put(behavior.getBehaviorRegistry().getRegistryName().toString(), behavior.writePropertiesToNBT());
+        }
+        return properties;
+    }
+
+    @Override
+    public StewBehavior getBehaviorRegistry() {
+        return VSStewBehaviors.MULTI_BEHAVIOR.get();
+    }

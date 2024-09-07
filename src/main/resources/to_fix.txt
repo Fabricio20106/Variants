@@ -1,0 +1,4 @@
+- make drinkable bottle items all use stew behaviors [done]
+
+- stylised pots show both the effects and the poisoning tooltips
+  - make it appear like the effects tooltip on potions but colorful

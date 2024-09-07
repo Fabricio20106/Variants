@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 
 public class VSStewBehaviorTagsProvider extends ForgeRegistryTagsProvider<StewBehavior> {
     public VSStewBehaviorTagsProvider(DataGenerator generator, @Nullable ExistingFileHelper fileHelper) {
-        super(generator, VSRegistries.STEW_BEHAVIOR, Variants.MOD_ID, fileHelper);
+        super(generator, VSRegistries.CONSUME_BEHAVIOR, Variants.MOD_ID, fileHelper);
     }
 
     @Override

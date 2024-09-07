@@ -114,14 +114,6 @@ public class BowlType {
         public BowlType deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
             if (element.isJsonObject()) {
                 JsonObject object = element.getAsJsonObject();
-                /*JsonObject bowlObject = object.get("bowl").getAsJsonObject();
-                CompoundNBT tagTag;
-                try {
-                    tagTag = JsonToNBT.parseTag(SetStewBehavior.Serializer.convertToString(bowlObject.get("tag"), "tag"));
-                } catch (CommandSyntaxException exception) {
-                    tagTag = new CompoundNBT();
-                }
-                if (!tagTag.isEmpty()) stackTag.put("tag", tagTag);*/
                 CompoundNBT stackTag = new CompoundNBT();
                 stackTag.putString("id", object.get("bowl").getAsJsonObject().get("id").getAsString());
                 stackTag.putInt("count", object.get("bowl").getAsJsonObject().get("count").getAsInt());

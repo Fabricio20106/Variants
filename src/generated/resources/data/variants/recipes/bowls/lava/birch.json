@@ -15,18 +15,16 @@
   "result": {
     "item": "variants:exponential_lava_bowl",
     "nbt": {
-      "bowl": {
-        "item": {
+      "consumable": {
+        "use_remainder": {
           "id": "variants:birch_bowl"
         },
-        "texture_id": 2
-      },
-      "behavior": {
-        "id": "variants:ignite",
-        "properties": {
+        "behavior": {
+          "id": "variants:ignite",
           "ticks_on_fire": 100
         }
-      }
+      },
+      "texture_id": 2
     }
   }
 }

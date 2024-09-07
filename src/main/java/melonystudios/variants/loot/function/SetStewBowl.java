@@ -15,10 +15,10 @@ import net.minecraft.util.JSONUtils;
 import javax.annotation.Nonnull;
 
 public class SetStewBowl extends LootFunction {
-    private final Item bowl;
+    private final ItemStack bowl;
     private final IRandomRange textureID;
 
-    public SetStewBowl(ILootCondition[] conditions, Item bowl, IRandomRange textureID) {
+    public SetStewBowl(ILootCondition[] conditions, ItemStack bowl, IRandomRange textureID) {
         super(conditions);
         this.bowl = bowl;
         this.textureID = textureID;
@@ -37,15 +37,15 @@ public class SetStewBowl extends LootFunction {
         return stack;
     }
 
-    public static SetStewBowl.Builder setStewBowl(Item bowl, IRandomRange textureID) {
+    public static SetStewBowl.Builder setStewBowl(ItemStack bowl, IRandomRange textureID) {
         return new SetStewBowl.Builder(bowl, textureID);
     }
 
     public static class Builder extends LootFunction.Builder<SetStewBowl.Builder> {
-        private final Item bowl;
+        private final ItemStack bowl;
         private final IRandomRange textureID;
 
-        public Builder(Item bowl, IRandomRange textureID) {
+        public Builder(ItemStack bowl, IRandomRange textureID) {
             this.bowl = bowl;
             this.textureID = textureID;
         }
@@ -67,7 +67,10 @@ public class SetStewBowl extends LootFunction {
         @Override
         public void serialize(JsonObject object, SetStewBowl function, JsonSerializationContext context) {
             super.serialize(object, function, context);
-            object.addProperty("bowl", function.bowl.getRegistryName().toString());
+            JsonObject itemObject = new JsonObject();
+            itemObject.addProperty("id", function.bowl.getItem().getRegistryName().toString());
+            if (function.bowl.getCount() != 1) itemObject.addProperty("count", function.bowl.getCount());
+            object.add("item", itemObject);
             object.add("texture_id", RandomRanges.serialize(function.textureID, context));
         }
 
@@ -75,8 +78,12 @@ public class SetStewBowl extends LootFunction {
         @Nonnull
         public SetStewBowl deserialize(JsonObject object, JsonDeserializationContext context, ILootCondition[] conditions) {
             IRandomRange textureID = RandomRanges.deserialize(object.get("texture_id"), context);
-            Item bowl = JSONUtils.getAsItem(object, "bowl");
-            return new SetStewBowl(conditions, bowl, textureID);
+            JsonObject itemObject = JSONUtils.getAsJsonObject(object, "item");
+            Item bowlItem = JSONUtils.getAsItem(itemObject, "id");
+            int count = 1;
+            if (itemObject.has("count")) count = itemObject.get("count").getAsInt();
+            ItemStack bowlStack = new ItemStack(bowlItem, count);
+            return new SetStewBowl(conditions, bowlStack, textureID);
         }
     }
 }

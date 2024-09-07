@@ -5,6 +5,7 @@ import net.minecraft.item.IItemTier;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
 
+import javax.annotation.Nonnull;
 import java.util.function.Supplier;
 
 public class VSTools implements IItemTier {
@@ -15,8 +16,8 @@ public class VSTools implements IItemTier {
     public static final VSTools END_STONE = new VSTools(1, 250, 4, 1, 5, () -> Ingredient.of(VSItemTags.CM_END_STONE));
     public static final VSTools EMERALD = new VSTools(3, 1561, 5, 3, 15, () -> Ingredient.of(Tags.Items.GEMS_EMERALD));
     public static final VSTools QUARTZ = new VSTools(2, 350, 6, 2, 14, () -> Ingredient.of(Tags.Items.GEMS_QUARTZ));
-    public static final VSTools AMETHYST = new VSTools(2, 250, 6, 2, 14, () -> Ingredient.EMPTY);
-    public static final VSTools COPPER = new VSTools(2, 250, 6, 2, 14, () -> Ingredient.EMPTY);
+    public static final VSTools AMETHYST = new VSTools(2, 250, 6, 2, 14, () -> Ingredient.of(VSItemTags.GEMS_AMETHYST));
+    public static final VSTools COPPER = new VSTools(2, 250, 6, 2, 14, () -> Ingredient.of(VSItemTags.INGOTS_COPPER));
 
     private final int harvestLevel;
     private final int durability;
@@ -54,6 +55,7 @@ public class VSTools implements IItemTier {
         return this.enchantmentValue;
     }
 
+    @Nonnull
     public Ingredient getRepairIngredient() {
         return this.repairIngredient.get();
     }

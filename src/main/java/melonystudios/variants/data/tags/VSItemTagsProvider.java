@@ -33,10 +33,11 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(Tags.Items.STORAGE_BLOCKS).addTag(VSItemTags.STORAGE_BLOCKS_NETHERITE_SCRAP);
 
         this.tag(VSItemTags.INGOTS_RED_NETHER_BRICK).add(VSItems.RED_NETHER_BRICK.get());
+        this.tag(VSItemTags.INGOTS_COPPER);
         this.tag(VSItemTags.INGOTS_EXPOSED_COPPER).add(VSItems.EXPOSED_COPPER_INGOT.get());
         this.tag(VSItemTags.INGOTS_WEATHERED_COPPER).add(VSItems.WEATHERED_COPPER_INGOT.get());
         this.tag(VSItemTags.INGOTS_OXIDIZED_COPPER).add(VSItems.OXIDIZED_COPPER_INGOT.get());
-        this.tag(Tags.Items.INGOTS).addTag(VSItemTags.INGOTS_RED_NETHER_BRICK).addTag(VSItemTags.INGOTS_EXPOSED_COPPER).addTag(VSItemTags.INGOTS_WEATHERED_COPPER).addTag(VSItemTags.INGOTS_OXIDIZED_COPPER);
+        this.tag(Tags.Items.INGOTS).addTag(VSItemTags.INGOTS_RED_NETHER_BRICK).addTag(VSItemTags.INGOTS_COPPER).addTag(VSItemTags.INGOTS_EXPOSED_COPPER).addTag(VSItemTags.INGOTS_WEATHERED_COPPER).addTag(VSItemTags.INGOTS_OXIDIZED_COPPER);
 
         this.tag(VSItemTags.NUGGETS_PURPLE_IRON).add(VSItems.PURPLE_IRON_NUGGET.get());
         this.tag(VSItemTags.NUGGETS_DIAMOND).add(VSItems.DIAMOND_SHARD.get());
@@ -98,7 +99,8 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(Tags.Items.DUSTS).addTag(VSItemTags.DUSTS_SUGAR).addTag(VSItemTags.DUSTS_GUNPOWDER).addTag(VSItemTags.DUSTS_BLAZE).addTag(VSItemTags.DUSTS_SOUL_BLAZE).addTag(VSItemTags.DUSTS_ELDER_PRISMARINE);
 
         this.tag(VSItemTags.GEMS_ELDER_PRISMARINE).add(VSItems.ELDER_PRISMARINE_CRYSTALS.get());
-        this.tag(Tags.Items.GEMS).addTag(VSItemTags.GEMS_ELDER_PRISMARINE);
+        this.tag(VSItemTags.GEMS_AMETHYST);
+        this.tag(Tags.Items.GEMS).addTag(VSItemTags.GEMS_ELDER_PRISMARINE).addTag(VSItemTags.GEMS_AMETHYST);
 
         this.tag(VSItemTags.ARMORS_BOOTS).add(VSWeaponry.EMPTY_ARMOR_SLOT_BOOTS.get()).add(VSWeaponry.EMERALD_BOOTS.get()).add(VSWeaponry.QUARTZ_BOOTS.get());
         this.tag(VSItemTags.TOOLS_HOES).add(Items.WOODEN_HOE).add(Items.STONE_HOE).add(Items.IRON_HOE).add(Items.DIAMOND_HOE).add(Items.GOLDEN_HOE).add(Items.NETHERITE_HOE).add(VSWeaponry.DIORITE_HOE.get()).add(VSWeaponry.GRANITE_HOE.get())

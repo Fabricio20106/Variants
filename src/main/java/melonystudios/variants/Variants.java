@@ -15,7 +15,6 @@ import melonystudios.variants.fluid.VSFluids;
 import melonystudios.variants.item.VSItems;
 import melonystudios.variants.item.VSModdedItems;
 import melonystudios.variants.item.VSWeaponry;
-import melonystudios.variants.item.custom.poisoning.VSPoisoningTypes;
 import melonystudios.variants.stew.VSStewBehaviors;
 import melonystudios.variants.loot.VSLootFunctions;
 import melonystudios.variants.loot.rand.BowlIDValueRange;
@@ -82,7 +81,6 @@ public class Variants {
         VSBiomes.BIOMES.register(eventBus);
         VSRecipeTypes.RECIPE_TYPES.register(eventBus);
         VSStewBehaviors.BEHAVIORS.register(eventBus);
-        VSPoisoningTypes.POISONING_TYPES.register(eventBus);
         VSLootFunctions.init();
         VSRegistries.init();
         VSStats.init();
@@ -153,6 +151,7 @@ public class Variants {
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.DEBUG_ARROW.get(), DebugArrowRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityType.SPAWNER_MINECART, SpawnerMinecartRenderer::new);
 
+        ClientRegistry.registerKeyBinding(VSKeys.SHOW_TAGS_KEY);
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_BELL.get(), VSBellBlockEntityRenderer::new);
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_BEACON.get(), BeaconTileEntityRenderer::new);
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_BED.get(), VSBedBlockEntityRenderer::new);

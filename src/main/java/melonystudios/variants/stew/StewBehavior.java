@@ -1,6 +1,8 @@
 package melonystudios.variants.stew;
 
 import com.google.common.collect.Lists;
+import melonystudios.variants.item.custom.food.TagConfigurableFood;
+import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.VSRegistries;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
@@ -14,6 +16,7 @@ import net.minecraft.util.text.*;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistryEntry;
+import org.apache.logging.log4j.LogManager;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -22,9 +25,9 @@ public abstract class StewBehavior extends ForgeRegistryEntry<StewBehavior> {
     @Nullable
     private String descriptionID;
 
-    public abstract void executeBehavior(ItemStack stack, World world, LivingEntity livEntity);
+    public abstract void executeBehavior(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag);
 
-    public abstract void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag);
+    public abstract void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag);
 
     public abstract CompoundNBT writePropertiesToNBT();
 
@@ -40,27 +43,27 @@ public abstract class StewBehavior extends ForgeRegistryEntry<StewBehavior> {
         return behaviorTag.contains(this);
     }
 
-    protected String getOrCreateDescriptionId() {
-        if (this.descriptionID == null) this.descriptionID = Util.makeDescriptionId("stew_behavior", VSRegistries.STEW_BEHAVIOR.getKey(this));
+    protected String getOrCreateDescriptionID() {
+        if (this.descriptionID == null) this.descriptionID = Util.makeDescriptionId("stew_behavior", VSRegistries.CONSUME_BEHAVIOR.getKey(this));
         return this.descriptionID;
     }
 
     public String getDescriptionID() {
-        return this.getOrCreateDescriptionId();
+        return this.getOrCreateDescriptionID();
     }
 
     public ITextComponent getCommandDisplayName() {
         IFormattableTextComponent component = TextComponentUtils.wrapInSquareBrackets(new TranslationTextComponent(this.getDescriptionID())).withStyle(TextFormatting.LIGHT_PURPLE);
         component.withStyle(style -> style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent("")
                 .append(new TranslationTextComponent(this.getDescriptionID()).withStyle(TextFormatting.LIGHT_PURPLE).withStyle(TextFormatting.BOLD)).append("\n")
-                .append(new TranslationTextComponent(this.getDescriptionID() + ".desc").withStyle(TextFormatting.GRAY)))));
+                .append(new TranslationTextComponent(this.getDescriptionID() + ".desc").withStyle(TextFormatting.GRAY)).append("\n")
+                .append(new StringTextComponent(this.getBehaviorRegistry().getRegistryName().toString()).withStyle(TextFormatting.DARK_GRAY)))));
         return component;
     }
 
     public CompoundNBT writeBehaviorToNBT(ItemStack stewStack) {
-        CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
+        CompoundNBT behaviorTag = writePropertiesToNBT();
         behaviorTag.putString("id", getBehaviorFromNBT(stewStack).getRegistryName().toString());
-        behaviorTag.put("properties", writePropertiesToNBT());
         return behaviorTag;
     }
 
@@ -69,23 +72,33 @@ public abstract class StewBehavior extends ForgeRegistryEntry<StewBehavior> {
     }
 
     public boolean hasBehaviorIDInNBT(ItemStack stewStack) {
-        CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
-        return behaviorTag.contains("id");
+        CompoundNBT consumableTag = stewStack.getTagElement("consumable");
+        if (consumableTag != null && consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) {
+            return consumableTag.getCompound("behavior").contains("id", Constants.TagTypes.STRING);
+        }
+        return false;
     }
 
     public StewBehavior getBehaviorFromNBT(ItemStack stewStack) {
         if (hasBehaviorIDInNBT(stewStack)) {
-            ResourceLocation behavior = ResourceLocation.tryParse(stewStack.getTagElement("behavior").getString("id"));
-            if (VSRegistries.STEW_BEHAVIOR.containsKey(behavior)) return VSRegistries.STEW_BEHAVIOR.getValue(behavior);
+            try {
+                ResourceLocation behavior = ResourceLocation.tryParse(stewStack.getOrCreateTagElement("consumable").getCompound("behavior").getString("id"));
+                if (VSRegistries.CONSUME_BEHAVIOR.containsKey(behavior)) return VSRegistries.CONSUME_BEHAVIOR.getValue(behavior);
+            } catch (NullPointerException ignored) {
+                LogManager.getLogger().error("Could not get the consume behavior from {} NBT", stewStack.getHoverName().getString(), ignored);
+            }
         } else {
             return getBehaviorRegistry();
         }
         return this;
     }
 
+    @Nullable
     public CompoundNBT getBehaviorProperties(ItemStack stewStack) {
-        CompoundNBT tag = stewStack.getTagElement("behavior");
-        if (tag != null && tag.contains("properties")) return tag.getCompound("properties");
+        if (stewStack.getItem() instanceof TagConfigurableFood) {
+            CompoundNBT consumableTag = stewStack.getTagElement("consumable");
+            if (consumableTag != null && consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) return consumableTag.getCompound("behavior");
+        }
         return null;
     }
 }

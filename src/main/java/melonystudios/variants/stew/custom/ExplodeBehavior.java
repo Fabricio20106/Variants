@@ -21,6 +21,7 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
 
+import javax.annotation.Nullable;
 import java.util.*;
 
 import static melonystudios.variants.util.NBTUtils.*;
@@ -75,12 +76,11 @@ public class ExplodeBehavior extends StewBehavior {
     }
 
     @Override
-    public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity) {
-        CompoundNBT propertiesTag = getBehaviorProperties(stack);
+    public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
         DamageSource trueSource = DamageSource.GENERIC;
-        if (propertiesTag.contains("source", Constants.TagTypes.COMPOUND)) {
+        if (propertiesTag != null && propertiesTag.contains("source", Constants.TagTypes.COMPOUND)) {
             trueSource = new DamageBehaviorSource(propertiesTag, livEntity);
-        } else if (propertiesTag.contains("source", Constants.TagTypes.STRING)) {
+        } else if (propertiesTag != null && propertiesTag.contains("source", Constants.TagTypes.STRING)) {
             DamageSource source1 = DamageSourceUtils.fromLocationWithKiller(livEntity, ResourceLocation.tryParse(stringOrDefault("source", propertiesTag, "minecraft:generic")));
             if (source1 != null) trueSource = source1;
         } else {
@@ -97,12 +97,12 @@ public class ExplodeBehavior extends StewBehavior {
     }
 
     @Override
-    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, CompoundNBT propertiesTag) {
-        BlockPos pos = propertiesTag.contains("pos", Constants.TagTypes.COMPOUND) ? NBTUtils.readBlockPos(propertiesTag) : livEntity.blockPosition();
+    public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
+        BlockPos pos = (propertiesTag != null && propertiesTag.contains("pos", Constants.TagTypes.INTEGER_ARRAY)) ? NBTUtils.readBlockPos(propertiesTag) : livEntity.blockPosition();
         DamageSource source1 = DamageSourceUtils.fromLocationWithKiller(livEntity, ResourceLocation.tryParse(stringOrDefault("source", propertiesTag, "minecraft:generic")));
         ExplodeBehavior explodeBehavior = new ExplodeBehavior(anyNumericOrFloatDefault("radius", propertiesTag, 0), booleanOrDefault("create_fire", propertiesTag, false), booleanOrDefault("spawn_effect_cloud", propertiesTag,
                 true), pos, source1, Explosion.Mode.valueOf(stringOrDefault("mode", propertiesTag, "none").toUpperCase(Locale.ROOT)));
-        explodeBehavior.executeBehavior(stewStack, world, livEntity);
+        explodeBehavior.executeBehavior(stewStack, world, livEntity, propertiesTag);
     }
 
     @Override

@@ -2,6 +2,7 @@ package melonystudios.variants.loot.rand;
 
 import com.google.gson.*;
 import melonystudios.variants.Variants;
+import melonystudios.variants.stew.bowl.BowlType;
 import net.minecraft.loot.IRandomRange;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
@@ -15,12 +16,12 @@ public class BowlIDValueRange implements IRandomRange {
     private final int value;
 
     public BowlIDValueRange(int value) {
-        this.value = MathHelper.clamp(value, 0, 9);
+        this.value = MathHelper.clamp(value, 0, BowlType.TEXTURE_IDENTIFIERS.size() - 1);
     }
 
     @Override
     public int getInt(Random rand) {
-        return MathHelper.clamp(this.value, 0, 9);
+        return MathHelper.clamp(this.value, 0, BowlType.TEXTURE_IDENTIFIERS.size() - 1);
     }
 
     @Override

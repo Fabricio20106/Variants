@@ -4,7 +4,7 @@ import melonystudios.variants.Variants;
 import melonystudios.variants.block.VSBlocks;
 import melonystudios.variants.item.VSItems;
 import melonystudios.variants.item.VSWeaponry;
-import melonystudios.variants.item.custom.armor.IDyeableWoolArmorItem;
+import melonystudios.variants.item.custom.armor.DyeableArmorItem;
 import net.minecraft.world.GrassColors;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
@@ -35,7 +35,7 @@ public class VSColorManager {
             if (stack.getTag() != null && stack.getTag().contains("armor_design")) {
                 return -1;
             } else {
-                return color > 0 ? -1 : ((IDyeableWoolArmorItem) stack.getItem()).getColor(stack);
+                return color > 0 ? -1 : ((DyeableArmorItem) stack.getItem()).getColor(stack);
             }
         }, VSWeaponry.WOOL_SWEATER.get());
     }

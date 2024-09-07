@@ -12,6 +12,13 @@
     }
   ],
   "result": {
-    "item": "variants:end_fungi_stew"
+    "item": "variants:end_fungi_stew",
+    "nbt": {
+      "bowl": {
+        "item": {
+          "id": "variants:enderwood_bowl"
+        }
+      }
+    }
   }
 }

@@ -3,9 +3,7 @@ package melonystudios.variants.effect.custom;
 import melonystudios.variants.util.damage.VSDamageSources;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.EffectType;
-import net.minecraft.potion.Effects;
 
 public class GlowstonePoisoningEffect extends Effect {
     public GlowstonePoisoningEffect() {
@@ -15,7 +13,7 @@ public class GlowstonePoisoningEffect extends Effect {
     @Override
     public void applyEffectTick(LivingEntity livEntity, int potency) {
         livEntity.hurt(VSDamageSources.GLOWSTONE_POISONING, potency == 0 ? 1 : potency);
-        livEntity.addEffect(new EffectInstance(Effects.GLOWING, 40));
+        // livEntity.addEffect(new EffectInstance(Effects.GLOWING, 40));
     }
 
     @Override

@@ -7,7 +7,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 
 public class VSStewBehaviors {
-    public static final DeferredRegister<StewBehavior> BEHAVIORS = DeferredRegister.create(VSRegistries.STEW_BEHAVIOR, Variants.MOD_ID);
+    public static final DeferredRegister<StewBehavior> BEHAVIORS = DeferredRegister.create(VSRegistries.CONSUME_BEHAVIOR, Variants.MOD_ID);
 
     public static final RegistryObject<StewBehavior> DEFAULT = BEHAVIORS.register("default", DefaultStewBehavior::new);
     public static final RegistryObject<StewBehavior> ADD_EXPERIENCE = BEHAVIORS.register("add_experience", AddExperienceBehavior::new);
@@ -16,5 +16,8 @@ public class VSStewBehaviors {
     public static final RegistryObject<StewBehavior> DAMAGE_ENTITY = BEHAVIORS.register("damage_entity", DamageEntityBehavior::new);
     public static final RegistryObject<StewBehavior> EXPLODE = BEHAVIORS.register("explode", ExplodeBehavior::new);
     public static final RegistryObject<StewBehavior> IGNITE = BEHAVIORS.register("ignite", IgniteBehavior::new);
+    public static final RegistryObject<StewBehavior> MULTI_BEHAVIOR = BEHAVIORS.register("multi_behavior", MultiBehavior::new);
     public static final RegistryObject<StewBehavior> PLAY_SOUND = BEHAVIORS.register("play_sound", PlaySoundBehavior::new);
+    public static final RegistryObject<StewBehavior> REMOVE_EFFECTS = BEHAVIORS.register("remove_effects", RemoveEffectsBehavior::new);
+    public static final RegistryObject<StewBehavior> TELEPORT_ENTITY = BEHAVIORS.register("teleport_entity", TeleportEntityBehavior::new);
 }

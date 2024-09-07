@@ -2,6 +2,7 @@ package melonystudios.variants.item.custom;
 
 import melonystudios.variants.dispenser.DispenseVSBoatBehavior;
 import melonystudios.variants.entity.custom.VSBoatEntity;
+import melonystudios.variants.util.VSUtils;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -44,7 +45,7 @@ public class VSBoatItem extends BoatItem {
             if (!entitiesAroundPossiblePlacement.isEmpty()) {
                 Vector3d eyePosition = player.getEyePosition(1);
 
-                for(Entity entity : entitiesAroundPossiblePlacement) {
+                for (Entity entity : entitiesAroundPossiblePlacement) {
                     AxisAlignedBB axisAlignedBB = entity.getBoundingBox().inflate(entity.getPickRadius());
                     if (axisAlignedBB.contains(eyePosition)) return ActionResult.pass(handStack);
                 }
@@ -52,7 +53,7 @@ public class VSBoatItem extends BoatItem {
 
             if (fluidRayTrace.getType() == RayTraceResult.Type.BLOCK) {
                 VSBoatEntity variantsBoat = new VSBoatEntity(world, fluidRayTrace.getLocation().x, fluidRayTrace.getLocation().y, fluidRayTrace.getLocation().z);
-                variantsBoat.setWoodType(woodType);
+                variantsBoat.setWoodType(VSUtils.getBoatType(handStack, this.woodType));
                 variantsBoat.yRot = player.yRot;
                 if (!world.noCollision(variantsBoat, variantsBoat.getBoundingBox().inflate(-0.1D))) {
                     return ActionResult.fail(handStack);

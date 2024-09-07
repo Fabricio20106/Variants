@@ -35,7 +35,7 @@ public class DamageSourceManager extends JsonReloadListener {
                     builder.put(location, source);
                 }
             } catch (Exception exception) {
-                LOGGER.error(new TranslationTextComponent("error.variants.damage_source.parse_error", location).getString(), exception);
+                LOGGER.error(new TranslationTextComponent("error.variants.damage_source.parsing", location).getString(), exception);
             }
         });
         DamageSourceUtils.DATA_DRIVEN_SOURCES.putAll(builder.build());

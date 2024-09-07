@@ -27,16 +27,15 @@
   "result": {
     "item": "variants:exponential_beetroot_soup",
     "nbt": {
-      "bowl": {
-        "item": {
+      "consumable": {
+        "use_remainder": {
           "id": "variants:enderwood_bowl"
         },
-        "texture_id": 9
+        "behavior": {
+          "id": "variants:default"
+        }
       },
-      "behavior": {
-        "id": "variants:default",
-        "properties": {}
-      }
+      "texture_id": 9
     }
   }
 }
