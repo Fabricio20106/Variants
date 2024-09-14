@@ -11,9 +11,16 @@
   "result": {
     "item": "variants:gunpowder_pot",
     "nbt": {
-      "poisoning_type": "variants:gunpowder",
-      "effect": {
-        "duration": 200
+      "consumable": {
+        "behavior": {
+          "id": "variants:apply_mob_effects",
+          "effects": [
+            {
+              "id": "variants:gunpowder_poisoning",
+              "duration": 200
+            }
+          ]
+        }
       }
     }
   }

@@ -25,6 +25,7 @@
     "item.VSItemMixin",
     "item.VSItemStackMixin",
     "item.VSMinecartItemMixin",
+    "item.VSPotionUtilsMixin",
     "item.VSShearsItemMixin",
     "item.VSShieldItemMixin",
     "item.VSSuspiciousStewItemMixin",

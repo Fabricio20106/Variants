@@ -31,10 +31,6 @@ public abstract class StewBehavior extends ForgeRegistryEntry<StewBehavior> {
 
     public abstract CompoundNBT writePropertiesToNBT();
 
-    public EffectInstance[] getEffects() {
-        return null;
-    }
-
     public StewBehavior getBehaviorRegistry() {
         return VSStewBehaviors.DEFAULT.get();
     }
@@ -84,8 +80,8 @@ public abstract class StewBehavior extends ForgeRegistryEntry<StewBehavior> {
             try {
                 ResourceLocation behavior = ResourceLocation.tryParse(stewStack.getOrCreateTagElement("consumable").getCompound("behavior").getString("id"));
                 if (VSRegistries.CONSUME_BEHAVIOR.containsKey(behavior)) return VSRegistries.CONSUME_BEHAVIOR.getValue(behavior);
-            } catch (NullPointerException ignored) {
-                LogManager.getLogger().error("Could not get the consume behavior from {} NBT", stewStack.getHoverName().getString(), ignored);
+            } catch (NullPointerException exception) {
+                LogManager.getLogger().error("Could not get the consume behavior from {} NBT", stewStack.getHoverName().getString(), exception);
             }
         } else {
             return getBehaviorRegistry();

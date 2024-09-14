@@ -70,7 +70,9 @@ public class VSItemTags {
     public static final ITag.INamedTag<Item> SPYGLASSES = mod("spyglasses");
     public static final ITag.INamedTag<Item> FLOWER_POTS = mod("flower_pots");
     public static final ITag.INamedTag<Item> PURPUR_SMELTABLES = mod("purpur_smeltables");
+    public static final ITag.INamedTag<Item> THROWABLE_POTIONS = mod("throwable_potions");
 
+    public static final ITag.INamedTag<Item> EXPONENTIAL_STEWS = mod("exponential_stews");
     public static final ITag.INamedTag<Item> BOWL_FOODS = mod("bowl_foods");
     public static final ITag.INamedTag<Item> BOWL_FOODS_MUSHROOM = mod("bowl_foods/mushroom");
     public static final ITag.INamedTag<Item> BOWL_FOODS_BEETROOT = mod("bowl_foods/beetroot");

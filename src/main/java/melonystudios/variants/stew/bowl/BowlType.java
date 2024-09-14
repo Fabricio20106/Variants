@@ -117,6 +117,9 @@ public class BowlType {
                 CompoundNBT stackTag = new CompoundNBT();
                 stackTag.putString("id", object.get("bowl").getAsJsonObject().get("id").getAsString());
                 stackTag.putInt("count", object.get("bowl").getAsJsonObject().get("count").getAsInt());
+                if (object.get("bowl").getAsJsonObject().has("components")) {
+                    stackTag.putString("components", object.get("bowl").getAsJsonObject().get("components").getAsString());
+                }
 
                 ItemStack bowlStack = VSUtils.loadStack(stackTag);
                 String woodName = JSONUtils.getAsString(object, "name");

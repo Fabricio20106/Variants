@@ -5,20 +5,25 @@ import melonystudios.variants.stew.StewBehavior;
 import melonystudios.variants.stew.custom.DefaultStewBehavior;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.NBTUtils;
+import melonystudios.variants.util.VSRegistries;
 import net.minecraft.block.DispenserBlock;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.ListNBT;
 import net.minecraft.util.*;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.function.Supplier;
 
 public class PlaceableBucketFoodItem extends BucketItem implements TagConfigurableFood {
+    public boolean useDefaultBehavior = true;
     private final StewBehavior behavior;
 
     public PlaceableBucketFoodItem(Supplier<? extends Fluid> fluid, StewBehavior behavior, Properties properties) {
@@ -72,19 +77,25 @@ public class PlaceableBucketFoodItem extends BucketItem implements TagConfigurab
 
     @Nonnull
     public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity livEntity) {
-        ItemStack superStack = super.finishUsingItem(stack, world, livEntity);
-        boolean isPlayerInCreative = livEntity instanceof PlayerEntity && ((PlayerEntity) livEntity).abilities.instabuild;
+        if (this.useDefaultBehavior) executeConsumeBehavior(stack, world, livEntity, this.behavior);
+        if (getCooldown(stack, 0) != 0) applyCooldown(stack, livEntity, 0);
+        return super.finishUsingItem(stack, world, livEntity);
+    }
 
-        executeConsumeBehavior(stack, world, livEntity, this.behavior);
-
-        // For Suspicious Stew
-        CompoundNBT tag = stack.getTag();
-        if (tag != null && tag.contains("effects", Constants.TagTypes.LIST)) {
-            ListNBT effectList = tag.getList("effects", Constants.TagTypes.COMPOUND);
-
-            for (int i = 0; i < effectList.size(); ++i) NBTUtils.addEffectsFromNBT(effectList.getCompound(i), world, livEntity);
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
+        super.appendHoverText(stack, world, tooltip, flag);
+        if (NBTUtils.shouldNotHideTooltip("hide_behavior_tooltips", stack)) {
+            CompoundNBT consumableTag = stack.getTagElement("consumable");
+            if (consumableTag != null && consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) {
+                CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
+                if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
+                    StewBehavior behavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
+                    if (behavior != null) tooltip.addAll(behavior.addToStewTooltip(stack, world, flag));
+                }
+            } else {
+                tooltip.addAll(this.behavior.addToStewTooltip(stack, world, flag));
+            }
         }
-
-        return isPlayerInCreative ? superStack : getUseRemainder(stack);
     }
 }

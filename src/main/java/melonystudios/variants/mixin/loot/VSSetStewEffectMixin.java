@@ -3,7 +3,6 @@ package melonystudios.variants.mixin.loot;
 import com.google.common.collect.Iterables;
 import melonystudios.variants.item.custom.food.ExponentialStewItem;
 import melonystudios.variants.stew.VSStewBehaviors;
-import melonystudios.variants.util.Constants;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootContext;
 import net.minecraft.loot.RandomValueRange;
@@ -44,17 +43,19 @@ public class VSSetStewEffectMixin {
 
     @Unique
     private static ItemStack writeEffectToStew(ItemStack stewStack, Effect effect, int duration) {
-        CompoundNBT behaviorTag = stewStack.getOrCreateTagElement("behavior");
-        CompoundNBT propertiesTag = behaviorTag.getCompound("properties");
-        ListNBT effectList = propertiesTag.getList("effects", Constants.TagTypes.LIST);
+        CompoundNBT consumableTag = stewStack.getOrCreateTagElement("consumable");
+        CompoundNBT behaviorTag = new CompoundNBT();
+        ListNBT effectList = new ListNBT();
+        CompoundNBT effectTag = new CompoundNBT();
 
-        CompoundNBT tag = new CompoundNBT();
-        tag.putString("id", effect.getRegistryName().toString());
-        tag.putInt("duration", duration);
-        effectList.add(tag);
-        propertiesTag.put("effects", effectList);
+        effectTag.putString("id", effect.getRegistryName().toString());
+        effectTag.putInt("duration", duration);
+        effectList.add(effectTag);
+
+        behaviorTag.put("effects", effectList);
         behaviorTag.putString("id", VSStewBehaviors.APPLY_MOB_EFFECTS.get().getRegistryName().toString());
-        behaviorTag.put("properties", propertiesTag);
+
+        consumableTag.put("behavior", behaviorTag);
         return stewStack;
     }
 }

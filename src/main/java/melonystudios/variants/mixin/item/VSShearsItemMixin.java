@@ -1,8 +1,8 @@
 package melonystudios.variants.mixin.item;
 
 import melonystudios.variants.config.VSConfigs;
+import melonystudios.variants.util.tag.VSEnchantmentTags;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShearsItem;
@@ -16,8 +16,7 @@ public class VSShearsItemMixin extends Item {
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchamentment) {
-        return VSConfigs.COMMON_CONFIGS.enchantableShears.get() ? super.canApplyAtEnchantingTable(stack, enchamentment) || enchamentment == Enchantments.UNBREAKING || enchamentment == Enchantments.BLOCK_EFFICIENCY
-                || enchamentment == Enchantments.BLOCK_FORTUNE : super.canApplyAtEnchantingTable(stack, enchamentment);
+        return VSConfigs.COMMON_CONFIGS.enchantableShears.get() ? super.canApplyAtEnchantingTable(stack, enchamentment) || enchamentment.isIn(VSEnchantmentTags.APPLICABLE_TO_SHEARS) : super.canApplyAtEnchantingTable(stack, enchamentment);
     }
 
     @Override

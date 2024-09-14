@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "variants:exponential_mushroom_stew",
+    "variants:exponential_beetroot_soup",
+    "variants:exponential_rabbit_stew",
+    "variants:exponential_suspicious_stew",
+    "variants:exponential_fungi_stew",
+    "variants:exponential_end_fungi_stew",
+    "variants:exponential_aljan_fungi_stew",
+    "variants:exponential_water_bowl",
+    "variants:exponential_milk_bowl",
+    "variants:exponential_lava_bowl",
+    "variants:exponential_soul_lava_bowl",
+    "variants:exponential_powder_snow_bowl"
+  ]
+}

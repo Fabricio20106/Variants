@@ -39,6 +39,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import static net.minecraft.item.ItemModelsProperties.register;
@@ -49,7 +50,7 @@ public class VSUtils {
         if (hand == Hand.MAIN_HAND) {
             setItemSlot(player, EquipmentSlotType.MAINHAND, stack);
         } else {
-            if (hand != Hand.OFF_HAND) throw new IllegalArgumentException("Invalid hand: " + hand);
+            if (hand != Hand.OFF_HAND) throw new IllegalArgumentException(new TranslationTextComponent("exception.variants.invalid_hand", hand.toString().toLowerCase(Locale.ROOT)).getString());
             setItemSlot(player, EquipmentSlotType.OFFHAND, stack);
         }
     }
@@ -256,6 +257,7 @@ public class VSUtils {
         return tag;
     }
 
+    // Custom stack loading method that supports integer stack counts and string tag parsing.
     public static ItemStack loadStack(CompoundNBT tag) {
         Item item;
         if (tag.contains("id", Constants.TagTypes.STRING)) {
@@ -276,7 +278,7 @@ public class VSUtils {
                 CompoundNBT componentsTag = JsonToNBT.parseTag(tag.getString("components"));
                 tag.put("components", componentsTag);
             } catch (CommandSyntaxException exception) {
-                LogManager.getLogger().error("Could not parse item tags from {}: {}", tag.getString("components"), exception.getMessage());
+                LogManager.getLogger().error(new TranslationTextComponent("error.variants.stack_loading.tag", tag.getString("components")).getString(), exception.getMessage());
             }
         }
 

@@ -24,9 +24,7 @@
           "effects": [
             {
               "id": "minecraft:water_breathing",
-              "duration": 100,
-              "show_particle": true,
-              "show_icon": true
+              "duration": 100
             }
           ]
         }

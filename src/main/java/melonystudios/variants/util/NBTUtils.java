@@ -35,6 +35,11 @@ public class NBTUtils {
         return true;
     }
 
+    public static void addHidingTag(String toHide, ItemStack stack) {
+        CompoundNBT tag = stack.getOrCreateTag();
+        tag.putBoolean(toHide, true);
+    }
+
     public static void addItemTagsTooltip(ItemStack stack, List<ITextComponent> tooltip, ITooltipFlag flag) {
         if (flag.isAdvanced()) {
             CompoundNBT tagTag = stack.getTag();
@@ -76,7 +81,7 @@ public class NBTUtils {
         }
     }
 
-    public static ListNBT writeEffectsOntoNBT(EffectInstance[] instances) {
+    public static ListNBT writeEffectsOntoNBT(List<? extends EffectInstance> instances) {
         ListNBT effectsList = new ListNBT();
         if (instances != null) {
             for (EffectInstance instance : instances) effectsList.add(writeEffectToNBT(instance));

@@ -13,8 +13,6 @@ import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
 public class BehaviorArgument implements ArgumentType<BehaviorInput> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("variants:default", "variants:damage_entity");
-
     public static BehaviorArgument behavior() {
         return new BehaviorArgument();
     }
@@ -30,7 +28,7 @@ public class BehaviorArgument implements ArgumentType<BehaviorInput> {
     }
 
     @Override
-    public <C>CompletableFuture<Suggestions> listSuggestions(CommandContext<C> context, SuggestionsBuilder builder) {
+    public <C> CompletableFuture<Suggestions> listSuggestions(CommandContext<C> context, SuggestionsBuilder builder) {
         StringReader reader = new StringReader(context.getInput());
         reader.setCursor(builder.getStart());
         BehaviorParser parser = new BehaviorParser(reader);
@@ -43,6 +41,6 @@ public class BehaviorArgument implements ArgumentType<BehaviorInput> {
 
     @Override
     public Collection<String> getExamples() {
-        return EXAMPLES;
+        return Arrays.asList("variants:default", "variants:damage_entity");
     }
 }

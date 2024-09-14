@@ -17,7 +17,6 @@ public class VSCommonConfigs {
     public final ForgeConfigSpec.BooleanValue populateWoolArmorColorInTabs;
     public final ForgeConfigSpec.BooleanValue populateWoolArmorDesignsInTabs;
     public final ForgeConfigSpec.BooleanValue populateTagConfigurableFoodTags;
-//    public final ForgeConfigSpec.IntValue maxInTabWoolArmorDesigns;
     public final ForgeConfigSpec.BooleanValue enableInfinitySweatersTab;
     public final ForgeConfigSpec.IntValue infinitySweatersTabLength;
     public final ForgeConfigSpec.IntValue infinitySweatersTabSpacing;
@@ -25,6 +24,8 @@ public class VSCommonConfigs {
     public final ForgeConfigSpec.BooleanValue customFireworkDescriptions;
     public final ForgeConfigSpec.BooleanValue customEnchantmentDescriptions;
     public final ForgeConfigSpec.BooleanValue enchantmentTypesOnTooltip;
+    public final ForgeConfigSpec.BooleanValue customPotionDescriptions;
+    public final ForgeConfigSpec.BooleanValue durationFactorTooltip;
     public final ForgeConfigSpec.BooleanValue horseArmorArmorPointsOnTooltip;
     public final ForgeConfigSpec.BooleanValue enchantableShears;
     public final ForgeConfigSpec.BooleanValue enchantableFlintAndSteel;
@@ -67,7 +68,6 @@ public class VSCommonConfigs {
         builder.push("items");
         this.populateWoolArmorColorInTabs = builder.comment("Should the item tabs populate all (dye) colors of wool armor?").define("populateWoolArmorColorInTabs", true);
         this.populateWoolArmorDesignsInTabs = builder.comment("Should the item tabs populate all armor designs of wool armor?").define("populateWoolArmorDesignsInTabs", true);
-//        this.maxInTabWoolArmorDesigns = builder.comment("What should the upper limit for populating wool armor designs be?").defineInRange("maxInTabWoolArmorDesigns", 1, 1, Integer.MAX_VALUE);
         this.populateExponentialBowlsInTabs = builder.comment("Should the item tabs populate all different wood types for all bowls?").define("populateExponentialBowlsInTabs", true);
         this.populateSpawnerMinecartsInTabs = builder.comment("Should the item tabs populate a Spawner Minecart for every mob in the game?").define("populateSpawnerMinecartsInTabs", false);
         this.placeSpawnerWhenBreakingMinecart = builder.comment("Should the Spawner inside Spawner Minecarts place itself when the minecart is broken?").define("placeSpawnerWhenBreakingMinecart", true);
@@ -75,6 +75,8 @@ public class VSCommonConfigs {
         this.customFireworkDescriptions = builder.comment("Updates the Firework Rocket & Charge's descriptions.").define("customFireworkDescriptions", true);
         this.customEnchantmentDescriptions = builder.comment("Updates the enchantment description on enchanted items.").define("customEnchantmentDescriptions", true);
         this.enchantmentTypesOnTooltip = builder.comment("If the \"(Breakable Items)\" or \"(Swords)\" suffix on enchantment should show up.").define("enchantmentTypesOnTooltip", false);
+        this.customPotionDescriptions = builder.comment("Updates the potion effect and attributes description on potions and tipped arrows.").define("customPotionDescriptions", true);
+        this.durationFactorTooltip = builder.comment("Should the \"Something% Duration Factor\" tooltip show up when customPotionDescriptions is on?").define("durationFactorTooltip", false);
         this.horseArmorArmorPointsOnTooltip = builder.comment("Shows how many armor points each horse armor gives on the item's tooltip.").define("horseArmorArmorPointsOnTooltip", true);
         this.enchantableShears = builder.comment("Allows any Shears to be enchanted at an Enchanting Table.").define("enchantableShears", true);
         this.enchantableFlintAndSteel = builder.comment("Allows any Flint and Steel to be enchanted at an Enchanting Table.").define("enchantableFlintAndSteel", true);

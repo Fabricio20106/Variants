@@ -3,6 +3,7 @@ package melonystudios.variants.crafting.custom;
 import melonystudios.variants.crafting.VSRecipeTypes;
 import melonystudios.variants.item.VSItems;
 import melonystudios.variants.item.custom.food.BucketFoodItem;
+import melonystudios.variants.util.NBTUtils;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowerBlock;
 import net.minecraft.inventory.CraftingInventory;
@@ -55,21 +56,22 @@ public class SuspiciousStewBucketRecipe extends SpecialRecipe {
     @Override
     @Nonnull
     public ItemStack assemble(CraftingInventory inventory) {
-        ItemStack emptyStack = ItemStack.EMPTY;
+        ItemStack flowerStack = ItemStack.EMPTY;
 
         for (int i = 0; i < inventory.getContainerSize(); ++i) {
             ItemStack stack = inventory.getItem(i);
             if (!stack.isEmpty() && stack.getItem().is(ItemTags.SMALL_FLOWERS)) {
-                emptyStack = stack;
+                flowerStack = stack;
                 break;
             }
         }
 
-        ItemStack susStewBucket = new ItemStack(VSItems.SUSPICIOUS_STEW_BUCKET.get(), 1);
-        if (emptyStack.getItem() instanceof BlockItem && ((BlockItem) emptyStack.getItem()).getBlock() instanceof FlowerBlock) {
-            FlowerBlock smallFlower = (FlowerBlock) ((BlockItem) emptyStack.getItem()).getBlock();
+        ItemStack susStewBucket = new ItemStack(VSItems.SUSPICIOUS_STEW_BUCKET.get());
+        if (flowerStack.getItem() instanceof BlockItem && ((BlockItem) flowerStack.getItem()).getBlock() instanceof FlowerBlock) {
+            FlowerBlock smallFlower = (FlowerBlock) ((BlockItem) flowerStack.getItem()).getBlock();
             Effect stewEffect = smallFlower.getSuspiciousStewEffect();
             BucketFoodItem.writeEffectToBucket(susStewBucket, stewEffect, smallFlower.getEffectDuration());
+            NBTUtils.addHidingTag("hide_behavior_tooltips", susStewBucket);
         }
 
         return susStewBucket;

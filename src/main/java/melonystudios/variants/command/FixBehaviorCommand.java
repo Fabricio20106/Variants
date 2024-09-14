@@ -1,8 +1,11 @@
 package melonystudios.variants.command;
 
+import com.google.common.collect.ImmutableMap;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import melonystudios.variants.item.VSItems;
 import melonystudios.variants.item.custom.food.ExponentialStewItem;
+import melonystudios.variants.stew.StewBehavior;
+import melonystudios.variants.stew.VSStewBehaviors;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.NBTUtils;
 import net.minecraft.command.CommandSource;
@@ -15,9 +18,17 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.potion.Effect;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
 
+import java.util.Map;
+
+import static melonystudios.variants.Variants.variants;
+
 public class FixBehaviorCommand {
+    private static final Map<ResourceLocation, StewBehavior> OLD_NAMES_FIX = new ImmutableMap.Builder<ResourceLocation, StewBehavior>().put(variants("effect"), VSStewBehaviors.APPLY_MOB_EFFECTS.get())
+            .put(variants("lava"), VSStewBehaviors.IGNITE.get()).put(variants("milk"), VSStewBehaviors.CLEAR_MOB_EFFECTS.get()).build();
+
     public static ArgumentBuilder<CommandSource, ?> register() {
         return Commands.literal("fix").then(Commands.argument("target", EntityArgument.player())
                 .then(Commands.literal("exponential_stew").executes(dispatcher -> fixExponentialStew(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target"))))
@@ -25,7 +36,8 @@ public class FixBehaviorCommand {
                 .then(Commands.literal("suspicious_stew_effects").executes(dispatcher -> fixSuspiciousStewEffects(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target"))))
                 .then(Commands.literal("correct_ender_bowl").executes(dispatcher -> fixEnderBowlItem(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target"))))
                 .then(Commands.literal("old_stew_behavior_names").executes(dispatcher -> fixOldStewBehaviorNames(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target"))))
-                .then(Commands.literal("bowl_type_tag").executes(dispatcher -> fixBowlTypeTag(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target")))));
+                .then(Commands.literal("bowl_type_tag").executes(dispatcher -> fixBowlTypeTag(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target"))))
+                .then(Commands.literal("update_to_1803").executes(dispatcher -> updateTagsTo1803(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target")))));
     }
 
     private static int fixOldStewBehaviorNames(CommandSource source, ServerPlayerEntity player) {
@@ -181,5 +193,52 @@ public class FixBehaviorCommand {
             source.sendFailure(new TranslationTextComponent("commands.stewbehavior.fix_bowl.not_an_expo_stew", SetBehaviorCommand.getItemDisplayName(handStack)));
             return 0;
         }
+    }
+
+    private static int updateTagsTo1803(CommandSource source, ServerPlayerEntity player) {
+        ItemStack handStack = player.getItemInHand(Hand.MAIN_HAND);
+        if (handStack.getItem() instanceof ExponentialStewItem) {
+            CompoundNBT tag = handStack.getTag();
+            CompoundNBT consumableTag = handStack.getOrCreateTagElement("consumable");
+            int returnValue = 0;
+
+            // Switching the bowl tag to the correct place.
+            if (tag != null && tag.contains("bowl", Constants.TagTypes.COMPOUND)) {
+                CompoundNBT bowlTag = tag.getCompound("bowl");
+
+                CompoundNBT remainderTag = new CompoundNBT();
+                remainderTag.putString("id", NBTUtils.stringOrDefault("name", bowlTag, VSItems.OAK_BOWL.get().getRegistryName().toString()));
+                tag.putInt("texture_id", bowlTag.getInt("texture_id"));
+                consumableTag.put("use_remainder", remainderTag);
+                tag.remove("bowl");
+                returnValue += 1;
+            }
+
+            // "behavior" tag.
+            if (tag != null && tag.contains("behavior", Constants.TagTypes.COMPOUND)) {
+                CompoundNBT oldBehaviorTag = tag.getCompound("behavior");
+
+                String oldID = NBTUtils.stringOrDefault("id", oldBehaviorTag, VSStewBehaviors.DEFAULT.get().getRegistryName().toString());
+                CompoundNBT behaviorTag = oldBehaviorTag.getCompound("properties");
+                behaviorTag.putString("id", replaceBehaviorID(oldID));
+                consumableTag.put("behavior", behaviorTag);
+                tag.remove("behavior");
+                returnValue += 1;
+            }
+
+            if (returnValue > 1) source.sendSuccess(new TranslationTextComponent("commands.stewbehavior.fix.upgrade_to_1803.success", returnValue), true);
+            else source.sendSuccess(new TranslationTextComponent("commands.stewbehavior.fix.upgrade_to_1803.no_fixes"), true);
+            return returnValue;
+        } else {
+            source.sendFailure(new TranslationTextComponent("commands.stewbehavior.set.fail.not_a_tcf"));
+            return 0;
+        }
+    }
+
+    private static String replaceBehaviorID(String oldID) {
+        if (OLD_NAMES_FIX.containsKey(ResourceLocation.tryParse(oldID))) {
+            return OLD_NAMES_FIX.get(new ResourceLocation(oldID)).getRegistryName().toString();
+        }
+        return oldID;
     }
 }

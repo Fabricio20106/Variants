@@ -1,8 +1,8 @@
 package melonystudios.variants.mixin.item;
 
 import melonystudios.variants.config.VSConfigs;
+import melonystudios.variants.util.tag.VSEnchantmentTags;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.FlintAndSteelItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,7 +16,7 @@ public class VSFlintAndSteelItemMixin extends Item {
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchamentment) {
-        return VSConfigs.COMMON_CONFIGS.enchantableFlintAndSteel.get() ? super.canApplyAtEnchantingTable(stack, enchamentment) || enchamentment == Enchantments.UNBREAKING : super.canApplyAtEnchantingTable(stack, enchamentment);
+        return VSConfigs.COMMON_CONFIGS.enchantableFlintAndSteel.get() ? super.canApplyAtEnchantingTable(stack, enchamentment) || enchamentment.isIn(VSEnchantmentTags.APPLICABLE_TO_FLINT_AND_STEEL) : super.canApplyAtEnchantingTable(stack, enchamentment);
     }
 
     @Override

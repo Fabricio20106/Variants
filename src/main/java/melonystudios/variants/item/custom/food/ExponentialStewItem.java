@@ -20,7 +20,6 @@ import net.minecraft.loot.IRandomRange;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -89,6 +88,7 @@ public class ExponentialStewItem extends TagConfigurableFoodItem {
         if (bowlStack.getCount() != 1) remainderTag.putInt("count", bowlStack.getCount());
         if (bowlStack.getTag() != null) remainderTag.put("components", bowlStack.getTag());
         consumableTag.put("use_remainder", remainderTag);
+        tag.put("consumable", consumableTag);
 
         for (ResourceLocation bowlLocation : BowlType.DATA_DRIVEN_TYPES.keySet()) {
             BowlType bowlType = BowlType.DATA_DRIVEN_TYPES.get(bowlLocation);
@@ -103,6 +103,7 @@ public class ExponentialStewItem extends TagConfigurableFoodItem {
         if (bowlStack.getCount() != 1) remainderTag.putInt("count", bowlStack.getCount());
         if (bowlStack.getTag() != null) remainderTag.put("components", bowlStack.getTag());
         consumableTag.put("use_remainder", remainderTag);
+        stewStack.getOrCreateTag().put("consumable", consumableTag);
 
         stewStack.getOrCreateTag().putInt("texture_id", textureID.getInt(random));
     }
@@ -133,15 +134,6 @@ public class ExponentialStewItem extends TagConfigurableFoodItem {
             if (canRunBehavior(consumableTag, this.stewBehavior)) this.stewBehavior.executeFromStewNBT(stewStack, world, livEntity, this.stewBehavior.getBehaviorProperties(stewStack));
         }
 
-        // For Suspicious Stew & "Apply Mob Effects" behavior
-        if (behaviorTag.contains("effects", Constants.TagTypes.LIST) && !behaviorTag.isEmpty()) {
-            ListNBT effectList = behaviorTag.getList("effects", Constants.TagTypes.COMPOUND);
-            for (int i = 0; i < effectList.size(); ++i) NBTUtils.addEffectsFromNBT(effectList.getCompound(i), world, livEntity);
-        } else {
-            if (this.stewBehavior.getEffects() != null) {
-                for (EffectInstance instance : this.stewBehavior.getEffects()) livEntity.addEffect(instance);
-            }
-        }
         return isPlayerInCreative ? superStack : getBowlType(stewStack, livEntity);
     }
 

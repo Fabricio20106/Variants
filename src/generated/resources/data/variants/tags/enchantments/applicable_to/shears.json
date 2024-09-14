@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:efficiency",
+    "minecraft:fortune",
+    "minecraft:unbreaking",
+    "minecraft:mending"
+  ]
+}

@@ -7,7 +7,6 @@ import melonystudios.variants.util.VSUtils;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
@@ -22,27 +21,23 @@ public class TagConfigurableStewItem extends ExponentialStewItem {
 
     @Override
     public ItemStack getBowlType(ItemStack stewStack, @Nullable LivingEntity livEntity) {
-        CompoundNBT bowlTag = stewStack.getTagElement("bowl");
         if (livEntity != null) livEntity.eat(livEntity.level, stewStack);
+        CompoundNBT consumableTag = stewStack.getTagElement("consumable");
 
-        if (bowlTag != null && bowlTag.contains("item", Constants.TagTypes.COMPOUND)) {
-            CompoundNBT itemTag = bowlTag.getCompound("item");
-            if (itemTag.contains("id", Constants.TagTypes.STRING) && ForgeRegistries.ITEMS.containsKey(new ResourceLocation(itemTag.getString("id")))) return VSUtils.loadStack(itemTag);
+        if (consumableTag != null && consumableTag.contains("use_remainder", Constants.TagTypes.COMPOUND)) {
+            CompoundNBT remainderTag = consumableTag.getCompound("use_remainder");
+            if (remainderTag.contains("id", Constants.TagTypes.STRING) && ForgeRegistries.ITEMS.containsKey(new ResourceLocation(remainderTag.getString("id")))) return VSUtils.loadStack(remainderTag);
         }
 
-        return stewStack.getItem() == VSItems.END_FUNGI_STEW.get() ? new ItemStack(VSItems.ENDERWOOD_BOWL.get()) : new ItemStack(Items.BOWL);
+        return stewStack.getItem() == VSItems.END_FUNGI_STEW.get() ? new ItemStack(VSItems.ENDERWOOD_BOWL.get()) : getDefaultUseRemainder();
     }
 
     @Override
     public void fillItemCategory(ItemGroup tab, NonNullList<ItemStack> list) {
         if (this.allowdedIn(tab)) {
             ItemStack stack = new ItemStack(this);
-            CompoundNBT tag = stack.getOrCreateTag();
-
-            CompoundNBT bowlTag = new CompoundNBT();
-            bowlTag.putInt("texture_id", stack.getItem() == VSItems.END_FUNGI_STEW.get() ? 9 : 0);
-            bowlTag.put("item", VSUtils.saveStack(this.getBowlType(stack, null), new CompoundNBT()));
-            tag.put("bowl", bowlTag);
+            CompoundNBT consumableTag = stack.getOrCreateTagElement("consumable");
+            consumableTag.put("use_remainder", VSUtils.saveStack(this.getBowlType(stack, null), new CompoundNBT()));
             list.add(stack);
         }
     }

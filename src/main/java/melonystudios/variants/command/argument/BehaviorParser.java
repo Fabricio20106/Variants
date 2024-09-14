@@ -20,12 +20,11 @@ import java.util.function.BiFunction;
 public class BehaviorParser {
     public static final DynamicCommandExceptionType UNKNOWN_BEHAVIOR_ERROR = new DynamicCommandExceptionType(object -> new TranslationTextComponent("argument.stew_behavior.id.invalid", object));
     private static final BiFunction<SuggestionsBuilder, ITagCollection<StewBehavior>, CompletableFuture<Suggestions>> SUGGEST_NOTHING = (suggestionsBuilder, tagCollection) -> suggestionsBuilder.buildFuture();
-    private final StringReader reader;
-    private StewBehavior behavior;
-    private int tagCursor;
-    private CompoundNBT properties;
-    private ResourceLocation locationProperties = new ResourceLocation("");
     private BiFunction<SuggestionsBuilder, ITagCollection<StewBehavior>, CompletableFuture<Suggestions>> suggestions = SUGGEST_NOTHING;
+    private StewBehavior behavior;
+    private CompoundNBT properties;
+    private final StringReader reader;
+    private int tagCursor;
 
     public BehaviorParser(StringReader reader) {
         this.reader = reader;
@@ -50,11 +49,10 @@ public class BehaviorParser {
         }
     }
 
-    public void readLocationProperties() throws CommandSyntaxException {
-        this.suggestions = this::suggestProperties;
+    public void readBehaviorTag() throws CommandSyntaxException {
+        this.suggestions = this::suggestTags;
         this.reader.expect('#');
         this.tagCursor = this.reader.getCursor();
-        this.locationProperties = ResourceLocation.read(this.reader);
     }
 
     public void readProperties() throws CommandSyntaxException {
@@ -62,9 +60,9 @@ public class BehaviorParser {
     }
 
     public BehaviorParser parse() throws CommandSyntaxException {
-        this.suggestions = this::suggestBehaviorOrProperties;
+        this.suggestions = this::suggestBehavior;
         if (this.reader.canRead() && this.reader.peek() == '#') {
-            this.readLocationProperties();
+            this.readBehaviorTag();
         } else {
             this.readBehavior();
             this.suggestions = this::suggestOpenProperties;
@@ -82,11 +80,11 @@ public class BehaviorParser {
         return builder.buildFuture();
     }
 
-    private CompletableFuture<Suggestions> suggestProperties(SuggestionsBuilder builder, ITagCollection<StewBehavior> tagCollection) {
+    private CompletableFuture<Suggestions> suggestTags(SuggestionsBuilder builder, ITagCollection<StewBehavior> tagCollection) {
         return ISuggestionProvider.suggestResource(tagCollection.getAvailableTags(), builder.createOffset(this.tagCursor));
     }
 
-    private CompletableFuture<Suggestions> suggestBehaviorOrProperties(SuggestionsBuilder builder, ITagCollection<StewBehavior> tagCollection) {
+    private CompletableFuture<Suggestions> suggestBehavior(SuggestionsBuilder builder, ITagCollection<StewBehavior> tagCollection) {
         return ISuggestionProvider.suggestResource(VSRegistries.CONSUME_BEHAVIOR.getKeys(), builder);
     }
 

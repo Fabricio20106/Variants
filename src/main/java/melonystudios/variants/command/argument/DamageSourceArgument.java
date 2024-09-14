@@ -23,8 +23,7 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class DamageSourceArgument implements ArgumentType<ResourceLocation> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("out_of_world", "minecraft:thrown", "variants:redstone_poisoning");
-    private static final DynamicCommandExceptionType INVALID_SOURCE_ERROR = new DynamicCommandExceptionType(location -> new TranslationTextComponent("argument.damage_source.invalid", location));
+    private static final DynamicCommandExceptionType UNKNOWN_SOURCE_ERROR = new DynamicCommandExceptionType(location -> new TranslationTextComponent("argument.damage_source.invalid", location));
 
     @Override
     public ResourceLocation parse(StringReader reader) throws CommandSyntaxException {
@@ -40,7 +39,7 @@ public class DamageSourceArgument implements ArgumentType<ResourceLocation> {
 
     @Override
     public Collection<String> getExamples() {
-        return EXAMPLES;
+        return Arrays.asList("out_of_world", "minecraft:thrown", "variants:redstone_poisoning");
     }
 
     public static DamageSourceArgument sources() {
@@ -51,7 +50,7 @@ public class DamageSourceArgument implements ArgumentType<ResourceLocation> {
         ResourceLocation sourceLocation = context.getArgument(argumentName, ResourceLocation.class);
         DamageSource source = DamageSourceUtils.fromLocation(livEntity, sourceLocation);
         if (source == null) {
-            throw INVALID_SOURCE_ERROR.create(sourceLocation);
+            throw UNKNOWN_SOURCE_ERROR.create(sourceLocation);
         } else {
             return source;
         }
@@ -61,7 +60,7 @@ public class DamageSourceArgument implements ArgumentType<ResourceLocation> {
         ResourceLocation sourceLocation = context.getArgument(argumentName, ResourceLocation.class);
         DamageSource source = DamageSourceUtils.fromLocationWithKiller(killer, sourceLocation);
         if (source == null) {
-            throw INVALID_SOURCE_ERROR.create(sourceLocation);
+            throw UNKNOWN_SOURCE_ERROR.create(sourceLocation);
         } else {
             return source;
         }

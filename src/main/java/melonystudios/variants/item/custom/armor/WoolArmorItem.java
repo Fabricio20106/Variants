@@ -149,16 +149,18 @@ public class WoolArmorItem extends ArmorItem implements DyeableArmorItem {
         CompoundNBT displayTag = stack.getOrCreateTagElement("display");
         CompoundNBT tag = stack.getOrCreateTag();
 
-        Object[] colorCodes = COLOR_NAME_TO_CODE.values().toArray();
-        Object[] colorNames = COLOR_NAME_TO_CODE.keySet().toArray();
-        int randomValue = random.nextInt(colorCodes.length);
-        int randomCode = (int) colorCodes[randomValue];
-        String randomName = (String) colorNames[randomValue];
-
-        displayTag.putInt("color", randomCode);
-        tag.putString("color_name", randomName);
+        WoolArmorColor armorColor = rollArmorColor();
+        while (armorColor.getArmorDesign().isPresent()) armorColor = rollArmorColor();
+        displayTag.putInt("color", armorColor.getColor());
+        tag.putString("color_name", armorColor.getColorName());
 
         return stack;
+    }
+
+    private static WoolArmorColor rollArmorColor() {
+        Object[] armorColors = WoolArmorColor.DATA_DRIVEN_COLORS.values().toArray();
+        int randomValue = random.nextInt(armorColors.length);
+        return (WoolArmorColor) armorColors[randomValue];
     }
 
     public static ItemStack setColorAndName(ItemStack stack, int color, String colorName) {

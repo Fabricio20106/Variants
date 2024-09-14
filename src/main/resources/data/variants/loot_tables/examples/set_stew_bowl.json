@@ -11,7 +11,9 @@
             {
               "function": "variants:set_stew_bowl",
               "item": {
-                "id": "variants:enderwood_bowl"
+                "id": "variants:enderwood_bowl",
+                "count": 3,
+                "components": "{variants_version:\"1.8.0.3\"}"
               },
               "texture_id": {
                 "type": "variants:texture_id",

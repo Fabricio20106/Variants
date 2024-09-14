@@ -3,6 +3,7 @@ package melonystudios.variants.crafting.custom;
 import melonystudios.variants.crafting.VSRecipeTypes;
 import melonystudios.variants.item.VSItems;
 import melonystudios.variants.item.custom.food.ExponentialStewItem;
+import melonystudios.variants.util.NBTUtils;
 import melonystudios.variants.util.tag.VSItemTags;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowerBlock;
@@ -71,6 +72,7 @@ public class ExponentialSuspiciousStewRecipe extends SpecialRecipe {
             ExponentialStewItem.writeEffectToStew(expoSusStew, smallFlower.getSuspiciousStewEffect(), smallFlower.getEffectDuration());
             ItemStack bowlStack = this.bowl.copy();
             ExponentialStewItem.writeBowl(expoSusStew, bowlStack.split(1));
+            NBTUtils.addHidingTag("hide_behavior_tooltips", expoSusStew);
         }
 
         return expoSusStew;

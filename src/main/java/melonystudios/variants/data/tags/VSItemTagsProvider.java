@@ -129,12 +129,17 @@ public class VSItemTagsProvider extends ItemTagsProvider {
                 .add(VSItems.GRAY_SHULKER_SHELL.get()).add(VSItems.LIGHT_GRAY_SHULKER_SHELL.get()).add(VSItems.CYAN_SHULKER_SHELL.get())
                 .add(VSItems.PURPLE_SHULKER_SHELL.get()).add(VSItems.BLUE_SHULKER_SHELL.get()).add(VSItems.BROWN_SHULKER_SHELL.get())
                 .add(VSItems.GREEN_SHULKER_SHELL.get()).add(VSItems.RED_SHULKER_SHELL.get()).add(VSItems.BLACK_SHULKER_SHELL.get());
+        this.tag(VSItemTags.THROWABLE_POTIONS).add(Items.SPLASH_POTION, Items.LINGERING_POTION);
 
         this.tag(VSItemTags.FLOWER_POTS).add(VSItems.POTTED_GLOW_BLACK_TULIP.get()).add(VSItems.POTTED_SUNNY_FLOWER.get()).add(VSItems.POTTED_SUGAR_CANE.get()).add(VSItems.POTTED_GRASS.get()).add(VSItems.POTTED_PAINTING_SAPLING.get())
                 .add(VSItems.POTTED_GOLDEN_CARROTS.get()).add(VSItems.POTTED_ENDER_ROOTS.get()).add(VSItems.POTTED_ENDER_FUNGUS.get()).add(VSItems.POTTED_NETHER_WART.get()).add(VSItems.POTTED_WARPED_WART.get())
                 .add(VSItems.POTTED_ENDER_WART.get()).add(VSItems.POTTED_TORCH.get()).add(VSItems.POTTED_SOUL_TORCH.get()).add(VSItems.POTTED_REDSTONE_TORCH.get());
 
         // Bowl/Bucket Foods
+        this.tag(VSItemTags.EXPONENTIAL_STEWS).add(VSItems.EXPONENTIAL_MUSHROOM_STEW.get(), VSItems.EXPONENTIAL_BEETROOT_SOUP.get(), VSItems.EXPONENTIAL_RABBIT_STEW.get(),
+                VSItems.EXPONENTIAL_SUSPICIOUS_STEW.get(), VSItems.EXPONENTIAL_FUNGI_STEW.get(), VSItems.EXPONENTIAL_END_FUNGI_STEW.get(), VSItems.EXPONENTIAL_ALJAN_FUNGI_STEW.get(),
+                VSItems.EXPONENTIAL_WATER_BOWL.get(), VSItems.EXPONENTIAL_MILK_BOWL.get(), VSItems.EXPONENTIAL_LAVA_BOWL.get(), VSItems.EXPONENTIAL_SOUL_LAVA_BOWL.get(),
+                VSItems.EXPONENTIAL_POWDER_SNOW_BOWL.get());
         this.tag(VSItemTags.BOWL_FOODS_MUSHROOM).add(Items.MUSHROOM_STEW).add(VSItems.EXPONENTIAL_MUSHROOM_STEW.get());
         this.tag(VSItemTags.BOWL_FOODS_BEETROOT).add(Items.BEETROOT_SOUP).add(VSItems.EXPONENTIAL_BEETROOT_SOUP.get());
         this.tag(VSItemTags.BOWL_FOODS_RABBIT).add(Items.RABBIT_STEW).add(VSItems.EXPONENTIAL_RABBIT_STEW.get());

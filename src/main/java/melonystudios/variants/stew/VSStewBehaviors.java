@@ -1,5 +1,6 @@
 package melonystudios.variants.stew;
 
+import com.google.common.collect.Lists;
 import melonystudios.variants.Variants;
 import melonystudios.variants.stew.custom.*;
 import melonystudios.variants.util.VSRegistries;
@@ -11,7 +12,7 @@ public class VSStewBehaviors {
 
     public static final RegistryObject<StewBehavior> DEFAULT = BEHAVIORS.register("default", DefaultStewBehavior::new);
     public static final RegistryObject<StewBehavior> ADD_EXPERIENCE = BEHAVIORS.register("add_experience", AddExperienceBehavior::new);
-    public static final RegistryObject<StewBehavior> APPLY_MOB_EFFECTS = BEHAVIORS.register("apply_mob_effects", ApplyMobEffectsBehavior::new);
+    public static final RegistryObject<StewBehavior> APPLY_MOB_EFFECTS = BEHAVIORS.register("apply_mob_effects", () -> new ApplyMobEffectsBehavior(Lists.newArrayList()));
     public static final RegistryObject<StewBehavior> CLEAR_MOB_EFFECTS = BEHAVIORS.register("clear_mob_effects", ClearMobEffectsBehavior::new);
     public static final RegistryObject<StewBehavior> DAMAGE_ENTITY = BEHAVIORS.register("damage_entity", DamageEntityBehavior::new);
     public static final RegistryObject<StewBehavior> EXPLODE = BEHAVIORS.register("explode", ExplodeBehavior::new);

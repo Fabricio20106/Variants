@@ -11,9 +11,16 @@
   "result": {
     "item": "variants:redstone_pot",
     "nbt": {
-      "poisoning_type": "variants:redstone",
-      "effect": {
-        "duration": 200
+      "consumable": {
+        "behavior": {
+          "id": "variants:apply_mob_effects",
+          "effects": [
+            {
+              "id": "variants:redstone_poisoning",
+              "duration": 200
+            }
+          ]
+        }
       }
     }
   }

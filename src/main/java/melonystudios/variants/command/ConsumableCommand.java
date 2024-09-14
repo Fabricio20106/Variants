@@ -17,7 +17,6 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
 import java.util.Locale;
@@ -52,7 +51,7 @@ public class ConsumableCommand {
             CompoundNBT consumableTag = handStack.getOrCreateTagElement("consumable");
             CompoundNBT remainderTag = VSUtils.saveStack(inputStack, new CompoundNBT());
             consumableTag.put("use_remainder", remainderTag);
-            context.getSource().sendSuccess(new TranslationTextComponent("commands.consumable.use_remainder.success", player.getDisplayName(), new ItemStack(itemInput.getItem(), count).getDisplayName()), true);
+            context.getSource().sendSuccess(new TranslationTextComponent("commands.consumable.use_remainder.success", player.getDisplayName(), inputStack.getDisplayName()), true);
             return 1;
         }
         context.getSource().sendFailure(new TranslationTextComponent("commands.consumable.not_a_tcf", SetBehaviorCommand.getItemDisplayName(handStack)));

@@ -3,7 +3,6 @@ package melonystudios.variants.command;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import melonystudios.variants.command.argument.BehaviorArgument;
 import melonystudios.variants.command.argument.BehaviorInput;
-import melonystudios.variants.item.custom.food.ExponentialStewItem;
 import melonystudios.variants.item.custom.food.TagConfigurableFood;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
@@ -20,9 +19,9 @@ import java.util.Collection;
 public class SetBehaviorCommand {
     public static ArgumentBuilder<CommandSource, ?> register() {
         return Commands.literal("set")
-                .then(Commands.argument("targets", EntityArgument.players()).then(Commands.argument("stew_behavior", BehaviorArgument.behavior())
-                        .executes(dispatcher1 -> setBehaviorToItem(dispatcher1.getSource(), BehaviorArgument.getBehavior(dispatcher1, "stew_behavior"),
-                                EntityArgument.getPlayers(dispatcher1, "targets")))));
+                .then(Commands.argument("targets", EntityArgument.players()).then(Commands.argument("consume_behavior", BehaviorArgument.behavior())
+                        .executes(context -> setBehaviorToItem(context.getSource(), BehaviorArgument.getBehavior(context, "consume_behavior"),
+                                EntityArgument.getPlayers(context, "targets")))));
     }
 
     private static int setBehaviorToItem(CommandSource source, BehaviorInput behavior, Collection<ServerPlayerEntity> players) {
@@ -30,21 +29,11 @@ public class SetBehaviorCommand {
             for (ServerPlayerEntity serverPlayer : players) {
                 if (!serverPlayer.isCreative()) break;
                 ItemStack handStack = serverPlayer.getItemInHand(Hand.MAIN_HAND);
-                if (handStack.getItem() instanceof ExponentialStewItem) {
-                    handStack.getOrCreateTag().remove("behavior");
-                    CompoundNBT behaviorTag = handStack.getOrCreateTagElement("behavior");
-                    behaviorTag.putString("id", behavior.behavior.getRegistryName().toString());
-                    behaviorTag.put("properties", behavior.properties);
-                    if (players.size() == 1) {
-                        source.sendSuccess(new TranslationTextComponent("commands.stewbehavior.set.success.single", players.iterator().next().getDisplayName(), behavior.behavior.getCommandDisplayName()), true);
-                    } else {
-                        source.sendSuccess(new TranslationTextComponent("commands.stewbehavior.set.success.multiple", players.size(), behavior.behavior.getCommandDisplayName()), true);
-                    }
-                } else if (handStack.getItem() instanceof TagConfigurableFood) {
+                if (handStack.getItem() instanceof TagConfigurableFood) {
                     handStack.getOrCreateTag().getCompound("consumable").remove("behavior");
                     CompoundNBT consumableTag = handStack.getOrCreateTagElement("consumable");
                     CompoundNBT behaviorTag = behavior.properties;
-                    behaviorTag.putString("id", behavior.behavior.getRegistryName().toString());
+                    if (behavior.behavior.getRegistryName() != null) behaviorTag.putString("id", behavior.behavior.getRegistryName().toString());
                     consumableTag.put("behavior", behaviorTag);
                     handStack.getOrCreateTag().put("consumable", consumableTag);
                     if (players.size() == 1) {
@@ -53,7 +42,7 @@ public class SetBehaviorCommand {
                         source.sendSuccess(new TranslationTextComponent("commands.stewbehavior.set.success.tcf.multiple", players.size(), behavior.behavior.getCommandDisplayName()), true);
                     }
                 } else {
-                    source.sendFailure(new TranslationTextComponent("commands.stewbehavior.set.fail.not_an_expo_stew", getItemDisplayName(handStack)));
+                    source.sendFailure(new TranslationTextComponent("commands.stewbehavior.set.fail.not_a_tcf", getItemDisplayName(handStack)));
                 }
             }
             return players.size();

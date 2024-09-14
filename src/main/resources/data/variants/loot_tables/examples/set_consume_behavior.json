@@ -6,12 +6,12 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "variants:exponential_rabbit_stew",
+          "name": "variants:honey_ball",
           "functions": [
             {
-              "function": "variants:set_stew_behavior",
+              "function": "variants:set_consume_behavior",
               "behavior": "variants:explode",
-              "properties": "{mode:\"none\",radius:5,create_fire:1b,source:\"out_of_world\"}"
+              "properties": "{mode:\"none\",radius:5,create_fire:1b,source:\"minecraft:out_of_world\"}"
             }
           ]
         }

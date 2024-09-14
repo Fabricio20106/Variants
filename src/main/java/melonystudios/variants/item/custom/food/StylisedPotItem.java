@@ -19,11 +19,11 @@ public class StylisedPotItem extends DrinkableContainerItem {
     @Nullable
     private String compatMod;
 
-    public StylisedPotItem(Properties properties, VSEffectInstance... instances) {
+    public StylisedPotItem(Properties properties, List<VSEffectInstance> instances) {
         this(new ApplyMobEffectsBehavior(instances), properties);
     }
 
-    public StylisedPotItem(Properties properties, @Nullable String compatMod, VSEffectInstance... instances) {
+    public StylisedPotItem(Properties properties, @Nullable String compatMod, List<VSEffectInstance> instances) {
         this(new ApplyMobEffectsBehavior(instances), properties);
         this.compatMod = compatMod;
     }

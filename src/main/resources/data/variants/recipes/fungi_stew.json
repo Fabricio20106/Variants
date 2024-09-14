@@ -14,8 +14,8 @@
   "result": {
     "item": "variants:fungi_stew",
     "nbt": {
-      "bowl": {
-        "item": {
+      "consumable": {
+        "use_remainder": {
           "id": "minecraft:bowl"
         }
       }

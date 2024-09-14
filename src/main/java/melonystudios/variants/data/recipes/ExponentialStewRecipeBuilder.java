@@ -182,8 +182,8 @@ public class ExponentialStewRecipeBuilder {
                         effectObj.addProperty("duration", instance.getDuration());
                         if (instance.getAmplifier() > 0) effectObj.addProperty("amplifier", instance.getAmplifier());
                         if (instance.isAmbient()) effectObj.addProperty("ambient", true);
-                        if (!instance.isVisible()) effectObj.addProperty("show_particle", true);
-                        if (!instance.showIcon()) effectObj.addProperty("show_icon", true);
+                        if (!instance.isVisible()) effectObj.addProperty("show_particle", false);
+                        if (!instance.showIcon()) effectObj.addProperty("show_icon", false);
                         if (instance.isNoCounter()) effectObj.addProperty("no_counter", true);
                         effectsList.add(effectObj);
                     }

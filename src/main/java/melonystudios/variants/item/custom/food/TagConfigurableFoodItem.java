@@ -6,12 +6,13 @@ import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.NBTUtils;
 import melonystudios.variants.util.VSRegistries;
 import melonystudios.variants.util.VSUtils;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.ListNBT;
-import net.minecraft.potion.EffectInstance;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -38,16 +39,13 @@ public class TagConfigurableFoodItem extends Item implements TagConfigurableFood
     @Override
     @Nonnull
     public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity livEntity) {
-        if (this.useDefaultBehavior) executeConsumeBehavior(stack, world, livEntity, this.behavior);
-        CompoundNBT behaviorTag = getBehaviorProperties(stack);
-        if (behaviorTag != null && behaviorTag.contains("effects", Constants.TagTypes.LIST)) {
-            ListNBT effectList = behaviorTag.getList("effects", Constants.TagTypes.COMPOUND);
-            for (int i = 0; i < effectList.size(); ++i) NBTUtils.addEffectsFromNBT(effectList.getCompound(i), world, livEntity);
-        } else {
-            if (this.behavior.getEffects() != null) {
-                for (EffectInstance instance : this.behavior.getEffects()) livEntity.addEffect(instance);
-            }
+        if (livEntity instanceof ServerPlayerEntity) {
+            ServerPlayerEntity serverPlayer = (ServerPlayerEntity) livEntity;
+            CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
+            serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
+
+        if (this.useDefaultBehavior && !world.isClientSide) executeConsumeBehavior(stack, world, livEntity, this.behavior);
         if (getCooldown(stack, 0) != 0) applyCooldown(stack, livEntity, 0);
         return super.finishUsingItem(stack, world, livEntity);
     }

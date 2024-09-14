@@ -4,7 +4,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import melonystudios.variants.Variants;
 import melonystudios.variants.command.ConsumableCommand;
 import melonystudios.variants.command.DamageCommand;
-import melonystudios.variants.command.StewBehaviorCommand;
+import melonystudios.variants.command.ConsumeBehaviorCommand;
 import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.entity.VSEntities;
 import melonystudios.variants.item.VSItems;
@@ -45,7 +45,7 @@ public class VSEvents {
     @SubscribeEvent
     public static void onCommandsRegister(RegisterCommandsEvent event) {
         ConsumableCommand.register(event.getDispatcher());
-        StewBehaviorCommand.register(event.getDispatcher());
+        ConsumeBehaviorCommand.register(event.getDispatcher());
         DamageCommand.register(event.getDispatcher());
     }
 

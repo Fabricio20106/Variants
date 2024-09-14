@@ -11,9 +11,16 @@
   "result": {
     "item": "variants:sugar_pot",
     "nbt": {
-      "poisoning_type": "variants:sugar",
-      "effect": {
-        "duration": 100
+      "consumable": {
+        "behavior": {
+          "id": "variants:apply_mob_effects",
+          "effects": [
+            {
+              "id": "minecraft:speed",
+              "duration": 100
+            }
+          ]
+        }
       }
     }
   }

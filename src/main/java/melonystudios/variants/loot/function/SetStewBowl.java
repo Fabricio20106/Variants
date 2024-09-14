@@ -5,11 +5,13 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import melonystudios.variants.item.custom.food.ExponentialStewItem;
 import melonystudios.variants.loot.VSLootFunctions;
+import melonystudios.variants.util.VSUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.*;
 import net.minecraft.loot.conditions.ILootCondition;
 import net.minecraft.loot.functions.ILootFunction;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.JSONUtils;
 
 import javax.annotation.Nonnull;
@@ -79,10 +81,14 @@ public class SetStewBowl extends LootFunction {
         public SetStewBowl deserialize(JsonObject object, JsonDeserializationContext context, ILootCondition[] conditions) {
             IRandomRange textureID = RandomRanges.deserialize(object.get("texture_id"), context);
             JsonObject itemObject = JSONUtils.getAsJsonObject(object, "item");
-            Item bowlItem = JSONUtils.getAsItem(itemObject, "id");
-            int count = 1;
-            if (itemObject.has("count")) count = itemObject.get("count").getAsInt();
-            ItemStack bowlStack = new ItemStack(bowlItem, count);
+            CompoundNBT stackTag = new CompoundNBT();
+            stackTag.putString("id", itemObject.get("id").getAsString());
+            stackTag.putInt("count", itemObject.get("count").getAsInt());
+            if (itemObject.has("components")) {
+                stackTag.putString("components", itemObject.get("components").getAsString());
+            }
+
+            ItemStack bowlStack = VSUtils.loadStack(stackTag);
             return new SetStewBowl(conditions, bowlStack, textureID);
         }
     }

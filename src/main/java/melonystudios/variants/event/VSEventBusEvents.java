@@ -37,7 +37,9 @@ public class VSEventBusEvents {
         generator.addProvider(new VSItemTagsProvider(generator, blockTagsProvider, fileHelper));
         generator.addProvider(new VSFluidTagsProvider(generator, fileHelper));
         generator.addProvider(new VSEntityTypeTagsProvider(generator, fileHelper));
+        generator.addProvider(new VSEnchantmentTagsProvider(generator, fileHelper));
         generator.addProvider(new VSStewBehaviorTagsProvider(generator, fileHelper));
+        generator.addProvider(new VSTagFixTagsProvider(generator, fileHelper));
 
         // Reports
         generator.addProvider(new VSBiomeReportsProvider(generator));

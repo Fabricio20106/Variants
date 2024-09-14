@@ -11,9 +11,20 @@
   "result": {
     "item": "variants:glowstone_pot",
     "nbt": {
-      "poisoning_type": "variants:glowstone",
-      "effect": {
-        "duration": 200
+      "consumable": {
+        "behavior": {
+          "id": "variants:apply_mob_effects",
+          "effects": [
+            {
+              "id": "variants:glowstone_poisoning",
+              "duration": 200
+            },
+            {
+              "id": "minecraft:glowing",
+              "duration": 200
+            }
+          ]
+        }
       }
     }
   }

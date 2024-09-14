@@ -1,9 +1,9 @@
 package melonystudios.variants.mixin.item;
 
 import melonystudios.variants.config.VSConfigs;
+import melonystudios.variants.util.tag.VSEnchantmentTags;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShieldItem;
@@ -29,7 +29,7 @@ public class VSShieldItemMixin extends Item {
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) { // ah yes, enchamentment (June 30/6/24)
-        return VSConfigs.COMMON_CONFIGS.enchantableShields.get() ? super.canApplyAtEnchantingTable(stack, enchantment) || enchantment == Enchantments.UNBREAKING :
+        return VSConfigs.COMMON_CONFIGS.enchantableShields.get() ? super.canApplyAtEnchantingTable(stack, enchantment) || enchantment.isIn(VSEnchantmentTags.APPLICABLE_TO_SHIELDS) :
                 super.canApplyAtEnchantingTable(stack, enchantment);
     }
 
