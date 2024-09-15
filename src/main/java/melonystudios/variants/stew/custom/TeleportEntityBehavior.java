@@ -1,6 +1,5 @@
 package melonystudios.variants.stew.custom;
 
-import melonystudios.variants.item.custom.food.TagConfigurableFood;
 import melonystudios.variants.stew.StewBehavior;
 import melonystudios.variants.stew.VSStewBehaviors;
 import melonystudios.variants.util.Constants;
@@ -8,7 +7,6 @@ import melonystudios.variants.util.NBTUtils;
 import melonystudios.variants.util.VSUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.particles.ParticleTypes;
@@ -78,12 +76,6 @@ public class TeleportEntityBehavior extends StewBehavior {
                 double y = MathHelper.lerp(d0, livEntity.yo, livEntity.getY()) + livEntity.getRandom().nextDouble() * (double) livEntity.getBbHeight();
                 double z = MathHelper.lerp(d0, livEntity.zo, livEntity.getZ()) + (livEntity.getRandom().nextDouble() - 0.5D) * livEntity.getBbWidth() * 2;
                 world.addParticle(ParticleTypes.PORTAL, x, y, z, xSpeed, ySpeed, zSpeed);
-            }
-            if (livEntity instanceof PlayerEntity) {
-                if (stack.getItem() instanceof TagConfigurableFood) {
-                    TagConfigurableFood configurableFood = (TagConfigurableFood) stack.getItem();
-                    configurableFood.applyCooldown(stack, livEntity, 0);
-                }
             }
         }
     }

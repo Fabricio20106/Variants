@@ -46,6 +46,11 @@ public abstract class DrinkableContainerItem extends TagConfigurableFoodItem {
         return getConsumeAnimation(stack, UseAction.DRINK);
     }
 
+    @Override
+    public boolean hasUseRemainder() {
+        return true;
+    }
+
     @Nonnull
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         return DrinkHelper.useDrink(world, player, hand);

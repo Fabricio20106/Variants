@@ -120,18 +120,19 @@ public class Variants {
     }
 
     public void clientSetup(final FMLClientSetupEvent event) {
-        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_MUSHROOM_STEW.get());
-        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_BEETROOT_SOUP.get());
-        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_RABBIT_STEW.get());
-        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_SUSPICIOUS_STEW.get());
-        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_FUNGI_STEW.get());
-        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_END_FUNGI_STEW.get());
-        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_ALJAN_FUNGI_STEW.get());
-        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_WATER_BOWL.get());
-        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_MILK_BOWL.get());
-        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_LAVA_BOWL.get());
-        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_SOUL_LAVA_BOWL.get());
-        VSUtils.makeExpoStew(VSItems.EXPONENTIAL_POWDER_SNOW_BOWL.get());
+        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_MUSHROOM_STEW.get());
+        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_BEETROOT_SOUP.get());
+        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_RABBIT_STEW.get());
+        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_SUSPICIOUS_STEW.get());
+        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_FUNGI_STEW.get());
+        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_END_FUNGI_STEW.get());
+        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_ALJAN_FUNGI_STEW.get());
+        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_WATER_BOWL.get());
+        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_MILK_BOWL.get());
+        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_LAVA_BOWL.get());
+        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_SOUL_LAVA_BOWL.get());
+        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_POWDER_SNOW_BOWL.get());
+        VSUtils.addTextureIdentifier(VSItems.STAINED_EXPERIENCE_BOTTLE.get());
         VSUtils.makeShield(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
         VSUtils.makeBow(VSWeaponry.DEBUG_BOW.get());
         VSUtils.addArmorDesigns(VSWeaponry.WOOL_SWEATER.get());
@@ -150,6 +151,7 @@ public class Variants {
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.VS_BOAT.get(), VSBoatRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.DRAGON_BREATH_BOTTLE.get(), VSSpriteRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.SMALL_SOUL_FIREBALL.get(), VSSpriteRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(VSEntities.STAINED_EXPERIENCE_BOTTLE.get(), VSSpriteRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.DEBUG_ARROW.get(), DebugArrowRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityType.SPAWNER_MINECART, SpawnerMinecartRenderer::new);
 

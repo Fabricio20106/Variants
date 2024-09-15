@@ -44,6 +44,11 @@ public class SophiePotionItem extends TagConfigurableFoodItem {
         return SoundEvents.GENERIC_DRINK;
     }
 
+    @Override
+    public boolean hasUseRemainder() {
+        return true;
+    }
+
     @Nonnull
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         return DrinkHelper.useDrink(world, player, hand);

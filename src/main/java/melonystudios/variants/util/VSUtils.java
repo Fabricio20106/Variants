@@ -7,8 +7,6 @@ import com.mojang.datafixers.util.Pair;
 import melonystudios.variants.Variants;
 import melonystudios.variants.crafting.custom.WoolArmorDyeingRecipe;
 import melonystudios.variants.event.custom.ConsumableTeleportEvent;
-import melonystudios.variants.item.custom.armor.WoolArmorItem;
-import melonystudios.variants.item.custom.food.TagConfigurableFood;
 import melonystudios.variants.util.tag.VSItemTags;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
@@ -64,12 +62,6 @@ public class VSUtils {
         } else if (slot.getType() == EquipmentSlotType.Group.ARMOR) {
             player.inventory.armor.set(slot.getIndex(), stack);
         }
-    }
-
-    // Can be used to add new wool armor (currently only sweater) colors.
-    public static void woolArmorColor(String colorName, int colorCode) {
-        WoolArmorItem.COLOR_NAME_TO_CODE = Maps.newHashMap(WoolArmorItem.COLOR_NAME_TO_CODE);
-        WoolArmorItem.COLOR_NAME_TO_CODE.put(colorName, colorCode);
     }
 
     // Can be used to add items as a valid dye for dyeing wool armor (currently only sweater).
@@ -154,8 +146,8 @@ public class VSUtils {
         });
     }
 
-    // Adds properties for exponential stews.
-    public static void makeExpoStew(Item expoStew) {
+    // Adds properties for exponential stews and stained-glass bottles.
+    public static void addTextureIdentifier(Item expoStew) {
         register(expoStew, Variants.variants("texture_id"), (stack, world, livEntity) -> {
             if (stack.getTag() != null && stack.getTag().contains("texture_id", Constants.TagTypes.ANY_NUMERIC)) return stack.getTag().getInt("texture_id");
             return 0;
@@ -186,15 +178,6 @@ public class VSUtils {
                     world.playSound(null, x, y, z, teleportSound, SoundCategory.PLAYERS, 1, 1);
                     livEntity.playSound(teleportSound, 1, 1);
                     break;
-                }
-            }
-
-            if (livEntity instanceof PlayerEntity) {
-                if (stack.getItem() instanceof TagConfigurableFood) {
-                    TagConfigurableFood configurableFood = (TagConfigurableFood) stack.getItem();
-                    ((PlayerEntity) livEntity).getCooldowns().addCooldown(stack.getItem(), configurableFood.getCooldown(stack, 20));
-                } else {
-                    ((PlayerEntity) livEntity).getCooldowns().addCooldown(stack.getItem(), 20);
                 }
             }
         }

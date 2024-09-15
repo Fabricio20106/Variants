@@ -65,6 +65,11 @@ public class BucketFoodItem extends TagConfigurableFoodItem {
         return new ItemStack(Items.BUCKET);
     }
 
+    @Override
+    public boolean hasUseRemainder() {
+        return true;
+    }
+
     @Nonnull
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         return DrinkHelper.useDrink(world, player, hand);

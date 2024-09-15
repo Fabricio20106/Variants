@@ -69,6 +69,11 @@ public class PlaceableBucketFoodItem extends BucketItem implements TagConfigurab
         return new ItemStack(Items.BUCKET);
     }
 
+    @Override
+    public boolean hasUseRemainder() {
+        return true;
+    }
+
     @Nonnull
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         if (this.getFoodProperties() != null && player.canEat(this.getFoodProperties().canAlwaysEat())) DrinkHelper.useDrink(world, player, hand);

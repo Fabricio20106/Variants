@@ -13,6 +13,7 @@ public class VSCommonConfigs {
 
     // Items
     public final ForgeConfigSpec.BooleanValue populateExponentialBowlsInTabs;
+    public final ForgeConfigSpec.BooleanValue populateStainedGlassBottlesInTabs;
     public final ForgeConfigSpec.BooleanValue populateSpawnerMinecartsInTabs;
     public final ForgeConfigSpec.BooleanValue populateWoolArmorColorInTabs;
     public final ForgeConfigSpec.BooleanValue populateWoolArmorDesignsInTabs;
@@ -69,6 +70,7 @@ public class VSCommonConfigs {
         this.populateWoolArmorColorInTabs = builder.comment("Should the item tabs populate all (dye) colors of wool armor?").define("populateWoolArmorColorInTabs", true);
         this.populateWoolArmorDesignsInTabs = builder.comment("Should the item tabs populate all armor designs of wool armor?").define("populateWoolArmorDesignsInTabs", true);
         this.populateExponentialBowlsInTabs = builder.comment("Should the item tabs populate all different wood types for all bowls?").define("populateExponentialBowlsInTabs", true);
+        this.populateStainedGlassBottlesInTabs = builder.comment("Should the item tabs populate all different stained glass bottles for all bottle types?").define("populateStainedGlassBottlesInTabs", true);
         this.populateSpawnerMinecartsInTabs = builder.comment("Should the item tabs populate a Spawner Minecart for every mob in the game?").define("populateSpawnerMinecartsInTabs", false);
         this.placeSpawnerWhenBreakingMinecart = builder.comment("Should the Spawner inside Spawner Minecarts place itself when the minecart is broken?").define("placeSpawnerWhenBreakingMinecart", true);
         this.populateTagConfigurableFoodTags = builder.comment("Should the item tabs populate the NBT data of tag-configurable foods?").define("populateTagConfigurableFoodTags", false);

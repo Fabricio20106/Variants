@@ -25,4 +25,7 @@ public class VSEntities {
 
     public static final RegistryObject<EntityType<DebugArrowEntity>> DEBUG_ARROW = ENTITIES.register("debug_arrow", () -> EntityType.Builder.<DebugArrowEntity>of(DebugArrowEntity::new, EntityClassification.MISC)
             .sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build(Variants.variants("debug_arrow").toString()));
+
+    public static final RegistryObject<EntityType<StainedExperienceBottleEntity>> STAINED_EXPERIENCE_BOTTLE = ENTITIES.register("stained_experience_bottle", () -> EntityType.Builder.<StainedExperienceBottleEntity>of(StainedExperienceBottleEntity::new, EntityClassification.MISC)
+            .sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build(Variants.variants("stained_experience_bottle").toString()));
 }

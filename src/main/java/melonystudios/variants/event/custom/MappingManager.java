@@ -7,6 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.event.RegistryEvent;
 
+@SuppressWarnings("unchecked")
 public class MappingManager {
     private final String modID;
     private final RegistryEvent.MissingMappings<Block> blockMap;

@@ -66,19 +66,28 @@ public class TagConfigurableFoodItem extends Item implements TagConfigurableFood
     }
 
     @Override
+    public ItemStack getContainerItem(ItemStack stack) {
+        CompoundNBT consumableTag = stack.getTagElement("consumable");
+        if (consumableTag != null && consumableTag.contains("use_remainder", Constants.TagTypes.COMPOUND)) {
+            return VSUtils.loadStack(consumableTag.getCompound("use_remainder"));
+        }
+        return this.hasUseRemainder() ? this.getDefaultUseRemainder() : super.getContainerItem(stack);
+    }
+
+    @Override
     public void fillItemCategory(ItemGroup tab, NonNullList<ItemStack> list) {
         if (this.allowdedIn(tab)) list.add(populateDefaultConsumeTags(new ItemStack(this)));
     }
 
     public ItemStack populateDefaultConsumeTags(ItemStack stack) {
-        boolean populateConsumeTags = VSConfigs.COMMON_CONFIGS.populateTagConfigurableFoodTags.get() && this.populateTagsByDefault;
+        boolean populateConsumeTags = VSConfigs.COMMON_CONFIGS.populateTagConfigurableFoodTags.get() || this.populateTagsByDefault;
         CompoundNBT tag = new CompoundNBT();
         CompoundNBT consumableTag = new CompoundNBT();
         if (populateConsumeTags || this.populateBehavior) tag = stack.getOrCreateTag();
 
         if (populateConsumeTags) {
-            consumableTag.putString("animation", getConsumeAnimation(stack).toString().toLowerCase(Locale.ROOT));
-            consumableTag.putInt("consume_ticks", getConsumeTicks(stack));
+            consumableTag.putString("animation", stack.getItem().getUseAnimation(stack).toString().toLowerCase(Locale.ROOT));
+            consumableTag.putInt("consume_ticks", stack.getItem().getUseDuration(stack));
             consumableTag.putString("sound", getDefaultConsumeSound().getRegistryName().toString());
             consumableTag.put("use_remainder", VSUtils.saveStack(getUseRemainder(stack), new CompoundNBT()));
         }

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "variants:item/bottle_content/experience",
+    "layer1": "variants:item/bottle/lime_stained_glass_bottle",
+    "layer2": "variants:item/bottle/lime_stained_glass_bottle_overlay"
+  }
+}

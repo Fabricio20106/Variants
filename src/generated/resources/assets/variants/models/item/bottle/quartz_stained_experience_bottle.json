@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "variants:item/bottle_content/experience",
+    "layer1": "variants:item/bottle/quartz_glass_bottle"
+  }
+}

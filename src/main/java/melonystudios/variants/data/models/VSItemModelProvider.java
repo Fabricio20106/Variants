@@ -2,6 +2,8 @@ package melonystudios.variants.data.models;
 
 import com.google.common.collect.ImmutableMap;
 import melonystudios.variants.Variants;
+import melonystudios.variants.item.custom.bottle.GlassType;
+import melonystudios.variants.item.custom.bottle.StainedFullGlassBottleItem;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -163,6 +165,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(generated, "warped_boat");
         standard(generated, "enderwood_boat");
         standard(generated, "varied_instructions");
+        getBuilder("quartz_glass_bottle").parent(generated).texture("layer0", modLoc("item/bottle/quartz_glass_bottle"));
         standard(generated, "splash_experience_bottle");
         standard(generated, "lingering_experience_bottle");
         standard(generated, "splash_dragon_breath");
@@ -270,6 +273,10 @@ public class VSItemModelProvider extends VSItemModelModels {
         expoStew("exponential_lava_bowl", "lava");
         expoStew("exponential_soul_lava_bowl", "soul_lava");
         expoStew("exponential_powder_snow_bowl", "powder_snow");
+
+        // Stained Glass Bottle
+        for (GlassType type : StainedFullGlassBottleItem.BOTTLES) if (type != GlassType.QUARTZ) emptyStainedGlassBottle(type.getName());
+        fullStainedGlassBottle("stained_experience_bottle", modLoc("item/bottle_content/experience"));
 
         blockItem("glow_berry_bush", "_stage3");
         blockItem("glow_black_tulip");

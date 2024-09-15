@@ -41,6 +41,11 @@ public class ExponentialStewItem extends TagConfigurableFoodItem {
         this.useDefaultBehaviorTooltips = false;
     }
 
+    @Override
+    public boolean hasUseRemainder() {
+        return true;
+    }
+
     public StewBehavior getBehavior() {
         return this.stewBehavior;
     }

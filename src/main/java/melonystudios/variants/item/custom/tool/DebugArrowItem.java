@@ -3,6 +3,7 @@ package melonystudios.variants.item.custom.tool;
 import melonystudios.variants.dispenser.DebugArrowDispenseBehavior;
 import melonystudios.variants.entity.custom.DebugArrowEntity;
 import melonystudios.variants.item.VSWeaponry;
+import melonystudios.variants.util.Constants;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
@@ -21,6 +22,7 @@ public class DebugArrowItem extends ArrowItem {
 
     @Override
     public boolean isFoil(ItemStack stack) {
+        if (stack.getTag() != null && stack.getTag().contains("enchantment_glint_override", Constants.TagTypes.ANY_NUMERIC)) return stack.getTag().getBoolean("enchantment_glint_override");
         return true;
     }
 

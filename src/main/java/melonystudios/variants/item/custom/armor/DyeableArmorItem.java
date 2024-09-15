@@ -11,8 +11,8 @@ import java.util.List;
 public interface DyeableArmorItem extends IDyeableArmorItem {
     @Override
     default int getColor(ItemStack stack) {
-        CompoundNBT nbt = stack.getTagElement("display");
-        return nbt != null && nbt.contains("color", Constants.TagTypes.ANY_NUMERIC) ? nbt.getInt("color") : getDefaultColor();
+        CompoundNBT displayTag = stack.getTagElement("display");
+        return displayTag != null && displayTag.contains("color", Constants.TagTypes.ANY_NUMERIC) ? displayTag.getInt("color") : getDefaultColor();
     }
 
     int getDefaultColor();

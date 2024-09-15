@@ -35,6 +35,7 @@ public class DebugBowItem extends BowItem {
 
     @Override
     public boolean isFoil(ItemStack stack) {
+        if (stack.getTag() != null && stack.getTag().contains("enchantment_glint_override", Constants.TagTypes.ANY_NUMERIC)) return stack.getTag().getBoolean("enchantment_glint_override");
         return true;
     }
 

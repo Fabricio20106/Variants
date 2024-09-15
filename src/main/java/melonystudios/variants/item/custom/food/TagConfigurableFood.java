@@ -82,6 +82,10 @@ public interface TagConfigurableFood {
         }
     }
 
+    default boolean hasUseRemainder() {
+        return false;
+    }
+
     default ItemStack getDefaultUseRemainder() {
         return new ItemStack(Items.GLASS_BOTTLE);
     }

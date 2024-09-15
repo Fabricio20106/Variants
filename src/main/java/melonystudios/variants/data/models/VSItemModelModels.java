@@ -1,6 +1,8 @@
 package melonystudios.variants.data.models;
 
 import melonystudios.variants.Variants;
+import melonystudios.variants.item.custom.bottle.GlassType;
+import melonystudios.variants.item.custom.bottle.StainedFullGlassBottleItem;
 import melonystudios.variants.stew.bowl.BowlType;
 import melonystudios.variants.stew.bowl.BowlTypes;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
@@ -123,5 +125,41 @@ public abstract class VSItemModelModels extends ItemModelProvider {
 
         ItemModelBuilder spawnerMinecart = getBuilder(name).parent(this.generated).texture("layer0", "item/" + name);
         for (String mob : mobToIDMap.keySet()) spawnerMinecart.override().predicate(mobID(), mobToIDMap.get(mob)).model(getExistingFile(modLoc("item/" + name + "_" + mob))).end();
+    }
+
+    public void emptyStainedGlassBottle(String colorName) {
+        getBuilder(colorName + "_stained_glass_bottle").parent(this.generated).texture("layer0", modLoc("item/bottle/" + colorName + "_stained_glass_bottle")).texture("layer1", modLoc("item/bottle/" + colorName +
+                "_stained_glass_bottle_overlay"));
+    }
+
+    public void fullStainedGlassBottle(String name, ResourceLocation bottleContents) {
+        for (GlassType type : StainedFullGlassBottleItem.BOTTLES) {
+            if (type.hasOverlay()) {
+                getBuilder("item/bottle/" + type.getName() + "_" + name).parent(this.generated).texture("layer0", bottleContents).texture("layer1", modLoc("item/bottle/" + type.getName() + "_stained_glass_bottle")).texture("layer2", modLoc(
+                        "item/bottle/" + type.getName() + "_stained_glass_bottle_overlay"));
+            } else {
+                getBuilder("item/bottle/" + type.getName() + "_" + name).parent(this.generated).texture("layer0", bottleContents).texture("layer1", modLoc("item/bottle/" + type.getName() + "_glass_bottle"));
+            }
+        }
+
+        getBuilder(name).parent(this.generated).texture("layer0", modLoc("item/bottle/white_stained_glass_bottle"))
+                .override().predicate(textureID(), 1).model(getExistingFile(modLoc("item/bottle/white_" + name))).end()
+                .override().predicate(textureID(), 2).model(getExistingFile(modLoc("item/bottle/light_gray_" + name))).end()
+                .override().predicate(textureID(), 3).model(getExistingFile(modLoc("item/bottle/gray_" + name))).end()
+                .override().predicate(textureID(), 4).model(getExistingFile(modLoc("item/bottle/black_" + name))).end()
+                .override().predicate(textureID(), 5).model(getExistingFile(modLoc("item/bottle/brown_" + name))).end()
+                .override().predicate(textureID(), 6).model(getExistingFile(modLoc("item/bottle/red_" + name))).end()
+                .override().predicate(textureID(), 7).model(getExistingFile(modLoc("item/bottle/orange_" + name))).end()
+                .override().predicate(textureID(), 8).model(getExistingFile(modLoc("item/bottle/yellow_" + name))).end()
+                .override().predicate(textureID(), 9).model(getExistingFile(modLoc("item/bottle/lime_" + name))).end()
+                .override().predicate(textureID(), 10).model(getExistingFile(modLoc("item/bottle/green_" + name))).end()
+                .override().predicate(textureID(), 11).model(getExistingFile(modLoc("item/bottle/cyan_" + name))).end()
+                .override().predicate(textureID(), 12).model(getExistingFile(modLoc("item/bottle/light_blue_" + name))).end()
+                .override().predicate(textureID(), 13).model(getExistingFile(modLoc("item/bottle/blue_" + name))).end()
+                .override().predicate(textureID(), 14).model(getExistingFile(modLoc("item/bottle/purple_" + name))).end()
+                .override().predicate(textureID(), 15).model(getExistingFile(modLoc("item/bottle/magenta_" + name))).end()
+                .override().predicate(textureID(), 16).model(getExistingFile(modLoc("item/bottle/pink_" + name))).end()
+                .override().predicate(textureID(), 17).model(getExistingFile(modLoc("item/bottle/glow_black_" + name))).end()
+                .override().predicate(textureID(), 18).model(getExistingFile(modLoc("item/bottle/quartz_" + name))).end();
     }
 }

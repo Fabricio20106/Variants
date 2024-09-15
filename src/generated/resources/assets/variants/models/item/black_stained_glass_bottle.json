@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "variants:item/bottle/black_stained_glass_bottle",
+    "layer1": "variants:item/bottle/black_stained_glass_bottle_overlay"
+  }
+}

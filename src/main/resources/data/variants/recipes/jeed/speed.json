@@ -1,0 +1,17 @@
+{
+  "type": "jeed:effect_provider",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "jeed"
+    }
+  ],
+  "effect":{
+    "id": "minecraft:speed"
+  },
+  "providers": [
+    {
+      "item": "variants:sugar_pot"
+    }
+  ]
+}

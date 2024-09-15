@@ -7,11 +7,11 @@
     }
   ],
   "effect":{
-    "id": "variants:sugar_pot_speed"
+    "id": "minecraft:water_breathing"
   },
   "providers": [
     {
-      "item": "variants:sugar_pot"
+      "item": "variants:exponential_water_bowl"
     }
   ]
 }
