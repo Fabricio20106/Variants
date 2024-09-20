@@ -12,6 +12,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nonnull;
 
 public class VSSweaterTab extends ItemGroup {
+    @SuppressWarnings("deprecation")
     public static final VSSweaterTab TAB = (VSSweaterTab) new VSSweaterTab("variants.infinity_sweaters").setBackgroundSuffix("item_search.png");
 
     public VSSweaterTab(String label) {

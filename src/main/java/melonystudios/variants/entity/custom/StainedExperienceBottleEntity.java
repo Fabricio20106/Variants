@@ -63,6 +63,11 @@ public class StainedExperienceBottleEntity extends ProjectileItemEntity {
     }
 
     @Override
+    public void setItem(ItemStack stack) {
+        this.bottleItem = stack.copy();
+    }
+
+    @Override
     protected float getGravity() {
         return 0.07F;
     }

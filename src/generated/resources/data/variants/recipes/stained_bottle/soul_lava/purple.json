@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "soul_lava_bottle",
+  "ingredients": [
+    {
+      "item": "variants:soul_lava_bucket"
+    },
+    {
+      "item": "variants:purple_stained_glass_bottle"
+    },
+    {
+      "item": "variants:purple_stained_glass_bottle"
+    },
+    {
+      "item": "variants:purple_stained_glass_bottle"
+    },
+    {
+      "item": "variants:purple_stained_glass_bottle"
+    }
+  ],
+  "result": {
+    "item": "variants:stained_soul_lava_bottle",
+    "count": 4,
+    "nbt": {
+      "consumable": {
+        "use_remainder": {
+          "id": "variants:purple_stained_glass_bottle"
+        },
+        "behavior": {}
+      },
+      "texture_id": 13
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:glass/cyan"
+    }
+  },
+  "result": {
+    "item": "variants:cyan_stained_glass_bottle",
+    "count": 3
+  }
+}

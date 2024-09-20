@@ -55,7 +55,7 @@ public class StainedFullGlassBottleItem extends TagConfigurableFoodItem {
         return super.getName(stack);
     }
 
-    private static String getColorTranslation(ResourceLocation colorName) {
+    protected static String getColorTranslation(ResourceLocation colorName) {
         return Util.makeDescriptionId("color", colorName);
     }
 

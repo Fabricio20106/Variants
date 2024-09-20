@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "lava_bowl",
+  "ingredients": [
+    {
+      "item": "variants:stained_lava_bottle"
+    },
+    {
+      "item": "variants:stained_lava_bottle"
+    },
+    {
+      "item": "variants:oak_bowl"
+    }
+  ],
+  "result": {
+    "item": "variants:exponential_lava_bowl",
+    "nbt": {
+      "consumable": {
+        "use_remainder": {
+          "id": "variants:oak_bowl"
+        },
+        "behavior": {
+          "id": "variants:ignite",
+          "ticks_on_fire": 100
+        }
+      },
+      "texture_id": 0
+    }
+  }
+}

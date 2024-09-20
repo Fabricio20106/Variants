@@ -3,14 +3,15 @@ package melonystudios.variants.event;
 import melonystudios.variants.Variants;
 import melonystudios.variants.data.armorcolor.VSWoolArmorColorProvider;
 import melonystudios.variants.data.bowltype.VSBowlTypesProvider;
-import melonystudios.variants.data.models.VSBlockStateProvider;
-import melonystudios.variants.data.models.VSItemModelProvider;
-import melonystudios.variants.data.recipes.VSExpoStewsRecipeProvider;
-import melonystudios.variants.data.reports.VSBiomeReportsProvider;
-import melonystudios.variants.data.reports.VSDamageSourceReportsProvider;
+import melonystudios.variants.data.model.VSBlockStateProvider;
+import melonystudios.variants.data.model.VSItemModelProvider;
+import melonystudios.variants.data.recipe.VSExpoStewsRecipeProvider;
+import melonystudios.variants.data.recipe.VSStainedBottlesRecipeProvider;
+import melonystudios.variants.data.report.VSBiomeReportsProvider;
+import melonystudios.variants.data.report.VSDamageSourceReportsProvider;
 import melonystudios.variants.data.sound.VSSoundDefinitionsProvider;
 import melonystudios.variants.data.sound.VSVanillaSoundDefinitionsProvider;
-import melonystudios.variants.data.tags.*;
+import melonystudios.variants.data.tag.*;
 import melonystudios.variants.entity.VSEntities;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.entity.passive.fish.AbstractFishEntity;
@@ -38,7 +39,7 @@ public class VSEventBusEvents {
         generator.addProvider(new VSFluidTagsProvider(generator, fileHelper));
         generator.addProvider(new VSEntityTypeTagsProvider(generator, fileHelper));
         generator.addProvider(new VSEnchantmentTagsProvider(generator, fileHelper));
-        generator.addProvider(new VSStewBehaviorTagsProvider(generator, fileHelper));
+        generator.addProvider(new VSConsumeBehaviorTagsProvider(generator, fileHelper));
         generator.addProvider(new VSTagFixTagsProvider(generator, fileHelper));
 
         // Reports
@@ -47,6 +48,7 @@ public class VSEventBusEvents {
 
         // Miscellaneous
         generator.addProvider(new VSExpoStewsRecipeProvider(generator));
+        generator.addProvider(new VSStainedBottlesRecipeProvider(generator));
         generator.addProvider(new VSBowlTypesProvider(generator));
         generator.addProvider(new VSWoolArmorColorProvider(generator));
         generator.addProvider(new VSWoolArmorColorProvider.VanillaWACProvider(generator));

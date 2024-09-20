@@ -30,9 +30,11 @@ import melonystudios.variants.world.feature.VSFeatures;
 import melonystudios.variants.world.surface.VSSurfaceBuilders;
 import net.minecraft.block.Block;
 import net.minecraft.block.WoodType;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Atlases;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraft.client.renderer.tileentity.BeaconTileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
@@ -60,6 +62,10 @@ import org.apache.logging.log4j.Logger;
 public class Variants {
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "variants";
+    // TO-DO LIST:
+    // [19/9/24 - 1.8.0.3] ~isa:
+    //   - Make stained dragon's breath usable to make potions;
+    //   - Make powder snow and sophie potion recipes in the data generators.
 
     public Variants() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -120,19 +126,11 @@ public class Variants {
     }
 
     public void clientSetup(final FMLClientSetupEvent event) {
-        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_MUSHROOM_STEW.get());
-        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_BEETROOT_SOUP.get());
-        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_RABBIT_STEW.get());
-        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_SUSPICIOUS_STEW.get());
-        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_FUNGI_STEW.get());
-        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_END_FUNGI_STEW.get());
-        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_ALJAN_FUNGI_STEW.get());
-        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_WATER_BOWL.get());
-        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_MILK_BOWL.get());
-        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_LAVA_BOWL.get());
-        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_SOUL_LAVA_BOWL.get());
-        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_POWDER_SNOW_BOWL.get());
-        VSUtils.addTextureIdentifier(VSItems.STAINED_EXPERIENCE_BOTTLE.get());
+        VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_MUSHROOM_STEW.get(), VSItems.EXPONENTIAL_BEETROOT_SOUP.get(), VSItems.EXPONENTIAL_RABBIT_STEW.get(), VSItems.EXPONENTIAL_SUSPICIOUS_STEW.get(),
+                VSItems.EXPONENTIAL_FUNGI_STEW.get(), VSItems.EXPONENTIAL_END_FUNGI_STEW.get(), VSItems.EXPONENTIAL_ALJAN_FUNGI_STEW.get(), VSItems.EXPONENTIAL_WATER_BOWL.get(),
+                VSItems.EXPONENTIAL_MILK_BOWL.get(), VSItems.EXPONENTIAL_LAVA_BOWL.get(), VSItems.EXPONENTIAL_SOUL_LAVA_BOWL.get(), VSItems.EXPONENTIAL_POWDER_SNOW_BOWL.get());
+        VSUtils.addTextureIdentifier(VSItems.STAINED_EXPERIENCE_BOTTLE.get(), VSItems.STAINED_HONEY_BOTTLE.get(), VSItems.STAINED_DRAGON_BREATH.get(), VSItems.STAINED_POTION.get(),
+                VSItems.STAINED_LAVA_BOTTLE.get(), VSItems.STAINED_SOUL_LAVA_BOTTLE.get(), VSItems.STAINED_MILK_BOTTLE.get(), VSItems.STAINED_POWDER_SNOW_BOTTLE.get(), VSItems.STAINED_SOPHIE_POTION.get());
         VSUtils.makeShield(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
         VSUtils.makeBow(VSWeaponry.DEBUG_BOW.get());
         VSUtils.addArmorDesigns(VSWeaponry.WOOL_SWEATER.get());
@@ -149,9 +147,9 @@ public class Variants {
 
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.FISH.get(), FishRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.VS_BOAT.get(), VSBoatRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(VSEntities.DRAGON_BREATH_BOTTLE.get(), VSSpriteRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(VSEntities.SMALL_SOUL_FIREBALL.get(), VSSpriteRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(VSEntities.STAINED_EXPERIENCE_BOTTLE.get(), VSSpriteRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(VSEntities.DRAGON_BREATH_BOTTLE.get(), manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
+        RenderingRegistry.registerEntityRenderingHandler(VSEntities.SMALL_SOUL_FIREBALL.get(), manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
+        RenderingRegistry.registerEntityRenderingHandler(VSEntities.STAINED_EXPERIENCE_BOTTLE.get(), manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.DEBUG_ARROW.get(), DebugArrowRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityType.SPAWNER_MINECART, SpawnerMinecartRenderer::new);
 

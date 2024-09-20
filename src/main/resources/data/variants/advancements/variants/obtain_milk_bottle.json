@@ -25,11 +25,22 @@
           }
         ]
       }
+    },
+    "obtained_stained_milk_bottle": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:stained_milk_bottle"
+          }
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "obtained_milk_bottle"
+      "obtained_milk_bottle",
+      "obtained_stained_milk_bottle"
     ]
   ]
 }

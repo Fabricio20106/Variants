@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:stained_bottle/soul_lava/cyan"
+    ]
+  },
+  "criteria": {
+    "has_soul_lava_bucket": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:soul_lava_bucket"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:stained_bottle/soul_lava/cyan"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_soul_lava_bucket",
+      "has_the_recipe"
+    ]
+  ]
+}

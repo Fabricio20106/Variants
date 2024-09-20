@@ -76,7 +76,8 @@ public class NBTUtils {
             if (effect != null) {
                 EffectInstance instance = new EffectInstance(effect, duration, amplifier, ambient, showParticles, showIcon);
                 if (world.isClientSide) instance.setNoCounter(noCounter);
-                livEntity.addEffect(instance);
+                if (instance.getEffect().isInstantenous()) instance.getEffect().applyInstantenousEffect(livEntity, livEntity, livEntity, instance.getAmplifier(), 1);
+                else livEntity.addEffect(instance);
             }
         }
     }

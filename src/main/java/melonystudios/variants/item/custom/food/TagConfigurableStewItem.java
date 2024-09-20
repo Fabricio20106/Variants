@@ -20,7 +20,7 @@ public class TagConfigurableStewItem extends ExponentialStewItem {
     }
 
     @Override
-    public ItemStack getBowlType(ItemStack stewStack, @Nullable LivingEntity livEntity) {
+    public ItemStack getBowlFromNBT(ItemStack stewStack, @Nullable LivingEntity livEntity) {
         if (livEntity != null) livEntity.eat(livEntity.level, stewStack);
         CompoundNBT consumableTag = stewStack.getTagElement("consumable");
 
@@ -37,7 +37,7 @@ public class TagConfigurableStewItem extends ExponentialStewItem {
         if (this.allowdedIn(tab)) {
             ItemStack stack = new ItemStack(this);
             CompoundNBT consumableTag = stack.getOrCreateTagElement("consumable");
-            consumableTag.put("use_remainder", VSUtils.saveStack(this.getBowlType(stack, null), new CompoundNBT()));
+            consumableTag.put("use_remainder", VSUtils.saveStack(this.getBowlFromNBT(stack, null), new CompoundNBT()));
             list.add(stack);
         }
     }

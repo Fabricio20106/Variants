@@ -1,0 +1,116 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "variants:item/bottle/white_stained_glass_bottle"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "variants:texture_id": 0.0
+      },
+      "model": "variants:item/bottle/white_stained_potion"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 1.0
+      },
+      "model": "variants:item/bottle/light_gray_stained_potion"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 2.0
+      },
+      "model": "variants:item/bottle/gray_stained_potion"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 3.0
+      },
+      "model": "variants:item/bottle/black_stained_potion"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 4.0
+      },
+      "model": "variants:item/bottle/brown_stained_potion"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 5.0
+      },
+      "model": "variants:item/bottle/red_stained_potion"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 6.0
+      },
+      "model": "variants:item/bottle/orange_stained_potion"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 7.0
+      },
+      "model": "variants:item/bottle/yellow_stained_potion"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 8.0
+      },
+      "model": "variants:item/bottle/lime_stained_potion"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 9.0
+      },
+      "model": "variants:item/bottle/green_stained_potion"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 10.0
+      },
+      "model": "variants:item/bottle/cyan_stained_potion"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 11.0
+      },
+      "model": "variants:item/bottle/light_blue_stained_potion"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 12.0
+      },
+      "model": "variants:item/bottle/blue_stained_potion"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 13.0
+      },
+      "model": "variants:item/bottle/purple_stained_potion"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 14.0
+      },
+      "model": "variants:item/bottle/magenta_stained_potion"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 15.0
+      },
+      "model": "variants:item/bottle/pink_stained_potion"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 16.0
+      },
+      "model": "variants:item/bottle/glow_black_stained_potion"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 17.0
+      },
+      "model": "variants:item/bottle/quartz_stained_potion"
+    }
+  ]
+}

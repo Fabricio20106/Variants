@@ -8,20 +8,23 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.tags.ITag;
+import net.minecraft.tags.TagCollectionManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
 import net.minecraft.util.text.*;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ReverseTagWrapper;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 import org.apache.logging.log4j.LogManager;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Set;
 
 public abstract class StewBehavior extends ForgeRegistryEntry<StewBehavior> {
+    private final ReverseTagWrapper<StewBehavior> reverseTags = new ReverseTagWrapper<>(this, () -> TagCollectionManager.getInstance().getCustomTypeCollection(VSRegistries.CONSUME_BEHAVIOR));
     @Nullable
     private String descriptionID;
 
@@ -33,6 +36,10 @@ public abstract class StewBehavior extends ForgeRegistryEntry<StewBehavior> {
 
     public StewBehavior getBehaviorRegistry() {
         return VSStewBehaviors.DEFAULT.get();
+    }
+
+    public Set<ResourceLocation> getAllTags() {
+        return this.reverseTags.getTagNames();
     }
 
     public boolean is(ITag<StewBehavior> behaviorTag) {

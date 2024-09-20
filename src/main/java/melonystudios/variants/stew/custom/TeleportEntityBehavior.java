@@ -91,11 +91,11 @@ public class TeleportEntityBehavior extends StewBehavior {
     @Override
     public CompoundNBT writePropertiesToNBT() {
         CompoundNBT propertiesTag = new CompoundNBT();
-        if (this.randomTeleport) {
-            propertiesTag.putBoolean("random_teleport", true);
-            propertiesTag.putFloat("teleport_diameter", this.teleportDiameter);
+        if (this.randomTeleport) propertiesTag.putFloat("teleport_diameter", this.teleportDiameter);
+        else {
+            propertiesTag.putBoolean("random_teleport", false);
+            propertiesTag.putIntArray("teleport_pos", new int[] {this.teleportPosition.getX(), this.teleportPosition.getY(), this.teleportPosition.getZ()});
         }
-        else propertiesTag.putIntArray("teleport_pos", new int[] {this.teleportPosition.getX(), this.teleportPosition.getY(), this.teleportPosition.getZ()});
         return propertiesTag;
     }
 

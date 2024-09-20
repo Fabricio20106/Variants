@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "honey_bottle",
+  "ingredients": [
+    {
+      "item": "minecraft:honey_block"
+    },
+    {
+      "item": "variants:pink_stained_glass_bottle"
+    },
+    {
+      "item": "variants:pink_stained_glass_bottle"
+    },
+    {
+      "item": "variants:pink_stained_glass_bottle"
+    },
+    {
+      "item": "variants:pink_stained_glass_bottle"
+    }
+  ],
+  "result": {
+    "item": "variants:stained_honey_bottle",
+    "count": 4,
+    "nbt": {
+      "consumable": {
+        "use_remainder": {
+          "id": "variants:pink_stained_glass_bottle"
+        },
+        "behavior": {}
+      },
+      "texture_id": 15
+    }
+  }
+}

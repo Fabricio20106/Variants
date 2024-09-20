@@ -114,7 +114,7 @@ public class ApplyMobEffectsBehavior extends StewBehavior {
         return VSStewBehaviors.APPLY_MOB_EFFECTS.get();
     }
 
-    public void addEffectsTooltip(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, float durationFactor) {
+    public static void addEffectsTooltip(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, float durationFactor) {
         List<EffectInstance> effectsList = NBTUtils.getEffectsFromNBT(world, stack);
         if (stack.getTag() != null && stack.getTag().contains("duration_factor", Constants.TagTypes.ANY_NUMERIC)) durationFactor = stack.getTag().getFloat("duration_factor");
         float durationPercentage = durationFactor * 100;
@@ -123,8 +123,7 @@ public class ApplyMobEffectsBehavior extends StewBehavior {
         List<Pair<Attribute, AttributeModifier>> attributePairList = Lists.newArrayList();
         if (effectsList != null && !effectsList.isEmpty()) {
             for (EffectInstance instance : effectsList) {
-                TranslationTextComponent effectName = new TranslationTextComponent(instance.getDescriptionId());
-                IFormattableTextComponent component = effectName;
+                IFormattableTextComponent component = new TranslationTextComponent(instance.getDescriptionId());
                 Effect effect = instance.getEffect();
                 Map<Attribute, AttributeModifier> attributeMap = effect.getAttributeModifiers();
                 if (!attributeMap.isEmpty()) {
@@ -135,10 +134,12 @@ public class ApplyMobEffectsBehavior extends StewBehavior {
                     }
                 }
 
-                if (instance.getAmplifier() > 0) component = new TranslationTextComponent("potion.withAmplifier", effectName, new TranslationTextComponent("potion.potency." + instance.getAmplifier()));
-                if (instance.getDuration() > 20) component = new TranslationTextComponent("potion.withDuration", effectName, EffectUtils.formatDuration(instance, durationFactor));
+                if (instance.getAmplifier() > 0) component = new TranslationTextComponent("potion.withAmplifier", component, new TranslationTextComponent("potion.potency." + instance.getAmplifier()));
+                if (instance.getDuration() > 20) component = new TranslationTextComponent("potion.withDuration", component, EffectUtils.formatDuration(instance, durationFactor));
                 tooltip.add(getCategoryTranslation(instance, component.withStyle(VSStyles.getFromRGB(effect.getColor()))));
             }
+        } else {
+            tooltip.add(new TranslationTextComponent("tooltip.variants.food_effects.no_effects").withStyle(TextFormatting.GRAY));
         }
 
         if (!attributePairList.isEmpty()) {

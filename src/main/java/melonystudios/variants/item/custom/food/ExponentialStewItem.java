@@ -9,7 +9,7 @@ import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.NBTUtils;
 import melonystudios.variants.util.VSRegistries;
 import melonystudios.variants.util.VSUtils;
-import melonystudios.variants.util.tag.StewBehaviorTags;
+import melonystudios.variants.util.tag.ConsumeBehaviorTags;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -120,7 +120,7 @@ public class ExponentialStewItem extends TagConfigurableFoodItem {
     }
 
     public static boolean canRunBehavior(CompoundNBT consumableTag, StewBehavior behavior) {
-        return consumableTag.contains("behavior", Constants.TagTypes.COMPOUND) || !behavior.is(StewBehaviorTags.CANNOT_RUN_WITHOUT_NBT);
+        return consumableTag.contains("behavior", Constants.TagTypes.COMPOUND) || !behavior.is(ConsumeBehaviorTags.CANNOT_RUN_WITHOUT_NBT);
     }
 
     @Override
@@ -139,7 +139,7 @@ public class ExponentialStewItem extends TagConfigurableFoodItem {
             if (canRunBehavior(consumableTag, this.stewBehavior)) this.stewBehavior.executeFromStewNBT(stewStack, world, livEntity, this.stewBehavior.getBehaviorProperties(stewStack));
         }
 
-        return isPlayerInCreative ? superStack : getBowlType(stewStack, livEntity);
+        return isPlayerInCreative ? superStack : getBowlFromNBT(stewStack, livEntity);
     }
 
     @Override
@@ -147,7 +147,7 @@ public class ExponentialStewItem extends TagConfigurableFoodItem {
         return new ItemStack(Items.BOWL);
     }
 
-    public ItemStack getBowlType(ItemStack stewStack, @Nullable LivingEntity livEntity) {
+    public ItemStack getBowlFromNBT(ItemStack stewStack, @Nullable LivingEntity livEntity) {
         if (livEntity != null) livEntity.eat(livEntity.level, stewStack);
         CompoundNBT consumableTag = stewStack.getTagElement("consumable");
 
@@ -161,7 +161,7 @@ public class ExponentialStewItem extends TagConfigurableFoodItem {
 
     @Override
     public void fillItemCategory(ItemGroup tab, NonNullList<ItemStack> list) {
-        if ((this.allowdedIn(tab) || tab == ItemGroup.TAB_SEARCH) && VSConfigs.COMMON_CONFIGS.populateExponentialBowlsInTabs.get()) {
+        if (this.allowdedIn(tab) && VSConfigs.COMMON_CONFIGS.populateExponentialBowlsInTabs.get()) {
             // New data-driven way of adding the bowls.
             for (ResourceLocation location : BowlType.DATA_DRIVEN_TYPES.keySet()) {
                 BowlType type = BowlType.DATA_DRIVEN_TYPES.get(location);
@@ -185,7 +185,7 @@ public class ExponentialStewItem extends TagConfigurableFoodItem {
         super.appendHoverText(stack, world, tooltip, flag);
 
         if (NBTUtils.shouldNotHideTooltip("hide_bowl_name", stack)) {
-            ItemStack bowlStack = getBowlType(stack, null);
+            ItemStack bowlStack = getBowlFromNBT(stack, null);
             ITextComponent bowlName = bowlStack.getItem().getName(bowlStack.getItem().getDefaultInstance());
             tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".exponential_stew.bowl", bowlName).withStyle(TextFormatting.GRAY));
         }

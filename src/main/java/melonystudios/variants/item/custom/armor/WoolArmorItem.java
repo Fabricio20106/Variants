@@ -77,6 +77,7 @@ public class WoolArmorItem extends ArmorItem implements DyeableArmorItem {
 
     @Override
     public void fillItemCategory(ItemGroup tab, NonNullList<ItemStack> list) {
+        // Wool armor colors
         if (this.allowdedIn(tab)) {
             list.add(new ItemStack(this));
 
@@ -99,6 +100,8 @@ public class WoolArmorItem extends ArmorItem implements DyeableArmorItem {
                 sortedColors.clear();
             }
         }
+
+        // Wool armor designs
         if (this.allowdedIn(tab) && VSConfigs.COMMON_CONFIGS.populateWoolArmorDesignsInTabs.get()) {
             List<ResourceLocation> sortedColors = Lists.newArrayList();
             sortedColors.addAll(WoolArmorColor.DATA_DRIVEN_COLORS.keySet());
@@ -116,8 +119,10 @@ public class WoolArmorItem extends ArmorItem implements DyeableArmorItem {
             }
             sortedColors.clear();
         }
+
+        // Infinity wool sweaters (0 -> 16777215)
         if (tab == VSSweaterTab.TAB && VSConfigs.COMMON_CONFIGS.enableInfinitySweatersTab.get()) {
-            for (int i = 0; i < VSConfigs.COMMON_CONFIGS.infinitySweatersTabLength.get();  i = i + VSConfigs.COMMON_CONFIGS.infinitySweatersTabSpacing.get())  {
+            for (int i = 0; i < VSConfigs.COMMON_CONFIGS.infinitySweatersTabLength.get();  i += VSConfigs.COMMON_CONFIGS.infinitySweatersTabSpacing.get())  {
                 ItemStack stack = new ItemStack(this);
                 CompoundNBT displayTag = stack.getOrCreateTagElement("display");
                 CompoundNBT tag = stack.getOrCreateTag();

@@ -9,6 +9,7 @@ import melonystudios.variants.util.VSUtils;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
@@ -36,9 +37,18 @@ public class TagConfigurableFoodItem extends Item implements TagConfigurableFood
         this.behavior = behavior;
     }
 
+    public StewBehavior getBehavior() {
+        return this.behavior;
+    }
+
+    public boolean usesDefaultBehavior() {
+        return this.useDefaultBehavior;
+    }
+
     @Override
     @Nonnull
     public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity livEntity) {
+        super.finishUsingItem(stack, world, livEntity);
         if (livEntity instanceof ServerPlayerEntity) {
             ServerPlayerEntity serverPlayer = (ServerPlayerEntity) livEntity;
             CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
@@ -47,7 +57,20 @@ public class TagConfigurableFoodItem extends Item implements TagConfigurableFood
 
         if (this.useDefaultBehavior && !world.isClientSide) executeConsumeBehavior(stack, world, livEntity, this.behavior);
         if (getCooldown(stack, 0) != 0) applyCooldown(stack, livEntity, 0);
-        return super.finishUsingItem(stack, world, livEntity);
+
+        ItemStack remainderStack = getUseRemainder(stack);
+
+        if (stack.isEmpty()) {
+            return remainderStack;
+        } else {
+            if (livEntity instanceof PlayerEntity && !((PlayerEntity) livEntity).abilities.instabuild) {
+                PlayerEntity player = (PlayerEntity) livEntity;
+                stack.shrink(1);
+                if (stack.isEmpty()) return remainderStack;
+                if (!player.inventory.add(remainderStack)) player.drop(remainderStack, false);
+            }
+            return stack;
+        }
     }
 
     @Override
@@ -72,6 +95,11 @@ public class TagConfigurableFoodItem extends Item implements TagConfigurableFood
             return VSUtils.loadStack(consumableTag.getCompound("use_remainder"));
         }
         return this.hasUseRemainder() ? this.getDefaultUseRemainder() : super.getContainerItem(stack);
+    }
+
+    @Override
+    public boolean hasContainerItem(ItemStack stack) {
+        return hasUseRemainder();
     }
 
     @Override

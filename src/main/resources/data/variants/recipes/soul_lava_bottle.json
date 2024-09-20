@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "group": "soul_lava_bottle",
   "ingredients": [
     {
       "item": "variants:soul_lava_bucket"

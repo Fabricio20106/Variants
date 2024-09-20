@@ -6,7 +6,7 @@ import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.NBTUtils;
 import melonystudios.variants.util.VSRegistries;
 import melonystudios.variants.util.VSUtils;
-import melonystudios.variants.util.tag.StewBehaviorTags;
+import melonystudios.variants.util.tag.ConsumeBehaviorTags;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -128,7 +128,7 @@ public interface TagConfigurableFood {
     }
 
     default boolean canRunBehavior(StewBehavior behavior) {
-        return !behavior.is(StewBehaviorTags.CANNOT_RUN_WITHOUT_NBT);
+        return !behavior.is(ConsumeBehaviorTags.CANNOT_RUN_WITHOUT_NBT);
     }
 
     @Nullable

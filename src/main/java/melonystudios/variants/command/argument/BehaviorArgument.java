@@ -6,7 +6,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import melonystudios.variants.util.tag.StewBehaviorTags;
+import melonystudios.variants.util.tag.ConsumeBehaviorTags;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -36,7 +36,7 @@ public class BehaviorArgument implements ArgumentType<BehaviorInput> {
         try {
             parser.parse();
         } catch (CommandSyntaxException ignored) {}
-        return parser.fillSuggestions(builder, StewBehaviorTags.getAllTags());
+        return parser.fillSuggestions(builder, ConsumeBehaviorTags.getAllTags());
     }
 
     @Override

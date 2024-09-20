@@ -147,8 +147,8 @@ public class VSUtils {
     }
 
     // Adds properties for exponential stews and stained-glass bottles.
-    public static void addTextureIdentifier(Item expoStew) {
-        register(expoStew, Variants.variants("texture_id"), (stack, world, livEntity) -> {
+    public static void addTextureIdentifier(Item... items) {
+        for (Item item : items) register(item, Variants.variants("texture_id"), (stack, world, livEntity) -> {
             if (stack.getTag() != null && stack.getTag().contains("texture_id", Constants.TagTypes.ANY_NUMERIC)) return stack.getTag().getInt("texture_id");
             return 0;
         });

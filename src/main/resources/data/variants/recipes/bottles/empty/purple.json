@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:glass/purple"
+    }
+  },
+  "result": {
+    "item": "variants:purple_stained_glass_bottle",
+    "count": 3
+  }
+}

@@ -2,31 +2,21 @@ package melonystudios.variants.util;
 
 import com.google.gson.*;
 import melonystudios.variants.Variants;
+import melonystudios.variants.item.custom.food.TagConfigurableFoodItem;
 import melonystudios.variants.stew.StewBehavior;
-import net.minecraft.item.ItemStack;
+import melonystudios.variants.stew.custom.*;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.potion.Effect;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.StringUtils;
 
 import static melonystudios.variants.util.Constants.TagTypes.*;
 import static melonystudios.variants.util.NBTUtils.*;
 
 public class JSONUtils {
-    public static void writeItemFromNBT(String compoundName, CompoundNBT propertiesTag, JsonObject propertiesObj) {
-        JsonObject object = new JsonObject();
-        CompoundNBT curativeTag = propertiesTag.getCompound(compoundName);
-        object.addProperty("id", curativeTag.getString("id"));
-        if (curativeTag.getInt("count") != 1) object.addProperty("count", curativeTag.getInt("count"));
-        if (ForgeRegistries.ITEMS.containsKey(ResourceLocation.tryParse(curativeTag.getString("id")))) {
-            CompoundNBT curativeItemTag = new ItemStack(ForgeRegistries.ITEMS.getValue(ResourceLocation.tryParse(curativeTag.getString("id")))).getTag();
-            if (curativeItemTag != null) object.addProperty("tag", curativeItemTag.toString());
-        }
-        propertiesObj.add(compoundName, object);
-    }
-
-    public static void writeDamageSourceFromNBT(CompoundNBT propertiesTag, JsonObject propertiesObj) {
+    public static void writeDamageSourceToJSON(CompoundNBT propertiesTag, JsonObject propertiesObj) {
         CompoundNBT sourceTag = propertiesTag.getCompound("source");
         if (propertiesTag.contains("source", COMPOUND)) {
             JsonObject sourceObject = new JsonObject();
@@ -48,12 +38,24 @@ public class JSONUtils {
         propertiesObj.addProperty("amount", floatOrDefault("amount", propertiesTag, 1));
     }
 
-    public static void writeExplosionFromNBT(CompoundNBT propertiesTag, JsonObject propertiesObj) {
+    public static void writeExplosionToJSON(CompoundNBT propertiesTag, JsonObject propertiesObj) {
         propertiesObj.addProperty("radius", floatOrDefault("radius", propertiesTag, 0));
         propertiesObj.addProperty("create_fire", booleanOrDefault("create_fire", propertiesTag, false));
-        writeDamageSourceFromNBT(propertiesTag, propertiesObj);
+        writeDamageSourceToJSON(propertiesTag, propertiesObj);
         propertiesObj.addProperty("mode", stringOrDefault("mode", propertiesTag, "none"));
         propertiesObj.add("pos", blockPosOrDefault("pos", propertiesTag, new int[] {0, 0, 0}));
+    }
+
+    private static void writeEffectToJSON(EffectInstance instance, JsonArray effectsList) {
+        JsonObject effectObj = new JsonObject();
+        effectObj.addProperty("id", instance.getEffect().getRegistryName().toString());
+        effectObj.addProperty("duration", instance.getDuration());
+        if (instance.getAmplifier() > 0) effectObj.addProperty("amplifier", instance.getAmplifier());
+        if (instance.isAmbient()) effectObj.addProperty("ambient", true);
+        if (!instance.isVisible()) effectObj.addProperty("show_particle", false);
+        if (!instance.showIcon()) effectObj.addProperty("show_icon", false);
+        if (instance.isNoCounter()) effectObj.addProperty("no_counter", true);
+        effectsList.add(effectObj);
     }
 
     public static JsonArray blockPosOrDefault(String name, CompoundNBT tag, int[] fallback) {
@@ -115,6 +117,54 @@ public class JSONUtils {
             }
 
             return new TranslationTextComponent(template + "entire_object", element);
+        }
+    }
+
+    public static void saveBehaviorToJSON(TagConfigurableFoodItem tcfItem, StewBehavior behavior, JsonObject behaviorObj, CompoundNBT behaviorTag) {
+        // Behaviors
+        if (behavior instanceof ApplyMobEffectsBehavior) {
+            ApplyMobEffectsBehavior applyEffectsBehavior = (ApplyMobEffectsBehavior) tcfItem.getBehavior();
+            JsonArray effectsList = new JsonArray();
+            for (EffectInstance instance : applyEffectsBehavior.getEffects()) {
+                writeEffectToJSON(instance, effectsList);
+            }
+            behaviorObj.add("effects", effectsList);
+        } else if (behavior instanceof ClearMobEffectsBehavior) {
+            ClearMobEffectsBehavior clearEffectsBehavior = (ClearMobEffectsBehavior) tcfItem.getBehavior();
+            JsonObject curativeObject = new JsonObject();
+            curativeObject.addProperty("id", clearEffectsBehavior.getCurativeItem().getItem().getRegistryName().toString());
+            if (clearEffectsBehavior.getCurativeItem().getCount() != 1) curativeObject.addProperty("count", clearEffectsBehavior.getCurativeItem().getCount());
+            if (clearEffectsBehavior.getCurativeItem().getTag() != null) curativeObject.addProperty("components", clearEffectsBehavior.getCurativeItem().getTag().toString());
+            behaviorObj.add("curative_item", curativeObject);
+        } else if (behavior instanceof DamageEntityBehavior) {
+            JSONUtils.writeDamageSourceToJSON(behaviorTag, behaviorObj);
+        } else if (behavior instanceof ExplodeBehavior) {
+            JSONUtils.writeExplosionToJSON(behaviorTag, behaviorObj);
+        } else if (behavior instanceof IgniteBehavior) {
+            IgniteBehavior igniteBehavior = (IgniteBehavior) tcfItem.getBehavior();
+            behaviorObj.addProperty("ticks_on_fire", igniteBehavior.getTicksOnFire());
+        } else if (behavior instanceof AddExperienceBehavior) {
+            AddExperienceBehavior addExperienceBehavior = (AddExperienceBehavior) tcfItem.getBehavior();
+            behaviorObj.addProperty("amount", addExperienceBehavior.getExperienceAmount());
+            behaviorObj.addProperty("levels", addExperienceBehavior.addsLevels());
+        } else if (behavior instanceof TeleportEntityBehavior) {
+            TeleportEntityBehavior teleportBehavior = (TeleportEntityBehavior) tcfItem.getBehavior();
+            if (teleportBehavior.randomlyTeleports()) {
+                behaviorObj.addProperty("random_teleport", true);
+                behaviorObj.addProperty("teleport_diameter", teleportBehavior.getTeleportDiameter());
+            } else {
+                behaviorObj.addProperty("random_teleport", false);
+                JsonArray posArray = new JsonArray();
+                posArray.add(teleportBehavior.getTeleportPosition().getX());
+                posArray.add(teleportBehavior.getTeleportPosition().getY());
+                posArray.add(teleportBehavior.getTeleportPosition().getZ());
+                behaviorObj.add("teleport_position", posArray);
+            }
+        } else if (behavior instanceof RemoveEffectsBehavior) {
+            RemoveEffectsBehavior removeEffectsBehavior = (RemoveEffectsBehavior) tcfItem.getBehavior();
+            JsonArray effectArray = new JsonArray();
+            for (Effect effect : removeEffectsBehavior.getEffectsToRemove()) effectArray.add(effect.getRegistryName().toString());
+            behaviorObj.add("effects", effectArray);
         }
     }
 }

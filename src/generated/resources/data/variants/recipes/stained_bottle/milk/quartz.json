@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "milk_bottle",
+  "ingredients": [
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "variants:quartz_glass_bottle"
+    },
+    {
+      "item": "variants:quartz_glass_bottle"
+    },
+    {
+      "item": "variants:quartz_glass_bottle"
+    },
+    {
+      "item": "variants:quartz_glass_bottle"
+    }
+  ],
+  "result": {
+    "item": "variants:stained_milk_bottle",
+    "count": 4,
+    "nbt": {
+      "consumable": {
+        "use_remainder": {
+          "id": "variants:quartz_glass_bottle"
+        },
+        "behavior": {}
+      },
+      "texture_id": 17
+    }
+  }
+}
