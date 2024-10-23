@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 public class VSBeaconBlockEntity extends BeaconTileEntity {
     public static final Effect[][] BEACON_EFFECTS = new Effect[][] {{Effects.MOVEMENT_SPEED, Effects.DIG_SPEED}, {Effects.DAMAGE_RESISTANCE, Effects.JUMP}, {Effects.DAMAGE_BOOST}, {Effects.REGENERATION}};
     private static final Set<Effect> VALID_EFFECTS = Arrays.stream(BEACON_EFFECTS).flatMap(Arrays::stream).collect(Collectors.toSet());
-    private List<BeamSegment> beamSections = Lists.newArrayList();
+    private final List<BeamSegment> beamSections = Lists.newArrayList();
     private int levels;
     @Nullable
     private Effect primaryPower;

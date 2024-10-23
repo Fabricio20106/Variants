@@ -11,6 +11,7 @@ import melonystudios.variants.item.VSItems;
 import melonystudios.variants.item.VSWeaponry;
 import melonystudios.variants.item.custom.armor.WoolArmorItem;
 import melonystudios.variants.item.custom.armor.color.WoolArmorColorManager;
+import melonystudios.variants.item.custom.bottle.StainedFullGlassBottleItem;
 import melonystudios.variants.stew.bowl.BowlTypeManager;
 import melonystudios.variants.util.damage.DamageSourceManager;
 import melonystudios.variants.world.carver.VSConfiguredCarvers;
@@ -23,6 +24,7 @@ import net.minecraft.entity.merchant.villager.VillagerTrades;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.MerchantOffer;
+import net.minecraft.loot.RandomValueRange;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.GenerationStage;
@@ -47,6 +49,9 @@ public class VSEvents {
         ConsumableCommand.register(event.getDispatcher());
         ConsumeBehaviorCommand.register(event.getDispatcher());
         DamageCommand.register(event.getDispatcher());
+        // Command ideas (isa, 25/9/24):
+        //  - /nbt - configure all NBT tags of all items in the game
+        //  - /variants - general-use configuration command (and miscellaneous things like cooldowns)
     }
 
     @SubscribeEvent
@@ -143,6 +148,8 @@ public class VSEvents {
             // Level 5 "Master"
             trades.get(5).add((trader, rand) -> new MerchantOffer(new ItemStack(VSItems.WARPED_WART.get(), 22), new ItemStack(Items.EMERALD, 1),
                     12, 30, 0.05F));
+            trades.get(5).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 3), StainedFullGlassBottleItem.setTextureIdentifier(new ItemStack(
+                    VSItems.STAINED_EXPERIENCE_BOTTLE.get()), new RandomValueRange(0, 17)), 12, 30, 0.05F));
         }
 
         // Todo: Fisherman Trades

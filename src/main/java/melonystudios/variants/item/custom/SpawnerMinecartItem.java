@@ -83,8 +83,8 @@ public class SpawnerMinecartItem extends MinecartItem {
     // Methods below copied from Melony Lib.
     @Nullable
     private static ITextComponent getSpawnEntityDisplayName(ItemStack stack) {
-        CompoundNBT tag = stack.getTagElement("spawn_data");
-        ResourceLocation entityKey = getEntityKey(tag);
+        CompoundNBT spawnDataTag = stack.getTagElement("spawn_data");
+        ResourceLocation entityKey = getEntityKey(spawnDataTag);
         return entityKey != null ? new TranslationTextComponent(ForgeRegistries.ENTITIES.getValue(entityKey).getDescriptionId()) : null;
     }
 

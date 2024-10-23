@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "variants:powder_snow_bottle"
+    },
+    {
+      "tag": "forge:dusts/gunpowder"
+    }
+  ],
+  "result": {
+    "item": "variants:splash_powder_snow_bottle"
+  }
+}

@@ -44,6 +44,9 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
 
         this.tag(Tags.Blocks.FENCES_NETHER_BRICK).add(VSBlocks.RED_NETHER_BRICK_FENCE.get());
 
+        // Minecraft World Generation-Related Tags
+        this.tag(VSBlockTags.PLANTS_PLACEABLE_ON).addTag(VSBlockTags.NATURAL_FARMLAND).add(Blocks.GRASS_BLOCK, Blocks.PODZOL, Blocks.DIRT, Blocks.COARSE_DIRT);
+
         // Variants' Tags
         this.tag(VSBlockTags.PAINTING_DOORS).add(VSBlocks.PAINTING_DOOR_WANDERER.get()).add(VSBlocks.PAINTING_DOOR_GRAHAM.get()).add(VSBlocks.PAINTING_DOOR_FIRST.get());
         this.tag(VSBlockTags.PAINTING_TRAPDOORS).add(VSBlocks.PAINTING_TRAPDOOR_ALBAN.get()).add(VSBlocks.PAINTING_TRAPDOOR_AZTEC.get()).add(VSBlocks.PAINTING_TRAPDOOR_AZTEC2.get()).add(VSBlocks.PAINTING_TRAPDOOR_BOMB.get())
@@ -70,7 +73,8 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         // Melony Tags
         this.tag(VSBlockTags.DEEPSLATE_REPLACEABLES).addOptional(new ResourceLocation("minecraft:deepslate")).addOptional(new ResourceLocation("cavesandcliffs:deepslate")).addOptional(new ResourceLocation("quark:deepslate"))
                 .addOptional(new ResourceLocation("decorativelary:deepslate"));
-        this.tag(VSBlockTags.FARMLAND).add(Blocks.FARMLAND).add(VSBlocks.CRIMSON_FARMLAND.get()).add(VSBlocks.WARPED_FARMLAND.get()).add(VSBlocks.ENDER_FARMLAND.get()).addOptional(backMath("aljamic_farmland"));
+        this.tag(VSBlockTags.FARMLAND).addTag(VSBlockTags.NATURAL_FARMLAND).add(VSBlocks.CRIMSON_FARMLAND.get()).add(VSBlocks.WARPED_FARMLAND.get());
+        this.tag(VSBlockTags.NATURAL_FARMLAND).add(Blocks.FARMLAND).add(VSBlocks.ENDER_FARMLAND.get()).addOptional(backMath("aljamic_farmland"));
         this.tag(VSBlockTags.CONDUIT_FRAME_BLOCKS).add(VSBlocks.ELDER_PRISMARINE.get()).add(VSBlocks.ELDER_PRISMARINE_BRICKS.get()).add(VSBlocks.DARK_ELDER_PRISMARINE.get()).add(VSBlocks.ELDER_SEA_LANTERN.get());
         this.tag(VSBlockTags.COMPLETES_FIND_TREE_TUTORIAL).addTag(BlockTags.LOGS).addTag(BlockTags.LEAVES).addTag(BlockTags.WART_BLOCKS);
 

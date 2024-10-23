@@ -42,7 +42,7 @@ public class VSCommonConfigs {
     // Enchantments
     public final ForgeConfigSpec.BooleanValue enableQuickChargeFive;
 
-    // Stew Behaviors
+    // Consume Behaviors
     public final ForgeConfigSpec.DoubleValue explosionRadiusUpperLimit;
     public final ForgeConfigSpec.DoubleValue soundPitchUpperLimit;
 
@@ -70,7 +70,7 @@ public class VSCommonConfigs {
         this.populateWoolArmorColorInTabs = builder.comment("Should the item tabs populate all (dye) colors of wool armor?").define("populateWoolArmorColorInTabs", true);
         this.populateWoolArmorDesignsInTabs = builder.comment("Should the item tabs populate all armor designs of wool armor?").define("populateWoolArmorDesignsInTabs", true);
         this.populateExponentialBowlsInTabs = builder.comment("Should the item tabs populate all different wood types for all bowls?").define("populateExponentialBowlsInTabs", true);
-        this.populateStainedGlassBottlesInTabs = builder.comment("Should the item tabs populate all different stained glass bottles for all bottle types?").define("populateStainedGlassBottlesInTabs", true);
+        this.populateStainedGlassBottlesInTabs = builder.comment("Should the item tabs populate all different stained-glass bottles for all bottle types?").define("populateStainedGlassBottlesInTabs", true);
         this.populateSpawnerMinecartsInTabs = builder.comment("Should the item tabs populate a Spawner Minecart for every mob in the game?").define("populateSpawnerMinecartsInTabs", false);
         this.placeSpawnerWhenBreakingMinecart = builder.comment("Should the Spawner inside Spawner Minecarts place itself when the minecart is broken?").define("placeSpawnerWhenBreakingMinecart", true);
         this.populateTagConfigurableFoodTags = builder.comment("Should the item tabs populate the NBT data of tag-configurable foods?").define("populateTagConfigurableFoodTags", false);
@@ -92,7 +92,7 @@ public class VSCommonConfigs {
         this.infinitySweatersTabSpacing = builder.comment("The spacing between sweater colors. (Def: 16)").defineInRange("infinitySweatersTab.infinitySweatersTabSpacing", 16, 1, 16777215);
         builder.pop();
 
-        builder.push("stewBehaviors");
+        builder.push("consumeBehaviors");
         this.explosionRadiusUpperLimit = builder.comment("What should the upper limit of the explosion radius in Explode behaviors be?").defineInRange("explosionRadiusUpperLimit", 128, 0, Float.MAX_VALUE);
         this.soundPitchUpperLimit = builder.comment("What should the upper limit of the pitch in Play Sound behaviors be?").defineInRange("soundPitchUpperLimit", 2, 0, Float.MAX_VALUE);
         builder.pop();

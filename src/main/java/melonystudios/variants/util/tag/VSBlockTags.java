@@ -13,6 +13,9 @@ public class VSBlockTags {
     public static final ITag.INamedTag<Block> GLASS_GLOW_BLACK = forge("glass/glow_black");
     public static final ITag.INamedTag<Block> GLASS_PANES_GLOW_BLACK = forge("glass_panes/glow_black");
 
+    // Minecraft World generation-Related Tags
+    public static final ITag.INamedTag<Block> PLANTS_PLACEABLE_ON = worldGeneration("plants_placeable_on");
+
     // Variants' Tags
     public static final ITag.INamedTag<Block> PAINTING_DOORS = mod("painting_doors");
     public static final ITag.INamedTag<Block> PAINTING_TRAPDOORS = mod("painting_trapdoors");
@@ -36,6 +39,7 @@ public class VSBlockTags {
     // Melony (convention) Tags
     public static final ITag.INamedTag<Block> DEEPSLATE_REPLACEABLES = melony("deepslate_replaceables");
     public static final ITag.INamedTag<Block> FARMLAND = melony("farmland");
+    public static final ITag.INamedTag<Block> NATURAL_FARMLAND = melony("natural_farmland");
     public static final ITag.INamedTag<Block> CONDUIT_FRAME_BLOCKS = melony("conduit_frame_blocks");
     public static final ITag.INamedTag<Block> FARMLAND_TRANSPARENT = melony("farmland_transparent");
     public static final ITag.INamedTag<Block> COMPLETES_FIND_TREE_TUTORIAL = melony("completes_find_tree_tutorial");
@@ -46,6 +50,10 @@ public class VSBlockTags {
 
     public static ITag.INamedTag<Block> melony(String name) {
         return BlockTags.bind(new ResourceLocation("melony", name).toString());
+    }
+
+    public static ITag.INamedTag<Block> worldGeneration(String name) {
+        return BlockTags.bind(new ResourceLocation("worldgen/" + name).toString());
     }
 
     public static ITag.INamedTag<Block> mod(String name) {

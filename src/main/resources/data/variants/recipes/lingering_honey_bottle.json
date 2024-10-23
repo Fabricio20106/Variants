@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "variants:splash_honey_bottle"
+    },
+    {
+      "tag": "variants:dragon_breath_bottles"
+    }
+  ],
+  "result": {
+    "item": "variants:lingering_honey_bottle"
+  }
+}

@@ -1,6 +1,7 @@
 package melonystudios.variants.item.custom.food;
 
 import melonystudios.variants.config.VSConfigs;
+import melonystudios.variants.item.custom.VSItem;
 import melonystudios.variants.stew.StewBehavior;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.NBTUtils;
@@ -24,7 +25,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Locale;
 
-public class TagConfigurableFoodItem extends Item implements TagConfigurableFood {
+public class TagConfigurableFoodItem extends VSItem implements TagConfigurableFood {
     public boolean useDefaultBehaviorTooltips = true;
     public boolean populateTagsByDefault = false;
     public boolean populateBehavior = false;

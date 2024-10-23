@@ -3,6 +3,7 @@ package melonystudios.variants.world.biome.provider;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import melonystudios.variants.Variants;
 import melonystudios.variants.world.biome.VSBiomes;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.SharedSeedRandom;
@@ -17,10 +18,11 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import static melonystudios.variants.config.VSConfigs.COMMON_CONFIGS;
+import javax.annotation.Nonnull;
 
 // Replaces the End Midlands biome with the Enderwood Forest.
 public class VSEndBiomeProvider extends BiomeProvider {
+    public static final RegistryKey<Biome> THE_END_SUBSTITUTION = RegistryKey.create(ForgeRegistries.Keys.BIOMES, Variants.INSTANCE.getConfig().substituteTheEndBiomeWith);
     public static final RegistryKey<Biome> ENDERWOOD_FOREST = RegistryKey.create(ForgeRegistries.Keys.BIOMES, VSBiomes.ENDERWOOD_FOREST.getId());
 
     public static final Codec<VSEndBiomeProvider> CODEC = RecordCodecBuilder.create((providerInstance) -> providerInstance.group(RegistryLookupCodec.create(Registry.BIOME_REGISTRY).forGetter((biomeProvider) -> biomeProvider.biomes), Codec.LONG.fieldOf(
@@ -36,7 +38,7 @@ public class VSEndBiomeProvider extends BiomeProvider {
     private final Biome enderwoodForest;
 
     public VSEndBiomeProvider(Registry<Biome> biomeReg, long seed) {
-        this(biomeReg, seed, biomeReg.getOrThrow(COMMON_CONFIGS.substituteEndWithEnderwoodForest.get() ? ENDERWOOD_FOREST : Biomes.THE_END), biomeReg.getOrThrow(Biomes.END_HIGHLANDS), biomeReg.getOrThrow(ENDERWOOD_FOREST),
+        this(biomeReg, seed, biomeReg.getOrThrow(THE_END_SUBSTITUTION), biomeReg.getOrThrow(Biomes.END_HIGHLANDS), biomeReg.getOrThrow(ENDERWOOD_FOREST),
                 biomeReg.getOrThrow(Biomes.SMALL_END_ISLANDS), biomeReg.getOrThrow(Biomes.END_BARRENS), biomeReg.getOrThrow(ENDERWOOD_FOREST));
     }
 
@@ -55,15 +57,21 @@ public class VSEndBiomeProvider extends BiomeProvider {
         this.islandNoise = new SimplexNoiseGenerator(seedRandom);
     }
 
+    @Override
+    @Nonnull
     public Codec<? extends BiomeProvider> codec() {
         return CODEC;
     }
 
+    @Override
+    @Nonnull
     @OnlyIn(Dist.CLIENT)
     public BiomeProvider withSeed(long seed) {
         return new VSEndBiomeProvider(this.biomes, seed, this.end, this.highlands, this.midlands, this.islands, this.barrens, this.enderwoodForest);
     }
 
+    @Override
+    @Nonnull
     public Biome getNoiseBiome(int x, int y, int z) {
         int i = x >> 2;
         int j = z >> 2;
@@ -83,16 +91,16 @@ public class VSEndBiomeProvider extends BiomeProvider {
         }
     }
 
-    public static float getHeightValue(SimplexNoiseGenerator generator, int int1, int int2) {
-        int i = int1 / 2;
-        int j = int2 / 2;
-        int k = int1 % 2;
-        int l = int2 % 2;
-        float f = 100 - MathHelper.sqrt((float) (int1 * int1 + int2 * int2)) * 8;
+    public static float getHeightValue(SimplexNoiseGenerator generator, int x, int z) {
+        int i = x / 2;
+        int j = z / 2;
+        int k = x % 2;
+        int l = z % 2;
+        float f = 100 - MathHelper.sqrt((float) (x * x + z * z)) * 8;
         f = MathHelper.clamp(f, -100, 80);
 
-        for(int i1 = -12; i1 <= 12; ++i1) {
-            for(int j1 = -12; j1 <= 12; ++j1) {
+        for (int i1 = -12; i1 <= 12; ++i1) {
+            for (int j1 = -12; j1 <= 12; ++j1) {
                 long k1 = i + i1;
                 long l1 = j + j1;
                 if (k1 * k1 + l1 * l1 > 4096L && generator.getValue((double) k1, (double) l1) < (double) -0.9F) {

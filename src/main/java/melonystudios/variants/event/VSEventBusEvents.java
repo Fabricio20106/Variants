@@ -52,7 +52,6 @@ public class VSEventBusEvents {
         generator.addProvider(new VSBowlTypesProvider(generator));
         generator.addProvider(new VSWoolArmorColorProvider(generator));
         generator.addProvider(new VSWoolArmorColorProvider.VanillaWACProvider(generator));
-        generator.addProvider(new VSWoolArmorColorProvider.BackMathWACProvider(generator));
         generator.addProvider(new VSWoolArmorColorProvider.F10ElementsWACProvider(generator));
         generator.addProvider(new VSSoundDefinitionsProvider(generator, fileHelper));
         generator.addProvider(new VSVanillaSoundDefinitionsProvider(generator, fileHelper));

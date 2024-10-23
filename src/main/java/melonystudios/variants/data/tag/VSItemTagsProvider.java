@@ -129,7 +129,10 @@ public class VSItemTagsProvider extends ItemTagsProvider {
                 .add(VSItems.GRAY_SHULKER_SHELL.get()).add(VSItems.LIGHT_GRAY_SHULKER_SHELL.get()).add(VSItems.CYAN_SHULKER_SHELL.get())
                 .add(VSItems.PURPLE_SHULKER_SHELL.get()).add(VSItems.BLUE_SHULKER_SHELL.get()).add(VSItems.BROWN_SHULKER_SHELL.get())
                 .add(VSItems.GREEN_SHULKER_SHELL.get()).add(VSItems.RED_SHULKER_SHELL.get()).add(VSItems.BLACK_SHULKER_SHELL.get());
-        this.tag(VSItemTags.THROWABLE_POTIONS).add(Items.SPLASH_POTION, Items.LINGERING_POTION);
+        this.tag(VSItemTags.THROWABLE_POTIONS).add(Items.SPLASH_POTION, Items.LINGERING_POTION, VSItems.SPLASH_HONEY_BOTTLE.get(), VSItems.LINGERING_HONEY_BOTTLE.get(), VSItems.SPLASH_LAVA_BOTTLE.get(), VSItems.LINGERING_LAVA_BOTTLE.get(),
+                VSItems.SPLASH_SOUL_LAVA_BOTTLE.get(), VSItems.LINGERING_SOUL_LAVA_BOTTLE.get(), VSItems.SPLASH_MILK_BOTTLE.get(), VSItems.LINGERING_MILK_BOTTLE.get(), VSItems.SPLASH_POWDER_SNOW_BOTTLE.get(), VSItems.LINGERING_POWDER_SNOW_BOTTLE.get(),
+                VSItems.SPLASH_SOPHIE_POTION.get(), VSItems.LINGERING_SOPHIE_POTION.get());
+        this.tag(VSItemTags.DRAGON_BREATH_BOTTLES).add(Items.DRAGON_BREATH, VSItems.SPLASH_DRAGON_BREATH.get(), VSItems.LINGERING_DRAGON_BREATH.get(), VSItems.STAINED_DRAGON_BREATH.get());
 
         this.tag(VSItemTags.FLOWER_POTS).add(VSItems.POTTED_GLOW_BLACK_TULIP.get()).add(VSItems.POTTED_SUNNY_FLOWER.get()).add(VSItems.POTTED_SUGAR_CANE.get()).add(VSItems.POTTED_GRASS.get()).add(VSItems.POTTED_PAINTING_SAPLING.get())
                 .add(VSItems.POTTED_GOLDEN_CARROTS.get()).add(VSItems.POTTED_ENDER_ROOTS.get()).add(VSItems.POTTED_ENDER_FUNGUS.get()).add(VSItems.POTTED_NETHER_WART.get()).add(VSItems.POTTED_WARPED_WART.get())

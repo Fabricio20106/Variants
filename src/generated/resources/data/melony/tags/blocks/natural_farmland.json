@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:farmland",
+    "variants:ender_farmland",
+    {
+      "id": "backmath:aljamic_farmland",
+      "required": false
+    }
+  ]
+}

@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class VSExpoStewsRecipeProvider extends RecipeProvider {
-    public static List<BowlType> DEFAULT_BOWLS = Lists.newArrayList(BowlTypes.OAK, BowlTypes.SPRUCE, BowlTypes.BIRCH, BowlTypes.JUNGLE, BowlTypes.ACACIA, BowlTypes.DARK_OAK, BowlTypes.PAINTING, BowlTypes.CRIMSON, BowlTypes.WARPED,
+    public static final List<BowlType> DEFAULT_BOWLS = Lists.newArrayList(BowlTypes.OAK, BowlTypes.SPRUCE, BowlTypes.BIRCH, BowlTypes.JUNGLE, BowlTypes.ACACIA, BowlTypes.DARK_OAK, BowlTypes.PAINTING, BowlTypes.CRIMSON, BowlTypes.WARPED,
             BowlTypes.ENDERWOOD);
 
     public VSExpoStewsRecipeProvider(DataGenerator generator) {

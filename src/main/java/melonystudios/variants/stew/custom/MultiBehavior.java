@@ -31,8 +31,7 @@ public class MultiBehavior extends StewBehavior {
 
     @Override
     public void executeFromStewNBT(ItemStack stewStack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
-        assert propertiesTag != null;
-        if (propertiesTag.contains("behaviors", Constants.TagTypes.LIST)) {
+        if (propertiesTag != null && propertiesTag.contains("behaviors", Constants.TagTypes.LIST)) {
             ListNBT behaviorList = propertiesTag.getList("behaviors", Constants.TagTypes.COMPOUND);
             for (int i = 0; i < behaviorList.size(); ++i) {
                 CompoundNBT behaviorTag = behaviorList.getCompound(i);
@@ -41,6 +40,8 @@ public class MultiBehavior extends StewBehavior {
                     if (behavior != null) behavior.executeFromStewNBT(stewStack, world, livEntity, behaviorTag);
                 }
             }
+        } else if (this.behaviors != null) {
+            for (StewBehavior behavior : this.behaviors) behavior.executeFromStewNBT(stewStack, world, livEntity, propertiesTag);
         }
     }
 

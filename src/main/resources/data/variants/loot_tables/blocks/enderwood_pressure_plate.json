@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "variants:ender_pressure_plate"
+          "name": "variants:enderwood_pressure_plate"
         }
       ],
       "conditions": [

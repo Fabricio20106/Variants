@@ -1,6 +1,8 @@
 package melonystudios.variants.util;
 
 import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import melonystudios.variants.Variants;
 import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.util.damage.DamageSourceUtils;
@@ -17,9 +19,11 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -28,6 +32,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class NBTUtils {
+    public static final Codec<ItemStack> ITEM_STACK_CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            Registry.ITEM.fieldOf("id").forGetter(ItemStack::getItem),
+            Codec.INT.fieldOf("count").orElse(1).forGetter(ItemStack::getCount),
+            CompoundNBT.CODEC.fieldOf("components").forGetter(ItemStack::getTag)
+    ).apply(instance, VSUtils::loadStack));
+
     public static boolean shouldNotHideTooltip(String toHide, ItemStack stack) {
         if (stack.getTag() != null && stack.getTag().contains(toHide)) {
             return !stack.getTag().getBoolean(toHide);
@@ -36,8 +46,7 @@ public class NBTUtils {
     }
 
     public static void addHidingTag(String toHide, ItemStack stack) {
-        CompoundNBT tag = stack.getOrCreateTag();
-        tag.putBoolean(toHide, true);
+        stack.getOrCreateTag().putBoolean(toHide, true);
     }
 
     public static void addItemTagsTooltip(ItemStack stack, List<ITextComponent> tooltip, ITooltipFlag flag) {
@@ -180,6 +189,15 @@ public class NBTUtils {
             case "trident": case "spear": return UseAction.SPEAR;
             case "crossbow": return UseAction.CROSSBOW;
             case "eat": default: return UseAction.EAT;
+        }
+    }
+
+    public static Explosion.Mode parseExplosionModeFromString(String mode) {
+        switch (mode) {
+            case "break": return Explosion.Mode.BREAK;
+            case "destroy": return Explosion.Mode.DESTROY;
+            case "none": return Explosion.Mode.NONE;
+            default: return null;
         }
     }
 

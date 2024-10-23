@@ -24,7 +24,6 @@ import net.minecraft.world.World;
 
 import static net.minecraft.client.renderer.Atlases.BED_SHEET;
 
-@SuppressWarnings("unchecked")
 public class VSBedBlockEntityRenderer extends TileEntityRenderer<VSBedBlockEntity> {
     private final ModelRenderer headPiece = new ModelRenderer(64, 64, 0, 0);
     private final ModelRenderer footPiece = new ModelRenderer(64, 64, 0, 22);

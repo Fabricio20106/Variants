@@ -9,7 +9,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import org.lwjgl.glfw.GLFW;
 
 public class VSKeys {
-    public static final KeyBinding SHOW_TAGS_KEY = new KeyBinding("key.variants.show_tags", GLFW.GLFW_KEY_LEFT_ALT, "key.categories.melony_studios");
+    public static final KeyBinding SHOW_TAGS_KEY = new KeyBinding("key.melony_studios.show_tags", GLFW.GLFW_KEY_LEFT_ALT, "key.categories.melony_studios");
 
     @OnlyIn(Dist.CLIENT)
     public static boolean isAltDown() {

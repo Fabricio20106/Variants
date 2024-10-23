@@ -43,6 +43,8 @@ import java.util.Map;
 import static net.minecraft.item.ItemModelsProperties.register;
 
 public class VSUtils {
+    private static final List<String> VALID_WOOD_TYPES = Lists.newArrayList("warped", "crimson", "painting", "enderwood");
+
     // Puts an item in the player's hands without playing the "Gear equips" sound.
     public static void setItemInHand(PlayerEntity player, Hand hand, ItemStack stack) {
         if (hand == Hand.MAIN_HAND) {
@@ -234,10 +236,21 @@ public class VSUtils {
     }
 
     public static CompoundNBT saveStack(ItemStack stack, CompoundNBT tag) {
-        tag.putString("id", stack.getItem().getRegistryName().toString());
-        if (stack.getCount() != 1) tag.putInt("count", stack.getCount());
-        if (stack.getTag() != null) tag.put("components", stack.getTag().copy());
+        if (stack == ItemStack.EMPTY) {
+            tag.putString("id", "minecraft:air");
+            tag.putInt("count", 0);
+        } else {
+            tag.putString("id", stack.getItem().getRegistryName().toString());
+            if (stack.getCount() != 1) tag.putInt("count", stack.getCount());
+            if (stack.getTag() != null) tag.put("components", stack.getTag().copy());
+        }
         return tag;
+    }
+
+    public static ItemStack loadStack(Item item, int count, CompoundNBT components) {
+        ItemStack stack = new ItemStack(item, count);
+        stack.setTag(components);
+        return stack;
     }
 
     // Custom stack loading method that supports integer stack counts and string tag parsing.
@@ -286,6 +299,6 @@ public class VSUtils {
     }
 
     private static boolean isValidWoodType(String woodType) {
-        return woodType.equals("crimson") || woodType.equals("warped") || woodType.equals("painting") || woodType.equals("enderwood");
+        return VALID_WOOD_TYPES.contains(woodType);
     }
 }

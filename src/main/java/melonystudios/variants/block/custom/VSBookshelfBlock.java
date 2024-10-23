@@ -29,8 +29,8 @@ public class VSBookshelfBlock extends Block {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable IBlockReader world, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".bookshelf_enchanting_power", new StringTextComponent("" + this.enchantingPower).withStyle(VSStyles.EXPERIENCE))
-                .withStyle(TextFormatting.GRAY));
         super.appendHoverText(stack, world, tooltip, flag);
+        if (flag.isAdvanced()) tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".bookshelf_enchanting_power", new StringTextComponent("" + this.enchantingPower).withStyle(VSStyles.EXPERIENCE))
+                .withStyle(TextFormatting.GRAY));
     }
 }

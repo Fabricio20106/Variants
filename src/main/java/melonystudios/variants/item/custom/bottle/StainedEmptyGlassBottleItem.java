@@ -1,6 +1,7 @@
 package melonystudios.variants.item.custom.bottle;
 
 import melonystudios.variants.item.VSItems;
+import melonystudios.variants.item.custom.VSItem;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.VanillaUtils;
 import net.minecraft.block.BlockState;
@@ -8,7 +9,6 @@ import net.minecraft.command.impl.data.EntityDataAccessor;
 import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DyeColor;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.nbt.CompoundNBT;
@@ -32,7 +32,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class StainedEmptyGlassBottleItem extends Item {
+public class StainedEmptyGlassBottleItem extends VSItem {
     private final int glassColor;
     private final ResourceLocation colorName;
 
@@ -95,11 +95,11 @@ public class StainedEmptyGlassBottleItem extends Item {
             world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.BOTTLE_FILL_DRAGONBREATH, SoundCategory.NEUTRAL, 1,  1);
             return ActionResult.sidedSuccess(this.turnBottleIntoItem(handStack, player, new ItemStack(VSItems.STAINED_DRAGON_BREATH.get())), world.isClientSide);
         } else {
-            RayTraceResult hitResult = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
+            BlockRayTraceResult hitResult = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
             if (hitResult.getType() == RayTraceResult.Type.MISS) return ActionResult.pass(handStack);
             else {
                 if (hitResult.getType() == RayTraceResult.Type.BLOCK) {
-                    BlockPos hitPos = ((BlockRayTraceResult) hitResult).getBlockPos();
+                    BlockPos hitPos = hitResult.getBlockPos();
                     if (!world.mayInteract(player, hitPos)) return ActionResult.pass(handStack);
 
                     if (world.getFluidState(hitPos).is(FluidTags.WATER)) {

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "variants:milk_bottle"
+    },
+    {
+      "tag": "forge:dusts/gunpowder"
+    }
+  ],
+  "result": {
+    "item": "variants:splash_milk_bottle"
+  }
+}

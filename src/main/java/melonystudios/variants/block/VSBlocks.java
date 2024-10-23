@@ -176,7 +176,7 @@ public class VSBlocks {
     public static final RegistryObject<FlowingFluidBlock> MUSHROOM_STEW = BLOCKS.register("mushroom_stew", () -> new FlowingFluidBlock(VSFluids.MUSHROOM_STEW, AbstractBlock.Properties.of(Material.WATER, MaterialColor.TERRACOTTA_WHITE).noCollission().randomTicks().strength(100).noDrops()));
 
     private static ToIntFunction<BlockState> emitWhenLit(int light) {
-        return (state) -> state.getValue(BlockStateProperties.LIT) ? light : 0;
+        return state -> state.getValue(BlockStateProperties.LIT) ? light : 0;
     }
 
     private static RotatedPillarBlock log(MaterialColor top, MaterialColor side) {

@@ -28,4 +28,7 @@ public class VSEntities {
 
     public static final RegistryObject<EntityType<StainedExperienceBottleEntity>> STAINED_EXPERIENCE_BOTTLE = ENTITIES.register("stained_experience_bottle", () -> EntityType.Builder.<StainedExperienceBottleEntity>of(StainedExperienceBottleEntity::new, EntityClassification.MISC)
             .sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build(Variants.variants("stained_experience_bottle").toString()));
+
+    public static final RegistryObject<EntityType<BehaviorBottleEntity>> BEHAVIOR_BOTTLE = ENTITIES.register("behavior_bottle", () -> EntityType.Builder.<BehaviorBottleEntity>of(BehaviorBottleEntity::new, EntityClassification.MISC)
+            .sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build(Variants.variants("behavior_bottle").toString()));
 }

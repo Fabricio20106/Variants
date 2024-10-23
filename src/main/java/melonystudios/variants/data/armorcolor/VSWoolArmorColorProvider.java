@@ -55,26 +55,6 @@ public class VSWoolArmorColorProvider extends WoolArmorColorProvider {
         }
     }
 
-    public static class BackMathWACProvider extends WoolArmorColorProvider {
-        public BackMathWACProvider(DataGenerator generator) {
-            super(generator, "backmath");
-        }
-
-        @Override
-        @Nonnull
-        public String getName() {
-            return "Variants - Wool Armor Colors (Back Math)";
-        }
-
-        @Override
-        protected void addWoolArmorColors() {
-            this.add("red_yellow", WoolArmorColor.RED_YELLOW);
-            this.add("aljan_light_blue", WoolArmorColor.ALJAN_LIGHT_BLUE);
-            this.add("poison_brown", WoolArmorColor.POISON_BROWN);
-            this.add("insomnian", WoolArmorColor.INSOMNIAN);
-        }
-    }
-
     public static class F10ElementsWACProvider extends WoolArmorColorProvider {
         public F10ElementsWACProvider(DataGenerator generator) {
             super(generator, "f10elements");

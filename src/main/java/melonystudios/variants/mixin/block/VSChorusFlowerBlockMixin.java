@@ -12,6 +12,7 @@ import net.minecraftforge.common.ForgeHooks;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -132,6 +133,7 @@ public abstract class VSChorusFlowerBlockMixin extends Block {
         }
     }
 
+    @Unique
     private static boolean allNeighborsEmpty(IWorldReader world, BlockPos pos, @Nullable Direction direction) {
         for (Direction hDirections : Direction.Plane.HORIZONTAL) {
             if (hDirections != direction && !world.isEmptyBlock(pos.relative(hDirections))) {

@@ -1,11 +1,11 @@
 package melonystudios.variants.item.custom.tool;
 
+import melonystudios.variants.item.custom.VSItem;
 import melonystudios.variants.sound.VSSounds;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.tag.VSItemTags;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.stats.Stats;
@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class SpyglassItem extends Item {
+public class SpyglassItem extends VSItem {
     public SpyglassItem(Properties properties) {
         super(properties);
     }

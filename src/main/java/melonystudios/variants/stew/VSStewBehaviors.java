@@ -15,6 +15,7 @@ public class VSStewBehaviors {
     public static final RegistryObject<StewBehavior> APPLY_MOB_EFFECTS = BEHAVIORS.register("apply_mob_effects", () -> new ApplyMobEffectsBehavior(Lists.newArrayList()));
     public static final RegistryObject<StewBehavior> CLEAR_MOB_EFFECTS = BEHAVIORS.register("clear_mob_effects", ClearMobEffectsBehavior::new);
     public static final RegistryObject<StewBehavior> DAMAGE_ENTITY = BEHAVIORS.register("damage_entity", DamageEntityBehavior::new);
+    public static final RegistryObject<StewBehavior> EAT_ITEM = BEHAVIORS.register("eat_item", EatItemBehavior::new);
     public static final RegistryObject<StewBehavior> EXPLODE = BEHAVIORS.register("explode", ExplodeBehavior::new);
     public static final RegistryObject<StewBehavior> IGNITE = BEHAVIORS.register("ignite", IgniteBehavior::new);
     public static final RegistryObject<StewBehavior> MULTI_BEHAVIOR = BEHAVIORS.register("multi_behavior", MultiBehavior::new);

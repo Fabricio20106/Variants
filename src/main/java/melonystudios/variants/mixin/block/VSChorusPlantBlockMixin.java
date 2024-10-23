@@ -11,6 +11,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -27,6 +28,7 @@ public class VSChorusPlantBlockMixin extends Block {
         return this.getStateForPlacement(context.getLevel(), context.getClickedPos());
     }
 
+    @Unique
     public BlockState getStateForPlacement(IBlockReader world, BlockPos pos) {
         Block block = world.getBlockState(pos.below()).getBlock();
         Block block1 = world.getBlockState(pos.above()).getBlock();

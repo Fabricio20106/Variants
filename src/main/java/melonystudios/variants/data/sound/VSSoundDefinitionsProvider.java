@@ -64,7 +64,7 @@ public class VSSoundDefinitionsProvider extends SoundDefinitionsProvider {
                 .with(SoundDefinition.Sound.sound(variants("item/spyglass/stop"), SoundDefinition.SoundType.SOUND).volume(0.5).pitch(0.8))
                 .with(SoundDefinition.Sound.sound(variants("item/spyglass/stop"), SoundDefinition.SoundType.SOUND).volume(0.5).pitch(0.9)).subtitle("subtitles.item.spyglass.stop_using"));
 
-        // Stew Behaviors
+        // Consume Behaviors
         // this.add(VSSounds.PLAY_SOUND_BEHAVIOR_DEFAULT.get(), SoundDefinition.definition().with());
 
         // Unused as of now because the game crashes when using these (don't know why, Minecraft is weird).

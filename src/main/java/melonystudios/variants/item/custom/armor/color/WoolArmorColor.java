@@ -24,25 +24,22 @@ public class WoolArmorColor {
     public static final WoolArmorColor GRAY = new WoolArmorColor(minecraft("gray"), 4673362, "color.minecraft.gray");
     public static final WoolArmorColor BLACK = new WoolArmorColor(minecraft("black"), 1908001, "color.minecraft.black");
     public static final WoolArmorColor BROWN = new WoolArmorColor(minecraft("brown"), 8606770, "color.minecraft.brown");
-    public static final WoolArmorColor POISON_BROWN = new WoolArmorColor(new ResourceLocation("backmath:poison_brown"), 8921856, "color.backmath.poison_brown");
     public static final WoolArmorColor RED = new WoolArmorColor(minecraft("red"), 11546150, "color.minecraft.red");
-    public static final WoolArmorColor RED_YELLOW = new WoolArmorColor(new ResourceLocation("backmath:red_yellow"), 15731456, "color.backmath.red_yellow");
     public static final WoolArmorColor ORANGE = new WoolArmorColor(minecraft("orange"), 16351261, "color.minecraft.orange");
     public static final WoolArmorColor YELLOW = new WoolArmorColor(minecraft("yellow"), 16701501, "color.minecraft.yellow");
     public static final WoolArmorColor LIME = new WoolArmorColor(minecraft("lime"), 8439583, "color.minecraft.lime");
     public static final WoolArmorColor GREEN = new WoolArmorColor(minecraft("green"), 6192150, "color.minecraft.green");
     public static final WoolArmorColor CYAN = new WoolArmorColor(minecraft("cyan"), 1481884, "color.minecraft.cyan");
-    public static final WoolArmorColor INSOMNIAN = new WoolArmorColor(new ResourceLocation("backmath:insomnian"), 4418465, "color.backmath.insomnian");
-    public static final WoolArmorColor ALJAN_LIGHT_BLUE = new WoolArmorColor(new ResourceLocation("backmath:aljan_light_blue"), 13429739, "color.backmath.aljan_light_blue");
     public static final WoolArmorColor LIGHT_BLUE = new WoolArmorColor(minecraft("light_blue"), 3847130, "color.minecraft.light_blue");
     public static final WoolArmorColor GLOW_BLACK = new WoolArmorColor(variants("glow_black"), 8454080, "color.variants.glow_black");
     public static final WoolArmorColor BLUE = new WoolArmorColor(minecraft("blue"), 3949738, "color.minecraft.blue");
     public static final WoolArmorColor PURPLE = new WoolArmorColor(minecraft("purple"), 8991416, "color.minecraft.purple");
     public static final WoolArmorColor MAGENTA = new WoolArmorColor(minecraft("magenta"), 13061821, "color.minecraft.magenta");
     public static final WoolArmorColor PINK = new WoolArmorColor(minecraft("pink"), 15961002, "color.minecraft.pink");
-    public static final WoolArmorColor NULL_DESIGN = new WoolArmorColor(variants("null_design"), OptionalInt.of(1));
+    public static final WoolArmorColor NULL_DESIGN = new WoolArmorColor(variants("null_design"), 1);
     private final ResourceLocation assetID;
-    private final OptionalInt armorDesign;
+    @Nullable
+    private final Integer armorDesign;
     private final int color;
     private final String colorName;
     @Nullable
@@ -50,12 +47,12 @@ public class WoolArmorColor {
 
     public WoolArmorColor(ResourceLocation assetID, int color, String colorName) {
         this.assetID = assetID;
-        this.armorDesign = OptionalInt.empty();
+        this.armorDesign = null;
         this.color = color;
         this.colorName = colorName;
     }
 
-    public WoolArmorColor(ResourceLocation assetID, OptionalInt armorDesign) {
+    public WoolArmorColor(ResourceLocation assetID, int armorDesign) {
         this.assetID = assetID;
         this.armorDesign = armorDesign;
         this.color = 0;
@@ -67,7 +64,7 @@ public class WoolArmorColor {
     }
 
     public OptionalInt getArmorDesign() {
-        return this.armorDesign;
+        return this.armorDesign != null ? OptionalInt.of(this.armorDesign) : OptionalInt.empty();
     }
 
     public int getColor() {
@@ -79,7 +76,7 @@ public class WoolArmorColor {
     }
 
     public String getOrCreateDescriptionID() {
-        if (this.descriptionID == null) this.descriptionID = Util.makeDescriptionId(this.armorDesign.isPresent() ? "armor_design" : "color", this.assetID);
+        if (this.descriptionID == null) this.descriptionID = Util.makeDescriptionId(this.armorDesign != null ? "armor_design" : "color", this.assetID);
         return this.descriptionID;
     }
 
@@ -103,7 +100,7 @@ public class WoolArmorColor {
                 ResourceLocation assetID = new ResourceLocation(JSONUtils.getAsString(object, "asset_id"));
                 if (object.has("armor_design")) {
                     int armorDesign = JSONUtils.getAsInt(object, "armor_design");
-                    return new WoolArmorColor(assetID, OptionalInt.of(armorDesign));
+                    return new WoolArmorColor(assetID, armorDesign);
                 } else {
                     int color = JSONUtils.getAsInt(object, "color");
                     String colorName = JSONUtils.getAsString(object, "color_name");
@@ -118,8 +115,8 @@ public class WoolArmorColor {
         public JsonElement serialize(WoolArmorColor armorColor, Type type, JsonSerializationContext context) {
             JsonObject object = new JsonObject();
             object.addProperty("asset_id", armorColor.assetID.toString());
-            if (armorColor.armorDesign.isPresent()) {
-                object.addProperty("armor_design", armorColor.armorDesign.getAsInt());
+            if (armorColor.armorDesign != null) {
+                object.addProperty("armor_design", armorColor.armorDesign);
             } else {
                 object.addProperty("color", armorColor.color);
                 object.addProperty("color_name", armorColor.colorName);

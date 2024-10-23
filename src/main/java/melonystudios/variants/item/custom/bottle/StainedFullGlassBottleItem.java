@@ -9,6 +9,7 @@ import melonystudios.variants.stew.custom.DefaultStewBehavior;
 import melonystudios.variants.util.VSUtils;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.loot.IRandomRange;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
@@ -44,6 +45,19 @@ public class StainedFullGlassBottleItem extends TagConfigurableFoodItem {
         return new ItemStack(VSItems.WHITE_STAINED_GLASS_BOTTLE.get());
     }
 
+    public static ItemStack setTextureIdentifier(ItemStack stack, IRandomRange range) {
+        try {
+            Object[] bottles = BOTTLES.toArray();
+            GlassType type = (GlassType) bottles[range.getInt(random)];
+
+            stack.getOrCreateTagElement("consumable").put("use_remainder", VSUtils.saveStack(type.getBottle(), new CompoundNBT()));
+            stack.getOrCreateTag().putInt("texture_id", type.getTextureIdentifier());
+            return stack;
+        } catch (ArrayIndexOutOfBoundsException exception) {
+            return stack;
+        }
+    }
+
     @Override
     @Nonnull
     public ITextComponent getName(ItemStack stack) {
@@ -71,7 +85,14 @@ public class StainedFullGlassBottleItem extends TagConfigurableFoodItem {
                 list.add(stack);
             }
         } else {
-            super.fillItemCategory(tab, list);
+            if (this.allowdedIn(tab)) {
+                ItemStack stack = new ItemStack(this);
+                CompoundNBT tag = stack.getOrCreateTag();
+                CompoundNBT consumableTag = stack.getOrCreateTagElement("consumable");
+                consumableTag.put("use_remainder", VSUtils.saveStack(WHITE.getBottle(), new CompoundNBT()));
+                tag.putInt("texture_id", WHITE.getTextureIdentifier());
+                list.add(stack);
+            }
         }
     }
 }

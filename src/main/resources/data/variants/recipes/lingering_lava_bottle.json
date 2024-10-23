@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "variants:splash_lava_bottle"
+    },
+    {
+      "tag": "variants:dragon_breath_bottles"
+    }
+  ],
+  "result": {
+    "item": "variants:lingering_lava_bottle"
+  }
+}

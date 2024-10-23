@@ -1,13 +1,12 @@
 package melonystudios.variants.item.custom;
 
 import melonystudios.variants.util.Constants;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeType;
 
 import javax.annotation.Nullable;
 
-public class FlammableItem extends Item {
+public class FlammableItem extends VSItem {
     private final int burnTime;
 
     public FlammableItem(int burnTime, Properties properties) {

@@ -2,7 +2,11 @@ package melonystudios.variants.stew.bowl;
 
 import com.google.common.collect.Lists;
 import com.google.gson.*;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import melonystudios.variants.Variants;
+import melonystudios.variants.data.recipe.VSExpoStewsRecipeProvider;
+import melonystudios.variants.util.NBTUtils;
 import melonystudios.variants.util.VSUtils;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -20,6 +24,11 @@ import java.util.Map;
 import static melonystudios.variants.util.VSUtils.namespace;
 
 public class BowlType {
+    public static final Codec<BowlType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            NBTUtils.ITEM_STACK_CODEC.fieldOf("item").forGetter(BowlType::getBowlStack),
+            ResourceLocation.CODEC.fieldOf("asset_id").forGetter(BowlType::getAssetID),
+            Codec.STRING.fieldOf("wood_name").forGetter(BowlType::getWoodName),
+            Codec.INT.fieldOf("texture_id").forGetter(BowlType::getTextureID)).apply(instance, BowlType::new));
     public static Map<ResourceLocation, BowlType> DATA_DRIVEN_TYPES = new LinkedHashMap<>();
     public static final List<Integer> TEXTURE_IDENTIFIERS = Lists.newArrayList();
     private final ItemStack bowlStack;
@@ -33,7 +42,7 @@ public class BowlType {
         this.woodName = woodName;
         this.textureID = textureID;
         if (TEXTURE_IDENTIFIERS.contains(textureID)) {
-            LogManager.getLogger().warn(new TranslationTextComponent("error." + Variants.MOD_ID + ".bowl_type.duplicate_texture_id", woodName).getString());
+            LogManager.getLogger().warn(new TranslationTextComponent("error." + Variants.MOD_ID + ".bowl_type.duplicate_texture_id", woodName, textureID).getString());
         } else {
             TEXTURE_IDENTIFIERS.add(textureID);
         }
@@ -115,17 +124,20 @@ public class BowlType {
             if (element.isJsonObject()) {
                 JsonObject object = element.getAsJsonObject();
                 CompoundNBT stackTag = new CompoundNBT();
-                stackTag.putString("id", object.get("bowl").getAsJsonObject().get("id").getAsString());
-                stackTag.putInt("count", object.get("bowl").getAsJsonObject().get("count").getAsInt());
-                if (object.get("bowl").getAsJsonObject().has("components")) {
-                    stackTag.putString("components", object.get("bowl").getAsJsonObject().get("components").getAsString());
+                JsonObject bowlObject = object.get("bowl").getAsJsonObject();
+                stackTag.putString("id", bowlObject.get("id").getAsString());
+                stackTag.putInt("count", bowlObject.get("count").getAsInt());
+                if (bowlObject.has("components")) {
+                    stackTag.putString("components", bowlObject.get("components").getAsString());
                 }
 
                 ItemStack bowlStack = VSUtils.loadStack(stackTag);
                 String woodName = JSONUtils.getAsString(object, "name");
                 ResourceLocation assetID = new ResourceLocation(JSONUtils.getAsString(object, "asset_id"));
                 int textureID = JSONUtils.getAsInt(object, "texture_id");
-                return new BowlType(bowlStack, assetID, woodName, textureID);
+                BowlType bowlType = new BowlType(bowlStack, assetID, woodName, textureID);
+                if (VSExpoStewsRecipeProvider.DEFAULT_BOWLS.contains(bowlType)) return VSExpoStewsRecipeProvider.DEFAULT_BOWLS.get(bowlType.getTextureID());
+                else return bowlType;
             } else {
                 throw new JsonParseException(new TranslationTextComponent("error." + Variants.MOD_ID + ".bowl_type.parsing", element.toString()).getString());
             }

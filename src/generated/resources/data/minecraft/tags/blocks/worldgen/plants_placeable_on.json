@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "#melony:natural_farmland",
+    "minecraft:grass_block",
+    "minecraft:podzol",
+    "minecraft:dirt",
+    "minecraft:coarse_dirt"
+  ]
+}

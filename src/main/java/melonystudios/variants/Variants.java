@@ -1,13 +1,17 @@
 package melonystudios.variants;
 
 import com.google.common.collect.ImmutableMap;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import melonystudios.variants.block.VSBlocks;
 import melonystudios.variants.blockentity.VSBlockEntities;
 import melonystudios.variants.blockentity.renderer.VSBedBlockEntityRenderer;
 import melonystudios.variants.blockentity.renderer.VSBellBlockEntityRenderer;
 import melonystudios.variants.config.VSConfigs;
+import melonystudios.variants.config.VSJSONConfig;
 import melonystudios.variants.crafting.VSRecipeTypes;
 import melonystudios.variants.effect.VSEffects;
+import melonystudios.variants.effect.VSPotions;
 import melonystudios.variants.enchantment.VSEnchantments;
 import melonystudios.variants.entity.VSEntities;
 import melonystudios.variants.entity.renderer.*;
@@ -58,10 +62,18 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+
 @Mod(Variants.MOD_ID)
 public class Variants {
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "variants";
+    public static Variants INSTANCE;
+    private VSJSONConfig config = null;
+    private final File settingsFile = new File("config/jtw-mods", "variants.json");
     // TO-DO LIST:
     // [19/9/24 - 1.8.0.3] ~isa:
     //   - Make stained dragon's breath usable to make potions;
@@ -73,6 +85,8 @@ public class Variants {
         eventBus.addListener(this::clientSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
+        INSTANCE = this;
+        loadConfig();
 
         VSItems.ITEMS.register(eventBus);
         VSWeaponry.ITEMS.register(eventBus);
@@ -81,6 +95,7 @@ public class Variants {
         VSEntities.ENTITIES.register(eventBus);
         VSBlockEntities.BLOCK_ENTITIES.register(eventBus);
         VSEffects.EFFECTS.register(eventBus);
+        VSPotions.POTIONS.register(eventBus);
         VSEnchantments.ENCHANTMENTS.register(eventBus);
         VSSounds.SOUNDS.register(eventBus);
         VSWorldCarvers.CARVERS.register(eventBus);
@@ -114,6 +129,7 @@ public class Variants {
         VSSurfaceBuilders.init();
         Registry.register(Registry.BIOME_SOURCE, variants("enderwood_end"), VSEndBiomeProvider.CODEC);
 
+        VSPotions.addBrewingRecipes();
         VSVanillaCompatibility.compostables();
         VSVanillaCompatibility.tillables();
         VSVanillaCompatibility.flammables();
@@ -150,6 +166,7 @@ public class Variants {
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.DRAGON_BREATH_BOTTLE.get(), manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.SMALL_SOUL_FIREBALL.get(), manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.STAINED_EXPERIENCE_BOTTLE.get(), manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
+        RenderingRegistry.registerEntityRenderingHandler(VSEntities.BEHAVIOR_BOTTLE.get(), manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
         RenderingRegistry.registerEntityRenderingHandler(VSEntities.DEBUG_ARROW.get(), DebugArrowRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityType.SPAWNER_MINECART, SpawnerMinecartRenderer::new);
 
@@ -158,6 +175,39 @@ public class Variants {
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_BEACON.get(), BeaconTileEntityRenderer::new);
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_BED.get(), VSBedBlockEntityRenderer::new);
         ClientRegistry.bindTileEntityRenderer(VSBlockEntities.VS_SIGN.get(), SignTileEntityRenderer::new);
+    }
+
+    public void loadConfig() {
+        if (this.settingsFile.exists()) {
+            try {
+                Gson gson = createConfigFileSerializer().create();
+                this.config = gson.fromJson(new String(Files.readAllBytes(this.settingsFile.toPath()), StandardCharsets.UTF_8), VSJSONConfig.class);
+            } catch (Exception exception) {
+                LogManager.getLogger().warn("Variants: Unable to load the config file, creating a new one: ", exception);
+            }
+        }
+        if (this.config == null) this.config = new VSJSONConfig();
+        this.upgradeConfig(this.config);
+        this.saveConfig();
+    }
+
+    public void saveConfig() {
+        String config = createConfigFileSerializer().setPrettyPrinting().create().toJson(this.config);
+        try {
+            Files.write(this.settingsFile.toPath(), config.getBytes(StandardCharsets.UTF_8));
+        } catch (IOException exception) {
+            LogManager.getLogger().warn("Variants: Error while saving the config file!", exception);
+        }
+    }
+
+    private void upgradeConfig(VSJSONConfig config) {}
+
+    public VSJSONConfig getConfig() {
+        return this.config;
+    }
+
+    public static GsonBuilder createConfigFileSerializer() {
+        return new GsonBuilder().registerTypeAdapter(VSJSONConfig.class, new VSJSONConfig.Serializer());
     }
 
     public static void setRenderTypesForBlocks() {

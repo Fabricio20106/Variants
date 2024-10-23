@@ -1,5 +1,7 @@
 package melonystudios.variants.stew.custom;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import melonystudios.variants.stew.StewBehavior;
 import melonystudios.variants.stew.VSStewBehaviors;
 import melonystudios.variants.util.Constants;
@@ -25,6 +27,10 @@ import static melonystudios.variants.util.NBTUtils.anyNumericOrFloatDefault;
 import static melonystudios.variants.util.NBTUtils.booleanOrDefault;
 
 public class TeleportEntityBehavior extends StewBehavior {
+    public static final Codec<TeleportEntityBehavior> RANDOM_TELEPORT_CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.FLOAT.fieldOf(
+            "teleport_diameter").forGetter(TeleportEntityBehavior::getTeleportDiameter)).apply(instance, TeleportEntityBehavior::new));
+    public static final Codec<TeleportEntityBehavior> EXACT_TELEPORT_CODEC = RecordCodecBuilder.create(instance -> instance.group(BlockPos.CODEC.fieldOf(
+            "teleport_position").forGetter(TeleportEntityBehavior::getTeleportPosition)).apply(instance, TeleportEntityBehavior::new));
     private final boolean randomTeleport;
     private final float teleportDiameter;
     private final BlockPos teleportPosition;

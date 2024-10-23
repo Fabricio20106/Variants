@@ -165,6 +165,13 @@ public class JSONUtils {
             JsonArray effectArray = new JsonArray();
             for (Effect effect : removeEffectsBehavior.getEffectsToRemove()) effectArray.add(effect.getRegistryName().toString());
             behaviorObj.add("effects", effectArray);
+        } else if (behavior instanceof EatItemBehavior) {
+            EatItemBehavior eatItemBehavior = (EatItemBehavior) tcfItem.getBehavior();
+            JsonObject consumableObject = new JsonObject();
+            consumableObject.addProperty("id", eatItemBehavior.getConsumableItem().getItem().getRegistryName().toString());
+            if (eatItemBehavior.getConsumableItem().getCount() != 1) consumableObject.addProperty("count", eatItemBehavior.getConsumableItem().getCount());
+            if (eatItemBehavior.getConsumableItem().getTag() != null) consumableObject.addProperty("components", eatItemBehavior.getConsumableItem().getTag().toString());
+            behaviorObj.add("consumable_item", consumableObject);
         }
     }
 }

@@ -1,6 +1,7 @@
 package melonystudios.variants.item.custom.tool;
 
 import melonystudios.variants.Variants;
+import melonystudios.variants.util.ComponentUtils;
 import melonystudios.variants.util.Constants;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -35,8 +36,7 @@ public class DebugBowItem extends BowItem {
 
     @Override
     public boolean isFoil(ItemStack stack) {
-        if (stack.getTag() != null && stack.getTag().contains("enchantment_glint_override", Constants.TagTypes.ANY_NUMERIC)) return stack.getTag().getBoolean("enchantment_glint_override");
-        return true;
+        return ComponentUtils.enchantmentGlintOverride(stack, true);
     }
 
     @Override

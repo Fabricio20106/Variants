@@ -5,6 +5,7 @@ import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.stew.StewBehavior;
 import melonystudios.variants.stew.VSStewBehaviors;
 import melonystudios.variants.stew.bowl.BowlType;
+import melonystudios.variants.stew.bowl.BowlTypes;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.NBTUtils;
 import melonystudios.variants.util.VSRegistries;
@@ -129,7 +130,7 @@ public class ExponentialStewItem extends TagConfigurableFoodItem {
         ItemStack superStack = super.finishUsingItem(stewStack, world, livEntity);
         boolean isPlayerInCreative = livEntity instanceof PlayerEntity && ((PlayerEntity) livEntity).abilities.instabuild;
 
-        // Custom Stew Behavior
+        // Custom Consume Behavior
         CompoundNBT consumableTag = stewStack.getOrCreateTagElement("consumable");
         CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
         if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
@@ -176,7 +177,17 @@ public class ExponentialStewItem extends TagConfigurableFoodItem {
                 list.add(stack);
             }
         } else {
-            super.fillItemCategory(tab, list);
+            if (this.allowdedIn(tab)) {
+                ItemStack stack = new ItemStack(this);
+                CompoundNBT tag = stack.getOrCreateTag();
+                CompoundNBT consumableTag = stack.getOrCreateTagElement("consumable");
+
+                consumableTag.put("use_remainder", VSUtils.saveStack(BowlTypes.OAK.getBowlStack(), new CompoundNBT()));
+                tag.putInt("texture_id", BowlTypes.OAK.getTextureID());
+
+                consumableTag.put("behavior", this.stewBehavior.writeBehaviorToNBT(stack));
+                list.add(stack);
+            }
         }
     }
 

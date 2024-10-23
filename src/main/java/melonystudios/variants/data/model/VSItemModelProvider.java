@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
 import java.util.Map;
 
 public class VSItemModelProvider extends VSItemModelModels {
-    public static Map<String, Integer> DEFAULT_MOB_MAP = new ImmutableMap.Builder<String, Integer>().put("zombie", 1).put("skeleton", 2).put("spider", 3).put("cave_spider", 4).put("silverfish", 5).put("blaze", 6).put("magma_cube", 7).build();
+    public static final Map<String, Integer> DEFAULT_MOB_MAP = new ImmutableMap.Builder<String, Integer>().put("zombie", 1).put("skeleton", 2).put("spider", 3).put("cave_spider", 4).put("silverfish", 5).put("blaze", 6).put("magma_cube", 7).build();
 
     public VSItemModelProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
         super(generator, Variants.MOD_ID, fileHelper);
@@ -223,10 +223,20 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(generated, "suspicious_stew_bucket");
         standard(generated, "fungi_stew_bucket");
         standard(generated, "end_fungi_stew_bucket");
-        standard(generated, "milk_bottle");
+        standard(generated, "splash_honey_bottle");
+        standard(generated, "lingering_honey_bottle");
         standard(generated, "lava_bottle");
+        standard(generated, "splash_lava_bottle");
+        standard(generated, "lingering_lava_bottle");
         standard(generated, "soul_lava_bottle");
+        standard(generated, "splash_soul_lava_bottle");
+        standard(generated, "lingering_soul_lava_bottle");
+        standard(generated, "milk_bottle");
+        standard(generated, "splash_milk_bottle");
+        standard(generated, "lingering_milk_bottle");
         standard(generated, "powder_snow_bottle");
+        standard(generated, "splash_powder_snow_bottle");
+        standard(generated, "lingering_powder_snow_bottle");
         standard(generated, "glow_black_dye");
         standard(generated, "iron_tie");
         standard(generated, "powered_tie");
@@ -255,6 +265,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(generated, "emerald_chain");
         standard(generated, "end_sprouts");
         standard(generated, "splash_soph_potion");
+        standard(generated, "lingering_sophie_potion");
         standard(generated, "diamond_shard");
         standard(generated, "emerald_shard");
         standard(generated, "quartz_shard");

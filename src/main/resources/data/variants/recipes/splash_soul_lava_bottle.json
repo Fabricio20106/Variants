@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "variants:soul_lava_bottle"
+    },
+    {
+      "tag": "forge:dusts/gunpowder"
+    }
+  ],
+  "result": {
+    "item": "variants:splash_soul_lava_bottle"
+  }
+}

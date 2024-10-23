@@ -2,9 +2,11 @@ package melonystudios.variants.stew;
 
 import com.google.common.collect.Lists;
 import melonystudios.variants.item.custom.food.TagConfigurableFood;
+import melonystudios.variants.item.custom.food.TagConfigurableFoodItem;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.VSRegistries;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -103,5 +105,41 @@ public abstract class StewBehavior extends ForgeRegistryEntry<StewBehavior> {
             if (consumableTag != null && consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) return consumableTag.getCompound("behavior");
         }
         return null;
+    }
+
+    @Nullable
+    public static CompoundNBT getBehaviorPropertiesStatic(ItemStack stewStack) {
+        if (stewStack.getItem() instanceof TagConfigurableFood) {
+            CompoundNBT consumableTag = stewStack.getTagElement("consumable");
+            if (consumableTag != null && consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) return consumableTag.getCompound("behavior");
+        }
+        return null;
+    }
+
+    public static void runAreaEffectBehavior(ItemStack stack, Entity sourceEntity, RunningBehavior behavior) {
+        List<LivingEntity> livEntities = sourceEntity.level.getEntitiesOfClass(LivingEntity.class, sourceEntity.getBoundingBox().inflate(4, 2, 4));
+        if (!livEntities.isEmpty()) {
+            for (LivingEntity livEntity : livEntities) behavior.runBehavior(stack, sourceEntity.level, livEntity);
+        }
+    }
+
+    public static void runBehavior(ItemStack stack, World world, LivingEntity livEntity) {
+        CompoundNBT consumableTag = stack.getTagElement("consumable");
+        if (consumableTag != null && consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) {
+            CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
+            if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
+                StewBehavior tagBehavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
+                if (tagBehavior != null && TagConfigurableFood.canRunBehavior(tagBehavior)) tagBehavior.executeFromStewNBT(stack, world, livEntity, getBehaviorPropertiesStatic(stack));
+            }
+        } else {
+            if (stack.getItem() instanceof TagConfigurableFoodItem) {
+                StewBehavior behavior = ((TagConfigurableFoodItem) stack.getItem()).getBehavior();
+                if (TagConfigurableFood.canRunBehavior(behavior)) behavior.executeFromStewNBT(stack, world, livEntity, getBehaviorPropertiesStatic(stack));
+            }
+        }
+    }
+
+    public interface RunningBehavior {
+        void runBehavior(ItemStack stack, World world, LivingEntity livEntity);
     }
 }

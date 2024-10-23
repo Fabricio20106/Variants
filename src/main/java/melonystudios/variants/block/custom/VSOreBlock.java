@@ -12,7 +12,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
-import net.minecraft.world.server.ServerWorld;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -27,18 +26,14 @@ public class VSOreBlock extends OreBlock {
         this.maxXP = maxXP;
     }
 
-    public void spawnAfterBreak(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack) {
-        super.spawnAfterBreak(state, world, pos, stack);
-    }
-
     @Override
     public int getExpDrop(BlockState state, IWorldReader world, BlockPos pos, int fortune, int silkTouch) {
-        return silkTouch == 0 ? MathHelper.nextInt(RANDOM, minXP, maxXP) : 0;
+        return silkTouch == 0 ? MathHelper.nextInt(RANDOM, this.minXP, this.maxXP) : 0;
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable IBlockReader world, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".ore_experience_drops", minXP, maxXP).withStyle(TextFormatting.GRAY));
         super.appendHoverText(stack, world, tooltip, flag);
+        if (flag.isAdvanced()) tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".ore_experience_drops", this.minXP, this.maxXP).withStyle(TextFormatting.GRAY));
     }
 }

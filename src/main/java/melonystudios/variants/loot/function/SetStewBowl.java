@@ -6,7 +6,6 @@ import com.google.gson.JsonSerializationContext;
 import melonystudios.variants.item.custom.food.ExponentialStewItem;
 import melonystudios.variants.loot.VSLootFunctions;
 import melonystudios.variants.util.VSUtils;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.*;
 import net.minecraft.loot.conditions.ILootCondition;

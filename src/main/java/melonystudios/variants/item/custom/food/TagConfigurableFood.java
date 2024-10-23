@@ -127,7 +127,7 @@ public interface TagConfigurableFood {
         }
     }
 
-    default boolean canRunBehavior(StewBehavior behavior) {
+    static boolean canRunBehavior(StewBehavior behavior) {
         return !behavior.is(ConsumeBehaviorTags.CANNOT_RUN_WITHOUT_NBT);
     }
 

@@ -5,6 +5,7 @@
   "refmap": "variants.mixins.refmap.json",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "block.VSBushBlockMixin",
     "block.VSCauldronBlockMixin",
     "block.VSChorusFlowerBlockMixin",
     "block.VSChorusPlantBlockMixin",

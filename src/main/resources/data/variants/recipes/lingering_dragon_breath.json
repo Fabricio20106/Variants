@@ -5,7 +5,7 @@
       "item": "variants:splash_dragon_breath"
     },
     {
-      "item": "minecraft:dragon_breath"
+      "tag": "variants:dragon_breath_bottles"
     }
   ],
   "result": {

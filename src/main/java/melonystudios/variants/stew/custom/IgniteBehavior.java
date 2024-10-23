@@ -28,7 +28,7 @@ public class IgniteBehavior extends StewBehavior {
 
     @Override
     public void executeBehavior(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
-        if (!world.isClientSide) livEntity.setSecondsOnFire(this.ticksOnFire * 20);
+        if (!world.isClientSide) livEntity.setSecondsOnFire(this.ticksOnFire / 20);
     }
 
     @Override

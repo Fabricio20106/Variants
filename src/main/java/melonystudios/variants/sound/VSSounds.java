@@ -23,8 +23,8 @@ public class VSSounds {
     public static final RegistryObject<SoundEvent> SPYGLASS_USE = SOUNDS.register("item.spyglass.use", () -> new SoundEvent(Variants.variants("item.spyglass.use")));
     public static final RegistryObject<SoundEvent> SPYGLASS_STOP_USING = SOUNDS.register("item.spyglass.stop_using", () -> new SoundEvent(Variants.variants("item.spyglass.stop_using")));
 
-    // Stew Behaviors
-    public static final RegistryObject<SoundEvent> PLAY_SOUND_BEHAVIOR_DEFAULT = SOUNDS.register("stew_behavior.play_sound.default", () -> new SoundEvent(Variants.variants("stew_behavior.play_sound.default")));
+    // Consume Behaviors
+    public static final RegistryObject<SoundEvent> PLAY_SOUND_BEHAVIOR_DEFAULT = SOUNDS.register("consume_behavior.play_sound.default", () -> new SoundEvent(Variants.variants("consume_behavior.play_sound.default")));
 
     // Unused as of now because the game crashes when using these (don't know why, Minecraft is weird).
     public static final RegistryObject<SoundEvent> ARMOR_EQUIP_EMPTY_SLOT = SOUNDS.register("item.armor.equip_empty_slot", () -> new SoundEvent(Variants.variants("item.armor.equip_empty_slot")));

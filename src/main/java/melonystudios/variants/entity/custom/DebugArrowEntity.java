@@ -82,11 +82,12 @@ public class DebugArrowEntity extends AbstractArrowEntity {
     protected void onHitBlock(BlockRayTraceResult hitResult) {
         super.onHitBlock(hitResult);
         if (this.getOwner() != null) {
+            boolean clickType = !this.getOwner().isShiftKeyDown();
             if (this.getOwner() instanceof PlayerEntity) {
                 PlayerEntity player = (PlayerEntity) this.getOwner();
-                this.handleInteractionsByPlayer(player, this.level.getBlockState(hitResult.getBlockPos()), this.level, hitResult.getBlockPos(), true, this.arrowItem);
+                this.handleInteractionsByPlayer(player, this.level.getBlockState(hitResult.getBlockPos()), this.level, hitResult.getBlockPos(), clickType, this.arrowItem);
             } else if (this.getOwner() instanceof LivingEntity) {
-                this.handleInteractionsByLivingNonPlayer(this.level.getBlockState(hitResult.getBlockPos()), this.level, hitResult.getBlockPos(), true, this.arrowItem);
+                this.handleInteractionsByLivingNonPlayer(this.level.getBlockState(hitResult.getBlockPos()), this.level, hitResult.getBlockPos(), clickType, this.arrowItem);
             }
         }
     }

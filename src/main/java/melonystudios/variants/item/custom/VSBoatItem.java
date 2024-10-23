@@ -52,14 +52,14 @@ public class VSBoatItem extends BoatItem {
             }
 
             if (fluidRayTrace.getType() == RayTraceResult.Type.BLOCK) {
-                VSBoatEntity variantsBoat = new VSBoatEntity(world, fluidRayTrace.getLocation().x, fluidRayTrace.getLocation().y, fluidRayTrace.getLocation().z);
-                variantsBoat.setWoodType(VSUtils.getBoatType(handStack, this.woodType));
-                variantsBoat.yRot = player.yRot;
-                if (!world.noCollision(variantsBoat, variantsBoat.getBoundingBox().inflate(-0.1D))) {
+                VSBoatEntity boatEntity = new VSBoatEntity(world, fluidRayTrace.getLocation().x, fluidRayTrace.getLocation().y, fluidRayTrace.getLocation().z);
+                boatEntity.setWoodType(VSUtils.getBoatType(handStack, this.woodType));
+                boatEntity.yRot = player.yRot;
+                if (!world.noCollision(boatEntity, boatEntity.getBoundingBox().inflate(-0.1D))) {
                     return ActionResult.fail(handStack);
                 } else {
                     if (!world.isClientSide) {
-                        world.addFreshEntity(variantsBoat);
+                        world.addFreshEntity(boatEntity);
                         if (!player.abilities.instabuild) handStack.shrink(1);
                     }
 
