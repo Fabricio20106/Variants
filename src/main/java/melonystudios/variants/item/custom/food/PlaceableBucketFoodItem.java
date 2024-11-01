@@ -1,8 +1,8 @@
 package melonystudios.variants.item.custom.food;
 
 import melonystudios.variants.dispenser.vanilla.BucketDispenseBehavior;
-import melonystudios.variants.stew.StewBehavior;
-import melonystudios.variants.stew.custom.DefaultStewBehavior;
+import melonystudios.variants.consumable.ConsumeBehavior;
+import melonystudios.variants.consumable.custom.DefaultConsumeBehavior;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.NBTUtils;
 import melonystudios.variants.util.VSRegistries;
@@ -22,18 +22,18 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class PlaceableBucketFoodItem extends BucketItem implements TagConfigurableFood {
+public class PlaceableBucketFoodItem extends BucketItem implements Consumable {
     public boolean useDefaultBehavior = true;
-    private final StewBehavior behavior;
+    private final ConsumeBehavior behavior;
 
-    public PlaceableBucketFoodItem(Supplier<? extends Fluid> fluid, StewBehavior behavior, Properties properties) {
+    public PlaceableBucketFoodItem(Supplier<? extends Fluid> fluid, ConsumeBehavior behavior, Properties properties) {
         super(fluid, properties);
         this.behavior = behavior;
         DispenserBlock.registerBehavior(this, new BucketDispenseBehavior());
     }
 
     public PlaceableBucketFoodItem(Supplier<? extends Fluid> fluid, Properties properties) {
-        this(fluid, new DefaultStewBehavior(), properties);
+        this(fluid, new DefaultConsumeBehavior(), properties);
     }
 
     public int getUseDuration(ItemStack stack) {
@@ -95,11 +95,11 @@ public class PlaceableBucketFoodItem extends BucketItem implements TagConfigurab
             if (consumableTag != null && consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) {
                 CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
                 if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
-                    StewBehavior behavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
-                    if (behavior != null) tooltip.addAll(behavior.addToStewTooltip(stack, world, flag));
+                    ConsumeBehavior behavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
+                    if (behavior != null) tooltip.addAll(behavior.addToTooltip(stack, world, flag));
                 }
             } else {
-                tooltip.addAll(this.behavior.addToStewTooltip(stack, world, flag));
+                tooltip.addAll(this.behavior.addToTooltip(stack, world, flag));
             }
         }
     }

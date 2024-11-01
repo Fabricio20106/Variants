@@ -2,9 +2,9 @@ package melonystudios.variants.util;
 
 import com.google.gson.*;
 import melonystudios.variants.Variants;
-import melonystudios.variants.item.custom.food.TagConfigurableFoodItem;
-import melonystudios.variants.stew.StewBehavior;
-import melonystudios.variants.stew.custom.*;
+import melonystudios.variants.item.custom.food.ConsumableItem;
+import melonystudios.variants.consumable.ConsumeBehavior;
+import melonystudios.variants.consumable.custom.*;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
@@ -76,7 +76,7 @@ public class JSONUtils {
         return array;
     }
 
-    public static StewBehavior convertToBehavior(JsonElement element, String objectName) {
+    public static ConsumeBehavior convertToBehavior(JsonElement element, String objectName) {
         if (element.isJsonPrimitive()) {
             String behaviorID = element.getAsString();
             if (VSRegistries.CONSUME_BEHAVIOR.containsKey(ResourceLocation.tryParse(behaviorID))) {
@@ -89,7 +89,7 @@ public class JSONUtils {
         }
     }
 
-    public static StewBehavior getAsBehavior(JsonObject object, String objectName) {
+    public static ConsumeBehavior getAsBehavior(JsonObject object, String objectName) {
         if (object.has(objectName)) {
             return convertToBehavior(object.get(objectName), objectName);
         } else {
@@ -120,7 +120,7 @@ public class JSONUtils {
         }
     }
 
-    public static void saveBehaviorToJSON(TagConfigurableFoodItem tcfItem, StewBehavior behavior, JsonObject behaviorObj, CompoundNBT behaviorTag) {
+    public static void saveBehaviorToJSON(ConsumableItem tcfItem, ConsumeBehavior behavior, JsonObject behaviorObj, CompoundNBT behaviorTag) {
         // Behaviors
         if (behavior instanceof ApplyMobEffectsBehavior) {
             ApplyMobEffectsBehavior applyEffectsBehavior = (ApplyMobEffectsBehavior) tcfItem.getBehavior();

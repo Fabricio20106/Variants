@@ -2,7 +2,7 @@ package melonystudios.variants.mixin.loot;
 
 import com.google.common.collect.Iterables;
 import melonystudios.variants.item.custom.food.ExponentialStewItem;
-import melonystudios.variants.stew.VSStewBehaviors;
+import melonystudios.variants.consumable.VSConsumeBehaviors;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootContext;
 import net.minecraft.loot.RandomValueRange;
@@ -53,7 +53,7 @@ public class VSSetStewEffectMixin {
         effectList.add(effectTag);
 
         behaviorTag.put("effects", effectList);
-        behaviorTag.putString("id", VSStewBehaviors.APPLY_MOB_EFFECTS.get().getRegistryName().toString());
+        behaviorTag.putString("id", VSConsumeBehaviors.APPLY_MOB_EFFECTS.get().getRegistryName().toString());
 
         consumableTag.put("behavior", behaviorTag);
         return stewStack;

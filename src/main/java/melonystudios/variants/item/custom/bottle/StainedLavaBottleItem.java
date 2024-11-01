@@ -1,6 +1,6 @@
 package melonystudios.variants.item.custom.bottle;
 
-import melonystudios.variants.stew.custom.IgniteBehavior;
+import melonystudios.variants.consumable.custom.IgniteBehavior;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.UseAction;

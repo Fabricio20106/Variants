@@ -2,8 +2,8 @@ package melonystudios.variants.item.custom.food;
 
 import melonystudios.variants.effect.VSEffectInstance;
 import melonystudios.variants.item.VSItems;
-import melonystudios.variants.stew.StewBehavior;
-import melonystudios.variants.stew.custom.ApplyMobEffectsBehavior;
+import melonystudios.variants.consumable.ConsumeBehavior;
+import melonystudios.variants.consumable.custom.ApplyMobEffectsBehavior;
 import melonystudios.variants.util.NBTUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
@@ -28,7 +28,7 @@ public class StylisedPotItem extends DrinkableContainerItem {
         this.compatMod = compatMod;
     }
 
-    public StylisedPotItem(StewBehavior behavior, Properties properties) {
+    public StylisedPotItem(ConsumeBehavior behavior, Properties properties) {
         super(behavior, properties);
         this.populateBehavior = true;
     }

@@ -1,6 +1,6 @@
 package melonystudios.variants.item.custom.food;
 
-import melonystudios.variants.stew.StewBehavior;
+import melonystudios.variants.consumable.ConsumeBehavior;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
@@ -8,8 +8,8 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class HoneyBallItem extends TagConfigurableFoodItem {
-    public HoneyBallItem(StewBehavior behavior, Properties properties) {
+public class HoneyBallItem extends ConsumableItem {
+    public HoneyBallItem(ConsumeBehavior behavior, Properties properties) {
         super(false, behavior, properties);
     }
 
@@ -21,7 +21,7 @@ public class HoneyBallItem extends TagConfigurableFoodItem {
 
     @Override
     public int getUseDuration(ItemStack stack) {
-        return getConsumeTicks(stack, 40);
+        return this.getConsumeTicks(stack, 40);
     }
 
     @Override

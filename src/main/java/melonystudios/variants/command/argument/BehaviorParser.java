@@ -5,7 +5,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import melonystudios.variants.stew.StewBehavior;
+import melonystudios.variants.consumable.ConsumeBehavior;
 import melonystudios.variants.util.VSRegistries;
 import net.minecraft.command.ISuggestionProvider;
 import net.minecraft.nbt.CompoundNBT;
@@ -19,9 +19,9 @@ import java.util.function.BiFunction;
 
 public class BehaviorParser {
     public static final DynamicCommandExceptionType UNKNOWN_BEHAVIOR_ERROR = new DynamicCommandExceptionType(object -> new TranslationTextComponent("argument.stew_behavior.id.invalid", object));
-    private static final BiFunction<SuggestionsBuilder, ITagCollection<StewBehavior>, CompletableFuture<Suggestions>> SUGGEST_NOTHING = (suggestionsBuilder, tagCollection) -> suggestionsBuilder.buildFuture();
-    private BiFunction<SuggestionsBuilder, ITagCollection<StewBehavior>, CompletableFuture<Suggestions>> suggestions = SUGGEST_NOTHING;
-    private StewBehavior behavior;
+    private static final BiFunction<SuggestionsBuilder, ITagCollection<ConsumeBehavior>, CompletableFuture<Suggestions>> SUGGEST_NOTHING = (suggestionsBuilder, tagCollection) -> suggestionsBuilder.buildFuture();
+    private BiFunction<SuggestionsBuilder, ITagCollection<ConsumeBehavior>, CompletableFuture<Suggestions>> suggestions = SUGGEST_NOTHING;
+    private ConsumeBehavior behavior;
     private CompoundNBT properties;
     private final StringReader reader;
     private int tagCursor;
@@ -30,7 +30,7 @@ public class BehaviorParser {
         this.reader = reader;
     }
 
-    public StewBehavior getBehavior() {
+    public ConsumeBehavior getBehavior() {
         return this.behavior;
     }
 
@@ -75,20 +75,20 @@ public class BehaviorParser {
         return this;
     }
 
-    private CompletableFuture<Suggestions> suggestOpenProperties(SuggestionsBuilder builder, ITagCollection<StewBehavior> tagCollection) {
+    private CompletableFuture<Suggestions> suggestOpenProperties(SuggestionsBuilder builder, ITagCollection<ConsumeBehavior> tagCollection) {
         if (builder.getRemaining().isEmpty()) builder.suggest(String.valueOf('{'));
         return builder.buildFuture();
     }
 
-    private CompletableFuture<Suggestions> suggestTags(SuggestionsBuilder builder, ITagCollection<StewBehavior> tagCollection) {
+    private CompletableFuture<Suggestions> suggestTags(SuggestionsBuilder builder, ITagCollection<ConsumeBehavior> tagCollection) {
         return ISuggestionProvider.suggestResource(tagCollection.getAvailableTags(), builder.createOffset(this.tagCursor));
     }
 
-    private CompletableFuture<Suggestions> suggestBehavior(SuggestionsBuilder builder, ITagCollection<StewBehavior> tagCollection) {
+    private CompletableFuture<Suggestions> suggestBehavior(SuggestionsBuilder builder, ITagCollection<ConsumeBehavior> tagCollection) {
         return ISuggestionProvider.suggestResource(VSRegistries.CONSUME_BEHAVIOR.getKeys(), builder);
     }
 
-    public CompletableFuture<Suggestions> fillSuggestions(SuggestionsBuilder builder, ITagCollection<StewBehavior> tagCollection) {
+    public CompletableFuture<Suggestions> fillSuggestions(SuggestionsBuilder builder, ITagCollection<ConsumeBehavior> tagCollection) {
         return this.suggestions.apply(builder.createOffset(this.reader.getCursor()), tagCollection);
     }
 }

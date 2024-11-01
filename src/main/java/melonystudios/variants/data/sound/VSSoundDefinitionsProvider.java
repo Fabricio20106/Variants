@@ -52,6 +52,15 @@ public class VSSoundDefinitionsProvider extends SoundDefinitionsProvider {
                 .with(SoundDefinition.Sound.sound(minecraft("entity/fish/hurt3"), SoundDefinition.SoundType.SOUND))
                 .with(SoundDefinition.Sound.sound(minecraft("entity/fish/hurt4"), SoundDefinition.SoundType.SOUND)).subtitle("subtitles.entity.fish.death"));
         this.add(VSSounds.DRAGON_BREATH_BOTTLE_THROW.get(), SoundDefinition.definition().with(SoundDefinition.Sound.sound(minecraft("random/bow"), SoundDefinition.SoundType.SOUND)).subtitle("subtitles.entity.potion.throw"));
+        this.add(VSSounds.THROWN_BOTTLE_THROW.get(), SoundDefinition.definition()
+                .with(SoundDefinition.Sound.sound(minecraft("random/bow"), SoundDefinition.SoundType.SOUND).volume(0.5).pitch(0.3))
+                .with(SoundDefinition.Sound.sound(minecraft("random/bow"), SoundDefinition.SoundType.SOUND).volume(0.5).pitch(0.35))
+                .with(SoundDefinition.Sound.sound(minecraft("random/bow"), SoundDefinition.SoundType.SOUND).volume(0.5).pitch(0.4))
+                .with(SoundDefinition.Sound.sound(minecraft("random/bow"), SoundDefinition.SoundType.SOUND).volume(0.5).pitch(0.45))
+                .with(SoundDefinition.Sound.sound(minecraft("random/bow"), SoundDefinition.SoundType.SOUND).volume(0.5).pitch(0.5)).subtitle("subtitles.entity.potion.throw"));
+        this.add(VSSounds.THROWN_BOTTLE_SHATTER.get(), SoundDefinition.definition()
+                .with(SoundDefinition.Sound.sound(variants("block.glass.shatter"), SoundDefinition.SoundType.EVENT).pitch(0.9))
+                .with(SoundDefinition.Sound.sound(variants("block.glass.shatter"), SoundDefinition.SoundType.EVENT)).subtitle("subtitles.entity.potion.splash"));
 
         // Items
         this.add(VSSounds.SPYGLASS_USE.get(), SoundDefinition.definition()
@@ -63,6 +72,12 @@ public class VSSoundDefinitionsProvider extends SoundDefinitionsProvider {
                 .with(SoundDefinition.Sound.sound(variants("item/spyglass/stop"), SoundDefinition.SoundType.SOUND).volume(0.5))
                 .with(SoundDefinition.Sound.sound(variants("item/spyglass/stop"), SoundDefinition.SoundType.SOUND).volume(0.5).pitch(0.8))
                 .with(SoundDefinition.Sound.sound(variants("item/spyglass/stop"), SoundDefinition.SoundType.SOUND).volume(0.5).pitch(0.9)).subtitle("subtitles.item.spyglass.stop_using"));
+
+        // Blocks
+        this.add(VSSounds.GLASS_SHATTER.get(), SoundDefinition.definition()
+                .with(SoundDefinition.Sound.sound(minecraft("random/glass1"), SoundDefinition.SoundType.SOUND))
+                .with(SoundDefinition.Sound.sound(minecraft("random/glass2"), SoundDefinition.SoundType.SOUND))
+                .with(SoundDefinition.Sound.sound(minecraft("random/glass3"), SoundDefinition.SoundType.SOUND)).subtitle("subtitles.block.generic.break"));
 
         // Consume Behaviors
         // this.add(VSSounds.PLAY_SOUND_BEHAVIOR_DEFAULT.get(), SoundDefinition.definition().with());

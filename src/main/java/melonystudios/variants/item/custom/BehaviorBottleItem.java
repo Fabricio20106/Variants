@@ -1,8 +1,8 @@
 package melonystudios.variants.item.custom;
 
 import melonystudios.variants.entity.custom.BehaviorBottleEntity;
-import melonystudios.variants.item.custom.food.TagConfigurableFoodItem;
-import melonystudios.variants.stew.StewBehavior;
+import melonystudios.variants.item.custom.food.ConsumableItem;
+import melonystudios.variants.consumable.ConsumeBehavior;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Stats;
@@ -11,10 +11,10 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class BehaviorBottleItem extends TagConfigurableFoodItem {
+public class BehaviorBottleItem extends ConsumableItem {
     private final int particleColor;
 
-    public BehaviorBottleItem(StewBehavior behavior, int particleColor, Properties properties) {
+    public BehaviorBottleItem(ConsumeBehavior behavior, int particleColor, Properties properties) {
         super(true, behavior, properties);
         this.particleColor = particleColor;
     }

@@ -52,6 +52,50 @@
       "random/bow"
     ]
   },
+  "entity.thrown_bottle.throw": {
+    "subtitle": "subtitles.entity.potion.throw",
+    "sounds": [
+      {
+        "name": "random/bow",
+        "volume": 0.5,
+        "pitch": 0.3
+      },
+      {
+        "name": "random/bow",
+        "volume": 0.5,
+        "pitch": 0.35
+      },
+      {
+        "name": "random/bow",
+        "volume": 0.5,
+        "pitch": 0.4
+      },
+      {
+        "name": "random/bow",
+        "volume": 0.5,
+        "pitch": 0.45
+      },
+      {
+        "name": "random/bow",
+        "volume": 0.5,
+        "pitch": 0.5
+      }
+    ]
+  },
+  "entity.thrown_bottle.shatter": {
+    "subtitle": "subtitles.entity.potion.splash",
+    "sounds": [
+      {
+        "name": "variants:block.glass.shatter",
+        "type": "event",
+        "pitch": 0.9
+      },
+      {
+        "name": "variants:block.glass.shatter",
+        "type": "event"
+      }
+    ]
+  },
   "item.spyglass.use": {
     "subtitle": "subtitles.item.spyglass.use",
     "sounds": [
@@ -94,6 +138,14 @@
         "volume": 0.5,
         "pitch": 0.9
       }
+    ]
+  },
+  "block.glass.shatter": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "random/glass1",
+      "random/glass2",
+      "random/glass3"
     ]
   },
   "item.armor.equip_empty_slot": {

@@ -3,9 +3,9 @@ package melonystudios.variants.item.custom.bottle;
 import com.google.common.collect.Lists;
 import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.item.VSItems;
-import melonystudios.variants.item.custom.food.TagConfigurableFoodItem;
-import melonystudios.variants.stew.StewBehavior;
-import melonystudios.variants.stew.custom.DefaultStewBehavior;
+import melonystudios.variants.item.custom.food.ConsumableItem;
+import melonystudios.variants.consumable.ConsumeBehavior;
+import melonystudios.variants.consumable.custom.DefaultConsumeBehavior;
 import melonystudios.variants.util.VSUtils;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -22,17 +22,15 @@ import java.util.List;
 
 import static melonystudios.variants.item.custom.bottle.GlassType.*;
 
-public class StainedFullGlassBottleItem extends TagConfigurableFoodItem {
+public class StainedFullGlassBottleItem extends ConsumableItem {
     public static final List<GlassType> BOTTLES = Lists.newArrayList(WHITE, LIGHT_GRAY, GRAY, BLACK, BROWN, RED, ORANGE, YELLOW, LIME, GREEN, CYAN, LIGHT_BLUE, BLUE, PURPLE, MAGENTA, PINK, GLOW_BLACK, QUARTZ);
-    private final StewBehavior behavior;
 
-    public StainedFullGlassBottleItem(StewBehavior behavior, Properties properties) {
+    public StainedFullGlassBottleItem(ConsumeBehavior behavior, Properties properties) {
         super(true, behavior, properties);
-        this.behavior = behavior;
     }
 
     public StainedFullGlassBottleItem(Properties properties) {
-        this(new DefaultStewBehavior(), properties);
+        this(new DefaultConsumeBehavior(), properties);
     }
 
     @Override

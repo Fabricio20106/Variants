@@ -3,7 +3,7 @@ package melonystudios.variants.command;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import melonystudios.variants.command.argument.BehaviorArgument;
 import melonystudios.variants.command.argument.BehaviorInput;
-import melonystudios.variants.item.custom.food.TagConfigurableFood;
+import melonystudios.variants.item.custom.food.Consumable;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
 import net.minecraft.command.arguments.EntityArgument;
@@ -29,7 +29,7 @@ public class SetBehaviorCommand {
             for (ServerPlayerEntity serverPlayer : players) {
                 if (!serverPlayer.isCreative()) break;
                 ItemStack handStack = serverPlayer.getItemInHand(Hand.MAIN_HAND);
-                if (handStack.getItem() instanceof TagConfigurableFood) {
+                if (Consumable.validConsumableClass(handStack.getItem())) {
                     handStack.getOrCreateTag().getCompound("consumable").remove("behavior");
                     CompoundNBT consumableTag = handStack.getOrCreateTagElement("consumable");
                     CompoundNBT behaviorTag = behavior.properties;

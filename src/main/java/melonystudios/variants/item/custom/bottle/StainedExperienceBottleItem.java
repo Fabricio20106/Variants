@@ -1,6 +1,7 @@
 package melonystudios.variants.item.custom.bottle;
 
 import melonystudios.variants.entity.custom.StainedExperienceBottleEntity;
+import melonystudios.variants.sound.VSSounds;
 import melonystudios.variants.util.ComponentUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -24,8 +25,8 @@ public class StainedExperienceBottleItem extends StainedFullGlassBottleItem {
     @Nonnull
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         ItemStack handStack = player.getItemInHand(hand);
-        SoundEvent event = getConsumeSound(handStack, SoundEvents.EXPERIENCE_BOTTLE_THROW);
-        world.playSound(null, player.getX(), player.getY(), player.getZ(), event, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
+        SoundEvent event = getConsumeSound(handStack, VSSounds.THROWN_BOTTLE_THROW.get());
+        world.playSound(null, player.getX(), player.getY(), player.getZ(), event, SoundCategory.NEUTRAL, 1, 1); // Pitch: 0.3 max, 0,5 min
 
         int glassColor = 8453920;
         if (getUseRemainder(handStack).getItem() instanceof StainedEmptyGlassBottleItem) glassColor = ((StainedEmptyGlassBottleItem) getUseRemainder(handStack).getItem()).getGlassColor(handStack);

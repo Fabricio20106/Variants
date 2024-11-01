@@ -2,7 +2,7 @@ package melonystudios.variants.item.custom.bottle;
 
 import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.item.custom.food.ExponentialStewItem;
-import melonystudios.variants.stew.custom.ApplyMobEffectsBehavior;
+import melonystudios.variants.consumable.custom.ApplyMobEffectsBehavior;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.NBTUtils;
 import melonystudios.variants.util.VSUtils;

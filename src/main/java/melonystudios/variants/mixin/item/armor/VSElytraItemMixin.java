@@ -22,6 +22,6 @@ public class VSElytraItemMixin extends Item implements Equippable {
     @Inject(method = "use", at = @At("HEAD"), cancellable = true)
     private void use(World world, PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult<ItemStack>> cir) {
         cir.cancel();
-        cir.setReturnValue(this.swapWithEquipmentSlot(this, world, player, hand));
+        cir.setReturnValue(this.equipOrSwapItem(this, world, player, hand));
     }
 }

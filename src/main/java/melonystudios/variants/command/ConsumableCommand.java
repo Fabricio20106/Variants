@@ -5,7 +5,8 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import melonystudios.variants.command.argument.UseAnimationArgument;
-import melonystudios.variants.item.custom.food.TagConfigurableFood;
+import melonystudios.variants.item.custom.bottle.StainedExperienceBottleItem;
+import melonystudios.variants.item.custom.food.Consumable;
 import melonystudios.variants.util.VSUtils;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
@@ -37,6 +38,9 @@ public class ConsumableCommand {
                         .then(Commands.literal("sound")
                                 .then(Commands.argument("eating_sound", ResourceLocationArgument.id()).suggests(SuggestionProviders.AVAILABLE_SOUNDS)
                                         .executes(context -> setConsumeSound(context, EntityArgument.getPlayer(context, "target"), ResourceLocationArgument.getId(context, "eating_sound")))))
+                        .then(Commands.literal("shatter_sound")
+                                .then(Commands.argument("shattering_sound", ResourceLocationArgument.id()).suggests(SuggestionProviders.AVAILABLE_SOUNDS)
+                                        .executes(context -> setShatterSound(context, EntityArgument.getPlayer(context, "target"), ResourceLocationArgument.getId(context, "shattering_sound")))))
                         .then(Commands.literal("use_remainder")
                                 .then(Commands.argument("item", ItemArgument.item())
                                         .executes(context -> setUseRemainder(context, EntityArgument.getPlayer(context, "target"), ItemArgument.getItem(context, "item"), 1))
@@ -46,7 +50,7 @@ public class ConsumableCommand {
 
     private static int setUseRemainder(CommandContext<CommandSource> context, ServerPlayerEntity player, ItemInput itemInput, int count) throws CommandSyntaxException {
         ItemStack handStack = player.getItemInHand(Hand.MAIN_HAND);
-        if (handStack.getItem() instanceof TagConfigurableFood) {
+        if (Consumable.validConsumableClass(handStack.getItem())) {
             ItemStack inputStack = itemInput.createItemStack(MathHelper.clamp(count, 0, 127), false);
             CompoundNBT consumableTag = handStack.getOrCreateTagElement("consumable");
             CompoundNBT remainderTag = VSUtils.saveStack(inputStack, new CompoundNBT());
@@ -60,7 +64,7 @@ public class ConsumableCommand {
 
     private static int setConsumeTicks(CommandContext<CommandSource> context, ServerPlayerEntity player, int ticks) {
         ItemStack handStack = player.getItemInHand(Hand.MAIN_HAND);
-        if (handStack.getItem() instanceof TagConfigurableFood) {
+        if (Consumable.validConsumableClass(handStack.getItem())) {
             CompoundNBT consumableTag = handStack.getOrCreateTagElement("consumable");
             consumableTag.putInt("consume_ticks", ticks);
             context.getSource().sendSuccess(new TranslationTextComponent("commands.consumable.consume_ticks.success" + (ticks < 20 ? ".ticks" : ""), player.getDisplayName(), (ticks < 20 ? ticks : ticks / 20)), true);
@@ -72,7 +76,7 @@ public class ConsumableCommand {
 
     private static int setConsumeAnimation(CommandContext<CommandSource> context, ServerPlayerEntity player, UseAction animation) {
         ItemStack handStack = player.getItemInHand(Hand.MAIN_HAND);
-        if (handStack.getItem() instanceof TagConfigurableFood) {
+        if (Consumable.validConsumableClass(handStack.getItem())) {
             CompoundNBT consumableTag = handStack.getOrCreateTagElement("consumable");
             String name = animation.toString().toLowerCase(Locale.ROOT);
             consumableTag.putString("animation", name.equals("spear") ? "trident" : name);
@@ -90,7 +94,7 @@ public class ConsumableCommand {
 
     private static int setCooldown(CommandContext<CommandSource> context, ServerPlayerEntity player, int cooldownTicks) {
         ItemStack handStack = player.getItemInHand(Hand.MAIN_HAND);
-        if (handStack.getItem() instanceof TagConfigurableFood) {
+        if (Consumable.validConsumableClass(handStack.getItem())) {
             CompoundNBT consumableTag = handStack.getOrCreateTagElement("consumable");
             if (cooldownTicks == 0) consumableTag.remove("cooldown");
             else consumableTag.putInt("cooldown", cooldownTicks);
@@ -103,13 +107,25 @@ public class ConsumableCommand {
 
     private static int setConsumeSound(CommandContext<CommandSource> context, ServerPlayerEntity player, ResourceLocation soundLocation) {
         ItemStack handStack = player.getItemInHand(Hand.MAIN_HAND);
-        if (handStack.getItem() instanceof TagConfigurableFood) {
+        if (Consumable.validConsumableClass(handStack.getItem())) {
             CompoundNBT consumableTag = handStack.getOrCreateTagElement("consumable");
             consumableTag.putString("sound", soundLocation.toString());
             context.getSource().sendSuccess(new TranslationTextComponent("commands.consumable.consume_sound.success", player.getDisplayName(), soundLocation), true);
             return 1;
         }
         context.getSource().sendFailure(new TranslationTextComponent("commands.consumable.not_a_tcf", SetBehaviorCommand.getItemDisplayName(handStack)));
+        return 0;
+    }
+
+    private static int setShatterSound(CommandContext<CommandSource> context, ServerPlayerEntity player, ResourceLocation soundLocation) {
+        ItemStack handStack = player.getItemInHand(Hand.MAIN_HAND);
+        if (handStack.getItem() instanceof StainedExperienceBottleItem) {
+            CompoundNBT consumableTag = handStack.getOrCreateTagElement("consumable");
+            consumableTag.putString("shatter_sound", soundLocation.toString());
+            context.getSource().sendSuccess(new TranslationTextComponent("commands.consumable.shatter_sound.success", player.getDisplayName(), soundLocation), true);
+            return 1;
+        }
+        context.getSource().sendFailure(new TranslationTextComponent("commands.consumable.not_a_seb", SetBehaviorCommand.getItemDisplayName(handStack)));
         return 0;
     }
 }

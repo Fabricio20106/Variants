@@ -37,7 +37,7 @@ public class VSColorManager {
         event.getItemColors().register((stack, color) -> GrassColors.get(0.5D, 1), VSItems.POTTED_GRASS.get(), VSItems.POTTED_SUGAR_CANE.get(), VSItems.PAINTING_LEAVES.get());
 
         event.getItemColors().register((stack, color) -> {
-            if (stack.getTag() != null && stack.getTag().contains("armor_design")) {
+            if (stack.getTag() != null && stack.getTag().contains("armor_design", Constants.TagTypes.ANY_NUMERIC)) {
                 return -1;
             } else {
                 return color > 0 ? -1 : ((DyeableArmorItem) stack.getItem()).getColor(stack);

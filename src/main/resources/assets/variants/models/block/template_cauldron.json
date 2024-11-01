@@ -1,5 +1,8 @@
 {
   "ambientocclusion": false,
+  "textures": {
+    "particle": "#side"
+  },
   "display": {
     "gui": {
       "rotation": [ 30, 225, 0 ],

@@ -40,6 +40,7 @@ public class VSFireworkRocketItemMixin extends Item {
         }
         if (VSConfigs.COMMON_CONFIGS.customFireworkDescriptions.get()) {
             ci.cancel();
+            super.appendHoverText(stack, world, tooltip, flag);
             CompoundNBT fireworksTag = stack.getTagElement("Fireworks");
 
             if (fireworksTag == null) {

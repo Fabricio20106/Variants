@@ -1,6 +1,6 @@
 package melonystudios.variants.item.custom.food;
 
-import melonystudios.variants.stew.custom.DefaultStewBehavior;
+import melonystudios.variants.consumable.custom.DefaultConsumeBehavior;
 import melonystudios.variants.util.NBTUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,11 +16,11 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class SophiePotionItem extends TagConfigurableFoodItem {
+public class SophiePotionItem extends ConsumableItem {
     private final String compatMod;
 
     public SophiePotionItem(Properties properties, String compatMod) {
-        super(true, new DefaultStewBehavior(), properties);
+        super(true, new DefaultConsumeBehavior(), properties);
         this.compatMod = compatMod;
     }
 

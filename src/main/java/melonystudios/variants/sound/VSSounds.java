@@ -18,10 +18,15 @@ public class VSSounds {
     public static final RegistryObject<SoundEvent> FISH_HURT = SOUNDS.register("entity.fish.hurt", () -> new SoundEvent(Variants.variants("entity.fish.hurt")));
     public static final RegistryObject<SoundEvent> FISH_DEATH = SOUNDS.register("entity.fish.death", () -> new SoundEvent(Variants.variants("entity.fish.death")));
     public static final RegistryObject<SoundEvent> DRAGON_BREATH_BOTTLE_THROW = SOUNDS.register("entity.dragon_breath_bottle.throw", () -> new SoundEvent(Variants.variants("entity.dragon_breath_bottle.throw")));
+    public static final RegistryObject<SoundEvent> THROWN_BOTTLE_THROW = SOUNDS.register("entity.thrown_bottle.throw", () -> new SoundEvent(Variants.variants("entity.thrown_bottle.throw")));
+    public static final RegistryObject<SoundEvent> THROWN_BOTTLE_SHATTER = SOUNDS.register("entity.thrown_bottle.shatter", () -> new SoundEvent(Variants.variants("entity.thrown_bottle.shatter")));
 
     // Items
     public static final RegistryObject<SoundEvent> SPYGLASS_USE = SOUNDS.register("item.spyglass.use", () -> new SoundEvent(Variants.variants("item.spyglass.use")));
     public static final RegistryObject<SoundEvent> SPYGLASS_STOP_USING = SOUNDS.register("item.spyglass.stop_using", () -> new SoundEvent(Variants.variants("item.spyglass.stop_using")));
+
+    // Blocks
+    public static final RegistryObject<SoundEvent> GLASS_SHATTER = SOUNDS.register("block.glass.shatter", () -> new SoundEvent(Variants.variants("block.glass.shatter")));
 
     // Consume Behaviors
     public static final RegistryObject<SoundEvent> PLAY_SOUND_BEHAVIOR_DEFAULT = SOUNDS.register("consume_behavior.play_sound.default", () -> new SoundEvent(Variants.variants("consume_behavior.play_sound.default")));

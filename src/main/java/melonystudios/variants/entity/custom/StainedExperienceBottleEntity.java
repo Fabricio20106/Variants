@@ -17,12 +17,11 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nonnull;
 
-public class StainedExperienceBottleEntity extends ProjectileItemEntity {
+public class StainedExperienceBottleEntity extends ProjectileItemEntity implements PotionParticleMaker {
     private static final DataParameter<Integer> PARTICLE_COLOR = EntityDataManager.defineId(StainedExperienceBottleEntity.class, DataSerializers.INT);
     private ItemStack bottleItem = new ItemStack(VSItems.STAINED_EXPERIENCE_BOTTLE.get());
 
@@ -30,18 +29,10 @@ public class StainedExperienceBottleEntity extends ProjectileItemEntity {
         super(type, world);
     }
 
-    public StainedExperienceBottleEntity(World world, LivingEntity livEntity) {
-        super(VSEntities.STAINED_EXPERIENCE_BOTTLE.get(), livEntity, world);
-    }
-
     public StainedExperienceBottleEntity(World world, LivingEntity livEntity, ItemStack stack, int particleColor) {
         super(VSEntities.STAINED_EXPERIENCE_BOTTLE.get(), livEntity, world);
         this.entityData.set(PARTICLE_COLOR, particleColor);
         this.bottleItem = stack.copy();
-    }
-
-    public StainedExperienceBottleEntity(World world, double x, double y, double z) {
-        super(VSEntities.STAINED_EXPERIENCE_BOTTLE.get(), x, y, z, world);
     }
 
     @Override
@@ -90,7 +81,7 @@ public class StainedExperienceBottleEntity extends ProjectileItemEntity {
     protected void onHit(RayTraceResult hitResult) {
         super.onHit(hitResult);
         if (!this.level.isClientSide) {
-            this.level.levelEvent(Constants.WorldEvents.POTION_IMPACT_INSTANT, this.blockPosition(), this.entityData.get(PARTICLE_COLOR));
+            this.spawnParticles(this.position(), this.level, this.bottleItem, this.entityData.get(PARTICLE_COLOR));
             int i = 3 + this.level.random.nextInt(5) + this.level.random.nextInt(5);
 
             while (i > 0) {

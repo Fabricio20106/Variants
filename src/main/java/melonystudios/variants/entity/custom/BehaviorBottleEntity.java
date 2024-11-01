@@ -2,7 +2,7 @@ package melonystudios.variants.entity.custom;
 
 import melonystudios.variants.entity.VSEntities;
 import melonystudios.variants.item.VSItems;
-import melonystudios.variants.stew.StewBehavior;
+import melonystudios.variants.consumable.ConsumeBehavior;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
@@ -18,9 +18,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nonnull;
 
-import static net.minecraftforge.common.util.Constants.WorldEvents.POTION_IMPACT_INSTANT;
-
-public class BehaviorBottleEntity extends ProjectileItemEntity {
+public class BehaviorBottleEntity extends ProjectileItemEntity implements PotionParticleMaker {
     private static final DataParameter<Integer> PARTICLE_COLOR = EntityDataManager.defineId(BehaviorBottleEntity.class, DataSerializers.INT);
 
     public BehaviorBottleEntity(EntityType<? extends BehaviorBottleEntity> type, World world) {
@@ -68,8 +66,8 @@ public class BehaviorBottleEntity extends ProjectileItemEntity {
     @Override
     protected void onHit(RayTraceResult hitResult) {
         super.onHit(hitResult);
-        this.level.levelEvent(POTION_IMPACT_INSTANT, this.blockPosition(), this.entityData.get(PARTICLE_COLOR));
-        StewBehavior.runAreaEffectBehavior(this.getItem(), this, StewBehavior::runBehavior);
+        this.spawnParticles(this.position(), this.level, this.getItemRaw(), this.entityData.get(PARTICLE_COLOR));
+        ConsumeBehavior.runAreaEffectBehavior(this.getItemRaw(), this, ConsumeBehavior::runBehavior);
         this.remove();
     }
 

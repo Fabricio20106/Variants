@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "group": "wool_sweaters",
   "pattern": [
     "M M",
     "MMM",

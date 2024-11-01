@@ -3,10 +3,10 @@ package melonystudios.variants.loot.function;
 import com.google.gson.*;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import melonystudios.variants.Variants;
+import melonystudios.variants.item.custom.food.Consumable;
 import melonystudios.variants.item.custom.food.ExponentialStewItem;
-import melonystudios.variants.item.custom.food.TagConfigurableFood;
 import melonystudios.variants.loot.VSLootFunctions;
-import melonystudios.variants.stew.StewBehavior;
+import melonystudios.variants.consumable.ConsumeBehavior;
 import melonystudios.variants.util.JSONUtils;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootContext;
@@ -20,10 +20,10 @@ import net.minecraft.util.text.TranslationTextComponent;
 import javax.annotation.Nonnull;
 
 public class SetConsumeBehavior extends LootFunction {
-    private final StewBehavior behavior;
+    private final ConsumeBehavior behavior;
     private final CompoundNBT properties;
 
-    public SetConsumeBehavior(ILootCondition[] conditions, StewBehavior behavior, CompoundNBT properties) {
+    public SetConsumeBehavior(ILootCondition[] conditions, ConsumeBehavior behavior, CompoundNBT properties) {
         super(conditions);
         this.behavior = behavior;
         this.properties = properties;
@@ -38,7 +38,7 @@ public class SetConsumeBehavior extends LootFunction {
     @Override
     @Nonnull
     public ItemStack run(ItemStack stack, LootContext context) {
-        if (stack.getItem() instanceof TagConfigurableFood) ExponentialStewItem.writeBehaviorToStew(stack, this.behavior, this.properties);
+        if (Consumable.validConsumableClass(stack.getItem())) ExponentialStewItem.writeBehaviorToStew(stack, this.behavior, this.properties);
         return stack;
     }
 
@@ -53,7 +53,7 @@ public class SetConsumeBehavior extends LootFunction {
         @Override
         @Nonnull
         public SetConsumeBehavior deserialize(JsonObject object, JsonDeserializationContext context, ILootCondition[] conditions) {
-            StewBehavior jsonBehavior = JSONUtils.getAsBehavior(object, "behavior");
+            ConsumeBehavior jsonBehavior = JSONUtils.getAsBehavior(object, "behavior");
             CompoundNBT jsonProperties;
             try {
                 jsonProperties = JsonToNBT.parseTag(convertToString(object.get("properties"), "properties"));

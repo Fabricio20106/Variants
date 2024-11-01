@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/slab",
   "textures": {
-    "side": "variants:block/smooth_purpur",
+    "side": "variants:block/smooth_purpur_slab_side",
     "bottom": "variants:block/smooth_purpur",
     "top": "variants:block/smooth_purpur"
   }

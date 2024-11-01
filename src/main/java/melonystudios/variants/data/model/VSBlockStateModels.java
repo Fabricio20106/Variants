@@ -1,9 +1,7 @@
 package melonystudios.variants.data.model;
 
 import melonystudios.variants.Variants;
-import net.minecraft.block.AbstractButtonBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.TrapDoorBlock;
+import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.state.properties.AttachFace;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -61,6 +59,7 @@ public abstract class VSBlockStateModels extends BlockStateProvider {
         ModelFile button = button(block.getRegistryName().getPath(), texture);
         ModelFile buttonPressed = buttonPressed(block.getRegistryName().getPath() + "_pressed", texture);
         this.buttonBlock(block, button, buttonPressed);
+        models().withExistingParent(block.getRegistryName().getPath() + "_inventory", mcLoc("block/button_inventory")).texture("texture", texture);
     }
 
     public void buttonBlock(AbstractButtonBlock block, ModelFile button, ModelFile buttonPressed) {
@@ -78,5 +77,38 @@ public abstract class VSBlockStateModels extends BlockStateProvider {
 
     public ModelFile buttonPressed(String name, ResourceLocation texture) {
         return models().singleTexture(name, mcLoc("block/button_pressed"), texture);
+    }
+
+    public void cauldron(Block cauldron) {
+        getVariantBuilder(cauldron).forAllStatesExcept(state -> {
+            int level = state.getValue(BlockStateProperties.LEVEL_CAULDRON);
+            String name = cauldron.getRegistryName().getPath();
+            ModelFile emptyCauldron = models().withExistingParent(name, modLoc("block/template_cauldron")).texture("side", modLoc("block/" + name + "_side")).texture("inside", modLoc("block/" + name + "_inner")).texture("bottom", modLoc("block/" + name + "_bottom"))
+                    .texture("top", modLoc("block/" + name + "_top"));
+
+            return ConfiguredModel.builder().modelFile(level == 0 ? emptyCauldron : models().withExistingParent(name + "_level" + level, modLoc("block/template_cauldron_level" + level)).texture("side", modLoc("block/" + name + "_side")).texture("inside", modLoc("block/" + name + "_inner"))
+                    .texture("bottom", modLoc("block/" + name + "_bottom")).texture("top", modLoc("block/" + name + "_top")).texture("contents", mcLoc("block/water_still"))).build();
+        }, BlockStateProperties.WATERLOGGED);
+    }
+
+    public void chain(Block chain) {
+        getVariantBuilder(chain).forAllStatesExcept(state -> {
+            Direction.Axis axis = state.getValue(ChainBlock.AXIS);
+
+            return ConfiguredModel.builder().modelFile(models().withExistingParent(chain.getRegistryName().getPath(), modLoc("block/template_chain")).texture("chain", modLoc("block/" + chain.getRegistryName().getPath()))).rotationX(axis == Direction.Axis.X ||
+                    axis == Direction.Axis.Z ? 90 : 0).rotationY(axis == Direction.Axis.X ? 90 : 0).build();
+        }, BlockStateProperties.WATERLOGGED);
+    }
+
+    public void fenceBlock(Block fence, ResourceLocation texture) {
+        fenceBlock((FenceBlock) fence, texture);
+        assert fence.getRegistryName() != null;
+        models().withExistingParent(fence.getRegistryName().getPath() + "_inventory", mcLoc("block/fence_inventory")).texture("texture", texture);
+    }
+
+    public void wallBlock(Block wall, ResourceLocation texture) {
+        wallBlock((WallBlock) wall, texture);
+        assert wall.getRegistryName() != null;
+        models().withExistingParent(wall.getRegistryName().getPath() + "_inventory", mcLoc("block/wall_inventory")).texture("wall", texture);
     }
 }

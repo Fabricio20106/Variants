@@ -2,10 +2,10 @@ package melonystudios.variants.data.recipe;
 
 import com.google.common.collect.Lists;
 import melonystudios.variants.item.VSItems;
-import melonystudios.variants.stew.StewBehavior;
-import melonystudios.variants.stew.VSStewBehaviors;
-import melonystudios.variants.stew.bowl.BowlType;
-import melonystudios.variants.stew.bowl.BowlTypes;
+import melonystudios.variants.consumable.ConsumeBehavior;
+import melonystudios.variants.consumable.VSConsumeBehaviors;
+import melonystudios.variants.consumable.bowl.BowlType;
+import melonystudios.variants.consumable.bowl.BowlTypes;
 import melonystudios.variants.util.VSUtils;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
@@ -35,19 +35,19 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
-        makeMushroomStew(consumer, new ItemStack(VSItems.EXPONENTIAL_MUSHROOM_STEW.get()), VSStewBehaviors.DEFAULT.get());
-        makeBeetrootSoup(consumer, new ItemStack(VSItems.EXPONENTIAL_BEETROOT_SOUP.get()), VSStewBehaviors.DEFAULT.get());
-        makeRabbitStew(consumer, new ItemStack(VSItems.EXPONENTIAL_RABBIT_STEW.get()), VSStewBehaviors.DEFAULT.get());
-        makeFungiStew(consumer, new ItemStack(VSItems.EXPONENTIAL_FUNGI_STEW.get()), VSStewBehaviors.DEFAULT.get());
-        makeEndFungiStew(consumer, new ItemStack(VSItems.EXPONENTIAL_END_FUNGI_STEW.get()), VSStewBehaviors.DEFAULT.get());
-        makeWaterBowl(consumer, new ItemStack(VSItems.EXPONENTIAL_WATER_BOWL.get()), VSStewBehaviors.APPLY_MOB_EFFECTS.get());
-        makeLavaBowl(consumer, new ItemStack(VSItems.EXPONENTIAL_LAVA_BOWL.get()), VSStewBehaviors.IGNITE.get());
-        makeSoulLavaBowl(consumer, new ItemStack(VSItems.EXPONENTIAL_SOUL_LAVA_BOWL.get()), VSStewBehaviors.IGNITE.get());
-        makeMilkBowl(consumer, new ItemStack(VSItems.EXPONENTIAL_MILK_BOWL.get()), VSStewBehaviors.CLEAR_MOB_EFFECTS.get());
-        makePowderSnowBowl(consumer, new ItemStack(VSItems.EXPONENTIAL_POWDER_SNOW_BOWL.get()), VSStewBehaviors.DEFAULT.get());
+        makeMushroomStew(consumer, new ItemStack(VSItems.EXPONENTIAL_MUSHROOM_STEW.get()), VSConsumeBehaviors.DEFAULT.get());
+        makeBeetrootSoup(consumer, new ItemStack(VSItems.EXPONENTIAL_BEETROOT_SOUP.get()), VSConsumeBehaviors.DEFAULT.get());
+        makeRabbitStew(consumer, new ItemStack(VSItems.EXPONENTIAL_RABBIT_STEW.get()), VSConsumeBehaviors.DEFAULT.get());
+        makeFungiStew(consumer, new ItemStack(VSItems.EXPONENTIAL_FUNGI_STEW.get()), VSConsumeBehaviors.DEFAULT.get());
+        makeEndFungiStew(consumer, new ItemStack(VSItems.EXPONENTIAL_END_FUNGI_STEW.get()), VSConsumeBehaviors.DEFAULT.get());
+        makeWaterBowl(consumer, new ItemStack(VSItems.EXPONENTIAL_WATER_BOWL.get()), VSConsumeBehaviors.APPLY_MOB_EFFECTS.get());
+        makeLavaBowl(consumer, new ItemStack(VSItems.EXPONENTIAL_LAVA_BOWL.get()), VSConsumeBehaviors.IGNITE.get());
+        makeSoulLavaBowl(consumer, new ItemStack(VSItems.EXPONENTIAL_SOUL_LAVA_BOWL.get()), VSConsumeBehaviors.IGNITE.get());
+        makeMilkBowl(consumer, new ItemStack(VSItems.EXPONENTIAL_MILK_BOWL.get()), VSConsumeBehaviors.CLEAR_MOB_EFFECTS.get());
+        makePowderSnowBowl(consumer, new ItemStack(VSItems.EXPONENTIAL_POWDER_SNOW_BOWL.get()), VSConsumeBehaviors.DEFAULT.get());
     }
 
-    private void makeMushroomStew(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, StewBehavior behavior) {
+    private void makeMushroomStew(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, ConsumeBehavior behavior) {
         for (BowlType type : DEFAULT_BOWLS) {
             ItemStack resultStack = getResultStack(stewStack, type, behavior);
             NBTSavingRecipeBuilder.shapeless(resultStack).requires(Items.BROWN_MUSHROOM).requires(Items.RED_MUSHROOM).requires(type.getBowlStack().getItem()).group("mushroom_stew").unlockedBy("has_bowl", has(type.getBowlStack()
@@ -55,7 +55,7 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
         }
     }
 
-    private void makeBeetrootSoup(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, StewBehavior behavior) {
+    private void makeBeetrootSoup(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, ConsumeBehavior behavior) {
         for (BowlType type : DEFAULT_BOWLS) {
             ItemStack resultStack = getResultStack(stewStack, type, behavior);
             NBTSavingRecipeBuilder.shapeless(resultStack).requires(Items.BEETROOT).requires(Items.BEETROOT).requires(Items.BEETROOT).requires(Items.BEETROOT).requires(Items.BEETROOT).requires(Items.BEETROOT).requires(type.getBowlStack().getItem())
@@ -63,7 +63,7 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
         }
     }
 
-    private void makeRabbitStew(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, StewBehavior behavior) {
+    private void makeRabbitStew(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, ConsumeBehavior behavior) {
         for (BowlType type : DEFAULT_BOWLS) {
             ItemStack resultStack = getResultStack(stewStack, type, behavior);
             NBTSavingRecipeBuilder.shapeless(resultStack).requires(Items.BAKED_POTATO).requires(Items.COOKED_RABBIT).requires(Items.CARROT).requires(Ingredient.of(Items.RED_MUSHROOM, Items.BROWN_MUSHROOM)).requires(type.getBowlStack().getItem())
@@ -71,7 +71,7 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
         }
     }
 
-    private void makeFungiStew(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, StewBehavior behavior) {
+    private void makeFungiStew(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, ConsumeBehavior behavior) {
         for (BowlType type : DEFAULT_BOWLS) {
             ItemStack resultStack = getResultStack(stewStack, type, behavior);
             NBTSavingRecipeBuilder.shapeless(resultStack).requires(Items.CRIMSON_FUNGUS).requires(Items.WARPED_FUNGUS).requires(type.getBowlStack().getItem())
@@ -79,7 +79,7 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
         }
     }
 
-    private void makeEndFungiStew(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, StewBehavior behavior) {
+    private void makeEndFungiStew(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, ConsumeBehavior behavior) {
         for (BowlType type : DEFAULT_BOWLS) {
             ItemStack resultStack = getResultStack(stewStack, type, behavior);
             NBTSavingRecipeBuilder.shapeless(resultStack).requires(VSItems.ENDER_FUNGUS.get()).requires(VSItems.ENDER_FUNGUS.get()).requires(type.getBowlStack().getItem())
@@ -87,7 +87,7 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
         }
     }
 
-    private void makeWaterBowl(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, StewBehavior behavior) {
+    private void makeWaterBowl(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, ConsumeBehavior behavior) {
         for (BowlType type : DEFAULT_BOWLS) {
             ItemStack resultStack = getResultStack(stewStack, type, behavior);
             NBTSavingRecipeBuilder.shapeless(resultStack).requires(Items.POTION).requires(Items.POTION).requires(type.getBowlStack().getItem())
@@ -97,7 +97,7 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
         }
     }
 
-    private void makeLavaBowl(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, StewBehavior behavior) {
+    private void makeLavaBowl(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, ConsumeBehavior behavior) {
         for (BowlType type : DEFAULT_BOWLS) {
             ItemStack resultStack = getResultStack(stewStack, type, behavior);
             NBTSavingRecipeBuilder.shapeless(resultStack).requires(VSItems.LAVA_BOTTLE.get()).requires(VSItems.LAVA_BOTTLE.get()).requires(type.getBowlStack().getItem())
@@ -107,7 +107,7 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
         }
     }
 
-    private void makeSoulLavaBowl(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, StewBehavior behavior) {
+    private void makeSoulLavaBowl(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, ConsumeBehavior behavior) {
         for (BowlType type : DEFAULT_BOWLS) {
             ItemStack resultStack = getResultStack(stewStack, type, behavior);
             NBTSavingRecipeBuilder.shapeless(resultStack).requires(VSItems.SOUL_LAVA_BOTTLE.get()).requires(VSItems.SOUL_LAVA_BOTTLE.get()).requires(type.getBowlStack().getItem())
@@ -117,7 +117,7 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
         }
     }
 
-    private void makeMilkBowl(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, StewBehavior behavior) {
+    private void makeMilkBowl(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, ConsumeBehavior behavior) {
         for (BowlType type : DEFAULT_BOWLS) {
             ItemStack resultStack = getResultStack(stewStack, type, behavior);
             NBTSavingRecipeBuilder.shapeless(resultStack).requires(VSItems.MILK_BOTTLE.get()).requires(VSItems.MILK_BOTTLE.get()).requires(type.getBowlStack().getItem())
@@ -127,7 +127,7 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
         }
     }
 
-    private void makePowderSnowBowl(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, StewBehavior behavior) {
+    private void makePowderSnowBowl(Consumer<IFinishedRecipe> consumer, ItemStack stewStack, ConsumeBehavior behavior) {
         for (BowlType type : DEFAULT_BOWLS) {
             ItemStack resultStack = getResultStack(stewStack, type, behavior);
             NBTSavingRecipeBuilder.shapeless(resultStack).requires(VSItems.POWDER_SNOW_BOTTLE.get()).requires(VSItems.POWDER_SNOW_BOTTLE.get()).requires(type.getBowlStack().getItem())
@@ -137,13 +137,13 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
         }
     }
 
-    private ItemStack getResultStack(ItemStack resultStack, BowlType type, StewBehavior behavior) {
+    private ItemStack getResultStack(ItemStack resultStack, BowlType type, ConsumeBehavior behavior) {
         CompoundNBT consumableTag = resultStack.getOrCreateTagElement("consumable");
 
         consumableTag.put("use_remainder", VSUtils.saveStack(type.getBowlStack(), new CompoundNBT()));
 
-        CompoundNBT behaviorTag = behavior.writePropertiesToNBT();
-        behaviorTag.putString("id", behavior.getBehaviorRegistry().getRegistryName().toString());
+        CompoundNBT behaviorTag = behavior.writeProperties();
+        behaviorTag.putString("id", behavior.registryEntry().getRegistryName().toString());
         consumableTag.put("behavior", behaviorTag);
 
         resultStack.getOrCreateTag().putInt("texture_id", type.getTextureID());

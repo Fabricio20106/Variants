@@ -1,6 +1,6 @@
 package melonystudios.variants.item.custom.food;
 
-import melonystudios.variants.stew.custom.ClearMobEffectsBehavior;
+import melonystudios.variants.consumable.custom.ClearMobEffectsBehavior;
 
 public class MilkBottleItem extends DrinkableContainerItem {
     public MilkBottleItem(Properties properties) {

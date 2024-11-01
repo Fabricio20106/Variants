@@ -26,7 +26,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-// TODO: Make this class more compatibility-friendly.
 public class WoolArmorItem extends ArmorItem implements DyeableArmorItem {
     private final String armorName;
 

@@ -20,7 +20,7 @@ import melonystudios.variants.item.VSItems;
 import melonystudios.variants.item.VSModdedItems;
 import melonystudios.variants.item.VSWeaponry;
 import melonystudios.variants.item.fix.VSTagFixes;
-import melonystudios.variants.stew.VSStewBehaviors;
+import melonystudios.variants.consumable.VSConsumeBehaviors;
 import melonystudios.variants.loot.VSLootFunctions;
 import melonystudios.variants.loot.rand.BowlIDValueRange;
 import melonystudios.variants.sound.VSSounds;
@@ -102,7 +102,7 @@ public class Variants {
         VSFeatures.FEATURES.register(eventBus);
         VSBiomes.BIOMES.register(eventBus);
         VSRecipeTypes.RECIPE_TYPES.register(eventBus);
-        VSStewBehaviors.BEHAVIORS.register(eventBus);
+        VSConsumeBehaviors.BEHAVIORS.register(eventBus);
         VSTagFixes.FIXES.register(eventBus);
         VSLootFunctions.init();
         VSRegistries.init();

@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#melony:farmland",
+    "#variants:nether_wart_plantable_on"
+  ]
+}

@@ -1,6 +1,6 @@
 package melonystudios.variants.item.custom.food;
 
-import melonystudios.variants.stew.StewBehavior;
+import melonystudios.variants.consumable.ConsumeBehavior;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.*;
@@ -8,14 +8,14 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public abstract class DrinkableContainerItem extends TagConfigurableFoodItem {
-    public DrinkableContainerItem(StewBehavior behavior, Properties properties) {
+public abstract class DrinkableContainerItem extends ConsumableItem {
+    public DrinkableContainerItem(ConsumeBehavior behavior, Properties properties) {
         super(true, behavior, properties);
     }
 
     @Override
     public ItemStack getContainerItem(ItemStack stack) {
-        return getDefaultUseRemainder();
+        return this.getDefaultUseRemainder();
     }
 
     @Override

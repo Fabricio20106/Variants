@@ -4,8 +4,8 @@ import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import melonystudios.variants.item.custom.food.TagConfigurableFoodItem;
-import melonystudios.variants.stew.StewBehavior;
+import melonystudios.variants.item.custom.food.ConsumableItem;
+import melonystudios.variants.consumable.ConsumeBehavior;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.JSONUtils;
 import melonystudios.variants.util.VSRegistries;
@@ -163,10 +163,10 @@ public class NBTSavingRecipeBuilder {
             JsonObject behaviorObj = new JsonObject();
             if (consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) {
                 CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
-                StewBehavior behavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
+                ConsumeBehavior behavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
 
                 behaviorObj.addProperty("id", behaviorTag.getString("id"));
-                if (this.result.getItem() instanceof TagConfigurableFoodItem) JSONUtils.saveBehaviorToJSON((TagConfigurableFoodItem) this.result.getItem(), behavior, behaviorObj, behaviorTag);
+                if (this.result.getItem() instanceof ConsumableItem) JSONUtils.saveBehaviorToJSON((ConsumableItem) this.result.getItem(), behavior, behaviorObj, behaviorTag);
             }
             return behaviorObj;
         }

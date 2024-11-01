@@ -27,6 +27,7 @@ public class VSLingeringPotionItemMixin extends Item {
 
     @Inject(method = "appendHoverText", at = @At("HEAD"))
     private void appendHoverText(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag flag, CallbackInfo ci) {
+        super.appendHoverText(stack, world, tooltip, flag);
         if (flag.isAdvanced() && stack.getTag() != null && VSConfigs.COMMON_CONFIGS.showTagsWithAlt.get()) {
             boolean shouldHideTooltip = NBTUtils.shouldNotHideTooltip("hide_item_tags", stack);
             if (shouldHideTooltip && !VSKeys.isAltDown()) tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".hold_alt", VSKeys.getTranslation(VSKeys.SHOW_TAGS_KEY).withStyle(TextFormatting.GRAY)).withStyle(TextFormatting.DARK_GRAY));

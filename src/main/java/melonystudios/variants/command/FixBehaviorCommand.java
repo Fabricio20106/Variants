@@ -4,8 +4,8 @@ import com.google.common.collect.ImmutableMap;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import melonystudios.variants.item.VSItems;
 import melonystudios.variants.item.custom.food.ExponentialStewItem;
-import melonystudios.variants.stew.StewBehavior;
-import melonystudios.variants.stew.VSStewBehaviors;
+import melonystudios.variants.consumable.ConsumeBehavior;
+import melonystudios.variants.consumable.VSConsumeBehaviors;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.NBTUtils;
 import net.minecraft.command.CommandSource;
@@ -26,8 +26,8 @@ import java.util.Map;
 import static melonystudios.variants.Variants.variants;
 
 public class FixBehaviorCommand {
-    private static final Map<ResourceLocation, StewBehavior> OLD_NAMES_FIX = new ImmutableMap.Builder<ResourceLocation, StewBehavior>().put(variants("effect"), VSStewBehaviors.APPLY_MOB_EFFECTS.get())
-            .put(variants("lava"), VSStewBehaviors.IGNITE.get()).put(variants("milk"), VSStewBehaviors.CLEAR_MOB_EFFECTS.get()).build();
+    private static final Map<ResourceLocation, ConsumeBehavior> OLD_NAMES_FIX = new ImmutableMap.Builder<ResourceLocation, ConsumeBehavior>().put(variants("effect"), VSConsumeBehaviors.APPLY_MOB_EFFECTS.get())
+            .put(variants("lava"), VSConsumeBehaviors.IGNITE.get()).put(variants("milk"), VSConsumeBehaviors.CLEAR_MOB_EFFECTS.get()).build();
 
     public static ArgumentBuilder<CommandSource, ?> register() {
         return Commands.literal("fix").then(Commands.argument("target", EntityArgument.player())
@@ -218,7 +218,7 @@ public class FixBehaviorCommand {
             if (tag != null && tag.contains("behavior", Constants.TagTypes.COMPOUND)) {
                 CompoundNBT oldBehaviorTag = tag.getCompound("behavior");
 
-                String oldID = NBTUtils.stringOrDefault("id", oldBehaviorTag, VSStewBehaviors.DEFAULT.get().getRegistryName().toString());
+                String oldID = NBTUtils.stringOrDefault("id", oldBehaviorTag, VSConsumeBehaviors.DEFAULT.get().getRegistryName().toString());
                 CompoundNBT behaviorTag = oldBehaviorTag.getCompound("properties");
                 behaviorTag.putString("id", replaceBehaviorID(oldID));
                 consumableTag.put("behavior", behaviorTag);

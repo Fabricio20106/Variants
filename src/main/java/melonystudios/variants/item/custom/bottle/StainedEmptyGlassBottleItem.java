@@ -2,6 +2,7 @@ package melonystudios.variants.item.custom.bottle;
 
 import melonystudios.variants.item.VSItems;
 import melonystudios.variants.item.custom.VSItem;
+import melonystudios.variants.item.custom.food.VSConsumable;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.VanillaUtils;
 import net.minecraft.block.BlockState;
@@ -32,6 +33,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
+@VSConsumable
 public class StainedEmptyGlassBottleItem extends VSItem {
     private final int glassColor;
     private final ResourceLocation colorName;

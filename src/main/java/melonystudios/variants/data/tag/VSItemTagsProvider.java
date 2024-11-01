@@ -163,8 +163,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
                 .addOptional(backMath("regular_molds_book")).addOptional(backMath("advanced_molds_book")).addOptional(new ResourceLocation("ftbquests:book"));
         this.tag(VSItemTags.BOOKSHELVES).add(Items.BOOKSHELF).add(VSItems.ENDERWOOD_BOOKSHELF.get()).add(VSItems.PLAIN_BIRCH_BOOKSHELF.get());
         this.tag(VSItemTags.BOWS).add(VSWeaponry.DEBUG_BOW.get());
-        this.tag(VSItemTags.SHIELDS).add(Items.SHIELD).add(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get()).addOptional(backMath("devil_shield")).addOptional(backMath("angelic_shield")).addOptional(backMath("mid_term_shield"))
-                .addOptional(backMath("aljameed_shield")).addOptional(backMath("moonering_shield"));
+        this.tag(VSItemTags.SHIELDS).add(Items.SHIELD).add(VSWeaponry.EMPTY_ARMOR_SLOT_SHIELD.get());
         this.tag(VSItemTags.CATLIKE_TAME_ITEMS).add(Items.COD).add(Items.SALMON).add(Items.TROPICAL_FISH).add(VSItems.RAW_FISH.get());
         this.tag(VSItemTags.FISHING_BOWLS).add(Items.BOWL).add(VSItems.OAK_BOWL.get()).add(VSItems.SPRUCE_BOWL.get()).add(VSItems.BIRCH_BOWL.get()).add(VSItems.JUNGLE_BOWL.get()).add(VSItems.ACACIA_BOWL.get()).add(VSItems.DARK_OAK_BOWL.get())
                 .add(VSItems.PAINTING_BOWL.get());

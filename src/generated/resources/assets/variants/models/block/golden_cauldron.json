@@ -1,0 +1,9 @@
+{
+  "parent": "variants:block/template_cauldron",
+  "textures": {
+    "side": "variants:block/golden_cauldron_side",
+    "inside": "variants:block/golden_cauldron_inner",
+    "bottom": "variants:block/golden_cauldron_bottom",
+    "top": "variants:block/golden_cauldron_top"
+  }
+}

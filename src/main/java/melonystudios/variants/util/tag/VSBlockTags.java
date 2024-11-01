@@ -33,6 +33,7 @@ public class VSBlockTags {
     public static final ITag.INamedTag<Block> WARPING_VINES_CAN_PLACE_ON = mod("warping_vines_feature_can_place_on");
     public static final ITag.INamedTag<Block> CHORUS_FLOWER_PLANTABLE_ON = mod("chorus_flower_plantable_on");
     public static final ITag.INamedTag<Block> CHORUS_PLANT_PLANTABLE_ON = mod("chorus_plant_plantable_on");
+    public static final ITag.INamedTag<Block> NETHER_CROPS_PLANTABLE_ON = mod("nether_crops_plantable_on");
     public static final ITag.INamedTag<Block> END_CARVER_REPLACEABLES = mod("end_carver_replaceables");
     public static final ITag.INamedTag<Block> HAS_ENDER_NYLIUM = mod("has_ender_nylium");
 
@@ -40,8 +41,8 @@ public class VSBlockTags {
     public static final ITag.INamedTag<Block> DEEPSLATE_REPLACEABLES = melony("deepslate_replaceables");
     public static final ITag.INamedTag<Block> FARMLAND = melony("farmland");
     public static final ITag.INamedTag<Block> NATURAL_FARMLAND = melony("natural_farmland");
-    public static final ITag.INamedTag<Block> CONDUIT_FRAME_BLOCKS = melony("conduit_frame_blocks");
     public static final ITag.INamedTag<Block> FARMLAND_TRANSPARENT = melony("farmland_transparent");
+    public static final ITag.INamedTag<Block> CONDUIT_FRAME_BLOCKS = melony("conduit_frame_blocks");
     public static final ITag.INamedTag<Block> COMPLETES_FIND_TREE_TUTORIAL = melony("completes_find_tree_tutorial");
 
     public static ITag.INamedTag<Block> forge(String name) {

@@ -31,7 +31,7 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         simpleBlock(VSBlocks.PAINTING_PLANKS.get());
         stairsBlock((StairsBlock) VSBlocks.PAINTING_STAIRS.get(), modLoc("block/painting_planks"));
         slabBlock((SlabBlock) VSBlocks.PAINTING_SLAB.get(), modLoc("block/painting_planks"), modLoc("block/painting_planks"));
-        fenceBlock((FenceBlock) VSBlocks.PAINTING_FENCE.get(), modLoc("block/painting_planks"));
+        fenceBlock(VSBlocks.PAINTING_FENCE.get(), modLoc("block/painting_planks"));
         fenceGateBlock((FenceGateBlock) VSBlocks.PAINTING_FENCE_GATE.get(), modLoc("block/painting_planks"));
         buttonBlock((AbstractButtonBlock) VSBlocks.PAINTING_BUTTON.get(), modLoc("block/painting_planks"));
         pressurePlate(VSBlocks.PAINTING_PRESSURE_PLATE.get(), modLoc("block/painting_planks"));
@@ -59,7 +59,7 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         simpleBlock(VSBlocks.ELDER_PRISMARINE.get());
         stairsBlock((StairsBlock) VSBlocks.ELDER_PRISMARINE_STAIRS.get(), modLoc("block/elder_prismarine"));
         slabBlock((SlabBlock) VSBlocks.ELDER_PRISMARINE_SLAB.get(), modLoc("block/elder_prismarine"), modLoc("block/elder_prismarine"));
-        wallBlock((WallBlock) VSBlocks.ELDER_PRISMARINE_WALL.get(), modLoc("block/elder_prismarine"));
+        wallBlock(VSBlocks.ELDER_PRISMARINE_WALL.get(), modLoc("block/elder_prismarine"));
         simpleBlock(VSBlocks.ELDER_PRISMARINE_BRICKS.get());
         stairsBlock((StairsBlock) VSBlocks.ELDER_PRISMARINE_BRICK_STAIRS.get(), modLoc("block/elder_prismarine_bricks"));
         slabBlock((SlabBlock) VSBlocks.ELDER_PRISMARINE_BRICK_SLAB.get(), modLoc("block/elder_prismarine_bricks"), modLoc("block/elder_prismarine_bricks"));
@@ -72,7 +72,11 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         simpleBlock(VSBlocks.INFESTED_CHISELED_PURPUR_BLOCK.get(), models().cubeAll("infested_chiseled_purpur_block", modLoc("block/chiseled_purpur_block")));
         simpleBlock(VSBlocks.QUARTZ_GLASS.get());
         paneBlock(((PaneBlock) VSBlocks.QUARTZ_GLASS_PANE.get()), modLoc("block/quartz_glass"), modLoc("block/quartz_glass_pane_top"));
-        fenceBlock((FenceBlock) VSBlocks.RED_NETHER_BRICK_FENCE.get(), mcLoc("block/red_nether_bricks"));
+        chain(VSBlocks.QUARTZ_CHAIN.get());
+        chain(VSBlocks.GOLDEN_CHAIN.get());
+        chain(VSBlocks.DIAMOND_CHAIN.get());
+        chain(VSBlocks.EMERALD_CHAIN.get());
+        fenceBlock(VSBlocks.RED_NETHER_BRICK_FENCE.get(), mcLoc("block/red_nether_bricks"));
         paintingTrapdoor(VSBlocks.PAINTING_TRAPDOOR_ALBAN, mcLoc("painting/alban"));
         paintingTrapdoor(VSBlocks.PAINTING_TRAPDOOR_AZTEC, mcLoc("painting/aztec"));
         paintingTrapdoor(VSBlocks.PAINTING_TRAPDOOR_AZTEC2, mcLoc("painting/aztec2"));
@@ -91,7 +95,7 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         simpleBlock(VSBlocks.ENDERWOOD_BOOKSHELF.get(), models().cubeTop("enderwood_bookshelf", modLoc("block/enderwood_bookshelf"), modLoc("block/enderwood_planks")));
         stairsBlock((StairsBlock) VSBlocks.ENDERWOOD_STAIRS.get(), modLoc("block/enderwood_planks"));
         slabBlock((SlabBlock) VSBlocks.ENDERWOOD_SLAB.get(), modLoc("block/enderwood_planks"), modLoc("block/enderwood_planks"));
-        fenceBlock((FenceBlock) VSBlocks.ENDERWOOD_FENCE.get(), modLoc("block/enderwood_planks"));
+        fenceBlock(VSBlocks.ENDERWOOD_FENCE.get(), modLoc("block/enderwood_planks"));
         fenceGateBlock((FenceGateBlock) VSBlocks.ENDERWOOD_FENCE_GATE.get(), modLoc("block/enderwood_planks"));
         buttonBlock((AbstractButtonBlock) VSBlocks.ENDERWOOD_BUTTON.get(), modLoc("block/enderwood_planks"));
         pressurePlate(VSBlocks.ENDERWOOD_PRESSURE_PLATE.get(), modLoc("block/enderwood_planks"));
@@ -119,6 +123,8 @@ public class VSBlockStateProvider extends VSBlockStateModels {
                 "block/warped_wart_pot"));
         simpleBlock(VSBlocks.POTTED_ENDER_WART.get(), models().withExistingParent("potted_ender_wart", modLoc("block/inventory_potted_plant")).texture("dirt", "block/ender_farmland").texture("plant",  "block/ender_wart_pot"));
         simpleBlock(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get(), models().cubeBottomTop("ender_nylium_quartz_ore", modLoc("block/ender_nylium_quartz_ore_side"), modLoc("block/end_quartz_ore"), modLoc("block/ender_nylium")));
+        cauldron(VSBlocks.GOLDEN_CAULDRON.get());
+        cauldron(VSBlocks.QUARTZ_CAULDRON.get());
         simpleBlock(VSBlocks.POTTED_TORCH.get(), models().withExistingParent("potted_torch", modLoc("block/template_potted_torch")).texture("dirt", mcLoc("block/smooth_stone")).texture("torch", mcLoc("block/torch")));
         simpleBlock(VSBlocks.POTTED_SOUL_TORCH.get(), models().withExistingParent("potted_soul_torch", modLoc("block/template_potted_torch")).texture("dirt", mcLoc("block/smooth_stone")).texture("torch", mcLoc("block/soul_torch")));
 
@@ -128,20 +134,21 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         simpleBlock(VSBlocks.INFESTED_MOSSY_END_STONE_BRICKS.get(), models().cubeAll("infested_mossy_end_stone_bricks", modLoc("block/mossy_end_stone_bricks")));
         stairsBlock((StairsBlock) VSBlocks.MOSSY_END_STONE_BRICK_STAIRS.get(), modLoc("block/mossy_end_stone_bricks"));
         slabBlock((SlabBlock) VSBlocks.MOSSY_END_STONE_BRICK_SLAB.get(), modLoc("block/mossy_end_stone_bricks"), modLoc("block/mossy_end_stone_bricks"));
-        wallBlock((WallBlock) VSBlocks.MOSSY_END_STONE_BRICK_WALL.get(), modLoc("block/mossy_end_stone_bricks"));
+        wallBlock(VSBlocks.MOSSY_END_STONE_BRICK_WALL.get(), modLoc("block/mossy_end_stone_bricks"));
         axisBlock((RotatedPillarBlock) VSBlocks.END_STONE_PILLAR.get(), modLoc("block/end_stone_pillar"), modLoc("block/end_stone_pillar_top"));
         simpleBlock(VSBlocks.MOSSY_PURPUR_BLOCK.get());
         simpleBlock(VSBlocks.INFESTED_MOSSY_PURPUR_BLOCK.get(), models().cubeAll("infested_mossy_purpur_block", modLoc("block/mossy_purpur_block")));
         stairsBlock((StairsBlock) VSBlocks.MOSSY_PURPUR_STAIRS.get(), modLoc("block/mossy_purpur_block"));
         slabBlock((SlabBlock) VSBlocks.MOSSY_PURPUR_SLAB.get(), modLoc("block/mossy_purpur_block"), modLoc("block/mossy_purpur_block"));
-        wallBlock((WallBlock) VSBlocks.MOSSY_PURPUR_WALL.get(), modLoc("block/mossy_purpur_block"));
+        wallBlock(VSBlocks.MOSSY_PURPUR_WALL.get(), modLoc("block/mossy_purpur_block"));
         simpleBlock(VSBlocks.SMOOTH_PURPUR.get());
-        slabBlock((SlabBlock) VSBlocks.SMOOTH_PURPUR_SLAB.get(), modLoc("block/smooth_purpur_slab_double"), modLoc("block/smooth_purpur"));
+        models().cubeColumn("double_smooth_purpur_slab", modLoc("block/smooth_purpur_slab_side"), modLoc("block/smooth_purpur"));
+        slabBlock((SlabBlock) VSBlocks.SMOOTH_PURPUR_SLAB.get(), modLoc("block/double_smooth_purpur_slab"), modLoc("block/smooth_purpur_slab_side"), modLoc("block/smooth_purpur"), modLoc("block/smooth_purpur"));
         simpleBlock(VSBlocks.MOSSY_NETHER_BRICKS.get());
         simpleBlock(VSBlocks.INFESTED_MOSSY_NETHER_BRICKS.get(), models().cubeAll("infested_mossy_nether_bricks", modLoc("block/mossy_nether_bricks")));
         stairsBlock((StairsBlock) VSBlocks.MOSSY_NETHER_BRICK_STAIRS.get(), modLoc("block/mossy_nether_bricks"));
         slabBlock((SlabBlock) VSBlocks.MOSSY_NETHER_BRICK_SLAB.get(), modLoc("block/mossy_nether_bricks"), modLoc("block/mossy_nether_bricks"));
-        wallBlock((WallBlock) VSBlocks.MOSSY_NETHER_BRICK_WALL.get(), modLoc("block/mossy_nether_bricks"));
+        wallBlock(VSBlocks.MOSSY_NETHER_BRICK_WALL.get(), modLoc("block/mossy_nether_bricks"));
         axisBlock((RotatedPillarBlock) VSBlocks.NETHER_BRICK_PILLAR.get(), modLoc("block/nether_brick_pillar"), modLoc("block/nether_brick_pillar_top"));
 
         getVariantBuilder(VSBlocks.GOLDEN_CARROTS.get()).forAllStates(state -> {

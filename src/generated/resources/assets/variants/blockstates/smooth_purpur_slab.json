@@ -7,7 +7,7 @@
       "model": "variants:block/smooth_purpur_slab"
     },
     "type=double": {
-      "model": "variants:block/smooth_purpur_slab_double"
+      "model": "variants:block/double_smooth_purpur_slab"
     }
   }
 }

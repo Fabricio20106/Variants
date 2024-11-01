@@ -12,7 +12,7 @@ import melonystudios.variants.item.VSWeaponry;
 import melonystudios.variants.item.custom.armor.WoolArmorItem;
 import melonystudios.variants.item.custom.armor.color.WoolArmorColorManager;
 import melonystudios.variants.item.custom.bottle.StainedFullGlassBottleItem;
-import melonystudios.variants.stew.bowl.BowlTypeManager;
+import melonystudios.variants.consumable.bowl.BowlTypeManager;
 import melonystudios.variants.util.damage.DamageSourceManager;
 import melonystudios.variants.world.carver.VSConfiguredCarvers;
 import melonystudios.variants.world.feature.VSConfiguredFeatures;
@@ -49,7 +49,7 @@ public class VSEvents {
         ConsumableCommand.register(event.getDispatcher());
         ConsumeBehaviorCommand.register(event.getDispatcher());
         DamageCommand.register(event.getDispatcher());
-        // Command ideas (isa, 25/9/24):
+        // Command ideas (~isa, 25-9-24):
         //  - /nbt - configure all NBT tags of all items in the game
         //  - /variants - general-use configuration command (and miscellaneous things like cooldowns)
     }

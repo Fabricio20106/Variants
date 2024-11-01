@@ -1,6 +1,6 @@
 package melonystudios.variants.mixin.entity;
 
-import melonystudios.variants.item.custom.food.TagConfigurableFood;
+import melonystudios.variants.item.custom.food.Consumable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -20,16 +20,16 @@ public abstract class VSLivingEntityMixin extends Entity {
 
     @Inject(method = "getDrinkingSound", at = @At("HEAD"), cancellable = true)
     protected void getDrinkingSound(ItemStack stack, CallbackInfoReturnable<SoundEvent> cir) {
-        if (stack.getItem() instanceof TagConfigurableFood) {
-            TagConfigurableFood configurableItem = (TagConfigurableFood) stack.getItem();
+        if (Consumable.validConsumableClass(stack.getItem())) {
+            Consumable configurableItem = (Consumable) stack.getItem();
             cir.setReturnValue(configurableItem.getConsumeSound(stack, configurableItem.getDefaultConsumeSound()));
         }
     }
 
     @Inject(method = "getEatingSound", at = @At("HEAD"), cancellable = true)
     public void getEatingSound(ItemStack stack, CallbackInfoReturnable<SoundEvent> cir) {
-        if (stack.getItem() instanceof TagConfigurableFood) {
-            TagConfigurableFood configurableItem = (TagConfigurableFood) stack.getItem();
+        if (Consumable.validConsumableClass(stack.getItem())) {
+            Consumable configurableItem = (Consumable) stack.getItem();
             cir.setReturnValue(configurableItem.getConsumeSound(stack, configurableItem.getDefaultConsumeSound()));
         }
     }

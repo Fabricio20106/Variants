@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import melonystudios.variants.Variants;
 import melonystudios.variants.config.VSConfigs;
-import melonystudios.variants.stew.custom.ApplyMobEffectsBehavior;
+import melonystudios.variants.consumable.custom.ApplyMobEffectsBehavior;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.VSStyles;
 import melonystudios.variants.util.tag.VSItemTags;

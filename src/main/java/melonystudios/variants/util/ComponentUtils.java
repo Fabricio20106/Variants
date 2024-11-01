@@ -5,7 +5,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.world.World;
 
 // Basically backporting data component functionality as NBT tags.
-// ~isa 12-20-24
+// ~isa 12-10-24
 public class ComponentUtils {
     public static boolean enchantmentGlintOverride(ItemStack stack, boolean fallback) {
         CompoundNBT tag = stack.getTag();

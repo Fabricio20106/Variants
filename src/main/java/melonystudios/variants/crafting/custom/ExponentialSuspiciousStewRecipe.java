@@ -69,7 +69,7 @@ public class ExponentialSuspiciousStewRecipe extends SpecialRecipe {
         ItemStack expoSusStew = new ItemStack(VSItems.EXPONENTIAL_SUSPICIOUS_STEW.get());
         if (emptyStack.getItem() instanceof BlockItem && ((BlockItem) emptyStack.getItem()).getBlock() instanceof FlowerBlock) {
             FlowerBlock smallFlower = (FlowerBlock) ((BlockItem) emptyStack.getItem()).getBlock();
-            ExponentialStewItem.writeEffectToStew(expoSusStew, smallFlower.getSuspiciousStewEffect(), smallFlower.getEffectDuration());
+            ExponentialStewItem.writeEffectToNBT(expoSusStew, smallFlower.getSuspiciousStewEffect(), smallFlower.getEffectDuration());
             ItemStack bowlStack = this.bowl.copy();
             ExponentialStewItem.writeBowl(expoSusStew, bowlStack.split(1));
             NBTUtils.addHidingTag("hide_behavior_tooltips", expoSusStew);

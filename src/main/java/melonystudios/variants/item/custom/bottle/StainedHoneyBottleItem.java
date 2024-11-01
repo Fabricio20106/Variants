@@ -1,7 +1,7 @@
 package melonystudios.variants.item.custom.bottle;
 
 import com.google.common.collect.Lists;
-import melonystudios.variants.stew.custom.RemoveEffectsBehavior;
+import melonystudios.variants.consumable.custom.RemoveEffectsBehavior;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.UseAction;

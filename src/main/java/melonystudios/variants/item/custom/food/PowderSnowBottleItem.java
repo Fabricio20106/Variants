@@ -1,9 +1,9 @@
 package melonystudios.variants.item.custom.food;
 
-import melonystudios.variants.stew.custom.DefaultStewBehavior;
+import melonystudios.variants.consumable.custom.DefaultConsumeBehavior;
 
 public class PowderSnowBottleItem extends DrinkableContainerItem {
     public PowderSnowBottleItem(Properties properties) {
-        super(new DefaultStewBehavior(), properties);
+        super(new DefaultConsumeBehavior(), properties);
     }
 }

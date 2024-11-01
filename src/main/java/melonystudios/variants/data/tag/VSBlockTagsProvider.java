@@ -66,6 +66,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSBlockTags.WARPING_VINES_CAN_PLACE_ON).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_WART_BLOCK.get());
         this.tag(VSBlockTags.CHORUS_FLOWER_PLANTABLE_ON).addTag(VSBlockTags.HAS_ENDER_NYLIUM).addTag(Tags.Blocks.END_STONES);
         this.tag(VSBlockTags.CHORUS_PLANT_PLANTABLE_ON).add(Blocks.CHORUS_FLOWER).add(Blocks.CHORUS_PLANT);
+        this.tag(VSBlockTags.NETHER_CROPS_PLANTABLE_ON).addTag(VSBlockTags.FARMLAND).addTag(VSBlockTags.NETHER_WART_PLACEABLE_ON);
         this.tag(VSBlockTags.END_CARVER_REPLACEABLES).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_NYLIUM.get());
         this.tag(VSBlockTags.HAS_ENDER_NYLIUM).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get());
         this.tag(VSBlockTags.FARMLAND_TRANSPARENT).addTag(Tags.Blocks.FENCE_GATES).addTag(BlockTags.FENCE_GATES).add(Blocks.MOVING_PISTON);
@@ -74,7 +75,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSBlockTags.DEEPSLATE_REPLACEABLES).addOptional(new ResourceLocation("minecraft:deepslate")).addOptional(new ResourceLocation("cavesandcliffs:deepslate")).addOptional(new ResourceLocation("quark:deepslate"))
                 .addOptional(new ResourceLocation("decorativelary:deepslate"));
         this.tag(VSBlockTags.FARMLAND).addTag(VSBlockTags.NATURAL_FARMLAND).add(VSBlocks.CRIMSON_FARMLAND.get()).add(VSBlocks.WARPED_FARMLAND.get());
-        this.tag(VSBlockTags.NATURAL_FARMLAND).add(Blocks.FARMLAND).add(VSBlocks.ENDER_FARMLAND.get()).addOptional(backMath("aljamic_farmland"));
+        this.tag(VSBlockTags.NATURAL_FARMLAND).add(Blocks.FARMLAND, VSBlocks.ENDER_FARMLAND.get());
         this.tag(VSBlockTags.CONDUIT_FRAME_BLOCKS).add(VSBlocks.ELDER_PRISMARINE.get()).add(VSBlocks.ELDER_PRISMARINE_BRICKS.get()).add(VSBlocks.DARK_ELDER_PRISMARINE.get()).add(VSBlocks.ELDER_SEA_LANTERN.get());
         this.tag(VSBlockTags.COMPLETES_FIND_TREE_TUTORIAL).addTag(BlockTags.LOGS).addTag(BlockTags.LEAVES).addTag(BlockTags.WART_BLOCKS);
 
