@@ -28,9 +28,9 @@ import static melonystudios.variants.util.NBTUtils.booleanOrDefault;
 
 public class TeleportEntityBehavior extends ConsumeBehavior {
     public static final Codec<TeleportEntityBehavior> RANDOM_TELEPORT_CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.FLOAT.fieldOf(
-            "teleport_diameter").forGetter(TeleportEntityBehavior::getTeleportDiameter)).apply(instance, TeleportEntityBehavior::new));
+            "teleport_diameter").forGetter(TeleportEntityBehavior::teleportDiameter)).apply(instance, TeleportEntityBehavior::new));
     public static final Codec<TeleportEntityBehavior> EXACT_TELEPORT_CODEC = RecordCodecBuilder.create(instance -> instance.group(BlockPos.CODEC.fieldOf(
-            "teleport_position").forGetter(TeleportEntityBehavior::getTeleportPosition)).apply(instance, TeleportEntityBehavior::new));
+            "teleport_position").forGetter(TeleportEntityBehavior::teleportPosition)).apply(instance, TeleportEntityBehavior::new));
     private final boolean randomTeleport;
     private final float teleportDiameter;
     private final BlockPos teleportPosition;
@@ -59,11 +59,11 @@ public class TeleportEntityBehavior extends ConsumeBehavior {
         return this.randomTeleport;
     }
 
-    public float getTeleportDiameter() {
+    public float teleportDiameter() {
         return this.teleportDiameter;
     }
 
-    public BlockPos getTeleportPosition() {
+    public BlockPos teleportPosition() {
         return this.teleportPosition;
     }
 

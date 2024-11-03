@@ -23,6 +23,7 @@ import melonystudios.variants.item.fix.VSTagFixes;
 import melonystudios.variants.consumable.VSConsumeBehaviors;
 import melonystudios.variants.loot.VSLootFunctions;
 import melonystudios.variants.loot.rand.BowlIDValueRange;
+import melonystudios.variants.screen.VSConfigScreen;
 import melonystudios.variants.sound.VSSounds;
 import melonystudios.variants.util.*;
 import melonystudios.variants.world.biome.VSBiomes;
@@ -51,6 +52,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ExtensionPoint;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -109,6 +111,7 @@ public class Variants {
         VSStats.init();
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, VSConfigs.COMMON_SPEC, "jtw-mods/variants-common.toml");
+        ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.CONFIGGUIFACTORY, () -> (minecraft, screen) -> new VSConfigScreen(screen, Minecraft.getInstance().options));
     }
 
     public static ResourceLocation variants(String name) {

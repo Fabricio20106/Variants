@@ -51,7 +51,7 @@ public class ExplodeBehavior extends ConsumeBehavior {
         this(0, false, true, BlockPos.ZERO, DamageSource.GENERIC, Explosion.Mode.NONE);
     }
 
-    public float getExplosionRadius() {
+    public float explosionRadius() {
         return this.radius;
     }
 
@@ -63,15 +63,15 @@ public class ExplodeBehavior extends ConsumeBehavior {
         return this.spawnEffectCloud;
     }
 
-    public BlockPos getExplosionPos() {
+    public BlockPos explosionPos() {
         return this.explosionPos;
     }
 
-    public DamageSource getSource() {
+    public DamageSource damageSource() {
         return this.source;
     }
 
-    public Explosion.Mode getExplosionMode() {
+    public Explosion.Mode explosionMode() {
         return this.blockInteraction;
     }
 

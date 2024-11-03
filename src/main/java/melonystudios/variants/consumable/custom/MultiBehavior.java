@@ -26,6 +26,10 @@ public class MultiBehavior extends ConsumeBehavior {
         this(Lists.newArrayList());
     }
 
+    public List<ConsumeBehavior> behaviors() {
+        return this.behaviors;
+    }
+
     @Override
     public void runBehavior(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {}
 

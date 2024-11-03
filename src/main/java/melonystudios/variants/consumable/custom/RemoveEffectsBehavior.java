@@ -30,7 +30,7 @@ public class RemoveEffectsBehavior extends ConsumeBehavior {
         this(Lists.newArrayList());
     }
 
-    public List<Effect> getEffectsToRemove() {
+    public List<Effect> effectsToRemove() {
         return this.effects;
     }
 

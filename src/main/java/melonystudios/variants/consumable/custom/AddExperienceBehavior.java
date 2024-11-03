@@ -26,7 +26,7 @@ public class AddExperienceBehavior extends ConsumeBehavior {
         this(0, false);
     }
 
-    public int getExperienceAmount() {
+    public int experienceAmount() {
         return this.amount;
     }
 

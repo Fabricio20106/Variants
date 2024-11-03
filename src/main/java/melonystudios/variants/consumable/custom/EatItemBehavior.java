@@ -22,7 +22,7 @@ public class EatItemBehavior extends ConsumeBehavior {
         this(ItemStack.EMPTY);
     }
 
-    public ItemStack getConsumableItem() {
+    public ItemStack consumableItem() {
         return this.consumableStack;
     }
 

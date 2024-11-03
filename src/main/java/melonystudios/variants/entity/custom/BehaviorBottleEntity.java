@@ -66,9 +66,11 @@ public class BehaviorBottleEntity extends ProjectileItemEntity implements Potion
     @Override
     protected void onHit(RayTraceResult hitResult) {
         super.onHit(hitResult);
-        this.spawnParticles(this.position(), this.level, this.getItemRaw(), this.entityData.get(PARTICLE_COLOR));
-        ConsumeBehavior.runAreaEffectBehavior(this.getItemRaw(), this, ConsumeBehavior::runBehavior);
-        this.remove();
+        if (!this.level.isClientSide) {
+            this.spawnParticles(this.position(), this.level, this.getItem(), this.entityData.get(PARTICLE_COLOR));
+            ConsumeBehavior.runAreaEffectBehavior(this.getItem(), this, ConsumeBehavior::runBehavior);
+            this.remove();
+        }
     }
 
     @Override

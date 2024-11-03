@@ -120,57 +120,55 @@ public class JSONUtils {
         }
     }
 
-    public static void saveBehaviorToJSON(ConsumableItem tcfItem, ConsumeBehavior behavior, JsonObject behaviorObj, CompoundNBT behaviorTag) {
+    public static void saveBehaviorToJSON(ConsumableItem consumable, ConsumeBehavior behavior, JsonObject behaviorObj, CompoundNBT behaviorTag) {
         // Behaviors
         if (behavior instanceof ApplyMobEffectsBehavior) {
-            ApplyMobEffectsBehavior applyEffectsBehavior = (ApplyMobEffectsBehavior) tcfItem.getBehavior();
+            ApplyMobEffectsBehavior applyEffectsBehavior = (ApplyMobEffectsBehavior) consumable.getBehavior();
             JsonArray effectsList = new JsonArray();
-            for (EffectInstance instance : applyEffectsBehavior.getEffects()) {
-                writeEffectToJSON(instance, effectsList);
-            }
+            for (EffectInstance instance : applyEffectsBehavior.effects()) writeEffectToJSON(instance, effectsList);
             behaviorObj.add("effects", effectsList);
         } else if (behavior instanceof ClearMobEffectsBehavior) {
-            ClearMobEffectsBehavior clearEffectsBehavior = (ClearMobEffectsBehavior) tcfItem.getBehavior();
+            ClearMobEffectsBehavior clearEffectsBehavior = (ClearMobEffectsBehavior) consumable.getBehavior();
             JsonObject curativeObject = new JsonObject();
-            curativeObject.addProperty("id", clearEffectsBehavior.getCurativeItem().getItem().getRegistryName().toString());
-            if (clearEffectsBehavior.getCurativeItem().getCount() != 1) curativeObject.addProperty("count", clearEffectsBehavior.getCurativeItem().getCount());
-            if (clearEffectsBehavior.getCurativeItem().getTag() != null) curativeObject.addProperty("components", clearEffectsBehavior.getCurativeItem().getTag().toString());
+            curativeObject.addProperty("id", clearEffectsBehavior.curativeItem().getItem().getRegistryName().toString());
+            if (clearEffectsBehavior.curativeItem().getCount() != 1) curativeObject.addProperty("count", clearEffectsBehavior.curativeItem().getCount());
+            if (clearEffectsBehavior.curativeItem().getTag() != null) curativeObject.addProperty("components", clearEffectsBehavior.curativeItem().getTag().toString());
             behaviorObj.add("curative_item", curativeObject);
         } else if (behavior instanceof DamageEntityBehavior) {
             JSONUtils.writeDamageSourceToJSON(behaviorTag, behaviorObj);
         } else if (behavior instanceof ExplodeBehavior) {
             JSONUtils.writeExplosionToJSON(behaviorTag, behaviorObj);
         } else if (behavior instanceof IgniteBehavior) {
-            IgniteBehavior igniteBehavior = (IgniteBehavior) tcfItem.getBehavior();
-            behaviorObj.addProperty("ticks_on_fire", igniteBehavior.getTicksOnFire());
+            IgniteBehavior igniteBehavior = (IgniteBehavior) consumable.getBehavior();
+            behaviorObj.addProperty("ticks_on_fire", igniteBehavior.ticksOnFire());
         } else if (behavior instanceof AddExperienceBehavior) {
-            AddExperienceBehavior addExperienceBehavior = (AddExperienceBehavior) tcfItem.getBehavior();
-            behaviorObj.addProperty("amount", addExperienceBehavior.getExperienceAmount());
+            AddExperienceBehavior addExperienceBehavior = (AddExperienceBehavior) consumable.getBehavior();
+            behaviorObj.addProperty("amount", addExperienceBehavior.experienceAmount());
             behaviorObj.addProperty("levels", addExperienceBehavior.addsLevels());
         } else if (behavior instanceof TeleportEntityBehavior) {
-            TeleportEntityBehavior teleportBehavior = (TeleportEntityBehavior) tcfItem.getBehavior();
+            TeleportEntityBehavior teleportBehavior = (TeleportEntityBehavior) consumable.getBehavior();
             if (teleportBehavior.randomlyTeleports()) {
                 behaviorObj.addProperty("random_teleport", true);
-                behaviorObj.addProperty("teleport_diameter", teleportBehavior.getTeleportDiameter());
+                behaviorObj.addProperty("teleport_diameter", teleportBehavior.teleportDiameter());
             } else {
                 behaviorObj.addProperty("random_teleport", false);
                 JsonArray posArray = new JsonArray();
-                posArray.add(teleportBehavior.getTeleportPosition().getX());
-                posArray.add(teleportBehavior.getTeleportPosition().getY());
-                posArray.add(teleportBehavior.getTeleportPosition().getZ());
+                posArray.add(teleportBehavior.teleportPosition().getX());
+                posArray.add(teleportBehavior.teleportPosition().getY());
+                posArray.add(teleportBehavior.teleportPosition().getZ());
                 behaviorObj.add("teleport_position", posArray);
             }
         } else if (behavior instanceof RemoveEffectsBehavior) {
-            RemoveEffectsBehavior removeEffectsBehavior = (RemoveEffectsBehavior) tcfItem.getBehavior();
+            RemoveEffectsBehavior removeEffectsBehavior = (RemoveEffectsBehavior) consumable.getBehavior();
             JsonArray effectArray = new JsonArray();
-            for (Effect effect : removeEffectsBehavior.getEffectsToRemove()) effectArray.add(effect.getRegistryName().toString());
+            for (Effect effect : removeEffectsBehavior.effectsToRemove()) effectArray.add(effect.getRegistryName().toString());
             behaviorObj.add("effects", effectArray);
         } else if (behavior instanceof EatItemBehavior) {
-            EatItemBehavior eatItemBehavior = (EatItemBehavior) tcfItem.getBehavior();
+            EatItemBehavior eatItemBehavior = (EatItemBehavior) consumable.getBehavior();
             JsonObject consumableObject = new JsonObject();
-            consumableObject.addProperty("id", eatItemBehavior.getConsumableItem().getItem().getRegistryName().toString());
-            if (eatItemBehavior.getConsumableItem().getCount() != 1) consumableObject.addProperty("count", eatItemBehavior.getConsumableItem().getCount());
-            if (eatItemBehavior.getConsumableItem().getTag() != null) consumableObject.addProperty("components", eatItemBehavior.getConsumableItem().getTag().toString());
+            consumableObject.addProperty("id", eatItemBehavior.consumableItem().getItem().getRegistryName().toString());
+            if (eatItemBehavior.consumableItem().getCount() != 1) consumableObject.addProperty("count", eatItemBehavior.consumableItem().getCount());
+            if (eatItemBehavior.consumableItem().getTag() != null) consumableObject.addProperty("components", eatItemBehavior.consumableItem().getTag().toString());
             behaviorObj.add("consumable_item", consumableObject);
         }
     }

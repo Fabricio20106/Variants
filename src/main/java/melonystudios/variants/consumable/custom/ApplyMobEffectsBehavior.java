@@ -40,7 +40,7 @@ public class ApplyMobEffectsBehavior extends ConsumeBehavior {
         this.effects = effects;
     }
 
-    public List<? extends EffectInstance> getEffects() {
+    public List<? extends EffectInstance> effects() {
         return this.effects;
     }
 

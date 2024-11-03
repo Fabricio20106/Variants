@@ -1,0 +1,89 @@
+package melonystudios.variants.screen;
+
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.matrix.MatrixStack;
+import melonystudios.variants.Variants;
+import net.minecraft.client.AbstractOption;
+import net.minecraft.client.GameSettings;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.DialogTexts;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.SettingsScreen;
+import net.minecraft.client.gui.toasts.SystemToast;
+import net.minecraft.client.gui.widget.TextFieldWidget;
+import net.minecraft.client.gui.widget.Widget;
+import net.minecraft.client.gui.widget.button.Button;
+import net.minecraft.client.gui.widget.list.OptionsRowList;
+import net.minecraft.util.IReorderingProcessor;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.List;
+
+import static melonystudios.variants.screen.VSConfigEntries.*;
+
+@OnlyIn(Dist.CLIENT)
+public class VSConfigScreen extends SettingsScreen {
+    public static List<AbstractOption> CONFIG_ENTRIES = Lists.newArrayList(FLOWER_PATCHES, GENERATE_QUARTZ_ORE, GENERATE_END_QUARTZ_ORE, SOUL_LAVA_SPRINGS, END_CAVES_AND_RAVINES);
+    private final AbstractOption[] smallOptions;
+    private OptionsRowList list;
+    private TextFieldWidget endSubstitutionBox;
+    private Widget doneButton;
+
+    public VSConfigScreen(Screen screen, GameSettings settings) {
+        super(screen, settings, new TranslationTextComponent("gui.variants.config.title"));
+        this.smallOptions = CONFIG_ENTRIES.toArray(new AbstractOption[0]);
+    }
+
+    @Override
+    public void tick() {
+        this.endSubstitutionBox.tick();
+    }
+
+    @Override
+    protected void init() {
+        this.endSubstitutionBox = new TextFieldWidget(this.font, this.width / 2 - 152, 20, 300, 20, new TranslationTextComponent("config.variants.substitute_the_end_biome_with"));
+        this.endSubstitutionBox.setMaxLength(128);
+        this.endSubstitutionBox.setValue(CONFIG.substituteTheEndBiomeWith.toString());
+        this.endSubstitutionBox.setResponder(this::validateBiomeEntry);
+
+        this.list = new OptionsRowList(this.minecraft, this.width, this.height, 32, this.height - 32, 25);
+        this.list.addSmall(this.smallOptions);
+        this.children.add(this.list);
+        this.doneButton = this.addButton(new Button(this.width / 2 - 100, this.height - 27, 200, 20, DialogTexts.GUI_DONE, button -> {
+            this.minecraft.setScreen(this.lastScreen);
+            Variants.INSTANCE.saveConfig();
+            SystemToast.multiline(this.minecraft, SystemToast.Type.TUTORIAL_HINT, new TranslationTextComponent("gui.variants.config.saved_settings"), new TranslationTextComponent("gui.variants.config.saved_settings.desc"));
+        }));
+    }
+
+    private void validateBiomeEntry(String value) {
+        this.doneButton.active = ForgeRegistries.BIOMES.containsKey(new ResourceLocation(value));
+    }
+
+    @Override
+    public void resize(Minecraft minecraft, int width, int height) {
+        super.resize(minecraft, width, height);
+        String value = this.endSubstitutionBox.getValue();
+        this.endSubstitutionBox.setValue(value);
+    }
+
+    @Override
+    public void render(MatrixStack stack, int width, int height, float partialTicks) {
+//        this.renderBackground(stack);
+        if (this.minecraft.level != null) {
+            this.fillGradient(stack, 0, 0, this.width, this.height, -1072689136, -804253680);
+            //MinecraftForge.EVENT_BUS.post(new GuiScreenEvent.BackgroundDrawnEvent(this, stack));
+        }
+        drawString(stack, this.font, new TranslationTextComponent("config.variants.substitute_the_end_biome_with"), this.width / 2 - 153, 10, 10526880);
+        this.endSubstitutionBox.render(stack, width, height, partialTicks);
+        this.list.render(stack, width, height, partialTicks);
+        drawCenteredString(stack, this.font, this.title, this.width / 2, 20, 16777215);
+        super.render(stack, width, height, partialTicks);
+        List<IReorderingProcessor> processors = tooltipAt(this.list, width, height);
+        if (processors != null) this.renderTooltip(stack, processors, width, height);
+    }
+}

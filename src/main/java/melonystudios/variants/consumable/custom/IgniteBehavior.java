@@ -22,7 +22,7 @@ public class IgniteBehavior extends ConsumeBehavior {
         this(100);
     }
 
-    public int getTicksOnFire() {
+    public int ticksOnFire() {
         return this.ticksOnFire;
     }
 

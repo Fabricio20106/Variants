@@ -44,15 +44,23 @@ public class PlaySoundBehavior extends ConsumeBehavior {
         this.useSoundPacket = useSoundPacket;
     }
 
-    public ResourceLocation getSoundLocation() {
+    public PlaySoundBehavior(ResourceLocation sound, SoundCategory category, boolean playAtPlayer, float volume, float pitch) {
+        this(sound, category, BlockPos.ZERO, playAtPlayer, volume, pitch, false);
+    }
+
+    public PlaySoundBehavior() {
+        this(VSSounds.PLAY_SOUND_BEHAVIOR_DEFAULT.get().getRegistryName(), SoundCategory.MASTER, BlockPos.ZERO, false, 0, 0, false);
+    }
+
+    public ResourceLocation soundLocation() {
         return this.id;
     }
 
-    public SoundCategory getCategory() {
+    public SoundCategory soundCategory() {
         return this.category;
     }
 
-    public BlockPos getPlayPosition() {
+    public BlockPos playPosition() {
         return this.pos;
     }
 
@@ -60,20 +68,12 @@ public class PlaySoundBehavior extends ConsumeBehavior {
         return this.playAtPlayer;
     }
 
-    public float getVolume() {
+    public float volume() {
         return this.volume;
     }
 
-    public float getPitch() {
+    public float pitch() {
         return this.pitch;
-    }
-
-    public PlaySoundBehavior(ResourceLocation sound, SoundCategory category, boolean playAtPlayer, float volume, float pitch) {
-        this(sound, category, BlockPos.ZERO, playAtPlayer, volume, pitch, false);
-    }
-
-    public PlaySoundBehavior() {
-        this(VSSounds.PLAY_SOUND_BEHAVIOR_DEFAULT.get().getRegistryName(), SoundCategory.MASTER, BlockPos.ZERO, false, 0, 0, false);
     }
 
     @Override

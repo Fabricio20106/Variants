@@ -23,7 +23,7 @@ public class ClearMobEffectsBehavior extends ConsumeBehavior {
         this(new ItemStack(Items.MILK_BUCKET));
     }
 
-    public ItemStack getCurativeItem() {
+    public ItemStack curativeItem() {
         return this.curativeStack;
     }
 

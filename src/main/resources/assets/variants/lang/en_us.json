@@ -255,6 +255,19 @@
   "block.variants.nether_brick_pillar": "Nether Brick Pillar",
   "block.variants.red_nether_brick_fence": "Red Nether Brick Fence",
 
+  "config.variants.flower_patches": "Flower Patches",
+  "config.variants.flower_patches.desc": "Whether glow black tulips and sunny flowers should generate in forest- and plains-like biomes.",
+  "config.variants.quartz_ore": "Quartz Ore",
+  "config.variants.quartz_ore.desc": "Whether quartz ore generates in the Overworld.",
+  "config.variants.end_quartz_ore": "End Quartz Ore",
+  "config.variants.end_quartz_ore.desc": "Whether End quartz ore generates in the End.",
+  "config.variants.soul_lava_springs": "Soul Lava Springs",
+  "config.variants.soul_lava_springs.desc": "Whether soul lava springs generate in the Nether.",
+  "config.variants.end_caves_and_ravines": "End Caves and Ravines",
+  "config.variants.end_caves_and_ravines.desc": "Whether caves and ravines generate in the End.",
+  "config.variants.substitute_the_end_biome_with": "Substitute 'The End' biome with...",
+  "config.variants.substitute_the_end_biome_with.desc": "Replaces the main End island biome 'The End' with another biome.",
+
   "fluid.variants.soul_lava": "Soul Lava",
   "fluid.variants.flowing_soul_lava": "Flowing Soul Lava",
   "fluid.variants.mushroom_stew": "Mushroom Stew",
@@ -309,6 +322,10 @@
   "effect.variants.explosive_blend_poisoning.description": "Deals 2 damage/sec because you are eating an explosive blend.",
 
   "enchantment.variants.magic_protection": "Magic Protection",
+
+  "gui.variants.config.title": "Variants - Configure Settings",
+  "gui.variants.config.saved_settings": "Saved Settings!",
+  "gui.variants.config.saved_settings.desc": "Successfully saved settings to 'variants.json'.",
 
   "item.variants.diorite_sword": "Diorite Sword",
   "item.variants.diorite_pickaxe": "Diorite Pickaxe",

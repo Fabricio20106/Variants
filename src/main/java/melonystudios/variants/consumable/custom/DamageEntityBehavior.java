@@ -31,11 +31,11 @@ public class DamageEntityBehavior extends ConsumeBehavior {
         this(DamageSource.GENERIC, 0);
     }
 
-    public DamageSource getSource() {
+    public DamageSource damageSource() {
         return this.source;
     }
 
-    public float getAmount() {
+    public float amount() {
         return this.amount;
     }
 
