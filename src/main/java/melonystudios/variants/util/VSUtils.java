@@ -15,10 +15,7 @@ import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.UseAction;
+import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.JsonToNBT;
 import net.minecraft.potion.Effect;
@@ -300,5 +297,15 @@ public class VSUtils {
 
     private static boolean isValidWoodType(String woodType) {
         return VALID_WOOD_TYPES.contains(woodType);
+    }
+
+    public static Rarity upRarity(Rarity rarity) {
+        switch (rarity) {
+            case COMMON:
+            case UNCOMMON: return Rarity.RARE;
+            case RARE: return Rarity.EPIC;
+            case EPIC:
+            default: return rarity;
+        }
     }
 }

@@ -50,6 +50,7 @@ public class VSItemTags {
     public static final ITag.INamedTag<Item> ARMORS_BOOTS = forge("armors/boots");
     public static final ITag.INamedTag<Item> TOOLS_HOES = forge("tools/hoes");
     public static final ITag.INamedTag<Item> BONE_MEALS = forge("bone_meals");
+    public static final ITag.INamedTag<Item> ELYTRA = forge("elytra");
 
     // Variants' Tags
     public static final ITag.INamedTag<Item> CRAFTING_MATERIALS = mod("crafting_materials");

@@ -31,6 +31,8 @@ public class VSItemModelProvider extends VSItemModelModels {
         ModelFile debugBow = getExistingFile(modLoc("item/debug_bow"));
 
         block("golden_carrots", "_stage3");
+        block("wild_crimson_wheat");
+        block("wild_soul_carrots");
         block("golden_cauldron");
         block("golden_beacon");
         block("quartz_cauldron");
@@ -42,6 +44,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         block("crimson_farmland");
         block("warped_farmland");
         block("wither_bone_block");
+        block("crimson_straw_bale");
         block("raw_debris_block");
         block("glow_black_wool");
         block("glow_black_carpet");
@@ -184,7 +187,11 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(generated, "honey_ball");
         standard(generated, "fish");
         standard(generated, "cooked_fish");
-        standard(generated, "raw_debris");
+        standard(generated, "crimson_wheat_seeds");
+        standard(generated, "crimson_wheat");
+        standard(generated, "crimson_loaf");
+        standard(generated, "soul_carrot");
+        standard(generated, "quartz_carrot");
         standard(handheld, "oak_stick");
         standard(handheld, "spruce_stick");
         standard(handheld, "birch_stick");
@@ -195,6 +202,16 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(handheld, "crimson_stick");
         standard(handheld, "warped_stick");
         standard(handheld, "enderwood_stick");
+        debugStick(handheld, "oak_debug_stick", "oak_stick");
+        debugStick(handheld, "spruce_debug_stick", "spruce_stick");
+        debugStick(handheld, "birch_debug_stick", "birch_stick");
+        debugStick(handheld, "jungle_debug_stick", "jungle_stick");
+        debugStick(handheld, "acacia_debug_stick", "acacia_stick");
+        debugStick(handheld, "dark_oak_debug_stick", "dark_oak_stick");
+        debugStick(handheld, "painting_debug_stick", "painting_stick");
+        debugStick(handheld, "crimson_debug_stick", "crimson_stick");
+        debugStick(handheld, "warped_debug_stick", "warped_stick");
+        debugStick(handheld, "enderwood_debug_stick", "enderwood_stick");
         standard(handheld, "netherite_rod");
         standard(generated, "oak_bowl");
         standard(generated, "spruce_bowl");
@@ -214,15 +231,16 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(generated, "exposed_copper_ingot");
         standard(generated, "weathered_copper_ingot");
         standard(generated, "oxidized_copper_ingot");
-        withExistingParent("fish_spawn_egg", mcLoc("item/template_spawn_egg"));
-        standard(generated, "soul_lava_bucket");
-        standard(generated, "fish_bucket");
+        standard(generated, "raw_debris");
         standard(generated, "mushroom_stew_bucket");
         standard(generated, "beetroot_soup_bucket");
         standard(generated, "rabbit_stew_bucket");
         standard(generated, "suspicious_stew_bucket");
         standard(generated, "fungi_stew_bucket");
         standard(generated, "end_fungi_stew_bucket");
+        standard(generated, "soul_lava_bucket");
+        standard(generated, "fish_bucket");
+        withExistingParent("fish_spawn_egg", mcLoc("item/template_spawn_egg"));
         standard(generated, "splash_honey_bottle");
         standard(generated, "lingering_honey_bottle");
         standard(generated, "lava_bottle");

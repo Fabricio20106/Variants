@@ -1,0 +1,6 @@
+{
+  "parent": "variants:block/inventory_crop",
+  "textures": {
+    "crop": "variants:block/soul_carrots_stage1"
+  }
+}

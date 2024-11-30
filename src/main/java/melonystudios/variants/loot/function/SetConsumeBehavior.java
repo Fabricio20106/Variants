@@ -3,7 +3,7 @@ package melonystudios.variants.loot.function;
 import com.google.gson.*;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import melonystudios.variants.Variants;
-import melonystudios.variants.item.custom.food.Consumable;
+import melonystudios.variants.component.Consumable;
 import melonystudios.variants.item.custom.food.ExponentialStewItem;
 import melonystudios.variants.loot.VSLootFunctions;
 import melonystudios.variants.consumable.ConsumeBehavior;

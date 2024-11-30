@@ -1,10 +1,10 @@
 package melonystudios.variants.block.custom.nether;
 
+import melonystudios.variants.item.VSItems;
 import melonystudios.variants.util.tag.VSBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
-import net.minecraft.item.Items;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.SoundCategory;
@@ -43,8 +43,7 @@ public class SoulCarrotsBlock extends CropsBlock {
     @Override
     @Nonnull
     protected IItemProvider getBaseSeedId() {
-        // return VSItems.SOUL_CARROT.get(); todo: replace this
-        return Items.AIR;
+        return VSItems.SOUL_CARROT.get();
     }
 
     @Override
@@ -56,11 +55,13 @@ public class SoulCarrotsBlock extends CropsBlock {
     @Override
     public void animateTick(BlockState state, World world, BlockPos pos, Random rand) {
         super.animateTick(state, world, pos, rand);
-        Vector3d deltaMovement = new Vector3d(0, 0, 0);
-        AxisAlignedBB boundingBox = new AxisAlignedBB(pos);
-        world.addParticle(ParticleTypes.SOUL, pos.getX() + (world.random.nextDouble() - 0.5) * boundingBox.getSize(), pos.getY() + 0.1, pos.getZ() +
-                (world.random.nextDouble() - 0.5) * boundingBox.getSize(), deltaMovement.x * -0.2, 0.1, deltaMovement.z * -0.2);
-        float volume = world.random.nextFloat() * 0.4F + world.random.nextFloat() > 0.9F ? 0.6F : 0;
-        world.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.SOUL_ESCAPE, SoundCategory.BLOCKS, volume, 0.6F + world.random.nextFloat() * 0.4F, false);
+        if (state.getValue(AGE) == 7 && rand.nextFloat() < 0.2) {
+            Vector3d deltaMovement = new Vector3d(0, 0, 0);
+            AxisAlignedBB boundingBox = new AxisAlignedBB(pos);
+            world.addParticle(ParticleTypes.SOUL, pos.getX() + 0.5 + (world.random.nextDouble() - 0.5) * boundingBox.getSize(), pos.getY() + 0.1, pos.getZ() + 0.5 +
+                    (world.random.nextDouble() - 0.5) * boundingBox.getSize(), deltaMovement.x * -0.2, 0.1, deltaMovement.z * -0.2);
+            float volume = world.random.nextFloat() * 0.4F + world.random.nextFloat() > 0.9F ? 0.6F : 0;
+            world.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.SOUL_ESCAPE, SoundCategory.BLOCKS, volume, 0.6F + world.random.nextFloat() * 0.4F, false);
+        }
     }
 }

@@ -110,7 +110,7 @@ public class ExplodeBehavior extends ConsumeBehavior {
         CompoundNBT properties = new CompoundNBT();
         properties.putFloat("radius", (float) MathHelper.clamp(this.radius, 0, VSConfigs.COMMON_CONFIGS.explosionRadiusUpperLimit.get()));
         if (this.createFire) properties.putBoolean("create_fire", true);
-        if (this.spawnEffectCloud) properties.putBoolean("spawn_effect_cloud", true);
+        if (!this.spawnEffectCloud) properties.putBoolean("spawn_effect_cloud", false);
         NBTUtils.writeDamageSourceOntoNBT(properties, this.source);
         properties.putString("mode", this.blockInteraction.toString().toLowerCase(Locale.ROOT));
         properties.putIntArray("pos", new int[] {this.explosionPos.getX(), this.explosionPos.getY(), this.explosionPos.getZ()});

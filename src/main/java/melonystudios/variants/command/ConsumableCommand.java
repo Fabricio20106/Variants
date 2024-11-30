@@ -7,10 +7,8 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import melonystudios.variants.command.argument.UseAnimationArgument;
 import melonystudios.variants.item.custom.BehaviorBottleItem;
 import melonystudios.variants.item.custom.bottle.StainedExperienceBottleItem;
-import melonystudios.variants.item.custom.food.Consumable;
-import melonystudios.variants.screen.VSConfigScreen;
+import melonystudios.variants.component.Consumable;
 import melonystudios.variants.util.VSUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
 import net.minecraft.command.arguments.*;
@@ -44,13 +42,6 @@ public class ConsumableCommand {
                         .then(Commands.literal("shatter_sound")
                                 .then(Commands.argument("shattering_sound", ResourceLocationArgument.id()).suggests(SuggestionProviders.AVAILABLE_SOUNDS)
                                         .executes(context -> setShatterSound(context, EntityArgument.getPlayer(context, "target"), ResourceLocationArgument.getId(context, "shattering_sound")))))
-                        .then(Commands.literal("open_config_screen").executes(context -> {
-                            Minecraft minecraft = Minecraft.getInstance();
-                            VSConfigScreen screen = new VSConfigScreen(minecraft.screen, minecraft.options);
-                            screen.init(minecraft, minecraft.getWindow().getGuiScaledWidth(), minecraft.getWindow().getGuiScaledHeight());
-                            minecraft.screen = screen;
-                            return 1;
-                        }))
                         .then(Commands.literal("use_remainder")
                                 .then(Commands.argument("item", ItemArgument.item())
                                         .executes(context -> setUseRemainder(context, EntityArgument.getPlayer(context, "target"), ItemArgument.getItem(context, "item"), 1))

@@ -1,6 +1,6 @@
 package melonystudios.variants.entity.custom;
 
-import melonystudios.variants.item.custom.food.Consumable;
+import melonystudios.variants.component.Consumable;
 import melonystudios.variants.sound.VSSounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;

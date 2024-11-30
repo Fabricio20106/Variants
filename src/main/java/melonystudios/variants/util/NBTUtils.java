@@ -9,6 +9,7 @@ import melonystudios.variants.util.damage.DamageSourceUtils;
 import melonystudios.variants.util.damage.custom.DamageBehaviorSource;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.UseAction;
@@ -177,6 +178,17 @@ public class NBTUtils {
             for (ResourceLocation location : DamageSourceUtils.VALID_DAMAGE_SOURCES) combinedSourcesMap.put(location, DamageSource.GENERIC);
             List<ResourceLocation> locations = combinedSourcesMap.keySet().stream().filter(location -> location.equals(new ResourceLocation(source.msgId))).collect(Collectors.toList());
             if (!locations.isEmpty()) propertiesTag.putString("source", locations.get(0).toString());
+        }
+    }
+
+    public static EquipmentSlotType parseSlotFromNBT(String slotType) {
+        switch (slotType) {
+            case "head": return EquipmentSlotType.HEAD;
+            case "chest": return EquipmentSlotType.CHEST;
+            case "legs": return EquipmentSlotType.LEGS;
+            case "feet": return EquipmentSlotType.FEET;
+            case "offhand": return EquipmentSlotType.OFFHAND;
+            case "mainhand": default: return EquipmentSlotType.MAINHAND;
         }
     }
 

@@ -3,7 +3,7 @@ package melonystudios.variants.command;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import melonystudios.variants.command.argument.BehaviorArgument;
 import melonystudios.variants.command.argument.BehaviorInput;
-import melonystudios.variants.item.custom.food.Consumable;
+import melonystudios.variants.component.Consumable;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
 import net.minecraft.command.arguments.EntityArgument;

@@ -14,8 +14,11 @@ import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.gui.widget.Widget;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.client.gui.widget.list.OptionsRowList;
+import net.minecraft.client.renderer.RenderSkybox;
+import net.minecraft.client.renderer.RenderSkyboxCube;
 import net.minecraft.util.IReorderingProcessor;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -28,6 +31,8 @@ import static melonystudios.variants.screen.VSConfigEntries.*;
 @OnlyIn(Dist.CLIENT)
 public class VSConfigScreen extends SettingsScreen {
     public static List<AbstractOption> CONFIG_ENTRIES = Lists.newArrayList(FLOWER_PATCHES, GENERATE_QUARTZ_ORE, GENERATE_END_QUARTZ_ORE, SOUL_LAVA_SPRINGS, END_CAVES_AND_RAVINES);
+    public static final RenderSkyboxCube CUBE_MAP = new RenderSkyboxCube(new ResourceLocation("textures/gui/title/background/panorama"));
+    private final RenderSkybox panorama = new RenderSkybox(CUBE_MAP);
     private final AbstractOption[] smallOptions;
     private OptionsRowList list;
     private TextFieldWidget endSubstitutionBox;
@@ -47,8 +52,11 @@ public class VSConfigScreen extends SettingsScreen {
     protected void init() {
         this.endSubstitutionBox = new TextFieldWidget(this.font, this.width / 2 - 152, 20, 300, 20, new TranslationTextComponent("config.variants.substitute_the_end_biome_with"));
         this.endSubstitutionBox.setMaxLength(128);
+        this.endSubstitutionBox.setFocus(false);
+        this.endSubstitutionBox.setCanLoseFocus(true);
         this.endSubstitutionBox.setValue(CONFIG.substituteTheEndBiomeWith.toString());
         this.endSubstitutionBox.setResponder(this::validateBiomeEntry);
+        this.children.add(this.endSubstitutionBox);
 
         this.list = new OptionsRowList(this.minecraft, this.width, this.height, 32, this.height - 32, 25);
         this.list.addSmall(this.smallOptions);
@@ -61,7 +69,12 @@ public class VSConfigScreen extends SettingsScreen {
     }
 
     private void validateBiomeEntry(String value) {
-        this.doneButton.active = ForgeRegistries.BIOMES.containsKey(new ResourceLocation(value));
+        boolean valid = ForgeRegistries.BIOMES.containsKey(new ResourceLocation(value));
+        this.doneButton.active = valid;
+        if (valid) {
+            Variants.INSTANCE.getConfig().substituteTheEndBiomeWith = new ResourceLocation(value);
+            Variants.INSTANCE.saveConfig();
+        }
     }
 
     @Override
@@ -73,17 +86,21 @@ public class VSConfigScreen extends SettingsScreen {
 
     @Override
     public void render(MatrixStack stack, int width, int height, float partialTicks) {
-//        this.renderBackground(stack);
-        if (this.minecraft.level != null) {
-            this.fillGradient(stack, 0, 0, this.width, this.height, -1072689136, -804253680);
-            //MinecraftForge.EVENT_BUS.post(new GuiScreenEvent.BackgroundDrawnEvent(this, stack));
-        }
-        drawString(stack, this.font, new TranslationTextComponent("config.variants.substitute_the_end_biome_with"), this.width / 2 - 153, 10, 10526880);
-        this.endSubstitutionBox.render(stack, width, height, partialTicks);
+        if (this.minecraft != null && this.minecraft.level == null) this.panorama.render(partialTicks, MathHelper.clamp(1, 0, 1));
+        this.list.setRenderBackground(false);
+        this.list.setRenderTopAndBottom(false);
         this.list.render(stack, width, height, partialTicks);
         drawCenteredString(stack, this.font, this.title, this.width / 2, 20, 16777215);
         super.render(stack, width, height, partialTicks);
         List<IReorderingProcessor> processors = tooltipAt(this.list, width, height);
         if (processors != null) this.renderTooltip(stack, processors, width, height);
     }
+
+    //        this.renderBackground(stack);
+    //        if (this.minecraft.level != null) {
+    //            this.fillGradient(stack, 0, 0, this.width, this.height, -1072689136, -804253680);
+    //            MinecraftForge.EVENT_BUS.post(new GuiScreenEvent.BackgroundDrawnEvent(this, stack));
+    //        }
+    // drawString(stack, this.font, new TranslationTextComponent("config.variants.substitute_the_end_biome_with"), this.width / 2 - 153, 10, 10526880);
+    // this.endSubstitutionBox.render(stack, width, height, partialTicks);
 }

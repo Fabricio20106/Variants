@@ -1,0 +1,6 @@
+{
+  "parent": "variants:block/inventory_crop",
+  "textures": {
+    "crop": "variants:block/crimson_wheat_stage7"
+  }
+}

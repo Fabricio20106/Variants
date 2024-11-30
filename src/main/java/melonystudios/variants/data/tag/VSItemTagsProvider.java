@@ -67,7 +67,8 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSItemTags.CROPS_ENDER_WART).add(VSItems.ENDER_WART.get());
         this.tag(Tags.Items.CROPS).addTag(VSItemTags.CROPS_GOLDEN_CARROT).addTag(VSItemTags.CROPS_WARPED_WART).addTag(VSItemTags.CROPS_ENDER_WART);
 
-        this.tag(VSItemTags.RODS_DEBUG_WOODEN).add(Items.DEBUG_STICK);
+        this.tag(VSItemTags.RODS_DEBUG_WOODEN).add(Items.DEBUG_STICK, VSItems.OAK_DEBUG_STICK.get(), VSItems.SPRUCE_DEBUG_STICK.get(), VSItems.BIRCH_DEBUG_STICK.get(), VSItems.JUNGLE_DEBUG_STICK.get(), VSItems.ACACIA_DEBUG_STICK.get(),
+                VSItems.DARK_OAK_DEBUG_STICK.get(), VSItems.PAINTING_DEBUG_STICK.get(), VSItems.CRIMSON_DEBUG_STICK.get(), VSItems.WARPED_DEBUG_STICK.get(), VSItems.ENDERWOOD_DEBUG_STICK.get());
         this.tag(VSItemTags.RODS_NETHERITE).add(VSItems.NETHERITE_ROD.get());
         this.tag(VSItemTags.RODS_SOUL_BLAZE).add(VSItems.SOUL_BLAZE_ROD.get());
         this.tag(VSItemTags.FISHING_WOODEN_RODS).add(Items.STICK).add(VSItems.OAK_STICK.get()).add(VSItems.SPRUCE_STICK.get()).add(VSItems.BIRCH_STICK.get()).add(VSItems.JUNGLE_STICK.get()).add(VSItems.ACACIA_STICK.get())
@@ -90,6 +91,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
 
         this.tag(Tags.Items.BONES).add(VSItems.WITHER_BONE.get());
         this.tag(VSItemTags.BONE_MEALS).add(Items.BONE_MEAL).add(VSItems.WITHER_BONE_MEAL.get());
+        this.tag(VSItemTags.ELYTRA).add(Items.ELYTRA);
 
         this.tag(VSItemTags.DUSTS_GUNPOWDER).add(Items.GUNPOWDER);
         this.tag(VSItemTags.DUSTS_SUGAR).add(Items.SUGAR);

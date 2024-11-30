@@ -1,7 +1,6 @@
 package melonystudios.variants.item.custom;
 
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.IVanishable;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -12,7 +11,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 
-public interface Equippable extends IVanishable {
+public interface Swappable {
     default ActionResult<ItemStack> equipOrSwapItem(Item item, World world, PlayerEntity player, Hand hand) {
         ItemStack handStack = player.getItemInHand(hand);
         EquipmentSlotType slot = MobEntity.getEquipmentSlotForItem(handStack);

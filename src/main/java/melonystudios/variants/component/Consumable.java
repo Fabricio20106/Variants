@@ -1,4 +1,4 @@
-package melonystudios.variants.item.custom.food;
+package melonystudios.variants.component;
 
 import melonystudios.variants.consumable.ConsumeBehavior;
 import melonystudios.variants.consumable.custom.DefaultConsumeBehavior;

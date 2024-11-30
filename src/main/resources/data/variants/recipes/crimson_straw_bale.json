@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "variants:crimson_wheat"
+    },
+    {
+      "item": "variants:crimson_wheat"
+    },
+    {
+      "item": "variants:crimson_wheat"
+    },
+    {
+      "item": "variants:crimson_wheat"
+    },
+    {
+      "item": "variants:crimson_wheat"
+    },
+    {
+      "item": "variants:crimson_wheat"
+    },
+    {
+      "item": "variants:crimson_wheat"
+    },
+    {
+      "item": "variants:crimson_wheat"
+    },
+    {
+      "item": "variants:crimson_wheat"
+    }
+  ],
+  "result": {
+    "item": "variants:crimson_straw_bale"
+  }
+}

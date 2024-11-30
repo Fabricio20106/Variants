@@ -20,6 +20,7 @@
     "entity.EntityTameItemMixins$VSOcelotEntityMixin",
     "entity.VSFarmTaskMixin",
     "entity.VSLivingEntityMixin",
+    "entity.VSMobEntityMixin",
     "entity.VSSpawnerMinecartEntityMixin",
     "entity.VSVillagerEntityMixin",
     "item.VSFlintAndSteelItemMixin",

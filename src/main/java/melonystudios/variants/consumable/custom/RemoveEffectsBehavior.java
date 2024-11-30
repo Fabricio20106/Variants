@@ -36,7 +36,7 @@ public class RemoveEffectsBehavior extends ConsumeBehavior {
 
     @Override
     public void runBehavior(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
-        for (Effect effect : this.effects) livEntity.removeEffect(effect.getEffect());
+        for (Effect effect : this.effects) livEntity.removeEffect(effect);
     }
 
     @Override

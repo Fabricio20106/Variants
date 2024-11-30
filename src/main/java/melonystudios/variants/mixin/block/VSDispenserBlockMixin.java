@@ -1,5 +1,6 @@
 package melonystudios.variants.mixin.block;
 
+import melonystudios.variants.block.property.DispenserOrientation;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DispenserBlock;
@@ -8,11 +9,9 @@ import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
-import net.minecraft.world.gen.feature.jigsaw.JigsawOrientation;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -30,11 +29,11 @@ public class VSDispenserBlockMixin extends Block {
     @Final
     public static BooleanProperty TRIGGERED;
     @Unique
-    private static final EnumProperty<JigsawOrientation> ORIENTATION = BlockStateProperties.ORIENTATION;
+    private static final EnumProperty<DispenserOrientation> ORIENTATION = EnumProperty.create("orientation", DispenserOrientation.class);
 
     public VSDispenserBlockMixin(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(ORIENTATION, JigsawOrientation.UP_NORTH));
+        this.registerDefaultState(this.stateDefinition.any().setValue(ORIENTATION, DispenserOrientation.UP_NORTH));
     }
 
     @Inject(method = "getStateForPlacement", at = @At("HEAD"), cancellable = true)
@@ -51,7 +50,7 @@ public class VSDispenserBlockMixin extends Block {
             default:
                 break;
         }
-        cir.setReturnValue(this.defaultBlockState().setValue(ORIENTATION, JigsawOrientation.fromFrontAndTop(direction, opposite)).setValue(FACING, opposite));
+        cir.setReturnValue(this.defaultBlockState().setValue(ORIENTATION, DispenserOrientation.fromFrontAndTop(direction, opposite)).setValue(FACING, opposite));
     }
 
     @Inject(method = "rotate", at = @At("HEAD"), cancellable = true)
@@ -65,13 +64,13 @@ public class VSDispenserBlockMixin extends Block {
     }
 
     @Unique
-    public JigsawOrientation rotate(Rotation rotation, JigsawOrientation frontAndTop) {
-        return JigsawOrientation.fromFrontAndTop(rotation.rotate(frontAndTop.front()), rotation.rotate(frontAndTop.top()));
+    public DispenserOrientation rotate(Rotation rotation, DispenserOrientation frontAndTop) {
+        return DispenserOrientation.fromFrontAndTop(rotation.rotate(frontAndTop.front()), rotation.rotate(frontAndTop.top()));
     }
 
     @Unique
-    public JigsawOrientation rotate(Mirror mirror, JigsawOrientation frontAndTop) {
-        return JigsawOrientation.fromFrontAndTop(mirror.rotation().rotate(frontAndTop.front()), mirror.rotation().rotate(frontAndTop.top()));
+    public DispenserOrientation rotate(Mirror mirror, DispenserOrientation frontAndTop) {
+        return DispenserOrientation.fromFrontAndTop(mirror.rotation().rotate(frontAndTop.front()), mirror.rotation().rotate(frontAndTop.top()));
     }
 
     @Override

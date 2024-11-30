@@ -151,18 +151,16 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         wallBlock(VSBlocks.MOSSY_NETHER_BRICK_WALL.get(), modLoc("block/mossy_nether_bricks"));
         axisBlock((RotatedPillarBlock) VSBlocks.NETHER_BRICK_PILLAR.get(), modLoc("block/nether_brick_pillar"), modLoc("block/nether_brick_pillar_top"));
 
-        getVariantBuilder(VSBlocks.GOLDEN_CARROTS.get()).forAllStates(state -> {
-            int cropAgeIndex = cropAgeToIndexSeven(state.getValue(BlockStateProperties.AGE_7));
-            return ConfiguredModel.builder().modelFile(models().withExistingParent("golden_carrots_stage" + cropAgeIndex, modLoc("block/inventory_crop")).texture("crop", "block/golden_carrots_stage" + cropAgeIndex)).build();
-        });
-        getVariantBuilder(VSBlocks.WARPED_WART.get()).forAllStates(state -> {
-            int cropAgeIndex = cropAgeToIndexWart(state.getValue(BlockStateProperties.AGE_3));
-            return ConfiguredModel.builder().modelFile(models().crop("warped_wart_stage" + cropAgeIndex, modLoc("block/warped_wart_stage" + cropAgeIndex))).build();
-        });
-        getVariantBuilder(VSBlocks.ENDER_WART.get()).forAllStates(state -> {
-            int cropAgeIndex = cropAgeToIndexWart(state.getValue(BlockStateProperties.AGE_3));
-            return ConfiguredModel.builder().modelFile(models().crop("ender_wart_stage" + cropAgeIndex, modLoc("block/ender_wart_stage" + cropAgeIndex))).build();
-        });
+        // Variants 1.8
+        axisBlock((RotatedPillarBlock) VSBlocks.CRIMSON_STRAW_BALE.get(), modLoc("block/crimson_straw_bale_side"), modLoc("block/crimson_straw_bale_top"));
+        wildCrop(VSBlocks.WILD_CRIMSON_WHEAT);
+        wildCrop(VSBlocks.WILD_SOUL_CARROTS);
+
+        carrots(VSBlocks.GOLDEN_CARROTS);
+        wheat(VSBlocks.CRIMSON_WHEAT);
+        carrots(VSBlocks.SOUL_CARROTS);
+        wart(VSBlocks.WARPED_WART);
+        wart(VSBlocks.ENDER_WART);
         getVariantBuilder(VSBlocks.GLOW_BERRY_BUSH.get()).forAllStates(state -> {
             int cropAgeIndex = cropAgeToIndexBush(state.getValue(BlockStateProperties.AGE_3));
             return ConfiguredModel.builder().modelFile(models().cross("glow_berry_bush_stage" + cropAgeIndex, modLoc("block/glow_berry_bush_stage" + cropAgeIndex))).build();

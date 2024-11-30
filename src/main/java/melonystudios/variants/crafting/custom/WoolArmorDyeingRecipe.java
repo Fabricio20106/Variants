@@ -52,7 +52,7 @@ public class WoolArmorDyeingRecipe extends SpecialRecipe {
     @Override
     @Nonnull
     public ItemStack assemble(CraftingInventory inventory) {
-        ItemStack emptyStack = ItemStack.EMPTY;
+        ItemStack sweaterStack = ItemStack.EMPTY;
         List<Integer> dyeStacks = Lists.newArrayList();
 
         for (int i = 0; i < inventory.getContainerSize(); ++i) {
@@ -60,9 +60,9 @@ public class WoolArmorDyeingRecipe extends SpecialRecipe {
             if (!stack.isEmpty()) {
                 Item item = stack.getItem();
                 if (item instanceof DyeableArmorItem) {
-                    if (!emptyStack.isEmpty()) return ItemStack.EMPTY;
+                    if (!sweaterStack.isEmpty()) return ItemStack.EMPTY;
 
-                    emptyStack = stack.copy();
+                    sweaterStack = stack.copy();
                 } else {
                     if (!(item.is(Tags.Items.DYES))) return ItemStack.EMPTY;
 
@@ -77,7 +77,7 @@ public class WoolArmorDyeingRecipe extends SpecialRecipe {
             }
         }
 
-        return !emptyStack.isEmpty() && !dyeStacks.isEmpty() ? DyeableArmorItem.dyeArmor(emptyStack, dyeStacks) : ItemStack.EMPTY;
+        return !sweaterStack.isEmpty() && !dyeStacks.isEmpty() ? DyeableArmorItem.dyeArmor(sweaterStack, dyeStacks) : ItemStack.EMPTY;
     }
 
     @Override

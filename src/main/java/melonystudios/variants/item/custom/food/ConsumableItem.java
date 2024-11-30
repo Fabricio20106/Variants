@@ -1,5 +1,6 @@
 package melonystudios.variants.item.custom.food;
 
+import melonystudios.variants.component.Consumable;
 import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.item.custom.VSItem;
 import melonystudios.variants.consumable.ConsumeBehavior;

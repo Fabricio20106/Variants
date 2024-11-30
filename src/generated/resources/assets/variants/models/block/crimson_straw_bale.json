@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "variants:block/crimson_straw_bale_side",
+    "end": "variants:block/crimson_straw_bale_top"
+  }
+}

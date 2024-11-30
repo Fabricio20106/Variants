@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     "variants:golden_carrots",
+    "variants:crimson_wheat",
+    "variants:wild_crimson_wheat",
+    "variants:soul_carrots",
+    "variants:wild_soul_carrots",
     "minecraft:nether_wart",
     "variants:warped_wart",
     "variants:ender_wart"

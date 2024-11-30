@@ -1,28 +1,48 @@
 package melonystudios.variants.mixin.item;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import melonystudios.variants.Variants;
+import melonystudios.variants.component.Equippable;
 import melonystudios.variants.config.VSConfigs;
+import melonystudios.variants.component.Consumable;
+import melonystudios.variants.item.custom.Swappable;
+import melonystudios.variants.util.ComponentUtils;
 import melonystudios.variants.util.NBTUtils;
 import melonystudios.variants.util.VSKeys;
 import melonystudios.variants.util.VSUtils;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.*;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.extensions.IForgeItem;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
 @Mixin(Item.class)
-public class VSItemMixin {
+public abstract class VSItemMixin implements Consumable, Equippable, Swappable, IForgeItem {
+    @Shadow
+    @Final
+    private Rarity rarity;
+
     @OnlyIn(Dist.CLIENT)
     @Inject(method = "appendHoverText", at = @At("HEAD"))
     public void appendHoverText(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag flag, CallbackInfo ci) {
@@ -34,6 +54,68 @@ public class VSItemMixin {
         }
         if (stack.getItem().getFoodProperties() != null && !stack.getItem().getFoodProperties().getEffects().isEmpty() && VSConfigs.COMMON_CONFIGS.showFoodEffects.get()) {
             VSUtils.addEffectsTooltip(stack, tooltip, 1);
+        }
+    }
+
+    @Inject(method = "isFoil", at = @At("HEAD"), cancellable = true)
+    public void isFoil(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+        cir.setReturnValue(ComponentUtils.enchantmentGlintOverride(stack, stack.isEnchanted()));
+    }
+
+    @Inject(method = "getRarity", at = @At("HEAD"), cancellable = true)
+    public void getRarity(ItemStack stack, CallbackInfoReturnable<Rarity> cir) {
+        Rarity rarity = ComponentUtils.rarity(stack, this.rarity);
+        if (stack.isEnchanted()) rarity = VSUtils.upRarity(rarity);
+        cir.setReturnValue(rarity);
+    }
+
+    @Inject(method = "getUseAnimation", at = @At("HEAD"), cancellable = true)
+    public void getUseAnimation(ItemStack stack, CallbackInfoReturnable<UseAction> cir) {
+        UseAction animation = stack.isEdible() ? UseAction.EAT : UseAction.NONE;
+        cir.setReturnValue(getConsumeAnimation(stack, animation));
+    }
+
+    @Inject(method = "getUseDuration", at = @At("HEAD"), cancellable = true)
+    public void getUseDuration(ItemStack stack, CallbackInfoReturnable<Integer> cir) {
+        Food foodProperties = stack.getItem().getFoodProperties();
+        if (foodProperties != null && foodProperties.isFastFood()) {
+            cir.setReturnValue(getConsumeTicks(stack, 16));
+        }
+        cir.setReturnValue(getConsumeTicks(stack));
+    }
+
+    @Override
+    public boolean canElytraFly(ItemStack stack, LivingEntity livEntity) {
+        return this.glider(stack) && stack.getDamageValue() < stack.getMaxDamage() - 1;
+    }
+
+    @Override
+    public boolean elytraFlightTick(ItemStack stack, LivingEntity livEntity, int flightTicks) {
+        if (!livEntity.level.isClientSide && (flightTicks + 1) % 20 == 0) {
+            stack.hurtAndBreak(1, livEntity, livEntity1 -> livEntity1.broadcastBreakEvent(Equippable.getSlot(stack, EquipmentSlotType.CHEST)));
+        }
+        return true;
+    }
+
+    @Override
+    public void renderHelmetOverlay(ItemStack stack, PlayerEntity player, int width, int height, float partialTicks) {
+        ResourceLocation cameraOverlay = this.getCameraOverlay(stack, null);
+        if (cameraOverlay != null) {
+            cameraOverlay = new ResourceLocation(cameraOverlay.getNamespace(), "textures/" + cameraOverlay.getPath() + ".png");
+            RenderSystem.disableDepthTest();
+            RenderSystem.depthMask(false);
+            RenderSystem.defaultBlendFunc();
+            Minecraft.getInstance().getTextureManager().bind(cameraOverlay);
+            Tessellator tessellator = Tessellator.getInstance();
+            BufferBuilder bufferbuilder = tessellator.getBuilder();
+            bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
+            bufferbuilder.vertex(0, height, -90).uv(0, 1).endVertex();
+            bufferbuilder.vertex(width, height, -90).uv(1, 1).endVertex();
+            bufferbuilder.vertex(width, 0, -90).uv(1, 0).endVertex();
+            bufferbuilder.vertex(0, 0, -90).uv(0, 0).endVertex();
+            tessellator.end();
+            RenderSystem.depthMask(true);
+            RenderSystem.enableDepthTest();
         }
     }
 }

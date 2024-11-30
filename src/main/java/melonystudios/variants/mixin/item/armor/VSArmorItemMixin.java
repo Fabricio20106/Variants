@@ -1,6 +1,7 @@
 package melonystudios.variants.mixin.item.armor;
 
-import melonystudios.variants.item.custom.Equippable;
+import melonystudios.variants.component.Equippable;
+import melonystudios.variants.item.custom.Swappable;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
@@ -14,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ArmorItem.class)
-public class VSArmorItemMixin extends Item implements Equippable {
+public class VSArmorItemMixin extends Item implements Equippable, Swappable {
     public VSArmorItemMixin(Properties properties) {
         super(properties);
     }

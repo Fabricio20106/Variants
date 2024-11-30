@@ -98,8 +98,8 @@ public class DebugBowItem extends BowItem {
         return backwards ? Util.findPreviousInIterable(allowedValues, currentValue) : Util.findNextInIterable(allowedValues, currentValue);
     }
 
-    public static void sendBowMessage(PlayerEntity player, ITextComponent text) {
-        ((ServerPlayerEntity) player).sendMessage(text, ChatType.GAME_INFO, Util.NIL_UUID);
+    public static void sendBowMessage(PlayerEntity player, ITextComponent component) {
+        ((ServerPlayerEntity) player).sendMessage(component, ChatType.GAME_INFO, Util.NIL_UUID);
     }
 
     public static <T extends Comparable<T>> String getNameHelper(BlockState state, Property<T> property) {

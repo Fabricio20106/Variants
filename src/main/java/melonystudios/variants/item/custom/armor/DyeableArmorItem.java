@@ -1,5 +1,6 @@
 package melonystudios.variants.item.custom.armor;
 
+import melonystudios.variants.item.custom.armor.color.WoolArmorColor;
 import melonystudios.variants.util.Constants;
 import net.minecraft.item.IDyeableArmorItem;
 import net.minecraft.item.Item;
@@ -15,10 +16,20 @@ public interface DyeableArmorItem extends IDyeableArmorItem {
         return displayTag != null && displayTag.contains("color", Constants.TagTypes.ANY_NUMERIC) ? displayTag.getInt("color") : getDefaultColor();
     }
 
+    @Override
+    default boolean hasCustomColor(ItemStack stack) {
+        CompoundNBT displayTag = stack.getTagElement("display");
+        if (displayTag != null && displayTag.contains("color", Constants.TagTypes.ANY_NUMERIC)) {
+            return displayTag.getInt("color") != WoolArmorColor.WHITE.getColor();
+        } else {
+            return false;
+        }
+    }
+
     int getDefaultColor();
 
     static ItemStack dyeArmor(ItemStack stack, List<Integer> colors) {
-        ItemStack emptyStack = ItemStack.EMPTY;
+        ItemStack sweaterStack = ItemStack.EMPTY;
         int[] rgbColors = new int[3];
         int i = 0;
         int j = 0;
@@ -27,10 +38,10 @@ public interface DyeableArmorItem extends IDyeableArmorItem {
 
         if (item instanceof DyeableArmorItem) {
             dyeableArmorItem = (DyeableArmorItem) item;
-            emptyStack = stack.copy();
-            emptyStack.setCount(1);
+            sweaterStack = stack.copy();
+            sweaterStack.setCount(1);
             if (dyeableArmorItem.hasCustomColor(stack)) {
-                int color = dyeableArmorItem.getColor(emptyStack);
+                int color = dyeableArmorItem.getColor(sweaterStack);
                 float red = (float) (color >> 16 & 255) / 255;
                 float green = (float) (color >> 8 & 255) / 255;
                 float blue = (float) (color & 255) / 255;
@@ -66,8 +77,8 @@ public interface DyeableArmorItem extends IDyeableArmorItem {
             blue = (int) ((float) blue * f3 / f4);
             int j2 = (red << 8) + green;
             j2 = (j2 << 8) + blue;
-            dyeableArmorItem.setColor(emptyStack, j2);
-            return emptyStack;
+            dyeableArmorItem.setColor(sweaterStack, j2);
+            return sweaterStack;
         }
     }
 }

@@ -1,6 +1,16 @@
 {
   "replace": false,
   "values": [
-    "minecraft:debug_stick"
+    "minecraft:debug_stick",
+    "variants:oak_debug_stick",
+    "variants:spruce_debug_stick",
+    "variants:birch_debug_stick",
+    "variants:jungle_debug_stick",
+    "variants:acacia_debug_stick",
+    "variants:dark_oak_debug_stick",
+    "variants:painting_debug_stick",
+    "variants:crimson_debug_stick",
+    "variants:warped_debug_stick",
+    "variants:enderwood_debug_stick"
   ]
 }

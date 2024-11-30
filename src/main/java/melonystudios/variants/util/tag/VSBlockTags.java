@@ -26,7 +26,7 @@ public class VSBlockTags {
     public static final ITag.INamedTag<Block> BEACONS = mod("beacons");
     public static final ITag.INamedTag<Block> SPAWNERS = mod("spawners");
     public static final ITag.INamedTag<Block> SPAWNER_MINECART_CANNOT_REPLACE = mod("spawner_minecart_cannot_replace");
-    public static final ITag.INamedTag<Block> NETHER_WART_PLACEABLE_ON = mod("nether_wart_plantable_on");
+    public static final ITag.INamedTag<Block> NETHER_WART_PLANTABLE_ON = mod("nether_wart_plantable_on");
     public static final ITag.INamedTag<Block> ENDER_WART_PLANTABLE_ON = mod("ender_wart_plantable_on");
     public static final ITag.INamedTag<Block> GOLDEN_CARROTS_PLANTABLE_ON = mod("golden_carrots_plantable_on");
     public static final ITag.INamedTag<Block> END_PLANTS_PLANTABLE_ON = mod("end_plants_plantable_on");
@@ -34,6 +34,7 @@ public class VSBlockTags {
     public static final ITag.INamedTag<Block> CHORUS_FLOWER_PLANTABLE_ON = mod("chorus_flower_plantable_on");
     public static final ITag.INamedTag<Block> CHORUS_PLANT_PLANTABLE_ON = mod("chorus_plant_plantable_on");
     public static final ITag.INamedTag<Block> NETHER_CROPS_PLANTABLE_ON = mod("nether_crops_plantable_on");
+    public static final ITag.INamedTag<Block> WILD_NETHER_CROPS_PLANTABLE_ON = mod("wild_nether_crops_plantable_on");
     public static final ITag.INamedTag<Block> END_CARVER_REPLACEABLES = mod("end_carver_replaceables");
     public static final ITag.INamedTag<Block> HAS_ENDER_NYLIUM = mod("has_ender_nylium");
 

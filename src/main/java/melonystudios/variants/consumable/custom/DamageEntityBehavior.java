@@ -54,11 +54,10 @@ public class DamageEntityBehavior extends ConsumeBehavior {
 
     @Override
     public void loadFromNBT(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
-        assert propertiesTag != null;
-        if (propertiesTag.contains("source", Constants.TagTypes.COMPOUND)) {
+        if (propertiesTag != null && propertiesTag.contains("source", Constants.TagTypes.COMPOUND)) {
             DamageEntityBehavior damageBehavior = new DamageEntityBehavior(new DamageBehaviorSource(propertiesTag, livEntity), anyNumericOrFloatDefault("amount", propertiesTag, 0));
             damageBehavior.runBehavior(stack, world, livEntity, propertiesTag);
-        } else if (propertiesTag.contains("source", Constants.TagTypes.STRING)) {
+        } else if (propertiesTag != null && propertiesTag.contains("source", Constants.TagTypes.STRING)) {
             DamageSource source1 = DamageSourceUtils.fromLocationWithKiller(livEntity, ResourceLocation.tryParse(stringOrDefault("source", propertiesTag, "minecraft:generic")));
             DamageEntityBehavior damageBehavior = new DamageEntityBehavior(source1, anyNumericOrFloatDefault("amount", propertiesTag, 0));
             damageBehavior.runBehavior(stack, world, livEntity, propertiesTag);

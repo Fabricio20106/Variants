@@ -37,7 +37,7 @@ public class WarpedWartBlock extends BushBlock {
     }
 
     protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
-        return state.is(VSBlockTags.NETHER_WART_PLACEABLE_ON);
+        return state.is(VSBlockTags.NETHER_WART_PLANTABLE_ON);
     }
 
     public boolean isRandomlyTicking(BlockState state) {

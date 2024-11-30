@@ -219,6 +219,10 @@ public class Variants {
         RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_SUGAR_CANE.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_PAINTING_SAPLING.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.GOLDEN_CARROTS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.CRIMSON_WHEAT.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.WILD_CRIMSON_WHEAT.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.SOUL_CARROTS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.WILD_SOUL_CARROTS.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.GLOW_BLACK_TULIP.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.SUNNY_FLOWER.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.GLOW_BERRY_BUSH.get(), RenderType.cutout());

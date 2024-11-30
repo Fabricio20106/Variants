@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#C#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:nuggets/quartz"
+    },
+    "C": {
+      "item": "variants:soul_carrot"
+    }
+  },
+  "result": {
+    "item": "variants:quartz_carrot"
+  }
+}

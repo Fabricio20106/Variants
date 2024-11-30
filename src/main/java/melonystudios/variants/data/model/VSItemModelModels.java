@@ -30,6 +30,10 @@ public abstract class VSItemModelModels extends ItemModelProvider {
         getBuilder(name).parent(parent).texture("layer0", "item/" + name);
     }
 
+    public void debugStick(ModelFile parent, String name, String stickName) {
+        getBuilder(name).parent(parent).texture("layer0", "item/" + stickName);
+    }
+
     public void toolSet(ModelFile parent, String material) {
         getBuilder(material + "_sword").parent(parent).texture("layer0", "item/" + material + "_sword");
         getBuilder(material + "_pickaxe").parent(parent).texture("layer0", "item/" + material + "_pickaxe");

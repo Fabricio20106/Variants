@@ -22,6 +22,38 @@ public abstract class VSBlockStateModels extends BlockStateProvider {
         trapdoorBlock((TrapDoorBlock) block.get(), painting, true);
     }
 
+    public void wheat(RegistryObject<Block> block) {
+        String cropName = block.get().getRegistryName().getPath();
+        getVariantBuilder(block.get()).forAllStates(state -> {
+            int cropAge = state.getValue(BlockStateProperties.AGE_7);
+            return ConfiguredModel.builder().modelFile(models().withExistingParent(cropName + "_stage" + cropAge, modLoc("block/inventory_crop"))
+                    .texture("crop", modLoc("block/" + cropName + "_stage" + cropAge))).build();
+        });
+    }
+
+    public void carrots(RegistryObject<Block> block) {
+        String cropName = block.get().getRegistryName().getPath();
+        getVariantBuilder(block.get()).forAllStates(state -> {
+            int cropAge = cropAgeToIndexSeven(state.getValue(BlockStateProperties.AGE_7));
+            return ConfiguredModel.builder().modelFile(models().withExistingParent(cropName + "_stage" + cropAge, modLoc("block/inventory_crop"))
+                    .texture("crop", modLoc("block/" + cropName + "_stage" + cropAge))).build();
+        });
+    }
+
+    public void wart(RegistryObject<Block> block) {
+        String cropName = block.get().getRegistryName().getPath();
+        getVariantBuilder(block.get()).forAllStates(state -> {
+            int cropAge = cropAgeToIndexWart(state.getValue(BlockStateProperties.AGE_3));
+            return ConfiguredModel.builder().modelFile(models().crop(cropName + "_stage" + cropAge, modLoc("block/" +
+                    cropName + "_stage" + cropAge))).build();
+        });
+    }
+
+    public void wildCrop(RegistryObject<Block> block) {
+        String cropName = block.get().getRegistryName().getPath();
+        simpleBlock(block.get(), models().withExistingParent(cropName, modLoc("block/template_wild_crop")).texture("crop", modLoc("block/" + cropName)));
+    }
+
     public static int cropAgeToIndexSeven(int age) {
         if (age > 6) return 3;
         if (age > 3) return 2;
@@ -50,7 +82,7 @@ public abstract class VSBlockStateModels extends BlockStateProvider {
     public void pressurePlate(Block pressurePlate, ResourceLocation planks) {
         getVariantBuilder(pressurePlate).forAllStates(state -> {
             boolean isPowered = state.getValue(BlockStateProperties.POWERED);
-            return ConfiguredModel.builder().modelFile(models().getBuilder(pressurePlate.getRegistryName().getPath() + (isPowered ? "_powered" : ""))
+            return ConfiguredModel.builder().modelFile(models().getBuilder(pressurePlate.getRegistryName().getPath() + (isPowered ? "_down" : ""))
                     .parent(models().getExistingFile(mcLoc("block/pressure_plate_" + (isPowered ? "down" : "up")))).texture("texture", planks)).build();
         });
     }

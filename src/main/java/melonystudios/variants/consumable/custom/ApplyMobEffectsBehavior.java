@@ -50,12 +50,17 @@ public class ApplyMobEffectsBehavior extends ConsumeBehavior {
             ListNBT effectList = propertiesTag.getList("effects", Constants.TagTypes.COMPOUND);
 
             for (int i = 0; i < effectList.size(); ++i) NBTUtils.addEffectsFromNBT(effectList.getCompound(i), world, livEntity);
+        } else  {
+            List<? extends EffectInstance> effects = Lists.newArrayList(this.effects);
+            if (!effects.isEmpty()) for (EffectInstance instance : effects) livEntity.addEffect(instance);
         }
     }
 
     @Override
     public void loadFromNBT(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
         List<EffectInstance> effects = Lists.newArrayList();
+        boolean noNBTEffects = false;
+
         if (propertiesTag != null && propertiesTag.contains("effects", Constants.TagTypes.LIST)) {
             ListNBT effectList = propertiesTag.getList("effects", Constants.TagTypes.COMPOUND);
             for (int i = 0; i < effectList.size(); ++i) {
@@ -88,9 +93,9 @@ public class ApplyMobEffectsBehavior extends ConsumeBehavior {
                     effects.add(instance);
                 }
             }
-        }
+        } else noNBTEffects = true;
 
-        ApplyMobEffectsBehavior behavior = new ApplyMobEffectsBehavior(effects);
+        ApplyMobEffectsBehavior behavior = new ApplyMobEffectsBehavior(noNBTEffects ? Lists.newArrayList(this.effects) : effects);
         behavior.runBehavior(stack, world, livEntity, propertiesTag);
     }
 
@@ -114,13 +119,16 @@ public class ApplyMobEffectsBehavior extends ConsumeBehavior {
         return VSConsumeBehaviors.APPLY_MOB_EFFECTS.get();
     }
 
-    public static void addEffectsTooltip(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, float durationFactor) {
-        List<EffectInstance> effectsList = NBTUtils.getEffectsFromNBT(world, stack);
+    public void addEffectsTooltip(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, float durationFactor) {
+        List<? extends EffectInstance> effectsList = NBTUtils.getEffectsFromNBT(world, stack);
+        if (effectsList == null) effectsList = this.effects;
+
         if (stack.getTag() != null && stack.getTag().contains("duration_factor", Constants.TagTypes.ANY_NUMERIC)) durationFactor = stack.getTag().getFloat("duration_factor");
         float durationPercentage = durationFactor * 100;
         if (durationFactor != 1 && VSConfigs.COMMON_CONFIGS.durationFactorTooltip.get()) tooltip.add(new TranslationTextComponent("tooltip.variants.food_effects.duration_factor", durationPercentage).withStyle(TextFormatting.DARK_GRAY));
 
         List<Pair<Attribute, AttributeModifier>> attributePairList = Lists.newArrayList();
+
         if (effectsList != null && !effectsList.isEmpty()) {
             for (EffectInstance instance : effectsList) {
                 IFormattableTextComponent component = new TranslationTextComponent(instance.getDescriptionId());

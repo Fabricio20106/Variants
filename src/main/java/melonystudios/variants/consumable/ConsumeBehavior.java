@@ -1,10 +1,9 @@
 package melonystudios.variants.consumable;
 
 import com.google.common.collect.Lists;
-import melonystudios.variants.item.custom.food.Consumable;
+import melonystudios.variants.component.Consumable;
 import melonystudios.variants.item.custom.food.ConsumableItem;
 import melonystudios.variants.util.Constants;
-import melonystudios.variants.util.NBTUtils;
 import melonystudios.variants.util.VSRegistries;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -26,7 +25,6 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
 
 public abstract class ConsumeBehavior extends ForgeRegistryEntry<ConsumeBehavior> {
     private final ReverseTagWrapper<ConsumeBehavior> reverseTags = new ReverseTagWrapper<>(this, () -> TagCollectionManager.getInstance().getCustomTypeCollection(VSRegistries.CONSUME_BEHAVIOR));

@@ -4,7 +4,7 @@
       "model": "variants:block/enderwood_pressure_plate"
     },
     "powered=true": {
-      "model": "variants:block/enderwood_pressure_plate_powered"
+      "model": "variants:block/enderwood_pressure_plate_down"
     }
   }
 }

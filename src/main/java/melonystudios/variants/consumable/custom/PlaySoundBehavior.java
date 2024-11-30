@@ -87,7 +87,7 @@ public class PlaySoundBehavior extends ConsumeBehavior {
         if (this.useSoundPacket && livEntity instanceof ServerPlayerEntity) {
             ((ServerPlayerEntity) livEntity).connection.send(new SPlaySoundPacket(this.id, this.category, livEntity.position(), volume, pitch));
         } else {
-            assert soundEvent != null;
+            if (soundEvent == null) return;
             if (this.playAtPlayer && livEntity instanceof PlayerEntity) {
                 world.playSound((PlayerEntity) livEntity, this.pos, soundEvent, this.category, volume, pitch);
             } else {

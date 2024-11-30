@@ -59,14 +59,15 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSBlockTags.SPAWNERS).add(Blocks.SPAWNER);
         this.tag(VSBlockTags.SPAWNER_MINECART_CANNOT_REPLACE).add(Blocks.BEDROCK, Blocks.COMMAND_BLOCK, Blocks.CHAIN_COMMAND_BLOCK, Blocks.REPEATING_COMMAND_BLOCK, Blocks.STRUCTURE_BLOCK, Blocks.JIGSAW, Blocks.BARRIER,
                 Blocks.MOVING_PISTON, Blocks.END_PORTAL_FRAME, Blocks.END_PORTAL, Blocks.END_GATEWAY, Blocks.NETHER_PORTAL, Blocks.SPAWNER);
-        this.tag(VSBlockTags.NETHER_WART_PLACEABLE_ON).add(VSBlocks.CRIMSON_FARMLAND.get()).add(VSBlocks.WARPED_FARMLAND.get()).add(Blocks.SOUL_SAND).add(Blocks.SOUL_SOIL);
+        this.tag(VSBlockTags.NETHER_WART_PLANTABLE_ON).add(VSBlocks.CRIMSON_FARMLAND.get()).add(VSBlocks.WARPED_FARMLAND.get()).add(Blocks.SOUL_SAND).add(Blocks.SOUL_SOIL);
         this.tag(VSBlockTags.ENDER_WART_PLANTABLE_ON).addTag(VSBlockTags.HAS_ENDER_NYLIUM).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_FARMLAND.get()).add(Blocks.OBSIDIAN);
         this.tag(VSBlockTags.GOLDEN_CARROTS_PLANTABLE_ON).addTag(VSBlockTags.FARMLAND);
         this.tag(VSBlockTags.END_PLANTS_PLANTABLE_ON).addTag(BlockTags.NYLIUM).addTag(Tags.Blocks.END_STONES).add(Blocks.OBSIDIAN);
         this.tag(VSBlockTags.WARPING_VINES_CAN_PLACE_ON).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_WART_BLOCK.get());
         this.tag(VSBlockTags.CHORUS_FLOWER_PLANTABLE_ON).addTag(VSBlockTags.HAS_ENDER_NYLIUM).addTag(Tags.Blocks.END_STONES);
         this.tag(VSBlockTags.CHORUS_PLANT_PLANTABLE_ON).add(Blocks.CHORUS_FLOWER).add(Blocks.CHORUS_PLANT);
-        this.tag(VSBlockTags.NETHER_CROPS_PLANTABLE_ON).addTag(VSBlockTags.FARMLAND).addTag(VSBlockTags.NETHER_WART_PLACEABLE_ON);
+        this.tag(VSBlockTags.NETHER_CROPS_PLANTABLE_ON).addTag(VSBlockTags.FARMLAND).addTag(VSBlockTags.NETHER_WART_PLANTABLE_ON);
+        this.tag(VSBlockTags.WILD_NETHER_CROPS_PLANTABLE_ON).addTag(VSBlockTags.FARMLAND).addTag(VSBlockTags.NETHER_WART_PLANTABLE_ON).addTag(BlockTags.NYLIUM).add(Blocks.SOUL_SAND, Blocks.SOUL_SOIL);
         this.tag(VSBlockTags.END_CARVER_REPLACEABLES).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_NYLIUM.get());
         this.tag(VSBlockTags.HAS_ENDER_NYLIUM).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get());
         this.tag(VSBlockTags.FARMLAND_TRANSPARENT).addTag(Tags.Blocks.FENCE_GATES).addTag(BlockTags.FENCE_GATES).add(Blocks.MOVING_PISTON);
@@ -103,7 +104,8 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.WALLS).add(VSBlocks.ELDER_PRISMARINE_WALL.get()).add(VSBlocks.MOSSY_END_STONE_BRICK_WALL.get()).add(VSBlocks.MOSSY_PURPUR_WALL.get()).add(VSBlocks.MOSSY_NETHER_BRICK_WALL.get());
         this.tag(BlockTags.FENCES).add(VSBlocks.RED_NETHER_BRICK_FENCE.get());
 
-        this.tag(BlockTags.CROPS).add(VSBlocks.GOLDEN_CARROTS.get()).add(Blocks.NETHER_WART).add(VSBlocks.WARPED_WART.get()).add(VSBlocks.ENDER_WART.get());
+        this.tag(BlockTags.CROPS).add(VSBlocks.GOLDEN_CARROTS.get(), VSBlocks.CRIMSON_WHEAT.get(), VSBlocks.WILD_CRIMSON_WHEAT.get(), VSBlocks.SOUL_CARROTS.get(), VSBlocks.WILD_SOUL_CARROTS.get(), Blocks.NETHER_WART,
+                VSBlocks.WARPED_WART.get(), VSBlocks.ENDER_WART.get());
         this.tag(BlockTags.BEE_GROWABLES).add(VSBlocks.GLOW_BERRY_BUSH.get());
         this.tag(BlockTags.FLOWERS).add(VSBlocks.AZURE_BLUET_LEAVES.get());
         this.tag(BlockTags.SMALL_FLOWERS).add(VSBlocks.GLOW_BLACK_TULIP.get()).add(VSBlocks.SUNNY_FLOWER.get());
@@ -120,9 +122,5 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.BEDS).add(VSBlocks.GLOW_BLACK_BED.get());
         this.tag(BlockTags.PIGLIN_REPELLENTS).add(VSBlocks.POTTED_SOUL_TORCH.get());
         this.tag(BlockTags.STRIDER_WARM_BLOCKS).add(VSBlocks.SOUL_LAVA.get());
-    }
-
-    private static ResourceLocation backMath(String block) {
-        return new ResourceLocation("backmath", block);
     }
 }

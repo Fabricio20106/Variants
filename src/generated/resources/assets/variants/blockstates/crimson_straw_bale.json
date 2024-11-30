@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "variants:block/crimson_straw_bale_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "variants:block/crimson_straw_bale"
+    },
+    "axis=z": {
+      "model": "variants:block/crimson_straw_bale_horizontal",
+      "x": 90
+    }
+  }
+}

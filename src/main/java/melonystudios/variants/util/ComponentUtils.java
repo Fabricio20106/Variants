@@ -1,6 +1,7 @@
 package melonystudios.variants.util;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.world.World;
 
@@ -32,6 +33,19 @@ public class ComponentUtils {
         CompoundNBT tag = stack.getTag();
         if (tag != null && tag.contains("enchantable", Constants.TagTypes.ANY_NUMERIC)) {
             return tag.getInt("enchantable");
+        } else return fallback;
+    }
+
+    public static Rarity rarity(ItemStack stack, Rarity fallback) {
+        CompoundNBT tag = stack.getTag();
+        if (tag != null && tag.contains("rarity", Constants.TagTypes.STRING)) {
+            switch (tag.getString("rarity")) {
+                case "common": return Rarity.COMMON;
+                case "uncommon": return Rarity.UNCOMMON;
+                case "rare": return Rarity.RARE;
+                case "epic": return Rarity.EPIC;
+                default: return fallback;
+            }
         } else return fallback;
     }
 

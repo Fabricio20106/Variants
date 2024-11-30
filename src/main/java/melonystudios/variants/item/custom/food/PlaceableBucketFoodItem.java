@@ -1,5 +1,6 @@
 package melonystudios.variants.item.custom.food;
 
+import melonystudios.variants.component.Consumable;
 import melonystudios.variants.dispenser.vanilla.BucketDispenseBehavior;
 import melonystudios.variants.consumable.ConsumeBehavior;
 import melonystudios.variants.consumable.custom.DefaultConsumeBehavior;
