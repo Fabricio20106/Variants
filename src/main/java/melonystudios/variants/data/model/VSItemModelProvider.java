@@ -33,6 +33,8 @@ public class VSItemModelProvider extends VSItemModelModels {
         block("golden_carrots", "_stage3");
         block("wild_crimson_wheat");
         block("wild_soul_carrots");
+        block("wild_warped_potatoes");
+        block("wild_melting_beets");
         block("golden_cauldron");
         block("golden_beacon");
         block("quartz_cauldron");
@@ -160,6 +162,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(generated, "shulker_spectrum_icon");
         standard(generated, "music_disc_dog");
         spawnerMinecart("spawner_minecart", DEFAULT_MOB_MAP);
+        standard(generated, "melting_beet_soup");
         standard(generated, "fungi_stew");
         standard(generated, "end_fungi_stew");
         standard(generated, "enchanted_knowledge_book");
@@ -192,6 +195,11 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(generated, "crimson_loaf");
         standard(generated, "soul_carrot");
         standard(generated, "quartz_carrot");
+        standard(generated, "warped_potato");
+        standard(generated, "baked_warped_potato");
+        standard(generated, "withered_warped_potato");
+        standard(generated, "melting_beet_seeds");
+        standard(generated, "melting_beet");
         standard(handheld, "oak_stick");
         standard(handheld, "spruce_stick");
         standard(handheld, "birch_stick");
@@ -236,6 +244,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(generated, "beetroot_soup_bucket");
         standard(generated, "rabbit_stew_bucket");
         standard(generated, "suspicious_stew_bucket");
+        standard(generated, "melting_beet_soup_bucket");
         standard(generated, "fungi_stew_bucket");
         standard(generated, "end_fungi_stew_bucket");
         standard(generated, "soul_lava_bucket");
@@ -294,6 +303,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         expoStew("exponential_beetroot_soup", "beetroot");
         expoStew("exponential_rabbit_stew", "rabbit");
         expoStew("exponential_suspicious_stew", "suspicious");
+        expoStew("exponential_melting_beet_soup", "melting_beet");
         expoStew("exponential_fungi_stew", "fungi");
         expoStew("exponential_end_fungi_stew", "end_fungi");
         expoStew("exponential_aljan_fungi_stew", "aljan_fungi");

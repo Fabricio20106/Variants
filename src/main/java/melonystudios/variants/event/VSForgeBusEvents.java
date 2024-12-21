@@ -74,6 +74,7 @@ public class VSForgeBusEvents {
         manager.remap("old_cod_bucket", VSItems.FISH_BUCKET.get());
         manager.remap("old_cod", VSItems.RAW_FISH.get());
         manager.remap("old_cooked_cod", VSItems.COOKED_FISH.get());
+        manager.remap("crimson_bread", VSItems.CRIMSON_LOAF.get());
         manager.remap("creeper_powder_pot", VSItems.EXPLOSIVE_BLEND_POT.get());
         manager.remap("lava_glass_bottle", VSItems.LAVA_BOTTLE.get());
         manager.remap("milk_glass_bottle", VSItems.MILK_BOTTLE.get());

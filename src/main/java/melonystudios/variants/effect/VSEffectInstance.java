@@ -15,9 +15,27 @@ import java.util.function.Supplier;
 // Variant of EffectInstance that uses suppliers for the effect because effects aren't registered during item registry.
 public class VSEffectInstance extends EffectInstance {
     private final Supplier<Effect> effectSupplier;
+    private final int duration;
+    private int amplifier = 0;
+    private boolean ambient = false;
+    private boolean showParticles = true;
+    private boolean showIcon = true;
     @OnlyIn(Dist.CLIENT)
     private boolean noCounter = false;
     private List<ItemStack> curativeStacks = Lists.newArrayList(new ItemStack(Items.MILK_BUCKET));
+    private float chance = 1;
+
+    public VSEffectInstance(EffectInstance instance) {
+        super(instance);
+        this.effectSupplier = instance::getEffect;
+        this.duration = instance.getDuration();
+        this.amplifier = instance.getAmplifier();
+        this.ambient = instance.isAmbient();
+        this.showParticles = instance.isVisible();
+        this.showIcon = instance.showIcon();
+        this.noCounter = instance.isNoCounter();
+        this.curativeStacks = instance.getCurativeItems();
+    }
 
     /**
      * A full custom effect instance made by Variants. Used because effects aren't registered on item registering.
@@ -28,6 +46,7 @@ public class VSEffectInstance extends EffectInstance {
     public VSEffectInstance(Supplier<Effect> effect, int duration) {
         super(null, duration);
         this.effectSupplier = effect;
+        this.duration = duration;
     }
 
     /**
@@ -40,6 +59,8 @@ public class VSEffectInstance extends EffectInstance {
     public VSEffectInstance(Supplier<Effect> effect, int duration, int amplifier) {
         super(null, duration, amplifier);
         this.effectSupplier = effect;
+        this.duration = duration;
+        this.amplifier = amplifier;
     }
 
     /**
@@ -53,6 +74,9 @@ public class VSEffectInstance extends EffectInstance {
     public VSEffectInstance(Supplier<Effect> effect, int duration, int amplifier, boolean ambient) {
         super(null, duration, amplifier, ambient, true);
         this.effectSupplier = effect;
+        this.duration = duration;
+        this.amplifier = amplifier;
+        this.ambient = ambient;
     }
 
     /**
@@ -67,6 +91,10 @@ public class VSEffectInstance extends EffectInstance {
     public VSEffectInstance(Supplier<Effect> effect, int duration, int amplifier, boolean ambient, boolean showParticles) {
         super(null, duration, amplifier, ambient, showParticles);
         this.effectSupplier = effect;
+        this.duration = duration;
+        this.amplifier = amplifier;
+        this.ambient = ambient;
+        this.showParticles = showParticles;
     }
 
     /**
@@ -82,6 +110,11 @@ public class VSEffectInstance extends EffectInstance {
     public VSEffectInstance(Supplier<Effect> effect, int duration, int amplifier, boolean ambient, boolean showParticles, boolean showIcon) {
         super(null, duration, amplifier, ambient, showParticles, showIcon);
         this.effectSupplier = effect;
+        this.duration = duration;
+        this.amplifier = amplifier;
+        this.ambient = ambient;
+        this.showParticles = showParticles;
+        this.showIcon = showIcon;
     }
 
     /**
@@ -98,6 +131,11 @@ public class VSEffectInstance extends EffectInstance {
     public VSEffectInstance(Supplier<Effect> effect, int duration, int amplifier, boolean ambient, boolean showParticles, boolean showIcon, boolean noCounter) {
         super(null, duration, amplifier, ambient, showParticles, showIcon);
         this.effectSupplier = effect;
+        this.duration = duration;
+        this.amplifier = amplifier;
+        this.ambient = ambient;
+        this.showParticles = showParticles;
+        this.showIcon = showIcon;
         this.noCounter = noCounter;
     }
 
@@ -116,14 +154,52 @@ public class VSEffectInstance extends EffectInstance {
     public VSEffectInstance(Supplier<Effect> effect, int duration, int amplifier, boolean ambient, boolean showParticles, boolean showIcon, boolean noCounter, List<ItemStack> curativeItems) {
         super(null, duration, amplifier, ambient, showParticles, showIcon);
         this.effectSupplier = effect;
+        this.duration = duration;
+        this.amplifier = amplifier;
+        this.showParticles = showParticles;
+        this.showIcon = showIcon;
         this.noCounter = noCounter;
         this.curativeStacks = curativeItems;
+    }
+
+    public VSEffectInstance withChance(float chance) {
+        this.chance = chance;
+        return this;
+    }
+
+    public float getChance() {
+        return this.chance;
     }
 
     @Override
     @Nonnull
     public Effect getEffect() {
         return this.effectSupplier.get();
+    }
+
+    @Override
+    public int getDuration() {
+        return this.duration;
+    }
+
+    @Override
+    public int getAmplifier() {
+        return this.amplifier;
+    }
+
+    @Override
+    public boolean isAmbient() {
+        return this.ambient;
+    }
+
+    @Override
+    public boolean isVisible() {
+        return this.showParticles;
+    }
+
+    @Override
+    public boolean showIcon() {
+        return this.showIcon;
     }
 
     @Override

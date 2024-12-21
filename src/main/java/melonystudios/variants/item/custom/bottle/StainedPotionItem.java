@@ -1,6 +1,7 @@
 package melonystudios.variants.item.custom.bottle;
 
 import melonystudios.variants.config.VSConfigs;
+import melonystudios.variants.effect.VSEffectInstance;
 import melonystudios.variants.item.custom.food.ExponentialStewItem;
 import melonystudios.variants.consumable.custom.ApplyMobEffectsBehavior;
 import melonystudios.variants.util.Constants;
@@ -79,10 +80,11 @@ public class StainedPotionItem extends StainedFullGlassBottleItem {
                     if (potion != Potions.EMPTY) {
                         ItemStack copyStack = stack.copy();
                         CompoundNBT effectTag = new CompoundNBT();
-                        ListNBT effects = NBTUtils.writeEffectsOntoNBT(potion.getEffects());
+                        List<VSEffectInstance> potionEffects = VSUtils.convertEffectList(potion.getEffects());
+                        ListNBT effects = NBTUtils.writeEffectsOntoNBT(potionEffects);
                         if (!effects.isEmpty()) effectTag.put("effects", effects);
                         copyStack.getOrCreateTag().putString("potion", potion.getRegistryName().toString());
-                        ExponentialStewItem.writeBehaviorToStew(copyStack, new ApplyMobEffectsBehavior(potion.getEffects()), effectTag);
+                        ExponentialStewItem.writeBehaviorToStew(copyStack, new ApplyMobEffectsBehavior(potionEffects), effectTag);
                         list.add(copyStack);
                     }
                 }

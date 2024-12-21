@@ -1,0 +1,68 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer1": "variants:item/stew_melting_beet"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "variants:texture_id": 0.0
+      },
+      "model": "variants:item/exponential_melting_beet_soup_oak"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 1.0
+      },
+      "model": "variants:item/exponential_melting_beet_soup_spruce"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 2.0
+      },
+      "model": "variants:item/exponential_melting_beet_soup_birch"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 3.0
+      },
+      "model": "variants:item/exponential_melting_beet_soup_jungle"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 4.0
+      },
+      "model": "variants:item/exponential_melting_beet_soup_acacia"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 5.0
+      },
+      "model": "variants:item/exponential_melting_beet_soup_dark_oak"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 6.0
+      },
+      "model": "variants:item/exponential_melting_beet_soup_painting"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 7.0
+      },
+      "model": "variants:item/exponential_melting_beet_soup_crimson"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 8.0
+      },
+      "model": "variants:item/exponential_melting_beet_soup_warped"
+    },
+    {
+      "predicate": {
+        "variants:texture_id": 9.0
+      },
+      "model": "variants:item/exponential_melting_beet_soup_enderwood"
+    }
+  ]
+}

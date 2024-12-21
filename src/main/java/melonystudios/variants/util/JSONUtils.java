@@ -2,12 +2,12 @@ package melonystudios.variants.util;
 
 import com.google.gson.*;
 import melonystudios.variants.Variants;
+import melonystudios.variants.effect.VSEffectInstance;
 import melonystudios.variants.item.custom.food.ConsumableItem;
 import melonystudios.variants.consumable.ConsumeBehavior;
 import melonystudios.variants.consumable.custom.*;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
 import org.apache.commons.lang3.StringUtils;
@@ -46,7 +46,7 @@ public class JSONUtils {
         propertiesObj.add("pos", blockPosOrDefault("pos", propertiesTag, new int[] {0, 0, 0}));
     }
 
-    private static void writeEffectToJSON(EffectInstance instance, JsonArray effectsList) {
+    private static void writeEffectToJSON(VSEffectInstance instance, JsonArray effectsList) {
         JsonObject effectObj = new JsonObject();
         effectObj.addProperty("id", instance.getEffect().getRegistryName().toString());
         effectObj.addProperty("duration", instance.getDuration());
@@ -55,6 +55,7 @@ public class JSONUtils {
         if (!instance.isVisible()) effectObj.addProperty("show_particle", false);
         if (!instance.showIcon()) effectObj.addProperty("show_icon", false);
         if (instance.isNoCounter()) effectObj.addProperty("no_counter", true);
+        if (instance.getChance() < 1) effectObj.addProperty("chance", instance.getChance());
         effectsList.add(effectObj);
     }
 
@@ -125,7 +126,7 @@ public class JSONUtils {
         if (behavior instanceof ApplyMobEffectsBehavior) {
             ApplyMobEffectsBehavior applyEffectsBehavior = (ApplyMobEffectsBehavior) consumable.getBehavior();
             JsonArray effectsList = new JsonArray();
-            for (EffectInstance instance : applyEffectsBehavior.effects()) writeEffectToJSON(instance, effectsList);
+            for (VSEffectInstance instance : applyEffectsBehavior.effects()) writeEffectToJSON(instance, effectsList);
             behaviorObj.add("effects", effectsList);
         } else if (behavior instanceof ClearMobEffectsBehavior) {
             ClearMobEffectsBehavior clearEffectsBehavior = (ClearMobEffectsBehavior) consumable.getBehavior();

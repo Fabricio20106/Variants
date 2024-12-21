@@ -41,27 +41,26 @@ public class DamageEntityBehavior extends ConsumeBehavior {
 
     @Override
     public void runBehavior(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
-        if (propertiesTag != null && propertiesTag.contains("source", Constants.TagTypes.COMPOUND)) {
-            CompoundNBT sourceTag = propertiesTag.getCompound("source");
-            DamageBehaviorSource behaviorSource = new DamageBehaviorSource(sourceTag, livEntity);
-            DamageSourceUtils.DATA_DRIVEN_SOURCES.put(namespace("damage_behavior", stringOrDefault("message_id", sourceTag, "generic")), behaviorSource);
-            livEntity.hurt(behaviorSource, this.amount);
-        } else if (propertiesTag != null && propertiesTag.contains("source", Constants.TagTypes.STRING)) {
-            DamageSource source1 = DamageSourceUtils.fromLocationWithKiller(livEntity, ResourceLocation.tryParse(stringOrDefault("source", propertiesTag, "minecraft:generic")));
-            if (source1 != null) livEntity.hurt(source1, this.amount);
-        }
+        if (this.source != null) livEntity.hurt(this.source, this.amount);
     }
 
+    // just optimizing this behavior because why did I copy it in both methods?
     @Override
     public void loadFromNBT(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
-        if (propertiesTag != null && propertiesTag.contains("source", Constants.TagTypes.COMPOUND)) {
-            DamageEntityBehavior damageBehavior = new DamageEntityBehavior(new DamageBehaviorSource(propertiesTag, livEntity), anyNumericOrFloatDefault("amount", propertiesTag, 0));
-            damageBehavior.runBehavior(stack, world, livEntity, propertiesTag);
-        } else if (propertiesTag != null && propertiesTag.contains("source", Constants.TagTypes.STRING)) {
-            DamageSource source1 = DamageSourceUtils.fromLocationWithKiller(livEntity, ResourceLocation.tryParse(stringOrDefault("source", propertiesTag, "minecraft:generic")));
-            DamageEntityBehavior damageBehavior = new DamageEntityBehavior(source1, anyNumericOrFloatDefault("amount", propertiesTag, 0));
-            damageBehavior.runBehavior(stack, world, livEntity, propertiesTag);
+        if (propertiesTag == null) return;
+        DamageSource source;
+
+        if (propertiesTag.contains("source", Constants.TagTypes.COMPOUND)) {
+            source = new DamageBehaviorSource(propertiesTag, livEntity);
+            DamageSourceUtils.DATA_DRIVEN_SOURCES.put(namespace("damage_behavior", stringOrDefault("message_id", propertiesTag.getCompound("source"), "generic")), source);
+        } else if (propertiesTag.contains("source", Constants.TagTypes.STRING)) {
+            source = DamageSourceUtils.fromLocationWithKiller(livEntity, ResourceLocation.tryParse(stringOrDefault("source", propertiesTag, "minecraft:generic")));
+        } else {
+            source = this.source;
         }
+
+        DamageEntityBehavior behavior = new DamageEntityBehavior(source, anyNumericOrFloatDefault("amount", propertiesTag, 0));
+        behavior.runBehavior(stack, world, livEntity, propertiesTag);
     }
 
     @Override

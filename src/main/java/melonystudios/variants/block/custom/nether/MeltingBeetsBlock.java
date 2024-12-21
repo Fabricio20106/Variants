@@ -1,11 +1,12 @@
 package melonystudios.variants.block.custom.nether;
 
+import melonystudios.variants.item.VSItems;
 import melonystudios.variants.util.tag.VSBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
-import net.minecraft.item.Items;
 import net.minecraft.state.IntegerProperty;
+import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
@@ -49,8 +50,7 @@ public class MeltingBeetsBlock extends CropsBlock {
     @Override
     @Nonnull
     protected IItemProvider getBaseSeedId() {
-        // return VSItems.MELTING_BEET.get(); todo: replace this
-        return Items.AIR;
+        return VSItems.MELTING_BEET_SEEDS.get();
     }
 
     @Override
@@ -62,6 +62,11 @@ public class MeltingBeetsBlock extends CropsBlock {
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random rand) {
         if (rand.nextInt(3) != 0) super.randomTick(state, world, pos, rand);
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+        builder.add(AGE);
     }
 
     @Override

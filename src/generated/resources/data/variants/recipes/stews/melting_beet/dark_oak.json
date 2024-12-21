@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "melting_beet_soup",
+  "ingredients": [
+    {
+      "item": "variants:melting_beet"
+    },
+    {
+      "item": "variants:melting_beet"
+    },
+    {
+      "item": "variants:melting_beet"
+    },
+    {
+      "item": "variants:melting_beet"
+    },
+    {
+      "item": "variants:melting_beet"
+    },
+    {
+      "item": "variants:melting_beet"
+    },
+    {
+      "item": "variants:dark_oak_bowl"
+    }
+  ],
+  "result": {
+    "item": "variants:exponential_melting_beet_soup",
+    "nbt": {
+      "consumable": {
+        "use_remainder": {
+          "id": "variants:dark_oak_bowl"
+        },
+        "behavior": {
+          "id": "variants:default"
+        }
+      },
+      "texture_id": 5
+    }
+  }
+}

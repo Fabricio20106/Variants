@@ -1,0 +1,6 @@
+{
+  "parent": "variants:block/inventory_crop",
+  "textures": {
+    "crop": "variants:block/melting_beets_stage0"
+  }
+}

@@ -40,6 +40,15 @@ public abstract class VSBlockStateModels extends BlockStateProvider {
         });
     }
 
+    public void beetroots(RegistryObject<Block> block) {
+        String cropName = block.get().getRegistryName().getPath();
+        getVariantBuilder(block.get()).forAllStates(state -> {
+            int cropAge = state.getValue(BlockStateProperties.AGE_3);
+            return ConfiguredModel.builder().modelFile(models().withExistingParent(cropName + "_stage" + cropAge, modLoc("block/inventory_crop"))
+                    .texture("crop", modLoc("block/" + cropName + "_stage" + cropAge))).build();
+        });
+    }
+
     public void wart(RegistryObject<Block> block) {
         String cropName = block.get().getRegistryName().getPath();
         getVariantBuilder(block.get()).forAllStates(state -> {

@@ -23,11 +23,11 @@ import melonystudios.variants.item.fix.VSTagFixes;
 import melonystudios.variants.consumable.VSConsumeBehaviors;
 import melonystudios.variants.loot.VSLootFunctions;
 import melonystudios.variants.loot.rand.BowlIDValueRange;
-import melonystudios.variants.screen.VSConfigScreen;
+import melonystudios.variants.screen.options.VSConfigCategoriesScreen;
 import melonystudios.variants.sound.VSSounds;
 import melonystudios.variants.util.*;
 import melonystudios.variants.world.biome.VSBiomes;
-import melonystudios.variants.world.biome.provider.VSEndBiomeProvider;
+import melonystudios.variants.world.biome.provider.EnderwoodEndBiomeProvider;
 import melonystudios.variants.world.carver.VSConfiguredCarvers;
 import melonystudios.variants.world.carver.VSWorldCarvers;
 import melonystudios.variants.world.feature.VSConfiguredFeatures;
@@ -111,7 +111,7 @@ public class Variants {
         VSStats.init();
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, VSConfigs.COMMON_SPEC, "jtw-mods/variants-common.toml");
-        ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.CONFIGGUIFACTORY, () -> (minecraft, screen) -> new VSConfigScreen(screen, Minecraft.getInstance().options));
+        ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.CONFIGGUIFACTORY, () -> (minecraft, screen) -> new VSConfigCategoriesScreen(screen, Minecraft.getInstance().options));
     }
 
     public static ResourceLocation variants(String name) {
@@ -130,7 +130,7 @@ public class Variants {
         VSConfiguredFeatures.init();
         VSConfiguredCarvers.init();
         VSSurfaceBuilders.init();
-        Registry.register(Registry.BIOME_SOURCE, variants("enderwood_end"), VSEndBiomeProvider.CODEC);
+        Registry.register(Registry.BIOME_SOURCE, variants("enderwood_end"), EnderwoodEndBiomeProvider.CODEC);
 
         VSPotions.addBrewingRecipes();
         VSVanillaCompatibility.compostables();
@@ -146,7 +146,7 @@ public class Variants {
 
     public void clientSetup(final FMLClientSetupEvent event) {
         VSUtils.addTextureIdentifier(VSItems.EXPONENTIAL_MUSHROOM_STEW.get(), VSItems.EXPONENTIAL_BEETROOT_SOUP.get(), VSItems.EXPONENTIAL_RABBIT_STEW.get(), VSItems.EXPONENTIAL_SUSPICIOUS_STEW.get(),
-                VSItems.EXPONENTIAL_FUNGI_STEW.get(), VSItems.EXPONENTIAL_END_FUNGI_STEW.get(), VSItems.EXPONENTIAL_ALJAN_FUNGI_STEW.get(), VSItems.EXPONENTIAL_WATER_BOWL.get(),
+                VSItems.EXPONENTIAL_MELTING_BEET_SOUP.get(), VSItems.EXPONENTIAL_FUNGI_STEW.get(), VSItems.EXPONENTIAL_END_FUNGI_STEW.get(), VSItems.EXPONENTIAL_ALJAN_FUNGI_STEW.get(), VSItems.EXPONENTIAL_WATER_BOWL.get(),
                 VSItems.EXPONENTIAL_MILK_BOWL.get(), VSItems.EXPONENTIAL_LAVA_BOWL.get(), VSItems.EXPONENTIAL_SOUL_LAVA_BOWL.get(), VSItems.EXPONENTIAL_POWDER_SNOW_BOWL.get());
         VSUtils.addTextureIdentifier(VSItems.STAINED_EXPERIENCE_BOTTLE.get(), VSItems.STAINED_HONEY_BOTTLE.get(), VSItems.STAINED_DRAGON_BREATH.get(), VSItems.STAINED_POTION.get(),
                 VSItems.STAINED_LAVA_BOTTLE.get(), VSItems.STAINED_SOUL_LAVA_BOTTLE.get(), VSItems.STAINED_MILK_BOTTLE.get(), VSItems.STAINED_POWDER_SNOW_BOTTLE.get(), VSItems.STAINED_SOPHIE_POTION.get());
@@ -203,7 +203,15 @@ public class Variants {
         }
     }
 
-    private void upgradeConfig(VSJSONConfig config) {}
+    private void upgradeConfig(VSJSONConfig config) {
+        if (config.version == 1805) {
+            config.version = 1807;
+            config.crimsonWheatPatches = true;
+            config.soulCarrotPatches = true;
+            config.warpedPotatoPatches = true;
+            config.meltingBeetPatches = true;
+        }
+    }
 
     public VSJSONConfig getConfig() {
         return this.config;
@@ -223,6 +231,10 @@ public class Variants {
         RenderTypeLookup.setRenderLayer(VSBlocks.WILD_CRIMSON_WHEAT.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.SOUL_CARROTS.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.WILD_SOUL_CARROTS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.WARPED_POTATOES.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.WILD_WARPED_POTATOES.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.MELTING_BEETS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.WILD_MELTING_BEETS.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.GLOW_BLACK_TULIP.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.SUNNY_FLOWER.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.GLOW_BERRY_BUSH.get(), RenderType.cutout());

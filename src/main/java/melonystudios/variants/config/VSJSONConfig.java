@@ -7,10 +7,14 @@ import java.lang.reflect.Type;
 
 public class VSJSONConfig {
     // Latest Variants version. Update when I add, change or remove a config.
-    public int version = 1805;
+    public int version = 1807;
 
     // World Generation
     public boolean flowerPatches = true;
+    public boolean crimsonWheatPatches = true;
+    public boolean soulCarrotPatches = true;
+    public boolean warpedPotatoPatches = true;
+    public boolean meltingBeetPatches = true;
     public boolean quartzOre = true;
     public boolean endQuartzOre = true;
     public boolean soulLavaSprings = true;
@@ -26,6 +30,10 @@ public class VSJSONConfig {
             // World Generation
             JsonObject worldGeneration = new JsonObject();
             worldGeneration.addProperty("flower_patches", config.flowerPatches);
+            worldGeneration.addProperty("crimson_wheat_patches", config.crimsonWheatPatches);
+            worldGeneration.addProperty("soul_carrot_patches", config.soulCarrotPatches);
+            worldGeneration.addProperty("warped_potato_patches", config.warpedPotatoPatches);
+            worldGeneration.addProperty("melting_beet_patches", config.meltingBeetPatches);
             worldGeneration.addProperty("quartz_ore", config.quartzOre);
             worldGeneration.addProperty("end_quartz_ore", config.endQuartzOre);
             worldGeneration.addProperty("soul_lava_springs", config.soulLavaSprings);
@@ -46,6 +54,10 @@ public class VSJSONConfig {
                 // World Generation
                 JsonObject worldGeneration = object.get("world_generation").getAsJsonObject();
                 config.flowerPatches = worldGeneration.get("flower_patches").getAsBoolean();
+                config.crimsonWheatPatches = worldGeneration.get("crimson_wheat_patches").getAsBoolean();
+                config.soulCarrotPatches = worldGeneration.get("soul_carrot_patches").getAsBoolean();
+                config.warpedPotatoPatches = worldGeneration.get("warped_potato_patches").getAsBoolean();
+                config.meltingBeetPatches = worldGeneration.get("melting_beet_patches").getAsBoolean();
                 config.quartzOre = worldGeneration.get("quartz_ore").getAsBoolean();
                 config.endQuartzOre = worldGeneration.get("end_quartz_ore").getAsBoolean();
                 config.soulLavaSprings = worldGeneration.get("soul_lava_springs").getAsBoolean();

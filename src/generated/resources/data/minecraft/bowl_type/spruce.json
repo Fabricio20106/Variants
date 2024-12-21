@@ -1,0 +1,9 @@
+{
+  "asset_id": "minecraft:spruce",
+  "bowl": {
+    "id": "variants:spruce_bowl",
+    "count": 1
+  },
+  "name": "spruce",
+  "texture_id": 1
+}

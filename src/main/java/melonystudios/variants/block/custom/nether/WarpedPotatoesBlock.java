@@ -1,10 +1,10 @@
 package melonystudios.variants.block.custom.nether;
 
+import melonystudios.variants.item.VSItems;
 import melonystudios.variants.util.tag.VSBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
-import net.minecraft.item.Items;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -36,8 +36,7 @@ public class WarpedPotatoesBlock extends CropsBlock {
     @Override
     @Nonnull
     protected IItemProvider getBaseSeedId() {
-        // return VSItems.WARPED_POTATO.get(); todo: replace this
-        return Items.AIR;
+        return VSItems.WARPED_POTATO.get();
     }
 
     @Override

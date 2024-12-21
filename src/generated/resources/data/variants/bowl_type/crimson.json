@@ -1,9 +1,0 @@
-{
-  "asset_id": "variants:crimson",
-  "bowl": {
-    "id": "variants:crimson_bowl",
-    "count": 1
-  },
-  "name": "crimson",
-  "texture_id": 7
-}

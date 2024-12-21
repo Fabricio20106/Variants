@@ -68,6 +68,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSBlockTags.CHORUS_PLANT_PLANTABLE_ON).add(Blocks.CHORUS_FLOWER).add(Blocks.CHORUS_PLANT);
         this.tag(VSBlockTags.NETHER_CROPS_PLANTABLE_ON).addTag(VSBlockTags.FARMLAND).addTag(VSBlockTags.NETHER_WART_PLANTABLE_ON);
         this.tag(VSBlockTags.WILD_NETHER_CROPS_PLANTABLE_ON).addTag(VSBlockTags.FARMLAND).addTag(VSBlockTags.NETHER_WART_PLANTABLE_ON).addTag(BlockTags.NYLIUM).add(Blocks.SOUL_SAND, Blocks.SOUL_SOIL);
+        this.tag(VSBlockTags.WILD_MELTING_BEET_PLANTABLE_ON).add(Blocks.GRAVEL);
         this.tag(VSBlockTags.END_CARVER_REPLACEABLES).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_NYLIUM.get());
         this.tag(VSBlockTags.HAS_ENDER_NYLIUM).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get());
         this.tag(VSBlockTags.FARMLAND_TRANSPARENT).addTag(Tags.Blocks.FENCE_GATES).addTag(BlockTags.FENCE_GATES).add(Blocks.MOVING_PISTON);
@@ -104,8 +105,8 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.WALLS).add(VSBlocks.ELDER_PRISMARINE_WALL.get()).add(VSBlocks.MOSSY_END_STONE_BRICK_WALL.get()).add(VSBlocks.MOSSY_PURPUR_WALL.get()).add(VSBlocks.MOSSY_NETHER_BRICK_WALL.get());
         this.tag(BlockTags.FENCES).add(VSBlocks.RED_NETHER_BRICK_FENCE.get());
 
-        this.tag(BlockTags.CROPS).add(VSBlocks.GOLDEN_CARROTS.get(), VSBlocks.CRIMSON_WHEAT.get(), VSBlocks.WILD_CRIMSON_WHEAT.get(), VSBlocks.SOUL_CARROTS.get(), VSBlocks.WILD_SOUL_CARROTS.get(), Blocks.NETHER_WART,
-                VSBlocks.WARPED_WART.get(), VSBlocks.ENDER_WART.get());
+        this.tag(BlockTags.CROPS).add(VSBlocks.GOLDEN_CARROTS.get(), VSBlocks.CRIMSON_WHEAT.get(), VSBlocks.WILD_CRIMSON_WHEAT.get(), VSBlocks.SOUL_CARROTS.get(), VSBlocks.WILD_SOUL_CARROTS.get(), VSBlocks.WARPED_POTATOES.get(),
+                VSBlocks.WILD_WARPED_POTATOES.get(), VSBlocks.MELTING_BEETS.get(), VSBlocks.WILD_MELTING_BEETS.get(), Blocks.NETHER_WART, VSBlocks.WARPED_WART.get(), VSBlocks.ENDER_WART.get());
         this.tag(BlockTags.BEE_GROWABLES).add(VSBlocks.GLOW_BERRY_BUSH.get());
         this.tag(BlockTags.FLOWERS).add(VSBlocks.AZURE_BLUET_LEAVES.get());
         this.tag(BlockTags.SMALL_FLOWERS).add(VSBlocks.GLOW_BLACK_TULIP.get()).add(VSBlocks.SUNNY_FLOWER.get());

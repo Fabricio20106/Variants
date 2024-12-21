@@ -6,6 +6,7 @@ import melonystudios.variants.Variants;
 import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.consumable.ConsumeBehavior;
 import melonystudios.variants.consumable.VSConsumeBehaviors;
+import melonystudios.variants.effect.VSEffectInstance;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.NBTUtils;
 import melonystudios.variants.util.VSStyles;
@@ -34,13 +35,13 @@ import java.util.Map;
 import static melonystudios.variants.util.NBTUtils.writeEffectsOntoNBT;
 
 public class ApplyMobEffectsBehavior extends ConsumeBehavior {
-    private final List<? extends EffectInstance> effects;
+    private final List<VSEffectInstance> effects;
 
-    public ApplyMobEffectsBehavior(List<? extends EffectInstance> effects) {
+    public ApplyMobEffectsBehavior(List<VSEffectInstance> effects) {
         this.effects = effects;
     }
 
-    public List<? extends EffectInstance> effects() {
+    public List<VSEffectInstance> effects() {
         return this.effects;
     }
 
@@ -51,14 +52,15 @@ public class ApplyMobEffectsBehavior extends ConsumeBehavior {
 
             for (int i = 0; i < effectList.size(); ++i) NBTUtils.addEffectsFromNBT(effectList.getCompound(i), world, livEntity);
         } else  {
-            List<? extends EffectInstance> effects = Lists.newArrayList(this.effects);
+            // Fix VS-8 "Apply Effects behavior with no NBT causes weird synchronization"
+            List<? extends EffectInstance> effects = VSUtils.convertEffectList(this.effects);
             if (!effects.isEmpty()) for (EffectInstance instance : effects) livEntity.addEffect(instance);
         }
     }
 
     @Override
     public void loadFromNBT(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
-        List<EffectInstance> effects = Lists.newArrayList();
+        List<VSEffectInstance> effects = Lists.newArrayList();
         boolean noNBTEffects = false;
 
         if (propertiesTag != null && propertiesTag.contains("effects", Constants.TagTypes.LIST)) {
@@ -72,6 +74,7 @@ public class ApplyMobEffectsBehavior extends ConsumeBehavior {
                 boolean showParticles = true;
                 boolean showIcon = true;
                 boolean noCounter = false; // Finally found out what no_counter does, it just hides the effect duration (shows up as **:**).
+                float chance = 1;
                 List<ItemStack> curativeItems = Lists.newArrayList();
                 CompoundNBT effectTag = effectList.getCompound(i);
                 if (effectTag.contains("duration", Constants.TagTypes.ANY_NUMERIC)) duration = effectTag.getInt("duration");
@@ -80,6 +83,7 @@ public class ApplyMobEffectsBehavior extends ConsumeBehavior {
                 if (effectTag.contains("show_particles", Constants.TagTypes.ANY_NUMERIC)) showParticles = effectTag.getBoolean("show_particles");
                 if (effectTag.contains("show_icon", Constants.TagTypes.ANY_NUMERIC)) showIcon = effectTag.getBoolean("show_icon");
                 if (effectTag.contains("no_counter", Constants.TagTypes.ANY_NUMERIC)) noCounter = effectTag.getBoolean("no_counter");
+                if (effectTag.contains("chance", Constants.TagTypes.ANY_NUMERIC)) chance = effectTag.getFloat("chance");
                 if (effectTag.contains("curative_items", Constants.TagTypes.LIST)) {
                     ListNBT curativeList = effectTag.getList("curative_items", Constants.TagTypes.COMPOUND);
                     for (int c = 0; c < curativeList.size(); c++) curativeItems.add(VSUtils.loadStack(curativeList.getCompound(c)));
@@ -87,7 +91,7 @@ public class ApplyMobEffectsBehavior extends ConsumeBehavior {
 
                 Effect effect = ForgeRegistries.POTIONS.getValue(ResourceLocation.tryParse(effectTag.getString("id")));
                 if (effect != null) {
-                    EffectInstance instance = new EffectInstance(effect, duration, amplifier, ambient, showParticles, showIcon);
+                    VSEffectInstance instance = new VSEffectInstance(() -> effect, duration, amplifier, ambient, showParticles, showIcon).withChance(chance);
                     if (world != null && world.isClientSide) instance.setNoCounter(noCounter);
                     if (!curativeItems.isEmpty() && !curativeItems.equals(curativeItemsTemplate)) instance.setCurativeItems(curativeItems);
                     effects.add(instance);
@@ -95,7 +99,7 @@ public class ApplyMobEffectsBehavior extends ConsumeBehavior {
             }
         } else noNBTEffects = true;
 
-        ApplyMobEffectsBehavior behavior = new ApplyMobEffectsBehavior(noNBTEffects ? Lists.newArrayList(this.effects) : effects);
+        ApplyMobEffectsBehavior behavior = new ApplyMobEffectsBehavior(noNBTEffects ? VSUtils.convertEffectList(this.effects) : effects);
         behavior.runBehavior(stack, world, livEntity, propertiesTag);
     }
 

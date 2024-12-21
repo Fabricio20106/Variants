@@ -25,7 +25,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.MerchantOffer;
 import net.minecraft.loot.RandomValueRange;
+import net.minecraft.util.RegistryKey;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
@@ -38,6 +40,7 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.List;
 import java.util.Random;
@@ -50,7 +53,7 @@ public class VSEvents {
         ConsumeBehaviorCommand.register(event.getDispatcher());
         DamageCommand.register(event.getDispatcher());
         // Command ideas (~isa, 25-9-24):
-        //  - /nbt - configure all NBT tags of all items in the game
+        //  - /nbt - configure every single NBT tag of all items in the game (including some modded ones)
         //  - /variants - general-use configuration command (and miscellaneous things like cooldowns)
     }
 
@@ -82,10 +85,28 @@ public class VSEvents {
         if (VSConfigs.COMMON_CONFIGS.generateQuartzOre.get()) VSOreGeneration.generateQuartzOre(event);
         if (VSConfigs.COMMON_CONFIGS.generateEndQuartzOre.get()) VSOreGeneration.generateEndQuartzOre(event);
 
+        LogManager.getLogger().debug("Generating in biome: {}", event.getName());
+        if (biome(event, Biomes.CRIMSON_FOREST) && Variants.INSTANCE.getConfig().crimsonWheatPatches) {
+            settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.CRIMSON_WHEAT_PATCH);
+        }
+        if (biome(event, Biomes.SOUL_SAND_VALLEY) && Variants.INSTANCE.getConfig().soulCarrotPatches) {
+            settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.SOUL_CARROT_PATCH);
+        }
+        if (biome(event, Biomes.WARPED_FOREST) && Variants.INSTANCE.getConfig().warpedPotatoPatches) {
+            settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.WARPED_POTATO_PATCH);
+        }
+        if (event.getCategory() == Biome.Category.NETHER && Variants.INSTANCE.getConfig().meltingBeetPatches) {
+            settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.MELTING_BEET_PATCH);
+        }
+
         // Entity Spawning
         if (event.getCategory() == Biome.Category.OCEAN && VSConfigs.COMMON_CONFIGS.fishSpawning.get()) {
             spawns.addSpawn(EntityClassification.WATER_CREATURE, new MobSpawnInfo.Spawners(VSEntities.FISH.get(), 10, 3, 6));
         }
+    }
+
+    private static boolean biome(BiomeLoadingEvent event, RegistryKey<Biome> biome) {
+        return event.getName() != null && event.getName().equals(biome.getRegistryName());
     }
 
     @SubscribeEvent

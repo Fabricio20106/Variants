@@ -20,7 +20,6 @@ import melonystudios.variants.util.tab.VSTab;
 import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fml.RegistryObject;
@@ -160,6 +159,8 @@ public class VSItems {
     public static final RegistryObject<Item> GOLDEN_CARROTS = ITEMS.register("golden_carrots", () -> new BlockItem(VSBlocks.GOLDEN_CARROTS.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> WILD_CRIMSON_WHEAT = ITEMS.register("wild_crimson_wheat", () -> new BlockItem(VSBlocks.WILD_CRIMSON_WHEAT.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> WILD_SOUL_CARROTS = ITEMS.register("wild_soul_carrots", () -> new BlockItem(VSBlocks.WILD_SOUL_CARROTS.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> WILD_WARPED_POTATOES = ITEMS.register("wild_warped_potatoes", () -> new BlockItem(VSBlocks.WILD_WARPED_POTATOES.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> WILD_MELTING_BEETS = ITEMS.register("wild_melting_beets", () -> new BlockItem(VSBlocks.WILD_MELTING_BEETS.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> GLOW_BLACK_TULIP = ITEMS.register("glow_black_tulip", () -> new BlockItem(VSBlocks.GLOW_BLACK_TULIP.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> SUNNY_FLOWER = ITEMS.register("sunny_flower", () -> new BlockItem(VSBlocks.SUNNY_FLOWER.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> GLOW_BERRY_BUSH = ITEMS.register("glow_berry_bush", () -> new BlockItem(VSBlocks.GLOW_BERRY_BUSH.get(), new Item.Properties().tab(VSBlockTab.TAB)));
@@ -197,11 +198,13 @@ public class VSItems {
     public static final RegistryObject<Item> BEETROOT_SOUP_BUCKET = ITEMS.register("beetroot_soup_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).food(Foods.BEETROOT_SOUP).tab(VSTab.TAB)));
     public static final RegistryObject<Item> RABBIT_STEW_BUCKET = ITEMS.register("rabbit_stew_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).food(Foods.RABBIT_STEW).tab(VSTab.TAB)));
     public static final RegistryObject<Item> SUSPICIOUS_STEW_BUCKET = ITEMS.register("suspicious_stew_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).food(Foods.SUSPICIOUS_STEW).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> MELTING_BEET_SOUP_BUCKET = ITEMS.register("melting_beet_soup_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).food(Foods.BEETROOT_SOUP).tab(VSTab.TAB)));
     public static final RegistryObject<Item> FUNGI_STEW_BUCKET = ITEMS.register("fungi_stew_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).food(Foods.MUSHROOM_STEW).tab(VSTab.TAB)));
     public static final RegistryObject<Item> END_FUNGI_STEW_BUCKET = ITEMS.register("end_fungi_stew_bucket", () -> new BucketFoodItem(new Item.Properties().stacksTo(1).food(Foods.MUSHROOM_STEW).tab(VSTab.TAB)));
     public static final RegistryObject<Item> SOUL_LAVA_BUCKET = ITEMS.register("soul_lava_bucket", () -> new SoulLavaBucketItem(new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).tab(VSTab.TAB)));
     public static final RegistryObject<Item> FISH_BUCKET = ITEMS.register("fish_bucket", () -> new VSFishBucketItem(VSEntities.FISH, () -> Fluids.WATER, new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET).tab(VSTab.TAB)));
     public static final RegistryObject<Item> FISH_SPAWN_EGG = ITEMS.register("fish_spawn_egg", () -> new ForgeSpawnEggItem(VSEntities.FISH, 0x6B9F93, 0xADBEDB, new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> MELTING_BEET_SOUP = ITEMS.register("melting_beet_soup", () -> new SimpleStewItem(DEFAULT_BEHAVIOR, new Item.Properties().stacksTo(1).tab(VSTab.TAB).food(Foods.BEETROOT_SOUP)));
     public static final RegistryObject<Item> FUNGI_STEW = ITEMS.register("fungi_stew", () -> new SimpleStewItem(DEFAULT_BEHAVIOR, new Item.Properties().stacksTo(1).tab(VSTab.TAB).food(Foods.MUSHROOM_STEW)));
     public static final RegistryObject<Item> END_FUNGI_STEW = ITEMS.register("end_fungi_stew", () -> new SimpleStewItem(DEFAULT_BEHAVIOR, new Item.Properties().stacksTo(1).tab(VSTab.TAB).food(Foods.MUSHROOM_STEW)));
     public static final RegistryObject<Item> PAINTING_BOAT = ITEMS.register("painting_boat", () -> new VSBoatItem(new Item.Properties().stacksTo(1).tab(VSTab.TAB), "painting"));
@@ -271,9 +274,14 @@ public class VSItems {
     public static final RegistryObject<Item> COOKED_FISH = ITEMS.register("cooked_fish", () -> new ConsumableItem(true, DEFAULT_BEHAVIOR, new Item.Properties().food(Foods.COOKED_COD).tab(VSTab.TAB)));
     public static final RegistryObject<Item> CRIMSON_WHEAT_SEEDS = ITEMS.register("crimson_wheat_seeds", () -> new BlockNamedItem(VSBlocks.CRIMSON_WHEAT.get(), new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> CRIMSON_WHEAT = ITEMS.register("crimson_wheat", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
-    public static final RegistryObject<Item> CRIMSON_LOAF = ITEMS.register("crimson_loaf", () -> new CrimsonLoafItem(new ApplyMobEffectsBehavior(Lists.newArrayList(new VSEffectInstance(() -> Effects.FIRE_RESISTANCE, 300))), new Item.Properties().food(Foods.BREAD).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> CRIMSON_LOAF = ITEMS.register("crimson_loaf", () -> new SavedConsumableItem(new ApplyMobEffectsBehavior(Lists.newArrayList(new VSEffectInstance(() -> Effects.FIRE_RESISTANCE, 300))), new Item.Properties().food(Foods.BREAD).tab(VSTab.TAB)));
     public static final RegistryObject<Item> SOUL_CARROT = ITEMS.register("soul_carrot", () -> new BlockNamedItem(VSBlocks.SOUL_CARROTS.get(), new Item.Properties().food(Foods.CARROT).tab(VSTab.TAB))); // too lazy to make it compatible with consume behaviors (~isa)
     public static final RegistryObject<Item> QUARTZ_CARROT = ITEMS.register("quartz_carrot", () -> new ConsumableItem(false, DEFAULT_BEHAVIOR, new Item.Properties().food(Foods.GOLDEN_CARROT).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> WARPED_POTATO = ITEMS.register("warped_potato", () -> new BlockNamedItem(VSBlocks.WARPED_POTATOES.get(), new Item.Properties().food(Foods.POTATO).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> BAKED_WARPED_POTATO = ITEMS.register("baked_warped_potato", () -> new ConsumableItem(false, DEFAULT_BEHAVIOR, new Item.Properties().food(Foods.BAKED_POTATO).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> WITHERED_WARPED_POTATO = ITEMS.register("withered_warped_potato", () -> new SavedConsumableItem(new ApplyMobEffectsBehavior(Lists.newArrayList(new VSEffectInstance(() -> Effects.WITHER, 100).withChance(0.6F))), new Item.Properties().food(VSFoods.WITHERED_WARPED_POTATO).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> MELTING_BEET_SEEDS = ITEMS.register("melting_beet_seeds", () -> new BlockNamedItem(VSBlocks.MELTING_BEETS.get(), new Item.Properties().tab(VSTab.TAB)));
+    public static final RegistryObject<Item> MELTING_BEET = ITEMS.register("melting_beet", () -> new ConsumableItem(false, DEFAULT_BEHAVIOR, new Item.Properties().food(Foods.BEETROOT).tab(VSTab.TAB)));
     public static final RegistryObject<Item> OAK_STICK = ITEMS.register("oak_stick", () -> new FlammableItem(100, new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> SPRUCE_STICK = ITEMS.register("spruce_stick", () -> new FlammableItem(100, new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> BIRCH_STICK = ITEMS.register("birch_stick", () -> new FlammableItem(100, new Item.Properties().tab(VSTab.TAB)));
@@ -283,7 +291,7 @@ public class VSItems {
     public static final RegistryObject<Item> PAINTING_STICK = ITEMS.register("painting_stick", () -> new FlammableItem(100, new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> CRIMSON_STICK = ITEMS.register("crimson_stick", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
     public static final RegistryObject<Item> WARPED_STICK = ITEMS.register("warped_stick", () -> new Item(new Item.Properties().tab(VSTab.TAB)));
-    public static final RegistryObject<Item> ENDERWOOD_STICK = ITEMS.register("enderwood_stick", () -> new FlammableItem(100, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> ENDERWOOD_STICK = ITEMS.register("enderwood_stick", () -> new FlammableItem(100, new Item.Properties().stacksTo(1).tab(VSTab.TAB)));
     public static final RegistryObject<Item> OAK_DEBUG_STICK = ITEMS.register("oak_debug_stick", () -> new VSDebugStickItem(100, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> SPRUCE_DEBUG_STICK = ITEMS.register("spruce_debug_stick", () -> new VSDebugStickItem(100, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> BIRCH_DEBUG_STICK = ITEMS.register("birch_debug_stick", () -> new VSDebugStickItem(100, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
@@ -333,10 +341,11 @@ public class VSItems {
     public static final RegistryObject<Item> EXPONENTIAL_BEETROOT_SOUP = ITEMS.register("exponential_beetroot_soup", () -> new ExponentialStewItem(DEFAULT_BEHAVIOR, new Item.Properties().stacksTo(1).food(Foods.BEETROOT_SOUP).tab(VSTab.TAB)));
     public static final RegistryObject<Item> EXPONENTIAL_RABBIT_STEW = ITEMS.register("exponential_rabbit_stew", () -> new ExponentialStewItem(DEFAULT_BEHAVIOR, new Item.Properties().stacksTo(1).food(Foods.RABBIT_STEW).tab(VSTab.TAB)));
     public static final RegistryObject<Item> EXPONENTIAL_SUSPICIOUS_STEW = ITEMS.register("exponential_suspicious_stew", () -> new ExponentialStewItem(new ApplyMobEffectsBehavior(Lists.newArrayList()), new Item.Properties().stacksTo(1).food(Foods.SUSPICIOUS_STEW).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> EXPONENTIAL_MELTING_BEET_SOUP = ITEMS.register("exponential_melting_beet_soup", () -> new ExponentialStewItem(DEFAULT_BEHAVIOR, new Item.Properties().stacksTo(1).food(Foods.BEETROOT_SOUP).tab(VSTab.TAB)));
     public static final RegistryObject<Item> EXPONENTIAL_FUNGI_STEW = ITEMS.register("exponential_fungi_stew", () -> new ExponentialStewItem(DEFAULT_BEHAVIOR, new Item.Properties().stacksTo(1).food(Foods.MUSHROOM_STEW).tab(VSTab.TAB)));
     public static final RegistryObject<Item> EXPONENTIAL_END_FUNGI_STEW = ITEMS.register("exponential_end_fungi_stew", () -> new ExponentialStewItem(DEFAULT_BEHAVIOR, new Item.Properties().stacksTo(1).food(Foods.MUSHROOM_STEW).tab(VSTab.TAB)));
     public static final RegistryObject<Item> EXPONENTIAL_ALJAN_FUNGI_STEW = ITEMS.register("exponential_aljan_fungi_stew", () -> new ExponentialStewItem(DEFAULT_BEHAVIOR, new Item.Properties().stacksTo(1).food(Foods.MUSHROOM_STEW).tab(VSTab.TAB)));
-    public static final RegistryObject<Item> EXPONENTIAL_WATER_BOWL = ITEMS.register("exponential_water_bowl", () -> new ExponentialStewItem(new ApplyMobEffectsBehavior(Lists.newArrayList(new EffectInstance(Effects.WATER_BREATHING, 100))), new Item.Properties().stacksTo(1).food(VSFoods.FLUID_BOWL).tab(VSTab.TAB)));
+    public static final RegistryObject<Item> EXPONENTIAL_WATER_BOWL = ITEMS.register("exponential_water_bowl", () -> new ExponentialStewItem(new ApplyMobEffectsBehavior(Lists.newArrayList(new VSEffectInstance(() -> Effects.WATER_BREATHING, 100))), new Item.Properties().stacksTo(1).food(VSFoods.FLUID_BOWL).tab(VSTab.TAB)));
     public static final RegistryObject<Item> EXPONENTIAL_MILK_BOWL = ITEMS.register("exponential_milk_bowl", () -> new ExponentialStewItem(new ClearMobEffectsBehavior(new ItemStack(Items.MILK_BUCKET)), new Item.Properties().stacksTo(1).food(VSFoods.MILK_BOWL).tab(VSTab.TAB)));
     public static final RegistryObject<Item> EXPONENTIAL_LAVA_BOWL = ITEMS.register("exponential_lava_bowl", () -> new ExponentialStewItem(new IgniteBehavior(100), new Item.Properties().stacksTo(1).food(VSFoods.FLUID_BOWL).tab(VSTab.TAB)));
     public static final RegistryObject<Item> EXPONENTIAL_SOUL_LAVA_BOWL = ITEMS.register("exponential_soul_lava_bowl", () -> new ExponentialStewItem(new IgniteBehavior(200), new Item.Properties().stacksTo(1).food(Foods.MUSHROOM_STEW).tab(VSTab.TAB)));

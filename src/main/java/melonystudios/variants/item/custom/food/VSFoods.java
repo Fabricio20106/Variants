@@ -7,4 +7,5 @@ public class VSFoods {
     public static final Food BERRY_POTS = new Food.Builder().nutrition(6).saturationMod(0.3F).build();
     public static final Food MILK_BOWL = new Food.Builder().nutrition(4).saturationMod(1.25F).build();
     public static final Food FLUID_BOWL = new Food.Builder().nutrition(1).saturationMod(1).build();
+    public static final Food WITHERED_WARPED_POTATO = new Food.Builder().nutrition(2).saturationMod(0.3F).build();
 }

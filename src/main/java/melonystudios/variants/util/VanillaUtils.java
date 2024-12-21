@@ -12,7 +12,7 @@ public class VanillaUtils {
         if (potion == Potions.EMPTY) stack.removeTagKey("potion");
         else stack.getOrCreateTag().putString("potion", potionLocation.toString());
 
-        if (!potion.getEffects().isEmpty()) NBTUtils.writeEffectsOntoNBT(potion.getEffects());
+        if (!potion.getEffects().isEmpty()) NBTUtils.writeEffectsOntoNBT(VSUtils.convertEffectList(potion.getEffects()));
 
         return stack;
     }

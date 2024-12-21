@@ -1,6 +1,6 @@
 package melonystudios.variants.mixin.world;
 
-import melonystudios.variants.world.biome.provider.VSEndBiomeProvider;
+import melonystudios.variants.world.biome.provider.EnderwoodEndBiomeProvider;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.biome.Biome;
@@ -16,6 +16,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class VSDimensionTypeMixin {
     @Inject(method = "defaultEndGenerator", at = @At("HEAD"), cancellable = true)
     private static void defaultEndGenerator(Registry<Biome> biomeReg, Registry<DimensionSettings> dimensionReg, long seed, CallbackInfoReturnable<ChunkGenerator> cir) {
-        cir.setReturnValue(new NoiseChunkGenerator(new VSEndBiomeProvider(biomeReg, seed), seed, () -> dimensionReg.getOrThrow(DimensionSettings.END)));
+        cir.setReturnValue(new NoiseChunkGenerator(new EnderwoodEndBiomeProvider(biomeReg, seed), seed, () -> dimensionReg.getOrThrow(DimensionSettings.END)));
     }
 }

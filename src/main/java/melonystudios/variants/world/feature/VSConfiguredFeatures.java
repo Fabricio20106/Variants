@@ -67,6 +67,22 @@ public class VSConfiguredFeatures {
             new MultipleRandomFeatureConfig(ImmutableList.of(PAINTING_TREE_WITH_BEES_005.weighted(0.1F), FANCY_PAINTING_TREE.weighted(0.1F)), PAINTING_TREE))
             .decorated(Features.Placements.HEIGHTMAP_SQUARE).decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(2, 0.1F, 1))));
 
+    public static final ConfiguredFeature<?, ?> CRIMSON_WHEAT_PATCH = register("crimson_wheat_patch", Feature.SIMPLE_RANDOM_SELECTOR.configured(new SingleRandomFeature(ImmutableList.of(() -> Feature.RANDOM_PATCH.configured(
+            new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VSBlocks.WILD_CRIMSON_WHEAT.get().defaultBlockState()), new SimpleBlockPlacer()).tries(64).noProjection().build()))))
+            .count(FeatureSpread.of(-3, 4)).decorated(Features.Placements.ADD_32).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(5));
+
+    public static final ConfiguredFeature<?, ?> SOUL_CARROT_PATCH = register("soul_carrot_patch", Feature.SIMPLE_RANDOM_SELECTOR.configured(new SingleRandomFeature(ImmutableList.of(() -> Feature.RANDOM_PATCH.configured(
+                    new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VSBlocks.WILD_SOUL_CARROTS.get().defaultBlockState()), new SimpleBlockPlacer()).tries(64).noProjection().build()))))
+            .count(FeatureSpread.of(-3, 4)).decorated(Features.Placements.ADD_32).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(5));
+
+    public static final ConfiguredFeature<?, ?> WARPED_POTATO_PATCH = register("warped_potato_patch", Feature.SIMPLE_RANDOM_SELECTOR.configured(new SingleRandomFeature(ImmutableList.of(() -> Feature.RANDOM_PATCH.configured(
+                    new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VSBlocks.WILD_WARPED_POTATOES.get().defaultBlockState()), new SimpleBlockPlacer()).tries(64).noProjection().build()))))
+            .count(FeatureSpread.of(-3, 4)).decorated(Features.Placements.ADD_32).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(5));
+
+    public static final ConfiguredFeature<?, ?> MELTING_BEET_PATCH = register("melting_beet_patch", Feature.SIMPLE_RANDOM_SELECTOR.configured(new SingleRandomFeature(ImmutableList.of(() -> Feature.RANDOM_PATCH.configured(
+                    new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VSBlocks.WILD_MELTING_BEETS.get().defaultBlockState()), new SimpleBlockPlacer()).tries(64).noProjection().build()))))
+            .count(FeatureSpread.of(-3, 4)).decorated(Features.Placements.ADD_32).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(5));
+
     public static final ConfiguredFeature<?, ?> CLOSED_SOUL_LAVA_SPRING = register("closed_soul_lava_spring", Feature.SPRING.configured(CLOSED_SOUL_LAVA_SPRING_CONFIG).decorated(Features.Placements.RANGE_10_20_ROOFED)
             .squared().count(16));
     public static final ConfiguredFeature<?, ?> OPEN_SOUL_LAVA_SPRING = register("open_soul_lava_spring", Feature.SPRING.configured(new LiquidsConfig(VSFluids.SOUL_LAVA.get().defaultFluidState(), false, 4, 1,

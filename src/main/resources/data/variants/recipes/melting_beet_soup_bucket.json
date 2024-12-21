@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bucket"
+    },
+    {
+      "item": "variants:melting_beet"
+    },
+    {
+      "item": "variants:melting_beet"
+    },
+    {
+      "item": "variants:melting_beet"
+    },
+    {
+      "item": "variants:melting_beet"
+    },
+    {
+      "item": "variants:melting_beet"
+    },
+    {
+      "item": "variants:melting_beet"
+    }
+  ],
+  "result": {
+    "item": "variants:melting_beet_soup_bucket"
+  }
+}

@@ -5,6 +5,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import melonystudios.variants.Variants;
 import melonystudios.variants.config.VSConfigs;
+import melonystudios.variants.effect.VSEffectInstance;
 import melonystudios.variants.util.damage.DamageSourceUtils;
 import melonystudios.variants.util.damage.custom.DamageBehaviorSource;
 import net.minecraft.client.util.ITooltipFlag;
@@ -92,7 +93,7 @@ public class NBTUtils {
         }
     }
 
-    public static ListNBT writeEffectsOntoNBT(List<? extends EffectInstance> instances) {
+    public static ListNBT writeEffectsOntoNBT(List<VSEffectInstance> instances) {
         ListNBT effectsList = new ListNBT();
         if (instances != null) {
             for (EffectInstance instance : instances) effectsList.add(writeEffectToNBT(instance));
@@ -110,6 +111,10 @@ public class NBTUtils {
         if (!instance.isVisible()) effectTag.putBoolean("show_particles", instance.isVisible());
         if (!instance.showIcon()) effectTag.putBoolean("show_icon", instance.showIcon());
         if (instance.isNoCounter()) effectTag.putBoolean("no_counter", instance.isNoCounter());
+        if (instance instanceof VSEffectInstance) {
+            float chance = ((VSEffectInstance) instance).getChance();
+            if (chance < 1) effectTag.putFloat("chance", chance);
+        }
         return effectTag;
     }
 
@@ -131,6 +136,7 @@ public class NBTUtils {
                     boolean showParticles = true;
                     boolean showIcon = true;
                     boolean noCounter = false; // Finally found out what no_counter does, it just hides the effect duration (shows up as **:**).
+                    float chance = 1;
                     List<ItemStack> curativeItems = Lists.newArrayList();
                     CompoundNBT effectTag = effectList.getCompound(i);
                     if (effectTag.contains("duration", Constants.TagTypes.ANY_NUMERIC)) duration = effectTag.getInt("duration");
@@ -139,6 +145,7 @@ public class NBTUtils {
                     if (effectTag.contains("show_particles", Constants.TagTypes.ANY_NUMERIC)) showParticles = effectTag.getBoolean("show_particles");
                     if (effectTag.contains("show_icon", Constants.TagTypes.ANY_NUMERIC)) showIcon = effectTag.getBoolean("show_icon");
                     if (effectTag.contains("no_counter", Constants.TagTypes.ANY_NUMERIC)) noCounter = effectTag.getBoolean("no_counter");
+                    if (effectTag.contains("chance", Constants.TagTypes.ANY_NUMERIC)) chance = effectTag.getFloat("chance");
                     if (effectTag.contains("curative_items", Constants.TagTypes.LIST)) {
                         ListNBT curativeList = effectTag.getList("curative_items", Constants.TagTypes.COMPOUND);
                         for (int c = 0; c < curativeList.size(); c++) curativeItems.add(VSUtils.loadStack(curativeList.getCompound(c)));
@@ -146,7 +153,7 @@ public class NBTUtils {
 
                     Effect effect = ForgeRegistries.POTIONS.getValue(ResourceLocation.tryParse(effectTag.getString("id")));
                     if (effect != null) {
-                        EffectInstance instance = new EffectInstance(effect, duration, amplifier, ambient, showParticles, showIcon);
+                        VSEffectInstance instance = new VSEffectInstance(() -> effect, duration, amplifier, ambient, showParticles, showIcon).withChance(chance);
                         if (world != null && world.isClientSide) instance.setNoCounter(noCounter);
                         if (!curativeItems.isEmpty() && !curativeItems.equals(curativeItemsTemplate)) instance.setCurativeItems(curativeItems);
                         effects.add(instance);

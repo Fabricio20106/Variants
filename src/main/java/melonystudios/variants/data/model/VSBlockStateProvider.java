@@ -155,10 +155,14 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         axisBlock((RotatedPillarBlock) VSBlocks.CRIMSON_STRAW_BALE.get(), modLoc("block/crimson_straw_bale_side"), modLoc("block/crimson_straw_bale_top"));
         wildCrop(VSBlocks.WILD_CRIMSON_WHEAT);
         wildCrop(VSBlocks.WILD_SOUL_CARROTS);
+        wildCrop(VSBlocks.WILD_WARPED_POTATOES);
+        wildCrop(VSBlocks.WILD_MELTING_BEETS);
 
         carrots(VSBlocks.GOLDEN_CARROTS);
         wheat(VSBlocks.CRIMSON_WHEAT);
         carrots(VSBlocks.SOUL_CARROTS);
+        carrots(VSBlocks.WARPED_POTATOES);
+        beetroots(VSBlocks.MELTING_BEETS);
         wart(VSBlocks.WARPED_WART);
         wart(VSBlocks.ENDER_WART);
         getVariantBuilder(VSBlocks.GLOW_BERRY_BUSH.get()).forAllStates(state -> {

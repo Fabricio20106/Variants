@@ -50,6 +50,7 @@ public class VSEventBusEvents {
         generator.addProvider(new VSExpoStewsRecipeProvider(generator));
         generator.addProvider(new VSStainedBottlesRecipeProvider(generator));
         generator.addProvider(new VSBowlTypesProvider(generator));
+        generator.addProvider(new VSBowlTypesProvider.VanillaBowlTypesProvider(generator));
         generator.addProvider(new VSWoolArmorColorProvider(generator));
         generator.addProvider(new VSWoolArmorColorProvider.VanillaWACProvider(generator));
         generator.addProvider(new VSWoolArmorColorProvider.F10ElementsWACProvider(generator));

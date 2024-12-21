@@ -18,6 +18,7 @@
     "enchantment.VSQuickChargeEnchantmentMixin",
     "entity.EntityTameItemMixins$VSCatEntityMixin",
     "entity.EntityTameItemMixins$VSOcelotEntityMixin",
+    "entity.VSBoatEntityMixin",
     "entity.VSFarmTaskMixin",
     "entity.VSLivingEntityMixin",
     "entity.VSMobEntityMixin",
@@ -26,6 +27,7 @@
     "item.VSFlintAndSteelItemMixin",
     "item.VSItemMixin",
     "item.VSItemStackMixin",
+    "item.VSLeadItemMixin",
     "item.VSMinecartItemMixin",
     "item.VSPotionUtilsMixin",
     "item.VSShearsItemMixin",
@@ -47,10 +49,12 @@
   ],
   "client": [
     "entity.model.VSBipedModelMixin",
+    "entity.renderer.VSBoatRendererMixin",
     "entity.renderer.VSHeldItemLayerMixin",
     "item.VSFireworkRocketItemMixin",
     "item.VSFireworkStarItemMixin",
-    "item.VSHorseArmorItemMixin"
+    "item.VSHorseArmorItemMixin",
+    "network.VSClientPlayNetHandlerMixin"
   ],
   "server": [],
   "injectors": {

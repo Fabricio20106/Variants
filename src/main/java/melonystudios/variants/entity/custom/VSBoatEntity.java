@@ -59,8 +59,9 @@ public class VSBoatEntity extends BoatEntity {
 
     @Override
     @Nonnull
-    public ITextComponent getDisplayName() {
-        return new TranslationTextComponent("entity." + Variants.MOD_ID + ".vs_boat." + this.getWoodType());
+    public ITextComponent getName() {
+        ITextComponent component = this.getCustomName();
+        return component != null ? this.getCustomName() : new TranslationTextComponent("entity." + Variants.MOD_ID + ".vs_boat." + this.getWoodType());
     }
 
     public String getWoodType() {

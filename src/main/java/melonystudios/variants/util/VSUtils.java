@@ -6,6 +6,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.datafixers.util.Pair;
 import melonystudios.variants.Variants;
 import melonystudios.variants.crafting.custom.WoolArmorDyeingRecipe;
+import melonystudios.variants.effect.VSEffectInstance;
 import melonystudios.variants.event.custom.ConsumableTeleportEvent;
 import melonystudios.variants.util.tag.VSItemTags;
 import net.minecraft.entity.LivingEntity;
@@ -230,6 +231,12 @@ public class VSUtils {
                 }
             }
         }
+    }
+
+    public static List<VSEffectInstance> convertEffectList(List<? extends EffectInstance> effects) {
+        List<VSEffectInstance> newEffects = Lists.newArrayList();
+        for (EffectInstance instance : effects) newEffects.add(new VSEffectInstance(instance));
+        return newEffects;
     }
 
     public static CompoundNBT saveStack(ItemStack stack, CompoundNBT tag) {
