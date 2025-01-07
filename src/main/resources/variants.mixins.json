@@ -32,6 +32,7 @@
     "item.VSPotionUtilsMixin",
     "item.VSShearsItemMixin",
     "item.VSShieldItemMixin",
+    "item.VSSpectralArrowItemMixin",
     "item.VSSuspiciousStewItemMixin",
     "item.armor.VSArmorItemMixin",
     "item.armor.VSElytraItemMixin",
@@ -44,6 +45,7 @@
     "item.nbt.VSTippedArrowItemMixin",
     "item.nbt.VSWrittenBookItem",
     "loot.VSSetStewEffectMixin",
+    "screen.VSAnvilMenuMixin",
     "world.VSChorusPlantFeatureMixin",
     "world.VSDimensionTypeMixin"
   ],

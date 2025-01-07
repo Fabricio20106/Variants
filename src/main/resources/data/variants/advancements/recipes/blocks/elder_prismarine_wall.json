@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:elder_prismarine_wall"
+    ]
+  },
+  "criteria": {
+    "has_elder_prismarine": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:elder_prismarine"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:elder_prismarine_wall"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_elder_prismarine",
+      "has_the_recipe"
+    ]
+  ]
+}

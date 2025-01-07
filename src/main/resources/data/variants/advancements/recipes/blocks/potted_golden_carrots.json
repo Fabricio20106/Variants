@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:potted_golden_carrots"
+    ]
+  },
+  "criteria": {
+    "has_flower_pot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:flower_pot"
+          }
+        ]
+      }
+    },
+    "has_golden_carrots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:golden_carrots"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:potted_golden_carrots"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_flower_pot",
+      "has_golden_carrots",
+      "has_the_recipe"
+    ]
+  ]
+}

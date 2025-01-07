@@ -31,6 +31,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(Tags.Blocks.STORAGE_BLOCKS).addTag(VSBlockTags.STORAGE_BLOCKS_NETHERITE_SCRAP);
 
         this.tag(Tags.Blocks.ORES_QUARTZ).add(VSBlocks.QUARTZ_ORE.get()).add(VSBlocks.DEEPSLATE_QUARTZ_ORE.get()).add(VSBlocks.END_QUARTZ_ORE.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get());
+        this.tag(Tags.Blocks.ORES_COAL).add(VSBlocks.NETHER_COAL_ORE.get());
 
         this.tag(Tags.Blocks.FENCE_GATES_WOODEN).add(VSBlocks.PAINTING_FENCE_GATE.get());
 
@@ -67,8 +68,6 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSBlockTags.CHORUS_FLOWER_PLANTABLE_ON).addTag(VSBlockTags.HAS_ENDER_NYLIUM).addTag(Tags.Blocks.END_STONES);
         this.tag(VSBlockTags.CHORUS_PLANT_PLANTABLE_ON).add(Blocks.CHORUS_FLOWER).add(Blocks.CHORUS_PLANT);
         this.tag(VSBlockTags.NETHER_CROPS_PLANTABLE_ON).addTag(VSBlockTags.FARMLAND).addTag(VSBlockTags.NETHER_WART_PLANTABLE_ON);
-        this.tag(VSBlockTags.WILD_NETHER_CROPS_PLANTABLE_ON).addTag(VSBlockTags.FARMLAND).addTag(VSBlockTags.NETHER_WART_PLANTABLE_ON).addTag(BlockTags.NYLIUM).add(Blocks.SOUL_SAND, Blocks.SOUL_SOIL);
-        this.tag(VSBlockTags.WILD_MELTING_BEET_PLANTABLE_ON).add(Blocks.GRAVEL);
         this.tag(VSBlockTags.END_CARVER_REPLACEABLES).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_NYLIUM.get());
         this.tag(VSBlockTags.HAS_ENDER_NYLIUM).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get());
         this.tag(VSBlockTags.FARMLAND_TRANSPARENT).addTag(Tags.Blocks.FENCE_GATES).addTag(BlockTags.FENCE_GATES).add(Blocks.MOVING_PISTON);
@@ -119,7 +118,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.DRAGON_IMMUNE).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.END_QUARTZ_ORE.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get()).add(VSBlocks.QUARTZ_BARS.get());
         this.tag(BlockTags.IMPERMEABLE).add(VSBlocks.QUARTZ_GLASS.get()).add(VSBlocks.GLOW_BLACK_STAINED_GLASS.get());
         this.tag(BlockTags.NYLIUM).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get());
-        this.tag(BlockTags.CLIMBABLE).add(VSBlocks.WARPING_VINES.get()).add(VSBlocks.WARPING_VINES_PLANT.get());
+        this.tag(BlockTags.CLIMBABLE).add(VSBlocks.QUARTZ_LADDER.get(), VSBlocks.WARPING_VINES.get(), VSBlocks.WARPING_VINES_PLANT.get());
         this.tag(BlockTags.BEDS).add(VSBlocks.GLOW_BLACK_BED.get());
         this.tag(BlockTags.PIGLIN_REPELLENTS).add(VSBlocks.POTTED_SOUL_TORCH.get());
         this.tag(BlockTags.STRIDER_WARM_BLOCKS).add(VSBlocks.SOUL_LAVA.get());

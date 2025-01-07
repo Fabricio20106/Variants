@@ -34,8 +34,6 @@ public class VSBlockTags {
     public static final ITag.INamedTag<Block> CHORUS_FLOWER_PLANTABLE_ON = mod("chorus_flower_plantable_on");
     public static final ITag.INamedTag<Block> CHORUS_PLANT_PLANTABLE_ON = mod("chorus_plant_plantable_on");
     public static final ITag.INamedTag<Block> NETHER_CROPS_PLANTABLE_ON = mod("nether_crops_plantable_on");
-    public static final ITag.INamedTag<Block> WILD_NETHER_CROPS_PLANTABLE_ON = mod("wild_nether_crops_plantable_on");
-    public static final ITag.INamedTag<Block> WILD_MELTING_BEET_PLANTABLE_ON = mod("wild_melting_beet_plantable_on");
     public static final ITag.INamedTag<Block> END_CARVER_REPLACEABLES = mod("end_carver_replaceables");
     public static final ITag.INamedTag<Block> HAS_ENDER_NYLIUM = mod("has_ender_nylium");
 

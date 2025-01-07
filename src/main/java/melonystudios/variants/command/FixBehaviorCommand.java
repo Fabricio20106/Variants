@@ -27,7 +27,8 @@ import static melonystudios.variants.Variants.variants;
 
 public class FixBehaviorCommand {
     private static final Map<ResourceLocation, ConsumeBehavior> OLD_NAMES_FIX = new ImmutableMap.Builder<ResourceLocation, ConsumeBehavior>().put(variants("effect"), VSConsumeBehaviors.APPLY_MOB_EFFECTS.get())
-            .put(variants("lava"), VSConsumeBehaviors.IGNITE.get()).put(variants("milk"), VSConsumeBehaviors.CLEAR_MOB_EFFECTS.get()).build();
+            .put(variants("lava"), VSConsumeBehaviors.IGNITE.get()).put(variants("milk"), VSConsumeBehaviors.CLEAR_MOB_EFFECTS.get()).put(new ResourceLocation("melonystudios", "multi_behavior"),
+                    VSConsumeBehaviors.MULTI_BEHAVIOR.get()).build();
 
     public static ArgumentBuilder<CommandSource, ?> register() {
         return Commands.literal("fix").then(Commands.argument("target", EntityArgument.player())

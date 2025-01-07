@@ -69,19 +69,19 @@ public class VSConfiguredFeatures {
 
     public static final ConfiguredFeature<?, ?> CRIMSON_WHEAT_PATCH = register("crimson_wheat_patch", Feature.SIMPLE_RANDOM_SELECTOR.configured(new SingleRandomFeature(ImmutableList.of(() -> Feature.RANDOM_PATCH.configured(
             new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VSBlocks.WILD_CRIMSON_WHEAT.get().defaultBlockState()), new SimpleBlockPlacer()).tries(64).noProjection().build()))))
-            .count(FeatureSpread.of(-3, 4)).decorated(Features.Placements.ADD_32).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(5));
+            .count(FeatureSpread.of(-3, 4)).decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(2))).count(1));
 
     public static final ConfiguredFeature<?, ?> SOUL_CARROT_PATCH = register("soul_carrot_patch", Feature.SIMPLE_RANDOM_SELECTOR.configured(new SingleRandomFeature(ImmutableList.of(() -> Feature.RANDOM_PATCH.configured(
                     new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VSBlocks.WILD_SOUL_CARROTS.get().defaultBlockState()), new SimpleBlockPlacer()).tries(64).noProjection().build()))))
-            .count(FeatureSpread.of(-3, 4)).decorated(Features.Placements.ADD_32).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(5));
+            .count(FeatureSpread.of(-3, 4)).decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(2))).count(1));
 
     public static final ConfiguredFeature<?, ?> WARPED_POTATO_PATCH = register("warped_potato_patch", Feature.SIMPLE_RANDOM_SELECTOR.configured(new SingleRandomFeature(ImmutableList.of(() -> Feature.RANDOM_PATCH.configured(
                     new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VSBlocks.WILD_WARPED_POTATOES.get().defaultBlockState()), new SimpleBlockPlacer()).tries(64).noProjection().build()))))
-            .count(FeatureSpread.of(-3, 4)).decorated(Features.Placements.ADD_32).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(5));
+            .count(FeatureSpread.of(-3, 4)).decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(2))).count(1));
 
     public static final ConfiguredFeature<?, ?> MELTING_BEET_PATCH = register("melting_beet_patch", Feature.SIMPLE_RANDOM_SELECTOR.configured(new SingleRandomFeature(ImmutableList.of(() -> Feature.RANDOM_PATCH.configured(
                     new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VSBlocks.WILD_MELTING_BEETS.get().defaultBlockState()), new SimpleBlockPlacer()).tries(64).noProjection().build()))))
-            .count(FeatureSpread.of(-3, 4)).decorated(Features.Placements.ADD_32).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(5));
+            .count(FeatureSpread.of(-3, 4)).decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(2))).count(1));
 
     public static final ConfiguredFeature<?, ?> CLOSED_SOUL_LAVA_SPRING = register("closed_soul_lava_spring", Feature.SPRING.configured(CLOSED_SOUL_LAVA_SPRING_CONFIG).decorated(Features.Placements.RANGE_10_20_ROOFED)
             .squared().count(16));

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "variants:quartz_ladder",
     "variants:warping_vines",
     "variants:warping_vines_plant"
   ]

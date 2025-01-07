@@ -91,7 +91,7 @@ minecraft {
                 args '--accessToken', project.getProperty('mc_accessToken')
             }
 
-            args '--version', 'melony-studios-dev'
+            args '--version', 'melony-studios-dev/revaried'
 
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             property "mixin.debug.export", "true"

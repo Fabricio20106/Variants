@@ -49,6 +49,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSItemTags.RAW_MATERIALS).addTag(VSItemTags.RAW_MATERIALS_NETHERITE_SCRAP);
 
         this.tag(Tags.Items.ORES_QUARTZ).add(VSItems.QUARTZ_ORE.get()).add(VSItems.DEEPSLATE_QUARTZ_ORE.get()).add(VSItems.END_QUARTZ_ORE.get()).add(VSItems.ENDER_NYLIUM_QUARTZ_ORE.get());
+        this.tag(Tags.Items.ORES_COAL).add(VSItems.NETHER_COAL_ORE.get());
 
         this.tag(Tags.Items.FENCE_GATES_WOODEN).add(VSItems.PAINTING_FENCE_GATE.get());
 

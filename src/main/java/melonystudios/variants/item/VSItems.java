@@ -122,6 +122,7 @@ public class VSItems {
     public static final RegistryObject<Item> DEEPSLATE_QUARTZ_ORE = ITEMS.register("deepslate_quartz_ore", () -> new BlockItem(VSBlocks.DEEPSLATE_QUARTZ_ORE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> END_QUARTZ_ORE = ITEMS.register("end_quartz_ore", () -> new BlockItem(VSBlocks.END_QUARTZ_ORE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> ENDER_NYLIUM_QUARTZ_ORE = ITEMS.register("ender_nylium_quartz_ore", () -> new BlockItem(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> NETHER_COAL_ORE = ITEMS.register("nether_coal_ore", () -> new BlockItem(VSBlocks.NETHER_COAL_ORE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> GOLDEN_CAULDRON = ITEMS.register("golden_cauldron", () -> new BlockItem(VSBlocks.GOLDEN_CAULDRON.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> GOLDEN_BEACON = ITEMS.register("golden_beacon", () -> new BlockItem(VSBlocks.GOLDEN_BEACON.get(), new Item.Properties().rarity(Rarity.RARE).tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> QUARTZ_CAULDRON = ITEMS.register("quartz_cauldron", () -> new BlockItem(VSBlocks.QUARTZ_CAULDRON.get(), new Item.Properties().tab(VSBlockTab.TAB)));
@@ -138,6 +139,7 @@ public class VSItems {
     public static final RegistryObject<Item> QUARTZ_GLASS = ITEMS.register("quartz_glass", () -> new BlockItem(VSBlocks.QUARTZ_GLASS.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> QUARTZ_GLASS_PANE = ITEMS.register("quartz_glass_pane", () -> new BlockItem(VSBlocks.QUARTZ_GLASS_PANE.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> QUARTZ_BARS = ITEMS.register("quartz_bars", () -> new BlockItem(VSBlocks.QUARTZ_BARS.get(), new Item.Properties().tab(VSBlockTab.TAB)));
+    public static final RegistryObject<Item> QUARTZ_LADDER = ITEMS.register("quartz_ladder", () -> new BlockItem(VSBlocks.QUARTZ_LADDER.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> QUARTZ_CHAIN = ITEMS.register("quartz_chain", () -> new BlockItem(VSBlocks.QUARTZ_CHAIN.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> GOLDEN_CHAIN = ITEMS.register("golden_chain", () -> new BlockItem(VSBlocks.GOLDEN_CHAIN.get(), new Item.Properties().tab(VSBlockTab.TAB)));
     public static final RegistryObject<Item> DIAMOND_CHAIN = ITEMS.register("diamond_chain", () -> new BlockItem(VSBlocks.DIAMOND_CHAIN.get(), new Item.Properties().tab(VSBlockTab.TAB)));

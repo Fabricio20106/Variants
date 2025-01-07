@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:painting_door_first"
+    ]
+  },
+  "criteria": {
+    "fabricio2010pack_loaded": {
+      "trigger": "variants:mod_loaded",
+      "conditions": {
+        "mod_id": "fabricio2010pack"
+      }
+    },
+    "has_painting_door": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:painting_door"
+          }
+        ]
+      }
+    },
+    "has_painting": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:painting"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:painting_door_first"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "fabricio2010pack_loaded",
+      "has_painting_door",
+      "has_the_recipe"
+    ],
+    [
+      "fabricio2010pack_loaded",
+      "has_painting",
+      "has_the_recipe"
+    ]
+  ]
+}

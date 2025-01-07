@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:quartz_beacon"
+    ]
+  },
+  "criteria": {
+    "has_any_nether_star": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "melony:nether_stars"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:quartz_beacon"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_any_nether_star",
+      "has_the_recipe"
+    ]
+  ]
+}

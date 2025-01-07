@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:potted_glow_black_tulip"
+    ]
+  },
+  "criteria": {
+    "has_flower_pot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:flower_pot"
+          }
+        ]
+      }
+    },
+    "has_glow_black_tulip": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:glow_black_tulip"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:potted_glow_black_tulip"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_flower_pot",
+      "has_glow_black_tulip",
+      "has_the_recipe"
+    ]
+  ]
+}

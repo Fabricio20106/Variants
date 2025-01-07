@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:enderwood_planks"
+    ]
+  },
+  "criteria": {
+    "has_enderwood_stems": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "variants:enderwood_stems"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:enderwood_planks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_enderwood_stems",
+      "has_the_recipe"
+    ]
+  ]
+}

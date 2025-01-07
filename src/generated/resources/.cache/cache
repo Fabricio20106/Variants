@@ -80,6 +80,7 @@ ab44c20d7b5c98a9bf867e7eed84a1f0129e1183 assets/variants/blockstates/mossy_purpu
 58853b77ba6dbddf8ae9e55beba20c0b3f18015f assets/variants/blockstates/mossy_purpur_wall.json
 0a7473b58d685ae9d8bacdace1d888311407461b assets/variants/blockstates/mushroom_stew.json
 967eb53122fa02c64ed5eab55106c6d32c059a25 assets/variants/blockstates/nether_brick_pillar.json
+4a6438acf60bae512768756347c846e1f27a5a1a assets/variants/blockstates/nether_coal_ore.json
 271b58e2e4719a1a8b08f04a4e61291b9149c7f7 assets/variants/blockstates/painting_button.json
 3cccc801fc35a9fb1377c3af4178d05ff4235bf9 assets/variants/blockstates/painting_door.json
 dafbe72c6c6b591120ded14a9598580d5ec96977 assets/variants/blockstates/painting_fence.json
@@ -312,6 +313,7 @@ b3ce4cfbacd8facded711317c216c66f6773f292 assets/variants/models/block/mossy_purp
 1a0a36a42fb1a87816563a4ed2176dcff102f3d2 assets/variants/models/block/mushroom_stew.json
 3422ace8a27806d6862bead64be27ef087f078ca assets/variants/models/block/nether_brick_pillar.json
 60cf0da3d057cbc5e5b9883535ee11ed9f1603eb assets/variants/models/block/nether_brick_pillar_horizontal.json
+d859bd1fbeaecd307d54b77f15b688c3ed4d1267 assets/variants/models/block/nether_coal_ore.json
 50f8f21e5a79e9deb3654889301d1180b62a94fe assets/variants/models/block/painting_button.json
 feb1df54f7cc3477f5b51f3f39b9631ec101fdc0 assets/variants/models/block/painting_button_inventory.json
 5d1a096407f1f633197e4d28f47b3e0ef7c69d8f assets/variants/models/block/painting_button_pressed.json
@@ -951,6 +953,7 @@ f3a8303f2633e93d7cf33987ad7ac330ac714d78 assets/variants/models/item/mossy_purpu
 08baa0ce89d8448f9937778edf99e6b5d7d70992 assets/variants/models/item/mushroom_stew_bucket.json
 8f10799bda4d3e26a346aa5e18bc5805e775c475 assets/variants/models/item/music_disc_dog.json
 ae8b5c3dc053ec5ba45efd936e3b7d079122c8ae assets/variants/models/item/nether_brick_pillar.json
+351843db91c6932f36993b258168d2e78f5b7afc assets/variants/models/item/nether_coal_ore.json
 ebab49d1e262a53e2129c6daf1b262baf8a547d7 assets/variants/models/item/netherite_rod.json
 e3e87a53bd8924eefd258da71cd3c1fb517a1b98 assets/variants/models/item/netherite_shears.json
 c6cf271c1c1fa908cb722042700c217c8038a8aa assets/variants/models/item/netherite_spyglass.json
@@ -1023,6 +1026,7 @@ cfb53d00950f8817406cc64c39fbb1e9c08ee3ae assets/variants/models/item/quartz_glas
 1e48230677b4a760565bb1cec18d3a1ac8825ef8 assets/variants/models/item/quartz_helmet.json
 53aaea8f5eca9ba6b074ffa32258704883337262 assets/variants/models/item/quartz_hoe.json
 cb34e95f57a8171676d4bdbae8cc98cced4694ad assets/variants/models/item/quartz_horse_armor.json
+3a9f778955af394c96c163f995645cc91faeae77 assets/variants/models/item/quartz_ladder.json
 410f00187683db7e94a51bda4a76fd5e9bed2ddc assets/variants/models/item/quartz_leggings.json
 5f631724bce18b89f4baad1146dbc29960fbbc71 assets/variants/models/item/quartz_ore.json
 af91cee7e59c0ae8d6150ab829f469998a0d0607 assets/variants/models/item/quartz_pickaxe.json
@@ -1125,6 +1129,7 @@ aa64593a47db039b543bd47d06d7bc25a4d16419 assets/variants/models/item/yellow_stai
 af9aba1e18b7af7f3b15e3c4b547e863944414db data/forge/tags/blocks/glass/glow_black.json
 1b35039e7cd7bfd82754b6ff54b4512acaf0f0c8 data/forge/tags/blocks/glass_panes/colorless.json
 0c4a5e039968bd980e4c5956d3bca72300150798 data/forge/tags/blocks/glass_panes/glow_black.json
+dbad41eebdce1351149ab6f7873895921dbb93fc data/forge/tags/blocks/ores/coal.json
 a197b3da3cbf98b18e95c0f3cee9e13556247675 data/forge/tags/blocks/ores/quartz.json
 af9aba1e18b7af7f3b15e3c4b547e863944414db data/forge/tags/blocks/stained_glass.json
 0c4a5e039968bd980e4c5956d3bca72300150798 data/forge/tags/blocks/stained_glass_panes.json
@@ -1167,6 +1172,7 @@ c342b67dde50762a6a614bf55960680f5b32e20e data/forge/tags/items/nuggets/diamond.j
 8777aef3c38c8bb1cc0b65c6f1457f36cc15896a data/forge/tags/items/nuggets/emerald.json
 d7fce2f70b28e13a98f93980ddd92dd3653b4faf data/forge/tags/items/nuggets/purple_iron.json
 a7c3ca8c668d7af7c5fc478aa4fbf3479ff270c7 data/forge/tags/items/nuggets/quartz.json
+dbad41eebdce1351149ab6f7873895921dbb93fc data/forge/tags/items/ores/coal.json
 a197b3da3cbf98b18e95c0f3cee9e13556247675 data/forge/tags/items/ores/quartz.json
 c12e6adfc6f3eb3e5600b65115bb56045e3147d6 data/forge/tags/items/raw_materials.json
 6638a55711f8b9088cf6b0d81d8ff29fd5781308 data/forge/tags/items/raw_materials/netherite_scrap.json
@@ -1215,7 +1221,7 @@ c641cac73121da006f0b3e8e079ad3f2677d99e2 data/minecraft/bowl_type/birch.json
 d0bae256fdd04bdd716188e7694fc138fa904ba1 data/minecraft/tags/blocks/beds.json
 4d15a81e498c9bdedc9ad234f8706ee9e69acec3 data/minecraft/tags/blocks/bee_growables.json
 c9e762314d21e3cd6eaaf4b8e94f666a11c5a371 data/minecraft/tags/blocks/carpets.json
-f50313b31d515c63877c07868e789872d84cae8b data/minecraft/tags/blocks/climbable.json
+336031ad10a9cfe5b125de841611927779fb7695 data/minecraft/tags/blocks/climbable.json
 95fc801ad1396dfa1a80732f7f77fd320d144ead data/minecraft/tags/blocks/crops.json
 fe0cf8da4b2d3edb36812597b091bf2d2e9b7c7c data/minecraft/tags/blocks/dragon_immune.json
 c2bca72a67fbce3b01a48f6e53520bd57bd48de2 data/minecraft/tags/blocks/fence_gates.json
@@ -1778,8 +1784,6 @@ d49ddc370b30c9b9f0d41c90a69601574a941def data/variants/tags/blocks/painting_door
 ffd895de91fdecc82e8141ee2db0dea65e8e986f data/variants/tags/blocks/spawner_minecart_cannot_replace.json
 12175ad1e5fbbea6b6a854deb05cf666efd2a503 data/variants/tags/blocks/spawners.json
 3a10aedff11f62678f1e21a8112bb7d44d3d972f data/variants/tags/blocks/warping_vines_feature_can_place_on.json
-50e97df35e7309fbd5feb8f4161ce7888cf962ad data/variants/tags/blocks/wild_melting_beet_plantable_on.json
-d9cffb57dca8ffc4c39ee03e85b0d0c50f616d01 data/variants/tags/blocks/wild_nether_crops_plantable_on.json
 74700d556ca80c7a1db5fd4efb09c3ddb26cad66 data/variants/tags/consume_behavior/cannot_run_without_nbt.json
 05a9fcf422185193d3f362156ac8e2ebd826c26d data/variants/tags/enchantments/applicable_to/flint_and_steel.json
 1a1114669d853df40e18073e1566e6c973ce7393 data/variants/tags/enchantments/applicable_to/shears.json

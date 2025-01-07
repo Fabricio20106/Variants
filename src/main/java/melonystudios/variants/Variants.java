@@ -10,6 +10,7 @@ import melonystudios.variants.blockentity.renderer.VSBellBlockEntityRenderer;
 import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.config.VSJSONConfig;
 import melonystudios.variants.crafting.VSRecipeTypes;
+import melonystudios.variants.criterion.VSCriteriaTriggers;
 import melonystudios.variants.effect.VSEffects;
 import melonystudios.variants.effect.VSPotions;
 import melonystudios.variants.enchantment.VSEnchantments;
@@ -107,6 +108,7 @@ public class Variants {
         VSConsumeBehaviors.BEHAVIORS.register(eventBus);
         VSTagFixes.FIXES.register(eventBus);
         VSLootFunctions.init();
+        VSCriteriaTriggers.init();
         VSRegistries.init();
         VSStats.init();
 
@@ -256,6 +258,7 @@ public class Variants {
         RenderTypeLookup.setRenderLayer(VSBlocks.DIAMOND_CHAIN.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.EMERALD_CHAIN.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.QUARTZ_BARS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.QUARTZ_LADDER.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.SOUL_BREWING_STAND.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.ENDERWOOD_TRAPDOOR.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.ENDERWOOD_DOOR.get(), RenderType.cutout());

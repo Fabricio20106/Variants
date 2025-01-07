@@ -29,6 +29,13 @@ public class VSOreGeneration {
         }
     }
 
+    // Nether Ores
+    public static void generateNetherCoalOre(final BiomeLoadingEvent event) {
+        if (event.getCategory().equals(Biome.Category.NETHER)) {
+            generateOre(event.getGeneration(), OreFeatureConfig.FillerBlockType.NETHERRACK, VSBlocks.NETHER_COAL_ORE.get().defaultBlockState(), 9, 0, 128, 8);
+        }
+    }
+
     // End Ores
     public static void generateEndQuartzOre(final BiomeLoadingEvent event) {
         if (event.getCategory().equals(Biome.Category.THEEND)) {

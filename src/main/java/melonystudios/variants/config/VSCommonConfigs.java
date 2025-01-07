@@ -3,14 +3,6 @@ package melonystudios.variants.config;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class VSCommonConfigs {
-    // World Generation
-    public final ForgeConfigSpec.BooleanValue generateFlowerPatches;
-    public final ForgeConfigSpec.BooleanValue generateQuartzOre;
-    public final ForgeConfigSpec.BooleanValue generateEndQuartzOre;
-    public final ForgeConfigSpec.BooleanValue generateSoulLavaSprings;
-    public final ForgeConfigSpec.BooleanValue generateEndCavesAndRavines;
-    public final ForgeConfigSpec.BooleanValue substituteEndWithEnderwoodForest;
-
     // Items
     public final ForgeConfigSpec.BooleanValue populateExponentialBowlsInTabs;
     public final ForgeConfigSpec.BooleanValue populateStainedGlassBottlesInTabs;
@@ -48,15 +40,7 @@ public class VSCommonConfigs {
 
     public VSCommonConfigs(ForgeConfigSpec.Builder builder) {
         builder.comment("Welcome to the Variants config file! This file contains various configs on many aspects of the mod. (Made on 18/11/23)");
-
-        builder.push("worldGeneration");
-        this.generateFlowerPatches = builder.comment("Allow Variants' flower patches to generate? (Glow Black Tulips and Sunny Flowers)").define("generateFlowerPatches", true);
-        this.generateQuartzOre = builder.comment("Allow Overworld quartz ore to generate?").define("generateOverworldQuartzOre", true);
-        this.generateEndQuartzOre = builder.comment("Allow End quartz ore to generate?").define("generateEndQuartzOre", true);
-        this.generateSoulLavaSprings = builder.comment("Allow soul lava springs ore to generate in the Nether?").define("generateSoulLavaSprings", true);
-        this.generateEndCavesAndRavines = builder.comment("Allow caves and ravines to generate in the End?").define("generateEndCavesAndRavines", true);
-        this.substituteEndWithEnderwoodForest = builder.comment("Should the End generator substitute all \"The End\" biomes with Enderwood Forests?").define("substituteEndWithEnderwoodForest", false);
-        builder.pop();
+        builder.comment("This config file will slowly be phased out in favor of the JSON config file, configurable in-game (~isa 5-1-25)");
 
         builder.push("entities");
         this.fishSpawning = builder.comment("Allow fishes (old cods) to spawn in Oceans?").define("fishSpawning", true);

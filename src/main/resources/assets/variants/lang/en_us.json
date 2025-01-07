@@ -126,6 +126,7 @@
   "block.variants.quartz_beacon": "Quartz Beacon",
   "block.variants.quartz_ore": "Quartz Ore",
   "block.variants.deepslate_quartz_ore": "Deepslate Quartz Ore",
+  "block.variants.nether_coal_ore": "Nether Coal Ore",
   "block.variants.crimson_farmland": "Crimson Farmland",
   "block.variants.warped_farmland": "Warped Farmland",
   "block.variants.wither_bone_block": "Wither Bone Block",
@@ -220,6 +221,7 @@
   "block.variants.quartz_glass": "Quartz Glass",
   "block.variants.quartz_glass_pane": "Quartz Glass Pane",
   "block.variants.quartz_bars": "Quartz Bars",
+  "block.variants.quartz_ladder": "Quartz Ladder",
   "block.variants.quartz_chain": "Quartz Chain",
   "block.variants.golden_chain": "Golden Chain",
   "block.variants.diamond_chain": "Diamond Chain",
@@ -732,6 +734,7 @@
   "use_animation.minecraft.crossbow": "Crossbow",
   "use_animation.minecraft.trident": "Trident",
 
+  "tooltip.variants.behavior.ignite.ablaze": "Ablaze (%s)",
   "tooltip.variants.behavior.teleport_entity.diameter": "Teleport Diameter: %s Blocks",
   "tooltip.variants.behavior.teleport_entity.position": "Teleport Position: %s, %s, %s",
 

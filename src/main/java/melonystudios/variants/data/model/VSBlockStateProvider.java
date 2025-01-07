@@ -25,6 +25,7 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         simpleBlock(VSBlocks.QUARTZ_ORE.get());
         simpleBlock(VSBlocks.DEEPSLATE_QUARTZ_ORE.get());
         simpleBlock(VSBlocks.END_QUARTZ_ORE.get());
+        simpleBlock(VSBlocks.NETHER_COAL_ORE.get());
         simpleBlock(VSBlocks.RAW_DEBRIS_BLOCK.get());
         simpleBlock(VSBlocks.GLOW_BLACK_TULIP.get(), models().cross("glow_black_tulip", modLoc("block/glow_black_tulip")));
         simpleBlock(VSBlocks.POTTED_GLOW_BLACK_TULIP.get(), models().withExistingParent("potted_glow_black_tulip", modLoc("block/inventory_potted_plant")).texture("plant", "block/glow_black_tulip"));

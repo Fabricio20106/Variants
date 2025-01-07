@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:enderwood_bookshelf"
+    ]
+  },
+  "criteria": {
+    "has_any_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "variants:books"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:enderwood_bookshelf"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_any_book",
+      "has_the_recipe"
+    ]
+  ]
+}

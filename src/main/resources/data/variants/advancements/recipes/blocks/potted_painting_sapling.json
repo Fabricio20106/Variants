@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:potted_painting_sapling"
+    ]
+  },
+  "criteria": {
+    "has_flower_pot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:flower_pot"
+          }
+        ]
+      }
+    },
+    "has_painting_sapling": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:painting_sapling"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:potted_painting_sapling"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_flower_pot",
+      "has_painting_sapling",
+      "has_the_recipe"
+    ]
+  ]
+}

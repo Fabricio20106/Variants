@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:smooth_purpur"
+    ]
+  },
+  "criteria": {
+    "has_any_purpur_smeltables": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "variants:purpur_smeltables"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:smooth_purpur"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_any_purpur_smeltables",
+      "has_the_recipe"
+    ]
+  ]
+}

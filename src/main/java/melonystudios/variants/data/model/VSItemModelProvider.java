@@ -43,6 +43,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         block("deepslate_quartz_ore");
         block("end_quartz_ore");
         block("ender_nylium_quartz_ore");
+        block("nether_coal_ore");
         block("crimson_farmland");
         block("warped_farmland");
         block("wither_bone_block");
@@ -331,6 +332,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         blockItem("netherrack_lever");
         blockItem("end_stone_lever");
         blockItem("quartz_bars");
+        blockItem("quartz_ladder");
         blockItem("ender_roots");
         blockItem("ender_fungus");
         blockItem("warping_vines", "_plant");

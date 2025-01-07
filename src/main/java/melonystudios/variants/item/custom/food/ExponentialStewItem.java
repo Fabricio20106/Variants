@@ -99,9 +99,9 @@ public class ExponentialStewItem extends ConsumableItem {
         CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
         if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
             ConsumeBehavior behavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
-            if (behavior != null && canRunBehavior(consumableTag, behavior)) behavior.loadFromNBT(stewStack, world, livEntity, behavior.getBehaviorProperties(stewStack));
+            if (behavior != null && canRunBehavior(consumableTag, behavior)) behavior.loadFromNBT(stewStack, world, livEntity, this.getBehaviorProperties(stewStack));
         } else {
-            if (canRunBehavior(consumableTag, this.behavior)) this.behavior.loadFromNBT(stewStack, world, livEntity, this.behavior.getBehaviorProperties(stewStack));
+            if (canRunBehavior(consumableTag, this.behavior)) this.behavior.loadFromNBT(stewStack, world, livEntity, this.getBehaviorProperties(stewStack));
         }
 
         return isPlayerInCreative ? superStack : getBowlFromNBT(stewStack, livEntity);

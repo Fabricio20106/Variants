@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:stripped_painting_wood"
+    ]
+  },
+  "criteria": {
+    "has_stripped_painting_log": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:stripped_painting_log"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:stripped_painting_wood"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_stripped_painting_log",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:potted_ender_roots"
+    ]
+  },
+  "criteria": {
+    "has_flower_pot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:flower_pot"
+          }
+        ]
+      }
+    },
+    "has_ender_roots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:ender_roots"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:potted_ender_roots"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_flower_pot",
+      "has_ender_roots",
+      "has_the_recipe"
+    ]
+  ]
+}

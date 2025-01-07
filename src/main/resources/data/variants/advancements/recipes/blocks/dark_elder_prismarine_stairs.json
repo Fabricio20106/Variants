@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:dark_elder_prismarine_stairs"
+    ]
+  },
+  "criteria": {
+    "has_dark_elder_prismarine": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:dark_elder_prismarine"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:dark_elder_prismarine_stairs"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_dark_elder_prismarine",
+      "has_the_recipe"
+    ]
+  ]
+}

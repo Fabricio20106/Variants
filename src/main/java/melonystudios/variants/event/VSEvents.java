@@ -25,9 +25,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.MerchantOffer;
 import net.minecraft.loot.RandomValueRange;
-import net.minecraft.util.RegistryKey;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
@@ -40,7 +38,6 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.apache.logging.log4j.LogManager;
 
 import java.util.List;
 import java.util.Random;
@@ -70,29 +67,29 @@ public class VSEvents {
         MobSpawnInfoBuilder spawns = event.getSpawns();
 
         // World Generation
-        if (event.getCategory() == Biome.Category.PLAINS || event.getCategory() == Biome.Category.FOREST && VSConfigs.COMMON_CONFIGS.generateFlowerPatches.get()) {
+        if (event.getCategory() == Biome.Category.PLAINS || event.getCategory() == Biome.Category.FOREST && Variants.INSTANCE.getConfig().flowerPatches) {
             settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.VARIANTS_FLOWER_PATCH);
         }
-        if (event.getCategory() == Biome.Category.NETHER && VSConfigs.COMMON_CONFIGS.generateSoulLavaSprings.get()) {
+        if (event.getCategory() == Biome.Category.NETHER && Variants.INSTANCE.getConfig().soulLavaSprings) {
             settings.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, VSConfiguredFeatures.CLOSED_SOUL_LAVA_SPRING);
             settings.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, VSConfiguredFeatures.OPEN_SOUL_LAVA_SPRING);
         }
-        if (event.getCategory() == Biome.Category.THEEND && VSConfigs.COMMON_CONFIGS.generateEndCavesAndRavines.get()) {
+        if (event.getCategory() == Biome.Category.THEEND && Variants.INSTANCE.getConfig().endCavesAndRavines) {
             settings.addCarver(GenerationStage.Carving.AIR, VSConfiguredCarvers.END_CAVE);
             settings.addCarver(GenerationStage.Carving.AIR, VSConfiguredCarvers.END_RAVINE);
         }
 
-        if (VSConfigs.COMMON_CONFIGS.generateQuartzOre.get()) VSOreGeneration.generateQuartzOre(event);
-        if (VSConfigs.COMMON_CONFIGS.generateEndQuartzOre.get()) VSOreGeneration.generateEndQuartzOre(event);
+        if (Variants.INSTANCE.getConfig().quartzOre) VSOreGeneration.generateQuartzOre(event);
+        if (Variants.INSTANCE.getConfig().endQuartzOre) VSOreGeneration.generateEndQuartzOre(event);
+        if (Variants.INSTANCE.getConfig().netherCoalOre) VSOreGeneration.generateNetherCoalOre(event);
 
-        LogManager.getLogger().debug("Generating in biome: {}", event.getName());
-        if (biome(event, Biomes.CRIMSON_FOREST) && Variants.INSTANCE.getConfig().crimsonWheatPatches) {
+        if (event.getCategory() == Biome.Category.NETHER && Variants.INSTANCE.getConfig().crimsonWheatPatches) {
             settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.CRIMSON_WHEAT_PATCH);
         }
-        if (biome(event, Biomes.SOUL_SAND_VALLEY) && Variants.INSTANCE.getConfig().soulCarrotPatches) {
+        if (event.getCategory() == Biome.Category.NETHER && Variants.INSTANCE.getConfig().soulCarrotPatches) {
             settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.SOUL_CARROT_PATCH);
         }
-        if (biome(event, Biomes.WARPED_FOREST) && Variants.INSTANCE.getConfig().warpedPotatoPatches) {
+        if (event.getCategory() == Biome.Category.NETHER && Variants.INSTANCE.getConfig().warpedPotatoPatches) {
             settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.WARPED_POTATO_PATCH);
         }
         if (event.getCategory() == Biome.Category.NETHER && Variants.INSTANCE.getConfig().meltingBeetPatches) {
@@ -103,10 +100,6 @@ public class VSEvents {
         if (event.getCategory() == Biome.Category.OCEAN && VSConfigs.COMMON_CONFIGS.fishSpawning.get()) {
             spawns.addSpawn(EntityClassification.WATER_CREATURE, new MobSpawnInfo.Spawners(VSEntities.FISH.get(), 10, 3, 6));
         }
-    }
-
-    private static boolean biome(BiomeLoadingEvent event, RegistryKey<Biome> biome) {
-        return event.getName() != null && event.getName().equals(biome.getRegistryName());
     }
 
     @SubscribeEvent

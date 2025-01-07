@@ -1,6 +1,6 @@
 package melonystudios.variants.block.custom.nether;
 
-import melonystudios.variants.util.tag.VSBlockTags;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
 import net.minecraft.item.Item;
@@ -13,15 +13,17 @@ import java.util.function.Supplier;
 
 public class WildNetherCropBlock extends BushBlock {
     private final Supplier<Item> seedItem;
+    private final Block baseBlock;
 
-    public WildNetherCropBlock(Supplier<Item> seedItem, Properties properties) {
+    public WildNetherCropBlock(Supplier<Item> seedItem, Block baseBlock, Properties properties) {
         super(properties);
         this.seedItem = seedItem;
+        this.baseBlock = baseBlock;
     }
 
     @Override
     protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
-        return state.is(VSBlockTags.WILD_NETHER_CROPS_PLANTABLE_ON);
+        return state.is(this.baseBlock);
     }
 
     @Override

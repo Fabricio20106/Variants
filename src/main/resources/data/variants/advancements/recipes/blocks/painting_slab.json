@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:painting_slab"
+    ]
+  },
+  "criteria": {
+    "has_painting_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:painting_planks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:painting_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_painting_planks",
+      "has_the_recipe"
+    ]
+  ]
+}

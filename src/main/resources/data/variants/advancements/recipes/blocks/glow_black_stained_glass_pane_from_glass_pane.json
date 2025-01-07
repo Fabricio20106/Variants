@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:glow_black_stained_glass_pane_from_glass_pane"
+    ]
+  },
+  "criteria": {
+    "has_glass_pane": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:glass_panes/colorless"
+          }
+        ]
+      }
+    },
+    "has_glow_black_dye": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dyes/glow_black"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:glow_black_stained_glass_pane_from_glass_pane"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_glass_pane",
+      "has_glow_black_dye",
+      "has_the_recipe"
+    ]
+  ]
+}

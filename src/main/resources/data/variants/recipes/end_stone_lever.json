@@ -9,7 +9,7 @@
       "tag": "forge:rods/wooden"
     },
     "$": {
-      "item": "minecraft:end_stone"
+      "tag": "forge:end_stones"
     }
   },
   "result": {

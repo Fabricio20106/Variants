@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:quartz_chain"
+    ]
+  },
+  "criteria": {
+    "has_nether_quartz": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:gems/quartz"
+          }
+        ]
+      }
+    },
+    "has_quartz_shard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:nuggets/quartz"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:quartz_chain"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_nether_quartz",
+      "has_quartz_shard",
+      "has_the_recipe"
+    ]
+  ]
+}

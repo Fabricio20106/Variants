@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "minecraft:gravel"
+    "variants:nether_coal_ore"
   ]
 }

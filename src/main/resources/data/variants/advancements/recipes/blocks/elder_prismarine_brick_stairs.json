@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:elder_prismarine_brick_stairs"
+    ]
+  },
+  "criteria": {
+    "has_elder_prismarine_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:elder_prismarine_bricks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:elder_prismarine_brick_stairs"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_elder_prismarine_bricks",
+      "has_the_recipe"
+    ]
+  ]
+}

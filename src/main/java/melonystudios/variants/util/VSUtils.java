@@ -5,6 +5,7 @@ import com.google.common.collect.Maps;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.datafixers.util.Pair;
 import melonystudios.variants.Variants;
+import melonystudios.variants.consumable.custom.ApplyMobEffectsBehavior;
 import melonystudios.variants.crafting.custom.WoolArmorDyeingRecipe;
 import melonystudios.variants.effect.VSEffectInstance;
 import melonystudios.variants.event.custom.ConsumableTeleportEvent;
@@ -203,7 +204,7 @@ public class VSUtils {
 
                 if (instance.getAmplifier() > 0) component = new TranslationTextComponent("potion.withAmplifier", component, new TranslationTextComponent("potion.potency." + instance.getAmplifier()));
                 if (instance.getDuration() > 20) component = new TranslationTextComponent("potion.withDuration", component, EffectUtils.formatDuration(instance, durationFactor));
-                tooltip.add(component.withStyle(effect.getCategory().getTooltipFormatting()));
+                tooltip.add(ApplyMobEffectsBehavior.getCategoryTranslation(instance, component.withStyle(VSStyles.getFromRGB(effect.getColor()))));
             }
         }
 

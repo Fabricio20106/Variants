@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "variants:crimson_straw_bale"
+    ]
+  },
+  "criteria": {
+    "has_crimson_wheat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "variants:crimson_wheat"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "variants:crimson_straw_bale"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_crimson_wheat",
+      "has_the_recipe"
+    ]
+  ]
+}
