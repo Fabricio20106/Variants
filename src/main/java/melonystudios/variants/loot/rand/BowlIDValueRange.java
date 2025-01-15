@@ -2,7 +2,7 @@ package melonystudios.variants.loot.rand;
 
 import com.google.gson.*;
 import melonystudios.variants.Variants;
-import melonystudios.variants.consumable.bowl.BowlType;
+import melonystudios.variants.item.bowl.BowlType;
 import net.minecraft.loot.IRandomRange;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;

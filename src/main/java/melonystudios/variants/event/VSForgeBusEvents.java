@@ -5,14 +5,17 @@ import melonystudios.variants.block.VSBlocks;
 import melonystudios.variants.entity.VSEntities;
 import melonystudios.variants.event.custom.MappingManager;
 import melonystudios.variants.item.VSItems;
+import melonystudios.variants.item.VSModdedItems;
 import melonystudios.variants.item.VSWeaponry;
 import melonystudios.variants.world.biome.VSBiomes;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 
 // Copied from Caves & Cliffs Backport (by blackgear27)
@@ -43,6 +46,8 @@ public class VSForgeBusEvents {
         manager.remap("gold_cauldron", VSBlocks.GOLDEN_CAULDRON.get());
         manager.remap("gold_beacon", VSBlocks.GOLDEN_BEACON.get());
         manager.remap("ender_sprouts", VSBlocks.END_SPROUTS.get());
+        manager.remap("soul_lava_block", VSBlocks.SOUL_LAVA.get());
+        manager.remap("mushroom_stew_block", VSBlocks.MUSHROOM_STEW.get());
     }
 
     @SubscribeEvent
@@ -78,11 +83,13 @@ public class VSForgeBusEvents {
         manager.remap("creeper_powder_pot", VSItems.EXPLOSIVE_BLEND_POT.get());
         manager.remap("lava_glass_bottle", VSItems.LAVA_BOTTLE.get());
         manager.remap("milk_glass_bottle", VSItems.MILK_BOTTLE.get());
+        if (ModList.get().isLoaded("backmath")) manager.remap("hilary_bottle", VSModdedItems.HILLARY_BOTTLE);
         manager.remap("ender_boat", VSItems.ENDERWOOD_BOAT.get());
         manager.remap("ender_stick", VSItems.ENDERWOOD_STICK.get());
         manager.remap("ender_bowl", VSItems.ENDERWOOD_BOWL.get());
         manager.remap("soul_rod", VSItems.SOUL_BLAZE_ROD.get());
         manager.remap("soul_powder", VSItems.SOUL_BLAZE_POWDER.get());
+        manager.remap("gelatinous_magma_cream", Items.MAGMA_CREAM); // I don't know what to do with it / I don't know what it was supposed to do ~isa 8-1-25
         manager.remap("diamond_nugget", VSItems.DIAMOND_SHARD.get());
         manager.remap("emerald_nugget", VSItems.EMERALD_SHARD.get());
         manager.remap("quartz_nugget", VSItems.QUARTZ_SHARD.get());
@@ -101,11 +108,13 @@ public class VSForgeBusEvents {
     public static void remapEntityTypes(RegistryEvent.MissingMappings<EntityType<?>> event) {
         MappingManager manager = MappingManager.createEntityTypeMaps(Variants.MOD_ID, event);
         manager.remap("old_cod", VSEntities.FISH.get());
+        manager.remap("pornhey", EntityType.PIG); // never readding this thing
     }
 
     @SubscribeEvent
     public static void remapBiomes(RegistryEvent.MissingMappings<Biome> event) {
         MappingManager manager = MappingManager.createBiomeMaps(Variants.MOD_ID, event);
+        manager.remap("painting_wooded_forest", VSBiomes.PAINTINGWOOD_FOREST.get());
         manager.remap("ender_forest", VSBiomes.ENDERWOOD_FOREST.get());
     }
 }

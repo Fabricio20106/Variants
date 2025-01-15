@@ -30,8 +30,10 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSBlockTags.STORAGE_BLOCKS_NETHERITE_SCRAP).add(VSBlocks.RAW_DEBRIS_BLOCK.get());
         this.tag(Tags.Blocks.STORAGE_BLOCKS).addTag(VSBlockTags.STORAGE_BLOCKS_NETHERITE_SCRAP);
 
+        this.tag(VSBlockTags.ORES_CRYSTALLIZED_MAGMA_CREAM).add(VSBlocks.CRYSTALLIZED_MAGMA_CREAM_ORE.get());
         this.tag(Tags.Blocks.ORES_QUARTZ).add(VSBlocks.QUARTZ_ORE.get()).add(VSBlocks.DEEPSLATE_QUARTZ_ORE.get()).add(VSBlocks.END_QUARTZ_ORE.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get());
         this.tag(Tags.Blocks.ORES_COAL).add(VSBlocks.NETHER_COAL_ORE.get());
+        this.tag(Tags.Blocks.ORES).addTag(VSBlockTags.ORES_CRYSTALLIZED_MAGMA_CREAM);
 
         this.tag(Tags.Blocks.FENCE_GATES_WOODEN).add(VSBlocks.PAINTING_FENCE_GATE.get());
 
@@ -92,7 +94,8 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.FENCE_GATES).add(VSBlocks.PAINTING_FENCE_GATE.get()).add(VSBlocks.ENDERWOOD_FENCE_GATE.get());
         this.tag(BlockTags.WOODEN_PRESSURE_PLATES).add(VSBlocks.PAINTING_PRESSURE_PLATE.get()).add(VSBlocks.ENDERWOOD_PRESSURE_PLATE.get());
         this.tag(BlockTags.WOODEN_BUTTONS).add(VSBlocks.PAINTING_BUTTON.get()).add(VSBlocks.ENDERWOOD_BUTTON.get());
-        this.tag(BlockTags.WOODEN_DOORS).addTag(VSBlockTags.PAINTING_DOORS).add(VSBlocks.PAINTING_DOOR.get()).add(VSBlocks.ENDERWOOD_DOOR.get());
+        this.tag(BlockTags.WOODEN_DOORS).addTag(VSBlockTags.PAINTING_DOORS).add(VSBlocks.PAINTING_DOOR.get(), VSBlocks.ENDERWOOD_DOOR.get(), VSBlocks.OAK_TRAPDOOR_DOOR.get(), VSBlocks.BIRCH_TRAPDOOR_DOOR.get(),
+                VSBlocks.ACACIA_TRAPDOOR_DOOR.get(), VSBlocks.DARK_OAK_TRAPDOOR_DOOR.get(), VSBlocks.CRIMSON_TRAPDOOR_DOOR.get(), VSBlocks.ENDERWOOD_TRAPDOOR_DOOR.get());
         this.tag(BlockTags.WOODEN_TRAPDOORS).addTag(VSBlockTags.PAINTING_TRAPDOORS).add(VSBlocks.PAINTING_TRAPDOOR.get()).add(VSBlocks.ENDERWOOD_TRAPDOOR.get());
         this.tag(BlockTags.STANDING_SIGNS).add(VSBlocks.PAINTING_SIGN.get()).add(VSBlocks.ENDERWOOD_SIGN.get());
         this.tag(BlockTags.WALL_SIGNS).add(VSBlocks.PAINTING_WALL_SIGN.get()).add(VSBlocks.ENDERWOOD_WALL_SIGN.get());

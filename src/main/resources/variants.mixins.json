@@ -50,6 +50,7 @@
     "world.VSDimensionTypeMixin"
   ],
   "client": [
+    "VSMinecraftMixin",
     "entity.model.VSBipedModelMixin",
     "entity.renderer.VSBoatRendererMixin",
     "entity.renderer.VSHeldItemLayerMixin",

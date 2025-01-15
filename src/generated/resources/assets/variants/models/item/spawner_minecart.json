@@ -45,6 +45,12 @@
         "variants:mob_id": 7.0
       },
       "model": "variants:item/spawner_minecart_magma_cube"
+    },
+    {
+      "predicate": {
+        "variants:mob_id": 8.0
+      },
+      "model": "variants:item/spawner_minecart_pig"
     }
   ]
 }

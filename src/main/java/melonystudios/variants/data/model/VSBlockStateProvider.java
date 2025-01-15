@@ -26,6 +26,7 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         simpleBlock(VSBlocks.DEEPSLATE_QUARTZ_ORE.get());
         simpleBlock(VSBlocks.END_QUARTZ_ORE.get());
         simpleBlock(VSBlocks.NETHER_COAL_ORE.get());
+        simpleBlock(VSBlocks.CRYSTALLIZED_MAGMA_CREAM_ORE.get());
         simpleBlock(VSBlocks.RAW_DEBRIS_BLOCK.get());
         simpleBlock(VSBlocks.GLOW_BLACK_TULIP.get(), models().cross("glow_black_tulip", modLoc("block/glow_black_tulip")));
         simpleBlock(VSBlocks.POTTED_GLOW_BLACK_TULIP.get(), models().withExistingParent("potted_glow_black_tulip", modLoc("block/inventory_potted_plant")).texture("plant", "block/glow_black_tulip"));
@@ -153,6 +154,12 @@ public class VSBlockStateProvider extends VSBlockStateModels {
         axisBlock((RotatedPillarBlock) VSBlocks.NETHER_BRICK_PILLAR.get(), modLoc("block/nether_brick_pillar"), modLoc("block/nether_brick_pillar_top"));
 
         // Variants 1.8
+        doorBlock((DoorBlock) VSBlocks.OAK_TRAPDOOR_DOOR.get(), modLoc("block/oak_trapdoor_door_bottom"), modLoc("block/oak_trapdoor_door_top"));
+        doorBlock((DoorBlock) VSBlocks.BIRCH_TRAPDOOR_DOOR.get(), modLoc("block/birch_trapdoor_door_bottom"), modLoc("block/birch_trapdoor_door_top"));
+        doorBlock((DoorBlock) VSBlocks.ACACIA_TRAPDOOR_DOOR.get(), modLoc("block/acacia_trapdoor_door_bottom"), modLoc("block/acacia_trapdoor_door_top"));
+        doorBlock((DoorBlock) VSBlocks.DARK_OAK_TRAPDOOR_DOOR.get(), modLoc("block/dark_oak_trapdoor_door_bottom"), modLoc("block/dark_oak_trapdoor_door_top"));
+        doorBlock((DoorBlock) VSBlocks.CRIMSON_TRAPDOOR_DOOR.get(), modLoc("block/crimson_trapdoor_door_bottom"), modLoc("block/crimson_trapdoor_door_top"));
+        doorBlock((DoorBlock) VSBlocks.ENDERWOOD_TRAPDOOR_DOOR.get(), modLoc("block/enderwood_trapdoor_door_bottom"), modLoc("block/enderwood_trapdoor_door_top"));
         axisBlock((RotatedPillarBlock) VSBlocks.CRIMSON_STRAW_BALE.get(), modLoc("block/crimson_straw_bale_side"), modLoc("block/crimson_straw_bale_top"));
         wildCrop(VSBlocks.WILD_CRIMSON_WHEAT);
         wildCrop(VSBlocks.WILD_SOUL_CARROTS);

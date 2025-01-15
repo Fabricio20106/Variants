@@ -10,6 +10,8 @@ public class VSBlockTags {
     // Forge Tags
     public static final ITag.INamedTag<Block> STORAGE_BLOCKS_NETHERITE_SCRAP = forge("storage_blocks/netherite_scrap");
 
+    public static final ITag.INamedTag<Block> ORES_CRYSTALLIZED_MAGMA_CREAM = forge("ores/crystallized_magma_cream");
+
     public static final ITag.INamedTag<Block> GLASS_GLOW_BLACK = forge("glass/glow_black");
     public static final ITag.INamedTag<Block> GLASS_PANES_GLOW_BLACK = forge("glass_panes/glow_black");
 

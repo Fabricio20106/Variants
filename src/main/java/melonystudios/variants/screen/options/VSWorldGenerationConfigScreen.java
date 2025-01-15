@@ -25,7 +25,8 @@ import static melonystudios.variants.screen.VSConfigEntries.*;
 import static melonystudios.variants.screen.VSConfigEntries.END_CAVES_AND_RAVINES;
 
 public class VSWorldGenerationConfigScreen extends AbstractVSConfigScreen {
-    public static List<AbstractOption> CONFIG_ENTRIES = Lists.newArrayList(FLOWER_PATCHES, CRIMSON_WHEAT_PATCHES, SOUL_CARROT_PATCHES, WARPED_POTATO_PATCHES, MELTING_BEET_PATCHES, GENERATE_QUARTZ_ORE, GENERATE_END_QUARTZ_ORE, SOUL_LAVA_SPRINGS, END_CAVES_AND_RAVINES);
+    public static List<AbstractOption> CONFIG_ENTRIES = Lists.newArrayList(PAINTINGWOOD_FOREST, AZURE_FIELDS, FLOWER_PATCHES, CRIMSON_WHEAT_PATCHES, SOUL_CARROT_PATCHES, WARPED_POTATO_PATCHES,
+            MELTING_BEET_PATCHES, GENERATE_QUARTZ_ORE, GENERATE_END_QUARTZ_ORE, GENERATE_NETHER_COAL_ORE, GENERATE_CRYSTALLIZED_MAGMA_CREAM_ORE, SOUL_LAVA_SPRINGS, END_CAVES_AND_RAVINES);
     private final AbstractOption[] smallOptions;
     private OptionsRowList list;
     private TextFieldWidget endSubstitutionBox;

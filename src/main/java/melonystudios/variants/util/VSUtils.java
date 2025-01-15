@@ -81,6 +81,7 @@ public class VSUtils {
         return new ResourceLocation(name);
     }
 
+    // Makes a resource location with a custom default namespace (instead of always using "minecraft").
     public static ResourceLocation namespace(String namespace, String name) {
         String[] location = decompose(namespace, name);
         if (StringUtils.isEmpty(location[0])) {
@@ -139,6 +140,7 @@ public class VSUtils {
                         case "minecraft:silverfish": return 5;
                         case "minecraft:blaze": return 6;
                         case "minecraft:magma_cube": return 7;
+                        case "minecraft:pig": return 8;
                         default: return 0;
                     }
                 }
@@ -161,7 +163,8 @@ public class VSUtils {
         return event;
     }
 
-    public static void teleportToRandomPosition(ItemStack stack, World world, LivingEntity livEntity, float teleportDiameter) {
+    // Teleports the entity to a random position within the specified diameter.
+    public static void teleportWithinDiameter(World world, LivingEntity livEntity, float teleportDiameter) {
         if (!world.isClientSide) {
             double x = livEntity.getX();
             double y = livEntity.getY();
@@ -184,10 +187,12 @@ public class VSUtils {
         }
     }
 
+    // Adds all the effects a food item gives to its tooltip (using the same style as the "apply effects" behavior).
     @OnlyIn(Dist.CLIENT)
     public static void addEffectsTooltip(ItemStack stack, List<ITextComponent> tooltip, float durationFactor) {
         List<Pair<EffectInstance, Float>> effectsList = stack.getItem().getFoodProperties().getEffects();
         List<Pair<Attribute, AttributeModifier>> attributesList = Lists.newArrayList();
+
         if (!effectsList.isEmpty()) {
             for (Pair<EffectInstance, Float> instancePair : effectsList) {
                 EffectInstance instance = instancePair.getFirst();
@@ -260,18 +265,17 @@ public class VSUtils {
 
     // Custom stack loading method that supports integer stack counts and string tag parsing.
     public static ItemStack loadStack(CompoundNBT tag) {
-        Item item;
+        Item item = Items.AIR;
+        int count = 1;
+
         if (tag.contains("id", Constants.TagTypes.STRING)) {
             item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(tag.getString("id")));
-        } else {
-            item = Items.AIR;
         }
-        int count;
+
         if (tag.contains("count", Constants.TagTypes.ANY_NUMERIC)) {
             count = tag.getInt("count");
-        } else {
-            count = 1;
         }
+
         ItemStack stack = new ItemStack(item, count);
 
         if (tag.contains("components", Constants.TagTypes.STRING)) {
@@ -285,11 +289,10 @@ public class VSUtils {
 
         if (tag.contains("components", Constants.TagTypes.COMPOUND)) {
             stack.setTag(tag.getCompound("components"));
-            stack.getItem().verifyTagAfterLoad(tag);
         } else if (tag.contains("tag", Constants.TagTypes.COMPOUND)) {
             stack.setTag(tag.getCompound("tag"));
-            stack.getItem().verifyTagAfterLoad(tag);
         }
+        stack.getItem().verifyTagAfterLoad(tag);
 
         if (stack.getItem().isDamageable(stack)) stack.setDamageValue(stack.getDamageValue());
         return stack;

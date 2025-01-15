@@ -48,9 +48,13 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.loot.RandomRanges;
+import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.Heightmap;
+import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ExtensionPoint;
@@ -62,6 +66,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -69,6 +74,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+
+import static net.minecraftforge.common.BiomeDictionary.Type.*;
 
 @Mod(Variants.MOD_ID)
 public class Variants {
@@ -129,6 +136,17 @@ public class Variants {
 
         EntitySpawnPlacementRegistry.register(VSEntities.FISH.get(), EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractFishEntity::checkFishSpawnRules);
 
+        RegistryKey<Biome> paintingwoodForestKey = RegistryKey.create(ForgeRegistries.Keys.BIOMES, VSBiomes.PAINTINGWOOD_FOREST.getId());
+        RegistryKey<Biome> azureFieldsKey = RegistryKey.create(ForgeRegistries.Keys.BIOMES, VSBiomes.AZURE_FIELDS.getId());
+        if (INSTANCE.getConfig().paintingwoodForest) {
+            BiomeDictionary.addTypes(paintingwoodForestKey, OVERWORLD, FOREST, LUSH);
+            BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(paintingwoodForestKey, 7));
+        }
+        if (INSTANCE.getConfig().azureFields) {
+            BiomeDictionary.addTypes(azureFieldsKey, OVERWORLD, PLAINS, LUSH);
+            BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(azureFieldsKey, 5));
+        }
+
         VSConfiguredFeatures.init();
         VSConfiguredCarvers.init();
         VSSurfaceBuilders.init();
@@ -138,6 +156,7 @@ public class Variants {
         VSVanillaCompatibility.compostables();
         VSVanillaCompatibility.tillables();
         VSVanillaCompatibility.flammables();
+        VSVanillaCompatibility.flattenables();
         VSVanillaCompatibility.addBed(VSBlocks.GLOW_BLACK_BED.get());
 
         RandomRanges.GENERATORS.put(variants("texture_id"), BowlIDValueRange.class);
@@ -206,12 +225,19 @@ public class Variants {
     }
 
     private void upgradeConfig(VSJSONConfig config) {
-        if (config.version == 1805) {
-            config.version = 1807;
-            config.crimsonWheatPatches = true;
-            config.soulCarrotPatches = true;
-            config.warpedPotatoPatches = true;
-            config.meltingBeetPatches = true;
+        switch (config.version) {
+            case 1805: {
+                config.version = 1807;
+                config.crimsonWheatPatches = true;
+                config.soulCarrotPatches = true;
+                config.warpedPotatoPatches = true;
+                config.meltingBeetPatches = true;
+                break;
+            }
+            case 1807: {
+                config.version = 1808;
+                break;
+            }
         }
     }
 
@@ -262,6 +288,12 @@ public class Variants {
         RenderTypeLookup.setRenderLayer(VSBlocks.SOUL_BREWING_STAND.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.ENDERWOOD_TRAPDOOR.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.ENDERWOOD_DOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.OAK_TRAPDOOR_DOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.BIRCH_TRAPDOOR_DOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.ACACIA_TRAPDOOR_DOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.DARK_OAK_TRAPDOOR_DOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.CRIMSON_TRAPDOOR_DOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(VSBlocks.ENDERWOOD_TRAPDOOR_DOOR.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.ENDER_ROOTS.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.POTTED_ENDER_ROOTS.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(VSBlocks.END_SPROUTS.get(), RenderType.cutout());

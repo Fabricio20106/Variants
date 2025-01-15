@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import cpw.mods.modlauncher.api.LamdbaExceptionUtils;
-import melonystudios.variants.consumable.bowl.BowlType;
+import melonystudios.variants.item.bowl.BowlType;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DirectoryCache;
 import net.minecraft.data.IDataProvider;

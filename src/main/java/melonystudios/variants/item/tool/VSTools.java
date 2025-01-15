@@ -12,7 +12,7 @@ public class VSTools implements IItemTier {
     public static final VSTools ANDESITE = new VSTools(1, 131, 4, 1, 5, () -> Ingredient.of(VSItemTags.CM_ANDESITE));
     public static final VSTools DIORITE = new VSTools(1, 131, 4, 1, 5, () -> Ingredient.of(VSItemTags.CM_DIORITE));
     public static final VSTools GRANITE = new VSTools(1, 131, 4, 1, 5, () -> Ingredient.of(VSItemTags.CM_GRANITE));
-    public static final VSTools MAGMA = new VSTools(1, 250, 4, 1, 5, () -> Ingredient.of(VSItemTags.CM_MAGMA_BLOCK));
+    public static final VSTools MAGMA = new VSTools(2, 600, 4, 2, 7, () -> Ingredient.of(VSItemTags.CM_MAGMA_BLOCK));
     public static final VSTools END_STONE = new VSTools(1, 250, 4, 1, 5, () -> Ingredient.of(VSItemTags.CM_END_STONE));
     public static final VSTools EMERALD = new VSTools(3, 1561, 5, 3, 15, () -> Ingredient.of(Tags.Items.GEMS_EMERALD));
     public static final VSTools QUARTZ = new VSTools(2, 350, 6, 2, 14, () -> Ingredient.of(Tags.Items.GEMS_QUARTZ));

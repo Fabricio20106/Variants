@@ -12,6 +12,8 @@ public class VSModdedItems {
     public static final Item POISON_BROWN_DYE = null;
     @ObjectHolder("backmath:insomnian_dye")
     public static final Item INSOMNIAN_DYE = null;
+    @ObjectHolder("backmath:hillary_bottle")
+    public static final Item HILLARY_BOTTLE = null;
     @ObjectHolder("f10elements:inno_dye")
     public static final Item INNO_DYE = null;
     @ObjectHolder("edits:soph_potion")

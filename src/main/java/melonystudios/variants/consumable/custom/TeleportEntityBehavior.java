@@ -70,8 +70,9 @@ public class TeleportEntityBehavior extends ConsumeBehavior {
     @Override
     public void runBehavior(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
         if (world.isClientSide) return;
-        if (this.randomTeleport) VSUtils.teleportToRandomPosition(stack, world, livEntity, this.teleportDiameter);
-        else {
+        if (this.randomTeleport) {
+            VSUtils.teleportWithinDiameter(world, livEntity, this.teleportDiameter);
+        } else {
             livEntity.teleportTo(this.teleportPosition.getX() + 0.5, this.teleportPosition.getY() + 0.5, this.teleportPosition.getZ() + 0.5);
             livEntity.fallDistance = 0;
             for (int i = 0; i < 128; ++i) {

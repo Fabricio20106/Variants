@@ -18,6 +18,8 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.Potions;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -228,6 +230,16 @@ public class NBTUtils {
         int[] pos = tag.getIntArray(tagName);
         if (pos.length <= 3) return new BlockPos(pos[0], pos[1], pos[2]);
         return new BlockPos(0, 0, 0);
+    }
+
+    public static ItemStack setPotion(ItemStack stack, Potion potion) {
+        ResourceLocation potionLocation = ForgeRegistries.POTION_TYPES.getKey(potion);
+        if (potion == Potions.EMPTY) stack.removeTagKey("potion");
+        else stack.getOrCreateTag().putString("potion", potionLocation.toString());
+
+        if (!potion.getEffects().isEmpty()) NBTUtils.writeEffectsOntoNBT(VSUtils.convertEffectList(potion.getEffects()));
+
+        return stack;
     }
 
     public static String stringOrDefault(String name, CompoundNBT tag, String fallback) {

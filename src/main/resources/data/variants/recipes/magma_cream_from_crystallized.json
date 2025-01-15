@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "forge:raw_materials/crystallized_magma_cream"
+  },
+  "result": "minecraft:magma_cream",
+  "experience": 0.45,
+  "cookingtime": 200
+}

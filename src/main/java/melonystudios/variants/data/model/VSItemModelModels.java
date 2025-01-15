@@ -1,10 +1,10 @@
 package melonystudios.variants.data.model;
 
 import melonystudios.variants.Variants;
+import melonystudios.variants.item.bowl.BowlType;
+import melonystudios.variants.item.bowl.BowlTypes;
 import melonystudios.variants.item.custom.bottle.GlassType;
 import melonystudios.variants.item.custom.bottle.StainedFullGlassBottleItem;
-import melonystudios.variants.consumable.bowl.BowlType;
-import melonystudios.variants.consumable.bowl.BowlTypes;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;

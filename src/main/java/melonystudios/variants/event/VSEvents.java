@@ -9,10 +9,10 @@ import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.entity.VSEntities;
 import melonystudios.variants.item.VSItems;
 import melonystudios.variants.item.VSWeaponry;
+import melonystudios.variants.item.bowl.BowlTypeManager;
 import melonystudios.variants.item.custom.armor.WoolArmorItem;
 import melonystudios.variants.item.custom.armor.color.WoolArmorColorManager;
 import melonystudios.variants.item.custom.bottle.StainedFullGlassBottleItem;
-import melonystudios.variants.consumable.bowl.BowlTypeManager;
 import melonystudios.variants.util.damage.DamageSourceManager;
 import melonystudios.variants.world.carver.VSConfiguredCarvers;
 import melonystudios.variants.world.feature.VSConfiguredFeatures;
@@ -82,6 +82,7 @@ public class VSEvents {
         if (Variants.INSTANCE.getConfig().quartzOre) VSOreGeneration.generateQuartzOre(event);
         if (Variants.INSTANCE.getConfig().endQuartzOre) VSOreGeneration.generateEndQuartzOre(event);
         if (Variants.INSTANCE.getConfig().netherCoalOre) VSOreGeneration.generateNetherCoalOre(event);
+        if (Variants.INSTANCE.getConfig().crystallizedMagmaCreamOre) VSOreGeneration.generateCrystallizedMagmaCreamOre(event);
 
         if (event.getCategory() == Biome.Category.NETHER && Variants.INSTANCE.getConfig().crimsonWheatPatches) {
             settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.CRIMSON_WHEAT_PATCH);

@@ -45,11 +45,14 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(VSItemTags.NUGGETS_QUARTZ).add(VSItems.QUARTZ_SHARD.get());
         this.tag(Tags.Items.NUGGETS).addTag(VSItemTags.NUGGETS_DIAMOND).addTag(VSItemTags.NUGGETS_EMERALD).addTag(VSItemTags.NUGGETS_QUARTZ).addTag(VSItemTags.NUGGETS_PURPLE_IRON);
 
+        this.tag(VSItemTags.RAW_MATERIALS_CRYSTALLIZED_MAGMA_CREAM).add(VSItems.CRYSTALLIZED_MAGMA_CREAM.get());
         this.tag(VSItemTags.RAW_MATERIALS_NETHERITE_SCRAP).add(VSItems.RAW_DEBRIS.get());
-        this.tag(VSItemTags.RAW_MATERIALS).addTag(VSItemTags.RAW_MATERIALS_NETHERITE_SCRAP);
+        this.tag(VSItemTags.RAW_MATERIALS).addTag(VSItemTags.RAW_MATERIALS_CRYSTALLIZED_MAGMA_CREAM).addTag(VSItemTags.RAW_MATERIALS_NETHERITE_SCRAP);
 
+        this.tag(VSItemTags.ORES_CRYSTALLIZED_MAGMA_CREAM).add(VSItems.CRYSTALLIZED_MAGMA_CREAM_ORE.get());
         this.tag(Tags.Items.ORES_QUARTZ).add(VSItems.QUARTZ_ORE.get()).add(VSItems.DEEPSLATE_QUARTZ_ORE.get()).add(VSItems.END_QUARTZ_ORE.get()).add(VSItems.ENDER_NYLIUM_QUARTZ_ORE.get());
         this.tag(Tags.Items.ORES_COAL).add(VSItems.NETHER_COAL_ORE.get());
+        this.tag(Tags.Items.ORES).addTag(VSItemTags.ORES_CRYSTALLIZED_MAGMA_CREAM);
 
         this.tag(Tags.Items.FENCE_GATES_WOODEN).add(VSItems.PAINTING_FENCE_GATE.get());
 
@@ -190,7 +193,8 @@ public class VSItemTagsProvider extends ItemTagsProvider {
         this.tag(ItemTags.WOODEN_FENCES).add(VSItems.PAINTING_FENCE.get()).add(VSItems.ENDERWOOD_FENCE.get());
         this.tag(ItemTags.WOODEN_PRESSURE_PLATES).add(VSItems.PAINTING_PRESSURE_PLATE.get()).add(VSItems.ENDERWOOD_PRESSURE_PLATE.get());
         this.tag(ItemTags.WOODEN_BUTTONS).add(VSItems.PAINTING_BUTTON.get()).add(VSItems.ENDERWOOD_BUTTON.get());
-        this.tag(ItemTags.WOODEN_DOORS).addTag(VSItemTags.PAINTING_DOORS).add(VSItems.PAINTING_DOOR.get()).add(VSItems.ENDERWOOD_DOOR.get());
+        this.tag(ItemTags.WOODEN_DOORS).addTag(VSItemTags.PAINTING_DOORS).add(VSItems.PAINTING_DOOR.get(), VSItems.ENDERWOOD_DOOR.get(), VSItems.OAK_TRAPDOOR_DOOR.get(), VSItems.BIRCH_TRAPDOOR_DOOR.get(),
+                VSItems.ACACIA_TRAPDOOR_DOOR.get(), VSItems.DARK_OAK_TRAPDOOR_DOOR.get(), VSItems.CRIMSON_TRAPDOOR_DOOR.get(), VSItems.ENDERWOOD_TRAPDOOR_DOOR.get());
         this.tag(ItemTags.WOODEN_TRAPDOORS).addTag(VSItemTags.PAINTING_TRAPDOORS).add(VSItems.PAINTING_TRAPDOOR.get()).add(VSItems.ENDERWOOD_TRAPDOOR.get());
         this.tag(ItemTags.SIGNS).add(VSItems.PAINTING_SIGN.get()).add(VSItems.ENDERWOOD_SIGN.get());
 

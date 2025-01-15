@@ -42,7 +42,7 @@ public class VSWeaponry {
     public static final RegistryObject<Item> QUARTZ_SHOVEL = ITEMS.register("quartz_shovel", () -> new ShovelItem(VSTools.QUARTZ, 1.5F, -3, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> QUARTZ_AXE = ITEMS.register("quartz_axe", () -> new AxeItem(VSTools.QUARTZ, 7, -3.2F, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> QUARTZ_HOE = ITEMS.register("quartz_hoe", () -> new HoeItem(VSTools.QUARTZ, -1, -2, new Item.Properties().tab(VSWeaponryTab.TAB)));
-    public static final RegistryObject<Item> MAGMA_SWORD = ITEMS.register("magma_sword", () -> new MagmaSwordItem(VSTools.MAGMA, 3, -2.4F, new Item.Properties().tab(VSWeaponryTab.TAB)));
+    public static final RegistryObject<Item> MAGMA_SWORD = ITEMS.register("magma_sword", () -> new MagmaSwordItem(VSTools.MAGMA, 3, -2.4F, new Item.Properties().rarity(Rarity.UNCOMMON).tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> AMETHYST_SWORD = ITEMS.register("amethyst_sword", () -> new SwordItem(VSTools.AMETHYST, 3, -2.4F, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> COPPER_SWORD = ITEMS.register("copper_sword", () -> new SwordItem(VSTools.COPPER, 3, -2.4F, new Item.Properties().tab(VSWeaponryTab.TAB)));
     public static final RegistryObject<Item> DEBUG_BOW = ITEMS.register("debug_bow", () -> new DebugBowItem(new Item.Properties().durability(3840).tab(VSWeaponryTab.TAB)));

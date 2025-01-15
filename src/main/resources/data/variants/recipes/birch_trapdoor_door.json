@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_door",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:birch_trapdoor"
+    }
+  },
+  "result": {
+    "item": "variants:birch_trapdoor_door",
+    "count": 2
+  }
+}

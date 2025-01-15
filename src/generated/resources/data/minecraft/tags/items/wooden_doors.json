@@ -3,6 +3,12 @@
   "values": [
     "#variants:painting_doors",
     "variants:painting_door",
-    "variants:enderwood_door"
+    "variants:enderwood_door",
+    "variants:oak_trapdoor_door",
+    "variants:birch_trapdoor_door",
+    "variants:acacia_trapdoor_door",
+    "variants:dark_oak_trapdoor_door",
+    "variants:crimson_trapdoor_door",
+    "variants:enderwood_trapdoor_door"
   ]
 }

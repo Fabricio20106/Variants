@@ -1,7 +1,7 @@
 package melonystudios.variants.data.bowltype;
 
 import melonystudios.variants.Variants;
-import melonystudios.variants.consumable.bowl.BowlTypes;
+import melonystudios.variants.item.bowl.BowlTypes;
 import net.minecraft.data.DataGenerator;
 
 import javax.annotation.Nonnull;

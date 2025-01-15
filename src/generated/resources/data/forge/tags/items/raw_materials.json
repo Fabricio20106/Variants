@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "#forge:raw_materials/crystallized_magma_cream",
     "#forge:raw_materials/netherite_scrap"
   ]
 }

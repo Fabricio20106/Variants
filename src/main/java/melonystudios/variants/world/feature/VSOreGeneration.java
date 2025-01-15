@@ -36,6 +36,12 @@ public class VSOreGeneration {
         }
     }
 
+    public static void generateCrystallizedMagmaCreamOre(final BiomeLoadingEvent event) {
+        if (event.getCategory().equals(Biome.Category.NETHER)) {
+            generateOre(event.getGeneration(), OreFeatureConfig.FillerBlockType.NETHERRACK, VSBlocks.CRYSTALLIZED_MAGMA_CREAM_ORE.get().defaultBlockState(), 3, 0, 32, 6);
+        }
+    }
+
     // End Ores
     public static void generateEndQuartzOre(final BiomeLoadingEvent event) {
         if (event.getCategory().equals(Biome.Category.THEEND)) {

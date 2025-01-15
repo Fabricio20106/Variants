@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
 import java.util.Map;
 
 public class VSItemModelProvider extends VSItemModelModels {
-    public static final Map<String, Integer> DEFAULT_MOB_MAP = new ImmutableMap.Builder<String, Integer>().put("zombie", 1).put("skeleton", 2).put("spider", 3).put("cave_spider", 4).put("silverfish", 5).put("blaze", 6).put("magma_cube", 7).build();
+    public static final Map<String, Integer> DEFAULT_MOB_MAP = new ImmutableMap.Builder<String, Integer>().put("zombie", 1).put("skeleton", 2).put("spider", 3).put("cave_spider", 4).put("silverfish", 5).put("blaze", 6).put("magma_cube", 7).put("pig", 8).build();
 
     public VSItemModelProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
         super(generator, Variants.MOD_ID, fileHelper);
@@ -44,6 +44,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         block("end_quartz_ore");
         block("ender_nylium_quartz_ore");
         block("nether_coal_ore");
+        block("crystallized_magma_cream_ore");
         block("crimson_farmland");
         block("warped_farmland");
         block("wither_bone_block");
@@ -241,6 +242,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(generated, "weathered_copper_ingot");
         standard(generated, "oxidized_copper_ingot");
         standard(generated, "raw_debris");
+        standard(generated, "crystallized_magma_cream");
         standard(generated, "mushroom_stew_bucket");
         standard(generated, "beetroot_soup_bucket");
         standard(generated, "rabbit_stew_bucket");
@@ -283,6 +285,12 @@ public class VSItemModelProvider extends VSItemModelModels {
         standard(generated, "graham_door");
         standard(generated, "first_door");
         standard(generated, "enderwood_door");
+        standard(generated, "oak_trapdoor_door");
+        standard(generated, "birch_trapdoor_door");
+        standard(generated, "acacia_trapdoor_door");
+        standard(generated, "dark_oak_trapdoor_door");
+        standard(generated, "crimson_trapdoor_door");
+        standard(generated, "enderwood_trapdoor_door");
         standard(generated, "diamond_bell");
         standard(generated, "soul_brewing_stand");
         standard(generated, "painting_sign");

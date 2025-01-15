@@ -9,8 +9,6 @@ import melonystudios.variants.data.recipe.VSExpoStewsRecipeProvider;
 import melonystudios.variants.data.recipe.VSStainedBottlesRecipeProvider;
 import melonystudios.variants.data.report.VSBiomeReportsProvider;
 import melonystudios.variants.data.report.VSDamageSourceReportsProvider;
-import melonystudios.variants.data.sound.VSSoundDefinitionsProvider;
-import melonystudios.variants.data.sound.VSVanillaSoundDefinitionsProvider;
 import melonystudios.variants.data.tag.*;
 import melonystudios.variants.entity.VSEntities;
 import net.minecraft.data.DataGenerator;
@@ -54,8 +52,6 @@ public class VSEventBusEvents {
         generator.addProvider(new VSWoolArmorColorProvider(generator));
         generator.addProvider(new VSWoolArmorColorProvider.VanillaWACProvider(generator));
         generator.addProvider(new VSWoolArmorColorProvider.F10ElementsWACProvider(generator));
-        generator.addProvider(new VSSoundDefinitionsProvider(generator, fileHelper));
-        generator.addProvider(new VSVanillaSoundDefinitionsProvider(generator, fileHelper));
     }
 
     @SubscribeEvent

@@ -2,9 +2,8 @@ package melonystudios.variants.item.custom.bottle;
 
 import melonystudios.variants.item.VSItems;
 import melonystudios.variants.item.custom.VSItem;
-import melonystudios.variants.item.custom.food.VSConsumable;
 import melonystudios.variants.util.Constants;
-import melonystudios.variants.util.VanillaUtils;
+import melonystudios.variants.util.NBTUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.command.impl.data.EntityDataAccessor;
 import net.minecraft.entity.AreaEffectCloudEntity;
@@ -33,7 +32,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-@VSConsumable
 public class StainedEmptyGlassBottleItem extends VSItem {
     private final int glassColor;
     private final ResourceLocation colorName;
@@ -106,7 +104,7 @@ public class StainedEmptyGlassBottleItem extends VSItem {
 
                     if (world.getFluidState(hitPos).is(FluidTags.WATER)) {
                         world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.BOTTLE_FILL, SoundCategory.NEUTRAL, 1, 1);
-                        return ActionResult.sidedSuccess(this.turnBottleIntoItem(handStack, player, VanillaUtils.setPotion(new ItemStack(VSItems.STAINED_POTION.get()), Potions.WATER)), world.isClientSide);
+                        return ActionResult.sidedSuccess(this.turnBottleIntoItem(handStack, player, NBTUtils.setPotion(new ItemStack(VSItems.STAINED_POTION.get()), Potions.WATER)), world.isClientSide);
                     }
                 }
                 return ActionResult.pass(handStack);

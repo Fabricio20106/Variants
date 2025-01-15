@@ -7,9 +7,11 @@ import java.lang.reflect.Type;
 
 public class VSJSONConfig {
     // Latest Variants version. Update when I add, change or remove a config.
-    public int version = 1807;
+    public int version = 1808;
 
     // World Generation
+    public boolean paintingwoodForest = true;
+    public boolean azureFields = true;
     public boolean flowerPatches = true;
     public boolean crimsonWheatPatches = true;
     public boolean soulCarrotPatches = true;
@@ -18,6 +20,7 @@ public class VSJSONConfig {
     public boolean quartzOre = true;
     public boolean endQuartzOre = true;
     public boolean netherCoalOre = true;
+    public boolean crystallizedMagmaCreamOre = true;
     public boolean soulLavaSprings = true;
     public boolean endCavesAndRavines = true;
     public ResourceLocation substituteTheEndBiomeWith = new ResourceLocation("the_end");
@@ -30,6 +33,8 @@ public class VSJSONConfig {
 
             // World Generation
             JsonObject worldGeneration = new JsonObject();
+            worldGeneration.addProperty("paintingwood_forest", config.paintingwoodForest);
+            worldGeneration.addProperty("azure_fields", config.azureFields);
             worldGeneration.addProperty("flower_patches", config.flowerPatches);
             worldGeneration.addProperty("crimson_wheat_patches", config.crimsonWheatPatches);
             worldGeneration.addProperty("soul_carrot_patches", config.soulCarrotPatches);
@@ -38,6 +43,7 @@ public class VSJSONConfig {
             worldGeneration.addProperty("quartz_ore", config.quartzOre);
             worldGeneration.addProperty("end_quartz_ore", config.endQuartzOre);
             worldGeneration.addProperty("nether_coal_ore", config.netherCoalOre);
+            worldGeneration.addProperty("crystallized_magma_cream_ore", config.crystallizedMagmaCreamOre);
             worldGeneration.addProperty("soul_lava_springs", config.soulLavaSprings);
             worldGeneration.addProperty("end_caves_and_ravines", config.endCavesAndRavines);
             worldGeneration.addProperty("substitute_the_end_biome_with", config.substituteTheEndBiomeWith.toString());
@@ -55,6 +61,8 @@ public class VSJSONConfig {
 
                 // World Generation
                 JsonObject worldGeneration = object.get("world_generation").getAsJsonObject();
+                config.paintingwoodForest = worldGeneration.get("paintingwood_forest").getAsBoolean();
+                config.azureFields = worldGeneration.get("azure_fields").getAsBoolean();
                 config.flowerPatches = worldGeneration.get("flower_patches").getAsBoolean();
                 config.crimsonWheatPatches = worldGeneration.get("crimson_wheat_patches").getAsBoolean();
                 config.soulCarrotPatches = worldGeneration.get("soul_carrot_patches").getAsBoolean();
@@ -63,6 +71,7 @@ public class VSJSONConfig {
                 config.quartzOre = worldGeneration.get("quartz_ore").getAsBoolean();
                 config.endQuartzOre = worldGeneration.get("end_quartz_ore").getAsBoolean();
                 config.netherCoalOre = worldGeneration.get("nether_coal_ore").getAsBoolean();
+                config.crystallizedMagmaCreamOre = worldGeneration.get("crystallized_magma_cream_ore").getAsBoolean();
                 config.soulLavaSprings = worldGeneration.get("soul_lava_springs").getAsBoolean();
                 config.endCavesAndRavines = worldGeneration.get("end_caves_and_ravines").getAsBoolean();
                 config.substituteTheEndBiomeWith = new ResourceLocation(worldGeneration.get("substitute_the_end_biome_with").getAsString());

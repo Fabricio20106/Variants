@@ -7,7 +7,6 @@ import melonystudios.variants.util.VSStyles;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.UseAction;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.StringUtils;
 import net.minecraft.util.text.ITextComponent;
@@ -43,8 +42,8 @@ public class IgniteBehavior extends ConsumeBehavior {
 
     @Override
     public void loadFromNBT(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
-        IgniteBehavior igniteBehavior = new IgniteBehavior(anyNumericOrIntDefault("ticks_on_fire", propertiesTag, 100));
-        igniteBehavior.runBehavior(stack, world, livEntity, propertiesTag);
+        IgniteBehavior behavior = new IgniteBehavior(anyNumericOrIntDefault("ticks_on_fire", propertiesTag, 100));
+        behavior.runBehavior(stack, world, livEntity, propertiesTag);
     }
 
     @Override
@@ -65,10 +64,5 @@ public class IgniteBehavior extends ConsumeBehavior {
     @Override
     public ConsumeBehavior registryEntry() {
         return VSConsumeBehaviors.IGNITE.get();
-    }
-
-    @Override
-    public String toString() {
-        return "IgniteBehavior[ticks_on_fire=" + this.ticksOnFire + "]";
     }
 }

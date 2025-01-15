@@ -30,7 +30,7 @@ public class VSHorseArmorItemMixin extends Item {
             HorseArmorItem horseArmor = ((HorseArmorItem) stack.getItem());
 
             tooltip.add(new StringTextComponent(""));
-            tooltip.add(new TranslationTextComponent("tooltip.variants.horse_armor.when_on_horse").withStyle(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip.variants.horse_armor.when_equipped").withStyle(TextFormatting.GRAY));
             tooltip.add(new TranslationTextComponent("tooltip.variants.horse_armor.armor_stats", horseArmor.getProtection()).withStyle(TextFormatting.BLUE));
         }
     }

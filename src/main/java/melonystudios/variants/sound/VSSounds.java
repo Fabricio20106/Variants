@@ -11,6 +11,8 @@ public class VSSounds {
 
     // Music
     public static final RegistryObject<SoundEvent> MUSIC_DISC_DOG = SOUNDS.register("music_disc.dog", () -> new SoundEvent(Variants.variants("music_disc.dog")));
+    public static final RegistryObject<SoundEvent> PAINTINGWOOD_FOREST_MUSIC = SOUNDS.register("music.overworld.paintingwood_forest", () -> new SoundEvent(Variants.variants("music.overworld.paintingwood_forest")));
+    public static final RegistryObject<SoundEvent> AZURE_FIELDS_MUSIC = SOUNDS.register("music.overworld.azure_fields", () -> new SoundEvent(Variants.variants("music.overworld.azure_fields")));
 
     // Entities
     public static final RegistryObject<SoundEvent> FISH_AMBIENT = SOUNDS.register("entity.fish.ambient", () -> new SoundEvent(Variants.variants("entity.fish.ambient")));

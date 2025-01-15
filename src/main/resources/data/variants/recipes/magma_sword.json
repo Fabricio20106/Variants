@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "d",
-    "d",
-    "s"
+    "#",
+    "#",
+    "S"
   ],
   "key": {
-    "s": {
+    "S": {
       "tag": "forge:rods/wooden"
     },
-    "d": {
-      "tag": "variants:crafting_materials/magma_block"
+    "#": {
+      "tag": "forge:raw_materials/crystallized_magma_cream"
     }
   },
   "result": {
