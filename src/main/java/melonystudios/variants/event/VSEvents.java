@@ -99,7 +99,7 @@ public class VSEvents {
 
         // Entity Spawning
         if (event.getCategory() == Biome.Category.OCEAN && VSConfigs.COMMON_CONFIGS.fishSpawning.get()) {
-            spawns.addSpawn(EntityClassification.WATER_CREATURE, new MobSpawnInfo.Spawners(VSEntities.FISH.get(), 10, 3, 6));
+            spawns.addSpawn(EntityClassification.WATER_AMBIENT, new MobSpawnInfo.Spawners(VSEntities.FISH.get(), 10, 3, 6));
         }
     }
 
