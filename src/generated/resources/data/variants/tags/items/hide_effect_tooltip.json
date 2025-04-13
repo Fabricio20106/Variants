@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mobarmor:poison_cookie",
+      "required": false
+    }
+  ]
+}

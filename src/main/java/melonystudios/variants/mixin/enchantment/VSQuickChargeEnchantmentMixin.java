@@ -1,6 +1,6 @@
 package melonystudios.variants.mixin.enchantment;
 
-import melonystudios.variants.config.VSConfigs;
+import melonystudios.variants.Variants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.enchantment.QuickChargeEnchantment;
@@ -15,6 +15,6 @@ public class VSQuickChargeEnchantmentMixin extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return VSConfigs.COMMON_CONFIGS.enableQuickChargeFive.get() ? 5 : 3;
+        return Variants.INSTANCE.getConfig().quickChargeMaxLevel;
     }
 }

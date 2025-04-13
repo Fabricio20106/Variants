@@ -17,7 +17,6 @@ import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.item.UseAction;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.potion.Effect;
@@ -114,7 +113,7 @@ public class ApplyMobEffectsBehavior extends ConsumeBehavior {
     @Override
     public List<ITextComponent> addToTooltip(ItemStack stack, @Nullable World world, ITooltipFlag flag) {
         List<ITextComponent> tooltip = super.addToTooltip(stack, world, flag);
-        addEffectsTooltip(stack, world, tooltip, 1);
+        this.addEffectsTooltip(stack, world, tooltip, 1);
         return tooltip;
     }
 
@@ -155,9 +154,6 @@ public class ApplyMobEffectsBehavior extends ConsumeBehavior {
         }
 
         if (!attributePairList.isEmpty()) {
-            tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".exponential_stew.newline"));
-            tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".food_effects.when_" + (stack.getItem().getUseAnimation(stack) == UseAction.DRINK ? "drank" : "eaten")).withStyle(TextFormatting.GRAY));
-
             for (Pair<Attribute, AttributeModifier> attributePair : attributePairList) {
                 AttributeModifier modifier = attributePair.getSecond();
                 double baseAmount = modifier.getAmount();
@@ -170,10 +166,12 @@ public class ApplyMobEffectsBehavior extends ConsumeBehavior {
                 }
 
                 if (baseAmount > 0) {
-                    tooltip.add(new TranslationTextComponent("attribute.modifier.plus." + modifier.getOperation().toValue(), ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(amount), new TranslationTextComponent(attributePair.getFirst().getDescriptionId())).withStyle(TextFormatting.BLUE));
+                    tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".food_effects.beneficial_effect", new TranslationTextComponent("attribute.modifier.plus." + modifier.getOperation().toValue(),
+                            ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(amount), new TranslationTextComponent(attributePair.getFirst().getDescriptionId())).withStyle(VSStyles.getFromRGB(0x6FC56F))).withStyle(VSStyles.getFromRGB(0x4F7A4F)));
                 } else if (baseAmount < 0) {
                     amount = amount * -1;
-                    tooltip.add(new TranslationTextComponent("attribute.modifier.take." + modifier.getOperation().toValue(), ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(amount), new TranslationTextComponent(attributePair.getFirst().getDescriptionId())).withStyle(TextFormatting.RED));
+                    tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".food_effects.harmful_effect", new TranslationTextComponent("attribute.modifier.take." + modifier.getOperation().toValue(),
+                            ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(amount), new TranslationTextComponent(attributePair.getFirst().getDescriptionId())).withStyle(VSStyles.getFromRGB(0xD26D6D))).withStyle(VSStyles.getFromRGB(0x7F4B4B)));
                 }
             }
         }

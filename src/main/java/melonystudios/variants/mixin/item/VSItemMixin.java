@@ -5,11 +5,11 @@ import melonystudios.variants.Variants;
 import melonystudios.variants.component.Equippable;
 import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.component.Consumable;
-import melonystudios.variants.item.custom.Swappable;
 import melonystudios.variants.util.ComponentUtils;
 import melonystudios.variants.util.NBTUtils;
 import melonystudios.variants.util.VSKeys;
 import melonystudios.variants.util.VSUtils;
+import melonystudios.variants.util.tag.VSItemTags;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
@@ -19,6 +19,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -38,7 +39,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.List;
 
 @Mixin(Item.class)
-public abstract class VSItemMixin implements Consumable, Equippable, Swappable, IForgeItem {
+public abstract class VSItemMixin implements Consumable, Equippable, IForgeItem {
     @Shadow
     @Final
     private Rarity rarity;
@@ -53,7 +54,9 @@ public abstract class VSItemMixin implements Consumable, Equippable, Swappable, 
             if (shouldHideTooltip && VSKeys.isAltDown()) NBTUtils.addItemTagsTooltip(stack, tooltip, flag);
         }
         if (stack.getItem().getFoodProperties() != null && !stack.getItem().getFoodProperties().getEffects().isEmpty() && VSConfigs.COMMON_CONFIGS.showFoodEffects.get()) {
-            VSUtils.addEffectsTooltip(stack, tooltip, 1);
+            if (!ItemTags.getAllTags().getAllTags().isEmpty()) {
+                if (!stack.getItem().is(VSItemTags.HIDE_EFFECT_TOOLTIP)) VSUtils.addEffectsTooltip(stack, tooltip, 1);
+            }
         }
     }
 
@@ -63,10 +66,10 @@ public abstract class VSItemMixin implements Consumable, Equippable, Swappable, 
     }
 
     @Inject(method = "getRarity", at = @At("HEAD"), cancellable = true)
-    public void getRarity(ItemStack stack, CallbackInfoReturnable<Rarity> cir) {
+    public void getRarity(ItemStack stack, CallbackInfoReturnable<Rarity> callback) {
         Rarity rarity = ComponentUtils.rarity(stack, this.rarity);
         if (stack.isEnchanted()) rarity = VSUtils.upRarity(rarity);
-        cir.setReturnValue(rarity);
+        if (callback.getReturnValue() != rarity) callback.setReturnValue(rarity);
     }
 
     @Inject(method = "getUseAnimation", at = @At("HEAD"), cancellable = true)
@@ -107,12 +110,12 @@ public abstract class VSItemMixin implements Consumable, Equippable, Swappable, 
             RenderSystem.defaultBlendFunc();
             Minecraft.getInstance().getTextureManager().bind(cameraOverlay);
             Tessellator tessellator = Tessellator.getInstance();
-            BufferBuilder bufferbuilder = tessellator.getBuilder();
-            bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
-            bufferbuilder.vertex(0, height, -90).uv(0, 1).endVertex();
-            bufferbuilder.vertex(width, height, -90).uv(1, 1).endVertex();
-            bufferbuilder.vertex(width, 0, -90).uv(1, 0).endVertex();
-            bufferbuilder.vertex(0, 0, -90).uv(0, 0).endVertex();
+            BufferBuilder buffer = tessellator.getBuilder();
+            buffer.begin(7, DefaultVertexFormats.POSITION_TEX);
+            buffer.vertex(0, height, -90).uv(0, 1).endVertex();
+            buffer.vertex(width, height, -90).uv(1, 1).endVertex();
+            buffer.vertex(width, 0, -90).uv(1, 0).endVertex();
+            buffer.vertex(0, 0, -90).uv(0, 0).endVertex();
             tessellator.end();
             RenderSystem.depthMask(true);
             RenderSystem.enableDepthTest();

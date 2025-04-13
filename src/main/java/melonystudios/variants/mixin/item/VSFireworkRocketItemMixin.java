@@ -1,11 +1,8 @@
 package melonystudios.variants.mixin.item;
 
 import com.google.common.collect.Lists;
-import melonystudios.variants.Variants;
 import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.util.Constants;
-import melonystudios.variants.util.NBTUtils;
-import melonystudios.variants.util.VSKeys;
 import melonystudios.variants.util.VSStyles;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.FireworkRocketItem;
@@ -31,16 +28,10 @@ public class VSFireworkRocketItemMixin extends Item {
     }
 
     @Inject(method = "appendHoverText", at = @At("HEAD"), cancellable = true)
-    public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag, CallbackInfo ci) {
-        if (flag.isAdvanced() && stack.getTag() != null && VSConfigs.COMMON_CONFIGS.showTagsWithAlt.get()) {
-            boolean shouldHideTooltip = NBTUtils.shouldNotHideTooltip("hide_item_tags", stack);
-            if (shouldHideTooltip && !VSKeys.isAltDown()) tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".hold_alt", VSKeys.getTranslation(VSKeys.SHOW_TAGS_KEY).withStyle(TextFormatting.GRAY)).withStyle(TextFormatting.DARK_GRAY));
-            if (shouldHideTooltip && VSKeys.isAltDown()) tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".hold_alt", VSKeys.getTranslation(VSKeys.SHOW_TAGS_KEY).withStyle(TextFormatting.WHITE)).withStyle(TextFormatting.DARK_GRAY));
-            if (shouldHideTooltip && VSKeys.isAltDown()) NBTUtils.addItemTagsTooltip(stack, tooltip, flag);
-        }
+    public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag, CallbackInfo callback) {
+        super.appendHoverText(stack, world, tooltip, flag);
         if (VSConfigs.COMMON_CONFIGS.customFireworkDescriptions.get()) {
-            ci.cancel();
-            super.appendHoverText(stack, world, tooltip, flag);
+            callback.cancel();
             CompoundNBT fireworksTag = stack.getTagElement("Fireworks");
 
             if (fireworksTag == null) {

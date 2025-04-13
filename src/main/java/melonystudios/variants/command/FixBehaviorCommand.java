@@ -36,12 +36,12 @@ public class FixBehaviorCommand {
                 .then(Commands.literal("exponential_stew_effects").executes(dispatcher -> fixExponentialStewEffects(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target"))))
                 .then(Commands.literal("suspicious_stew_effects").executes(dispatcher -> fixSuspiciousStewEffects(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target"))))
                 .then(Commands.literal("correct_ender_bowl").executes(dispatcher -> fixEnderBowlItem(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target"))))
-                .then(Commands.literal("old_stew_behavior_names").executes(dispatcher -> fixOldStewBehaviorNames(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target"))))
+                .then(Commands.literal("old_consume_behavior_names").executes(dispatcher -> fixOldConsumeBehaviorNames(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target"))))
                 .then(Commands.literal("bowl_type_tag").executes(dispatcher -> fixBowlTypeTag(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target"))))
                 .then(Commands.literal("update_to_1803").executes(dispatcher -> updateTagsTo1803(dispatcher.getSource(), EntityArgument.getPlayer(dispatcher, "target")))));
     }
 
-    private static int fixOldStewBehaviorNames(CommandSource source, ServerPlayerEntity player) {
+    private static int fixOldConsumeBehaviorNames(CommandSource source, ServerPlayerEntity player) {
         ItemStack handStack = player.getItemInHand(Hand.MAIN_HAND);
         if (handStack.getItem() instanceof ExponentialStewItem) {
             CompoundNBT tag = handStack.getTag();

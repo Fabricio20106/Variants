@@ -1,9 +1,9 @@
-![Variants 1.6.X Logo](src/main/resources/variants.png)
+![Revaried 1.6.X Logo](src/main/resources/revaried.png)
 
-# <center> - Variants - </center>
-<sup>For Variants 1.16.5 — 1.8.X</sup>
+# <center> - Revaried - </center>
+<sup>For Revaried 1.16.5 — 1.8.X</sup>
 
-Variants adds various variants of items, blocks, and features from Minecraft.
+**Revaried** adds various variants of items, blocks, and features from *Minecraft*.
 
 This branch of the project is to preserve the code of the 1.16 versions.
 

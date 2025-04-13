@@ -83,8 +83,8 @@ public class SetStewBowl extends LootFunction {
             CompoundNBT stackTag = new CompoundNBT();
             stackTag.putString("id", itemObject.get("id").getAsString());
             stackTag.putInt("count", itemObject.get("count").getAsInt());
-            if (itemObject.has("components")) {
-                stackTag.putString("components", itemObject.get("components").getAsString());
+            if (itemObject.has("tags")) {
+                stackTag.putString("tags", itemObject.get("tags").getAsString());
             }
 
             ItemStack bowlStack = VSUtils.loadStack(stackTag);

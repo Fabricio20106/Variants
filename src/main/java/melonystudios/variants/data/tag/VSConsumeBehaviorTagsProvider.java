@@ -19,7 +19,7 @@ public class VSConsumeBehaviorTagsProvider extends ForgeRegistryTagsProvider<Con
     @Override
     @Nonnull
     public String getName() {
-        return "Variants - Consume Behavior Tags";
+        return "Revaried - Consume Behavior Tags";
     }
 
     @Override

@@ -38,7 +38,7 @@ public class VSBiomeReportsProvider implements IDataProvider {
     @Override
     @Nonnull
     public String getName() {
-        return "Variants - Biome Reports";
+        return "Revaried - Biome Reports";
     }
 
     private static Path createPath(Path path, ResourceLocation biomeLoc) {

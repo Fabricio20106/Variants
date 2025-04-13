@@ -6,8 +6,8 @@ import net.minecraft.util.ResourceLocation;
 import java.lang.reflect.Type;
 
 public class VSJSONConfig {
-    // Latest Variants version. Update when I add, change or remove a config.
-    public int version = 1808;
+    // Latest Revaried version. Update when I add, change or remove a config.
+    public int version = 1809;
 
     // World Generation
     public boolean paintingwoodForest = true;
@@ -24,6 +24,16 @@ public class VSJSONConfig {
     public boolean soulLavaSprings = true;
     public boolean endCavesAndRavines = true;
     public ResourceLocation substituteTheEndBiomeWith = new ResourceLocation("the_end");
+
+    // Entities
+    public boolean fishSpawning = true;
+
+    // Enchantments
+    public int quickChargeMaxLevel = 5;
+
+    // Consume Behaviors
+    public double explosionRadiusUpperLimit = 128;
+    public double soundPitchUpperLimit = 2;
 
     public static class Serializer implements JsonDeserializer<VSJSONConfig>, JsonSerializer<VSJSONConfig> {
         @Override
@@ -48,6 +58,22 @@ public class VSJSONConfig {
             worldGeneration.addProperty("end_caves_and_ravines", config.endCavesAndRavines);
             worldGeneration.addProperty("substitute_the_end_biome_with", config.substituteTheEndBiomeWith.toString());
             object.add("world_generation", worldGeneration);
+
+            // Entities
+            JsonObject entities = new JsonObject();
+            entities.addProperty("fish_spawning", config.fishSpawning);
+            object.add("entities", entities);
+
+            // Enchantments
+            JsonObject enchantments = new JsonObject();
+            enchantments.addProperty("quick_charge_max_level", config.quickChargeMaxLevel);
+            object.add("enchantments", enchantments);
+
+            // Consume Behaviors
+            JsonObject behaviors = new JsonObject();
+            behaviors.addProperty("explosion_radius_upper_limit", config.explosionRadiusUpperLimit);
+            behaviors.addProperty("sound_pitch_upper_limit", config.soundPitchUpperLimit);
+            object.add("consume_behaviors", behaviors);
 
             return object;
         }
@@ -75,6 +101,20 @@ public class VSJSONConfig {
                 config.soulLavaSprings = worldGeneration.get("soul_lava_springs").getAsBoolean();
                 config.endCavesAndRavines = worldGeneration.get("end_caves_and_ravines").getAsBoolean();
                 config.substituteTheEndBiomeWith = new ResourceLocation(worldGeneration.get("substitute_the_end_biome_with").getAsString());
+
+                // Entities
+                JsonObject entities = object.get("entities").getAsJsonObject();
+                config.fishSpawning = entities.get("fish_spawning").getAsBoolean();
+
+                // Enchantments
+                JsonObject enchantments = object.get("enchantments").getAsJsonObject();
+                config.quickChargeMaxLevel = enchantments.get("quick_charge_max_level").getAsInt();
+
+                // Consume Behaviors
+                JsonObject behaviors = object.get("consume_behaviors").getAsJsonObject();
+                config.explosionRadiusUpperLimit = behaviors.get("explosion_radius_upper_limit").getAsDouble();
+                config.soundPitchUpperLimit = behaviors.get("sound_pitch_upper_limit").getAsDouble();
+
                 return config;
             }
             return new VSJSONConfig();

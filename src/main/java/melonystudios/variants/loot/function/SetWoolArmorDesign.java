@@ -3,7 +3,7 @@ package melonystudios.variants.loot.function;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
-import melonystudios.variants.item.custom.armor.WoolArmorItem;
+import melonystudios.variants.item.custom.armor.DyeableArmorItem;
 import melonystudios.variants.loot.VSLootFunctions;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootContext;
@@ -31,7 +31,7 @@ public class SetWoolArmorDesign extends LootFunction {
     @Override
     @Nonnull
     protected ItemStack run(ItemStack stack, LootContext context) {
-        if (stack.getItem() instanceof WoolArmorItem) return WoolArmorItem.setArmorDesign(stack, this.armorDesign);
+        if (stack.getItem() instanceof DyeableArmorItem) return DyeableArmorItem.setArmorDesign(stack, this.armorDesign);
         return stack;
     }
 

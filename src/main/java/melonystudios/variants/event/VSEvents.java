@@ -5,12 +5,11 @@ import melonystudios.variants.Variants;
 import melonystudios.variants.command.ConsumableCommand;
 import melonystudios.variants.command.DamageCommand;
 import melonystudios.variants.command.ConsumeBehaviorCommand;
-import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.entity.VSEntities;
 import melonystudios.variants.item.VSItems;
 import melonystudios.variants.item.VSWeaponry;
 import melonystudios.variants.item.bowl.BowlTypeManager;
-import melonystudios.variants.item.custom.armor.WoolArmorItem;
+import melonystudios.variants.item.custom.armor.DyeableArmorItem;
 import melonystudios.variants.item.custom.armor.color.WoolArmorColorManager;
 import melonystudios.variants.item.custom.bottle.StainedFullGlassBottleItem;
 import melonystudios.variants.util.damage.DamageSourceManager;
@@ -98,7 +97,7 @@ public class VSEvents {
         }
 
         // Entity Spawning
-        if (event.getCategory() == Biome.Category.OCEAN && VSConfigs.COMMON_CONFIGS.fishSpawning.get()) {
+        if (event.getCategory() == Biome.Category.OCEAN && Variants.INSTANCE.getConfig().fishSpawning) {
             spawns.addSpawn(EntityClassification.WATER_AMBIENT, new MobSpawnInfo.Spawners(VSEntities.FISH.get(), 10, 3, 6));
         }
     }
@@ -243,7 +242,7 @@ public class VSEvents {
             // Level 3 "Journeyman"
             trades.get(3).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 3), new ItemStack(VSItems.GLOW_BLACK_BED.get(), 1),
                     12, 10, 0.05F));
-            trades.get(3).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 2), WoolArmorItem.pickRandomColor(new ItemStack(VSWeaponry.WOOL_SWEATER.get())),
+            trades.get(3).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 2), DyeableArmorItem.pickRandomColor(new ItemStack(VSWeaponry.WOOL_SWEATER.get()), rand),
                     12, 5, 0.2F));
             trades.get(3).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 4), new ItemStack(VSWeaponry.RABBIT_HIDE_TUNIC.get(), 1),
                     10, 5, 0.25F));

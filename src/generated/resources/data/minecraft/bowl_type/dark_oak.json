@@ -1,8 +1,7 @@
 {
   "asset_id": "minecraft:dark_oak",
   "bowl": {
-    "id": "variants:dark_oak_bowl",
-    "count": 1
+    "id": "variants:dark_oak_bowl"
   },
   "name": "dark_oak",
   "texture_id": 5

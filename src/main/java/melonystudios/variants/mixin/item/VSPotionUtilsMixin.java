@@ -10,6 +10,7 @@ import melonystudios.variants.util.VSStyles;
 import melonystudios.variants.util.tag.VSItemTags;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.item.ArrowItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.UseAction;
 import net.minecraft.potion.Effect;
@@ -90,10 +91,12 @@ public abstract class VSPotionUtilsMixin {
                     }
 
                     if (baseAmount > 0) {
-                        tooltip.add(new TranslationTextComponent("attribute.modifier.plus." + modifier.getOperation().toValue(), ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(amount), new TranslationTextComponent(attributePair.getFirst().getDescriptionId())).withStyle(TextFormatting.BLUE));
+                        tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".food_effects.beneficial_effect", new TranslationTextComponent("attribute.modifier.plus." + modifier.getOperation().toValue(),
+                                ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(amount), new TranslationTextComponent(attributePair.getFirst().getDescriptionId())).withStyle(VSStyles.getFromRGB(0x6FC56F))).withStyle(VSStyles.getFromRGB(0x4F7A4F)));
                     } else if (baseAmount < 0) {
                         amount = amount * -1;
-                        tooltip.add(new TranslationTextComponent("attribute.modifier.take." + modifier.getOperation().toValue(), ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(amount), new TranslationTextComponent(attributePair.getFirst().getDescriptionId())).withStyle(TextFormatting.RED));
+                        tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".food_effects.harmful_effect", new TranslationTextComponent("attribute.modifier.take." + modifier.getOperation().toValue(),
+                                ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(amount), new TranslationTextComponent(attributePair.getFirst().getDescriptionId())).withStyle(VSStyles.getFromRGB(0xD26D6D))).withStyle(VSStyles.getFromRGB(0x7F4B4B)));
                     }
                 }
             }
@@ -105,6 +108,6 @@ public abstract class VSPotionUtilsMixin {
         if (!ItemTags.getAllTags().getAllTags().isEmpty()) {
             if (stack.getItem().is(VSItemTags.THROWABLE_POTIONS)) return "thrown";
         }
-        return stack.getItem().getUseAnimation(stack) == UseAction.DRINK ? "drank" : "eaten";
+        return stack.getUseAnimation() == UseAction.DRINK ? "drank" : (stack.getItem() instanceof ArrowItem ? "shot" : "eaten");
     }
 }

@@ -24,7 +24,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
     @Override
     @Nonnull
     public String getName() {
-        return "Variants - Item Tags";
+        return "Revaried - Item Tags";
     }
 
     @Override
@@ -139,6 +139,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
                 VSItems.SPLASH_SOUL_LAVA_BOTTLE.get(), VSItems.LINGERING_SOUL_LAVA_BOTTLE.get(), VSItems.SPLASH_MILK_BOTTLE.get(), VSItems.LINGERING_MILK_BOTTLE.get(), VSItems.SPLASH_POWDER_SNOW_BOTTLE.get(), VSItems.LINGERING_POWDER_SNOW_BOTTLE.get(),
                 VSItems.SPLASH_SOPHIE_POTION.get(), VSItems.LINGERING_SOPHIE_POTION.get());
         this.tag(VSItemTags.DRAGON_BREATH_BOTTLES).add(Items.DRAGON_BREATH, VSItems.SPLASH_DRAGON_BREATH.get(), VSItems.LINGERING_DRAGON_BREATH.get(), VSItems.STAINED_DRAGON_BREATH.get());
+        this.tag(VSItemTags.HIDE_EFFECT_TOOLTIP).addOptional(new ResourceLocation("mobarmor", "poison_cookie"));
 
         this.tag(VSItemTags.FLOWER_POTS).add(VSItems.POTTED_GLOW_BLACK_TULIP.get()).add(VSItems.POTTED_SUNNY_FLOWER.get()).add(VSItems.POTTED_SUGAR_CANE.get()).add(VSItems.POTTED_GRASS.get()).add(VSItems.POTTED_PAINTING_SAPLING.get())
                 .add(VSItems.POTTED_GOLDEN_CARROTS.get()).add(VSItems.POTTED_ENDER_ROOTS.get()).add(VSItems.POTTED_ENDER_FUNGUS.get()).add(VSItems.POTTED_NETHER_WART.get()).add(VSItems.POTTED_WARPED_WART.get())

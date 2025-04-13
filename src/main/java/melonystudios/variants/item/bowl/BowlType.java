@@ -6,16 +6,14 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import melonystudios.variants.Variants;
 import melonystudios.variants.data.recipe.VSExpoStewsRecipeProvider;
+import melonystudios.variants.util.JSONDeserializer;
 import melonystudios.variants.util.NBTUtils;
-import melonystudios.variants.util.VSUtils;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
 import org.apache.logging.log4j.LogManager;
 
-import javax.annotation.Nullable;
 import java.lang.reflect.Type;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -68,28 +66,14 @@ public class BowlType {
         return this.textureID;
     }
 
-    @Nullable
-    public static BowlType fromTypesMap(ResourceLocation name) {
-        return DATA_DRIVEN_TYPES.get(name);
-    }
-
-    public static boolean hasType(BowlType type) {
-        return DATA_DRIVEN_TYPES.containsValue(type);
-    }
-
-    public static boolean hasTypeFromLocation(ResourceLocation name) {
-        return DATA_DRIVEN_TYPES.containsKey(name);
-    }
-
     public JsonObject toJSON(BowlType type) {
         JsonObject object = new JsonObject();
         object.addProperty("asset_id", type.getAssetID().toString());
 
         JsonObject bowlObject = new JsonObject();
         bowlObject.addProperty("id", type.getBowlStack().getItem().getRegistryName().toString());
-        bowlObject.addProperty("count", type.getBowlStack().getCount());
-        if (type.getBowlStack().getTag() != null)
-            bowlObject.addProperty("tag", type.getBowlStack().getTag().toString());
+        if (type.getBowlStack().getCount() != 1) bowlObject.addProperty("count", type.getBowlStack().getCount());
+        if (type.getBowlStack().getTag() != null) bowlObject.addProperty("tags", type.getBowlStack().getTag().toString());
         object.add("bowl", bowlObject);
 
         object.addProperty("name", type.getWoodName());
@@ -109,9 +93,8 @@ public class BowlType {
 
             JsonObject bowlObject = new JsonObject();
             bowlObject.addProperty("id", type.getBowlStack().getItem().getRegistryName().toString());
-            bowlObject.addProperty("count", type.getBowlStack().getCount());
-            if (type.getBowlStack().getTag() != null)
-                bowlObject.addProperty("tag", type.getBowlStack().getTag().toString());
+            if (type.getBowlStack().getCount() != 1) bowlObject.addProperty("count", type.getBowlStack().getCount());
+            if (type.getBowlStack().getTag() != null) bowlObject.addProperty("tags", type.getBowlStack().getTag().toString());
             object.add("bowl", bowlObject);
 
             object.addProperty("name", type.getWoodName());
@@ -123,18 +106,11 @@ public class BowlType {
         public BowlType deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
             if (element.isJsonObject()) {
                 JsonObject object = element.getAsJsonObject();
-                CompoundNBT stackTag = new CompoundNBT();
-                JsonObject bowlObject = object.get("bowl").getAsJsonObject();
-                stackTag.putString("id", bowlObject.get("id").getAsString());
-                stackTag.putInt("count", bowlObject.get("count").getAsInt());
-                if (bowlObject.has("components")) {
-                    stackTag.putString("components", bowlObject.get("components").getAsString());
-                }
-
-                ItemStack bowlStack = VSUtils.loadStack(stackTag);
+                ItemStack bowlStack = JSONDeserializer.loadStack("bowl", object);
                 String woodName = JSONUtils.getAsString(object, "name");
-                ResourceLocation assetID = new ResourceLocation(JSONUtils.getAsString(object, "asset_id"));
-                int textureID = JSONUtils.getAsInt(object, "texture_id");
+                ResourceLocation assetID = ResourceLocation.tryParse(JSONUtils.getAsString(object, "asset_id"));
+                int textureID = JSONDeserializer.nonNegativeInteger(object, "texture_id");
+
                 BowlType bowlType = new BowlType(bowlStack, assetID, woodName, textureID);
                 if (VSExpoStewsRecipeProvider.DEFAULT_BOWLS.contains(bowlType)) return VSExpoStewsRecipeProvider.DEFAULT_BOWLS.get(bowlType.getTextureID());
                 else return bowlType;

@@ -1,5 +1,6 @@
 package melonystudios.variants.item.custom.armor;
 
+import melonystudios.variants.Variants;
 import melonystudios.variants.item.custom.armor.color.WoolArmorColor;
 import melonystudios.variants.util.Constants;
 import net.minecraft.item.IDyeableArmorItem;
@@ -8,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 
 import java.util.List;
+import java.util.Random;
 
 public interface DyeableArmorItem extends IDyeableArmorItem {
     @Override
@@ -26,6 +28,9 @@ public interface DyeableArmorItem extends IDyeableArmorItem {
         }
     }
 
+    /// The default color used for this dyeable armor item.
+    /// <p>
+    /// Defaults to <code>16777215</code> for wool armor pieces and <code>10511680</code> for leather armor pieces.
     int getDefaultColor();
 
     static ItemStack dyeArmor(ItemStack stack, List<Integer> colors) {
@@ -79,6 +84,70 @@ public interface DyeableArmorItem extends IDyeableArmorItem {
             j2 = (j2 << 8) + blue;
             dyeableArmorItem.setColor(sweaterStack, j2);
             return sweaterStack;
+        }
+    }
+
+    /// Picks a random wool armor color (that's not an armor design) and applies it to the provided item stack.
+    /// @param stack The item stack to apply the color to.
+    /// @param random Used by {@link #rollArmorColor} to pick a random wool armor color.
+    static ItemStack pickRandomColor(ItemStack stack, Random random) {
+        CompoundNBT displayTag = stack.getOrCreateTagElement("display");
+        CompoundNBT tag = stack.getOrCreateTag();
+
+        WoolArmorColor armorColor = rollArmorColor(random);
+        while (armorColor.getArmorDesign().isPresent()) armorColor = rollArmorColor(random);
+        displayTag.putInt("color", armorColor.getColor());
+        tag.putString("color_name", armorColor.getColorName());
+
+        return stack;
+    }
+
+    /// Rolls a random wool armor color, used by {@link #pickRandomColor}.
+    /// @param random Used to pick a random wool armor color, be it a color or armor design.
+    static WoolArmorColor rollArmorColor(Random random) {
+        Object[] armorColors = WoolArmorColor.DATA_DRIVEN_COLORS.values().toArray();
+        int randomValue = random.nextInt(armorColors.length);
+        return (WoolArmorColor) armorColors[randomValue];
+    }
+
+    /// Whether this item stack has an <code>armor_design</code> tag.
+    static boolean hasArmorDesign(ItemStack stack) {
+        return stack.getTag() != null && stack.getTag().contains("armor_design", Constants.TagTypes.ANY_NUMERIC);
+    }
+
+    /// Sets an item stack's armor color and name.
+    /// @param stack The item stack to set the color and name. Is usually a wool armor piece.
+    /// @param color Color to apply, preferably should be between 0-16777215.
+    /// @param colorName Name to apply. Can be either a raw string or a translation key.
+    static ItemStack setColorAndName(ItemStack stack, int color, String colorName) {
+        CompoundNBT tag = stack.getOrCreateTag();
+        CompoundNBT displayTag = stack.getOrCreateTagElement("display");
+        displayTag.putInt("color", color);
+        tag.putString("color_name", colorName);
+        return stack;
+    }
+
+    /// Sets an armor design to an item stack.
+    /// @param stack The item stack to set the armor design.
+    /// @param armorDesign Non-negative integer to define as the design.
+    static ItemStack setArmorDesign(ItemStack stack, int armorDesign) {
+        CompoundNBT tag = stack.getOrCreateTag();
+        tag.putInt("armor_design", armorDesign);
+        tag.putString("color_name", "armor_design." + Variants.MOD_ID + "." + armorDesign);
+        return stack;
+    }
+
+    /// Clears the <code>color_name</code> tag from an item stack.
+    static void clearColorName(ItemStack stack) {
+        if (stack.getTag() != null && stack.getTag().contains("color_name", Constants.TagTypes.STRING)) {
+            stack.getTag().remove("color_name");
+        }
+    }
+
+    /// Clears the <code>armor_design</code> tag from an item stack.
+    static void clearArmorDesign(ItemStack stack) {
+        if (stack.getTag() != null && stack.getTag().contains("armor_design", Constants.TagTypes.ANY_NUMERIC)) {
+            stack.getTag().remove("armor_design");
         }
     }
 }

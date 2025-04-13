@@ -1,6 +1,6 @@
 package melonystudios.variants.consumable.custom;
 
-import melonystudios.variants.config.VSConfigs;
+import melonystudios.variants.Variants;
 import melonystudios.variants.consumable.ConsumeBehavior;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.damage.custom.DamageBehaviorSource;
@@ -108,7 +108,7 @@ public class ExplodeBehavior extends ConsumeBehavior {
     @Override
     public CompoundNBT writeProperties() {
         CompoundNBT properties = new CompoundNBT();
-        properties.putFloat("radius", (float) MathHelper.clamp(this.radius, 0, VSConfigs.COMMON_CONFIGS.explosionRadiusUpperLimit.get()));
+        properties.putFloat("radius", (float) MathHelper.clamp(this.radius, 0, Variants.INSTANCE.getConfig().explosionRadiusUpperLimit));
         if (this.createFire) properties.putBoolean("create_fire", true);
         if (!this.spawnEffectCloud) properties.putBoolean("spawn_effect_cloud", false);
         NBTUtils.writeDamageSourceOntoNBT(properties, this.source);

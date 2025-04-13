@@ -29,7 +29,7 @@ public class SetBehaviorCommand {
             for (ServerPlayerEntity serverPlayer : players) {
                 if (!serverPlayer.isCreative()) break;
                 ItemStack handStack = serverPlayer.getItemInHand(Hand.MAIN_HAND);
-                if (Consumable.validConsumableClass(handStack.getItem())) {
+                if (Consumable.validConsumableClass(handStack.getItem()) && !handStack.isEmpty()) {
                     handStack.getOrCreateTag().getCompound("consumable").remove("behavior");
                     CompoundNBT consumableTag = handStack.getOrCreateTagElement("consumable");
                     CompoundNBT behaviorTag = behavior.properties;

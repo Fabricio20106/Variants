@@ -22,7 +22,7 @@ public class VSStainedBottlesRecipeProvider extends RecipeProvider {
     @Override
     @Nonnull
     public String getName() {
-        return "Variants - Stained Bottle Recipes";
+        return "Revaried - Stained Bottle Recipes";
     }
 
     @Override
@@ -65,7 +65,7 @@ public class VSStainedBottlesRecipeProvider extends RecipeProvider {
                         .group("milk_bottle").unlockedBy("has_milk_bucket", has(Items.MILK_BUCKET)).save(consumer, "variants:stained_bottle/milk/" + type.getName());
             }
             // TODO: Make a conditional recipe builder for powder snow bottles.
-            // (and also a shaped recipe builder for Sophie Potions).
+            //  (and also a shaped recipe builder for Sophie Potions).
         }
     }
 }

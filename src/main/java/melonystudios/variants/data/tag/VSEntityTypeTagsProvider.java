@@ -20,7 +20,7 @@ public class VSEntityTypeTagsProvider extends EntityTypeTagsProvider {
     @Override
     @Nonnull
     public String getName() {
-        return "Variants - Entity Type Tags";
+        return "Revaried - Entity Type Tags";
     }
 
     @Override

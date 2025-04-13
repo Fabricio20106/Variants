@@ -49,7 +49,7 @@ public class VSItemStackMixin /*extends CapabilityProvider<ItemStack>*/ {
         ResourceLocation location = ForgeRegistries.ITEMS.getKey(this.getItem());
         tag.putString("id", location == null ? "minecraft:air" : location.toString());
         tag.putInt("count", this.count);
-        if (this.tag != null) tag.put("components", this.tag.copy());
+        if (this.tag != null) tag.put("tags", this.tag.copy());
         CompoundNBT capabilitiesTag = this.serializeCaps();
         if (capabilitiesTag != null && !capabilitiesTag.isEmpty()) tag.put("forge_capabilities", capabilitiesTag);
         cir.setReturnValue(tag);
@@ -68,8 +68,8 @@ public class VSItemStackMixin /*extends CapabilityProvider<ItemStack>*/ {
             }
             ItemStack stack = new ItemStack(item, count);
 
-            if (tag.contains("components", Constants.TagTypes.COMPOUND)) {
-                stack.setTag(tag.getCompound("components"));
+            if (tag.contains("tags", Constants.TagTypes.COMPOUND)) {
+                stack.setTag(tag.getCompound("tags"));
                 stack.getItem().verifyTagAfterLoad(tag);
             }
             if (stack.getItem().isDamageable(stack)) stack.setDamageValue(stack.getDamageValue());

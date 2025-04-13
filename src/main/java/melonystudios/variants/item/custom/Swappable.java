@@ -14,13 +14,13 @@ import net.minecraft.world.World;
 public interface Swappable {
     default ActionResult<ItemStack> equipOrSwapItem(Item item, World world, PlayerEntity player, Hand hand) {
         ItemStack handStack = player.getItemInHand(hand);
-        EquipmentSlotType slot = MobEntity.getEquipmentSlotForItem(handStack);
-        ItemStack slotStack = player.getItemBySlot(slot);
+        EquipmentSlotType slotType = MobEntity.getEquipmentSlotForItem(handStack);
+        ItemStack slotStack = player.getItemBySlot(slotType);
         if ((!EnchantmentHelper.hasBindingCurse(slotStack) || player.isCreative()) && !ItemStack.matches(handStack, slotStack)) {
             if (!world.isClientSide) player.awardStat(Stats.ITEM_USED.get(item));
             ItemStack stack1 = slotStack.isEmpty() ? handStack : copyAndClear(slotStack);
             ItemStack copyHandStack = copyAndClear(handStack);
-            player.setItemSlot(slot, copyHandStack);
+            player.setItemSlot(slotType, copyHandStack);
             return ActionResult.sidedSuccess(stack1, world.isClientSide);
         } else {
             return ActionResult.fail(handStack);

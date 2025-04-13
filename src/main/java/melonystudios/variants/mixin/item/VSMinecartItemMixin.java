@@ -40,7 +40,7 @@ public class VSMinecartItemMixin extends Item {
     }
 
     @Inject(method = "useOn", at = @At("HEAD"), cancellable = true)
-    private void useOn(ItemUseContext context, CallbackInfoReturnable<ActionResultType> cir) {
+    private void useOn(ItemUseContext context, CallbackInfoReturnable<ActionResultType> callback) {
         World world = context.getLevel();
         BlockPos clickedPos = context.getClickedPos();
         BlockState clickedState = world.getBlockState(clickedPos);
@@ -50,6 +50,7 @@ public class VSMinecartItemMixin extends Item {
             PlayerEntity player = context.getPlayer();
 
             ItemStack spawnerMinecartStack = new ItemStack(VSItems.SPAWNER_MINECART.get());
+            if (context.getItemInHand().getTag() != null) spawnerMinecartStack.setTag(context.getItemInHand().getTag());
             TileEntity blockEntity = world.getBlockEntity(clickedPos);
             if (blockEntity instanceof MobSpawnerTileEntity) {
                 MobSpawnerTileEntity spawnerBlockEntity = (MobSpawnerTileEntity) blockEntity;
@@ -67,7 +68,7 @@ public class VSMinecartItemMixin extends Item {
                 }
                 world.setBlockAndUpdate(clickedPos, Blocks.AIR.defaultBlockState());
                 player.awardStat(VSStats.SPAWNERS_PICKED_UP);
-                cir.setReturnValue(ActionResultType.SUCCESS);
+                callback.setReturnValue(ActionResultType.SUCCESS);
             }
         }
     }

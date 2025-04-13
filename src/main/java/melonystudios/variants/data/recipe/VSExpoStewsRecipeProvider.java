@@ -30,7 +30,7 @@ public class VSExpoStewsRecipeProvider extends RecipeProvider {
     @Override
     @Nonnull
     public String getName() {
-        return "Variants - Exponential Stew Recipes";
+        return "Revaried - Exponential Stew Recipes";
     }
 
     @Override

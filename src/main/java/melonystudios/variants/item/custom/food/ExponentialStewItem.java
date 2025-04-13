@@ -60,9 +60,9 @@ public class ExponentialStewItem extends ConsumableItem {
         CompoundNBT remainderTag = new CompoundNBT();
         remainderTag.putString("id", bowlStack.getItem().getRegistryName().toString());
         if (bowlStack.getCount() != 1) remainderTag.putInt("count", bowlStack.getCount());
-        if (bowlStack.getTag() != null) remainderTag.put("components", bowlStack.getTag());
+        if (bowlStack.getTag() != null) remainderTag.put("tags", bowlStack.getTag());
         consumableTag.put("use_remainder", remainderTag);
-        tag.put("consumable", consumableTag);
+        tag.put("tags", consumableTag);
 
         for (ResourceLocation bowlLocation : BowlType.DATA_DRIVEN_TYPES.keySet()) {
             BowlType bowlType = BowlType.DATA_DRIVEN_TYPES.get(bowlLocation);
@@ -75,7 +75,7 @@ public class ExponentialStewItem extends ConsumableItem {
         CompoundNBT remainderTag = new CompoundNBT();
         remainderTag.putString("id", bowlStack.getItem().getRegistryName().toString());
         if (bowlStack.getCount() != 1) remainderTag.putInt("count", bowlStack.getCount());
-        if (bowlStack.getTag() != null) remainderTag.put("components", bowlStack.getTag());
+        if (bowlStack.getTag() != null) remainderTag.put("tags", bowlStack.getTag());
         consumableTag.put("use_remainder", remainderTag);
         stewStack.getOrCreateTag().put("consumable", consumableTag);
 

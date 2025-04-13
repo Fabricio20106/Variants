@@ -13,7 +13,7 @@
               "item": {
                 "id": "variants:enderwood_bowl",
                 "count": 3,
-                "components": "{variants_version:\"1.8.0.3\"}"
+                "tags": "{revaried_version:\"1.8.0.9\"}"
               },
               "texture_id": {
                 "type": "variants:texture_id",

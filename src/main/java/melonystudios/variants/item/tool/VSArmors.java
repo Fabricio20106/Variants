@@ -13,6 +13,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.Tags;
 
+import javax.annotation.Nonnull;
 import java.util.function.Supplier;
 
 public class VSArmors implements IArmorMaterial {
@@ -57,14 +58,17 @@ public class VSArmors implements IArmorMaterial {
         return this.enchantmentValue;
     }
 
+    @Nonnull
     public SoundEvent getEquipSound() {
         return this.equipSound;
     }
 
+    @Nonnull
     public Ingredient getRepairIngredient() {
         return this.repairIngredient.get();
     }
 
+    @Nonnull
     @OnlyIn(Dist.CLIENT)
     public String getName() {
         return this.name;
@@ -74,7 +78,7 @@ public class VSArmors implements IArmorMaterial {
         return this.toughness;
     }
 
-    // Gets the percentage of knockback resistance provided by armor of the material.
+    /// Gets the percentage of knockback resistance provided by armor of the material.
     public float getKnockbackResistance() {
         return this.knockbackRes;
     }

@@ -1,1 +1,1 @@
-MixinConfigs: variants.mixins.json
+MixinConfigs: revaried.mixins.json

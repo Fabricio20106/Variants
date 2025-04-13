@@ -14,7 +14,7 @@ public class VSWoolArmorColorProvider extends WoolArmorColorProvider {
     @Override
     @Nonnull
     public String getName() {
-        return "Variants - Wool Armor Colors";
+        return "Revaried - Wool Armor Colors";
     }
 
     @Override
@@ -31,7 +31,7 @@ public class VSWoolArmorColorProvider extends WoolArmorColorProvider {
         @Override
         @Nonnull
         public String getName() {
-            return "Variants - Wool Armor Colors (Vanilla)";
+            return "Revaried - Wool Armor Colors (Vanilla)";
         }
 
         @Override
@@ -63,7 +63,7 @@ public class VSWoolArmorColorProvider extends WoolArmorColorProvider {
         @Override
         @Nonnull
         public String getName() {
-            return "Variants - Wool Armor Colors (F10 Elements)";
+            return "Revaried - Wool Armor Colors (F10 Elements)";
         }
 
         @Override

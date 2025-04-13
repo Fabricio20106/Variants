@@ -10,13 +10,9 @@ import melonystudios.variants.util.tab.VSSweaterTab;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -39,16 +35,16 @@ public class WoolArmorItem extends ArmorItem implements DyeableArmorItem {
         return 16777215;
     }
 
-    @Nullable
     @Override
+    @Nullable
     public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlotType slot, String type) {
         if (stack.getTag() != null && stack.getTag().getInt("armor_design") > 0) {
-            return Variants.variants("textures/models/armor/" + getArmorLocation() + "_layer_" + (slot == EquipmentSlotType.LEGS ? 2 : 1) + "_" + stack.getTag().getInt("armor_design") + ".png").toString();
+            return Variants.variants("textures/models/armor/" + this.getArmorLocation() + "_layer_" + (slot == EquipmentSlotType.LEGS ? 2 : 1) + "_" + stack.getTag().getInt("armor_design") + ".png").toString();
         }
         return super.getArmorTexture(stack, entity, slot, type);
     }
 
-    // Essentially copied from BipedArmorLayer#getArmorResource() (Forge version).
+    /// Essentially copied from {@link net.minecraft.client.renderer.entity.layers.BipedArmorLayer#getArmorResource(Entity, ItemStack, EquipmentSlotType, String) BipedArmorLayer#getArmorResource()} (Forge version).
     public String getArmorLocation() {
         int index = this.armorName.indexOf(':');
         if (index != -1) return this.armorName.substring(index + 1);
@@ -121,48 +117,15 @@ public class WoolArmorItem extends ArmorItem implements DyeableArmorItem {
 
         // Infinity wool sweaters (0 -> 16777215)
         if (tab == VSSweaterTab.TAB && VSConfigs.COMMON_CONFIGS.enableInfinitySweatersTab.get()) {
-            for (int i = 0; i < VSConfigs.COMMON_CONFIGS.infinitySweatersTabLength.get();  i += VSConfigs.COMMON_CONFIGS.infinitySweatersTabSpacing.get())  {
+            for (int color = 0; color < VSConfigs.COMMON_CONFIGS.infinitySweatersTabLength.get();  color += VSConfigs.COMMON_CONFIGS.infinitySweatersTabSpacing.get())  {
                 ItemStack stack = new ItemStack(this);
                 CompoundNBT displayTag = stack.getOrCreateTagElement("display");
                 CompoundNBT tag = stack.getOrCreateTag();
 
-                displayTag.putInt("color", i);
-                tag.putString("color_name", "#" + i);
+                displayTag.putInt("color", color);
+                tag.putString("color_name", new TranslationTextComponent(this.getDescriptionId() + ".infinity", color).getString());
                 list.add(stack);
             }
         }
-    }
-
-    public static ItemStack pickRandomColor(ItemStack stack) {
-        CompoundNBT displayTag = stack.getOrCreateTagElement("display");
-        CompoundNBT tag = stack.getOrCreateTag();
-
-        WoolArmorColor armorColor = rollArmorColor();
-        while (armorColor.getArmorDesign().isPresent()) armorColor = rollArmorColor();
-        displayTag.putInt("color", armorColor.getColor());
-        tag.putString("color_name", armorColor.getColorName());
-
-        return stack;
-    }
-
-    private static WoolArmorColor rollArmorColor() {
-        Object[] armorColors = WoolArmorColor.DATA_DRIVEN_COLORS.values().toArray();
-        int randomValue = random.nextInt(armorColors.length);
-        return (WoolArmorColor) armorColors[randomValue];
-    }
-
-    public static ItemStack setColorAndName(ItemStack stack, int color, String colorName) {
-        CompoundNBT tag = stack.getOrCreateTag();
-        CompoundNBT displayTag = stack.getOrCreateTagElement("display");
-        displayTag.putInt("color", color);
-        tag.putString("color_name", colorName);
-        return stack;
-    }
-
-    public static ItemStack setArmorDesign(ItemStack stack, int armorDesign) {
-        CompoundNBT tag = stack.getOrCreateTag();
-        tag.putInt("armor_design", armorDesign);
-        tag.putString("color_name", "armor_design." + Variants.MOD_ID + "." + armorDesign);
-        return stack;
     }
 }

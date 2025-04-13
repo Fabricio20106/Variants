@@ -32,7 +32,7 @@ public class VSDamageSourceReportsProvider implements IDataProvider {
     @Override
     @Nonnull
     public String getName() {
-        return "Variants - Damage Source Reports";
+        return "Revaried - Damage Source Reports";
     }
 
     private static Path createPath(Path path) {

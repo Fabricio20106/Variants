@@ -99,7 +99,7 @@ public class JSONUtils {
     }
 
     public static TranslationTextComponent getTranslatedType(JsonElement element) {
-        String abbreviation = StringUtils.abbreviateMiddle(String.valueOf(element), "...", 10);
+        String abbreviation = StringUtils.abbreviateMiddle(String.valueOf(element), new TranslationTextComponent("exception.variants.ellipsis").getString(), 10);
         String template = "exception.variants.json_primitive.";
 
         if (element == null) {
@@ -133,7 +133,7 @@ public class JSONUtils {
             JsonObject curativeObject = new JsonObject();
             curativeObject.addProperty("id", clearEffectsBehavior.curativeItem().getItem().getRegistryName().toString());
             if (clearEffectsBehavior.curativeItem().getCount() != 1) curativeObject.addProperty("count", clearEffectsBehavior.curativeItem().getCount());
-            if (clearEffectsBehavior.curativeItem().getTag() != null) curativeObject.addProperty("components", clearEffectsBehavior.curativeItem().getTag().toString());
+            if (clearEffectsBehavior.curativeItem().getTag() != null) curativeObject.addProperty("tags", clearEffectsBehavior.curativeItem().getTag().toString());
             behaviorObj.add("curative_item", curativeObject);
         } else if (behavior instanceof DamageEntityBehavior) {
             JSONUtils.writeDamageSourceToJSON(behaviorTag, behaviorObj);
@@ -169,7 +169,7 @@ public class JSONUtils {
             JsonObject consumableObject = new JsonObject();
             consumableObject.addProperty("id", eatItemBehavior.consumableItem().getItem().getRegistryName().toString());
             if (eatItemBehavior.consumableItem().getCount() != 1) consumableObject.addProperty("count", eatItemBehavior.consumableItem().getCount());
-            if (eatItemBehavior.consumableItem().getTag() != null) consumableObject.addProperty("components", eatItemBehavior.consumableItem().getTag().toString());
+            if (eatItemBehavior.consumableItem().getTag() != null) consumableObject.addProperty("tags", eatItemBehavior.consumableItem().getTag().toString());
             behaviorObj.add("consumable_item", consumableObject);
         }
     }

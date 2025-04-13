@@ -9,6 +9,7 @@ import melonystudios.variants.effect.VSEffectInstance;
 import melonystudios.variants.util.damage.DamageSourceUtils;
 import melonystudios.variants.util.damage.custom.DamageBehaviorSource;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
@@ -39,7 +40,7 @@ public class NBTUtils {
     public static final Codec<ItemStack> ITEM_STACK_CODEC = RecordCodecBuilder.create(instance -> instance.group(
             Registry.ITEM.fieldOf("id").forGetter(ItemStack::getItem),
             Codec.INT.fieldOf("count").orElse(1).forGetter(ItemStack::getCount),
-            CompoundNBT.CODEC.fieldOf("components").forGetter(ItemStack::getTag)
+            CompoundNBT.CODEC.fieldOf("tags").forGetter(ItemStack::getTag)
     ).apply(instance, VSUtils::loadStack));
 
     public static boolean shouldNotHideTooltip(String toHide, ItemStack stack) {
@@ -61,6 +62,11 @@ public class NBTUtils {
                 else tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".tags", tagTag.getPrettyDisplay()).withStyle(TextFormatting.GRAY));
             }
         }
+    }
+
+    public static ItemStack copyDataFromEntity(ItemStack stack, Entity entity) {
+        if (entity.hasCustomName()) stack.setHoverName(entity.getCustomName());
+        return stack;
     }
 
     public static void addEffectsFromNBT(CompoundNBT effectTag, World world, LivingEntity livEntity) {

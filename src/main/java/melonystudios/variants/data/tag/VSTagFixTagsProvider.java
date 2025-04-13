@@ -19,7 +19,7 @@ public class VSTagFixTagsProvider extends ForgeRegistryTagsProvider<TagFix> {
     @Override
     @Nonnull
     public String getName() {
-        return "Variants - Tag Fix Tags";
+        return "Revaried - Tag Fix Tags";
     }
 
     @Override

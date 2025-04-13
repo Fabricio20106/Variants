@@ -22,7 +22,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
     @Override
     @Nonnull
     public String getName() {
-        return "Variants - Block Tags";
+        return "Revaried - Block Tags";
     }
 
     @Override

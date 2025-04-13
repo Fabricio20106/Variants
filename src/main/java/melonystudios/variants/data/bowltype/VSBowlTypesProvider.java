@@ -14,7 +14,7 @@ public class VSBowlTypesProvider extends BowlTypesProvider {
     @Nonnull
     @Override
     public String getName() {
-        return "Variants - Bowl Types";
+        return "Revaried - Bowl Types";
     }
 
     @Override
@@ -31,7 +31,7 @@ public class VSBowlTypesProvider extends BowlTypesProvider {
         @Override
         @Nonnull
         public String getName() {
-            return "Variants - Vanilla Bowl Types";
+            return "Revaried - Vanilla Bowl Types";
         }
 
         @Override

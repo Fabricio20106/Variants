@@ -21,7 +21,7 @@ public class VSItemModelProvider extends VSItemModelModels {
     @Nonnull
     @Override
     public String getName() {
-        return "Variants - Item Models";
+        return "Revaried - Item Models";
     }
 
     @Override

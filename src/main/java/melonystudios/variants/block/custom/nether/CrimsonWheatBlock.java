@@ -1,9 +1,9 @@
 package melonystudios.variants.block.custom.nether;
 
+import melonystudios.variants.item.VSItems;
 import melonystudios.variants.util.tag.VSBlockTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
-import net.minecraft.item.Items;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
@@ -23,7 +23,6 @@ public class CrimsonWheatBlock extends CropsBlock {
     @Override
     @Nonnull
     protected IItemProvider getBaseSeedId() {
-        // return VSItems.CRIMSON_WHEAT_SEEDS.get(); todo: replace this
-        return Items.AIR;
+        return VSItems.CRIMSON_WHEAT_SEEDS.get();
     }
 }

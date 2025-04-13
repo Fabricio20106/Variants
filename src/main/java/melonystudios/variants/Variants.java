@@ -11,6 +11,8 @@ import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.config.VSJSONConfig;
 import melonystudios.variants.crafting.VSRecipeTypes;
 import melonystudios.variants.criterion.VSCriteriaTriggers;
+import melonystudios.variants.dispenser.vanilla.BucketDispenseBehavior;
+import melonystudios.variants.dispenser.vanilla.EmptyBucketDispenseBehavior;
 import melonystudios.variants.effect.VSEffects;
 import melonystudios.variants.effect.VSPotions;
 import melonystudios.variants.enchantment.VSEnchantments;
@@ -35,6 +37,7 @@ import melonystudios.variants.world.feature.VSConfiguredFeatures;
 import melonystudios.variants.world.feature.VSFeatures;
 import melonystudios.variants.world.surface.VSSurfaceBuilders;
 import net.minecraft.block.Block;
+import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.WoodType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Atlases;
@@ -43,10 +46,12 @@ import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraft.client.renderer.tileentity.BeaconTileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.item.AxeItem;
+import net.minecraft.item.Items;
 import net.minecraft.loot.RandomRanges;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
@@ -83,7 +88,7 @@ public class Variants {
     public static final String MOD_ID = "variants";
     public static Variants INSTANCE;
     private VSJSONConfig config = null;
-    private final File settingsFile = new File("config/jtw-mods", "variants.json");
+    private final File settingsFile = new File("config/melonystudios", "revaried.json");
     // TO-DO LIST:
     // [19/9/24 - 1.8.0.3] ~isa:
     //   - Make stained dragon's breath usable to make potions;
@@ -119,7 +124,7 @@ public class Variants {
         VSRegistries.init();
         VSStats.init();
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, VSConfigs.COMMON_SPEC, "jtw-mods/variants-common.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, VSConfigs.COMMON_SPEC, "melonystudios/revaried-common.toml");
         ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.CONFIGGUIFACTORY, () -> (minecraft, screen) -> new VSConfigCategoriesScreen(screen, Minecraft.getInstance().options));
     }
 
@@ -158,6 +163,9 @@ public class Variants {
         VSVanillaCompatibility.flammables();
         VSVanillaCompatibility.flattenables();
         VSVanillaCompatibility.addBed(VSBlocks.GLOW_BLACK_BED.get());
+
+        DispenserBlock.registerBehavior(Items.BUCKET, new EmptyBucketDispenseBehavior());
+        DispenserBlock.registerBehavior(Items.WATER_BUCKET, new BucketDispenseBehavior());
 
         RandomRanges.GENERATORS.put(variants("texture_id"), BowlIDValueRange.class);
 
@@ -207,7 +215,7 @@ public class Variants {
                 Gson gson = createConfigFileSerializer().create();
                 this.config = gson.fromJson(new String(Files.readAllBytes(this.settingsFile.toPath()), StandardCharsets.UTF_8), VSJSONConfig.class);
             } catch (Exception exception) {
-                LogManager.getLogger().warn("Variants: Unable to load the config file, creating a new one: ", exception);
+                LOGGER.warn(I18n.get("exception.variants.config_error.loading", exception));
             }
         }
         if (this.config == null) this.config = new VSJSONConfig();
@@ -220,7 +228,7 @@ public class Variants {
         try {
             Files.write(this.settingsFile.toPath(), config.getBytes(StandardCharsets.UTF_8));
         } catch (IOException exception) {
-            LogManager.getLogger().warn("Variants: Error while saving the config file!", exception);
+            LOGGER.warn(I18n.get("exception.variants.config_error.saving", exception));
         }
     }
 

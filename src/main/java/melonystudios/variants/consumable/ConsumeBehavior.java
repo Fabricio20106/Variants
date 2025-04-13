@@ -5,6 +5,7 @@ import melonystudios.variants.component.Consumable;
 import melonystudios.variants.item.custom.food.ConsumableItem;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.VSRegistries;
+import melonystudios.variants.util.VSUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -59,9 +60,9 @@ public abstract class ConsumeBehavior extends ForgeRegistryEntry<ConsumeBehavior
     }
 
     public ITextComponent getCommandDisplayName() {
-        IFormattableTextComponent component = TextComponentUtils.wrapInSquareBrackets(new TranslationTextComponent(this.getDescriptionID())).withStyle(TextFormatting.LIGHT_PURPLE);
+        IFormattableTextComponent component = TextComponentUtils.wrapInSquareBrackets(new TranslationTextComponent(this.getDescriptionID())).withStyle(VSUtils.REVARIED_COLOR_STYLE);
         component.withStyle(style -> style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent("")
-                .append(new TranslationTextComponent(this.getDescriptionID()).withStyle(TextFormatting.LIGHT_PURPLE).withStyle(TextFormatting.BOLD)).append("\n")
+                .append(new TranslationTextComponent(this.getDescriptionID()).withStyle(VSUtils.REVARIED_COLOR_STYLE).withStyle(TextFormatting.BOLD)).append("\n")
                 .append(new TranslationTextComponent(this.getDescriptionID() + ".desc").withStyle(TextFormatting.GRAY)).append("\n")
                 .append(new StringTextComponent(this.registryEntry().getRegistryName().toString()).withStyle(TextFormatting.DARK_GRAY)))));
         return component;

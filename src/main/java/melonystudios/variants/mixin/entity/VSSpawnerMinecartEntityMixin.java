@@ -2,6 +2,7 @@ package melonystudios.variants.mixin.entity;
 
 import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.item.VSItems;
+import melonystudios.variants.util.NBTUtils;
 import melonystudios.variants.util.tag.VSBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -9,8 +10,8 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.impl.data.EntityDataAccessor;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.item.minecart.AbstractMinecartEntity;
 import net.minecraft.entity.item.minecart.SpawnerMinecartEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -27,7 +28,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(SpawnerMinecartEntity.class)
-public abstract class VSSpawnerMinecartEntityMixin extends Entity {
+public abstract class VSSpawnerMinecartEntityMixin extends AbstractMinecartEntity {
     @Shadow
     public AbstractSpawner spawner;
 
@@ -52,11 +53,11 @@ public abstract class VSSpawnerMinecartEntityMixin extends Entity {
             if (blockEntity instanceof MobSpawnerTileEntity) {
                 ((MobSpawnerTileEntity) blockEntity).getSpawner().load(new EntityDataAccessor(this).getData());
             }
-            this.spawnAtLocation(new ItemStack(Items.MINECART));
+            this.spawnAtLocation(NBTUtils.copyDataFromEntity(new ItemStack(Items.MINECART), this));
         } else {
             if (!source.isExplosion() && this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
                 // Drop item if the block being broken is in "#variants:spawner_minecart_cannot_replace" or if the "placeSpawnerWhenBreakingMinecart" config is off.
-                ItemStack minecartStack = new ItemStack(VSItems.SPAWNER_MINECART.get());
+                ItemStack minecartStack = NBTUtils.copyDataFromEntity(new ItemStack(VSItems.SPAWNER_MINECART.get()), this);
                 CompoundNBT tag = minecartStack.getOrCreateTag();
                 tag.put("spawn_data", this.spawner.save(tag.getCompound("spawn_data")));
                 this.spawnAtLocation(minecartStack);

@@ -4,9 +4,12 @@ import com.google.common.collect.ImmutableList;
 import com.google.gson.*;
 import melonystudios.variants.util.damage.custom.DamageBehaviorSource;
 import melonystudios.variants.util.damage.custom.DamageManagerSource;
+import melonystudios.variants.util.damage.custom.EntityDamageManagerSource;
+import melonystudios.variants.util.damage.misc.DamageScaling;
 import melonystudios.variants.util.damage.misc.DeathMessageTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.*;
 
 import java.lang.reflect.Type;
@@ -33,6 +36,39 @@ public class DamageSourceUtils {
 
     public static DamageSource getSourceFromMap(ResourceLocation name, DamageSource fallbackSource) {
         return DATA_DRIVEN_SOURCES.getOrDefault(name, fallbackSource);
+    }
+
+    public static DeathMessageTypes deathMessageType(JsonObject object) {
+        if (object.has("death_message_type") && object.get("death_message_type").isJsonPrimitive()) {
+            String deathMessageType = object.get("death_message_type").getAsString();
+            switch (deathMessageType) {
+                case "direct_entity": return DeathMessageTypes.DIRECT_ENTITY;
+                case "indirect_entity": return DeathMessageTypes.INDIRECT_ENTITY;
+                case "intentional_game_design": return DeathMessageTypes.INTENTIONAL_GAME_DESIGN;
+                case "default": default: return DeathMessageTypes.DEFAULT;
+            }
+        }
+        return DeathMessageTypes.DEFAULT;
+    }
+
+    public static DamageScaling damageScaling(JsonObject object, DamageSource source) {
+        if (object.has("scaling") && object.get("scaling").isJsonPrimitive()) {
+            String scaling = object.get("scaling").getAsString();
+            switch (scaling) {
+                case "always": {
+                    source.setScalesWithDifficulty();
+                    return DamageScaling.ALWAYS;
+                }
+                case "never": return DamageScaling.NEVER;
+                case "when_caused_by_living_non_player": default: {
+                    if (source.getDirectEntity() != null && source.getDirectEntity() instanceof LivingEntity && !(source.getDirectEntity() instanceof PlayerEntity)) {
+                        source.setScalesWithDifficulty();
+                    }
+                    return DamageScaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER;
+                }
+            }
+        }
+        return DamageScaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER;
     }
 
     public static DamageSource fromLocation(LivingEntity target, ResourceLocation sourceLocation) {
@@ -195,9 +231,9 @@ public class DamageSourceUtils {
         public DamageSource deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
             JsonObject object = element.getAsJsonObject();
             if (object.has("death_message_type") && (object.get("death_message_type").getAsString().equals("direct_entity") || object.get("death_message_type").getAsString().equals("indirect_entity"))) {
-                return new DamageManagerSource.EntityDMSource(element.getAsJsonObject(), null);
+                return new EntityDamageManagerSource(object, null);
             }
-            return new DamageManagerSource(element.getAsJsonObject());
+            return new DamageManagerSource(object);
         }
 
         @Override

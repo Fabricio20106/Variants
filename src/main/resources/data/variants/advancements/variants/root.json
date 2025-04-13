@@ -13,7 +13,7 @@
     "show_toast": false,
     "announce_to_chat": false,
     "hidden": false,
-    "background": "variants:textures/gui/advancements/backgrounds/variants.png"
+    "background": "variants:textures/gui/advancement_backgrounds/revaried.png"
   },
   "criteria": {
     "obtained_log": {

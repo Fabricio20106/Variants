@@ -19,7 +19,7 @@ public class VSFluidTagsProvider extends FluidTagsProvider {
     @Override
     @Nonnull
     public String getName() {
-        return "Variants - Fluid Tags";
+        return "Revaried - Fluid Tags";
     }
 
     @Override

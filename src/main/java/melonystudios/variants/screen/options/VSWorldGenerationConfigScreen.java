@@ -3,7 +3,8 @@ package melonystudios.variants.screen.options;
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import melonystudios.variants.Variants;
-import melonystudios.variants.screen.AbstractVSConfigScreen;
+import melonystudios.variants.screen.AbstractRVConfigScreen;
+import melonystudios.variants.util.VSUtils;
 import net.minecraft.client.AbstractOption;
 import net.minecraft.client.GameSettings;
 import net.minecraft.client.Minecraft;
@@ -17,6 +18,7 @@ import net.minecraft.client.gui.widget.list.OptionsRowList;
 import net.minecraft.util.IReorderingProcessor;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
@@ -24,8 +26,8 @@ import java.util.List;
 import static melonystudios.variants.screen.VSConfigEntries.*;
 import static melonystudios.variants.screen.VSConfigEntries.END_CAVES_AND_RAVINES;
 
-public class VSWorldGenerationConfigScreen extends AbstractVSConfigScreen {
-    public static List<AbstractOption> CONFIG_ENTRIES = Lists.newArrayList(PAINTINGWOOD_FOREST, AZURE_FIELDS, FLOWER_PATCHES, CRIMSON_WHEAT_PATCHES, SOUL_CARROT_PATCHES, WARPED_POTATO_PATCHES,
+public class VSWorldGenerationConfigScreen extends AbstractRVConfigScreen {
+    public static List<AbstractOption> SETTINGS = Lists.newArrayList(PAINTINGWOOD_FOREST, AZURE_FIELDS, FLOWER_PATCHES, CRIMSON_WHEAT_PATCHES, SOUL_CARROT_PATCHES, WARPED_POTATO_PATCHES,
             MELTING_BEET_PATCHES, GENERATE_QUARTZ_ORE, GENERATE_END_QUARTZ_ORE, GENERATE_NETHER_COAL_ORE, GENERATE_CRYSTALLIZED_MAGMA_CREAM_ORE, SOUL_LAVA_SPRINGS, END_CAVES_AND_RAVINES);
     private final AbstractOption[] smallOptions;
     private OptionsRowList list;
@@ -34,7 +36,7 @@ public class VSWorldGenerationConfigScreen extends AbstractVSConfigScreen {
 
     public VSWorldGenerationConfigScreen(Screen screen, GameSettings settings) {
         super(screen, settings, new TranslationTextComponent("gui.variants.config.world_generation.title"));
-        this.smallOptions = CONFIG_ENTRIES.toArray(new AbstractOption[0]);
+        this.smallOptions = SETTINGS.toArray(new AbstractOption[0]);
     }
 
     @Override
@@ -44,7 +46,7 @@ public class VSWorldGenerationConfigScreen extends AbstractVSConfigScreen {
 
     @Override
     protected void init() {
-        this.endSubstitutionBox = new TextFieldWidget(this.font, this.width / 2 - 152, 20, 300, 20, new TranslationTextComponent("config.variants.substitute_the_end_biome_with"));
+        this.endSubstitutionBox = new TextFieldWidget(this.font, this.width / 2 - 155, this.height - 27, 150, 20, new TranslationTextComponent("config.variants.substitute_the_end_biome_with"));
         this.endSubstitutionBox.setMaxLength(128);
         this.endSubstitutionBox.setFocus(false);
         this.endSubstitutionBox.setCanLoseFocus(true);
@@ -55,7 +57,7 @@ public class VSWorldGenerationConfigScreen extends AbstractVSConfigScreen {
         this.list = new OptionsRowList(this.minecraft, this.width, this.height, 32, this.height - 32, 25);
         this.list.addSmall(this.smallOptions);
         this.children.add(this.list);
-        this.doneButton = this.addButton(new Button(this.width / 2 - 100, this.height - 27, 200, 20, DialogTexts.GUI_DONE, button -> {
+        this.doneButton = this.addButton(new Button(this.width / 2 + 5, this.height - 27, 150, 20, DialogTexts.GUI_DONE, button -> {
             this.minecraft.setScreen(this.lastScreen);
             Variants.INSTANCE.saveConfig();
             SystemToast.multiline(this.minecraft, SystemToast.Type.TUTORIAL_HINT, new TranslationTextComponent("gui.variants.config.saved_settings"), new TranslationTextComponent("gui.variants.config.saved_settings.desc"));
@@ -79,21 +81,19 @@ public class VSWorldGenerationConfigScreen extends AbstractVSConfigScreen {
     }
 
     @Override
-    public void render(MatrixStack stack, int width, int height, float partialTicks) {
-        super.render(stack, width, height, partialTicks);
-        this.list.setRenderBackground(false);
-        this.list.setRenderTopAndBottom(false);
-        this.list.render(stack, width, height, partialTicks);
-        drawCenteredString(stack, this.font, this.title, this.width / 2, 15, 16777215);
-        List<IReorderingProcessor> processors = tooltipAt(this.list, width, height);
-        if (processors != null) this.renderTooltip(stack, processors, width, height);
-    }
+    public void render(MatrixStack stack, int mouseX, int mouseY, float partialTicks) {
+        super.renderPanorama(stack, partialTicks);
+        if (!ModList.get().isLoaded("mellowui")) {
+            this.list.setRenderBackground(false);
+            this.list.setRenderTopAndBottom(false);
+        }
 
-    //        this.renderBackground(stack);
-    //        if (this.minecraft.level != null) {
-    //            this.fillGradient(stack, 0, 0, this.width, this.height, -1072689136, -804253680);
-    //            MinecraftForge.EVENT_BUS.post(new GuiScreenEvent.BackgroundDrawnEvent(this, stack));
-    //        }
-    // drawString(stack, this.font, new TranslationTextComponent("config.variants.substitute_the_end_biome_with"), this.width / 2 - 153, 10, 10526880);
-    // this.endSubstitutionBox.render(stack, width, height, partialTicks);
+        this.list.render(stack, mouseX, mouseY, partialTicks);
+        this.endSubstitutionBox.render(stack, mouseX, mouseY, partialTicks);
+        super.render(stack, mouseX, mouseY, partialTicks);
+        drawString(stack, this.font, new TranslationTextComponent("config.variants.substitute_the_end_biome_with"), this.width / 2 - 156, this.height - 37, 0xA0A0A0);
+        drawCenteredString(stack, this.font, this.title, this.width / 2, VSUtils.DEFAULT_TITLE_HEIGHT, 0xFFFFFF);
+        List<IReorderingProcessor> processors = tooltipAt(this.list, mouseX, mouseY);
+        if (processors != null) this.renderTooltip(stack, processors, mouseX, mouseY);
+    }
 }

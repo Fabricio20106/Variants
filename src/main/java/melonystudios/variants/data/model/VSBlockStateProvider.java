@@ -17,7 +17,7 @@ public class VSBlockStateProvider extends VSBlockStateModels {
     @Nonnull
     @Override
     public String getName() {
-        return "Variants - Block States and Models";
+        return "Revaried - Block States and Models";
     }
 
     @Override

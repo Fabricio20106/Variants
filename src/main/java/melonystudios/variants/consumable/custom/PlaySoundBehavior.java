@@ -1,6 +1,6 @@
 package melonystudios.variants.consumable.custom;
 
-import melonystudios.variants.config.VSConfigs;
+import melonystudios.variants.Variants;
 import melonystudios.variants.sound.VSSounds;
 import melonystudios.variants.consumable.ConsumeBehavior;
 import melonystudios.variants.consumable.VSConsumeBehaviors;
@@ -117,7 +117,7 @@ public class PlaySoundBehavior extends ConsumeBehavior {
         properties.putIntArray("pos", new int[] {this.pos.getX(), this.pos.getY(), this.pos.getZ()});
         if (this.playAtPlayer) properties.putBoolean("play_at_player", true);
         properties.putFloat("volume", MathHelper.clamp(this.volume, 0, Float.MAX_VALUE));
-        properties.putFloat("pitch", (float) MathHelper.clamp(this.pitch, 0, VSConfigs.COMMON_CONFIGS.soundPitchUpperLimit.get()));
+        properties.putFloat("pitch", (float) MathHelper.clamp(this.pitch, 0, Variants.INSTANCE.getConfig().soundPitchUpperLimit));
         return properties;
     }
 

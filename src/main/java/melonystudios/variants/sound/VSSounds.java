@@ -26,6 +26,8 @@ public class VSSounds {
     // Items
     public static final RegistryObject<SoundEvent> SPYGLASS_USE = SOUNDS.register("item.spyglass.use", () -> new SoundEvent(Variants.variants("item.spyglass.use")));
     public static final RegistryObject<SoundEvent> SPYGLASS_STOP_USING = SOUNDS.register("item.spyglass.stop_using", () -> new SoundEvent(Variants.variants("item.spyglass.stop_using")));
+    public static final RegistryObject<SoundEvent> DYE_STAIN = SOUNDS.register("item.dye.stain", () -> new SoundEvent(Variants.variants("item.dye.stain")));
+    public static final RegistryObject<SoundEvent> INK_SAC_SPLOTCH = SOUNDS.register("item.ink_sac.splotch", () -> new SoundEvent(Variants.variants("item.ink_sac.splotch")));
 
     // Blocks
     public static final RegistryObject<SoundEvent> GLASS_SHATTER = SOUNDS.register("block.glass.shatter", () -> new SoundEvent(Variants.variants("block.glass.shatter")));
