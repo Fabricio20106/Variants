@@ -38,12 +38,12 @@ public class VSConfiguredFeatures {
     public static final BlockClusterFeatureConfig LARGE_FERN_CONFIG = new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.LARGE_FERN.defaultBlockState()), new DoublePlantBlockPlacer()).tries(64).noProjection().build();
     public static final LiquidsConfig CLOSED_SOUL_LAVA_SPRING_CONFIG = new LiquidsConfig(VSFluids.SOUL_LAVA.get().defaultFluidState(), false, 5, 0, ImmutableSet.of(Blocks.NETHERRACK));
 
-    private static final ImmutableList<Supplier<ConfiguredFeature<?, ?>>> VARIANTS_FLOWERS_LIST = ImmutableList.of(
+    private static final ImmutableList<Supplier<ConfiguredFeature<?, ?>>> REVARIED_FLOWERS_LIST = ImmutableList.of(
             () -> Feature.RANDOM_PATCH.configured(new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VSBlocks.GLOW_BLACK_TULIP.get().defaultBlockState()), new SimpleBlockPlacer()).tries(64).noProjection().build()),
             () -> Feature.RANDOM_PATCH.configured(new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VSBlocks.SUNNY_FLOWER.get().defaultBlockState()), new SimpleBlockPlacer()).tries(64).noProjection().build()));
 
-    public static final ConfiguredFeature<?, ?> VARIANTS_FLOWER_PATCH = register("variants_flower_patch", Feature.SIMPLE_RANDOM_SELECTOR.configured(
-                    new SingleRandomFeature(VARIANTS_FLOWERS_LIST)).count(FeatureSpread.of(-3, 4)).decorated(Features.Placements.ADD_32)
+    public static final ConfiguredFeature<?, ?> REVARIED_FLOWER_PATCH = register("revaried_flower_patch", Feature.SIMPLE_RANDOM_SELECTOR.configured(
+                    new SingleRandomFeature(REVARIED_FLOWERS_LIST)).count(FeatureSpread.of(-3, 4)).decorated(Features.Placements.ADD_32)
             .decorated(Features.Placements.HEIGHTMAP_SQUARE).count(5));
 
     public static final ConfiguredFeature<?, ?> AZURE_BLUET_FEATURE = register("azure_bluet_feature", Feature.FLOWER.configured(new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.AZURE_BLUET.defaultBlockState()),

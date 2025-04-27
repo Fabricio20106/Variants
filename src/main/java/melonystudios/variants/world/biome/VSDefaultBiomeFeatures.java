@@ -12,7 +12,7 @@ public class VSDefaultBiomeFeatures {
     }
 
     public static void addVariantsFlowers(BiomeGenerationSettings.Builder settings) {
-        settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.VARIANTS_FLOWER_PATCH);
+        settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.REVARIED_FLOWER_PATCH);
     }
 
     public static void addTallPlants(BiomeGenerationSettings.Builder settings) {

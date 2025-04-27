@@ -2,6 +2,7 @@ package melonystudios.variants.event;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import melonystudios.variants.Variants;
+import melonystudios.variants.command.ConfigMenuCommand;
 import melonystudios.variants.command.ConsumableCommand;
 import melonystudios.variants.command.DamageCommand;
 import melonystudios.variants.command.ConsumeBehaviorCommand;
@@ -16,6 +17,7 @@ import melonystudios.variants.util.damage.DamageSourceManager;
 import melonystudios.variants.world.carver.VSConfiguredCarvers;
 import melonystudios.variants.world.feature.VSConfiguredFeatures;
 import melonystudios.variants.world.feature.VSOreGeneration;
+import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
@@ -48,9 +50,10 @@ public class VSEvents {
         ConsumableCommand.register(event.getDispatcher());
         ConsumeBehaviorCommand.register(event.getDispatcher());
         DamageCommand.register(event.getDispatcher());
+        if (Minecraft.getInstance().getLaunchedVersion().contains("melony-studios-dev")) ConfigMenuCommand.register(event.getDispatcher());
         // Command ideas (~isa, 25-9-24):
         //  - /nbt - configure every single NBT tag of all items in the game (including some modded ones)
-        //  - /variants - general-use configuration command (and miscellaneous things like cooldowns)
+        //  - /revaried - general-use configuration command (and miscellaneous things like cooldowns)
     }
 
     @SubscribeEvent
@@ -67,7 +70,7 @@ public class VSEvents {
 
         // World Generation
         if (event.getCategory() == Biome.Category.PLAINS || event.getCategory() == Biome.Category.FOREST && Variants.INSTANCE.getConfig().flowerPatches) {
-            settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.VARIANTS_FLOWER_PATCH);
+            settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.REVARIED_FLOWER_PATCH);
         }
         if (event.getCategory() == Biome.Category.NETHER && Variants.INSTANCE.getConfig().soulLavaSprings) {
             settings.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, VSConfiguredFeatures.CLOSED_SOUL_LAVA_SPRING);

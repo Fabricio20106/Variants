@@ -306,7 +306,7 @@
   "config.variants.fish_spawning": "Fish Spawning",
   "config.variants.fish_spawning.desc": "Whether Revaried's fish can spawn in oceans.",
   "config.variants.quick_charge_max_level": "Quick Charge Max Level: %s",
-  "config.variants.quick_charge_max_level.desc": "What the maximum level for the Quick Charge enchantment should be.",
+  "config.variants.quick_charge_max_level.desc": "What the maximum level for the Quick Charge enchantment should be.\n§cWARNING: This is not good for your crossbow's health!§r",
   "config.variants.explosion_radius_upper_limit": "Explosion Radius Upper Limit: %s",
   "config.variants.explosion_radius_upper_limit.desc": "What the maximum explosion radius should be for an 'Explode' consume behavior.",
   "config.variants.sound_pitch_upper_limit": "Sound Pitch Upper Limit: %s",
