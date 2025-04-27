@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_top",
-  "textures": {
-    "side": "variants:block/enderwood_bookshelf",
-    "top": "variants:block/enderwood_planks"
-  }
-}

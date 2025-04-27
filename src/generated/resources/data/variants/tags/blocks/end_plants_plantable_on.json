@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "#minecraft:nylium",
-    "#forge:end_stones",
-    "minecraft:obsidian"
-  ]
-}

@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "minecraft:bookshelf",
-    "variants:enderwood_bookshelf",
-    "variants:plain_birch_bookshelf"
-  ]
-}

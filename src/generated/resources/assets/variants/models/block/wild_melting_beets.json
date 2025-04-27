@@ -1,6 +1,0 @@
-{
-  "parent": "variants:block/template_wild_crop",
-  "textures": {
-    "crop": "variants:block/wild_melting_beets"
-  }
-}

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "variants:block/crystallized_magma_cream_ore"
-  }
-}

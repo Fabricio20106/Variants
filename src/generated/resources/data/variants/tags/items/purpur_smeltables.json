@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "variants:mossy_purpur_block",
-    "minecraft:purpur_block",
-    "minecraft:purpur_pillar"
-  ]
-}

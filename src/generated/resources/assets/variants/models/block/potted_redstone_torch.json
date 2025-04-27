@@ -1,7 +1,0 @@
-{
-  "parent": "variants:block/template_potted_torch",
-  "textures": {
-    "dirt": "minecraft:block/smooth_stone",
-    "torch": "minecraft:block/redstone_torch"
-  }
-}

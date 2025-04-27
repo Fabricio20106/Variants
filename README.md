@@ -1,18 +1,25 @@
-![Revaried 1.6.X Logo](src/main/resources/revaried.png)
 
-# <center> - Revaried - </center>
-<sup>For Revaried 1.16.5 — 1.8.X</sup>
+Installation information
+=======
 
-**Revaried** adds various variants of items, blocks, and features from *Minecraft*.
+This template repository can be directly cloned to get you started with a new
+mod. Simply create a new repository cloned from this one, by following the
+instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
 
-This branch of the project is to preserve the code of the 1.16 versions.
+Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
 
-But since I didn't have any recent 1.16 code at hand, I had to download an old version of the mod and would need to update it until it matches the latest 1.16 build.
+If at any point you are missing libraries in your IDE, or you've run into problems you can
+run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
+{this does not affect your code} and then start the process again.
 
-Then I downloaded the `fabric-1.17` branch and got to work adding and polishing all features from the commits that followed, a good example being the pots.
+Mapping Names:
+============
+By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
+in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
+license. For the latest license text, refer to the mapping file itself, or the reference copy here:
+https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
 
-Currently, this branch includes features not available in the main project, for example:
-- Wool Sweaters with good coloring & appearance in the creative menu;
-- Poisoning effects from pots;
-- Various texture changes;
-- And various polishing touches from the way I program today.
+Additional Resources: 
+==========
+Community Documentation: https://docs.neoforged.net/  
+NeoForged Discord: https://discord.neoforged.net/

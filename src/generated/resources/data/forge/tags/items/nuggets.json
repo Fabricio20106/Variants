@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "#forge:nuggets/diamond",
-    "#forge:nuggets/emerald",
-    "#forge:nuggets/quartz",
-    "#forge:nuggets/purple_iron"
-  ]
-}

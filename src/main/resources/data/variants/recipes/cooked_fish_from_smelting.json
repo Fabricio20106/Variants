@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "variants:fish"
-  },
-  "result": "variants:cooked_fish",
-  "experience": 0.35,
-  "cookingtime": 200
-}

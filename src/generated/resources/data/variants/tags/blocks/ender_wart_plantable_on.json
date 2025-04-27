@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "#variants:has_ender_nylium",
-    "#forge:end_stones",
-    "variants:ender_farmland",
-    "minecraft:obsidian"
-  ]
-}

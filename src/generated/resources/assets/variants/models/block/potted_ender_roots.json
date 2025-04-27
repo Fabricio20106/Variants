@@ -1,6 +1,0 @@
-{
-  "parent": "variants:block/inventory_potted_plant",
-  "textures": {
-    "plant": "variants:block/ender_roots_pot"
-  }
-}

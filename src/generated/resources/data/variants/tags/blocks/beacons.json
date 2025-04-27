@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "minecraft:beacon",
-    "variants:golden_beacon",
-    "variants:quartz_beacon"
-  ]
-}

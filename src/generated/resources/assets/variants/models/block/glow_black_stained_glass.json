@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "variants:block/glow_black_stained_glass"
-  }
-}

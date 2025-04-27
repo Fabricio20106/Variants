@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "variants:item/melting_beet_soup_bucket"
-  }
-}

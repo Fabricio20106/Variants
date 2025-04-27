@@ -1,8 +1,0 @@
-{
-  "asset_id": "variants:painting",
-  "bowl": {
-    "id": "variants:painting_bowl"
-  },
-  "name": "painting",
-  "texture_id": 6
-}

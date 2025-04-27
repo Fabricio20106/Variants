@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "variants:painting_log",
-    "variants:painting_wood",
-    "variants:stripped_painting_log",
-    "variants:stripped_painting_wood"
-  ]
-}

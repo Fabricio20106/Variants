@@ -1,7 +1,0 @@
-{
-  "parent": "variants:block/inventory_potted_plant",
-  "textures": {
-    "dirt": "variants:block/ender_farmland",
-    "plant": "variants:block/ender_wart_pot"
-  }
-}

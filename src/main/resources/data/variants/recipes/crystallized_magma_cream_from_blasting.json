@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "tag": "forge:ores/crystallized_magma_cream"
-  },
-  "result": "variants:crystallized_magma_cream",
-  "experience": 0.15,
-  "cookingtime": 100
-}

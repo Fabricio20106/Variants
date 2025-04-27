@@ -1,8 +1,0 @@
-{
-  "asset_id": "minecraft:warped",
-  "bowl": {
-    "id": "variants:warped_bowl"
-  },
-  "name": "warped",
-  "texture_id": 8
-}

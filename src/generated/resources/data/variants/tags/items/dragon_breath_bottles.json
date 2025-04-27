@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "minecraft:dragon_breath",
-    "variants:splash_dragon_breath",
-    "variants:lingering_dragon_breath",
-    "variants:stained_dragon_breath"
-  ]
-}
