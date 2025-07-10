@@ -13,15 +13,12 @@ import net.minecraft.data.DirectoryCache;
 import net.minecraft.data.IDataProvider;
 import net.minecraft.util.*;
 import net.minecraft.util.text.TranslationTextComponent;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.nio.file.Path;
 
 public class VSDamageSourceReportsProvider implements IDataProvider {
-    public static final Logger LOGGER = LogManager.getLogger();
     public static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private final DataGenerator generator;
 
@@ -85,7 +82,7 @@ public class VSDamageSourceReportsProvider implements IDataProvider {
         try {
             IDataProvider.save(GSON, cache, sources, path1);
         } catch (IOException exception) {
-            LOGGER.error(new TranslationTextComponent("error." + Variants.MOD_ID + ".damage_source_reports.saving", path1).getString(), path1, exception);
+            Variants.LOGGER.error(new TranslationTextComponent("error." + Variants.MOD_ID + ".damage_source_reports.saving", path1).getString(), path1, exception);
         }
     }
 

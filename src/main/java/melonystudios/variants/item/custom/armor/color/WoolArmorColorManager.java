@@ -4,20 +4,18 @@ import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import melonystudios.variants.Variants;
 import net.minecraft.client.resources.JsonReloadListener;
 import net.minecraft.profiler.IProfiler;
 import net.minecraft.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nonnull;
 import java.util.Map;
 
 public class WoolArmorColorManager extends JsonReloadListener {
     private static final Gson GSON = createWoolArmorColorSerializer().create();
-    public static final Logger LOGGER = LogManager.getLogger();
 
     public WoolArmorColorManager() {
         super(GSON, "wool_armor_color");
@@ -34,11 +32,11 @@ public class WoolArmorColorManager extends JsonReloadListener {
                     builder.put(location, armorColor);
                 }
             } catch (Exception exception) {
-                LOGGER.error(new TranslationTextComponent("error.variants.wool_armor_color.parsing", location).getString(), exception);
+                Variants.LOGGER.error(new TranslationTextComponent("error.variants.wool_armor_color.parsing", location).getString(), exception);
             }
         });
         WoolArmorColor.DATA_DRIVEN_COLORS.putAll(builder.build());
-        LOGGER.info(new TranslationTextComponent("console.variants.wool_armor_color.loaded", builder.build().size()).getString());
+        Variants.LOGGER.info(new TranslationTextComponent("console.variants.wool_armor_color.loaded", builder.build().size()).getString());
     }
 
     public static GsonBuilder createWoolArmorColorSerializer() {

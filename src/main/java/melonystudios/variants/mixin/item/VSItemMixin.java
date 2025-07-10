@@ -65,12 +65,13 @@ public abstract class VSItemMixin implements Consumable, Equippable, IForgeItem 
         cir.setReturnValue(ComponentUtils.enchantmentGlintOverride(stack, stack.isEnchanted()));
     }
 
-    @Inject(method = "getRarity", at = @At("HEAD"), cancellable = true)
+    // disable this for now to prioritize Stancements ~isa 28-5-25
+    /*@Inject(method = "getRarity", at = @At("HEAD"), cancellable = true)
     public void getRarity(ItemStack stack, CallbackInfoReturnable<Rarity> callback) {
         Rarity rarity = ComponentUtils.rarity(stack, this.rarity);
         if (stack.isEnchanted()) rarity = VSUtils.upRarity(rarity);
         if (callback.getReturnValue() != rarity) callback.setReturnValue(rarity);
-    }
+    }*/
 
     @Inject(method = "getUseAnimation", at = @At("HEAD"), cancellable = true)
     public void getUseAnimation(ItemStack stack, CallbackInfoReturnable<UseAction> cir) {

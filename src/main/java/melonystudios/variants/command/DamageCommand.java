@@ -18,7 +18,7 @@ public class DamageCommand {
         dispatcher.register(Commands.literal("damage").requires(source -> source.hasPermission(2))
                 .then(Commands.argument("target", EntityArgument.entity())
                         .then(Commands.argument("amount", FloatArgumentType.floatArg(0, Float.MAX_VALUE))
-                                .then(Commands.argument("source", DamageSourceArgument.sources())
+                                .then(Commands.argument("source", DamageSourceArgument.source())
                                         .executes(dispatcher1 -> damageEntity(dispatcher1.getSource(), DamageSourceArgument.getSource(dispatcher1, "source", (LivingEntity) EntityArgument.getEntity(dispatcher1, "target")),
                                                 FloatArgumentType.getFloat(dispatcher1, "amount"), EntityArgument.getEntity(dispatcher1, "target")))
                                         .then(Commands.literal("by")

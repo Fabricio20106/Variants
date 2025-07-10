@@ -5,13 +5,19 @@ import melonystudios.variants.world.feature.VSConfiguredFeatures;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.NyliumBlock;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.HoeItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldReader;
+import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.NetherVegetationFeature;
 import net.minecraft.world.lighting.LightEngine;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.ToolType;
 
+import javax.annotation.Nullable;
 import java.util.Random;
 
 public class EnderNyliumBlock extends NyliumBlock {
@@ -41,5 +47,12 @@ public class EnderNyliumBlock extends NyliumBlock {
             NetherVegetationFeature.place(world, rand, abovePos, VSConfiguredFeatures.ENDERWOOD_FOREST_CONFIG, 3, 1);
             NetherVegetationFeature.place(world, rand, abovePos, VSConfiguredFeatures.END_SPROUTS_CONFIG, 3, 1);
         }
+    }
+
+    @Override
+    @Nullable
+    public BlockState getToolModifiedState(BlockState state, World world, BlockPos pos, PlayerEntity player, ItemStack stack, ToolType toolType) {
+        if (stack.getItem() instanceof HoeItem && state.is(VSBlocks.ENDER_NYLIUM.get())) return VSBlocks.ENDER_FARMLAND.get().defaultBlockState();
+        return super.getToolModifiedState(state, world, pos, player, stack, toolType);
     }
 }

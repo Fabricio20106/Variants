@@ -42,7 +42,7 @@ public class DamageSourceArgument implements ArgumentType<ResourceLocation> {
         return Arrays.asList("out_of_world", "minecraft:thrown", "variants:redstone_poisoning");
     }
 
-    public static DamageSourceArgument sources() {
+    public static DamageSourceArgument source() {
         return new DamageSourceArgument();
     }
 

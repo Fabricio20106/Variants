@@ -31,7 +31,7 @@ public class ConsumableCommand {
                                 .then(Commands.argument("ticks", IntegerArgumentType.integer(0))
                                         .executes(context -> setConsumeTicks(context, EntityArgument.getPlayer(context, "target"), IntegerArgumentType.getInteger(context, "ticks")))))
                         .then(Commands.literal("animation")
-                                .then(Commands.argument("animation", UseAnimationArgument.animations())
+                                .then(Commands.argument("animation", UseAnimationArgument.animation())
                                         .executes(context -> setConsumeAnimation(context, EntityArgument.getPlayer(context, "target"), UseAnimationArgument.getAnimation(context, "animation")))))
                         .then(Commands.literal("cooldown")
                                 .then(Commands.argument("cooldown_ticks", IntegerArgumentType.integer(0))

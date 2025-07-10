@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import melonystudios.variants.Variants;
 import melonystudios.variants.util.damage.DamageSourceUtils;
 import melonystudios.variants.util.damage.custom.DamageManagerSource;
 import melonystudios.variants.util.damage.custom.EntityDamageManagerSource;
@@ -14,12 +15,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.registries.ForgeRegistries;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class JSONDeserializer {
-    private static final Logger LOGGER = LogManager.getLogger();
-
     public static int nonNegativeInteger(JsonObject object, String objectName) {
         if (object.has(objectName)) {
             JsonElement element = object.get(objectName);
@@ -28,7 +25,7 @@ public class JSONDeserializer {
                 if (count >= 0) {
                     return count;
                 } else {
-                    LOGGER.warn(new TranslationTextComponent("parser.variants.negative_count", objectName, count).getString());
+                    Variants.LOGGER.warn(new TranslationTextComponent("parser.variants.negative_count", objectName, count).getString());
                     return 0;
                 }
             } else {
@@ -71,7 +68,7 @@ public class JSONDeserializer {
                 if (subCount >= 0) {
                     count = subCount;
                 } else {
-                    LogManager.getLogger().warn(new TranslationTextComponent("item_parser.variants.negative_count", subCount));
+                    Variants.LOGGER.warn(new TranslationTextComponent("item_parser.variants.negative_count", subCount));
                 }
             } else {
                 throw new JsonSyntaxException(new TranslationTextComponent("item_parser.variants.invalid_count", JSONUtils.getTranslatedType(countElement)).getString());

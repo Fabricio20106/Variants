@@ -1,5 +1,6 @@
 package melonystudios.variants.dispenser;
 
+import melonystudios.variants.util.InterfaceMethods;
 import net.minecraft.block.AbstractRailBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DispenserBlock;
@@ -53,7 +54,7 @@ public class SpawnerMinecartDispenseBehavior extends DefaultDispenseItemBehavior
 
         SpawnerMinecartEntity spawnerMinecart = (SpawnerMinecartEntity) AbstractMinecartEntity.createMinecart(world, x, y + heightAddition, z, AbstractMinecartEntity.Type.SPAWNER);
         if (stack.hasCustomHoverName()) spawnerMinecart.setCustomName(stack.getHoverName());
-        spawnerMinecart.spawner.load(stack.getOrCreateTagElement("spawn_data"));
+        ((InterfaceMethods.SpawnerMinecartMethods) spawnerMinecart).getSpawner().load(stack.getOrCreateTagElement("spawn_data"));
 
         world.addFreshEntity(spawnerMinecart);
         stack.shrink(1);

@@ -37,11 +37,11 @@ public abstract class BowlTypesProvider implements IDataProvider {
     @Override
     public void run(DirectoryCache cache) {
         this.addTypes();
-        String variantsPath = "data/" + this.modID + "/bowl_type/";
+        String filePath = "data/" + this.modID + "/bowl_type/";
 
         this.toSerialize.forEach(LamdbaExceptionUtils.rethrowBiConsumer((name, pair) -> {
-            Path variantFile = this.generator.getOutputFolder().resolve(variantsPath + name + ".json");
-            IDataProvider.save(GSON, cache, pair.getB(), variantFile);
+            Path bowlTypeFile = this.generator.getOutputFolder().resolve(filePath + name + ".json");
+            IDataProvider.save(GSON, cache, pair.getB(), bowlTypeFile);
         }));
     }
 

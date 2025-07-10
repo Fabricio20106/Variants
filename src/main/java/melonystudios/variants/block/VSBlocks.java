@@ -37,20 +37,20 @@ public class VSBlocks {
 
     public static final RegistryObject<Block> PLAIN_BIRCH_BOOKSHELF = BLOCKS.register("plain_birch_bookshelf", () -> new VSBookshelfBlock(1, AbstractBlock.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_WHITE).strength(1.5F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> AZURE_BLUET_LEAVES = BLOCKS.register("azure_bluet_leaves", () -> leaves(MaterialColor.COLOR_LIGHT_GREEN));
-    public static final RegistryObject<Block> PAINTING_LOG = BLOCKS.register("painting_log", () -> log(VSMaterialColors.PAINTING, VSMaterialColors.PAINTING));
-    public static final RegistryObject<Block> PAINTING_WOOD = BLOCKS.register("painting_wood", () -> log(VSMaterialColors.PAINTING, VSMaterialColors.PAINTING));
-    public static final RegistryObject<Block> STRIPPED_PAINTING_LOG = BLOCKS.register("stripped_painting_log", () -> log(VSMaterialColors.PAINTING, VSMaterialColors.PAINTING));
-    public static final RegistryObject<Block> STRIPPED_PAINTING_WOOD = BLOCKS.register("stripped_painting_wood", () -> log(VSMaterialColors.PAINTING, VSMaterialColors.PAINTING));
+    public static final RegistryObject<Block> PAINTING_LOG = BLOCKS.register("painting_log", () -> log(MaterialColor.WOOD, MaterialColor.WOOD));
+    public static final RegistryObject<Block> PAINTING_WOOD = BLOCKS.register("painting_wood", () -> log(MaterialColor.WOOD, MaterialColor.WOOD));
+    public static final RegistryObject<Block> STRIPPED_PAINTING_LOG = BLOCKS.register("stripped_painting_log", () -> log(MaterialColor.WOOD, MaterialColor.WOOD));
+    public static final RegistryObject<Block> STRIPPED_PAINTING_WOOD = BLOCKS.register("stripped_painting_wood", () -> log(MaterialColor.WOOD, MaterialColor.WOOD));
     public static final RegistryObject<Block> PAINTING_LEAVES = BLOCKS.register("painting_leaves", () -> leaves(MaterialColor.GRASS));
     public static final RegistryObject<Block> PAINTING_SAPLING = BLOCKS.register("painting_sapling", () -> new SaplingBlock(new PaintingTree(), AbstractBlock.Properties.copy(Blocks.OAK_SAPLING)));
-    public static final RegistryObject<Block> PAINTING_PLANKS = BLOCKS.register("painting_planks", () -> new Block(AbstractBlock.Properties.of(Material.WOOD, VSMaterialColors.PAINTING).strength(2, 3).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> PAINTING_PLANKS = BLOCKS.register("painting_planks", () -> new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2, 3).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> PAINTING_STAIRS = BLOCKS.register("painting_stairs", () -> new StairsBlock(() -> PAINTING_PLANKS.get().defaultBlockState(), AbstractBlock.Properties.copy(PAINTING_PLANKS.get())));
     public static final RegistryObject<Block> PAINTING_SLAB = BLOCKS.register("painting_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(PAINTING_PLANKS.get())));
     public static final RegistryObject<Block> PAINTING_FENCE = BLOCKS.register("painting_fence", () -> new FenceBlock(AbstractBlock.Properties.copy(PAINTING_PLANKS.get())));
     public static final RegistryObject<Block> PAINTING_FENCE_GATE = BLOCKS.register("painting_fence_gate", () -> new FenceGateBlock(AbstractBlock.Properties.copy(PAINTING_PLANKS.get())));
     public static final RegistryObject<Block> PAINTING_PRESSURE_PLATE = BLOCKS.register("painting_pressure_plate", () -> new PressurePlateBlock(EVERYTHING, AbstractBlock.Properties.copy(PAINTING_PLANKS.get()).noCollission().strength(0.5F)));
     public static final RegistryObject<Block> PAINTING_BUTTON = BLOCKS.register("painting_button", () -> new WoodButtonBlock(AbstractBlock.Properties.copy(PAINTING_PLANKS.get()).noCollission().strength(0.5F)));
-    public static final RegistryObject<Block> PAINTING_TRAPDOOR = BLOCKS.register("painting_trapdoor", () -> trapdoor(VSMaterialColors.PAINTING));
+    public static final RegistryObject<Block> PAINTING_TRAPDOOR = BLOCKS.register("painting_trapdoor", () -> trapdoor(MaterialColor.WOOD));
     public static final RegistryObject<Block> PAINTING_TRAPDOOR_ALBAN = BLOCKS.register("alban_trapdoor", () -> trapdoor(MaterialColor.GOLD));
     public static final RegistryObject<Block> PAINTING_TRAPDOOR_AZTEC = BLOCKS.register("aztec_trapdoor", () -> trapdoor(MaterialColor.CLAY));
     public static final RegistryObject<Block> PAINTING_TRAPDOOR_AZTEC2 = BLOCKS.register("aztec2_trapdoor", () -> trapdoor(MaterialColor.COLOR_BLUE));
@@ -197,11 +197,11 @@ public class VSBlocks {
     }
 
     private static RotatedPillarBlock log(MaterialColor top, MaterialColor side) {
-        return new RotatedPillarBlock(AbstractBlock.Properties.of(Material.WOOD, (state) -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? top : side).strength(2).sound(SoundType.WOOD));
+        return new RVLogBlock(AbstractBlock.Properties.of(Material.WOOD, (state) -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? top : side).strength(2).sound(SoundType.WOOD));
     }
 
     private static RotatedPillarBlock stem(MaterialColor top, MaterialColor side) {
-        return new RotatedPillarBlock(AbstractBlock.Properties.of(Material.NETHER_WOOD, (state) -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? top : side).strength(2).sound(SoundType.STEM));
+        return new RVLogBlock(AbstractBlock.Properties.of(Material.NETHER_WOOD, (state) -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? top : side).strength(2).sound(SoundType.STEM));
     }
 
     private static LeavesBlock leaves(MaterialColor color) {

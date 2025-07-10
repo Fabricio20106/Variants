@@ -36,8 +36,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.Locale;
@@ -47,7 +45,6 @@ import static net.minecraft.item.ItemModelsProperties.register;
 
 public class VSUtils {
     private static final List<String> VALID_WOOD_TYPES = Lists.newArrayList("warped", "crimson", "painting", "enderwood");
-    private static final Logger LOGGER = LogManager.getLogger();
     public static final RenderSkybox PANORAMA = new RenderSkybox(MainMenuScreen.CUBE_MAP);
     public static final Style REVARIED_COLOR_STYLE = Style.EMPTY.withColor(Color.fromRgb(0xFFC55F));
     public static final IFormattableTextComponent RESTART_REQUIRED = new TranslationTextComponent("gui.variants.restart_required").withStyle(REVARIED_COLOR_STYLE);
@@ -88,7 +85,7 @@ public class VSUtils {
     /// @param item The item to make edible for villagers;
     /// @param foodPoints How many food points to decrease the villager's hunger.
     public static void addVillagerFoodItem(Item item, int foodPoints) {
-        if (!item.is(VSItemTags.VILLAGER_WANTED_ITEMS)) LOGGER.info(I18n.get("console.variants.villager_food.item_not_in_tag", I18n.get(item.getDescriptionId()), VSItemTags.VILLAGER_WANTED_ITEMS.getName()));
+        if (!item.is(VSItemTags.VILLAGER_WANTED_ITEMS)) Variants.LOGGER.info(I18n.get("console.variants.villager_food.item_not_in_tag", I18n.get(item.getDescriptionId()), VSItemTags.VILLAGER_WANTED_ITEMS.getName()));
         VillagerEntity.FOOD_POINTS.put(item, foodPoints);
     }
 
@@ -297,7 +294,7 @@ public class VSUtils {
                 CompoundNBT tagsTag = JsonToNBT.parseTag(tag.getString("tags"));
                 tag.put("tags", tagsTag);
             } catch (CommandSyntaxException exception) {
-                LOGGER.error(new TranslationTextComponent("error.variants.stack_loading.tag", tag.getString("tags")).getString(), exception.getMessage());
+                Variants.LOGGER.error(new TranslationTextComponent("error.variants.stack_loading.tag", tag.getString("tags")).getString(), exception.getMessage());
             }
         }
 

@@ -25,23 +25,21 @@ public class RVEnchantmentConfigScreen extends AbstractRVConfigScreen {
 
     @Override
     protected void init() {
+        boolean mellowUILoaded = ModList.get().isLoaded("mellowui");
         this.list = new OptionsRowList(this.minecraft, this.width, this.height, 32, this.height - 32, 25);
+        this.list.setRenderBackground(mellowUILoaded);
+        this.list.setRenderTopAndBottom(mellowUILoaded);
         this.list.addBig(QUICK_CHARGE_MAX_LEVEL);
         this.children.add(this.list);
 
         // Done button
-        this.addButton(new Button(this.width / 2 - 100, this.height - 27, 200, 20, DialogTexts.GUI_DONE,
+        this.addButton(new Button(this.width / 2 - 100, this.height - 25, 200, 20, DialogTexts.GUI_DONE,
                 button -> this.minecraft.setScreen(this.lastScreen)));
     }
 
     @Override
     public void render(MatrixStack stack, int mouseX, int mouseY, float partialTicks) {
         super.renderPanorama(stack, partialTicks);
-        if (!ModList.get().isLoaded("mellowui")) {
-            this.list.setRenderBackground(false);
-            this.list.setRenderTopAndBottom(false);
-        }
-
         this.list.render(stack, mouseX, mouseY, partialTicks);
         drawCenteredString(stack, this.font, this.title, this.width / 2, VSUtils.DEFAULT_TITLE_HEIGHT, 0xFFFFFF);
         super.render(stack, mouseX, mouseY, partialTicks);

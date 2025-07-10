@@ -4,11 +4,13 @@ import com.google.common.collect.Lists;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import melonystudios.variants.Variants;
 import melonystudios.variants.screen.AbstractRVConfigScreen;
+import melonystudios.variants.screen.button.NoticeOptionButton;
 import melonystudios.variants.util.VSUtils;
 import net.minecraft.client.AbstractOption;
 import net.minecraft.client.GameSettings;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.DialogTexts;
+import net.minecraft.client.gui.IGuiEventListener;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.toasts.SystemToast;
 import net.minecraft.client.gui.widget.TextFieldWidget;
@@ -46,7 +48,7 @@ public class VSWorldGenerationConfigScreen extends AbstractRVConfigScreen {
 
     @Override
     protected void init() {
-        this.endSubstitutionBox = new TextFieldWidget(this.font, this.width / 2 - 155, this.height - 27, 150, 20, new TranslationTextComponent("config.variants.substitute_the_end_biome_with"));
+        this.endSubstitutionBox = new TextFieldWidget(this.font, this.width / 2 - 155, this.height - 25, 150, 20, new TranslationTextComponent("config.variants.substitute_the_end_biome_with"));
         this.endSubstitutionBox.setMaxLength(128);
         this.endSubstitutionBox.setFocus(false);
         this.endSubstitutionBox.setCanLoseFocus(true);
@@ -54,13 +56,24 @@ public class VSWorldGenerationConfigScreen extends AbstractRVConfigScreen {
         this.endSubstitutionBox.setResponder(this::validateBiomeEntry);
         this.children.add(this.endSubstitutionBox);
 
-        this.list = new OptionsRowList(this.minecraft, this.width, this.height, 32, this.height - 32, 25);
+        boolean mellowUILoaded = ModList.get().isLoaded("mellowui");
+        this.list = new OptionsRowList(this.minecraft, this.width, this.height, 32, this.height - 40, 25);
+        this.list.setRenderBackground(mellowUILoaded);
+        this.list.setRenderTopAndBottom(mellowUILoaded);
         this.list.addSmall(this.smallOptions);
         this.children.add(this.list);
-        this.doneButton = this.addButton(new Button(this.width / 2 + 5, this.height - 27, 150, 20, DialogTexts.GUI_DONE, button -> {
+        this.doneButton = this.addButton(new Button(this.width / 2 + 5, this.height - 25, 150, 20, DialogTexts.GUI_DONE, button -> {
+
+            for (OptionsRowList.Row row : this.list.children()) {
+                for (IGuiEventListener listener : row.children()) {
+                    if (listener instanceof NoticeOptionButton && ((NoticeOptionButton) listener).changed()) {
+                        Variants.INSTANCE.saveConfig();
+                        this.minecraft.getToasts().addToast(SystemToast.multiline(this.minecraft, SystemToast.Type.TUTORIAL_HINT, new TranslationTextComponent("gui.variants.config.saved_settings"), new TranslationTextComponent("gui.variants.config.saved_settings.desc")));
+                        break;
+                    }
+                }
+            }
             this.minecraft.setScreen(this.lastScreen);
-            Variants.INSTANCE.saveConfig();
-            SystemToast.multiline(this.minecraft, SystemToast.Type.TUTORIAL_HINT, new TranslationTextComponent("gui.variants.config.saved_settings"), new TranslationTextComponent("gui.variants.config.saved_settings.desc"));
         }));
     }
 
@@ -83,11 +96,6 @@ public class VSWorldGenerationConfigScreen extends AbstractRVConfigScreen {
     @Override
     public void render(MatrixStack stack, int mouseX, int mouseY, float partialTicks) {
         super.renderPanorama(stack, partialTicks);
-        if (!ModList.get().isLoaded("mellowui")) {
-            this.list.setRenderBackground(false);
-            this.list.setRenderTopAndBottom(false);
-        }
-
         this.list.render(stack, mouseX, mouseY, partialTicks);
         this.endSubstitutionBox.render(stack, mouseX, mouseY, partialTicks);
         super.render(stack, mouseX, mouseY, partialTicks);

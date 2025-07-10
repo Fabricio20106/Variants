@@ -1,6 +1,7 @@
 package melonystudios.variants.consumable;
 
 import com.google.common.collect.Lists;
+import melonystudios.variants.Variants;
 import melonystudios.variants.component.Consumable;
 import melonystudios.variants.item.custom.food.ConsumableItem;
 import melonystudios.variants.util.Constants;
@@ -20,7 +21,6 @@ import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ReverseTagWrapper;
 import net.minecraftforge.registries.ForgeRegistryEntry;
-import org.apache.logging.log4j.LogManager;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -108,7 +108,7 @@ public abstract class ConsumeBehavior extends ForgeRegistryEntry<ConsumeBehavior
                 ResourceLocation behavior = ResourceLocation.tryParse(stack.getOrCreateTagElement("consumable").getCompound("behavior").getString("id"));
                 if (VSRegistries.CONSUME_BEHAVIOR.containsKey(behavior)) return VSRegistries.CONSUME_BEHAVIOR.getValue(behavior);
             } catch (NullPointerException exception) {
-                LogManager.getLogger().error("Could not get the consume behavior from {} NBT", stack.getHoverName().getString(), exception);
+                Variants.LOGGER.error("Could not get the consume behavior from {} NBT", stack.getHoverName().getString(), exception);
             }
         } else {
             return registryEntry();
@@ -117,16 +117,7 @@ public abstract class ConsumeBehavior extends ForgeRegistryEntry<ConsumeBehavior
     }
 
     @Nullable
-    public CompoundNBT getBehaviorProperties(ItemStack stack) {
-        if (Consumable.validConsumableClass(stack.getItem())) {
-            CompoundNBT consumableTag = stack.getTagElement("consumable");
-            if (consumableTag != null && consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) return consumableTag.getCompound("behavior");
-        }
-        return null;
-    }
-
-    @Nullable
-    public static CompoundNBT getBehaviorPropertiesStatic(ItemStack stack) {
+    public static CompoundNBT getBehaviorProperties(ItemStack stack) {
         if (Consumable.validConsumableClass(stack.getItem())) {
             CompoundNBT consumableTag = stack.getTagElement("consumable");
             if (consumableTag != null && consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) return consumableTag.getCompound("behavior");
@@ -147,12 +138,12 @@ public abstract class ConsumeBehavior extends ForgeRegistryEntry<ConsumeBehavior
             CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
             if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
                 ConsumeBehavior tagBehavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
-                if (tagBehavior != null && Consumable.canRunBehavior(tagBehavior)) tagBehavior.loadFromNBT(stack, world, livEntity, getBehaviorPropertiesStatic(stack));
+                if (tagBehavior != null && Consumable.canRunBehavior(tagBehavior)) tagBehavior.loadFromNBT(stack, world, livEntity, getBehaviorProperties(stack));
             }
         } else {
             if (Consumable.validConsumableClass(stack.getItem())) {
                 ConsumeBehavior behavior = ((ConsumableItem) stack.getItem()).getBehavior();
-                if (Consumable.canRunBehavior(behavior)) behavior.loadFromNBT(stack, world, livEntity, getBehaviorPropertiesStatic(stack));
+                if (Consumable.canRunBehavior(behavior)) behavior.loadFromNBT(stack, world, livEntity, getBehaviorProperties(stack));
             }
         }
     }

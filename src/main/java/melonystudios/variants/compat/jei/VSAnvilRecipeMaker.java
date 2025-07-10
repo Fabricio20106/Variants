@@ -3,6 +3,7 @@ package melonystudios.variants.compat.jei;
 import com.google.common.base.Stopwatch;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import melonystudios.variants.Variants;
 import melonystudios.variants.item.VSWeaponry;
 import melonystudios.variants.item.tool.VSArmors;
 import melonystudios.variants.item.tool.VSTools;
@@ -11,8 +12,6 @@ import mezz.jei.api.runtime.IIngredientManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.text.TranslationTextComponent;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,18 +19,16 @@ import java.util.List;
 import java.util.Map;
 
 public class VSAnvilRecipeMaker {
-    public static final Logger LOGGER = LogManager.getLogger();
-
     public static List<Object> getAnvilRecipes(IVanillaRecipeFactory recipeFactory, IIngredientManager manager) {
         List<Object> recipes = new ArrayList<>();
         Stopwatch stopwatch = Stopwatch.createStarted();
         try {
             getVSRepairRecipes(recipes, recipeFactory);
         } catch (RuntimeException exception) {
-            LOGGER.error(new TranslationTextComponent("error.variants.anvil_repair_recipe_maker.failed").getString(), exception);
+            Variants.LOGGER.error(new TranslationTextComponent("error.variants.anvil_repair_recipe_maker.failed").getString(), exception);
         }
         stopwatch.stop();
-        LOGGER.debug(new TranslationTextComponent("error.variants.anvil_repair_recipe_maker.successful", stopwatch).getString());
+        Variants.LOGGER.debug(new TranslationTextComponent("error.variants.anvil_repair_recipe_maker.successful", stopwatch).getString());
         return recipes;
     }
 

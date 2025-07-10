@@ -45,7 +45,7 @@ public class UseAnimationArgument implements ArgumentType<UseAction> {
         return ISuggestionProvider.suggest(useAnimations.stream(), builder);
     }
 
-    public static UseAnimationArgument animations() {
+    public static UseAnimationArgument animation() {
         return new UseAnimationArgument();
     }
 

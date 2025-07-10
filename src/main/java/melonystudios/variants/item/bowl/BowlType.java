@@ -12,7 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
-import org.apache.logging.log4j.LogManager;
 
 import java.lang.reflect.Type;
 import java.util.LinkedHashMap;
@@ -40,7 +39,7 @@ public class BowlType {
         this.woodName = woodName;
         this.textureID = textureID;
         if (TEXTURE_IDENTIFIERS.contains(textureID)) {
-            LogManager.getLogger().warn(new TranslationTextComponent("error." + Variants.MOD_ID + ".bowl_type.duplicate_texture_id", woodName, textureID).getString());
+            Variants.LOGGER.warn(new TranslationTextComponent("error." + Variants.MOD_ID + ".bowl_type.duplicate_texture_id", woodName, textureID).getString());
         } else {
             TEXTURE_IDENTIFIERS.add(textureID);
         }

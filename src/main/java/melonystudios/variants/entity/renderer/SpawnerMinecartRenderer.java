@@ -1,6 +1,7 @@
 package melonystudios.variants.entity.renderer;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
+import melonystudios.variants.util.InterfaceMethods;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
@@ -24,7 +25,7 @@ public class SpawnerMinecartRenderer extends MinecartRenderer<SpawnerMinecartEnt
         super.render(minecart, yaw, partialTicks, stack, buffer, packedLight);
         stack.pushPose();
         stack.translate(0, 0, 0);
-        AbstractSpawner spawner = minecart.spawner;
+        AbstractSpawner spawner = ((InterfaceMethods.SpawnerMinecartMethods) minecart).getSpawner();
         Entity entity = spawner.getOrCreateDisplayEntity();
         if (entity != null) {
             float heightOffset = 0.253125F;

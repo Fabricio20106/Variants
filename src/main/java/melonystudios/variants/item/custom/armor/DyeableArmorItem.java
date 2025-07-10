@@ -7,6 +7,7 @@ import net.minecraft.item.IDyeableArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.text.TranslationTextComponent;
 
 import java.util.List;
 import java.util.Random;
@@ -15,7 +16,7 @@ public interface DyeableArmorItem extends IDyeableArmorItem {
     @Override
     default int getColor(ItemStack stack) {
         CompoundNBT displayTag = stack.getTagElement("display");
-        return displayTag != null && displayTag.contains("color", Constants.TagTypes.ANY_NUMERIC) ? displayTag.getInt("color") : getDefaultColor();
+        return displayTag != null && displayTag.contains("color", Constants.TagTypes.ANY_NUMERIC) ? displayTag.getInt("color") : this.getDefaultColor();
     }
 
     @Override
@@ -105,9 +106,15 @@ public interface DyeableArmorItem extends IDyeableArmorItem {
     /// Rolls a random wool armor color, used by {@link #pickRandomColor}.
     /// @param random Used to pick a random wool armor color, be it a color or armor design.
     static WoolArmorColor rollArmorColor(Random random) {
-        Object[] armorColors = WoolArmorColor.DATA_DRIVEN_COLORS.values().toArray();
-        int randomValue = random.nextInt(armorColors.length);
-        return (WoolArmorColor) armorColors[randomValue];
+        // fix a crash in multiplayer when rendering tabs due to wool armor colors not loading or something ~isa 4-7-25
+        try {
+            Object[] armorColors = WoolArmorColor.DATA_DRIVEN_COLORS.values().toArray();
+            int randomValue = random.nextInt(armorColors.length);
+            return (WoolArmorColor) armorColors[randomValue];
+        } catch (IllegalArgumentException exception) {
+            Variants.LOGGER.error(new TranslationTextComponent("error.variants.wool_armor_color.randomizing").getString(), exception);
+            return WoolArmorColor.GLOW_BLACK;
+        }
     }
 
     /// Whether this item stack has an <code>armor_design</code> tag.

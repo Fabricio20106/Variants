@@ -75,7 +75,7 @@ public class VSItemStackMixin /*extends CapabilityProvider<ItemStack>*/ {
             if (stack.getItem().isDamageable(stack)) stack.setDamageValue(stack.getDamageValue());
             cir.setReturnValue(stack);
         } catch (RuntimeException exception) {
-            LogManager.getLogger().debug("Tried to load invalid item: {}", tag, exception);
+            Variants.LOGGER.debug("Tried to load invalid item: {}", tag, exception);
             cir.setReturnValue(new ItemStack(null));
         }
     }*/

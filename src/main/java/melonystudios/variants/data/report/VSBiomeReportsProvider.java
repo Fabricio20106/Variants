@@ -14,8 +14,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.biome.Biome;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nonnull;
 import java.io.IOException;
@@ -27,7 +25,6 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class VSBiomeReportsProvider implements IDataProvider {
-    public static final Logger LOGGER = LogManager.getLogger();
     public static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private final DataGenerator generator;
 
@@ -61,10 +58,10 @@ public class VSBiomeReportsProvider implements IDataProvider {
                     if (opJsonElement.isPresent()) {
                         IDataProvider.save(GSON, cache, opJsonElement.get(), path1);
                     } else {
-                        LOGGER.error(new TranslationTextComponent("error." + Variants.MOD_ID + ".biome_reports.serialization", path1).getString());
+                        Variants.LOGGER.error(new TranslationTextComponent("error." + Variants.MOD_ID + ".biome_reports.serialization", path1).getString());
                     }
                 } catch (IOException exception) {
-                    LOGGER.error(new TranslationTextComponent("error." + Variants.MOD_ID + ".biome_reports.saving", path1).getString(), exception);
+                    Variants.LOGGER.error(new TranslationTextComponent("error." + Variants.MOD_ID + ".biome_reports.saving", path1).getString(), exception);
                 }
             }
         }

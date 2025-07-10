@@ -1,12 +1,12 @@
 package melonystudios.variants;
 
-import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import melonystudios.variants.block.VSBlocks;
 import melonystudios.variants.blockentity.VSBlockEntities;
 import melonystudios.variants.blockentity.renderer.VSBedBlockEntityRenderer;
 import melonystudios.variants.blockentity.renderer.VSBellBlockEntityRenderer;
+import melonystudios.variants.command.argument.RVArgumentTypes;
 import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.config.VSJSONConfig;
 import melonystudios.variants.crafting.VSRecipeTypes;
@@ -25,7 +25,6 @@ import melonystudios.variants.item.VSWeaponry;
 import melonystudios.variants.item.fix.VSTagFixes;
 import melonystudios.variants.consumable.VSConsumeBehaviors;
 import melonystudios.variants.loot.VSLootFunctions;
-import melonystudios.variants.loot.rand.BowlIDValueRange;
 import melonystudios.variants.screen.options.VSConfigCategoriesScreen;
 import melonystudios.variants.sound.VSSounds;
 import melonystudios.variants.util.*;
@@ -36,7 +35,6 @@ import melonystudios.variants.world.carver.VSWorldCarvers;
 import melonystudios.variants.world.feature.VSConfiguredFeatures;
 import melonystudios.variants.world.feature.VSFeatures;
 import melonystudios.variants.world.surface.VSSurfaceBuilders;
-import net.minecraft.block.Block;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.WoodType;
 import net.minecraft.client.Minecraft;
@@ -50,9 +48,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.fish.AbstractFishEntity;
-import net.minecraft.item.AxeItem;
 import net.minecraft.item.Items;
-import net.minecraft.loot.RandomRanges;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -84,7 +80,7 @@ import static net.minecraftforge.common.BiomeDictionary.Type.*;
 
 @Mod(Variants.MOD_ID)
 public class Variants {
-    public static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger("revaried");
     public static final String MOD_ID = "variants";
     public static Variants INSTANCE;
     private VSJSONConfig config = null;
@@ -101,7 +97,7 @@ public class Variants {
 
         MinecraftForge.EVENT_BUS.register(this);
         INSTANCE = this;
-        loadConfig();
+        this.loadConfig();
 
         VSItems.ITEMS.register(eventBus);
         VSWeaponry.ITEMS.register(eventBus);
@@ -133,12 +129,6 @@ public class Variants {
     }
 
     public void commonSetup(final FMLCommonSetupEvent event) {
-        AxeItem.STRIPABLES = new ImmutableMap.Builder<Block, Block>().putAll(AxeItem.STRIPABLES)
-                .put(VSBlocks.PAINTING_LOG.get(), VSBlocks.STRIPPED_PAINTING_LOG.get())
-                .put(VSBlocks.PAINTING_WOOD.get(), VSBlocks.STRIPPED_PAINTING_WOOD.get())
-                .put(VSBlocks.ENDERWOOD_STEM.get(), VSBlocks.STRIPPED_ENDERWOOD_STEM.get())
-                .put(VSBlocks.ENDERWOOD_HYPHAE.get(), VSBlocks.STRIPPED_ENDERWOOD_HYPHAE.get()).build();
-
         EntitySpawnPlacementRegistry.register(VSEntities.FISH.get(), EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractFishEntity::checkFishSpawnRules);
 
         RegistryKey<Biome> paintingwoodForestKey = RegistryKey.create(ForgeRegistries.Keys.BIOMES, VSBiomes.PAINTINGWOOD_FOREST.getId());
@@ -155,19 +145,15 @@ public class Variants {
         VSConfiguredFeatures.init();
         VSConfiguredCarvers.init();
         VSSurfaceBuilders.init();
+        RVArgumentTypes.init();
         Registry.register(Registry.BIOME_SOURCE, variants("enderwood_end"), EnderwoodEndBiomeProvider.CODEC);
 
         VSPotions.addBrewingRecipes();
         VSVanillaCompatibility.compostables();
-        VSVanillaCompatibility.tillables();
         VSVanillaCompatibility.flammables();
-        VSVanillaCompatibility.flattenables();
-        VSVanillaCompatibility.addBed(VSBlocks.GLOW_BLACK_BED.get());
 
         DispenserBlock.registerBehavior(Items.BUCKET, new EmptyBucketDispenseBehavior());
         DispenserBlock.registerBehavior(Items.WATER_BUCKET, new BucketDispenseBehavior());
-
-        RandomRanges.GENERATORS.put(variants("texture_id"), BowlIDValueRange.class);
 
         WoodType.register(VSWoodTypes.PAINTING);
         WoodType.register(VSWoodTypes.ENDERWOOD);

@@ -2,6 +2,7 @@ package melonystudios.variants.mixin.entity;
 
 import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.item.VSItems;
+import melonystudios.variants.util.InterfaceMethods;
 import melonystudios.variants.util.NBTUtils;
 import melonystudios.variants.util.tag.VSBlockTags;
 import net.minecraft.block.Block;
@@ -23,17 +24,24 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.spawner.AbstractSpawner;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(SpawnerMinecartEntity.class)
-public abstract class VSSpawnerMinecartEntityMixin extends AbstractMinecartEntity {
+public abstract class VSSpawnerMinecartEntityMixin extends AbstractMinecartEntity implements InterfaceMethods.SpawnerMinecartMethods {
     @Shadow
-    public AbstractSpawner spawner;
+    @Final
+    private AbstractSpawner spawner;
 
     public VSSpawnerMinecartEntityMixin(EntityType<?> type, World world) {
         super(type, world);
+    }
+
+    @Override
+    public AbstractSpawner getSpawner() {
+        return this.spawner;
     }
 
     @Unique
