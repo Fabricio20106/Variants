@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
+    {
+      "id": "#endergetic:end_plantable",
+      "required": false
+    },
     "#minecraft:nylium",
     "#forge:end_stones",
     "minecraft:obsidian"

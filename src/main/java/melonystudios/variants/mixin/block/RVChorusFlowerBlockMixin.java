@@ -9,10 +9,10 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.fml.ModList;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -21,34 +21,38 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-@Mixin(ChorusFlowerBlock.class)
-public abstract class VSChorusFlowerBlockMixin extends Block {
+@Mixin(value = ChorusFlowerBlock.class, priority = 900)
+public abstract class RVChorusFlowerBlockMixin extends Block {
     @Shadow
     @Final
     private ChorusPlantBlock plant;
-
     @Shadow
     protected abstract void placeGrownFlower(World world, BlockPos pos, int age);
-
     @Shadow
     protected abstract void placeDeadFlower(World world, BlockPos pos);
+    @Shadow
+    private static boolean allNeighborsEmpty(IWorldReader world, BlockPos pos, @Nullable Direction direction) {
+        return false;
+    }
 
-    public VSChorusFlowerBlockMixin(Properties properties) {
+    public RVChorusFlowerBlockMixin(Properties properties) {
         super(properties);
     }
 
-    @Inject(method = "randomTick", at = @At("HEAD"))
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random rand, CallbackInfo ci) {
+    @Inject(method = "randomTick", at = @At("HEAD"), cancellable = true)
+    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random rand, CallbackInfo callback) {
+        if (ModList.get().isLoaded("endergetic")) return;
+        callback.cancel();
         BlockPos abovePos = pos.above();
         if (world.isEmptyBlock(abovePos) && abovePos.getY() < 256) {
             int age = state.getValue(ChorusFlowerBlock.AGE);
             if (age < 5 && ForgeHooks.onCropsGrowPre(world, abovePos, state, true)) {
-                boolean flag = false;
+                boolean canPlantOn = false;
                 boolean flag1 = false;
                 BlockState belowState = world.getBlockState(pos.below());
                 Block belowBlock = belowState.getBlock();
                 if (belowBlock.is(VSBlockTags.CHORUS_FLOWER_PLANTABLE_ON)) {
-                    flag = true;
+                    canPlantOn = true;
                 } else if (belowBlock == this.plant) {
                     int j = 1;
 
@@ -65,13 +69,13 @@ public abstract class VSChorusFlowerBlockMixin extends Block {
                     }
 
                     if (j < 2 || j <= rand.nextInt(flag1 ? 5 : 4)) {
-                        flag = true;
+                        canPlantOn = true;
                     }
                 } else if (belowState.isAir(world, pos.below())) {
-                    flag = true;
+                    canPlantOn = true;
                 }
 
-                if (flag && allNeighborsEmpty(world, abovePos, null) && world.isEmptyBlock(pos.above(2))) {
+                if (canPlantOn && allNeighborsEmpty(world, abovePos, null) && world.isEmptyBlock(pos.above(2))) {
                     world.setBlock(pos, this.plant.getStateForPlacement(world, pos), Constants.BlockFlags.BLOCK_UPDATE);
                     this.placeGrownFlower(world, abovePos, age);
                 } else if (age < 4) {
@@ -105,41 +109,29 @@ public abstract class VSChorusFlowerBlockMixin extends Block {
     }
 
     @Inject(method = "canSurvive", at = @At("HEAD"), cancellable = true)
-    public void canSurvive(BlockState state, IWorldReader world, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
+    public void canSurvive(BlockState state, IWorldReader world, BlockPos pos, CallbackInfoReturnable<Boolean> callback) {
+        if (ModList.get().isLoaded("endergetic")) return;
+        callback.cancel();
         BlockState belowState = world.getBlockState(pos.below());
-        if (belowState.getBlock() != plant && !belowState.is(VSBlockTags.CHORUS_FLOWER_PLANTABLE_ON)) {
+        if (belowState.getBlock() != this.plant && !belowState.is(VSBlockTags.CHORUS_FLOWER_PLANTABLE_ON)) {
             if (!belowState.isAir(world, pos.below())) {
-                cir.setReturnValue(false);
+                callback.setReturnValue(false);
             } else {
                 boolean flag = false;
 
-                for(Direction direction : Direction.Plane.HORIZONTAL) {
+                for (Direction direction : Direction.Plane.HORIZONTAL) {
                     BlockState state1 = world.getBlockState(pos.relative(direction));
                     if (state1.is(this.plant)) {
-                        if (flag) {
-                            cir.setReturnValue(false);
-                        }
+                        if (flag) callback.setReturnValue(false);
 
                         flag = true;
-                    } else if (!state1.isAir(world, pos.relative(direction))) {
-                        cir.setReturnValue(false);
-                    }
+                    } else if (!state1.isAir(world, pos.relative(direction))) callback.setReturnValue(false);
                 }
 
-                cir.setReturnValue(flag);
+                callback.setReturnValue(flag);
             }
         } else {
-            cir.setReturnValue(true);
+            callback.setReturnValue(true);
         }
-    }
-
-    @Unique
-    private static boolean allNeighborsEmpty(IWorldReader world, BlockPos pos, @Nullable Direction direction) {
-        for (Direction hDirections : Direction.Plane.HORIZONTAL) {
-            if (hDirections != direction && !world.isEmptyBlock(pos.relative(hDirections))) {
-                return false;
-            }
-        }
-        return true;
     }
 }

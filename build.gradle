@@ -9,8 +9,8 @@ buildscript {
         }
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
-        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: "${forgegradle_version}", changing: true
+        classpath "org.spongepowered:mixingradle:${mixingradle_version}"
     }
 }
 
@@ -36,7 +36,7 @@ minecraft {
 
     // Use non-default mappings at your own risk, they may not always work!
     // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'official', version: '1.16.5'
+    mappings channel: 'official', version: "${minecraft_version}"
     // A SRG named sources jar is made by default. Uncomment this to disable.
     // makeObfSourceJar = false
 
@@ -86,10 +86,6 @@ minecraft {
                 // Note: This is not your email, even if you have a Mojang account.
                 args '--username', project.getProperty('mc_username')
             }
-            if (project.hasProperty('mc_accessToken')) {
-                // Your access token, you can find it in your '.minecraft/launcher_profiles.json' file.
-                args '--accessToken', project.getProperty('mc_accessToken')
-            }
 
             args '--version', 'melony-studios-dev/revaried'
 
@@ -130,7 +126,7 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
 
     // Annotation Processors
-    annotationProcessor 'org.spongepowered:mixin:0.8:processor'
+    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 
     // Patchouli
     // compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")

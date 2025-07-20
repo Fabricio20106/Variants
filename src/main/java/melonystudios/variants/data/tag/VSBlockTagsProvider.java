@@ -50,7 +50,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         // Minecraft World Generation-Related Tags
         this.tag(VSBlockTags.PLANTS_PLACEABLE_ON).addTag(VSBlockTags.NATURAL_FARMLAND).add(Blocks.GRASS_BLOCK, Blocks.PODZOL, Blocks.DIRT, Blocks.COARSE_DIRT);
 
-        // Variants' Tags
+        // Revaried's Tags
         this.tag(VSBlockTags.PAINTING_DOORS).add(VSBlocks.PAINTING_DOOR_WANDERER.get()).add(VSBlocks.PAINTING_DOOR_GRAHAM.get()).add(VSBlocks.PAINTING_DOOR_FIRST.get());
         this.tag(VSBlockTags.PAINTING_TRAPDOORS).add(VSBlocks.PAINTING_TRAPDOOR_ALBAN.get()).add(VSBlocks.PAINTING_TRAPDOOR_AZTEC.get()).add(VSBlocks.PAINTING_TRAPDOOR_AZTEC2.get()).add(VSBlocks.PAINTING_TRAPDOOR_BOMB.get())
                 .add(VSBlocks.PAINTING_TRAPDOOR_KEBAB.get()).add(VSBlocks.PAINTING_TRAPDOOR_PLANT.get()).add(VSBlocks.PAINTING_TRAPDOOR_WASTELAND.get());
@@ -65,7 +65,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSBlockTags.NETHER_WART_PLANTABLE_ON).add(VSBlocks.CRIMSON_FARMLAND.get()).add(VSBlocks.WARPED_FARMLAND.get()).add(Blocks.SOUL_SAND).add(Blocks.SOUL_SOIL);
         this.tag(VSBlockTags.ENDER_WART_PLANTABLE_ON).addTag(VSBlockTags.HAS_ENDER_NYLIUM).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_FARMLAND.get()).add(Blocks.OBSIDIAN);
         this.tag(VSBlockTags.GOLDEN_CARROTS_PLANTABLE_ON).addTag(VSBlockTags.FARMLAND);
-        this.tag(VSBlockTags.END_PLANTS_PLANTABLE_ON).addTag(BlockTags.NYLIUM).addTag(Tags.Blocks.END_STONES).add(Blocks.OBSIDIAN);
+        this.tag(VSBlockTags.END_PLANTS_PLANTABLE_ON).addOptionalTag(new ResourceLocation("endergetic", "end_plantable")).addTag(BlockTags.NYLIUM).addTag(Tags.Blocks.END_STONES).add(Blocks.OBSIDIAN);
         this.tag(VSBlockTags.WARPING_VINES_CAN_PLACE_ON).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_WART_BLOCK.get());
         this.tag(VSBlockTags.CHORUS_FLOWER_PLANTABLE_ON).addTag(VSBlockTags.HAS_ENDER_NYLIUM).addTag(Tags.Blocks.END_STONES);
         this.tag(VSBlockTags.CHORUS_PLANT_PLANTABLE_ON).add(Blocks.CHORUS_FLOWER).add(Blocks.CHORUS_PLANT);
@@ -81,6 +81,11 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSBlockTags.NATURAL_FARMLAND).add(Blocks.FARMLAND, VSBlocks.ENDER_FARMLAND.get());
         this.tag(VSBlockTags.CONDUIT_FRAME_BLOCKS).add(VSBlocks.ELDER_PRISMARINE.get()).add(VSBlocks.ELDER_PRISMARINE_BRICKS.get()).add(VSBlocks.DARK_ELDER_PRISMARINE.get()).add(VSBlocks.ELDER_SEA_LANTERN.get());
         this.tag(VSBlockTags.COMPLETES_FIND_TREE_TUTORIAL).addTag(BlockTags.LOGS).addTag(BlockTags.LEAVES).addTag(BlockTags.WART_BLOCKS);
+
+        // Other mods' tags
+        this.tag(VSBlockTags.CHORUS_PLANTABLE).addTag(VSBlockTags.CHORUS_PLANT_PLANTABLE_ON);
+        this.tag(VSBlockTags.ENDER_FIRE_BASE_BLOCKS).addTag(VSBlockTags.HAS_ENDER_NYLIUM).add(VSBlocks.MOSSY_END_STONE_BRICKS.get(), VSBlocks.MOSSY_END_STONE_BRICK_STAIRS.get(), VSBlocks.MOSSY_END_STONE_BRICK_SLAB.get(),
+                VSBlocks.MOSSY_END_STONE_BRICK_WALL.get(), VSBlocks.CHISELED_END_STONE_BRICKS.get(), VSBlocks.INFESTED_CHISELED_END_STONE_BRICKS.get(), VSBlocks.END_STONE_PILLAR.get());
 
         // Minecraft Tags
         this.tag(BlockTags.LOGS_THAT_BURN).addTag(VSBlockTags.PAINTING_LOGS).addTag(VSBlockTags.ENDERWOOD_STEMS);

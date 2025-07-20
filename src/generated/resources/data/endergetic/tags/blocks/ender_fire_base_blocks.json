@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "#variants:has_ender_nylium",
+    "variants:mossy_end_stone_bricks",
+    "variants:mossy_end_stone_brick_stairs",
+    "variants:mossy_end_stone_brick_slab",
+    "variants:mossy_end_stone_brick_wall",
+    "variants:chiseled_end_stone_bricks",
+    "variants:infested_chiseled_end_stone_bricks",
+    "variants:end_stone_pillar"
+  ]
+}
