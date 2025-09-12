@@ -1,0 +1,23 @@
+// 1.21.1	2025-09-11T22:33:12.0428624	Revaried - Item Tags
+eaad8d8b0bcd2c677dae960b927250e97f3d3065 data/c/tags/item/dyed.json
+a472bd26750b37df01dd688202442724badfbf4c data/c/tags/item/dyed/black.json
+620e31d36e64905f30f5514e8fea7d665f62433a data/c/tags/item/dyed/blue.json
+a5cdacc6f7c859d1579f3c19df28bf65608914f3 data/c/tags/item/dyed/brown.json
+227ca1f173bb21c4c2e83ff91866bb798865aec2 data/c/tags/item/dyed/cyan.json
+e03eb7a220e7277e363a7021c8e6e244a7243a8c data/c/tags/item/dyed/glow_black.json
+bfa85170e6d3c45b7fd82db354d1a99e7c17cd73 data/c/tags/item/dyed/gray.json
+a3e18a10d5652d3755e9e5d889398315631c7481 data/c/tags/item/dyed/green.json
+7c42447df341f1792b283f1b0e42e54975ad7188 data/c/tags/item/dyed/inno.json
+1b92eec91de5e1290e326f85dee12c92f324f77c data/c/tags/item/dyed/light_blue.json
+75c0f163bb021f007f3c0750babb74ee0bc4cbe5 data/c/tags/item/dyed/light_gray.json
+d38551c4d6355dd4d45cc73f8bc1f0caba2dd197 data/c/tags/item/dyed/lime.json
+13461eae5e2eb62c1e7e0725cca5bcee2d4bf783 data/c/tags/item/dyed/magenta.json
+65f6390cd58222e48c1780a0277ffe61f88cdb3d data/c/tags/item/dyed/orange.json
+598ec61e3192446f8bdb53004a0bfff4db8eda44 data/c/tags/item/dyed/pink.json
+7e69c29e3e5dd498c5747ccfd44cba94ff987923 data/c/tags/item/dyed/purple.json
+6b630aef4f83299011a31fd5e28b96a11e34dfd2 data/c/tags/item/dyed/red.json
+13437cf95aa03eba447843d66803c89cea8a4d96 data/c/tags/item/dyed/white.json
+dd139466f0dea8c5f3fa28178a39f99cdd737262 data/c/tags/item/dyed/yellow.json
+a047ef1fd8a723bfb735cd409439a524762d6360 data/c/tags/item/music_discs.json
+a047ef1fd8a723bfb735cd409439a524762d6360 data/minecraft/tags/item/creeper_drop_music_discs.json
+ffcefe4105eedd2bd3d21b930f2798defb060e86 data/revaried/tags/item/shulker_shells.json

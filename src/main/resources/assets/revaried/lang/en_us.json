@@ -1,0 +1,40 @@
+{
+  "tab.revaried.main": "Revaried",
+  "tab.revaried.blocks": "Revaried: Blocks",
+  "tab.revaried.weapons": "Revaried: Weapons",
+  "tab.revaried.brewery": "▷ ʀᴇᴠᴀʀɪᴇᴅ' ʙʀᴇᴡᴇʀʏ ◁",
+  "tab.revaried.infinity_sweaters": "▷ ʀᴇᴠᴀʀɪᴇᴅ: ɪɴꜰɪɴɪᴛʏ ꜱᴡᴇᴀᴛᴇʀꜱ ◁",
+
+  "item.revaried.white_shulker_shell": "White Shulker Shell",
+  "item.revaried.inno_shulker_shell": "Inno Shulker Shell",
+  "item.revaried.light_gray_shulker_shell": "Light Gray Shulker Shell",
+  "item.revaried.gray_shulker_shell": "Gray Shulker Shell",
+  "item.revaried.black_shulker_shell": "Black Shulker Shell",
+  "item.revaried.brown_shulker_shell": "Brown Shulker Shell",
+  "item.revaried.red_shulker_shell": "Red Shulker Shell",
+  "item.revaried.orange_shulker_shell": "Orange Shulker Shell",
+  "item.revaried.yellow_shulker_shell": "Yellow Shulker Shell",
+  "item.revaried.lime_shulker_shell": "Lime Shulker Shell",
+  "item.revaried.green_shulker_shell": "Green Shulker Shell",
+  "item.revaried.cyan_shulker_shell": "Cyan Shulker Shell",
+  "item.revaried.light_blue_shulker_shell": "Light Blue Shulker Shell",
+  "item.revaried.glow_black_shulker_shell": "Glow Black Shulker Shell",
+  "item.revaried.blue_shulker_shell": "Blue Shulker Shell",
+  "item.revaried.purple_shulker_shell": "Purple Shulker Shell",
+  "item.revaried.magenta_shulker_shell": "Magenta Shulker Shell",
+  "item.revaried.pink_shulker_shell": "Pink Shulker Shell",
+  "item.revaried.shulker_spectrum_icon": "§4▷ §cꜱ§6ʜ§eᴜ§aʟ§2ᴋ§3ᴇ§bʀ §1ꜱ§5ᴘ§de§4ᴄ§cᴛ§6ʀ§eᴜ§aᴍ §2ɪ§3ᴄ§bᴏ§1ɴ §5◁",
+  "item.revaried.music_disc_dog": "Music Disc",
+  "item.revaried.spawner_minecart": "Minecart with Monster Spawner",
+  "item.revaried.spawner_minecart.with_mob": "Minecart with %s Spawner",
+
+  "jukebox_song.revaried.dog": "C418 - dog",
+
+  "tooltip.revaried.compat_item_from": "Item compatibility between: %s.",
+  "tooltip.revaried.compat_block_from": "Block compatibility between: %s.",
+
+  "tag.item.revaried.shulker_shells": "Shulker Shells",
+
+  "tag.item.c.dyed.inno": "Inno Dyed Items",
+  "tag.item.c.dyed.glow_black": "Glow Black Dyed Items"
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "revaried:item/glow_black_shulker_shell"
+  }
+}

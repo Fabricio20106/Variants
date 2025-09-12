@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "minVersion": "0.8.5",
+  "package": "melonystudios.revaried.mixin",
+  "refmap": "revaried.refmap.json",
+  "compatibilityLevel": "JAVA_21",
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

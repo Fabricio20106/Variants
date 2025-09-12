@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "shulker_shell",
+  "ingredients": [
+    {
+      "type": "neoforge:difference",
+      "base": {
+        "tag": "revaried:shulker_shells"
+      },
+      "subtracted": {
+        "item": "minecraft:shulker_shell"
+      }
+    },
+    {
+      "item": "minecraft:ink_sac"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:shulker_shell"
+  }
+}

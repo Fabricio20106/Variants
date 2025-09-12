@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "shulker_shell",
+  "ingredients": [
+    {
+      "tag": "c:dyes/magenta"
+    },
+    {
+      "type": "neoforge:difference",
+      "base": {
+        "tag": "revaried:shulker_shells"
+      },
+      "subtracted": {
+        "item": "revaried:magenta_shulker_shell"
+      }
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "revaried:magenta_shulker_shell"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "music_disc.dog": {
+    "sounds": [
+      {
+        "name": "revaried:music_disc/dog",
+        "stream": true
+      }
+    ]
+  }
+}

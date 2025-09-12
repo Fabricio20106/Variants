@@ -1,0 +1,56 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "revaried:item/spawner_minecart_zombie",
+      "predicate": {
+        "revaried:mob_id": 1.0
+      }
+    },
+    {
+      "model": "revaried:item/spawner_minecart_skeleton",
+      "predicate": {
+        "revaried:mob_id": 2.0
+      }
+    },
+    {
+      "model": "revaried:item/spawner_minecart_spider",
+      "predicate": {
+        "revaried:mob_id": 3.0
+      }
+    },
+    {
+      "model": "revaried:item/spawner_minecart_cave_spider",
+      "predicate": {
+        "revaried:mob_id": 4.0
+      }
+    },
+    {
+      "model": "revaried:item/spawner_minecart_silverfish",
+      "predicate": {
+        "revaried:mob_id": 5.0
+      }
+    },
+    {
+      "model": "revaried:item/spawner_minecart_blaze",
+      "predicate": {
+        "revaried:mob_id": 6.0
+      }
+    },
+    {
+      "model": "revaried:item/spawner_minecart_magma_cube",
+      "predicate": {
+        "revaried:mob_id": 7.0
+      }
+    },
+    {
+      "model": "revaried:item/spawner_minecart_pig",
+      "predicate": {
+        "revaried:mob_id": 8.0
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "revaried:item/spawner_minecart"
+  }
+}

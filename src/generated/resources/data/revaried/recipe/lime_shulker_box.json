@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "shulker_box",
+  "key": {
+    "#": {
+      "item": "revaried:lime_shulker_shell"
+    },
+    "C": {
+      "type": "neoforge:difference",
+      "base": {
+        "tag": "c:chests/wooden"
+      },
+      "subtracted": {
+        "tag": "c:chests/trapped"
+      }
+    }
+  },
+  "pattern": [
+    "#",
+    "C",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:lime_shulker_box"
+  }
+}

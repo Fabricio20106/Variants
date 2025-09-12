@@ -1,4 +1,4 @@
-# eclipse
+# Eclipse
 bin
 *.launch
 .settings
@@ -6,21 +6,22 @@ bin
 .classpath
 .project
 
-# idea
+# IntelliJ IDEA
 out
 *.ipr
 *.iws
 *.iml
 .idea
 
-# gradle
+# Gradle
 build
 .gradle
 
-# other
+# Other
 eclipse
 run
 runs
 run-data
 
+# Added by NeoForge
 repo

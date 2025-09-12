@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "shulker_shell",
+  "ingredients": [
+    {
+      "tag": "c:dyes/green"
+    },
+    {
+      "type": "neoforge:difference",
+      "base": {
+        "tag": "revaried:shulker_shells"
+      },
+      "subtracted": {
+        "item": "revaried:green_shulker_shell"
+      }
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "revaried:green_shulker_shell"
+  }
+}
