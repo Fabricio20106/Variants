@@ -5,6 +5,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import melonystudios.variants.Variants;
 import melonystudios.variants.screen.AbstractRVConfigScreen;
 import melonystudios.variants.screen.button.NoticeOptionButton;
+import melonystudios.variants.util.VSStyles;
 import melonystudios.variants.util.VSUtils;
 import net.minecraft.client.AbstractOption;
 import net.minecraft.client.GameSettings;
@@ -25,10 +26,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 
-import static melonystudios.variants.screen.VSConfigEntries.*;
-import static melonystudios.variants.screen.VSConfigEntries.END_CAVES_AND_RAVINES;
+import static melonystudios.variants.screen.RVConfigEntries.*;
+import static melonystudios.variants.screen.RVConfigEntries.END_CAVES_AND_RAVINES;
 
-public class VSWorldGenerationConfigScreen extends AbstractRVConfigScreen {
+public class RVWorldGenerationConfigScreen extends AbstractRVConfigScreen {
     public static List<AbstractOption> SETTINGS = Lists.newArrayList(PAINTINGWOOD_FOREST, AZURE_FIELDS, FLOWER_PATCHES, CRIMSON_WHEAT_PATCHES, SOUL_CARROT_PATCHES, WARPED_POTATO_PATCHES,
             MELTING_BEET_PATCHES, GENERATE_QUARTZ_ORE, GENERATE_END_QUARTZ_ORE, GENERATE_NETHER_COAL_ORE, GENERATE_CRYSTALLIZED_MAGMA_CREAM_ORE, SOUL_LAVA_SPRINGS, END_CAVES_AND_RAVINES);
     private final AbstractOption[] smallOptions;
@@ -36,8 +37,8 @@ public class VSWorldGenerationConfigScreen extends AbstractRVConfigScreen {
     private TextFieldWidget endSubstitutionBox;
     private Widget doneButton;
 
-    public VSWorldGenerationConfigScreen(Screen screen, GameSettings settings) {
-        super(screen, settings, new TranslationTextComponent("gui.variants.config.world_generation.title"));
+    public RVWorldGenerationConfigScreen(Screen screen, GameSettings settings) {
+        super(screen, settings, VSStyles.buildScreenSubtitle("Revaried", new TranslationTextComponent("menu.variants.options.world_generation.title")));
         this.smallOptions = SETTINGS.toArray(new AbstractOption[0]);
     }
 
@@ -88,8 +89,8 @@ public class VSWorldGenerationConfigScreen extends AbstractRVConfigScreen {
 
     @Override
     public void resize(Minecraft minecraft, int width, int height) {
-        super.resize(minecraft, width, height);
         String value = this.endSubstitutionBox.getValue();
+        super.resize(minecraft, width, height);
         this.endSubstitutionBox.setValue(value);
     }
 
@@ -101,7 +102,7 @@ public class VSWorldGenerationConfigScreen extends AbstractRVConfigScreen {
         super.render(stack, mouseX, mouseY, partialTicks);
         drawString(stack, this.font, new TranslationTextComponent("config.variants.substitute_the_end_biome_with"), this.width / 2 - 156, this.height - 37, 0xA0A0A0);
         drawCenteredString(stack, this.font, this.title, this.width / 2, VSUtils.DEFAULT_TITLE_HEIGHT, 0xFFFFFF);
-        List<IReorderingProcessor> processors = tooltipAt(this.list, mouseX, mouseY);
-        if (processors != null) this.renderTooltip(stack, processors, mouseX, mouseY);
+        List<IReorderingProcessor> tooltip = tooltipAt(this.list, mouseX, mouseY);
+        if (tooltip != null) this.renderTooltip(stack, tooltip, mouseX, mouseY);
     }
 }

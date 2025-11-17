@@ -3,6 +3,7 @@ package melonystudios.variants.screen.options;
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import melonystudios.variants.screen.AbstractRVConfigScreen;
+import melonystudios.variants.util.VSStyles;
 import melonystudios.variants.util.VSUtils;
 import net.minecraft.client.AbstractOption;
 import net.minecraft.client.GameSettings;
@@ -16,14 +17,14 @@ import net.minecraftforge.fml.ModList;
 
 import java.util.List;
 
-import static melonystudios.variants.screen.VSConfigEntries.*;
+import static melonystudios.variants.screen.RVConfigEntries.*;
 
 public class RVEntityConfigScreen extends AbstractRVConfigScreen {
     public static final List<AbstractOption> SETTINGS = Lists.newArrayList(FISH_SPAWNING);
     private OptionsRowList list;
 
     public RVEntityConfigScreen(Screen screen, GameSettings settings) {
-        super(screen, settings, new TranslationTextComponent("gui.variants.config.entities.title"));
+        super(screen, settings, VSStyles.buildScreenSubtitle("Revaried", new TranslationTextComponent("menu.variants.options.entities.title")));
     }
 
     @Override
@@ -46,7 +47,7 @@ public class RVEntityConfigScreen extends AbstractRVConfigScreen {
         this.list.render(stack, mouseX, mouseY, partialTicks);
         drawCenteredString(stack, this.font, this.title, this.width / 2, VSUtils.DEFAULT_TITLE_HEIGHT, 0xFFFFFF);
         super.render(stack, mouseX, mouseY, partialTicks);
-        List<IReorderingProcessor> processors = tooltipAt(this.list, mouseX, mouseY);
-        if (processors != null) this.renderTooltip(stack, processors, mouseX, mouseY);
+        List<IReorderingProcessor> tooltip = tooltipAt(this.list, mouseX, mouseY);
+        if (tooltip != null) this.renderTooltip(stack, tooltip, mouseX, mouseY);
     }
 }

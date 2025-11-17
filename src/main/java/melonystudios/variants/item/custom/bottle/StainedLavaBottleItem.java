@@ -10,8 +10,12 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 
 public class StainedLavaBottleItem extends StainedFullGlassBottleItem {
-    public StainedLavaBottleItem(int secondsOnFire, Properties properties) {
-        super(new IgniteBehavior(secondsOnFire * 20), properties);
+    public StainedLavaBottleItem(int ticksOnFire, Properties properties) {
+        this(ticksOnFire, IgniteBehavior.DEFAULT_TOOLTIP_COLOR, properties);
+    }
+
+    public StainedLavaBottleItem(int ticksOnFire, int tooltipColor, Properties properties) {
+        super(new IgniteBehavior(ticksOnFire, tooltipColor), properties);
     }
 
     @Override

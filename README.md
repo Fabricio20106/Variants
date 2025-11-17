@@ -1,7 +1,7 @@
-![Revaried 1.6.X Logo](src/main/resources/revaried.png)
+![Revaried 8.X Logo](src/main/resources/revaried.png)
 
 # <center> - Revaried - </center>
-<sup>For Revaried 1.16.5 — 1.8.X</sup>
+<sup>For Revaried 1.16.5 — 8.X</sup>
 
 **Revaried** adds various variants of items, blocks, and features from *Minecraft*.
 

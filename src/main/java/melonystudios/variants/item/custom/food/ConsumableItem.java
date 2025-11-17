@@ -86,10 +86,10 @@ public class ConsumableItem extends VSItem implements Consumable {
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
 
-        if (this.useDefaultBehavior && !world.isClientSide) executeConsumeBehavior(stack, world, livEntity, this.behavior);
-        if (getCooldown(stack, 0) != 0) applyCooldown(stack, livEntity, 0);
+        if (this.useDefaultBehavior && !world.isClientSide()) this.executeConsumeBehavior(stack, world, livEntity, this.behavior);
+        if (this.getCooldown(stack, 0) != 0) this.applyCooldown(stack, livEntity, 0);
 
-        ItemStack remainderStack = getUseRemainder(stack);
+        ItemStack remainderStack = this.getUseRemainder(stack);
 
         if (stack.isEmpty()) {
             return remainderStack;
@@ -107,16 +107,16 @@ public class ConsumableItem extends VSItem implements Consumable {
     @Override
     @Nonnull
     public UseAction getUseAnimation(ItemStack stack) {
-        return getConsumeAnimation(stack);
+        return this.getConsumeAnimation(stack);
     }
 
     @Override
     public int getUseDuration(ItemStack stack) {
         Food foodProperties = stack.getItem().getFoodProperties();
         if (foodProperties != null && foodProperties.isFastFood()) {
-            return getConsumeTicks(stack, 16);
+            return this.getConsumeTicks(stack, 16);
         }
-        return getConsumeTicks(stack);
+        return this.getConsumeTicks(stack);
     }
 
     @Override
@@ -130,7 +130,7 @@ public class ConsumableItem extends VSItem implements Consumable {
 
     @Override
     public boolean hasContainerItem(ItemStack stack) {
-        return hasUseRemainder();
+        return this.hasUseRemainder();
     }
 
     @Override
@@ -152,8 +152,8 @@ public class ConsumableItem extends VSItem implements Consumable {
         }
 
         if (this.populateBehavior) {
-            CompoundNBT behaviorTag = this.behavior.writeProperties();
-            behaviorTag.putString("id", this.behavior.registryEntry().getRegistryName().toString());
+            CompoundNBT behaviorTag = this.getBehavior().writeProperties();
+            behaviorTag.putString("id", this.getBehavior().registryEntry().getRegistryName().toString());
             consumableTag.put("behavior", behaviorTag);
         }
 
@@ -173,7 +173,7 @@ public class ConsumableItem extends VSItem implements Consumable {
                     if (behavior != null) tooltip.addAll(behavior.addToTooltip(stack, world, flag));
                 }
             } else {
-                tooltip.addAll(this.behavior.addToTooltip(stack, world, flag));
+                tooltip.addAll(this.getBehavior().addToTooltip(stack, world, flag));
             }
         }
     }

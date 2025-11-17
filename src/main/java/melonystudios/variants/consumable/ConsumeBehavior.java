@@ -1,12 +1,13 @@
 package melonystudios.variants.consumable;
 
 import com.google.common.collect.Lists;
+import com.google.gson.JsonObject;
 import melonystudios.variants.Variants;
 import melonystudios.variants.component.Consumable;
 import melonystudios.variants.item.custom.food.ConsumableItem;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.VSRegistries;
-import melonystudios.variants.util.VSUtils;
+import melonystudios.variants.util.VSStyles;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -38,6 +39,8 @@ public abstract class ConsumeBehavior extends ForgeRegistryEntry<ConsumeBehavior
 
     public abstract CompoundNBT writeProperties();
 
+    public abstract JsonObject writeToJSON(CompoundNBT propertiesTag);
+
     public ConsumeBehavior registryEntry() {
         return VSConsumeBehaviors.DEFAULT.get();
     }
@@ -60,9 +63,9 @@ public abstract class ConsumeBehavior extends ForgeRegistryEntry<ConsumeBehavior
     }
 
     public ITextComponent getCommandDisplayName() {
-        IFormattableTextComponent component = TextComponentUtils.wrapInSquareBrackets(new TranslationTextComponent(this.getDescriptionID())).withStyle(VSUtils.REVARIED_COLOR_STYLE);
+        IFormattableTextComponent component = TextComponentUtils.wrapInSquareBrackets(new TranslationTextComponent(this.getDescriptionID())).withStyle(VSStyles.REVARIED_ACCENT_COLOR_STYLE);
         component.withStyle(style -> style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent("")
-                .append(new TranslationTextComponent(this.getDescriptionID()).withStyle(VSUtils.REVARIED_COLOR_STYLE).withStyle(TextFormatting.BOLD)).append("\n")
+                .append(new TranslationTextComponent(this.getDescriptionID()).withStyle(VSStyles.REVARIED_ACCENT_COLOR_STYLE).withStyle(TextFormatting.BOLD)).append("\n")
                 .append(new TranslationTextComponent(this.getDescriptionID() + ".desc").withStyle(TextFormatting.GRAY)).append("\n")
                 .append(new StringTextComponent(this.registryEntry().getRegistryName().toString()).withStyle(TextFormatting.DARK_GRAY)))));
         return component;

@@ -1,5 +1,6 @@
 package melonystudios.variants.consumable.custom;
 
+import com.google.gson.JsonObject;
 import melonystudios.variants.consumable.ConsumeBehavior;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
@@ -20,5 +21,10 @@ public class DefaultConsumeBehavior extends ConsumeBehavior {
     @Override
     public CompoundNBT writeProperties() {
         return new CompoundNBT();
+    }
+
+    @Override
+    public JsonObject writeToJSON(CompoundNBT propertiesTag) {
+        return new JsonObject();
     }
 }

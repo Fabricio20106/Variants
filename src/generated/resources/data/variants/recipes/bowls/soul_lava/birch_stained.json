@@ -21,7 +21,8 @@
         },
         "behavior": {
           "id": "variants:ignite",
-          "ticks_on_fire": 200
+          "ticks_on_fire": 200,
+          "tooltip_color": 2673609
         }
       },
       "texture_id": 2

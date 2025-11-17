@@ -21,7 +21,7 @@
         },
         "behavior": {
           "id": "variants:clear_mob_effects",
-          "curative_item": {
+          "item": {
             "id": "minecraft:milk_bucket"
           }
         }

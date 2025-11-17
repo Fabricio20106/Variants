@@ -120,7 +120,7 @@ public interface Consumable {
     }
 
     default void executeConsumeBehavior(ItemStack stack, World world, LivingEntity livEntity) {
-        executeConsumeBehavior(stack, world, livEntity, new DefaultConsumeBehavior());
+        this.executeConsumeBehavior(stack, world, livEntity, new DefaultConsumeBehavior());
     }
 
     default void executeConsumeBehavior(ItemStack stack, World world, LivingEntity livEntity, ConsumeBehavior behavior) {
@@ -128,11 +128,13 @@ public interface Consumable {
         if (consumableTag != null && consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) {
             CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
             if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
+                // in order to make behaviors show accurate tooltips, this call to the registry would need to be replaced,
+                // as it essentially replaces the perfectly fine behavior with a new one.
                 ConsumeBehavior tagBehavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
-                if (tagBehavior != null && canRunBehavior(tagBehavior)) tagBehavior.loadFromNBT(stack, world, livEntity, getBehaviorProperties(stack));
+                if (tagBehavior != null && canRunBehavior(tagBehavior)) tagBehavior.loadFromNBT(stack, world, livEntity, this.getBehaviorProperties(stack));
             }
         } else {
-            if (canRunBehavior(behavior)) behavior.loadFromNBT(stack, world, livEntity, getBehaviorProperties(stack));
+            if (canRunBehavior(behavior)) behavior.loadFromNBT(stack, world, livEntity, this.getBehaviorProperties(stack));
         }
     }
 

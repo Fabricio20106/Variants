@@ -20,8 +20,7 @@
           "id": "variants:jungle_bowl"
         },
         "behavior": {
-          "id": "variants:ignite",
-          "ticks_on_fire": 100
+          "id": "variants:ignite"
         }
       },
       "texture_id": 3

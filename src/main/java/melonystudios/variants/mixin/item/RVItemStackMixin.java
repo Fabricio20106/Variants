@@ -19,8 +19,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 @Mixin(ItemStack.class)
-public class VSItemStackMixin /*extends CapabilityProvider<ItemStack>*/ {
-    /*public VSItemStackMixin(Class<ItemStack> stackClass) {
+public abstract class RVItemStackMixin /*extends CapabilityProvider<ItemStack>*/ {
+    /*public RVItemStackMixin(Class<ItemStack> stackClass) {
         super(stackClass);
     }
 

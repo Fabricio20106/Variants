@@ -7,8 +7,6 @@ import com.google.gson.JsonObject;
 import melonystudios.variants.item.custom.food.ConsumableItem;
 import melonystudios.variants.consumable.ConsumeBehavior;
 import melonystudios.variants.util.Constants;
-import melonystudios.variants.util.JSONUtils;
-import melonystudios.variants.util.VSRegistries;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.ICriterionInstance;
@@ -27,6 +25,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 
 public class NBTSavingRecipeBuilder {
@@ -161,12 +160,18 @@ public class NBTSavingRecipeBuilder {
         private JsonObject serializeConsumeBehavior() {
             CompoundNBT consumableTag = this.result.getOrCreateTagElement("consumable");
             JsonObject behaviorObj = new JsonObject();
-            if (consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) {
+            if (consumableTag.contains("behavior", Constants.TagTypes.COMPOUND) && this.result.getItem() instanceof ConsumableItem) {
                 CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
-                ConsumeBehavior behavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
+                // replacing this is fine because all items generated using this have their behaviors as part of the item,
+                // and not set through their nbt in-game ~isa 10-11-25
+                ConsumeBehavior behavior = ((ConsumableItem) this.result.getItem()).getBehavior();
 
                 behaviorObj.addProperty("id", behaviorTag.getString("id"));
-                if (this.result.getItem() instanceof ConsumableItem) JSONUtils.saveBehaviorToJSON((ConsumableItem) this.result.getItem(), behavior, behaviorObj, behaviorTag);
+                if (behavior != null) {
+                    for (Map.Entry<String, JsonElement> property : behavior.writeToJSON(behaviorTag).entrySet()) {
+                        behaviorObj.add(property.getKey(), property.getValue());
+                    }
+                }
             }
             return behaviorObj;
         }

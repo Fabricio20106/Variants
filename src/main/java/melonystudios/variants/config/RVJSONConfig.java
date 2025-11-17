@@ -2,12 +2,38 @@ package melonystudios.variants.config;
 
 import com.google.gson.*;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.lang.reflect.Type;
 
-public class VSJSONConfig {
+public class RVJSONConfig {
     // Latest Revaried version. Update when I add, change or remove a config.
-    public int version = 1809;
+    public int version = 1810;
+
+    // Items
+    public boolean populateExponentialBowlsInTabs;
+    public boolean populateStainedGlassBottlesInTabs;
+    public boolean populateSpawnerMinecartsInTabs;
+    public boolean populateWoolArmorColorInTabs;
+    public boolean populateWoolArmorDesignsInTabs;
+    public boolean populateTagConfigurableFoodTags;
+    public boolean placeSpawnerWhenBreakingMinecart;
+    public boolean customFireworkDescriptions;
+    public boolean customEnchantmentDescriptions;
+    public boolean enchantmentTypesOnTooltip;
+    public boolean customPotionDescriptions;
+    public boolean durationFactorTooltip;
+    public boolean horseArmorArmorPointsOnTooltip;
+    public boolean enchantableShears;
+    public boolean enchantableFlintAndSteel;
+    public boolean enchantableShields;
+    public boolean lineBreaksOnAltTags;
+    public boolean showTagsWithAlt;
+    public boolean showFoodEffects;
+    public boolean enableInfinitySweatersTab;
+    public int infinitySweatersTabLength;
+    public int infinitySweatersTabSpacing;
+    public int defaultSpyglassZoomLevel;
 
     // World Generation
     public boolean paintingwoodForest = true;
@@ -35,9 +61,9 @@ public class VSJSONConfig {
     public double explosionRadiusUpperLimit = 128;
     public double soundPitchUpperLimit = 2;
 
-    public static class Serializer implements JsonDeserializer<VSJSONConfig>, JsonSerializer<VSJSONConfig> {
+    public static class Serializer implements JsonDeserializer<RVJSONConfig>, JsonSerializer<RVJSONConfig> {
         @Override
-        public JsonElement serialize(VSJSONConfig config, Type sourceType, JsonSerializationContext context) {
+        public JsonElement serialize(RVJSONConfig config, Type sourceType, JsonSerializationContext context) {
             JsonObject object = new JsonObject();
             object.addProperty("version", config.version);
 
@@ -79,10 +105,10 @@ public class VSJSONConfig {
         }
 
         @Override
-        public VSJSONConfig deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
+        public RVJSONConfig deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
             if (element.isJsonObject()) {
                 JsonObject object = element.getAsJsonObject();
-                VSJSONConfig config = new VSJSONConfig();
+                RVJSONConfig config = new RVJSONConfig();
                 config.version = object.get("version").getAsInt();
 
                 // World Generation
@@ -117,7 +143,7 @@ public class VSJSONConfig {
 
                 return config;
             }
-            return new VSJSONConfig();
+            return new RVJSONConfig();
         }
     }
 }

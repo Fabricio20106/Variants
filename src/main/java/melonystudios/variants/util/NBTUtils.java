@@ -24,6 +24,7 @@ import net.minecraft.potion.Potions;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -219,23 +220,24 @@ public class NBTUtils {
         }
     }
 
-    public static Explosion.Mode parseExplosionModeFromString(String mode) {
-        switch (mode) {
+    public static Explosion.Mode parseBlockInteractionFromString(String interaction) {
+        switch (interaction) {
             case "break": return Explosion.Mode.BREAK;
             case "destroy": return Explosion.Mode.DESTROY;
-            case "none": return Explosion.Mode.NONE;
-            default: return null;
+            case "none": default: return Explosion.Mode.NONE;
         }
-    }
-
-    public static BlockPos readBlockPos(CompoundNBT tag) {
-        return readBlockPos(tag, "pos");
     }
 
     public static BlockPos readBlockPos(CompoundNBT tag, String tagName) {
         int[] pos = tag.getIntArray(tagName);
         if (pos.length <= 3) return new BlockPos(pos[0], pos[1], pos[2]);
         return new BlockPos(0, 0, 0);
+    }
+
+    public static Vector3d readVec3(CompoundNBT tag, String tagName) {
+        ListNBT pos = tag.getList(tagName, Constants.TagTypes.DOUBLE);
+        if (pos.size() <= 3) return new Vector3d(pos.getDouble(0), pos.getDouble(1), pos.getDouble(2));
+        return new Vector3d(0, 0, 0);
     }
 
     public static ItemStack setPotion(ItemStack stack, Potion potion) {

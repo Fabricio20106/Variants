@@ -8,7 +8,7 @@ import melonystudios.variants.Variants;
 import melonystudios.variants.consumable.custom.ApplyMobEffectsBehavior;
 import melonystudios.variants.crafting.custom.WoolArmorDyeingRecipe;
 import melonystudios.variants.effect.VSEffectInstance;
-import melonystudios.variants.event.custom.ConsumableTeleportEvent;
+import melonystudios.variants.event.custom.BehaviorTeleportEvent;
 import melonystudios.variants.util.tag.VSItemTags;
 import net.minecraft.client.gui.screen.MainMenuScreen;
 import net.minecraft.client.renderer.RenderSkybox;
@@ -17,7 +17,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
-import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
@@ -27,7 +26,7 @@ import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.EffectUtils;
 import net.minecraft.util.*;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -46,8 +45,7 @@ import static net.minecraft.item.ItemModelsProperties.register;
 public class VSUtils {
     private static final List<String> VALID_WOOD_TYPES = Lists.newArrayList("warped", "crimson", "painting", "enderwood");
     public static final RenderSkybox PANORAMA = new RenderSkybox(MainMenuScreen.CUBE_MAP);
-    public static final Style REVARIED_COLOR_STYLE = Style.EMPTY.withColor(Color.fromRgb(0xFFC55F));
-    public static final IFormattableTextComponent RESTART_REQUIRED = new TranslationTextComponent("gui.variants.restart_required").withStyle(REVARIED_COLOR_STYLE);
+    public static final IFormattableTextComponent RESTART_REQUIRED = new TranslationTextComponent("menu.variants.restart_required").withStyle(VSStyles.REVARIED_ACCENT_COLOR_STYLE);
     public static final int DEFAULT_TITLE_HEIGHT = 12;
 
     /// Puts an item in the player's hands without playing the "Gear equips" sound.
@@ -169,34 +167,16 @@ public class VSUtils {
         });
     }
 
-    public static ConsumableTeleportEvent onConsumableTeleport(LivingEntity livEntity, float teleportDiameter, double targetX, double targetY, double targetZ) {
-        ConsumableTeleportEvent event = new ConsumableTeleportEvent(livEntity, teleportDiameter, targetX, targetY, targetZ);
+    public static BehaviorTeleportEvent exactTeleportThroughBehavior(ItemStack stack, World world, LivingEntity livEntity, Vector3d teleportPos) {
+        BehaviorTeleportEvent event = new BehaviorTeleportEvent(stack, world, livEntity, teleportPos.x, teleportPos.y, teleportPos.z);
         MinecraftForge.EVENT_BUS.post(event);
         return event;
     }
 
-    /// Teleports the entity to a random position within the specified diameter.
-    public static void teleportWithinDiameter(World world, LivingEntity livEntity, float teleportDiameter) {
-        if (!world.isClientSide) {
-            double x = livEntity.getX();
-            double y = livEntity.getY();
-            double z = livEntity.getZ();
-
-            for (int i = 0; i < teleportDiameter; ++i) {
-                double newX = livEntity.getX() + (livEntity.getRandom().nextDouble() - 0.5) * teleportDiameter;
-                double newY = MathHelper.clamp(livEntity.getY() + (double) (livEntity.getRandom().nextInt((int) teleportDiameter) - (teleportDiameter / 2)), 0, world.getHeight() - 1);
-                double newZ = livEntity.getZ() + (livEntity.getRandom().nextDouble() - 0.5) * teleportDiameter;
-                if (livEntity.isPassenger()) livEntity.stopRiding();
-
-                ConsumableTeleportEvent teleportEvent = onConsumableTeleport(livEntity, teleportDiameter, newX, newY, newZ);
-                if (livEntity.randomTeleport(teleportEvent.getTargetX(), teleportEvent.getTargetY(), teleportEvent.getTargetZ(), true) && !teleportEvent.isCanceled()) {
-                    SoundEvent teleportSound = livEntity instanceof FoxEntity ? SoundEvents.FOX_TELEPORT : SoundEvents.CHORUS_FRUIT_TELEPORT;
-                    world.playSound(null, x, y, z, teleportSound, SoundCategory.PLAYERS, 1, 1);
-                    livEntity.playSound(teleportSound, 1, 1);
-                    break;
-                }
-            }
-        }
+    public static BehaviorTeleportEvent randomTeleportThroughBehavior(ItemStack stack, World world, LivingEntity livEntity, double teleportX, double teleportY, double teleportZ, float teleportDiameter) {
+        BehaviorTeleportEvent.RandomTeleport event = new BehaviorTeleportEvent.RandomTeleport(stack, world, livEntity, teleportX, teleportY, teleportZ, teleportDiameter);
+        MinecraftForge.EVENT_BUS.post(event);
+        return event;
     }
 
     /// Adds all the effects a food item gives to its tooltip (using the same style as the {@link ApplyMobEffectsBehavior apply effects} behavior).

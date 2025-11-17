@@ -3,6 +3,7 @@ package melonystudios.variants.screen.options;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import melonystudios.variants.screen.AbstractRVConfigScreen;
 import melonystudios.variants.screen.button.OpenMenuOption;
+import melonystudios.variants.util.VSStyles;
 import melonystudios.variants.util.VSUtils;
 import net.minecraft.client.GameSettings;
 import net.minecraft.client.Minecraft;
@@ -10,18 +11,20 @@ import net.minecraft.client.gui.DialogTexts;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.client.gui.widget.list.OptionsRowList;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.IReorderingProcessor;
 import net.minecraftforge.fml.ModList;
 
-public class VSConfigCategoriesScreen extends AbstractRVConfigScreen {
-    public final OpenMenuOption worldGenerationSettings = new OpenMenuOption("gui.variants.config.world_generation", new VSWorldGenerationConfigScreen(this, Minecraft.getInstance().options));
-    public final OpenMenuOption entitySettings = new OpenMenuOption("gui.variants.config.entities", new RVEntityConfigScreen(this, Minecraft.getInstance().options));
-    public final OpenMenuOption enchantmentSettings = new OpenMenuOption("gui.variants.config.enchantments", new RVEnchantmentConfigScreen(this, Minecraft.getInstance().options));
-    public final OpenMenuOption consumeBehaviorSettings = new OpenMenuOption("gui.variants.config.consume_behaviors", new RVConsumeBehaviorConfigScreen(this, Minecraft.getInstance().options));
+import java.util.List;
+
+public class RVConfigCategoriesScreen extends AbstractRVConfigScreen {
+    public final OpenMenuOption worldGenerationSettings = new OpenMenuOption("menu.variants.options.world_generation", new RVWorldGenerationConfigScreen(this, Minecraft.getInstance().options));
+    public final OpenMenuOption entitySettings = new OpenMenuOption("menu.variants.options.entities", new RVEntityConfigScreen(this, Minecraft.getInstance().options));
+    public final OpenMenuOption enchantmentSettings = new OpenMenuOption("menu.variants.options.enchantments", new RVEnchantmentConfigScreen(this, Minecraft.getInstance().options));
+    public final OpenMenuOption consumeBehaviorSettings = new OpenMenuOption("menu.variants.options.consume_behaviors", new RVConsumeBehaviorConfigScreen(this, Minecraft.getInstance().options));
     private OptionsRowList list;
 
-    public VSConfigCategoriesScreen(Screen screen, GameSettings settings) {
-        super(screen, settings, new TranslationTextComponent("gui.variants.config_categories.title"));
+    public RVConfigCategoriesScreen(Screen screen, GameSettings settings) {
+        super(screen, settings, VSStyles.buildScreenTitle("Revaried"));
     }
 
     @Override
@@ -47,5 +50,7 @@ public class VSConfigCategoriesScreen extends AbstractRVConfigScreen {
         this.list.render(stack, mouseX, mouseY, partialTicks);
         super.render(stack, mouseX, mouseY, partialTicks);
         drawCenteredString(stack, this.font, this.title, this.width / 2, VSUtils.DEFAULT_TITLE_HEIGHT, 0xFFFFFF);
+        List<IReorderingProcessor> tooltip = tooltipAt(this.list, mouseX, mouseY);
+        if (tooltip != null) this.renderTooltip(stack, tooltip, mouseX, mouseY);
     }
 }

@@ -7,8 +7,8 @@ import melonystudios.variants.blockentity.VSBlockEntities;
 import melonystudios.variants.blockentity.renderer.VSBedBlockEntityRenderer;
 import melonystudios.variants.blockentity.renderer.VSBellBlockEntityRenderer;
 import melonystudios.variants.command.argument.RVArgumentTypes;
+import melonystudios.variants.config.RVJSONConfig;
 import melonystudios.variants.config.VSConfigs;
-import melonystudios.variants.config.VSJSONConfig;
 import melonystudios.variants.crafting.VSRecipeTypes;
 import melonystudios.variants.criterion.VSCriteriaTriggers;
 import melonystudios.variants.dispenser.vanilla.BucketDispenseBehavior;
@@ -25,7 +25,7 @@ import melonystudios.variants.item.VSWeaponry;
 import melonystudios.variants.item.fix.VSTagFixes;
 import melonystudios.variants.consumable.VSConsumeBehaviors;
 import melonystudios.variants.loot.VSLootFunctions;
-import melonystudios.variants.screen.options.VSConfigCategoriesScreen;
+import melonystudios.variants.screen.options.RVConfigCategoriesScreen;
 import melonystudios.variants.sound.VSSounds;
 import melonystudios.variants.util.*;
 import melonystudios.variants.world.biome.VSBiomes;
@@ -83,7 +83,7 @@ public class Variants {
     public static final Logger LOGGER = LogManager.getLogger("revaried");
     public static final String MOD_ID = "variants";
     public static Variants INSTANCE;
-    private VSJSONConfig config = null;
+    private RVJSONConfig config = null;
     private final File settingsFile = new File("config/melonystudios", "revaried.json");
     // TO-DO LIST:
     // [19/9/24 - 1.8.0.3] ~isa:
@@ -121,7 +121,7 @@ public class Variants {
         VSStats.init();
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, VSConfigs.COMMON_SPEC, "melonystudios/revaried-common.toml");
-        ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.CONFIGGUIFACTORY, () -> (minecraft, screen) -> new VSConfigCategoriesScreen(screen, Minecraft.getInstance().options));
+        ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.CONFIGGUIFACTORY, () -> (minecraft, screen) -> new RVConfigCategoriesScreen(screen, Minecraft.getInstance().options));
     }
 
     public static ResourceLocation variants(String name) {
@@ -199,12 +199,12 @@ public class Variants {
         if (this.settingsFile.exists()) {
             try {
                 Gson gson = createConfigFileSerializer().create();
-                this.config = gson.fromJson(new String(Files.readAllBytes(this.settingsFile.toPath()), StandardCharsets.UTF_8), VSJSONConfig.class);
+                this.config = gson.fromJson(new String(Files.readAllBytes(this.settingsFile.toPath()), StandardCharsets.UTF_8), RVJSONConfig.class);
             } catch (Exception exception) {
                 LOGGER.warn(I18n.get("exception.variants.config_error.loading", exception));
             }
         }
-        if (this.config == null) this.config = new VSJSONConfig();
+        if (this.config == null) this.config = new RVJSONConfig();
         this.upgradeConfig(this.config);
         this.saveConfig();
     }
@@ -218,7 +218,7 @@ public class Variants {
         }
     }
 
-    private void upgradeConfig(VSJSONConfig config) {
+    private void upgradeConfig(RVJSONConfig config) {
         switch (config.version) {
             case 1805: {
                 config.version = 1807;
@@ -235,12 +235,12 @@ public class Variants {
         }
     }
 
-    public VSJSONConfig getConfig() {
+    public RVJSONConfig getConfig() {
         return this.config;
     }
 
     public static GsonBuilder createConfigFileSerializer() {
-        return new GsonBuilder().registerTypeAdapter(VSJSONConfig.class, new VSJSONConfig.Serializer());
+        return new GsonBuilder().registerTypeAdapter(RVJSONConfig.class, new RVJSONConfig.Serializer());
     }
 
     public static void setRenderTypesForBlocks() {

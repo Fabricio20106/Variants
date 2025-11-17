@@ -2,6 +2,7 @@ package melonystudios.variants.screen.options;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import melonystudios.variants.screen.AbstractRVConfigScreen;
+import melonystudios.variants.util.VSStyles;
 import melonystudios.variants.util.VSUtils;
 import net.minecraft.client.GameSettings;
 import net.minecraft.client.gui.DialogTexts;
@@ -14,13 +15,13 @@ import net.minecraftforge.fml.ModList;
 
 import java.util.List;
 
-import static melonystudios.variants.screen.VSConfigEntries.*;
+import static melonystudios.variants.screen.RVConfigEntries.*;
 
 public class RVConsumeBehaviorConfigScreen extends AbstractRVConfigScreen {
     private OptionsRowList list;
 
     public RVConsumeBehaviorConfigScreen(Screen screen, GameSettings settings) {
-        super(screen, settings, new TranslationTextComponent("gui.variants.config.consume_behaviors.title"));
+        super(screen, settings, VSStyles.buildScreenSubtitle("Revaried", new TranslationTextComponent("menu.variants.options.consume_behaviors.title")));
     }
 
     @Override
@@ -41,15 +42,10 @@ public class RVConsumeBehaviorConfigScreen extends AbstractRVConfigScreen {
     @Override
     public void render(MatrixStack stack, int mouseX, int mouseY, float partialTicks) {
         super.renderPanorama(stack, partialTicks);
-        if (!ModList.get().isLoaded("mellowui")) {
-            this.list.setRenderBackground(false);
-            this.list.setRenderTopAndBottom(false);
-        }
-
         this.list.render(stack, mouseX, mouseY, partialTicks);
         drawCenteredString(stack, this.font, this.title, this.width / 2, VSUtils.DEFAULT_TITLE_HEIGHT, 0xFFFFFF);
         super.render(stack, mouseX, mouseY, partialTicks);
-        List<IReorderingProcessor> processors = tooltipAt(this.list, mouseX, mouseY);
-        if (processors != null) this.renderTooltip(stack, processors, mouseX, mouseY);
+        List<IReorderingProcessor> tooltip = tooltipAt(this.list, mouseX, mouseY);
+        if (tooltip != null) this.renderTooltip(stack, tooltip, mouseX, mouseY);
     }
 }

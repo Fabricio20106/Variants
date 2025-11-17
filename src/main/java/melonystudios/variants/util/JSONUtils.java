@@ -3,11 +3,9 @@ package melonystudios.variants.util;
 import com.google.gson.*;
 import melonystudios.variants.Variants;
 import melonystudios.variants.effect.VSEffectInstance;
-import melonystudios.variants.item.custom.food.ConsumableItem;
 import melonystudios.variants.consumable.ConsumeBehavior;
-import melonystudios.variants.consumable.custom.*;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.Effect;
+import net.minecraft.nbt.ListNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
 import org.apache.commons.lang3.StringUtils;
@@ -16,7 +14,7 @@ import static melonystudios.variants.util.Constants.TagTypes.*;
 import static melonystudios.variants.util.NBTUtils.*;
 
 public class JSONUtils {
-    public static void writeDamageSourceToJSON(CompoundNBT propertiesTag, JsonObject propertiesObj) {
+    public static JsonObject writeDamageSourceToJSON(CompoundNBT propertiesTag, JsonObject propertiesObj) {
         CompoundNBT sourceTag = propertiesTag.getCompound("source");
         if (propertiesTag.contains("source", COMPOUND)) {
             JsonObject sourceObject = new JsonObject();
@@ -35,18 +33,21 @@ public class JSONUtils {
         } else if (propertiesTag.contains("source", STRING)) {
             propertiesObj.addProperty("source", stringOrDefault("source", propertiesTag, "minecraft:generic"));
         }
-        propertiesObj.addProperty("amount", floatOrDefault("amount", propertiesTag, 1));
+        propertiesObj.addProperty("amount", floatOrDefault("amount", propertiesTag, 0));
+        return propertiesObj;
     }
 
-    public static void writeExplosionToJSON(CompoundNBT propertiesTag, JsonObject propertiesObj) {
+    public static JsonObject writeExplosionToJSON(CompoundNBT propertiesTag, JsonObject propertiesObj) {
         propertiesObj.addProperty("radius", floatOrDefault("radius", propertiesTag, 0));
         propertiesObj.addProperty("create_fire", booleanOrDefault("create_fire", propertiesTag, false));
         writeDamageSourceToJSON(propertiesTag, propertiesObj);
         propertiesObj.addProperty("mode", stringOrDefault("mode", propertiesTag, "none"));
-        propertiesObj.add("pos", blockPosOrDefault("pos", propertiesTag, new int[] {0, 0, 0}));
+        JsonArray position = vec3OrDefault("position", propertiesTag);
+        if (position != null) propertiesObj.add("position", position);
+        return propertiesObj;
     }
 
-    private static void writeEffectToJSON(VSEffectInstance instance, JsonArray effectsList) {
+    public static void writeEffectToJSON(VSEffectInstance instance, JsonArray effects) {
         JsonObject effectObj = new JsonObject();
         effectObj.addProperty("id", instance.getEffect().getRegistryName().toString());
         effectObj.addProperty("duration", instance.getDuration());
@@ -56,25 +57,21 @@ public class JSONUtils {
         if (!instance.showIcon()) effectObj.addProperty("show_icon", false);
         if (instance.isNoCounter()) effectObj.addProperty("no_counter", true);
         if (instance.getChance() < 1) effectObj.addProperty("chance", instance.getChance());
-        effectsList.add(effectObj);
+        effects.add(effectObj);
     }
 
-    public static JsonArray blockPosOrDefault(String name, CompoundNBT tag, int[] fallback) {
+    public static JsonArray vec3OrDefault(String name, CompoundNBT tag) {
         JsonArray array = new JsonArray();
-        if (tag.contains(name, INTEGER_ARRAY)) {
-            int[] intArray = tag.getIntArray(name);
-            if (intArray.length == 3) {
-                array.add(intArray[0]);
-                array.add(intArray[1]);
-                array.add(intArray[2]);
+        if (tag.contains(name, LIST)) {
+            ListNBT doubleList = tag.getList(name, DOUBLE);
+            if (doubleList.size() == 3) {
+                array.add(doubleList.getDouble(0));
+                array.add(doubleList.getDouble(1));
+                array.add(doubleList.getDouble(2));
                 return array;
-            } else {
-                array.add(fallback[0]);
-                array.add(fallback[1]);
-                array.add(fallback[2]);
             }
         }
-        return array;
+        return null;
     }
 
     public static ConsumeBehavior convertToBehavior(JsonElement element, String objectName) {
@@ -118,59 +115,6 @@ public class JSONUtils {
             }
 
             return new TranslationTextComponent(template + "entire_object", element);
-        }
-    }
-
-    public static void saveBehaviorToJSON(ConsumableItem consumable, ConsumeBehavior behavior, JsonObject behaviorObj, CompoundNBT behaviorTag) {
-        // Behaviors
-        if (behavior instanceof ApplyMobEffectsBehavior) {
-            ApplyMobEffectsBehavior applyEffectsBehavior = (ApplyMobEffectsBehavior) consumable.getBehavior();
-            JsonArray effectsList = new JsonArray();
-            for (VSEffectInstance instance : applyEffectsBehavior.effects()) writeEffectToJSON(instance, effectsList);
-            behaviorObj.add("effects", effectsList);
-        } else if (behavior instanceof ClearMobEffectsBehavior) {
-            ClearMobEffectsBehavior clearEffectsBehavior = (ClearMobEffectsBehavior) consumable.getBehavior();
-            JsonObject curativeObject = new JsonObject();
-            curativeObject.addProperty("id", clearEffectsBehavior.curativeItem().getItem().getRegistryName().toString());
-            if (clearEffectsBehavior.curativeItem().getCount() != 1) curativeObject.addProperty("count", clearEffectsBehavior.curativeItem().getCount());
-            if (clearEffectsBehavior.curativeItem().getTag() != null) curativeObject.addProperty("tags", clearEffectsBehavior.curativeItem().getTag().toString());
-            behaviorObj.add("curative_item", curativeObject);
-        } else if (behavior instanceof DamageEntityBehavior) {
-            JSONUtils.writeDamageSourceToJSON(behaviorTag, behaviorObj);
-        } else if (behavior instanceof ExplodeBehavior) {
-            JSONUtils.writeExplosionToJSON(behaviorTag, behaviorObj);
-        } else if (behavior instanceof IgniteBehavior) {
-            IgniteBehavior igniteBehavior = (IgniteBehavior) consumable.getBehavior();
-            behaviorObj.addProperty("ticks_on_fire", igniteBehavior.ticksOnFire());
-        } else if (behavior instanceof AddExperienceBehavior) {
-            AddExperienceBehavior addExperienceBehavior = (AddExperienceBehavior) consumable.getBehavior();
-            behaviorObj.addProperty("amount", addExperienceBehavior.experienceAmount());
-            behaviorObj.addProperty("levels", addExperienceBehavior.addsLevels());
-        } else if (behavior instanceof TeleportEntityBehavior) {
-            TeleportEntityBehavior teleportBehavior = (TeleportEntityBehavior) consumable.getBehavior();
-            if (teleportBehavior.randomlyTeleports()) {
-                behaviorObj.addProperty("random_teleport", true);
-                behaviorObj.addProperty("teleport_diameter", teleportBehavior.teleportDiameter());
-            } else {
-                behaviorObj.addProperty("random_teleport", false);
-                JsonArray posArray = new JsonArray();
-                posArray.add(teleportBehavior.teleportPosition().getX());
-                posArray.add(teleportBehavior.teleportPosition().getY());
-                posArray.add(teleportBehavior.teleportPosition().getZ());
-                behaviorObj.add("teleport_position", posArray);
-            }
-        } else if (behavior instanceof RemoveEffectsBehavior) {
-            RemoveEffectsBehavior removeEffectsBehavior = (RemoveEffectsBehavior) consumable.getBehavior();
-            JsonArray effectArray = new JsonArray();
-            for (Effect effect : removeEffectsBehavior.effectsToRemove()) effectArray.add(effect.getRegistryName().toString());
-            behaviorObj.add("effects", effectArray);
-        } else if (behavior instanceof EatItemBehavior) {
-            EatItemBehavior eatItemBehavior = (EatItemBehavior) consumable.getBehavior();
-            JsonObject consumableObject = new JsonObject();
-            consumableObject.addProperty("id", eatItemBehavior.consumableItem().getItem().getRegistryName().toString());
-            if (eatItemBehavior.consumableItem().getCount() != 1) consumableObject.addProperty("count", eatItemBehavior.consumableItem().getCount());
-            if (eatItemBehavior.consumableItem().getTag() != null) consumableObject.addProperty("tags", eatItemBehavior.consumableItem().getTag().toString());
-            behaviorObj.add("consumable_item", consumableObject);
         }
     }
 }

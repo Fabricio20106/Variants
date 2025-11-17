@@ -1,16 +1,15 @@
 package melonystudios.variants.consumable.custom;
 
 import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.mojang.datafixers.util.Pair;
 import melonystudios.variants.Variants;
 import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.consumable.ConsumeBehavior;
 import melonystudios.variants.consumable.VSConsumeBehaviors;
 import melonystudios.variants.effect.VSEffectInstance;
-import melonystudios.variants.util.Constants;
-import melonystudios.variants.util.NBTUtils;
-import melonystudios.variants.util.VSStyles;
-import melonystudios.variants.util.VSUtils;
+import melonystudios.variants.util.*;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
@@ -107,6 +106,18 @@ public class ApplyMobEffectsBehavior extends ConsumeBehavior {
         CompoundNBT properties = new CompoundNBT();
         ListNBT effectsList = writeEffectsOntoNBT(this.effects);
         if (!effectsList.isEmpty()) properties.put("effects", effectsList);
+        return properties;
+    }
+
+    @Override
+    public JsonObject writeToJSON(CompoundNBT propertiesTag) {
+        JsonObject properties = new JsonObject();
+
+        // save every effect in this behavior
+        JsonArray effects = new JsonArray();
+        for (VSEffectInstance instance : this.effects()) JSONUtils.writeEffectToJSON(instance, effects);
+        properties.add("effects", effects);
+
         return properties;
     }
 

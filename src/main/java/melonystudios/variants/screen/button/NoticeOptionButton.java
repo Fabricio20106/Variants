@@ -1,6 +1,8 @@
 package melonystudios.variants.screen.button;
 
 import com.google.common.collect.Lists;
+import melonystudios.variants.screen.RVConfigEntries;
+import melonystudios.variants.util.VSStyles;
 import melonystudios.variants.util.VSUtils;
 import net.minecraft.client.AbstractOption;
 import net.minecraft.client.Minecraft;
@@ -17,17 +19,20 @@ import java.util.Optional;
 
 @OnlyIn(Dist.CLIENT)
 public class NoticeOptionButton extends OptionButton {
-    private boolean defaultValue;
+    private final boolean defaultValue;
     private boolean changed;
 
-    public NoticeOptionButton(int x, int y, int width, int height, AbstractOption option, ITextComponent title, IPressable whenPressed) {
-        super(x, y, width, height, option, title, whenPressed);
+    public NoticeOptionButton(int x, int y, int width, int height, AbstractOption option, ITextComponent buttonText, IPressable whenPressed) {
+        super(x, y, width, height, option, buttonText, whenPressed);
         this.defaultValue = option instanceof BooleanOption && ((BooleanOption) option).get(Minecraft.getInstance().options);
     }
 
-    @Override
-    public int getFGColor() {
-        return this.changed() ? VSUtils.REVARIED_COLOR_STYLE.getColor().getValue() : super.getFGColor();
+    public boolean changed() {
+        return this.changed;
+    }
+
+    public void setChanged(boolean changed) {
+        this.changed = changed;
     }
 
     @Override
@@ -35,7 +40,7 @@ public class NoticeOptionButton extends OptionButton {
     public Optional<List<IReorderingProcessor>> getTooltip() {
         Optional<List<IReorderingProcessor>> defaultLines = super.getTooltip();
         List<IReorderingProcessor> tooltipLines = Lists.newArrayList();
-        if (this.changed()) tooltipLines.addAll(Minecraft.getInstance().font.split(VSUtils.RESTART_REQUIRED, 200));
+        if (this.changed()) tooltipLines.addAll(Minecraft.getInstance().font.split(VSUtils.RESTART_REQUIRED, RVConfigEntries.TOOLTIP_MAX_WIDTH));
         defaultLines.ifPresent(tooltipLines::addAll);
         return Optional.of(tooltipLines);
     }
@@ -47,11 +52,8 @@ public class NoticeOptionButton extends OptionButton {
         this.setChanged(this.defaultValue != currentValue);
     }
 
-    public boolean changed() {
-        return this.changed;
-    }
-
-    public void setChanged(boolean changed) {
-        this.changed = changed;
+    @Override
+    public int getFGColor() {
+        return this.changed() ? VSStyles.REVARIED_ACCENT_COLOR : super.getFGColor();
     }
 }

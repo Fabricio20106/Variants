@@ -1,6 +1,8 @@
 package melonystudios.variants.consumable.custom;
 
 import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import melonystudios.variants.consumable.ConsumeBehavior;
 import melonystudios.variants.consumable.VSConsumeBehaviors;
 import melonystudios.variants.util.Constants;
@@ -10,7 +12,6 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.nbt.StringNBT;
 import net.minecraft.potion.Effect;
-import net.minecraft.potion.Effects;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -30,24 +31,25 @@ public class RemoveEffectsBehavior extends ConsumeBehavior {
         this(Lists.newArrayList());
     }
 
-    public List<Effect> effectsToRemove() {
+    public List<Effect> effects() {
         return this.effects;
     }
 
     @Override
     public void runBehavior(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
-        for (Effect effect : this.effects) livEntity.removeEffect(effect);
+        if (world.isClientSide()) return;
+        for (Effect effect : this.effects()) livEntity.removeEffect(effect);
     }
 
     @Override
     public void loadFromNBT(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
-        List<Effect> effects = Lists.newArrayList(Effects.POISON);
+        List<Effect> effects = Lists.newArrayList();
         if (propertiesTag != null && propertiesTag.contains("effects", Constants.TagTypes.LIST)) {
-            ListNBT effectTag = propertiesTag.getList("effects", Constants.TagTypes.STRING);
-            for (int i = 0; i < effectTag.size(); ++i) {
-                String effectNameTag = effectTag.getString(i);
-                ResourceLocation location = new ResourceLocation(effectNameTag);
-                if (ForgeRegistries.POTIONS.containsKey(location)) effects.add(ForgeRegistries.POTIONS.getValue(location));
+            ListNBT effectList = propertiesTag.getList("effects", Constants.TagTypes.STRING);
+            for (int i = 0; i < effectList.size(); ++i) {
+                String effect = effectList.getString(i);
+                ResourceLocation effectLocation = new ResourceLocation(effect);
+                if (ForgeRegistries.POTIONS.containsKey(effectLocation)) effects.add(ForgeRegistries.POTIONS.getValue(effectLocation));
             }
         }
         RemoveEffectsBehavior behavior = new RemoveEffectsBehavior(effects);
@@ -57,12 +59,18 @@ public class RemoveEffectsBehavior extends ConsumeBehavior {
     @Override
     public CompoundNBT writeProperties() {
         CompoundNBT properties = new CompoundNBT();
-        ListNBT effectTag = new ListNBT();
-        for (Effect effect : this.effects) {
-            StringNBT tag = StringNBT.valueOf(effect.getRegistryName().toString());
-            effectTag.add(tag);
-        }
-        properties.put("effects", effectTag);
+        ListNBT effects = new ListNBT();
+        for (Effect effect : this.effects()) effects.add(StringNBT.valueOf(effect.getRegistryName().toString()));
+        properties.put("effects", effects);
+        return properties;
+    }
+
+    @Override
+    public JsonObject writeToJSON(CompoundNBT propertiesTag) {
+        JsonObject properties = new JsonObject();
+        JsonArray effects = new JsonArray();
+        for (Effect effect : this.effects()) effects.add(effect.getRegistryName().toString());
+        properties.add("effects", effects);
         return properties;
     }
 

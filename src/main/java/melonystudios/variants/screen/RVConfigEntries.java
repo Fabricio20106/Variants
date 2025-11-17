@@ -1,15 +1,19 @@
 package melonystudios.variants.screen;
 
 import melonystudios.variants.Variants;
-import melonystudios.variants.config.VSJSONConfig;
+import melonystudios.variants.config.RVJSONConfig;
 import melonystudios.variants.screen.button.NoticeBooleanOption;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.BooleanOption;
 import net.minecraft.client.settings.SliderPercentageOption;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.fml.ModList;
 
-public class VSConfigEntries {
-    public static final VSJSONConfig CONFIG = Variants.INSTANCE.getConfig();
+public class RVConfigEntries {
+    public static final int TOOLTIP_MAX_WIDTH = ModList.get().isLoaded("mellowui") ? 170 : 200;
+    public static final RVJSONConfig CONFIG = Variants.INSTANCE.getConfig();
+
+    // Items
 
     // World Generation
     public static final BooleanOption PAINTINGWOOD_FOREST = new NoticeBooleanOption("config.variants.paintingwood_forest", new TranslationTextComponent("config.variants.paintingwood_forest.desc"), settings -> CONFIG.paintingwoodForest, (settings, newValue) -> CONFIG.paintingwoodForest = newValue);
@@ -34,7 +38,7 @@ public class VSConfigEntries {
             (options) -> (double) CONFIG.quickChargeMaxLevel,
             (options, newValue) -> CONFIG.quickChargeMaxLevel = (int) Math.round(newValue),
             (options, slider) -> {
-                slider.setTooltip(Minecraft.getInstance().font.split(new TranslationTextComponent("config.variants.quick_charge_max_level.desc"), 200));
+                slider.setTooltip(Minecraft.getInstance().font.split(new TranslationTextComponent("config.variants.quick_charge_max_level.desc"), TOOLTIP_MAX_WIDTH));
                 return new TranslationTextComponent("config.variants.quick_charge_max_level", new TranslationTextComponent("enchantment.level." + Math.round(slider.get(options))));
             });
 
@@ -43,14 +47,14 @@ public class VSConfigEntries {
             (options) -> CONFIG.explosionRadiusUpperLimit,
             (options, newValue) -> CONFIG.explosionRadiusUpperLimit = newValue,
             (options, slider) -> {
-                slider.setTooltip(Minecraft.getInstance().font.split(new TranslationTextComponent("config.variants.explosion_radius_upper_limit.desc"), 200));
+                slider.setTooltip(Minecraft.getInstance().font.split(new TranslationTextComponent("config.variants.explosion_radius_upper_limit.desc"), TOOLTIP_MAX_WIDTH));
                 return new TranslationTextComponent("config.variants.explosion_radius_upper_limit", Math.round(slider.get(options)));
             });
     public static final SliderPercentageOption SOUND_PITCH_UPPER_LIMIT = new SliderPercentageOption("config.variants.sound_pitch_upper_limit", 0, 2, 0.25F,
             (options) -> CONFIG.soundPitchUpperLimit,
             (options, newValue) -> CONFIG.soundPitchUpperLimit = newValue,
             (options, slider) -> {
-                slider.setTooltip(Minecraft.getInstance().font.split(new TranslationTextComponent("config.variants.sound_pitch_upper_limit.desc"), 200));
+                slider.setTooltip(Minecraft.getInstance().font.split(new TranslationTextComponent("config.variants.sound_pitch_upper_limit.desc"), TOOLTIP_MAX_WIDTH));
                 return new TranslationTextComponent("config.variants.sound_pitch_upper_limit", slider.get(options));
             });
 }
