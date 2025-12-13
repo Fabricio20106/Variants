@@ -35,8 +35,10 @@ public class RVConsumeBehaviorConfigScreen extends AbstractRVConfigScreen {
         this.children.add(this.list);
 
         // Done button
-        this.addButton(new Button(this.width / 2 - 100, this.height - 25, 200, 20, DialogTexts.GUI_DONE,
-                button -> this.minecraft.setScreen(this.lastScreen)));
+        this.addButton(new Button(this.width / 2 - 100, this.height - 25, 200, 20, DialogTexts.GUI_DONE, button -> {
+            SHOULD_SAVE_SETTINGS = true;
+            this.minecraft.setScreen(this.lastScreen);
+        }));
     }
 
     @Override

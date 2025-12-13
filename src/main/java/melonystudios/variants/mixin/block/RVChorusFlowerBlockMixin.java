@@ -51,7 +51,7 @@ public abstract class RVChorusFlowerBlockMixin extends Block {
                 boolean flag1 = false;
                 BlockState belowState = world.getBlockState(pos.below());
                 Block belowBlock = belowState.getBlock();
-                if (belowBlock.is(VSBlockTags.CHORUS_FLOWER_PLANTABLE_ON)) {
+                if (belowBlock.is(VSBlockTags.CHORUS_FLOWER_MAY_PLACE_ON)) {
                     canPlantOn = true;
                 } else if (belowBlock == this.plant) {
                     int j = 1;
@@ -59,7 +59,7 @@ public abstract class RVChorusFlowerBlockMixin extends Block {
                     for (int k = 0; k < 4; ++k) {
                         Block blockBelow = world.getBlockState(pos.below(j + 1)).getBlock();
                         if (blockBelow != this.plant) {
-                            if (blockBelow.is(VSBlockTags.CHORUS_FLOWER_PLANTABLE_ON)) {
+                            if (blockBelow.is(VSBlockTags.CHORUS_FLOWER_MAY_PLACE_ON)) {
                                 flag1 = true;
                             }
                             break;
@@ -113,7 +113,7 @@ public abstract class RVChorusFlowerBlockMixin extends Block {
         if (ModList.get().isLoaded("endergetic")) return;
         callback.cancel();
         BlockState belowState = world.getBlockState(pos.below());
-        if (belowState.getBlock() != this.plant && !belowState.is(VSBlockTags.CHORUS_FLOWER_PLANTABLE_ON)) {
+        if (belowState.getBlock() != this.plant && !belowState.is(VSBlockTags.CHORUS_FLOWER_MAY_PLACE_ON)) {
             if (!belowState.isAir(world, pos.below())) {
                 callback.setReturnValue(false);
             } else {

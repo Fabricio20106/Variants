@@ -24,7 +24,7 @@ public class VSItemTagsProvider extends ItemTagsProvider {
     @Override
     @Nonnull
     public String getName() {
-        return "Revaried - Item Tags";
+        return Variants.generatorName("Item Tags");
     }
 
     @Override

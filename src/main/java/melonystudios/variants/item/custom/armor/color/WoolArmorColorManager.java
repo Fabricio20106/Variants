@@ -27,19 +27,17 @@ public class WoolArmorColorManager extends JsonReloadListener {
 
         resourceList.forEach((location, element) -> {
             try {
-                if (element.isJsonObject()) {
-                    WoolArmorColor armorColor = GSON.fromJson(element, WoolArmorColor.class);
-                    builder.put(location, armorColor);
-                }
+                if (element.isJsonObject()) builder.put(location, GSON.fromJson(element, WoolArmorColor.class));
             } catch (Exception exception) {
                 Variants.LOGGER.error(new TranslationTextComponent("error.variants.wool_armor_color.parsing", location).getString(), exception);
             }
         });
+        WoolArmorColor.DATA_DRIVEN_COLORS.clear();
         WoolArmorColor.DATA_DRIVEN_COLORS.putAll(builder.build());
         Variants.LOGGER.info(new TranslationTextComponent("console.variants.wool_armor_color.loaded", builder.build().size()).getString());
     }
 
-    public static GsonBuilder createWoolArmorColorSerializer() {
+    private static GsonBuilder createWoolArmorColorSerializer() {
         return new GsonBuilder().registerTypeAdapter(WoolArmorColor.class, new WoolArmorColor.Serializer());
     }
 }

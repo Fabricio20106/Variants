@@ -34,12 +34,12 @@ public class RVChorusPlantBlockMixin extends Block {
         Block westBlock = world.getBlockState(pos.west()).getBlock();
 
         callback.setReturnValue(this.defaultBlockState()
-                .setValue(DOWN, blockBelow.is(VSBlockTags.CHORUS_PLANT_PLANTABLE_ON) || blockBelow.is(VSBlockTags.CHORUS_FLOWER_PLANTABLE_ON))
-                .setValue(UP, blockAbove.is(VSBlockTags.CHORUS_PLANT_PLANTABLE_ON))
-                .setValue(NORTH, northBlock.is(VSBlockTags.CHORUS_PLANT_PLANTABLE_ON))
-                .setValue(EAST, eastBlock.is(VSBlockTags.CHORUS_PLANT_PLANTABLE_ON))
-                .setValue(SOUTH, southBlock.is(VSBlockTags.CHORUS_PLANT_PLANTABLE_ON))
-                .setValue(WEST, westBlock.is(VSBlockTags.CHORUS_PLANT_PLANTABLE_ON)));
+                .setValue(DOWN, blockBelow.is(VSBlockTags.CHORUS_PLANT_MAY_PLACE_ON) || blockBelow.is(VSBlockTags.CHORUS_FLOWER_MAY_PLACE_ON))
+                .setValue(UP, blockAbove.is(VSBlockTags.CHORUS_PLANT_MAY_PLACE_ON))
+                .setValue(NORTH, northBlock.is(VSBlockTags.CHORUS_PLANT_MAY_PLACE_ON))
+                .setValue(EAST, eastBlock.is(VSBlockTags.CHORUS_PLANT_MAY_PLACE_ON))
+                .setValue(SOUTH, southBlock.is(VSBlockTags.CHORUS_PLANT_MAY_PLACE_ON))
+                .setValue(WEST, westBlock.is(VSBlockTags.CHORUS_PLANT_MAY_PLACE_ON)));
     }
 
     @Inject(method = "updateShape", at = @At("HEAD"), cancellable = true)
@@ -49,7 +49,7 @@ public class RVChorusPlantBlockMixin extends Block {
             world.getBlockTicks().scheduleTick(pos, this, 1);
             callback.setReturnValue(super.updateShape(state, direction, neighborState, world, pos, neighborPos));
         } else {
-            boolean isPlantable = neighborState.is(VSBlockTags.CHORUS_PLANT_PLANTABLE_ON) || direction == Direction.DOWN && neighborState.is(VSBlockTags.CHORUS_FLOWER_PLANTABLE_ON);
+            boolean isPlantable = neighborState.is(VSBlockTags.CHORUS_PLANT_MAY_PLACE_ON) || direction == Direction.DOWN && neighborState.is(VSBlockTags.CHORUS_FLOWER_MAY_PLACE_ON);
             callback.setReturnValue(state.setValue(PROPERTY_BY_DIRECTION.get(direction), isPlantable));
         }
     }
@@ -67,13 +67,13 @@ public class RVChorusPlantBlockMixin extends Block {
                 if (isAirAboveAndBelow) callback.setReturnValue(false);
 
                 Block relativeBlockBelow = world.getBlockState(relativePos.below()).getBlock();
-                if (relativeBlockBelow == this || relativeBlockBelow.is(VSBlockTags.CHORUS_FLOWER_PLANTABLE_ON)) {
+                if (relativeBlockBelow == this || relativeBlockBelow.is(VSBlockTags.CHORUS_FLOWER_MAY_PLACE_ON)) {
                     callback.setReturnValue(true);
                 }
             }
         }
 
         Block belowBlock = belowState.getBlock();
-        callback.setReturnValue(belowBlock == this || belowBlock.is(VSBlockTags.CHORUS_FLOWER_PLANTABLE_ON));
+        callback.setReturnValue(belowBlock == this || belowBlock.is(VSBlockTags.CHORUS_FLOWER_MAY_PLACE_ON));
     }
 }

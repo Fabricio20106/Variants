@@ -1,13 +1,13 @@
 package melonystudios.variants.item.custom.food;
 
+import melonystudios.variants.Variants;
 import melonystudios.variants.component.Consumable;
-import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.item.custom.VSItem;
 import melonystudios.variants.consumable.ConsumeBehavior;
 import melonystudios.variants.consumable.VSConsumeBehaviors;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.NBTUtils;
-import melonystudios.variants.util.VSRegistries;
+import melonystudios.variants.util.RVRegistries;
 import melonystudios.variants.util.VSUtils;
 import melonystudios.variants.util.tag.ConsumeBehaviorTags;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -35,7 +35,7 @@ public class ConsumableItem extends VSItem implements Consumable {
     public boolean populateTagsByDefault = false;
     public boolean populateBehavior = false;
     private final boolean useDefaultBehavior;
-    protected final ConsumeBehavior behavior;
+    private final ConsumeBehavior behavior;
 
     public ConsumableItem(boolean useDefaultBehavior, ConsumeBehavior behavior, Properties properties) {
         super(properties);
@@ -43,11 +43,11 @@ public class ConsumableItem extends VSItem implements Consumable {
         this.behavior = behavior;
     }
 
-    public ConsumeBehavior getBehavior() {
+    public ConsumeBehavior behavior() {
         return this.behavior;
     }
 
-    public boolean usesDefaultBehavior() {
+    public boolean useDefaultBehavior() {
         return this.useDefaultBehavior;
     }
 
@@ -86,7 +86,7 @@ public class ConsumableItem extends VSItem implements Consumable {
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
 
-        if (this.useDefaultBehavior && !world.isClientSide()) this.executeConsumeBehavior(stack, world, livEntity, this.behavior);
+        if (this.useDefaultBehavior() && !world.isClientSide()) this.executeConsumeBehavior(stack, world, livEntity, this.behavior());
         if (this.getCooldown(stack, 0) != 0) this.applyCooldown(stack, livEntity, 0);
 
         ItemStack remainderStack = this.getUseRemainder(stack);
@@ -135,11 +135,11 @@ public class ConsumableItem extends VSItem implements Consumable {
 
     @Override
     public void fillItemCategory(ItemGroup tab, NonNullList<ItemStack> list) {
-        if (this.allowdedIn(tab)) list.add(populateDefaultConsumeTags(new ItemStack(this)));
+        if (this.allowdedIn(tab)) list.add(this.populateDefaultConsumeTags(new ItemStack(this)));
     }
 
     public ItemStack populateDefaultConsumeTags(ItemStack stack) {
-        boolean populateConsumeTags = VSConfigs.COMMON_CONFIGS.populateTagConfigurableFoodTags.get() || this.populateTagsByDefault;
+        boolean populateConsumeTags = Variants.revaried().settings().populateTagConfigurableFoodTags || this.populateTagsByDefault;
         CompoundNBT tag = new CompoundNBT();
         CompoundNBT consumableTag = new CompoundNBT();
         if (populateConsumeTags || this.populateBehavior) tag = stack.getOrCreateTag();
@@ -152,8 +152,8 @@ public class ConsumableItem extends VSItem implements Consumable {
         }
 
         if (this.populateBehavior) {
-            CompoundNBT behaviorTag = this.getBehavior().writeProperties();
-            behaviorTag.putString("id", this.getBehavior().registryEntry().getRegistryName().toString());
+            CompoundNBT behaviorTag = this.behavior().writeProperties();
+            behaviorTag.putString("id", this.behavior().registryEntry().getRegistryName().toString());
             consumableTag.put("behavior", behaviorTag);
         }
 
@@ -169,11 +169,11 @@ public class ConsumableItem extends VSItem implements Consumable {
             if (consumableTag != null && consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) {
                 CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
                 if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
-                    ConsumeBehavior behavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
+                    ConsumeBehavior behavior = RVRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
                     if (behavior != null) tooltip.addAll(behavior.addToTooltip(stack, world, flag));
                 }
             } else {
-                tooltip.addAll(this.getBehavior().addToTooltip(stack, world, flag));
+                tooltip.addAll(this.behavior().addToTooltip(stack, world, flag));
             }
         }
     }

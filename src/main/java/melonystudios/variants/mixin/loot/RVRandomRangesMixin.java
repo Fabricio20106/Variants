@@ -1,7 +1,7 @@
 package melonystudios.variants.mixin.loot;
 
 import melonystudios.variants.Variants;
-import melonystudios.variants.loot.rand.BowlIDValueRange;
+import melonystudios.variants.loot.rand.StewTextureIDValueRange;
 import net.minecraft.loot.IRandomRange;
 import net.minecraft.loot.RandomRanges;
 import net.minecraft.util.ResourceLocation;
@@ -18,6 +18,6 @@ public class RVRandomRangesMixin {
     private static Map<ResourceLocation, Class<? extends IRandomRange>> GENERATORS;
 
     static {
-        GENERATORS.put(Variants.variants("texture_id"), BowlIDValueRange.class);
+        GENERATORS.put(Variants.variants("stew_texture_id"), StewTextureIDValueRange.class);
     }
 }

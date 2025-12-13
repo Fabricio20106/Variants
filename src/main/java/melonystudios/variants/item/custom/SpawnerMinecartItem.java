@@ -1,6 +1,6 @@
 package melonystudios.variants.item.custom;
 
-import melonystudios.variants.config.VSConfigs;
+import melonystudios.variants.Variants;
 import melonystudios.variants.dispenser.SpawnerMinecartDispenseBehavior;
 import melonystudios.variants.util.InterfaceMethods;
 import net.minecraft.block.AbstractRailBlock;
@@ -57,7 +57,7 @@ public class SpawnerMinecartItem extends MinecartItem {
 
     @Override
     public void fillItemCategory(ItemGroup tab, NonNullList<ItemStack> list) {
-        if (this.allowdedIn(tab) && VSConfigs.COMMON_CONFIGS.populateSpawnerMinecartsInTabs.get()) {
+        if (this.allowdedIn(tab) && Variants.revaried().settings().populateSpawnerMinecartsInTabs) {
             for (EntityType<?> entityType : ForgeRegistries.ENTITIES) {
                 if (entityType.canSummon()) {
                     ItemStack minecartStack = new ItemStack(this);

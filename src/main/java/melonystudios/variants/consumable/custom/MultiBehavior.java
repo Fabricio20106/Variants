@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 import melonystudios.variants.consumable.ConsumeBehavior;
 import melonystudios.variants.consumable.VSConsumeBehaviors;
 import melonystudios.variants.util.Constants;
-import melonystudios.variants.util.VSRegistries;
+import melonystudios.variants.util.RVRegistries;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -42,7 +42,7 @@ public class MultiBehavior extends ConsumeBehavior {
             for (int i = 0; i < behaviorList.size(); ++i) {
                 CompoundNBT behaviorTag = behaviorList.getCompound(i);
                 if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
-                    ConsumeBehavior behavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
+                    ConsumeBehavior behavior = RVRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
                     if (behavior != null) behavior.loadFromNBT(stack, world, livEntity, behaviorTag);
                 }
             }

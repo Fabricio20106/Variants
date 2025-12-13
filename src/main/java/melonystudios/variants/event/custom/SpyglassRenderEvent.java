@@ -2,7 +2,6 @@ package melonystudios.variants.event.custom;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import melonystudios.variants.Variants;
-import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.item.custom.tool.SpyglassItem;
 import net.minecraft.client.GameSettings;
 import net.minecraft.client.Minecraft;
@@ -25,7 +24,7 @@ import net.minecraftforge.fml.common.Mod;
 public class SpyglassRenderEvent {
     private static final ResourceLocation SPYGLASS_SCOPE = Variants.variants("textures/misc/spyglass_scope.png");
     private static final Minecraft INSTANCE = Minecraft.getInstance();
-    private static final double DEFAULT_ZOOM_LEVEL = VSConfigs.COMMON_CONFIGS.defaultSpyglassZoomLevel.get();
+    private static final double DEFAULT_ZOOM_LEVEL = Variants.revaried().settings().spyglassZoomLevel;
     private static float SPYGLASS_SCALE;
     private static Double currentLevel;
     private static Double defaultMouseSensitivity;
@@ -37,8 +36,8 @@ public class SpyglassRenderEvent {
         PlayerEntity player = INSTANCE.player;
         if (player != null) {
             if (!event.isCancelable() && event.getType() == RenderGameOverlayEvent.ElementType.HELMET) {
-                float tickLength = INSTANCE.getDeltaFrameTime();
-                SPYGLASS_SCALE = MathHelper.lerp(0.5F * tickLength, SPYGLASS_SCALE, 1.125F);
+                float partialTicks = INSTANCE.getDeltaFrameTime();
+                SPYGLASS_SCALE = MathHelper.lerp(0.5F * partialTicks, SPYGLASS_SCALE, 1.125F);
                 if (INSTANCE.options.getCameraType().isFirstPerson()) {
                     if (SpyglassItem.isUsingSpyglass(player)) {
                         renderSpyglassOverlay(windowWidth, windowHeight);
@@ -107,12 +106,12 @@ public class SpyglassRenderEvent {
     @SubscribeEvent
     public static void getFOVModifier(FOVUpdateEvent event) {
         PlayerEntity player = event.getEntity();
-        float currentFov = event.getNewfov();
-        if (Minecraft.getInstance().options.getCameraType() == PointOfView.FIRST_PERSON) event.setNewfov((float) changeFOV(player, currentFov));
+        float currentFOV = event.getNewfov();
+        if (INSTANCE.options.getCameraType() == PointOfView.FIRST_PERSON) event.setNewfov((float) changeFOV(player, currentFOV));
     }
 
     public static double changeFOV(PlayerEntity player, double fov) {
-        GameSettings options = Minecraft.getInstance().options;
+        GameSettings options = INSTANCE.options;
         if (currentLevel == null) {
             currentLevel = DEFAULT_ZOOM_LEVEL;
         }

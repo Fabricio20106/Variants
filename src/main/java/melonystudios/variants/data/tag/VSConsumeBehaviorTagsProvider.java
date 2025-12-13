@@ -2,7 +2,7 @@ package melonystudios.variants.data.tag;
 
 import melonystudios.variants.Variants;
 import melonystudios.variants.consumable.ConsumeBehavior;
-import melonystudios.variants.util.VSRegistries;
+import melonystudios.variants.util.RVRegistries;
 import melonystudios.variants.util.tag.ConsumeBehaviorTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -13,13 +13,13 @@ import javax.annotation.Nullable;
 
 public class VSConsumeBehaviorTagsProvider extends ForgeRegistryTagsProvider<ConsumeBehavior> {
     public VSConsumeBehaviorTagsProvider(DataGenerator generator, @Nullable ExistingFileHelper fileHelper) {
-        super(generator, VSRegistries.CONSUME_BEHAVIOR, Variants.MOD_ID, fileHelper);
+        super(generator, RVRegistries.CONSUME_BEHAVIOR, Variants.MOD_ID, fileHelper);
     }
 
     @Override
     @Nonnull
     public String getName() {
-        return "Revaried - Consume Behavior Tags";
+        return Variants.generatorName("Consume Behavior Tags");
     }
 
     @Override

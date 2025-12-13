@@ -15,9 +15,6 @@ public class VSBlockTags {
     public static final ITag.INamedTag<Block> GLASS_GLOW_BLACK = forge("glass/glow_black");
     public static final ITag.INamedTag<Block> GLASS_PANES_GLOW_BLACK = forge("glass_panes/glow_black");
 
-    // Minecraft World generation-Related Tags
-    public static final ITag.INamedTag<Block> PLANTS_PLACEABLE_ON = worldGeneration("plants_placeable_on");
-
     // Revaried's Tags
     public static final ITag.INamedTag<Block> PAINTING_DOORS = revaried("painting_doors");
     public static final ITag.INamedTag<Block> PAINTING_TRAPDOORS = revaried("painting_trapdoors");
@@ -28,14 +25,15 @@ public class VSBlockTags {
     public static final ITag.INamedTag<Block> BEACONS = revaried("beacons");
     public static final ITag.INamedTag<Block> SPAWNERS = revaried("spawners");
     public static final ITag.INamedTag<Block> SPAWNER_MINECART_CANNOT_REPLACE = revaried("spawner_minecart_cannot_replace");
-    public static final ITag.INamedTag<Block> NETHER_WART_PLANTABLE_ON = revaried("nether_wart_plantable_on");
-    public static final ITag.INamedTag<Block> ENDER_WART_PLANTABLE_ON = revaried("ender_wart_plantable_on");
-    public static final ITag.INamedTag<Block> GOLDEN_CARROTS_PLANTABLE_ON = revaried("golden_carrots_plantable_on");
-    public static final ITag.INamedTag<Block> END_PLANTS_PLANTABLE_ON = revaried("end_plants_plantable_on");
-    public static final ITag.INamedTag<Block> WARPING_VINES_CAN_PLACE_ON = revaried("warping_vines_feature_can_place_on");
-    public static final ITag.INamedTag<Block> CHORUS_FLOWER_PLANTABLE_ON = revaried("chorus_flower_plantable_on");
-    public static final ITag.INamedTag<Block> CHORUS_PLANT_PLANTABLE_ON = revaried("chorus_plant_plantable_on");
-    public static final ITag.INamedTag<Block> NETHER_CROPS_PLANTABLE_ON = revaried("nether_crops_plantable_on");
+    public static final ITag.INamedTag<Block> PLANTS_MAY_PLACE_ON = revaried("may_place_on/plants");
+    public static final ITag.INamedTag<Block> NETHER_WART_MAY_PLACE_ON = revaried("may_place_on/nether_wart");
+    public static final ITag.INamedTag<Block> ENDER_WART_MAY_PLACE_ON = revaried("may_place_on/ender_wart");
+    public static final ITag.INamedTag<Block> GOLDEN_CARROTS_PLANTABLE_ON = revaried("may_place_on/golden_carrots");
+    public static final ITag.INamedTag<Block> END_PLANTS_MAY_PLACE_ON = revaried("may_place_on/end_plants");
+    public static final ITag.INamedTag<Block> WARPING_VINES_MAY_PLACE_ON = revaried("may_place_on/warping_vines_feature");
+    public static final ITag.INamedTag<Block> CHORUS_FLOWER_MAY_PLACE_ON = revaried("may_place_on/chorus_flower");
+    public static final ITag.INamedTag<Block> CHORUS_PLANT_MAY_PLACE_ON = revaried("may_place_on/chorus_plant");
+    public static final ITag.INamedTag<Block> NETHER_CROPS_MAY_PLACE_ON = revaried("may_place_on/nether_crops");
     public static final ITag.INamedTag<Block> END_CARVER_REPLACEABLES = revaried("end_carver_replaceables");
     public static final ITag.INamedTag<Block> HAS_ENDER_NYLIUM = revaried("has_ender_nylium");
 
@@ -65,9 +63,5 @@ public class VSBlockTags {
 
     public static ITag.INamedTag<Block> mod(String namespace, String name) {
         return BlockTags.bind(new ResourceLocation(namespace, name).toString());
-    }
-
-    public static ITag.INamedTag<Block> worldGeneration(String name) {
-        return BlockTags.bind(new ResourceLocation("worldgen/" + name).toString());
     }
 }

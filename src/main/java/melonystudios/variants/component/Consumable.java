@@ -1,10 +1,9 @@
 package melonystudios.variants.component;
 
 import melonystudios.variants.consumable.ConsumeBehavior;
-import melonystudios.variants.consumable.custom.DefaultConsumeBehavior;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.NBTUtils;
-import melonystudios.variants.util.VSRegistries;
+import melonystudios.variants.util.RVRegistries;
 import melonystudios.variants.util.VSUtils;
 import melonystudios.variants.util.tag.ConsumeBehaviorTags;
 import net.minecraft.entity.LivingEntity;
@@ -28,7 +27,7 @@ public interface Consumable {
     // sound (eating & drinking sound)
 
     default UseAction getConsumeAnimation(ItemStack stack) {
-        return getConsumeAnimation(stack, UseAction.EAT);
+        return this.getConsumeAnimation(stack, UseAction.EAT);
     }
 
     default UseAction getConsumeAnimation(ItemStack stack, UseAction animation) {
@@ -44,7 +43,7 @@ public interface Consumable {
     }
 
     default int getConsumeTicks(ItemStack stack) {
-        return getConsumeTicks(stack, 32);
+        return this.getConsumeTicks(stack, 32);
     }
 
     default int getConsumeTicks(ItemStack stack, int ticks) {
@@ -56,7 +55,7 @@ public interface Consumable {
     }
 
     default SoundEvent getConsumeSound(ItemStack stack) {
-        return getConsumeSound(stack, SoundEvents.GENERIC_EAT);
+        return this.getConsumeSound(stack, SoundEvents.GENERIC_EAT);
     }
 
     default SoundEvent getConsumeSound(ItemStack stack, SoundEvent sound) {
@@ -87,7 +86,7 @@ public interface Consumable {
 
     default void applyCooldown(ItemStack stack, LivingEntity livEntity, int cooldownTicks) {
         if (livEntity instanceof PlayerEntity) {
-            ((PlayerEntity) livEntity).getCooldowns().addCooldown(stack.getItem(), getCooldown(stack, cooldownTicks));
+            ((PlayerEntity) livEntity).getCooldowns().addCooldown(stack.getItem(), this.getCooldown(stack, cooldownTicks));
         }
     }
 
@@ -100,7 +99,7 @@ public interface Consumable {
     }
 
     default ItemStack getUseRemainder(ItemStack stack) {
-        return getUseRemainder(stack, getDefaultUseRemainder());
+        return this.getUseRemainder(stack, this.getDefaultUseRemainder());
     }
 
     default ItemStack getUseRemainder(ItemStack stack, ItemStack remainderStack) {
@@ -119,10 +118,6 @@ public interface Consumable {
         return 0;
     }
 
-    default void executeConsumeBehavior(ItemStack stack, World world, LivingEntity livEntity) {
-        this.executeConsumeBehavior(stack, world, livEntity, new DefaultConsumeBehavior());
-    }
-
     default void executeConsumeBehavior(ItemStack stack, World world, LivingEntity livEntity, ConsumeBehavior behavior) {
         CompoundNBT consumableTag = stack.getTagElement("consumable");
         if (consumableTag != null && consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) {
@@ -130,7 +125,7 @@ public interface Consumable {
             if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
                 // in order to make behaviors show accurate tooltips, this call to the registry would need to be replaced,
                 // as it essentially replaces the perfectly fine behavior with a new one.
-                ConsumeBehavior tagBehavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
+                ConsumeBehavior tagBehavior = RVRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
                 if (tagBehavior != null && canRunBehavior(tagBehavior)) tagBehavior.loadFromNBT(stack, world, livEntity, this.getBehaviorProperties(stack));
             }
         } else {

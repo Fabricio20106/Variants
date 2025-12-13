@@ -7,6 +7,7 @@ import melonystudios.variants.util.VSUtils;
 import net.minecraft.client.GameSettings;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.SettingsScreen;
+import net.minecraft.client.gui.toasts.SystemToast;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.*;
 import net.minecraftforge.api.distmarker.Dist;
@@ -16,6 +17,7 @@ import net.minecraftforge.fml.ModList;
 @OnlyIn(Dist.CLIENT)
 public abstract class AbstractRVConfigScreen extends SettingsScreen {
     private static final ResourceLocation PANORAMA_OVERLAY = new ResourceLocation("textures/gui/title/background/panorama_overlay.png");
+    public static boolean SHOULD_SAVE_SETTINGS = false;
 
     public AbstractRVConfigScreen(Screen screen, GameSettings settings, ITextComponent screenName) {
         super(screen, settings, screenName);
@@ -32,5 +34,9 @@ public abstract class AbstractRVConfigScreen extends SettingsScreen {
         } else {
             super.renderBackground(stack);
         }
+    }
+
+    public void showSavedSettingsToast() {
+        this.minecraft.getToasts().addToast(SystemToast.multiline(this.minecraft, SystemToast.Type.TUTORIAL_HINT, new TranslationTextComponent("menu.variants.options.saved_settings"), new TranslationTextComponent("menu.variants.options.saved_settings.desc")));
     }
 }

@@ -22,11 +22,13 @@ import javax.annotation.Nonnull;
 
 // Replaces the End Midlands biome with the Enderwood Forest.
 public class EnderwoodEndBiomeProvider extends BiomeProvider {
-    public static final RegistryKey<Biome> THE_END_SUBSTITUTION = RegistryKey.create(ForgeRegistries.Keys.BIOMES, Variants.INSTANCE.getConfig().substituteTheEndBiomeWith);
+    public static final RegistryKey<Biome> THE_END_SUBSTITUTION = RegistryKey.create(ForgeRegistries.Keys.BIOMES, Variants.revaried().settings().substituteTheEndBiomeWith);
     public static final RegistryKey<Biome> ENDERWOOD_FOREST = RegistryKey.create(ForgeRegistries.Keys.BIOMES, VSBiomes.ENDERWOOD_FOREST.getId());
 
-    public static final Codec<EnderwoodEndBiomeProvider> CODEC = RecordCodecBuilder.create((providerInstance) -> providerInstance.group(RegistryLookupCodec.create(Registry.BIOME_REGISTRY).forGetter((biomeProvider) -> biomeProvider.biomes), Codec.LONG.fieldOf(
-            "seed").stable().forGetter((biomeProvider) -> biomeProvider.seed)).apply(providerInstance, providerInstance.stable(EnderwoodEndBiomeProvider::new)));
+    public static final Codec<EnderwoodEndBiomeProvider> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            RegistryLookupCodec.create(Registry.BIOME_REGISTRY).forGetter(provider -> provider.biomes),
+            Codec.LONG.fieldOf("seed").stable().forGetter(provider -> provider.seed)
+    ).apply(instance, instance.stable(EnderwoodEndBiomeProvider::new)));
     private final SimplexNoiseGenerator islandNoise;
     private final Registry<Biome> biomes;
     private final long seed;

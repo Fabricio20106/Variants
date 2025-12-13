@@ -87,7 +87,7 @@ public class PlaySoundBehavior extends ConsumeBehavior {
     @Override
     public void runBehavior(ItemStack stack, World world, LivingEntity livEntity, @Nullable CompoundNBT propertiesTag) {
         float volume = MathHelper.clamp(this.volume(), 0, Float.MAX_VALUE);
-        float pitch = (float) MathHelper.clamp(this.pitch(), 0, Variants.INSTANCE.getConfig().soundPitchUpperLimit);
+        float pitch = (float) MathHelper.clamp(this.pitch(), 0, Variants.revaried().settings().soundPitchUpperLimit);
         if (this.sound() == null) this.sound = VSSounds.PLAY_SOUND_BEHAVIOR_DEFAULT.get().getRegistryName();
         if (this.source() == null) this.source = SoundCategory.MASTER;
         SoundEvent soundEvent = ForgeRegistries.SOUND_EVENTS.getValue(this.sound());
@@ -131,7 +131,7 @@ public class PlaySoundBehavior extends ConsumeBehavior {
         properties.putString("source", this.source().getName());
         if (this.playAtPlayer()) properties.putBoolean("play_at_player", true);
         properties.putFloat("volume", MathHelper.clamp(this.volume(), 0, Float.MAX_VALUE));
-        properties.putFloat("pitch", (float) MathHelper.clamp(this.pitch(), 0, Variants.INSTANCE.getConfig().soundPitchUpperLimit));
+        properties.putFloat("pitch", (float) MathHelper.clamp(this.pitch(), 0, Variants.revaried().settings().soundPitchUpperLimit));
         if (this.sendsSoundPacket()) properties.putBoolean("send_sound_packet", true);
         return properties;
     }
@@ -149,7 +149,7 @@ public class PlaySoundBehavior extends ConsumeBehavior {
         properties.addProperty("source", this.source().getName());
         if (this.playAtPlayer()) properties.addProperty("play_at_player", true);
         properties.addProperty("volume", MathHelper.clamp(this.volume, 0, Float.MAX_VALUE));
-        properties.addProperty("pitch", (float) MathHelper.clamp(this.pitch, 0, Variants.INSTANCE.getConfig().soundPitchUpperLimit));
+        properties.addProperty("pitch", (float) MathHelper.clamp(this.pitch, 0, Variants.revaried().settings().soundPitchUpperLimit));
         if (this.sendsSoundPacket()) properties.addProperty("send_sound_packet", true);
         return properties;
     }

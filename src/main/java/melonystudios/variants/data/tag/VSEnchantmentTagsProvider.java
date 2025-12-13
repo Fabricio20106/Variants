@@ -20,7 +20,7 @@ public class VSEnchantmentTagsProvider extends ForgeRegistryTagsProvider<Enchant
     @Override
     @Nonnull
     public String getName() {
-        return "Revaried - Enchantment Tags";
+        return Variants.generatorName("Enchantment Tags");
     }
 
     @Override

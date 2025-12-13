@@ -2,7 +2,6 @@ package melonystudios.variants.item.custom.armor;
 
 import com.google.common.collect.Lists;
 import melonystudios.variants.Variants;
-import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.item.custom.armor.color.WoolArmorColor;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.NBTUtils;
@@ -44,7 +43,7 @@ public class WoolArmorItem extends ArmorItem implements DyeableArmorItem {
         return super.getArmorTexture(stack, entity, slot, type);
     }
 
-    /// Essentially copied from {@link net.minecraft.client.renderer.entity.layers.BipedArmorLayer#getArmorResource(Entity, ItemStack, EquipmentSlotType, String) BipedArmorLayer#getArmorResource()} (Forge version).
+    /// Essentially copied from {@link net.minecraft.client.renderer.entity.layers.BipedArmorLayer#getArmorResource BipedArmorLayer.getArmorResource()} (Forge version).
     public String getArmorLocation() {
         int index = this.armorName.indexOf(':');
         if (index != -1) return this.armorName.substring(index + 1);
@@ -76,7 +75,7 @@ public class WoolArmorItem extends ArmorItem implements DyeableArmorItem {
         if (this.allowdedIn(tab)) {
             list.add(new ItemStack(this));
 
-            if (VSConfigs.COMMON_CONFIGS.populateWoolArmorColorInTabs.get()) {
+            if (Variants.revaried().settings().populateWoolArmorColorsInTabs) {
                 List<ResourceLocation> sortedColors = Lists.newArrayList();
                 sortedColors.addAll(WoolArmorColor.DATA_DRIVEN_COLORS.keySet());
                 sortedColors.sort(null);
@@ -97,7 +96,7 @@ public class WoolArmorItem extends ArmorItem implements DyeableArmorItem {
         }
 
         // Wool armor designs
-        if (this.allowdedIn(tab) && VSConfigs.COMMON_CONFIGS.populateWoolArmorDesignsInTabs.get()) {
+        if (this.allowdedIn(tab) && Variants.revaried().settings().populateWoolArmorDesignsInTabs) {
             List<ResourceLocation> sortedColors = Lists.newArrayList();
             sortedColors.addAll(WoolArmorColor.DATA_DRIVEN_COLORS.keySet());
             sortedColors.sort(null);
@@ -116,8 +115,8 @@ public class WoolArmorItem extends ArmorItem implements DyeableArmorItem {
         }
 
         // Infinity wool sweaters (0 -> 16777215)
-        if (tab == VSSweaterTab.TAB && VSConfigs.COMMON_CONFIGS.enableInfinitySweatersTab.get()) {
-            for (int color = 0; color < VSConfigs.COMMON_CONFIGS.infinitySweatersTabLength.get();  color += VSConfigs.COMMON_CONFIGS.infinitySweatersTabSpacing.get())  {
+        if (tab == VSSweaterTab.TAB && Variants.revaried().settings().infinitySweatersEnabled) {
+            for (int color = 0; color < Variants.revaried().settings().infinitySweatersTabLength; color += Variants.revaried().settings().infinitySweatersTabSpacing)  {
                 ItemStack stack = new ItemStack(this);
                 CompoundNBT displayTag = stack.getOrCreateTagElement("display");
                 CompoundNBT tag = stack.getOrCreateTag();

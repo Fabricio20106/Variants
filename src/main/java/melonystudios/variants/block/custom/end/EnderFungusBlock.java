@@ -17,6 +17,6 @@ public class EnderFungusBlock extends FungusBlock {
 
     @Override
     protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
-        return state.is(VSBlockTags.END_PLANTS_PLANTABLE_ON) || super.mayPlaceOn(state, world, pos);
+        return state.is(VSBlockTags.END_PLANTS_MAY_PLACE_ON) || super.mayPlaceOn(state, world, pos);
     }
 }

@@ -29,7 +29,7 @@ public class VSDamageSourceReportsProvider implements IDataProvider {
     @Override
     @Nonnull
     public String getName() {
-        return "Revaried - Damage Source Reports";
+        return Variants.generatorName("Damage Source Reports");
     }
 
     private static Path createPath(Path path) {
@@ -38,8 +38,8 @@ public class VSDamageSourceReportsProvider implements IDataProvider {
 
     @Override
     public void run(DirectoryCache cache) {
-        Path path = this.generator.getOutputFolder();
-        Path path1 = createPath(path);
+        Path outputFolder = this.generator.getOutputFolder();
+        Path filePath = createPath(outputFolder);
 
         JsonObject sources = new JsonObject();
         for (ResourceLocation location : DamageSourceUtils.VALID_DAMAGE_SOURCES) {
@@ -80,9 +80,9 @@ public class VSDamageSourceReportsProvider implements IDataProvider {
         }
 
         try {
-            IDataProvider.save(GSON, cache, sources, path1);
+            IDataProvider.save(GSON, cache, sources, filePath);
         } catch (IOException exception) {
-            Variants.LOGGER.error(new TranslationTextComponent("error." + Variants.MOD_ID + ".damage_source_reports.saving", path1).getString(), path1, exception);
+            Variants.LOGGER.error(new TranslationTextComponent("error." + Variants.MOD_ID + ".damage_source_reports.saving", filePath).getString(), filePath, exception);
         }
     }
 

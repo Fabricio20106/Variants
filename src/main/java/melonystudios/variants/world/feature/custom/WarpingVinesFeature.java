@@ -29,7 +29,7 @@ public class WarpingVinesFeature extends Feature<NoFeatureConfig> {
             return false;
         } else {
             BlockState aboveState = seedReader.getBlockState(pos.above());
-            if (!aboveState.is(VSBlockTags.WARPING_VINES_CAN_PLACE_ON)) {
+            if (!aboveState.is(VSBlockTags.WARPING_VINES_MAY_PLACE_ON)) {
                 return false;
             } else {
                 this.placeRoofEnderWartBlock(seedReader, rand, pos);
@@ -51,7 +51,7 @@ public class WarpingVinesFeature extends Feature<NoFeatureConfig> {
 
                 for (Direction direction : DIRECTIONS) {
                     BlockState state = world.getBlockState(mutablePos1.setWithOffset(mutablePos, direction));
-                    if (state.is(VSBlockTags.WARPING_VINES_CAN_PLACE_ON)) {
+                    if (state.is(VSBlockTags.WARPING_VINES_MAY_PLACE_ON)) {
                         ++i2;
                     }
 
@@ -74,7 +74,7 @@ public class WarpingVinesFeature extends Feature<NoFeatureConfig> {
             mutablePos.setWithOffset(pos, rand.nextInt(8) - rand.nextInt(8), rand.nextInt(2) - rand.nextInt(7), rand.nextInt(8) - rand.nextInt(8));
             if (world.isEmptyBlock(mutablePos)) {
                 BlockState aboveState = world.getBlockState(mutablePos.above());
-                if (aboveState.is(VSBlockTags.WARPING_VINES_CAN_PLACE_ON)) {
+                if (aboveState.is(VSBlockTags.WARPING_VINES_MAY_PLACE_ON)) {
                     int rand1 = MathHelper.nextInt(rand, 1, 8);
                     if (rand.nextInt(6) == 0) {
                         rand1 *= 2;

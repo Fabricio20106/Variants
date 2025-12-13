@@ -6,7 +6,7 @@ import melonystudios.variants.Variants;
 import melonystudios.variants.component.Consumable;
 import melonystudios.variants.item.custom.food.ConsumableItem;
 import melonystudios.variants.util.Constants;
-import melonystudios.variants.util.VSRegistries;
+import melonystudios.variants.util.RVRegistries;
 import melonystudios.variants.util.VSStyles;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -29,7 +29,7 @@ import java.util.Set;
 import java.util.function.Consumer;
 
 public abstract class ConsumeBehavior extends ForgeRegistryEntry<ConsumeBehavior> {
-    private final ReverseTagWrapper<ConsumeBehavior> reverseTags = new ReverseTagWrapper<>(this, () -> TagCollectionManager.getInstance().getCustomTypeCollection(VSRegistries.CONSUME_BEHAVIOR));
+    private final ReverseTagWrapper<ConsumeBehavior> reverseTags = new ReverseTagWrapper<>(this, () -> TagCollectionManager.getInstance().getCustomTypeCollection(RVRegistries.CONSUME_BEHAVIOR));
     @Nullable
     private String descriptionID;
 
@@ -54,7 +54,7 @@ public abstract class ConsumeBehavior extends ForgeRegistryEntry<ConsumeBehavior
     }
 
     protected String getOrCreateDescriptionID() {
-        if (this.descriptionID == null) this.descriptionID = Util.makeDescriptionId("consume_behavior", VSRegistries.CONSUME_BEHAVIOR.getKey(this));
+        if (this.descriptionID == null) this.descriptionID = Util.makeDescriptionId("consume_behavior", RVRegistries.CONSUME_BEHAVIOR.getKey(this));
         return this.descriptionID;
     }
 
@@ -87,7 +87,7 @@ public abstract class ConsumeBehavior extends ForgeRegistryEntry<ConsumeBehavior
             if (consumableTag != null && consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) {
                 CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
                 if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
-                    ConsumeBehavior behavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
+                    ConsumeBehavior behavior = RVRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
                     if (behavior != null) consumer.accept(stack);
                 }
             } else {
@@ -109,7 +109,7 @@ public abstract class ConsumeBehavior extends ForgeRegistryEntry<ConsumeBehavior
         if (hasBehaviorIDInNBT(stack)) {
             try {
                 ResourceLocation behavior = ResourceLocation.tryParse(stack.getOrCreateTagElement("consumable").getCompound("behavior").getString("id"));
-                if (VSRegistries.CONSUME_BEHAVIOR.containsKey(behavior)) return VSRegistries.CONSUME_BEHAVIOR.getValue(behavior);
+                if (RVRegistries.CONSUME_BEHAVIOR.containsKey(behavior)) return RVRegistries.CONSUME_BEHAVIOR.getValue(behavior);
             } catch (NullPointerException exception) {
                 Variants.LOGGER.error("Could not get the consume behavior from {} NBT", stack.getHoverName().getString(), exception);
             }
@@ -140,12 +140,12 @@ public abstract class ConsumeBehavior extends ForgeRegistryEntry<ConsumeBehavior
         if (consumableTag != null && consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) {
             CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
             if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
-                ConsumeBehavior tagBehavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
+                ConsumeBehavior tagBehavior = RVRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
                 if (tagBehavior != null && Consumable.canRunBehavior(tagBehavior)) tagBehavior.loadFromNBT(stack, world, livEntity, getBehaviorProperties(stack));
             }
         } else {
             if (Consumable.validConsumableClass(stack.getItem())) {
-                ConsumeBehavior behavior = ((ConsumableItem) stack.getItem()).getBehavior();
+                ConsumeBehavior behavior = ((ConsumableItem) stack.getItem()).behavior();
                 if (Consumable.canRunBehavior(behavior)) behavior.loadFromNBT(stack, world, livEntity, getBehaviorProperties(stack));
             }
         }

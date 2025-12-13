@@ -14,7 +14,7 @@ public class VSBowlTypesProvider extends BowlTypesProvider {
     @Nonnull
     @Override
     public String getName() {
-        return "Revaried - Bowl Types";
+        return Variants.generatorName("Bowl Types");
     }
 
     @Override
@@ -31,7 +31,7 @@ public class VSBowlTypesProvider extends BowlTypesProvider {
         @Override
         @Nonnull
         public String getName() {
-            return "Revaried - Vanilla Bowl Types";
+            return Variants.generatorName("Vanilla Bowl Types");
         }
 
         @Override

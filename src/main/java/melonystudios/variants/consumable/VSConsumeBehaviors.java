@@ -3,12 +3,12 @@ package melonystudios.variants.consumable;
 import com.google.common.collect.Lists;
 import melonystudios.variants.Variants;
 import melonystudios.variants.consumable.custom.*;
-import melonystudios.variants.util.VSRegistries;
+import melonystudios.variants.util.RVRegistries;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 
 public class VSConsumeBehaviors {
-    public static final DeferredRegister<ConsumeBehavior> BEHAVIORS = DeferredRegister.create(VSRegistries.CONSUME_BEHAVIOR, Variants.MOD_ID);
+    public static final DeferredRegister<ConsumeBehavior> BEHAVIORS = DeferredRegister.create(RVRegistries.CONSUME_BEHAVIOR, Variants.MOD_ID);
 
     public static final RegistryObject<ConsumeBehavior> DEFAULT = BEHAVIORS.register("default", DefaultConsumeBehavior::new);
     public static final RegistryObject<ConsumeBehavior> ADD_EXPERIENCE = BEHAVIORS.register("add_experience", AddExperienceBehavior::new);

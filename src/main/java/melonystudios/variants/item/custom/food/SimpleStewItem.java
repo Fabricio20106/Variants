@@ -29,7 +29,7 @@ public class SimpleStewItem extends ExponentialStewItem {
             if (remainderTag.contains("id", Constants.TagTypes.STRING) && ForgeRegistries.ITEMS.containsKey(new ResourceLocation(remainderTag.getString("id")))) return VSUtils.loadStack(remainderTag);
         }
 
-        return stewStack.getItem() == VSItems.END_FUNGI_STEW.get() ? new ItemStack(VSItems.ENDERWOOD_BOWL.get()) : getDefaultUseRemainder();
+        return stewStack.getItem() == VSItems.END_FUNGI_STEW.get() ? new ItemStack(VSItems.ENDERWOOD_BOWL.get()) : this.getDefaultUseRemainder();
     }
 
     @Override

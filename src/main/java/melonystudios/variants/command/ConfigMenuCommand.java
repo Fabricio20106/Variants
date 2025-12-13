@@ -27,7 +27,7 @@ public class ConfigMenuCommand {
 
     private static int openConfigMenu(CommandContext<CommandSource> context, String modID) {
         Minecraft minecraft = Minecraft.getInstance();
-        Optional<ModInfo> information = ModList.get().getMods().stream().filter(info -> info.getModId().equals(modID)).findAny();
+        Optional<ModInfo> information = ModList.get().getMods().stream().filter(info -> info.getModId().equals(modID)).findFirst();
         if (modID.equals("minecraft")) {
             minecraft.setScreen(new OptionsScreen(minecraft.screen, minecraft.options));
             return 1;

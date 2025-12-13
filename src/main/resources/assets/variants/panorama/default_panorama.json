@@ -1,0 +1,10 @@
+{
+  "cube_map": [
+    "variants:gui/textures/panorama/panorama_0",
+    "variants:gui/textures/panorama/panorama_1",
+    "variants:gui/textures/panorama/panorama_2",
+    "variants:gui/textures/panorama/panorama_3",
+    "variants:gui/textures/panorama/panorama_4",
+    "variants:gui/textures/panorama/panorama_5"
+  ]
+}

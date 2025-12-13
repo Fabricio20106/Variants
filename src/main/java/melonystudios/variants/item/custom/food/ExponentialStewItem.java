@@ -1,13 +1,12 @@
 package melonystudios.variants.item.custom.food;
 
 import melonystudios.variants.Variants;
-import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.consumable.ConsumeBehavior;
 import melonystudios.variants.item.bowl.BowlType;
 import melonystudios.variants.item.bowl.BowlTypes;
 import melonystudios.variants.util.Constants;
 import melonystudios.variants.util.NBTUtils;
-import melonystudios.variants.util.VSRegistries;
+import melonystudios.variants.util.RVRegistries;
 import melonystudios.variants.util.VSUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
@@ -41,7 +40,7 @@ public class ExponentialStewItem extends ConsumableItem {
     }
 
     public TranslationTextComponent getBehaviorTranslation(ItemStack stewStack) {
-        TranslationTextComponent fromConstructor = new TranslationTextComponent("consume_behavior." + this.behavior.registryEntry().getRegistryName().getNamespace() + "." + this.behavior.registryEntry().getRegistryName().getPath());
+        TranslationTextComponent fromConstructor = new TranslationTextComponent("consume_behavior." + this.behavior().registryEntry().getRegistryName().getNamespace() + "." + this.behavior().registryEntry().getRegistryName().getPath());
         if (hasBehaviorInNBT(stewStack)) {
             CompoundNBT consumableTag = stewStack.getOrCreateTagElement("consumable");
             CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
@@ -66,7 +65,7 @@ public class ExponentialStewItem extends ConsumableItem {
 
         for (ResourceLocation bowlLocation : BowlType.DATA_DRIVEN_TYPES.keySet()) {
             BowlType bowlType = BowlType.DATA_DRIVEN_TYPES.get(bowlLocation);
-            if (bowlType.getBowlStack().equals(bowlStack, false)) tag.putInt("texture_id", bowlType.getTextureID());
+            if (bowlType.bowl().equals(bowlStack, false)) tag.putInt("texture_id", bowlType.textureID());
         }
     }
 
@@ -98,10 +97,10 @@ public class ExponentialStewItem extends ConsumableItem {
         CompoundNBT consumableTag = stewStack.getOrCreateTagElement("consumable");
         CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
         if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
-            ConsumeBehavior behavior = VSRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
+            ConsumeBehavior behavior = RVRegistries.CONSUME_BEHAVIOR.getValue(ResourceLocation.tryParse(behaviorTag.getString("id")));
             if (behavior != null && canRunBehavior(consumableTag, behavior)) behavior.loadFromNBT(stewStack, world, livEntity, this.getBehaviorProperties(stewStack));
         } else {
-            if (canRunBehavior(consumableTag, this.behavior)) this.behavior.loadFromNBT(stewStack, world, livEntity, this.getBehaviorProperties(stewStack));
+            if (canRunBehavior(consumableTag, this.behavior())) this.behavior().loadFromNBT(stewStack, world, livEntity, this.getBehaviorProperties(stewStack));
         }
 
         return isPlayerInCreative ? superStack : getBowlFromNBT(stewStack, livEntity);
@@ -126,7 +125,7 @@ public class ExponentialStewItem extends ConsumableItem {
 
     @Override
     public void fillItemCategory(ItemGroup tab, NonNullList<ItemStack> list) {
-        if (this.allowdedIn(tab) && VSConfigs.COMMON_CONFIGS.populateExponentialBowlsInTabs.get()) {
+        if (this.allowdedIn(tab) && Variants.revaried().settings().populateExponentialStewsInTabs) {
             // New data-driven way of adding the bowls.
             for (ResourceLocation location : BowlType.DATA_DRIVEN_TYPES.keySet()) {
                 BowlType type = BowlType.DATA_DRIVEN_TYPES.get(location);
@@ -134,10 +133,10 @@ public class ExponentialStewItem extends ConsumableItem {
                 CompoundNBT tag = stack.getOrCreateTag();
                 CompoundNBT consumableTag = stack.getOrCreateTagElement("consumable");
 
-                consumableTag.put("use_remainder", VSUtils.saveStack(type.getBowlStack(), new CompoundNBT()));
-                tag.putInt("texture_id", type.getTextureID());
+                consumableTag.put("use_remainder", VSUtils.saveStack(type.bowl(), new CompoundNBT()));
+                tag.putInt("texture_id", type.textureID());
 
-                consumableTag.put("behavior", this.behavior.writeBehavior(stack));
+                consumableTag.put("behavior", this.behavior().writeBehavior(stack));
                 list.add(stack);
             }
         } else {
@@ -146,10 +145,10 @@ public class ExponentialStewItem extends ConsumableItem {
                 CompoundNBT tag = stack.getOrCreateTag();
                 CompoundNBT consumableTag = stack.getOrCreateTagElement("consumable");
 
-                consumableTag.put("use_remainder", VSUtils.saveStack(BowlTypes.OAK.getBowlStack(), new CompoundNBT()));
-                tag.putInt("texture_id", BowlTypes.OAK.getTextureID());
+                consumableTag.put("use_remainder", VSUtils.saveStack(BowlTypes.OAK.bowl(), new CompoundNBT()));
+                tag.putInt("texture_id", BowlTypes.OAK.textureID());
 
-                consumableTag.put("behavior", this.behavior.writeBehavior(stack));
+                consumableTag.put("behavior", this.behavior().writeBehavior(stack));
                 list.add(stack);
             }
         }
@@ -175,11 +174,11 @@ public class ExponentialStewItem extends ConsumableItem {
             if (consumableTag != null && consumableTag.contains("behavior", Constants.TagTypes.COMPOUND)) {
                 CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
                 if (behaviorTag.contains("id", Constants.TagTypes.STRING)) {
-                    ConsumeBehavior behavior = VSRegistries.CONSUME_BEHAVIOR.getValue(new ResourceLocation(behaviorTag.getString("id")));
+                    ConsumeBehavior behavior = RVRegistries.CONSUME_BEHAVIOR.getValue(new ResourceLocation(behaviorTag.getString("id")));
                     if (behavior != null) tooltip.addAll(behavior.addToTooltip(stack, world, flag));
                 }
             } else {
-                tooltip.addAll(this.behavior.addToTooltip(stack, world, flag));
+                tooltip.addAll(this.behavior().addToTooltip(stack, world, flag));
             }
         }
     }

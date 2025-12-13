@@ -2,10 +2,7 @@ package melonystudios.variants.event;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import melonystudios.variants.Variants;
-import melonystudios.variants.command.ConfigMenuCommand;
-import melonystudios.variants.command.ConsumableCommand;
-import melonystudios.variants.command.DamageCommand;
-import melonystudios.variants.command.ConsumeBehaviorCommand;
+import melonystudios.variants.command.*;
 import melonystudios.variants.entity.VSEntities;
 import melonystudios.variants.item.VSItems;
 import melonystudios.variants.item.VSWeaponry;
@@ -49,6 +46,7 @@ public class VSEvents {
     public static void onCommandsRegister(RegisterCommandsEvent event) {
         ConsumableCommand.register(event.getDispatcher());
         ConsumeBehaviorCommand.register(event.getDispatcher());
+        TagFixCommand.register(event.getDispatcher());
         DamageCommand.register(event.getDispatcher());
         if (Minecraft.getInstance().getLaunchedVersion().contains("melony-studios-dev")) ConfigMenuCommand.register(event.getDispatcher());
         // Command ideas (~isa, 25-9-24):
@@ -57,7 +55,7 @@ public class VSEvents {
     }
 
     @SubscribeEvent
-    public static void onResourceReload(AddReloadListenerEvent event) {
+    public static void registerDataDrivenRegistries(AddReloadListenerEvent event) {
         event.addListener(new DamageSourceManager());
         event.addListener(new BowlTypeManager());
         event.addListener(new WoolArmorColorManager());
@@ -69,38 +67,38 @@ public class VSEvents {
         MobSpawnInfoBuilder spawns = event.getSpawns();
 
         // World Generation
-        if (event.getCategory() == Biome.Category.PLAINS || event.getCategory() == Biome.Category.FOREST && Variants.INSTANCE.getConfig().flowerPatches) {
+        if (event.getCategory() == Biome.Category.PLAINS || event.getCategory() == Biome.Category.FOREST && Variants.revaried().settings().flowerPatches) {
             settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.REVARIED_FLOWER_PATCH);
         }
-        if (event.getCategory() == Biome.Category.NETHER && Variants.INSTANCE.getConfig().soulLavaSprings) {
+        if (event.getCategory() == Biome.Category.NETHER && Variants.revaried().settings().soulLavaSprings) {
             settings.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, VSConfiguredFeatures.CLOSED_SOUL_LAVA_SPRING);
             settings.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, VSConfiguredFeatures.OPEN_SOUL_LAVA_SPRING);
         }
-        if (event.getCategory() == Biome.Category.THEEND && Variants.INSTANCE.getConfig().endCavesAndRavines) {
+        if (event.getCategory() == Biome.Category.THEEND && Variants.revaried().settings().endCavesAndRavines) {
             settings.addCarver(GenerationStage.Carving.AIR, VSConfiguredCarvers.END_CAVE);
             settings.addCarver(GenerationStage.Carving.AIR, VSConfiguredCarvers.END_RAVINE);
         }
 
-        if (Variants.INSTANCE.getConfig().quartzOre) VSOreGeneration.generateQuartzOre(event);
-        if (Variants.INSTANCE.getConfig().endQuartzOre) VSOreGeneration.generateEndQuartzOre(event);
-        if (Variants.INSTANCE.getConfig().netherCoalOre) VSOreGeneration.generateNetherCoalOre(event);
-        if (Variants.INSTANCE.getConfig().crystallizedMagmaCreamOre) VSOreGeneration.generateCrystallizedMagmaCreamOre(event);
+        if (Variants.revaried().settings().quartzOre) VSOreGeneration.generateQuartzOre(event);
+        if (Variants.revaried().settings().endQuartzOre) VSOreGeneration.generateEndQuartzOre(event);
+        if (Variants.revaried().settings().netherCoalOre) VSOreGeneration.generateNetherCoalOre(event);
+        if (Variants.revaried().settings().crystallizedMagmaCreamOre) VSOreGeneration.generateCrystallizedMagmaCreamOre(event);
 
-        if (event.getCategory() == Biome.Category.NETHER && Variants.INSTANCE.getConfig().crimsonWheatPatches) {
+        if (event.getCategory() == Biome.Category.NETHER && Variants.revaried().settings().crimsonWheatPatches) {
             settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.CRIMSON_WHEAT_PATCH);
         }
-        if (event.getCategory() == Biome.Category.NETHER && Variants.INSTANCE.getConfig().soulCarrotPatches) {
+        if (event.getCategory() == Biome.Category.NETHER && Variants.revaried().settings().soulCarrotPatches) {
             settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.SOUL_CARROT_PATCH);
         }
-        if (event.getCategory() == Biome.Category.NETHER && Variants.INSTANCE.getConfig().warpedPotatoPatches) {
+        if (event.getCategory() == Biome.Category.NETHER && Variants.revaried().settings().warpedPotatoPatches) {
             settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.WARPED_POTATO_PATCH);
         }
-        if (event.getCategory() == Biome.Category.NETHER && Variants.INSTANCE.getConfig().meltingBeetPatches) {
+        if (event.getCategory() == Biome.Category.NETHER && Variants.revaried().settings().meltingBeetPatches) {
             settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, VSConfiguredFeatures.MELTING_BEET_PATCH);
         }
 
         // Entity Spawning
-        if (event.getCategory() == Biome.Category.OCEAN && Variants.INSTANCE.getConfig().fishSpawning) {
+        if (event.getCategory() == Biome.Category.OCEAN && Variants.revaried().settings().fishSpawning) {
             spawns.addSpawn(EntityClassification.WATER_AMBIENT, new MobSpawnInfo.Spawners(VSEntities.FISH.get(), 10, 3, 6));
         }
     }

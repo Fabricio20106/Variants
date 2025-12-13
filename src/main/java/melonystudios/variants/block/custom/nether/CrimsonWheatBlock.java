@@ -17,7 +17,7 @@ public class CrimsonWheatBlock extends CropsBlock {
 
     @Override
     protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
-        return state.is(VSBlockTags.NETHER_CROPS_PLANTABLE_ON);
+        return state.is(VSBlockTags.NETHER_CROPS_MAY_PLACE_ON);
     }
 
     @Override

@@ -5,7 +5,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mojang.datafixers.util.Pair;
 import melonystudios.variants.Variants;
-import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.consumable.ConsumeBehavior;
 import melonystudios.variants.consumable.VSConsumeBehaviors;
 import melonystudios.variants.effect.VSEffectInstance;
@@ -139,7 +138,7 @@ public class ApplyMobEffectsBehavior extends ConsumeBehavior {
 
         if (stack.getTag() != null && stack.getTag().contains("duration_factor", Constants.TagTypes.ANY_NUMERIC)) durationFactor = stack.getTag().getFloat("duration_factor");
         float durationPercentage = durationFactor * 100;
-        if (durationFactor != 1 && VSConfigs.COMMON_CONFIGS.durationFactorTooltip.get()) tooltip.add(new TranslationTextComponent("tooltip.variants.food_effects.duration_factor", durationPercentage).withStyle(TextFormatting.DARK_GRAY));
+        if (durationFactor != 1 && Variants.revaried().settings().durationFactorTooltip) tooltip.add(new TranslationTextComponent("tooltip.variants.food_effects.duration_factor", durationPercentage).withStyle(TextFormatting.DARK_GRAY));
 
         List<Pair<Attribute, AttributeModifier>> attributePairList = Lists.newArrayList();
 

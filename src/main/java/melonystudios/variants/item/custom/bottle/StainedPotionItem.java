@@ -1,6 +1,6 @@
 package melonystudios.variants.item.custom.bottle;
 
-import melonystudios.variants.config.VSConfigs;
+import melonystudios.variants.Variants;
 import melonystudios.variants.effect.VSEffectInstance;
 import melonystudios.variants.item.custom.food.ExponentialStewItem;
 import melonystudios.variants.consumable.custom.ApplyMobEffectsBehavior;
@@ -68,13 +68,13 @@ public class StainedPotionItem extends StainedFullGlassBottleItem {
 
     @Override
     public void fillItemCategory(ItemGroup tab, NonNullList<ItemStack> list) {
-        if (this.allowdedIn(tab) && VSConfigs.COMMON_CONFIGS.populateStainedGlassBottlesInTabs.get()) {
+        if (this.allowdedIn(tab) && Variants.revaried().settings().populateStainedGlassBottlesInTabs) {
             for (GlassType collection : BOTTLES) {
                 ItemStack stack = new ItemStack(this);
                 CompoundNBT tag = stack.getOrCreateTag();
                 CompoundNBT consumableTag = stack.getOrCreateTagElement("consumable");
-                consumableTag.put("use_remainder", VSUtils.saveStack(collection.getBottle(), new CompoundNBT()));
-                tag.putInt("texture_id", collection.getTextureIdentifier());
+                consumableTag.put("use_remainder", VSUtils.saveStack(collection.bottle(), new CompoundNBT()));
+                tag.putInt("texture_id", collection.textureID());
 
                 for (Potion potion : ForgeRegistries.POTION_TYPES) {
                     if (potion != Potions.EMPTY) {

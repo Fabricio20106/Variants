@@ -22,7 +22,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
     @Override
     @Nonnull
     public String getName() {
-        return "Revaried - Block Tags";
+        return Variants.generatorName("Block Tags");
     }
 
     @Override
@@ -48,7 +48,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(Tags.Blocks.FENCES_NETHER_BRICK).add(VSBlocks.RED_NETHER_BRICK_FENCE.get());
 
         // Minecraft World Generation-Related Tags
-        this.tag(VSBlockTags.PLANTS_PLACEABLE_ON).addTag(VSBlockTags.NATURAL_FARMLAND).add(Blocks.GRASS_BLOCK, Blocks.PODZOL, Blocks.DIRT, Blocks.COARSE_DIRT);
+        this.tag(VSBlockTags.PLANTS_MAY_PLACE_ON).addTag(VSBlockTags.NATURAL_FARMLAND).add(Blocks.GRASS_BLOCK, Blocks.PODZOL, Blocks.DIRT, Blocks.COARSE_DIRT);
 
         // Revaried's Tags
         this.tag(VSBlockTags.PAINTING_DOORS).add(VSBlocks.PAINTING_DOOR_WANDERER.get()).add(VSBlocks.PAINTING_DOOR_GRAHAM.get()).add(VSBlocks.PAINTING_DOOR_FIRST.get());
@@ -62,14 +62,14 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSBlockTags.SPAWNERS).add(Blocks.SPAWNER);
         this.tag(VSBlockTags.SPAWNER_MINECART_CANNOT_REPLACE).add(Blocks.BEDROCK, Blocks.COMMAND_BLOCK, Blocks.CHAIN_COMMAND_BLOCK, Blocks.REPEATING_COMMAND_BLOCK, Blocks.STRUCTURE_BLOCK, Blocks.JIGSAW, Blocks.BARRIER,
                 Blocks.MOVING_PISTON, Blocks.END_PORTAL_FRAME, Blocks.END_PORTAL, Blocks.END_GATEWAY, Blocks.NETHER_PORTAL, Blocks.SPAWNER);
-        this.tag(VSBlockTags.NETHER_WART_PLANTABLE_ON).add(VSBlocks.CRIMSON_FARMLAND.get()).add(VSBlocks.WARPED_FARMLAND.get()).add(Blocks.SOUL_SAND).add(Blocks.SOUL_SOIL);
-        this.tag(VSBlockTags.ENDER_WART_PLANTABLE_ON).addTag(VSBlockTags.HAS_ENDER_NYLIUM).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_FARMLAND.get()).add(Blocks.OBSIDIAN);
+        this.tag(VSBlockTags.NETHER_WART_MAY_PLACE_ON).add(VSBlocks.CRIMSON_FARMLAND.get()).add(VSBlocks.WARPED_FARMLAND.get()).add(Blocks.SOUL_SAND).add(Blocks.SOUL_SOIL);
+        this.tag(VSBlockTags.ENDER_WART_MAY_PLACE_ON).addTag(VSBlockTags.HAS_ENDER_NYLIUM).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_FARMLAND.get()).add(Blocks.OBSIDIAN);
         this.tag(VSBlockTags.GOLDEN_CARROTS_PLANTABLE_ON).addTag(VSBlockTags.FARMLAND);
-        this.tag(VSBlockTags.END_PLANTS_PLANTABLE_ON).addOptionalTag(new ResourceLocation("endergetic", "end_plantable")).addTag(BlockTags.NYLIUM).addTag(Tags.Blocks.END_STONES).add(Blocks.OBSIDIAN);
-        this.tag(VSBlockTags.WARPING_VINES_CAN_PLACE_ON).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_WART_BLOCK.get());
-        this.tag(VSBlockTags.CHORUS_FLOWER_PLANTABLE_ON).addTag(VSBlockTags.HAS_ENDER_NYLIUM).addTag(Tags.Blocks.END_STONES);
-        this.tag(VSBlockTags.CHORUS_PLANT_PLANTABLE_ON).add(Blocks.CHORUS_FLOWER).add(Blocks.CHORUS_PLANT);
-        this.tag(VSBlockTags.NETHER_CROPS_PLANTABLE_ON).addTag(VSBlockTags.FARMLAND).addTag(VSBlockTags.NETHER_WART_PLANTABLE_ON);
+        this.tag(VSBlockTags.END_PLANTS_MAY_PLACE_ON).addOptionalTag(new ResourceLocation("endergetic", "end_plantable")).addTag(BlockTags.NYLIUM).addTag(Tags.Blocks.END_STONES).add(Blocks.OBSIDIAN);
+        this.tag(VSBlockTags.WARPING_VINES_MAY_PLACE_ON).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_WART_BLOCK.get());
+        this.tag(VSBlockTags.CHORUS_FLOWER_MAY_PLACE_ON).addTag(VSBlockTags.HAS_ENDER_NYLIUM).addTag(Tags.Blocks.END_STONES);
+        this.tag(VSBlockTags.CHORUS_PLANT_MAY_PLACE_ON).add(Blocks.CHORUS_FLOWER).add(Blocks.CHORUS_PLANT);
+        this.tag(VSBlockTags.NETHER_CROPS_MAY_PLACE_ON).addTag(VSBlockTags.FARMLAND).addTag(VSBlockTags.NETHER_WART_MAY_PLACE_ON);
         this.tag(VSBlockTags.END_CARVER_REPLACEABLES).addTag(Tags.Blocks.END_STONES).add(VSBlocks.ENDER_NYLIUM.get());
         this.tag(VSBlockTags.HAS_ENDER_NYLIUM).add(VSBlocks.ENDER_NYLIUM.get()).add(VSBlocks.ENDER_NYLIUM_QUARTZ_ORE.get());
         this.tag(VSBlockTags.FARMLAND_TRANSPARENT).addTag(Tags.Blocks.FENCE_GATES).addTag(BlockTags.FENCE_GATES).add(Blocks.MOVING_PISTON);
@@ -83,7 +83,7 @@ public class VSBlockTagsProvider extends BlockTagsProvider {
         this.tag(VSBlockTags.COMPLETES_FIND_TREE_TUTORIAL).addTag(BlockTags.LOGS).addTag(BlockTags.LEAVES).addTag(BlockTags.WART_BLOCKS);
 
         // Other mods' tags
-        this.tag(VSBlockTags.CHORUS_PLANTABLE).addTag(VSBlockTags.CHORUS_PLANT_PLANTABLE_ON);
+        this.tag(VSBlockTags.CHORUS_PLANTABLE).addTag(VSBlockTags.CHORUS_PLANT_MAY_PLACE_ON);
         this.tag(VSBlockTags.ENDER_FIRE_BASE_BLOCKS).addTag(VSBlockTags.HAS_ENDER_NYLIUM).add(VSBlocks.MOSSY_END_STONE_BRICKS.get(), VSBlocks.MOSSY_END_STONE_BRICK_STAIRS.get(), VSBlocks.MOSSY_END_STONE_BRICK_SLAB.get(),
                 VSBlocks.MOSSY_END_STONE_BRICK_WALL.get(), VSBlocks.CHISELED_END_STONE_BRICKS.get(), VSBlocks.INFESTED_CHISELED_END_STONE_BRICKS.get(), VSBlocks.END_STONE_PILLAR.get());
 

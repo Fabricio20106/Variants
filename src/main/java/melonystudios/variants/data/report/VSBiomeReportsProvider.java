@@ -35,7 +35,7 @@ public class VSBiomeReportsProvider implements IDataProvider {
     @Override
     @Nonnull
     public String getName() {
-        return "Revaried - Biome Reports";
+        return Variants.generatorName("Biome Reports");
     }
 
     private static Path createPath(Path path, ResourceLocation biomeLoc) {
@@ -44,24 +44,24 @@ public class VSBiomeReportsProvider implements IDataProvider {
 
     @Override
     public void run(DirectoryCache cache) {
-        Path path = this.generator.getOutputFolder();
+        Path outputFolder = this.generator.getOutputFolder();
 
         for (Map.Entry<RegistryKey<Biome>, Biome> entry : WorldGenRegistries.BIOME.entrySet()) {
-            boolean isVSBiome = Objects.requireNonNull(entry.getValue().getRegistryName()).getNamespace().equals(Variants.MOD_ID);
-            if (isVSBiome) {
-                Path path1 = createPath(path, entry.getKey().location());
+            boolean isRevariedBiome = Objects.requireNonNull(entry.getValue().getRegistryName()).getNamespace().equals(Variants.MOD_ID);
+            if (isRevariedBiome) {
+                Path filePath = createPath(outputFolder, entry.getKey().location());
                 Biome biome = entry.getValue();
                 Function<Supplier<Biome>, DataResult<JsonElement>> function = JsonOps.INSTANCE.withEncoder(Biome.CODEC);
 
                 try {
-                    Optional<JsonElement> opJsonElement = function.apply(() -> biome).result();
-                    if (opJsonElement.isPresent()) {
-                        IDataProvider.save(GSON, cache, opJsonElement.get(), path1);
+                    Optional<JsonElement> element = function.apply(() -> biome).result();
+                    if (element.isPresent()) {
+                        IDataProvider.save(GSON, cache, element.get(), filePath);
                     } else {
-                        Variants.LOGGER.error(new TranslationTextComponent("error." + Variants.MOD_ID + ".biome_reports.serialization", path1).getString());
+                        Variants.LOGGER.error(new TranslationTextComponent("error." + Variants.MOD_ID + ".biome_reports.serialization", filePath).getString());
                     }
                 } catch (IOException exception) {
-                    Variants.LOGGER.error(new TranslationTextComponent("error." + Variants.MOD_ID + ".biome_reports.saving", path1).getString(), exception);
+                    Variants.LOGGER.error(new TranslationTextComponent("error." + Variants.MOD_ID + ".biome_reports.saving", filePath).getString(), exception);
                 }
             }
         }

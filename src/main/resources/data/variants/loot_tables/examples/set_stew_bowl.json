@@ -13,10 +13,10 @@
               "item": {
                 "id": "variants:enderwood_bowl",
                 "count": 3,
-                "tags": "{revaried_version:\"1.8.0.9\"}"
+                "tags": "{revaried_version:\"8.0.11\"}"
               },
               "texture_id": {
-                "type": "variants:texture_id",
+                "type": "variants:stew_texture_id",
                 "value": 10
               }
             }

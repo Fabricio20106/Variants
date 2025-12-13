@@ -1,8 +1,8 @@
 package melonystudios.variants.effect;
 
 import melonystudios.variants.Variants;
+import melonystudios.variants.item.RVModdedItems;
 import melonystudios.variants.item.VSItems;
-import melonystudios.variants.item.VSModdedItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
@@ -49,7 +49,7 @@ public class VSPotions {
         BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Ingredient.of(new ItemStack(Items.DRAGON_BREATH)), Ingredient.of(Items.GUNPOWDER), new ItemStack(VSItems.SPLASH_DRAGON_BREATH.get())));
         BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Ingredient.of(new ItemStack(VSItems.SPLASH_DRAGON_BREATH.get())), Ingredient.of(Items.DRAGON_BREATH), new ItemStack(VSItems.LINGERING_DRAGON_BREATH.get())));
         BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Ingredient.of(new ItemStack(VSItems.SPLASH_DRAGON_BREATH.get())), Ingredient.of(VSItems.STAINED_DRAGON_BREATH.get()), new ItemStack(VSItems.LINGERING_DRAGON_BREATH.get())));
-        if (VSModdedItems.SOPHIE_POTION != null) BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Ingredient.of(new ItemStack(VSModdedItems.SOPHIE_POTION)), Ingredient.of(Items.GUNPOWDER), new ItemStack(VSItems.SPLASH_SOPHIE_POTION.get())));
+        if (RVModdedItems.SOPHIE_POTION != null) BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Ingredient.of(new ItemStack(RVModdedItems.SOPHIE_POTION)), Ingredient.of(Items.GUNPOWDER), new ItemStack(VSItems.SPLASH_SOPHIE_POTION.get())));
         BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Ingredient.of(new ItemStack(VSItems.SPLASH_SOPHIE_POTION.get())), Ingredient.of(Items.DRAGON_BREATH), new ItemStack(VSItems.LINGERING_SOPHIE_POTION.get())));
         BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Ingredient.of(new ItemStack(VSItems.SPLASH_SOPHIE_POTION.get())), Ingredient.of(VSItems.STAINED_DRAGON_BREATH.get()), new ItemStack(VSItems.LINGERING_SOPHIE_POTION.get())));
 

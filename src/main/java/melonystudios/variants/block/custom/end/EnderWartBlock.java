@@ -37,7 +37,7 @@ public class EnderWartBlock extends BushBlock {
     }
 
     protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
-        return state.is(VSBlockTags.ENDER_WART_PLANTABLE_ON);
+        return state.is(VSBlockTags.ENDER_WART_MAY_PLACE_ON);
     }
 
     public boolean isRandomlyTicking(BlockState state) {

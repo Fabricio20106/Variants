@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import melonystudios.variants.Variants;
-import melonystudios.variants.config.VSConfigs;
 import melonystudios.variants.effect.VSEffectInstance;
 import melonystudios.variants.util.damage.DamageSourceUtils;
 import melonystudios.variants.util.damage.custom.DamageBehaviorSource;
@@ -56,12 +55,11 @@ public class NBTUtils {
     }
 
     public static void addItemTagsTooltip(ItemStack stack, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        if (flag.isAdvanced()) {
-            CompoundNBT tagTag = stack.getTag();
-            if (tagTag != null) {
-                if (VSConfigs.COMMON_CONFIGS.lineBreaksOnAltTags.get()) tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".tags", tagTag.getPrettyDisplay(" ", 0)).withStyle(TextFormatting.GRAY));
-                else tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".tags", tagTag.getPrettyDisplay()).withStyle(TextFormatting.GRAY));
-            }
+        if (!flag.isAdvanced()) return;
+        CompoundNBT tag = stack.getTag();
+        if (tag != null) {
+            if (Variants.revaried().settings().lineBreaksOnTags) tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".tags", tag.getPrettyDisplay(" ", 0)).withStyle(TextFormatting.GRAY));
+            else tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".tags", tag.getPrettyDisplay()).withStyle(TextFormatting.GRAY));
         }
     }
 

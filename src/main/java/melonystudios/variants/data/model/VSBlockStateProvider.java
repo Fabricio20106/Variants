@@ -1,5 +1,6 @@
 package melonystudios.variants.data.model;
 
+import melonystudios.variants.Variants;
 import melonystudios.variants.block.VSBlocks;
 import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
@@ -17,7 +18,7 @@ public class VSBlockStateProvider extends VSBlockStateModels {
     @Nonnull
     @Override
     public String getName() {
-        return "Revaried - Block States and Models";
+        return Variants.generatorName("Block States and Models");
     }
 
     @Override

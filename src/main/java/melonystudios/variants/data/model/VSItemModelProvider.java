@@ -11,6 +11,8 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import javax.annotation.Nonnull;
 import java.util.Map;
 
+import static melonystudios.variants.util.VSUtils.armorDesign;
+
 public class VSItemModelProvider extends VSItemModelModels {
     public static final Map<String, Integer> DEFAULT_MOB_MAP = new ImmutableMap.Builder<String, Integer>().put("zombie", 1).put("skeleton", 2).put("spider", 3).put("cave_spider", 4).put("silverfish", 5).put("blaze", 6).put("magma_cube", 7).put("pig", 8).build();
 
@@ -21,7 +23,7 @@ public class VSItemModelProvider extends VSItemModelModels {
     @Nonnull
     @Override
     public String getName() {
-        return "Revaried - Item Models";
+        return Variants.generatorName("Item Models");
     }
 
     @Override
@@ -323,7 +325,7 @@ public class VSItemModelProvider extends VSItemModelModels {
         expoStew("exponential_powder_snow_bowl", "powder_snow");
 
         // Stained Glass Bottle
-        for (GlassType type : StainedFullGlassBottleItem.BOTTLES) if (type != GlassType.QUARTZ) emptyStainedGlassBottle(type.getName());
+        for (GlassType type : StainedFullGlassBottleItem.BOTTLES) if (type != GlassType.QUARTZ) emptyStainedGlassBottle(type.name());
         fullStainedGlassBottle("stained_experience_bottle", modLoc("item/bottle_content/experience"));
         fullStainedGlassBottle("stained_honey_bottle", modLoc("item/bottle_content/honey"));
         fullStainedGlassBottle("stained_dragon_breath", modLoc("item/bottle_content/dragon_breath"));

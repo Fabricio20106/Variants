@@ -6,7 +6,7 @@
   "overrides": [
     {
       "predicate": {
-        "variants:design": 1.0
+        "variants:armor_design": 1.0
       },
       "model": "variants:item/wool_sweater_glitch_design"
     }

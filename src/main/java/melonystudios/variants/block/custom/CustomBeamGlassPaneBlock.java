@@ -47,7 +47,12 @@ public class CustomBeamGlassPaneBlock extends PaneBlock implements IBeaconBeamCo
     @Override
     public void appendHoverText(ItemStack stack, @Nullable IBlockReader world, List<ITextComponent> tooltip, ITooltipFlag flag) {
         super.appendHoverText(stack, world, tooltip, flag);
-        if (flag.isAdvanced()) tooltip.add(new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".glass_beam_color", new StringTextComponent(String.format("#%06X", this.beamColor)).withStyle(VSStyles.getFromRGB(this.beamColor)))
-                .withStyle(TextFormatting.GRAY));
+        if (flag.isAdvanced()) tooltip.add(
+                new TranslationTextComponent("tooltip." + Variants.MOD_ID + ".glass_beam_color",
+                        new StringTextComponent(String.format("#%06X", this.beamColor)))
+                        .withStyle(TextFormatting.GRAY)
+                        .append(" ")
+                        .append(new StringTextComponent("█").withStyle(VSStyles.getFromRGB(this.beamColor)))
+        );
     }
 }

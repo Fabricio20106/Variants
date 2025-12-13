@@ -24,13 +24,9 @@ public class RVNyliumBlockMixin extends Block {
     @Override
     @Nullable
     public BlockState getToolModifiedState(BlockState state, World world, BlockPos pos, PlayerEntity player, ItemStack stack, ToolType toolType) {
-        if (stack.getItem() instanceof HoeItem) {
-            if (state.is(Blocks.CRIMSON_NYLIUM)) {
-                return VSBlocks.CRIMSON_FARMLAND.get().defaultBlockState();
-            }
-            if (state.is(Blocks.WARPED_NYLIUM)) {
-                return VSBlocks.WARPED_FARMLAND.get().defaultBlockState();
-            }
+        if (stack.getItem() instanceof HoeItem && world.getBlockState(pos.above()).isAir()) {
+            if (state.is(Blocks.CRIMSON_NYLIUM)) return VSBlocks.CRIMSON_FARMLAND.get().defaultBlockState();
+            else if (state.is(Blocks.WARPED_NYLIUM)) return VSBlocks.WARPED_FARMLAND.get().defaultBlockState();
         }
         return super.getToolModifiedState(state, world, pos, player, stack, toolType);
     }

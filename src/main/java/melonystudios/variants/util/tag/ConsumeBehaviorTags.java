@@ -8,14 +8,14 @@ import net.minecraft.tags.TagRegistryManager;
 import net.minecraftforge.common.ForgeTagHandler;
 
 public class ConsumeBehaviorTags {
-    public static final ITag.INamedTag<ConsumeBehavior> CANNOT_RUN_WITHOUT_NBT = variants("cannot_run_without_nbt");
+    public static final ITag.INamedTag<ConsumeBehavior> CANNOT_RUN_WITHOUT_NBT = revaried("cannot_run_without_nbt");
 
-    public static ITag.INamedTag<ConsumeBehavior> variants(String name) {
-        return ForgeTagHandler.makeWrapperTag(Variants.variants("stew_behavior"), Variants.variants(name));
+    public static ITag.INamedTag<ConsumeBehavior> revaried(String name) {
+        return ForgeTagHandler.makeWrapperTag(Variants.variants("consume_behavior"), Variants.variants(name));
     }
 
     @SuppressWarnings("unchecked")
     public static ITagCollection<ConsumeBehavior> getAllTags() {
-        return (ITagCollection<ConsumeBehavior>) TagRegistryManager.get(Variants.variants("stew_behavior")).getAllTags();
+        return (ITagCollection<ConsumeBehavior>) TagRegistryManager.get(Variants.variants("consume_behavior")).getAllTags();
     }
 }

@@ -20,6 +20,8 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.common.crafting.CraftingHelper;
+import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
@@ -31,6 +33,7 @@ import java.util.function.Consumer;
 public class NBTSavingRecipeBuilder {
     private final ItemStack result;
     private final int count;
+    private final List<ICondition> conditions = Lists.newArrayList();
     private final List<Ingredient> ingredients = Lists.newArrayList();
     private final Advancement.Builder advancement = Advancement.Builder.advancement();
     private String group;
@@ -62,6 +65,11 @@ public class NBTSavingRecipeBuilder {
         return this;
     }
 
+    public NBTSavingRecipeBuilder withCondition(ICondition condition) {
+        this.conditions.add(condition);
+        return this;
+    }
+
     public NBTSavingRecipeBuilder unlockedBy(String name, ICriterionInstance criteria) {
         this.advancement.addCriterion(name, criteria);
         return this;
@@ -84,7 +92,7 @@ public class NBTSavingRecipeBuilder {
     public void save(Consumer<IFinishedRecipe> consumer, ResourceLocation name) {
         this.ensureValid(name);
         this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(name)).rewards(AdvancementRewards.Builder.recipe(name)).requirements(IRequirementsStrategy.OR);
-        consumer.accept(new Result(name, this.result, this.count, this.group == null ? "" : this.group, this.ingredients, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.result.getItem().getItemCategory().getRecipeFolderName() + "/"
+        consumer.accept(new Result(name, this.result, this.count, this.group == null ? "" : this.group, this.conditions, this.ingredients, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.result.getItem().getItemCategory().getRecipeFolderName() + "/"
                 + name.getPath())));
     }
 
@@ -97,15 +105,17 @@ public class NBTSavingRecipeBuilder {
         private final ItemStack result;
         private final int count;
         private final String group;
+        private final List<ICondition> conditions;
         private final List<Ingredient> ingredients;
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementID;
 
-        public Result(ResourceLocation name, ItemStack result, int count, String group, List<Ingredient> ingredients, Advancement.Builder advancement, ResourceLocation advancementID) {
+        public Result(ResourceLocation name, ItemStack result, int count, String group, List<ICondition> conditions, List<Ingredient> ingredients, Advancement.Builder advancement, ResourceLocation advancementID) {
             this.id = name;
             this.result = result;
             this.count = count;
             this.group = group;
+            this.conditions = conditions;
             this.ingredients = ingredients;
             this.advancement = advancement;
             this.advancementID = advancementID;
@@ -113,12 +123,22 @@ public class NBTSavingRecipeBuilder {
 
         @Override
         public void serializeRecipeData(JsonObject object) {
-            if (!this.group.isEmpty()) object.addProperty("group", this.group);
+            // Group
+            if (this.group != null && !this.group.isEmpty()) object.addProperty("group", this.group);
 
-            JsonArray array = new JsonArray();
-            for (Ingredient ingredient : this.ingredients) array.add(ingredient.toJson());
+            // Conditions
+            JsonArray conditions = new JsonArray();
+            for (ICondition condition : this.conditions) {
+                conditions.add(CraftingHelper.serialize(condition));
+            }
+            if (!this.conditions.isEmpty()) object.add("conditions", conditions);
 
-            object.add("ingredients", array);
+            // Ingredients
+            JsonArray ingredients = new JsonArray();
+            for (Ingredient ingredient : this.ingredients) ingredients.add(ingredient.toJson());
+            object.add("ingredients", ingredients);
+
+            // Result
             JsonObject result = new JsonObject();
             result.addProperty("item", ForgeRegistries.ITEMS.getKey(this.result.getItem()).toString());
             if (this.count > 1) result.addProperty("count", this.count);
@@ -132,7 +152,7 @@ public class NBTSavingRecipeBuilder {
             JsonObject consumableObj = new JsonObject();
             consumableObj.add("use_remainder", this.serializeUseRemainder());
             JsonObject behaviorObject = this.serializeConsumeBehavior();
-            consumableObj.add("behavior", behaviorObject);
+            if (behaviorObject.size() > 0) consumableObj.add("behavior", behaviorObject);
             rootObj.add("consumable", consumableObj);
             CompoundNBT tag = this.result.getTag();
             if (tag != null && tag.contains("texture_id", Constants.TagTypes.ANY_NUMERIC)) {
@@ -164,7 +184,7 @@ public class NBTSavingRecipeBuilder {
                 CompoundNBT behaviorTag = consumableTag.getCompound("behavior");
                 // replacing this is fine because all items generated using this have their behaviors as part of the item,
                 // and not set through their nbt in-game ~isa 10-11-25
-                ConsumeBehavior behavior = ((ConsumableItem) this.result.getItem()).getBehavior();
+                ConsumeBehavior behavior = ((ConsumableItem) this.result.getItem()).behavior();
 
                 behaviorObj.addProperty("id", behaviorTag.getString("id"));
                 if (behavior != null) {

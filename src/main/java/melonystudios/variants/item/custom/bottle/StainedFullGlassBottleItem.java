@@ -1,7 +1,7 @@
 package melonystudios.variants.item.custom.bottle;
 
 import com.google.common.collect.Lists;
-import melonystudios.variants.config.VSConfigs;
+import melonystudios.variants.Variants;
 import melonystudios.variants.item.VSItems;
 import melonystudios.variants.item.custom.food.ConsumableItem;
 import melonystudios.variants.consumable.ConsumeBehavior;
@@ -48,8 +48,8 @@ public class StainedFullGlassBottleItem extends ConsumableItem {
             Object[] bottles = BOTTLES.toArray();
             GlassType type = (GlassType) bottles[range.getInt(random)];
 
-            stack.getOrCreateTagElement("consumable").put("use_remainder", VSUtils.saveStack(type.getBottle(), new CompoundNBT()));
-            stack.getOrCreateTag().putInt("texture_id", type.getTextureIdentifier());
+            stack.getOrCreateTagElement("consumable").put("use_remainder", VSUtils.saveStack(type.bottle(), new CompoundNBT()));
+            stack.getOrCreateTag().putInt("texture_id", type.textureID());
             return stack;
         } catch (ArrayIndexOutOfBoundsException exception) {
             return stack;
@@ -73,13 +73,13 @@ public class StainedFullGlassBottleItem extends ConsumableItem {
 
     @Override
     public void fillItemCategory(ItemGroup tab, NonNullList<ItemStack> list) {
-        if (this.allowdedIn(tab) && VSConfigs.COMMON_CONFIGS.populateStainedGlassBottlesInTabs.get()) {
+        if (this.allowdedIn(tab) && Variants.revaried().settings().populateStainedGlassBottlesInTabs) {
             for (GlassType collection : BOTTLES) {
                 ItemStack stack = new ItemStack(this);
                 CompoundNBT tag = stack.getOrCreateTag();
                 CompoundNBT consumableTag = stack.getOrCreateTagElement("consumable");
-                consumableTag.put("use_remainder", VSUtils.saveStack(collection.getBottle(), new CompoundNBT()));
-                tag.putInt("texture_id", collection.getTextureIdentifier());
+                consumableTag.put("use_remainder", VSUtils.saveStack(collection.bottle(), new CompoundNBT()));
+                tag.putInt("texture_id", collection.textureID());
                 list.add(stack);
             }
         } else {
@@ -87,8 +87,8 @@ public class StainedFullGlassBottleItem extends ConsumableItem {
                 ItemStack stack = new ItemStack(this);
                 CompoundNBT tag = stack.getOrCreateTag();
                 CompoundNBT consumableTag = stack.getOrCreateTagElement("consumable");
-                consumableTag.put("use_remainder", VSUtils.saveStack(WHITE.getBottle(), new CompoundNBT()));
-                tag.putInt("texture_id", WHITE.getTextureIdentifier());
+                consumableTag.put("use_remainder", VSUtils.saveStack(WHITE.bottle(), new CompoundNBT()));
+                tag.putInt("texture_id", WHITE.textureID());
                 list.add(stack);
             }
         }

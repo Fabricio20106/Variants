@@ -28,19 +28,17 @@ public class DamageSourceManager extends JsonReloadListener {
 
         resourceList.forEach((location, element) -> {
             try {
-                if (element.isJsonObject()) {
-                    DamageSource source = GSON.fromJson(element, DamageSource.class);
-                    builder.put(location, source);
-                }
+                if (element.isJsonObject()) builder.put(location, GSON.fromJson(element, DamageSource.class));
             } catch (Exception exception) {
                 Variants.LOGGER.error(new TranslationTextComponent("error.variants.damage_source.parsing", location).getString(), exception);
             }
         });
+        DamageSourceUtils.DATA_DRIVEN_SOURCES.clear();
         DamageSourceUtils.DATA_DRIVEN_SOURCES.putAll(builder.build());
         Variants.LOGGER.info(new TranslationTextComponent("console.variants.damage_source.loaded", builder.build().size()).getString());
     }
 
-    public static GsonBuilder createDamageSourceSerializer() {
+    private static GsonBuilder createDamageSourceSerializer() {
         return new GsonBuilder().registerTypeAdapter(DamageSource.class, new DamageSourceUtils.Serializer());
     }
 }

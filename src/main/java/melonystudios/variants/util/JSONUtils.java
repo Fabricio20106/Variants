@@ -77,8 +77,8 @@ public class JSONUtils {
     public static ConsumeBehavior convertToBehavior(JsonElement element, String objectName) {
         if (element.isJsonPrimitive()) {
             String behaviorID = element.getAsString();
-            if (VSRegistries.CONSUME_BEHAVIOR.containsKey(ResourceLocation.tryParse(behaviorID))) {
-                return VSRegistries.CONSUME_BEHAVIOR.getValue(new ResourceLocation(behaviorID));
+            if (RVRegistries.CONSUME_BEHAVIOR.containsKey(ResourceLocation.tryParse(behaviorID))) {
+                return RVRegistries.CONSUME_BEHAVIOR.getValue(new ResourceLocation(behaviorID));
             } else {
                 throw new JsonSyntaxException(new TranslationTextComponent("exception." + Variants.MOD_ID + ".unknown_string_not_behavior", objectName, behaviorID).getString());
             }

@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import cpw.mods.modlauncher.api.LamdbaExceptionUtils;
+import melonystudios.variants.Variants;
 import melonystudios.variants.item.bowl.BowlType;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DirectoryCache;
@@ -19,7 +20,7 @@ public abstract class BowlTypesProvider implements IDataProvider {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private final Map<String, Tuple<BowlType, JsonObject>> toSerialize = new HashMap<>();
     private final DataGenerator generator;
-    private final String modID;
+    protected final String modID;
 
     public BowlTypesProvider(DataGenerator generator, String modID) {
         this.generator = generator;
@@ -29,7 +30,7 @@ public abstract class BowlTypesProvider implements IDataProvider {
     @Override
     @Nonnull
     public String getName() {
-        return "Bowl Types: " + this.modID;
+        return Variants.defaultGeneratorName("Bowl Types", this.modID);
     }
 
     protected abstract void addTypes();

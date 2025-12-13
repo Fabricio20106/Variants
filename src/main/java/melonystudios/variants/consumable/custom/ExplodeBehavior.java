@@ -125,7 +125,7 @@ public class ExplodeBehavior extends ConsumeBehavior {
         position.add(DoubleNBT.valueOf(this.position().z));
         properties.put("position", position);
 
-        properties.putFloat("radius", (float) MathHelper.clamp(this.radius(), 0, Variants.INSTANCE.getConfig().explosionRadiusUpperLimit));
+        properties.putFloat("radius", (float) MathHelper.clamp(this.radius(), 0, Variants.revaried().settings().explosionRadiusUpperLimit));
         if (this.createFire()) properties.putBoolean("create_fire", true);
         if (!this.spawnEffectCloud()) properties.putBoolean("spawn_effect_cloud", false);
         NBTUtils.writeDamageSourceOntoNBT(properties, this.damageSource());

@@ -2,7 +2,8 @@ package melonystudios.variants.data.tag;
 
 import melonystudios.variants.Variants;
 import melonystudios.variants.item.fix.TagFix;
-import melonystudios.variants.util.VSRegistries;
+import melonystudios.variants.item.fix.RVTagFixes;
+import melonystudios.variants.util.RVRegistries;
 import melonystudios.variants.util.tag.TagFixTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -13,17 +14,17 @@ import javax.annotation.Nullable;
 
 public class VSTagFixTagsProvider extends ForgeRegistryTagsProvider<TagFix> {
     public VSTagFixTagsProvider(DataGenerator generator, @Nullable ExistingFileHelper fileHelper) {
-        super(generator, VSRegistries.TAG_FIX, Variants.MOD_ID, fileHelper);
+        super(generator, RVRegistries.TAG_FIX, Variants.MOD_ID, fileHelper);
     }
 
     @Override
     @Nonnull
     public String getName() {
-        return "Revaried - Tag Fix Tags";
+        return Variants.generatorName("Tag Fix Tags");
     }
 
     @Override
     protected void addTags() {
-        this.tag(TagFixTags.APPLIES_ON_TAG_RELOAD);
+        this.tag(TagFixTags.APPLIES_ON_TAG_RELOAD).add(RVTagFixes.CORRECT_ENDER_BOWL.get());
     }
 }

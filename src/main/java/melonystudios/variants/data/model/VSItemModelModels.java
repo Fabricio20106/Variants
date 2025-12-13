@@ -16,7 +16,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.Map;
 
-import static melonystudios.variants.util.VSUtils.namespace;
+import static melonystudios.variants.util.VSUtils.*;
 
 public abstract class VSItemModelModels extends ItemModelProvider {
     private final ModelFile generated = getExistingFile(mcLoc("item/generated"));
@@ -69,18 +69,6 @@ public abstract class VSItemModelModels extends ItemModelProvider {
         getBuilder(name + "_pane").parent(this.generated).texture("layer0", "block/" + name);
     }
 
-    public ResourceLocation textureID() {
-        return Variants.variants("texture_id");
-    }
-
-    public ResourceLocation armorDesign() {
-        return Variants.variants("design");
-    }
-
-    public ResourceLocation mobID() {
-        return Variants.variants("mob_id");
-    }
-
     // Methods for making specific items (for example, spyglasses)
     public void expoStew(String name, String stewType) {
         String[] bowls = {"oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "painting", "crimson", "warped", "enderwood"};
@@ -105,12 +93,12 @@ public abstract class VSItemModelModels extends ItemModelProvider {
         ItemModelBuilder model = new ItemModelBuilder(Variants.variants("assets/variants/models/item"), this.existingFileHelper).parent(this.generated).texture("layer1", modLoc("item/stew_" + stewType));
         for (ResourceLocation typeLocation : BowlType.DATA_DRIVEN_TYPES.keySet()) {
             BowlType type = BowlType.DATA_DRIVEN_TYPES.get(typeLocation);
-            getBuilder(name + "_" + type.getWoodName()).parent(this.generated).texture("layer0", namespace(type.getAssetID().getNamespace(), "item/" + type.getBowlStack().getItem().getRegistryName().getPath()))
+            getBuilder(name + "_" + type.name()).parent(this.generated).texture("layer0", namespace(type.assetID().getNamespace(), "item/" + type.bowl().getItem().getRegistryName().getPath()))
                     .texture("layer1", modLoc("item/stew_" + stewType));
         }
         for (ResourceLocation typeLocation : BowlType.DATA_DRIVEN_TYPES.keySet()) {
             BowlType type = BowlType.DATA_DRIVEN_TYPES.get(typeLocation);
-            model.override().predicate(textureID(), type.getTextureID()).model(getExistingFile(namespace(type.getAssetID().getNamespace(), "item/" + name + "_" + type.getWoodName()))).end();
+            model.override().predicate(textureID(), type.textureID()).model(getExistingFile(namespace(type.assetID().getNamespace(), "item/" + name + "_" + type.name()))).end();
         }
         return model;
     }
@@ -139,10 +127,10 @@ public abstract class VSItemModelModels extends ItemModelProvider {
     public void fullStainedGlassBottle(String name, ResourceLocation bottleContents) {
         for (GlassType type : StainedFullGlassBottleItem.BOTTLES) {
             if (type.hasOverlay()) {
-                getBuilder("item/bottle/" + type.getName() + "_" + name).parent(this.generated).texture("layer0", bottleContents).texture("layer1", modLoc("item/bottle/" + type.getName() + "_stained_glass_bottle")).texture("layer2", modLoc(
-                        "item/bottle/" + type.getName() + "_stained_glass_bottle_overlay"));
+                getBuilder("item/bottle/" + type.name() + "_" + name).parent(this.generated).texture("layer0", bottleContents).texture("layer1", modLoc("item/bottle/" + type.name() + "_stained_glass_bottle")).texture("layer2", modLoc(
+                        "item/bottle/" + type.name() + "_stained_glass_bottle_overlay"));
             } else {
-                getBuilder("item/bottle/" + type.getName() + "_" + name).parent(this.generated).texture("layer0", bottleContents).texture("layer1", modLoc("item/bottle/" + type.getName() + "_glass_bottle"));
+                getBuilder("item/bottle/" + type.name() + "_" + name).parent(this.generated).texture("layer0", bottleContents).texture("layer1", modLoc("item/bottle/" + type.name() + "_glass_bottle"));
             }
         }
 

@@ -6,7 +6,7 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import melonystudios.variants.consumable.ConsumeBehavior;
-import melonystudios.variants.util.VSRegistries;
+import melonystudios.variants.util.RVRegistries;
 import net.minecraft.command.ISuggestionProvider;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.JsonToNBT;
@@ -18,8 +18,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.BiFunction;
 
 public class BehaviorParser {
-    public static final DynamicCommandExceptionType UNKNOWN_BEHAVIOR_ERROR = new DynamicCommandExceptionType(object -> new TranslationTextComponent("argument.stew_behavior.id.invalid", object));
-    private static final BiFunction<SuggestionsBuilder, ITagCollection<ConsumeBehavior>, CompletableFuture<Suggestions>> SUGGEST_NOTHING = (suggestionsBuilder, tagCollection) -> suggestionsBuilder.buildFuture();
+    public static final DynamicCommandExceptionType UNKNOWN_BEHAVIOR_ERROR = new DynamicCommandExceptionType(behavior -> new TranslationTextComponent("argument.stew_behavior.id.invalid", behavior));
+    private static final BiFunction<SuggestionsBuilder, ITagCollection<ConsumeBehavior>, CompletableFuture<Suggestions>> SUGGEST_NOTHING = (builder, tags) -> builder.buildFuture();
     private BiFunction<SuggestionsBuilder, ITagCollection<ConsumeBehavior>, CompletableFuture<Suggestions>> suggestions = SUGGEST_NOTHING;
     private ConsumeBehavior behavior;
     private CompoundNBT properties;
@@ -30,19 +30,19 @@ public class BehaviorParser {
         this.reader = reader;
     }
 
-    public ConsumeBehavior getBehavior() {
+    public ConsumeBehavior behavior() {
         return this.behavior;
     }
 
-    public CompoundNBT getProperties() {
+    public CompoundNBT properties() {
         return this.properties;
     }
 
     public void readBehavior() throws CommandSyntaxException {
         int cursor = this.reader.getCursor();
         ResourceLocation location = ResourceLocation.read(this.reader);
-        if (VSRegistries.CONSUME_BEHAVIOR.containsKey(location)) {
-            this.behavior = VSRegistries.CONSUME_BEHAVIOR.getValue(location);
+        if (RVRegistries.CONSUME_BEHAVIOR.containsKey(location)) {
+            this.behavior = RVRegistries.CONSUME_BEHAVIOR.getValue(location);
         } else {
             this.reader.setCursor(cursor);
             throw UNKNOWN_BEHAVIOR_ERROR.createWithContext(this.reader, location.toString());
@@ -75,20 +75,20 @@ public class BehaviorParser {
         return this;
     }
 
-    private CompletableFuture<Suggestions> suggestOpenProperties(SuggestionsBuilder builder, ITagCollection<ConsumeBehavior> tagCollection) {
+    private CompletableFuture<Suggestions> suggestOpenProperties(SuggestionsBuilder builder, ITagCollection<ConsumeBehavior> tags) {
         if (builder.getRemaining().isEmpty()) builder.suggest(String.valueOf('{'));
         return builder.buildFuture();
     }
 
-    private CompletableFuture<Suggestions> suggestTags(SuggestionsBuilder builder, ITagCollection<ConsumeBehavior> tagCollection) {
-        return ISuggestionProvider.suggestResource(tagCollection.getAvailableTags(), builder.createOffset(this.tagCursor));
+    private CompletableFuture<Suggestions> suggestTags(SuggestionsBuilder builder, ITagCollection<ConsumeBehavior> tags) {
+        return ISuggestionProvider.suggestResource(tags.getAvailableTags(), builder.createOffset(this.tagCursor));
     }
 
-    private CompletableFuture<Suggestions> suggestBehavior(SuggestionsBuilder builder, ITagCollection<ConsumeBehavior> tagCollection) {
-        return ISuggestionProvider.suggestResource(VSRegistries.CONSUME_BEHAVIOR.getKeys(), builder);
+    private CompletableFuture<Suggestions> suggestBehavior(SuggestionsBuilder builder, ITagCollection<ConsumeBehavior> tags) {
+        return ISuggestionProvider.suggestResource(RVRegistries.CONSUME_BEHAVIOR.getKeys(), builder);
     }
 
-    public CompletableFuture<Suggestions> fillSuggestions(SuggestionsBuilder builder, ITagCollection<ConsumeBehavior> tagCollection) {
-        return this.suggestions.apply(builder.createOffset(this.reader.getCursor()), tagCollection);
+    public CompletableFuture<Suggestions> fillSuggestions(SuggestionsBuilder builder, ITagCollection<ConsumeBehavior> tags) {
+        return this.suggestions.apply(builder.createOffset(this.reader.getCursor()), tags);
     }
 }

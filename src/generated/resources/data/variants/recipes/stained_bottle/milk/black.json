@@ -25,8 +25,7 @@
       "consumable": {
         "use_remainder": {
           "id": "variants:black_stained_glass_bottle"
-        },
-        "behavior": {}
+        }
       },
       "texture_id": 3
     }

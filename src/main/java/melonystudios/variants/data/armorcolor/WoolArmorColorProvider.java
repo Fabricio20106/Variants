@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import cpw.mods.modlauncher.api.LamdbaExceptionUtils;
+import melonystudios.variants.Variants;
 import melonystudios.variants.item.custom.armor.color.WoolArmorColor;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DirectoryCache;
@@ -19,7 +20,7 @@ public abstract class WoolArmorColorProvider implements IDataProvider {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private final Map<String, Tuple<WoolArmorColor, JsonObject>> toSerialize = new HashMap<>();
     private final DataGenerator generator;
-    private final String modID;
+    protected final String modID;
 
     public WoolArmorColorProvider(DataGenerator generator, String modID) {
         this.generator = generator;
@@ -29,7 +30,7 @@ public abstract class WoolArmorColorProvider implements IDataProvider {
     @Override
     @Nonnull
     public String getName() {
-        return "Wool Armor Colors: " + this.modID;
+        return Variants.defaultGeneratorName("Wool Armor Colors", this.modID);
     }
 
     protected abstract void addWoolArmorColors();
@@ -37,10 +38,10 @@ public abstract class WoolArmorColorProvider implements IDataProvider {
     @Override
     public void run(DirectoryCache cache) {
         this.addWoolArmorColors();
-        String variantsPath = "data/" + this.modID + "/wool_armor_color/";
+        String filePath = "data/" + this.modID + "/wool_armor_color/";
 
         this.toSerialize.forEach(LamdbaExceptionUtils.rethrowBiConsumer((name, pair) -> {
-            Path variantFile = this.generator.getOutputFolder().resolve(variantsPath + name + ".json");
+            Path variantFile = this.generator.getOutputFolder().resolve(filePath + name + ".json");
             IDataProvider.save(GSON, cache, pair.getB(), variantFile);
         }));
     }

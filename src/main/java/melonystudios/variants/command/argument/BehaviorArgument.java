@@ -20,7 +20,7 @@ public class BehaviorArgument implements ArgumentType<BehaviorInput> {
     @Override
     public BehaviorInput parse(StringReader reader) throws CommandSyntaxException {
         BehaviorParser parser = new BehaviorParser(reader).parse();
-        return new BehaviorInput(parser.getBehavior(), parser.getProperties());
+        return new BehaviorInput(parser.behavior(), parser.properties());
     }
 
     public static <C> BehaviorInput getBehavior(CommandContext<C> context, String argument) {

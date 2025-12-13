@@ -10,8 +10,8 @@ import melonystudios.variants.crafting.custom.WoolArmorDyeingRecipe;
 import melonystudios.variants.effect.VSEffectInstance;
 import melonystudios.variants.event.custom.BehaviorTeleportEvent;
 import melonystudios.variants.util.tag.VSItemTags;
-import net.minecraft.client.gui.screen.MainMenuScreen;
 import net.minecraft.client.renderer.RenderSkybox;
+import net.minecraft.client.renderer.RenderSkyboxCube;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
@@ -36,29 +36,38 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import static melonystudios.variants.Variants.variants;
 import static net.minecraft.item.ItemModelsProperties.register;
 
 public class VSUtils {
     private static final List<String> VALID_WOOD_TYPES = Lists.newArrayList("warped", "crimson", "painting", "enderwood");
-    public static final RenderSkybox PANORAMA = new RenderSkybox(MainMenuScreen.CUBE_MAP);
+    public static final RenderSkyboxCube CUBE_MAP = new RenderSkyboxCube(variants("textures/gui/panorama/panorama"));
+    public static final RenderSkybox PANORAMA = new RenderSkybox(CUBE_MAP);
     public static final IFormattableTextComponent RESTART_REQUIRED = new TranslationTextComponent("menu.variants.restart_required").withStyle(VSStyles.REVARIED_ACCENT_COLOR_STYLE);
     public static final int DEFAULT_TITLE_HEIGHT = 12;
 
     /// Puts an item in the player's hands without playing the "Gear equips" sound.
+    /// @param player The player, used to get the inventory.
+    /// @param hand The hand.
+    /// @param stack The item stack being placed in the hand.
     public static void setItemInHand(PlayerEntity player, Hand hand, ItemStack stack) {
         if (hand == Hand.MAIN_HAND) {
             setItemSlot(player, EquipmentSlotType.MAINHAND, stack);
         } else {
-            if (hand != Hand.OFF_HAND) throw new IllegalArgumentException(I18n.get("exception.variants.invalid_hand", hand.toString().toLowerCase(Locale.ROOT)));
+            if (hand != Hand.OFF_HAND) throw new IllegalArgumentException(translate("exception.variants.invalid_hand", "Invalid hand: '%s'", hand.toString().toLowerCase(Locale.ROOT)));
             setItemSlot(player, EquipmentSlotType.OFFHAND, stack);
         }
     }
 
     /// Puts an item any of the player's slots without playing the "Gear equips" sound.
+    /// @param player The player, used to get the inventory.
+    /// @param slot The slot that the item is being placed in.
+    /// @param stack The item stack being placed.
     public static void setItemSlot(PlayerEntity player, EquipmentSlotType slot, ItemStack stack) {
         if (slot == EquipmentSlotType.MAINHAND) {
             player.inventory.items.set(player.inventory.selected, stack);
@@ -69,31 +78,43 @@ public class VSUtils {
         }
     }
 
-    /** Can be used to add items as a valid dye for dyeing wool armor (currently only sweater).
-    * @param dyeItem The item to make usable as a dye for wool armor (can be an item with an object holder);
-    * @param color The color this item will apply to the armor, or merge with other colors;
-    * @param loadedMod The mod that needs to be loaded for this item to be added to the dyes list.
-     */
-    public static void woolArmorDyeingColor(Item dyeItem, int color, String loadedMod) {
+    /// Can be used to add items as a valid dye for dyeing wool armor (currently only sweater).
+    /// @param dyeItem *(optional)* The item to make usable as a dye for wool armor (can be an item with an object holder).
+    /// @param color The color this item will apply to the armor, or merge with other colors.
+    /// @param loadedMod The mod that needs to be loaded for this item to be added to the dyes list.
+    public static void woolArmorDyeingColor(@Nullable Item dyeItem, int color, String loadedMod) {
         WoolArmorDyeingRecipe.DYE_COLORS_MAP = Maps.newHashMap(WoolArmorDyeingRecipe.DYE_COLORS_MAP);
-        if (ModList.get().isLoaded(loadedMod)) WoolArmorDyeingRecipe.DYE_COLORS_MAP.put(dyeItem, color);
+        if (ModList.get().isLoaded(loadedMod) && dyeItem != null) WoolArmorDyeingRecipe.DYE_COLORS_MAP.put(dyeItem, color);
     }
 
-    /// Adds an item as a villager food (needs to be in {@code #melony:villager_wanted_items} item tag).
+    /// Adds an item as a villager food (needs to be in `#melony:villager_wanted_items` item tag).
     /// @param item The item to make edible for villagers;
     /// @param foodPoints How many food points to decrease the villager's hunger.
     public static void addVillagerFoodItem(Item item, int foodPoints) {
-        if (!item.is(VSItemTags.VILLAGER_WANTED_ITEMS)) Variants.LOGGER.info(I18n.get("console.variants.villager_food.item_not_in_tag", I18n.get(item.getDescriptionId()), VSItemTags.VILLAGER_WANTED_ITEMS.getName()));
+        if (!item.is(VSItemTags.VILLAGER_WANTED_ITEMS)) Variants.LOGGER.info(translate("console.variants.villager_food.item_not_in_tag", "Item '%s' is not in item tag '%s'; Will still be added as a villager food, however.", I18n.get(item.getDescriptionId()), VSItemTags.VILLAGER_WANTED_ITEMS.getName()));
         VillagerEntity.FOOD_POINTS.put(item, foodPoints);
     }
 
+    /// Gets the translated text for a translation key, and uses a fallback if not available.
+    /// @param key The translation key to use and check.
+    /// @param fallback A fallback string to use, using `%s` for arguments.
+    /// @param args An optional array of arguments.
+    public static String translate(String key, String fallback, Object... args) {
+        if (I18n.exists(key)) return I18n.get(key, args);
+        else return String.format(fallback, args);
+    }
+
+    /// Creates a new resource location under ***Minecraft***'s namespace.
+    /// @param name The path of this resource location.
     public static ResourceLocation minecraft(String name) {
         return new ResourceLocation(name);
     }
 
-    /// Makes a resource location with a custom default namespace (instead of always using "{@code minecraft}").
-    public static ResourceLocation namespace(String namespace, String name) {
-        String[] location = decompose(namespace, name);
+    /// Creates a new resource location with a custom default namespace, instead of always using `minecraft`.
+    /// @param namespace The default namespace to use.
+    /// @param path The path of this resource location.
+    public static ResourceLocation namespace(String namespace, String path) {
+        String[] location = decompose(namespace, path);
         if (StringUtils.isEmpty(location[0])) {
             return new ResourceLocation(namespace, location[1]);
         } else return new ResourceLocation(location[0], location[1]);
@@ -109,35 +130,39 @@ public class VSUtils {
         return stringArray;
     }
 
-    /// Adds properties for a bow.
-    public static void makeBow(Item bow) {
+    /// Adds all the model properties for a regular bow item (`pull` and `pulling`).
+    /// @param bow The bow item.
+    public static void addBowProperties(Item bow) {
         register(bow, new ResourceLocation("pull"), (stack, world, livEntity) -> {
             if (livEntity == null) {
                 return 0;
             } else {
-                return livEntity.getUseItem() != stack ? 0 : (float) (stack.getUseDuration() - livEntity.getUseItemRemainingTicks()) / 20;
+                return livEntity.getUseItem() != stack ? 0 : (float) (stack.getUseDuration() - livEntity.getUseItemRemainingTicks()) / Math.min(stack.getUseDuration(), 20);
             }
         });
         register(bow, new ResourceLocation("pulling"), (stack, world, livEntity) -> livEntity != null && livEntity.isUsingItem() && livEntity.getUseItem() == stack ? 1 : 0);
     }
 
-    /// Adds properties for a shield.
-    public static void makeShield(Item shield) {
+    /// Adds all the model properties for a regular shield item (`blocking`).
+    /// @param shield The shield item.
+    public static void addShieldProperties(Item shield) {
         register(shield, new ResourceLocation("blocking"), (stack, world, livEntity) -> livEntity != null && livEntity.isUsingItem() && livEntity.getUseItem() == stack ? 1 : 0);
     }
 
-    /// Adds properties for armor designs.
-    public static void addArmorDesigns(Item sweater) {
-        register(sweater, Variants.variants("design"), (stack, world, livEntity) -> {
+    /// Adds all the model properties for an armor piece with designs (`variants:armor_design`).
+    /// @param armor The armor item.
+    public static void addDesignedArmorProperties(Item armor) {
+        register(armor, armorDesign(), (stack, world, livEntity) -> {
             CompoundNBT tag = stack.getTag();
             if (tag != null && tag.contains("armor_design", Constants.TagTypes.ANY_NUMERIC)) return tag.getInt("armor_design");
             return 0;
         });
     }
 
-    /// Add properties for mob ids for spawner minecarts.
-    public static void addSpawnerMinecartMobs(Item spawnerMinecart) {
-        register(spawnerMinecart, Variants.variants("mob_id"), (stack, world, livEntity) -> {
+    /// Add all the model properties for minecarts with spawners (`variants:mob_id`).
+    /// @param spawnerMinecart The minecart with spawner item.
+    public static void addSpawnerMinecartProperties(Item spawnerMinecart) {
+        register(spawnerMinecart, mobID(), (stack, world, livEntity) -> {
             CompoundNBT spawnData = stack.getTagElement("spawn_data");
             if (spawnData != null && spawnData.contains("SpawnData", Constants.TagTypes.COMPOUND)) {
                 CompoundNBT subSpawnData = spawnData.getCompound("SpawnData");
@@ -159,12 +184,25 @@ public class VSUtils {
         });
     }
 
-    /// Adds properties for exponential stews and stained-glass bottles.
-    public static void addTextureIdentifier(Item... items) {
-        for (Item item : items) register(item, Variants.variants("texture_id"), (stack, world, livEntity) -> {
+    /// Adds the `variants:texture_id` model property for exponential stews and stained-glass bottles.
+    /// @param items A list of items to be added.
+    public static void addTextureIdentifierProperty(Item... items) {
+        for (Item item : items) register(item, textureID(), (stack, world, livEntity) -> {
             if (stack.getTag() != null && stack.getTag().contains("texture_id", Constants.TagTypes.ANY_NUMERIC)) return stack.getTag().getInt("texture_id");
             return 0;
         });
+    }
+
+    public static ResourceLocation armorDesign() {
+        return variants("armor_design");
+    }
+
+    public static ResourceLocation textureID() {
+        return variants("texture_id");
+    }
+
+    public static ResourceLocation mobID() {
+        return Variants.variants("mob_id");
     }
 
     public static BehaviorTeleportEvent exactTeleportThroughBehavior(ItemStack stack, World world, LivingEntity livEntity, Vector3d teleportPos) {
@@ -179,7 +217,10 @@ public class VSUtils {
         return event;
     }
 
-    /// Adds all the effects a food item gives to its tooltip (using the same style as the {@link ApplyMobEffectsBehavior apply effects} behavior).
+    /// Adds all the effects a food item gives to its tooltip, using the same style as the {@linkplain ApplyMobEffectsBehavior apply effects} behavior.
+    /// @param stack The item stack to use.
+    /// @param tooltip The existing tooltip of the consume behavior.
+    /// @param durationFactor A multiplication factor of how long effects last. Defaults to `1`.
     @OnlyIn(Dist.CLIENT)
     public static void addEffectsTooltip(ItemStack stack, List<ITextComponent> tooltip, float durationFactor) {
         List<Pair<EffectInstance, Float>> effectsList = stack.getItem().getFoodProperties().getEffects();
@@ -254,6 +295,7 @@ public class VSUtils {
     }
 
     /// Custom stack loading method that supports integer stack counts and string tag parsing.
+    /// @param tag The compound tag to load the stack from.
     public static ItemStack loadStack(CompoundNBT tag) {
         Item item = Items.AIR;
         int count = 1;

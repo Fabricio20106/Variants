@@ -10,6 +10,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import javax.annotation.Nullable;
 import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.OptionalInt;
 
@@ -86,7 +87,7 @@ public class WoolArmorColor {
         if (armorColor.getArmorDesign().isPresent()) {
             object.addProperty("armor_design", armorColor.getArmorDesign().getAsInt());
         } else {
-            object.addProperty("color", armorColor.getColor());
+            object.addProperty("color", "#" + Integer.toHexString(armorColor.getColor()).toUpperCase(Locale.ROOT));
             object.addProperty("color_name", armorColor.getColorName());
         }
         return object;
@@ -102,7 +103,7 @@ public class WoolArmorColor {
                     int armorDesign = JSONUtils.getAsInt(object, "armor_design");
                     return new WoolArmorColor(assetID, armorDesign);
                 } else {
-                    int color = JSONUtils.getAsInt(object, "color");
+                    int color = Integer.decode(JSONUtils.getAsString(object, "color"));
                     String colorName = JSONUtils.getAsString(object, "color_name");
                     return new WoolArmorColor(assetID, color, colorName);
                 }
@@ -118,7 +119,7 @@ public class WoolArmorColor {
             if (armorColor.armorDesign != null) {
                 object.addProperty("armor_design", armorColor.armorDesign);
             } else {
-                object.addProperty("color", armorColor.color);
+                object.addProperty("color", "#" + Integer.toHexString(armorColor.color).toUpperCase(Locale.ROOT));
                 object.addProperty("color_name", armorColor.colorName);
             }
             return object;

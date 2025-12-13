@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import melonystudios.variants.Variants;
 import melonystudios.variants.screen.AbstractRVConfigScreen;
+import melonystudios.variants.screen.RVConfigEntries;
 import melonystudios.variants.screen.button.NoticeOptionButton;
 import melonystudios.variants.util.VSStyles;
 import melonystudios.variants.util.VSUtils;
@@ -13,7 +14,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.DialogTexts;
 import net.minecraft.client.gui.IGuiEventListener;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.toasts.SystemToast;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.gui.widget.Widget;
 import net.minecraft.client.gui.widget.button.Button;
@@ -27,7 +27,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.util.List;
 
 import static melonystudios.variants.screen.RVConfigEntries.*;
-import static melonystudios.variants.screen.RVConfigEntries.END_CAVES_AND_RAVINES;
 
 public class RVWorldGenerationConfigScreen extends AbstractRVConfigScreen {
     public static List<AbstractOption> SETTINGS = Lists.newArrayList(PAINTINGWOOD_FOREST, AZURE_FIELDS, FLOWER_PATCHES, CRIMSON_WHEAT_PATCHES, SOUL_CARROT_PATCHES, WARPED_POTATO_PATCHES,
@@ -53,7 +52,7 @@ public class RVWorldGenerationConfigScreen extends AbstractRVConfigScreen {
         this.endSubstitutionBox.setMaxLength(128);
         this.endSubstitutionBox.setFocus(false);
         this.endSubstitutionBox.setCanLoseFocus(true);
-        this.endSubstitutionBox.setValue(CONFIG.substituteTheEndBiomeWith.toString());
+        this.endSubstitutionBox.setValue(RVConfigEntries.SETTINGS.substituteTheEndBiomeWith.toString());
         this.endSubstitutionBox.setResponder(this::validateBiomeEntry);
         this.children.add(this.endSubstitutionBox);
 
@@ -64,12 +63,10 @@ public class RVWorldGenerationConfigScreen extends AbstractRVConfigScreen {
         this.list.addSmall(this.smallOptions);
         this.children.add(this.list);
         this.doneButton = this.addButton(new Button(this.width / 2 + 5, this.height - 25, 150, 20, DialogTexts.GUI_DONE, button -> {
-
             for (OptionsRowList.Row row : this.list.children()) {
                 for (IGuiEventListener listener : row.children()) {
                     if (listener instanceof NoticeOptionButton && ((NoticeOptionButton) listener).changed()) {
-                        Variants.INSTANCE.saveConfig();
-                        this.minecraft.getToasts().addToast(SystemToast.multiline(this.minecraft, SystemToast.Type.TUTORIAL_HINT, new TranslationTextComponent("gui.variants.config.saved_settings"), new TranslationTextComponent("gui.variants.config.saved_settings.desc")));
+                        SHOULD_SAVE_SETTINGS = true;
                         break;
                     }
                 }
@@ -82,8 +79,8 @@ public class RVWorldGenerationConfigScreen extends AbstractRVConfigScreen {
         boolean valid = ForgeRegistries.BIOMES.containsKey(new ResourceLocation(value));
         this.doneButton.active = valid;
         if (valid) {
-            Variants.INSTANCE.getConfig().substituteTheEndBiomeWith = new ResourceLocation(value);
-            Variants.INSTANCE.saveConfig();
+            Variants.revaried().settings().substituteTheEndBiomeWith = new ResourceLocation(value);
+            SHOULD_SAVE_SETTINGS = true;
         }
     }
 

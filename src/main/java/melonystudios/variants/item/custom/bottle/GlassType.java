@@ -25,15 +25,15 @@ public class GlassType {
     public static final GlassType PINK = new GlassType(VSItems.PINK_STAINED_GLASS_BOTTLE.get(), "pink", 15, true);
     public static final GlassType GLOW_BLACK = new GlassType(VSItems.GLOW_BLACK_STAINED_GLASS_BOTTLE.get(), "glow_black", 16, true);
     public static final GlassType QUARTZ = new GlassType(VSItems.QUARTZ_GLASS_BOTTLE.get(), "quartz", 17, false);
-    private final ItemStack bottleStack;
+    private final ItemStack bottle;
     private final String name;
-    private final int textureIdentifier;
+    private final int textureID;
     private final boolean hasOverlay;
 
-    public GlassType(ItemStack bottleStack, String name, int textureIdentifier, boolean hasOverlay) {
-        this.bottleStack = bottleStack;
+    public GlassType(ItemStack bottleStack, String name, int textureID, boolean hasOverlay) {
+        this.bottle = bottleStack;
         this.name = name;
-        this.textureIdentifier = textureIdentifier;
+        this.textureID = textureID;
         this.hasOverlay = hasOverlay;
     }
 
@@ -41,16 +41,16 @@ public class GlassType {
         this(new ItemStack(bottleItem), name, textureID, hasOverlay);
     }
 
-    public ItemStack getBottle() {
-        return this.bottleStack;
+    public ItemStack bottle() {
+        return this.bottle;
     }
 
-    public String getName() {
+    public String name() {
         return this.name;
     }
 
-    public int getTextureIdentifier() {
-        return this.textureIdentifier;
+    public int textureID() {
+        return this.textureID;
     }
 
     public boolean hasOverlay() {
@@ -61,7 +61,7 @@ public class GlassType {
         if (bottleStack.getItem() instanceof StainedEmptyGlassBottleItem) {
             StainedEmptyGlassBottleItem bottleItem = (StainedEmptyGlassBottleItem) bottleStack.getItem();
             for (GlassType type : StainedFullGlassBottleItem.BOTTLES) {
-                if (bottleItem.getColorName(bottleStack).getPath().equals(type.getName())) return type.getTextureIdentifier();
+                if (bottleItem.getColorName(bottleStack).getPath().equals(type.name())) return type.textureID();
             }
         }
         return 0;

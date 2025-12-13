@@ -4,8 +4,8 @@ import melonystudios.variants.Variants;
 import melonystudios.variants.block.VSBlocks;
 import melonystudios.variants.entity.VSEntities;
 import melonystudios.variants.event.custom.MappingManager;
+import melonystudios.variants.item.RVModdedItems;
 import melonystudios.variants.item.VSItems;
-import melonystudios.variants.item.VSModdedItems;
 import melonystudios.variants.item.VSWeaponry;
 import melonystudios.variants.world.biome.VSBiomes;
 import net.minecraft.block.Block;
@@ -83,7 +83,7 @@ public class VSForgeBusEvents {
         manager.remap("creeper_powder_pot", VSItems.EXPLOSIVE_BLEND_POT.get());
         manager.remap("lava_glass_bottle", VSItems.LAVA_BOTTLE.get());
         manager.remap("milk_glass_bottle", VSItems.MILK_BOTTLE.get());
-        if (ModList.get().isLoaded("backmath")) manager.remap("hilary_bottle", VSModdedItems.HILLARY_BOTTLE);
+        if (ModList.get().isLoaded("backmath")) manager.remap("hilary_bottle", RVModdedItems.HILLARY_BOTTLE);
         manager.remap("ender_boat", VSItems.ENDERWOOD_BOAT.get());
         manager.remap("ender_stick", VSItems.ENDERWOOD_STICK.get());
         manager.remap("ender_bowl", VSItems.ENDERWOOD_BOWL.get());
