@@ -47,7 +47,7 @@ public class RVRecipeProvider extends RecipeProvider {
         makeShulkerShell(output, PINK_SHULKER_SHELL, Tags.Items.DYES_PINK);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.SHULKER_SHELL).requires(DifferenceIngredient.of(Ingredient.of(RVItemTags.SHULKER_SHELLS), Ingredient.of(Items.SHULKER_SHELL)))
                 .requires(Items.INK_SAC).unlockedBy("has_ink_sac", has(Items.INK_SAC))
-                .group("shulker_shell").save(output, Revaried.revaried("shulker_shell_from_uncoloring"));
+                .group("shulker_shell").save(output, Revaried.revaried("shulker_shell_from_bleaching"));
 
         // Shulker Boxes
         makeShulkerBox(output, WHITE_SHULKER_SHELL, Items.WHITE_SHULKER_BOX);
@@ -69,6 +69,25 @@ public class RVRecipeProvider extends RecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SHULKER_BOX).define('#', Items.SHULKER_SHELL).define('C', DifferenceIngredient.of(Ingredient.of(Tags.Items.CHESTS_WOODEN), Ingredient.of(Tags.Items.CHESTS_TRAPPED)))
                 .pattern("#").pattern("C").pattern("#").unlockedBy("has_shulker_shell", has(Items.SHULKER_SHELL))
                 .group("shulker_box").save(output);
+
+        // Miscellaneous
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TRANSPORTATION, SPAWNER_MINECART).requires(Items.SPAWNER).requires(Items.MINECART)
+                .unlockedBy("has_minecart", has(Items.MINECART))
+                .save(output);
+
+        // Bucket foods
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MUSHROOM_STEW_BUCKET).requires(Items.BUCKET).requires(Items.BROWN_MUSHROOM).requires(Items.RED_MUSHROOM)
+                .unlockedBy("has_brown_mushroom", has(Items.BROWN_MUSHROOM)).unlockedBy("has_red_mushroom", has(Items.RED_MUSHROOM))
+                .save(output);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, BEETROOT_SOUP_BUCKET).requires(Items.BUCKET).requires(Items.BEETROOT, 6)
+                .unlockedBy("has_beetroot", has(Items.BEETROOT))
+                .save(output);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, RABBIT_STEW_BUCKET).requires(Items.BUCKET).requires(Items.BAKED_POTATO).requires(Items.COOKED_RABBIT).requires(Tags.Items.CROPS_CARROT).requires(Tags.Items.MUSHROOMS)
+                .unlockedBy("has_cooked_rabbit", has(Items.COOKED_RABBIT))
+                .save(output);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FUNGI_STEW_BUCKET).requires(Items.BUCKET).requires(Items.CRIMSON_FUNGUS).requires(Items.WARPED_FUNGUS)
+                .unlockedBy("has_crimson_fungus", has(Items.CRIMSON_FUNGUS)).unlockedBy("has_warped_fungus", has(Items.WARPED_FUNGUS))
+                .save(output);
     }
 
     protected static void makeShulkerShell(RecipeOutput output, ItemLike shulkerShell, TagKey<Item> dyesTag) {

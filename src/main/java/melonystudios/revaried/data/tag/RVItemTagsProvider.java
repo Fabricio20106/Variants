@@ -1,5 +1,6 @@
 package melonystudios.revaried.data.tag;
 
+import melonystudios.reutilities.util.tag.ReItemTags;
 import melonystudios.revaried.Revaried;
 import melonystudios.revaried.tag.RVItemTags;
 import net.minecraft.core.HolderLookup;
@@ -25,7 +26,7 @@ public class RVItemTagsProvider extends ItemTagsProvider {
     @Override
     @NotNull
     public String getName() {
-        return "Revaried - Item Tags";
+        return Revaried.generatorName("Item Tags");
     }
 
     @Override
@@ -58,7 +59,22 @@ public class RVItemTagsProvider extends ItemTagsProvider {
         this.tag(Tags.Items.DYED_PINK).add(PINK_SHULKER_SHELL.get());
         this.tag(Tags.Items.DYED).addTags(RVItemTags.DYED_INNO, RVItemTags.DYED_GLOW_BLACK);
 
+        this.tag(RVItemTags.BUCKET_SOUP_FOODS).add(MUSHROOM_STEW_BUCKET.get(), BEETROOT_SOUP_BUCKET.get(), RABBIT_STEW_BUCKET.get(), SUSPICIOUS_STEW_BUCKET.get(), MELTING_BEET_SOUP_BUCKET.get(),
+                FUNGI_STEW_BUCKET.get(), END_FUNGI_STEW_BUCKET.get());
+        this.tag(Tags.Items.FOODS).addTag(RVItemTags.BUCKET_SOUP_FOODS);
+        this.tag(RVItemTags.MUSHROOM_STEW_BUCKETS).add(MUSHROOM_STEW_BUCKET.get());
+        this.tag(RVItemTags.BEETROOT_SOUP_BUCKETS).add(BEETROOT_SOUP_BUCKET.get());
+        this.tag(RVItemTags.RABBIT_STEW_BUCKETS).add(RABBIT_STEW_BUCKET.get());
+        this.tag(RVItemTags.SUSPICIOUS_STEW_BUCKETS).add(SUSPICIOUS_STEW_BUCKET.get());
+        this.tag(RVItemTags.MELTING_BEET_SOUP_BUCKETS).add(MELTING_BEET_SOUP_BUCKET.get());
+        this.tag(RVItemTags.FUNGI_STEW_BUCKETS).add(FUNGI_STEW_BUCKET.get());
+        this.tag(RVItemTags.END_FUNGI_STEW_BUCKETS).add(END_FUNGI_STEW_BUCKET.get());
+        this.tag(RVItemTags.SOUL_LAVA_BUCKETS).add(SOUL_LAVA_BUCKET.get());
+        this.tag(Tags.Items.BUCKETS).addTag(RVItemTags.MUSHROOM_STEW_BUCKETS).addTag(RVItemTags.BEETROOT_SOUP_BUCKETS).addTag(RVItemTags.RABBIT_STEW_BUCKETS).addTag(RVItemTags.SUSPICIOUS_STEW_BUCKETS)
+                .addTag(RVItemTags.MELTING_BEET_SOUP_BUCKETS).addTag(RVItemTags.FUNGI_STEW_BUCKETS).addTag(RVItemTags.END_FUNGI_STEW_BUCKETS).addTag(RVItemTags.SOUL_LAVA_BUCKETS);
+
         this.tag(Tags.Items.MUSIC_DISCS).add(MUSIC_DISC_DOG.get());
+        this.tag(ReItemTags.LOGOS).add(SHULKER_SPECTRUM_ICON.get());
 
         // Minecraft tags
         this.tag(ItemTags.CREEPER_DROP_MUSIC_DISCS).add(MUSIC_DISC_DOG.get());

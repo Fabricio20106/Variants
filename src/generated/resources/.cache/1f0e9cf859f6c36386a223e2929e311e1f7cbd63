@@ -1,4 +1,13 @@
-// 1.21.1	2025-09-11T22:33:12.0428624	Revaried - Item Tags
+// 1.21.1	2026-01-29T16:57:02.2715788	Revaried — Item Tags
+a978ed6c16a76375e27328319c30aee827a64b47 data/c/tags/item/buckets.json
+8874ffa7b73e51f94d12c04c141e079bc12ca33d data/c/tags/item/buckets/beetroot_soup.json
+22aef023da2e99197d2c3d79bf8215365620bada data/c/tags/item/buckets/end_fungi_stew.json
+ef09f241ffaffa0f3e2168053d9e80e6b4b5af99 data/c/tags/item/buckets/fungi_stew.json
+cc07881ae74d703363af3d6b46414e0fa7899b59 data/c/tags/item/buckets/melting_beet_soup.json
+33685699a491aa3386f118b5ec2e2514adeb03b8 data/c/tags/item/buckets/mushroom_stew.json
+6c2e6a5bfd493285f9da4cc0117cc1fb5245fb12 data/c/tags/item/buckets/rabbit_stew.json
+6483cdb85adbac1066f573823370eae80dc91d20 data/c/tags/item/buckets/soul_lava.json
+c27e197fb78bee0beb56794472fe7ab99802557a data/c/tags/item/buckets/suspicious_stew.json
 eaad8d8b0bcd2c677dae960b927250e97f3d3065 data/c/tags/item/dyed.json
 a472bd26750b37df01dd688202442724badfbf4c data/c/tags/item/dyed/black.json
 620e31d36e64905f30f5514e8fea7d665f62433a data/c/tags/item/dyed/blue.json
@@ -18,6 +27,9 @@ d38551c4d6355dd4d45cc73f8bc1f0caba2dd197 data/c/tags/item/dyed/lime.json
 6b630aef4f83299011a31fd5e28b96a11e34dfd2 data/c/tags/item/dyed/red.json
 13437cf95aa03eba447843d66803c89cea8a4d96 data/c/tags/item/dyed/white.json
 dd139466f0dea8c5f3fa28178a39f99cdd737262 data/c/tags/item/dyed/yellow.json
+d63b4fcb8b38db7e389c3f53a2ab872906ce24b4 data/c/tags/item/foods.json
+6ec4d26acb4be222a5525bb69fdf04adfaba860f data/c/tags/item/foods/bucket_soup.json
+aa8c386ea48db4ffb949b5853ff8cb7da03539f3 data/c/tags/item/logos.json
 a047ef1fd8a723bfb735cd409439a524762d6360 data/c/tags/item/music_discs.json
 a047ef1fd8a723bfb735cd409439a524762d6360 data/minecraft/tags/item/creeper_drop_music_discs.json
 ffcefe4105eedd2bd3d21b930f2798defb060e86 data/revaried/tags/item/shulker_shells.json

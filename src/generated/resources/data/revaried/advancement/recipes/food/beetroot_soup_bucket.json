@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_ink_sac": {
+    "has_beetroot": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:ink_sac"
+            "items": "minecraft:beetroot"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "revaried:shulker_shell_from_uncoloring"
+        "recipe": "revaried:beetroot_soup_bucket"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_ink_sac"
+      "has_beetroot"
     ]
   ],
   "rewards": {
     "recipes": [
-      "revaried:shulker_shell_from_uncoloring"
+      "revaried:beetroot_soup_bucket"
     ]
   }
 }

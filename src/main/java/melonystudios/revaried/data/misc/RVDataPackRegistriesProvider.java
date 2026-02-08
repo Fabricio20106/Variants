@@ -29,6 +29,6 @@ public class RVDataPackRegistriesProvider extends DatapackBuiltinEntriesProvider
     @Override
     @NotNull
     public String getName() {
-        return "Revaried - Data Pack Registries";
+        return Revaried.generatorName("Data Pack Registries");
     }
 }

@@ -45,7 +45,7 @@ neoForge {
     runs {
         client {
             client()
-            programArguments.addAll '--uuid', project.getProperty('mc_uuid'), '--username', project.getProperty('mc_username')
+            devLogin = true
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
@@ -115,13 +115,18 @@ configurations {
 }
 
 dependencies {
-    // Example optional mod dependency with JEI
+    // Female Gender Mod
+    implementation "maven.modrinth:female-gender:${femalegender_version}"
+
+    // Forged Mod Menu
+    implementation files("build/libs/forgedmodmenu-neoforge-${forgedmodmenu_version}+${minecraft_version}.jar")
+
+    // Just Enough Items
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
     // At runtime, we use the full JEI jar for NeoForge
     runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 
-    // External libraries
     // Reutilities
     implementation files("build/libs/reutilities-neoforge-${reutilities_version}+${minecraft_version}.jar")
 
@@ -151,6 +156,10 @@ repositories {
         // Location of a maven mirror for Just Enough Items files, as a fallback.
         name = "ModMaven"
         url = "https://modmaven.dev"
+    }
+    maven {
+        name = "Modrinth API"
+        url = "https://api.modrinth.com/maven"
     }
 }
 

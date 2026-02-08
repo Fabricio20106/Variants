@@ -5,6 +5,33 @@
   "tab.revaried.brewery": "▷ ʀᴇᴠᴀʀɪᴇᴅ' ʙʀᴇᴡᴇʀʏ ◁",
   "tab.revaried.infinity_sweaters": "▷ ʀᴇᴠᴀʀɪᴇᴅ: ɪɴꜰɪɴɪᴛʏ ꜱᴡᴇᴀᴛᴇʀꜱ ◁",
 
+  "revaried.configuration.title": "[Revaried] Options",
+  "revaried.configuration.section.melonystudios.revaried.common.toml.title": "[Revaried] Options > Common",
+  "revaried.configuration.section.melonystudios.revaried.common.toml": "Common Options",
+  "revaried.configuration.item": "Items",
+  "revaried.configuration.item.button": "Edit",
+  "revaried.configuration.item.tooltip": "Options related to items added or changed by Revaried.",
+  "revaried.configuration.creativeTab": "Creative Tabs",
+  "revaried.configuration.creativeTab.button": "Edit",
+  "revaried.configuration.creativeTab.tooltip": "Options related to items in creative tabs added by Revaried.",
+
+  "config.revaried.place_spawner_when_breaking_minecart": "Place Spawner When Breaking Minecart",
+  "config.revaried.place_spawner_when_breaking_minecart.tooltip": "Whether the spawner in a spawner minecart should place itself when the minecart is broken.",
+
+  "config.revaried.populate_spawner_minecarts": "Populate Spawner Minecarts",
+  "config.revaried.populate_spawner_minecarts.tooltip": "Adds one spawner minecart for every registered entity to Revaried's main creative tab.",
+
+  "block.revaried.mushroom_stew": "Mushroom Stew",
+  "block.revaried.soul_lava": "Soul Lava",
+  "block.revaried.soul_lava_cauldron": "Soul Lava Cauldron",
+
+  "fluid.revaried.mushroom_stew": "Mushroom Stew",
+  "fluid.revaried.flowing_mushroom_stew": "Flowing Mushroom Stew",
+  "fluid_type.revaried.mushroom_stew": "Mushroom Stew",
+  "fluid.revaried.soul_lava": "Soul Lava",
+  "fluid.revaried.flowing_soul_lava": "Flowing Soul Lava",
+  "fluid_type.revaried.soul_lava": "Soul Lava",
+
   "item.revaried.white_shulker_shell": "White Shulker Shell",
   "item.revaried.inno_shulker_shell": "Inno Shulker Shell",
   "item.revaried.light_gray_shulker_shell": "Light Gray Shulker Shell",
@@ -27,14 +54,44 @@
   "item.revaried.music_disc_dog": "Music Disc",
   "item.revaried.spawner_minecart": "Minecart with Monster Spawner",
   "item.revaried.spawner_minecart.with_mob": "Minecart with %s Spawner",
+  "item.revaried.mushroom_stew_bucket": "Mushroom Stew Bucket",
+  "item.revaried.beetroot_soup_bucket": "Beetroot Soup Bucket",
+  "item.revaried.rabbit_stew_bucket": "Rabbit Stew Bucket",
+  "item.revaried.suspicious_stew_bucket": "Suspicious Stew Bucket",
+  "item.revaried.melting_beet_soup_bucket": "Melting Beet Soup Bucket",
+  "item.revaried.fungi_stew_bucket": "Fungi Stew Bucket",
+  "item.revaried.end_fungi_stew_bucket": "End Fungi Stew Bucket",
+  "item.revaried.soul_lava_bucket": "Soul Lava Bucket",
 
   "jukebox_song.revaried.dog": "C418 - dog",
+
+  "stat.revaried.spawners_picked_up": "Spawners Picked Up in Minecarts",
 
   "tooltip.revaried.compat_item_from": "Item compatibility between: %s.",
   "tooltip.revaried.compat_block_from": "Block compatibility between: %s.",
 
+  "gamerule.rvMushroomStewSourceConversion": "Mushroom stew converts to source",
+  "gamerule.rvMushroomStewSourceConversion.description": "When flowing mushroom stew is surrounded on two sides by mushroom stew sources it converts into a source.",
+  "gamerule.rvSoulLavaSourceConversion": "Soul lava converts to source",
+  "gamerule.rvSoulLavaSourceConversion.description": "When flowing soul lava is surrounded on two sides by soul lava sources it converts into a source.",
+
+  "modmenu.nameTranslation.revaried": "Revaried",
+  "modmenu.descriptionTranslation.revaried": "Adds various variants of vanilla items or blocks, ranging from copper armor and tools to potted sugar cane.",
+
+  "tag.block.revaried.pickupable_spawners": "Pickupable Spawners",
+  "tag.block.revaried.spawner_minecarts_cannot_replace": "Spawner Minecarts Cannot Replace",
   "tag.item.revaried.shulker_shells": "Shulker Shells",
 
   "tag.item.c.dyed.inno": "Inno Dyed Items",
-  "tag.item.c.dyed.glow_black": "Glow Black Dyed Items"
+  "tag.item.c.dyed.glow_black": "Glow Black Dyed Items",
+  "tag.item.c.foods.bucket_soup": "Bucket Soup Foods",
+  "tag.item.c.buckets.mushroom_stew": "Mushroom Stew Buckets",
+  "tag.item.c.buckets.beetroot_soup": "Beetroot Soup Buckets",
+  "tag.item.c.buckets.rabbit_stew": "Rabbit Stew Buckets",
+  "tag.item.c.buckets.suspicious_stew": "Suspicious Stew Buckets",
+  "tag.item.c.buckets.melting_beet_soup": "Melting Beet Soup Buckets",
+  "tag.item.c.buckets.fungi_stew": "Fungi Stew Buckets",
+  "tag.item.c.buckets.end_fungi_stew": "End Fungi Stew Buckets",
+  "tag.item.c.buckets.soul_lava": "Soul Lava Buckets",
+  "tag.fluid.c.soul_lava": "Soul Lava"
 }

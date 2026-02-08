@@ -22,7 +22,7 @@ issueTrackerURL="https://github.com/isabellawoods/Revaried/issues" #optional
     # A display name for the mod
     displayName="${mod_name}" #mandatory
     # A URL to query for updates for this mod. See the JSON update specification https://docs.neoforged.net/docs/misc/updatechecker/
-    updateJSONURL="https://raw.githubusercontent.com/isabellawoods/Revaried/forge-1.16.5/update_checker.json" #optional
+    updateJSONURL="https://raw.githubusercontent.com/isabellawoods/Revaried/refs/heads/forge-1.16.5/update_checker.json" #optional
     # A URL for the "homepage" for this mod, displayed in the mod UI
     displayURL="https://github.com/isabellawoods/Revaried/tree/neoforge-1.21.1" #optional
     # A URL for the changelogs for this mod, displayed in the mod list when Mellow UI is loaded.
@@ -35,6 +35,21 @@ issueTrackerURL="https://github.com/isabellawoods/Revaried/issues" #optional
     authors="${mod_authors}" #optional
     # The description text for the mod (multi line!) (#mandatory)
     description='''${mod_description}'''
+
+# The [modproperties] block is used by mods to define features for each mod
+# todo: replace "logo file" and "image icon" when i make a proper square icon for revaried ~isa 28-01-26
+[modproperties.${mod_id}]
+    # A small image displayed to the left of your mod’s name in Catalogue's mod list
+    catalogueImageIcon="pack.png"
+    # A list of links to be displayed in Forged Mod Menu's mods screen
+    modMenuLinks=[
+        "modmenu.wiki=https://github.com/isabellawoods/Revaried/wiki",
+        "modmenu.github_releases=https://github.com/isabellawoods/Revaried/releases",
+        "reutilities.link.documentation=https://github.com/isabellawoods/Informational-Mod-Features/tree/main/Revaried/Docs",
+        "reutilities.link.changelogs=https://github.com/isabellawoods/Informational-Mod-Features/tree/main/Revaried/Changelogs"
+    ]
+    # An alternative logo file to use in Forged Mod Menu's mods screen
+    modMenuLogoFile="pack.png"
 
 # The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.
 [[mixins]]
@@ -50,7 +65,7 @@ issueTrackerURL="https://github.com/isabellawoods/Revaried/issues" #optional
 [[dependencies.${mod_id}]] #optional
     # the modid of the dependency
     modId="neoforge" #mandatory
-    # The type of the dependency. Can be one of "required", "optional", "incompatible" or "discouraged" (case insensitive).
+    # The type of the dependency. Can be one of "required", "optional", "incompatible" or "discouraged" (case-insensitive).
     # 'required' requires the mod to exist, 'optional' does not
     # 'incompatible' will prevent the game from loading when the mod exists, and 'discouraged' will show a warning
     type="required" #mandatory
@@ -78,7 +93,7 @@ issueTrackerURL="https://github.com/isabellawoods/Revaried/issues" #optional
 [[dependencies.${mod_id}]]
     modId = "reutilities"
     type = "required"
-    versionRange = "[1.2.0,)"
+    versionRange = "[1.4.0,)"
     ordering = "NONE"
     side = "BOTH"
 

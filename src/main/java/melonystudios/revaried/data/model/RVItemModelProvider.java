@@ -21,7 +21,7 @@ public class RVItemModelProvider extends ReItemModelProvider {
     @Override
     @NotNull
     public String getName() {
-        return "Revaried - Item Models";
+        return Revaried.generatorName("Item Models");
     }
 
     @Override
@@ -50,6 +50,14 @@ public class RVItemModelProvider extends ReItemModelProvider {
         standard("shulker_spectrum_icon");
         standard("music_disc_dog");
         spawnerMinecart("spawner_minecart", DEFAULT_MOB_MAP);
+        standard("mushroom_stew_bucket");
+        standard("beetroot_soup_bucket");
+        standard("rabbit_stew_bucket");
+        standard("suspicious_stew_bucket");
+        standard("melting_beet_soup_bucket");
+        standard("fungi_stew_bucket");
+        standard("end_fungi_stew_bucket");
+        standard("soul_lava_bucket");
     }
 
     public void spawnerMinecart(String name, Map<String, Integer> mobToIDMap) {

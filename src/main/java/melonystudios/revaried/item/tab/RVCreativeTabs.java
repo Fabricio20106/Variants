@@ -1,9 +1,9 @@
 package melonystudios.revaried.item.tab;
 
-import melonystudios.revaried.RVConfigs;
 import melonystudios.revaried.Revaried;
+import melonystudios.revaried.component.RVDataComponents;
+import melonystudios.revaried.option.RVCommonOptions;
 import net.minecraft.Util;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -44,11 +44,19 @@ public class RVCreativeTabs {
                 output.accept(PINK_SHULKER_SHELL);
                 output.accept(MUSIC_DISC_DOG);
                 addSpawnerMinecarts(parameters, output, SPAWNER_MINECART);
+                output.accept(MUSHROOM_STEW_BUCKET);
+                output.accept(BEETROOT_SOUP_BUCKET);
+                output.accept(RABBIT_STEW_BUCKET);
+                output.accept(SUSPICIOUS_STEW_BUCKET);
+                output.accept(MELTING_BEET_SOUP_BUCKET);
+                output.accept(FUNGI_STEW_BUCKET);
+                output.accept(END_FUNGI_STEW_BUCKET);
+                output.accept(SOUL_LAVA_BUCKET);
             }).build());
 
     private static void addSpawnerMinecarts(CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output output, ItemLike item) {
         output.accept(item);
-        if (RVConfigs.POPULATE_SPAWNER_MINECARTS.get()) {
+        if (RVCommonOptions.POPULATE_SPAWNER_MINECARTS.get()) {
             parameters.holders().lookup(Registries.ENTITY_TYPE).ifPresent(types -> types.listElements()
                     .filter(entity -> entity.value().isEnabled(parameters.enabledFeatures()))
                     .map(entity -> Util.make(new ItemStack(item), stack -> {
@@ -56,10 +64,9 @@ public class RVCreativeTabs {
                         CompoundTag entityTag = new CompoundTag();
                         CompoundTag spawnData = new CompoundTag();
                         entityTag.putString("id", entity.key().location().toString());
-                        tag.putString("id", entity.key().location().toString());
                         spawnData.put("entity", entityTag);
                         tag.put("SpawnData", spawnData);
-                        stack.set(DataComponents.ENTITY_DATA, CustomData.of(tag));
+                        stack.set(RVDataComponents.SPAWNER_DATA.get(), CustomData.of(tag));
                     }))
                     .forEach(output::accept));
         }
