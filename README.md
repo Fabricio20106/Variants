@@ -6,4 +6,4 @@
 
 ***Revaried*** adds various variants of vanilla items or blocks, ranging from copper armor and tools to potted sugar cane.
 
-Changelogs for versions of Revaried can be seen [here](https://github.com/isabellawoods/Informational-Mod-Features/tree/main/Revaried/Changelogs).
+Changelogs for versions of *Revaried* can be seen [here](https://github.com/isabellawoods/Informational-Mod-Features/tree/main/Revaried/Changelogs).
